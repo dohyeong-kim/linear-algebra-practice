@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+<pretext xml:lang="ko-KO" xmlns:xi="http://www.w3.org/2001/XInclude">
   <!-- we first include a file which contains the docinfo element: -->
   <xi:include href="./docinfo.ptx" />
 
-  <book xml:id="my-great-book">
-    <title>My Great Book</title>
-    <subtitle>An example to get you started</subtitle>
+  <book xml:id="linear-algebra-practice">
+    <title>선형대수학</title>
+    <subtitle>문제와 해결</subtitle>
 
     <!-- Include frontmatter -->
     <xi:include href="./frontmatter.ptx" />
