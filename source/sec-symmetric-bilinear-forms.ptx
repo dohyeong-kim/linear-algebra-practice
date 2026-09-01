@@ -303,9 +303,9 @@
     <p>
       새 기저 <m>\mathcal C=(w_1,\ldots,w_n)</m>의 벡터들이
       <m>w_j=\sum_i v_iP_{ij}</m>를 만족한다고 하자. 그러면 실내적의 경우에는
-      <md>G_{\mathcal C}=P^TG_{\mathcal B}P</md>
+      <mee>G_{\mathcal C}=P^TG_{\mathcal B}P</me>
       이고, 이 절의 선형성 규약을 따르는 에르미트 내적의 경우에는
-      <md>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</md>
+      <me>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</me>
       이다. 특히 정규직교기저에서는 두 그람 행렬이 모두 항등행렬이다.
     </p>
     <proof>
