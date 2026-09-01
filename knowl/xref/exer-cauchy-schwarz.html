@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">[divisionalexercise]</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">코시–슈바르츠 부등식.</span>
+</h4>
+<div class="para logical">
+<div class="para">실내적공간 <span class="process-math">\(V\)</span>의 <span class="process-math">\(u,v\in V\)</span>에 대하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-polynomial-integration-inner-product.html">
+\begin{equation*}
+\langle u,v\rangle^2\leq\langle u,u\rangle\langle v,v\rangle
+\end{equation*}
+</div>
+<div class="para">임을 보이고, 등호가 성립할 필요충분조건이 <span class="process-math">\(u,v\)</span>의 일차종속임을 보이시오. 이를 <a href="sec-symmetric-bilinear-forms.html#ex-polynomial-integration-inner-product" class="xref" data-knowl="./knowl/xref/ex-polynomial-integration-inner-product.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.9: 적분으로 정의되는 다항식공간의 내적">예시 1.1.9</a>의 내적에 적용하여 모든 <span class="process-math">\(p,q\in\mathbb R[x]\)</span>에 대하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-polynomial-integration-inner-product.html">
+\begin{equation*}
+\Big(\int_{-1}^1p(t)q(t)\,dt\Big)^2\leq\int_{-1}^1p(t)^2\,dt\int_{-1}^1q(t)^2\,dt
+\end{equation*}
+</div>
+<div class="para">임을 이끌어내시오.</div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">[solution]</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(v=0\)</span>이면 양변이 <span class="process-math">\(0\)</span>이다. <span class="process-math">\(v\ne0\)</span>이라 하고 <span class="process-math">\(t\in\mathbb R\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0\leq\langle u-tv,u-tv\rangle=\langle u,u\rangle-2t\langle u,v\rangle+t^2\langle v,v\rangle
+\end{equation*}
+</div>
+<div class="para">을 생각하자. <span class="process-math">\(t=\langle u,v\rangle/\langle v,v\rangle\)</span>을 대입하면 <span class="process-math">\(0\leq\langle u,u\rangle-\langle u,v\rangle^2/\langle v,v\rangle\text{,}\)</span> 즉 부등식을 얻는다. 등호는 <span class="process-math">\(\langle u-tv,u-tv\rangle=0\text{,}\)</span> 곧 <span class="process-math">\(u=tv\)</span>일 때이고 그 역도 대입으로 확인된다. (<span class="process-math">\(v=0\)</span>인 경우도 일차종속이다.) 적분 부등식은 이 내적에 부등식을 그대로 적용한 것이다.</div>
+</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-symmetric-bilinear-forms.html#exer-cauchy-schwarz">[incontext]</a></span>
+</body>
+</html>
