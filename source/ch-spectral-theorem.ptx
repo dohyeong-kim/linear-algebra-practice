@@ -2,7 +2,7 @@
 
 <chapter xml:id="ch-spectral-theorem" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>스펙트럴 정리</title>
-
+  <xi:include href="sec-symmetric-bilinear-forms.ptx" />
   
 
 </chapter>
