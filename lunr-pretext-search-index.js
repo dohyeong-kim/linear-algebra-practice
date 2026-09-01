@@ -325,6 +325,24 @@ var ptx_lunr_docs = [
   "body": "비대각성분이 양이 아닌 그람 행렬의 역행렬   위의 내적의 표준기저에 관한 그람 행렬 가 모든 에 대하여 을 만족한다고 하자.  가 가역임을 보이시오.  의 모든 성분이 이상임을 보이시오.  (2)를 다음과 같이 해석하시오: 모든 에 대하여 인 벡터 이 존재하며, 이들의 모든 좌표는 이상이다.  가정 을 빼면 (2)가 거짓임을 예로 보이시오.        이면 이므로 양의 정부호성에서 .   의 모든 성분이 이상이라 하고 로 두자. , 로 쓰면 이고 각 에서 이다. 그러면 여기서 인 항은 으로 사라지고 인 항은 , 으로 양이 아니며 이다. 양의 정부호성으로 , 즉 . 를 택하면 의 열이 이상이다.   로 두면 이고, (2)에 의해 의 좌표는 모두 이상이다. (즉 들이 서로 「둔각 이하」로 놓여 있으면 쌍대기저는 원래 기저의 음이 아닌 결합이다.)   는 양의 정부호 ( )이지만 에 음의 성분이 있다.    "
 },
 {
+  "id": "sec-spectral-theorem",
+  "level": "1",
+  "url": "sec-spectral-theorem.html",
+  "type": "[section]",
+  "number": "1.2",
+  "title": "스펙트럴 정리",
+  "body": " 스펙트럴 정리  "
+},
+{
+  "id": "sec-singular-value-decomposition",
+  "level": "1",
+  "url": "sec-singular-value-decomposition.html",
+  "type": "[section]",
+  "number": "1.3",
+  "title": "특이값 분해",
+  "body": " 특이값 분해  "
+},
+{
   "id": "ch-rigid-motion",
   "level": "1",
   "url": "ch-rigid-motion.html",

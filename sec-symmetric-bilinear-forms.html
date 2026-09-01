@@ -198,7 +198,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="ch-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="up-button button" href="ch-spectral-theorem.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">[up-short]</span></a><a class="next-button button" href="ch-rigid-motion.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="ch-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="up-button button" href="ch-spectral-theorem.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">[up-short]</span></a><a class="next-button button" href="sec-spectral-theorem.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -217,10 +217,14 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></div>
-<ul class="structural toc-item-list contains-active"><li class="toc-item toc-section contains-active">
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section contains-active">
 <div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></div>
 <ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html#exercises-symmetric-bilinear-forms" class="internal"><span class="codenumber">1.1</span> <span class="title">연습문제</span></a></div></li></ul>
-</li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.2</span> <span class="title">스펙트럴 정리</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.3</span> <span class="title">특이값 분해</span></a></div></li>
+</ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-linear-codes.html" class="internal"><span class="codenumber">3</span> <span class="title">선형부호</span></a></div></li>
@@ -589,14 +593,16 @@ c^T H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.
 </h3>
 <div class="para logical" id="prop-gram-matrix-change-of-basis-2">
 <div class="para">새 기저 <span class="process-math">\(\mathcal C=(w_1,\ldots,w_n)\)</span>의 벡터들이 <span class="process-math">\(w_j=\sum_i v_iP_{ij}\)</span>를 만족한다고 하자. 그러면 실내적의 경우에는</div>
-<div class="displaymath process-math" id="prop-gram-matrix-change-of-basis-2-3">
-\begin{gather*}
-\end{gather*}
+<div class="displaymath process-math">
+\begin{equation*}
+G_{\mathcal C}=P^TG_{\mathcal B}P
+\end{equation*}
 </div>
 <div class="para">이고, 이 절의 선형성 규약을 따르는 에르미트 내적의 경우에는</div>
-<div class="displaymath process-math" id="prop-gram-matrix-change-of-basis-2-4">
-\begin{gather*}
-\end{gather*}
+<div class="displaymath process-math">
+\begin{equation*}
+H_{\mathcal C}=P^TH_{\mathcal B}\overline P
+\end{equation*}
 </div>
 <div class="para">이다. 특히 정규직교기저에서는 두 그람 행렬이 모두 항등행렬이다.</div>
 </div></article><details id="prop-gram-matrix-change-of-basis-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-gram-matrix-change-of-basis-3-1">
@@ -967,7 +973,7 @@ h(iu,v)=g(iu,v)+i\,g(iu,iv)=-g(u,iv)+i\,g(u,v)=i\,h(u,v),
 <span class="process-math">\(G=\begin{pmatrix}1&amp;\tfrac12\\\tfrac12&amp;1\end{pmatrix}\)</span>는 양의 정부호 (<span class="process-math">\(c^TGc=\tfrac12(c_1+c_2)^2+\tfrac12(c_1^2+c_2^2)\)</span>)이지만 <span class="process-math">\(G^{-1}=\tfrac43\begin{pmatrix}1&amp;-\tfrac12\\-\tfrac12&amp;1\end{pmatrix}\)</span>에 음의 성분이 있다.</div></li>
 </ol></div></div></details></div></article></section></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="ch-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-rigid-motion.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="ch-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-spectral-theorem.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
