@@ -50,6 +50,8 @@
   <rename element="p">문단</rename> <!--잘 작동함-->
   <rename element="subsection">소절</rename> <!--잘 작동함-->
   <rename element="li">항목</rename> <!--잘 작동함-->
+  <rename element="colophon">판권</rename> <!--잘 작동함-->
+  <rename element="toc">목차</rename> <!--잘 작동함-->
 
   <!-- 미사용
     <rename element="inlineexercise">문
