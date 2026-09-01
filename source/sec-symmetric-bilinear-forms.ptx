@@ -1,8 +1,679 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-symmetric-bilinear-forms" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>대칭쌍선형형식</title>
+  <title>대칭쌍선형형식과 내적공간</title>
+  <p>
+    체 <m>\mathbb F</m>상 벡터공간 <m>V</m>에 대하여, 함수 <m>f:V^n\to\mathbb F</m>가 각 변수에
+    관하여 선형이면 <m>n</m>-선형형식이라 한다. 특히 <m>n=2</m>인 경우를 쌍선형형식이라 하며,
+    <m>f:V\times V\to\mathbb F</m>는 두 변수 각각에 관하여 선형이다.
+  </p>
+  <definition xml:id="def-symmetric-multilinear-form">
+    <title>대칭 다중선형형식</title>
+    <p>
+      체 <m>\mathbb F</m>상 벡터공간 <m>V</m> 위의 <m>n</m>-선형형식 <m>f:V^n\to \mathbb F</m>가 모든 벡터
+      <m>v_1, \cdots ,v_n \in V</m>와 모든 순열 <m>\sigma \in S_n</m>에 대하여
+      <me>f(v_1, \cdots,v_n)=f(v_{\sigma(1)}, \cdots ,v_{\sigma(n)})</me>
+      를 만족하면, <m>f</m>를 <term>대칭 다중선형형식</term>이라 한다. 즉, 대칭 다중선형형식의 값은
+      입력 벡터들의 순서에 의존하지 않는다.
+    </p>
+  </definition>
 
-  
+  <example xml:id="ex-homogeneous-polynomial-symmetric-bilinear-form">
+    <title>이차 동차다항식에서 얻는 대칭쌍선형형식</title>
+    <p>
+      <m>V= r^2</m>라 하고, 이차 동차다항식
+      <me>p(x,y)=x^2+2xy+3y^2</me>
+      을 생각하자. 벡터 <m>u=(x_1,y_1)</m>, <m>v=(x_2,y_2)</m>에 대하여
+      <me>f(u,v)=x_1x_2+x_1y_2+y_1x_2+3y_1y_2</me>
+      로 정의하면 <m>f</m>는 각 변수에 관하여 선형이고,
+      <me>f(u,v)=f(v,u)</me>
+      이므로 대칭쌍선형형식이다. 또한
+      <me>f((x,y),(x,y))=x^2+2xy+3y^2=p(x,y)</me>
+      이므로, 이 대칭쌍선형형식은 주어진 이차 동차다항식을 대각선 위에서 되돌려 준다.
+    </p>
+  </example>
+
+  <example xml:id="ex-cubic-polynomial-symmetric-trilinear-form">
+    <title>삼차 동차다항식에서 얻는 대칭삼중선형형식</title>
+    <p>
+      <m>V=\mathbb R^2</m>라 하고, 삼차 동차다항식
+      <me>p(x,y)=x^3+3x^2y+3xy^2+2y^3</me>
+      을 생각하자. 벡터 <m>u=(x_1,y_1)</m>, <m>v=(x_2,y_2)</m>, <m>w=(x_3,y_3)</m>에 대하여
+      <me>f(u,v,w)=x_1x_2x_3+x_1x_2y_3+x_1y_2x_3+y_1x_2x_3+x_1y_2y_3+y_1x_2y_3+y_1y_2x_3+2y_1y_2y_3</me>
+      로 정의하면 <m>f</m>는 각 변수에 관하여 선형이며, 세 입력 벡터의 순서를 바꾸어도 값이 변하지 않는다.
+      따라서 <m>f</m>는 대칭삼중선형형식이다. 또한
+      <me>f((x,y),(x,y),(x,y))=x^3+3x^2y+3xy^2+2y^3=p(x,y)</me>
+      이므로, 이 대칭삼중선형형식은 주어진 삼차 동차다항식을 대각선 위에서 되돌려 준다.
+    </p>
+  </example>
+
+  <definition xml:id="def-symmetric-bilinear-form">
+    <title>대칭쌍선형형식</title>
+    <p>
+      체 <m>\mathbb F</m>상 벡터공간 <m>V</m> 위의 쌍선형형식
+      <m>f:V\times V\to\mathbb F</m>가 모든 <m>u,v\in V</m>에 대하여
+      <me>f(u,v)=f(v,u)</me>
+      를 만족하면, <m>f</m>를 <term>대칭쌍선형형식</term>이라 한다. 즉,
+      대칭쌍선형형식은 두 입력 벡터의 순서를 바꾸어도 그 값이 변하지 않는 쌍선형형식이다.
+    </p>
+  </definition>
+
+  <p>
+    대칭쌍선형형식은 대칭 다중선형형식의 특별한 경우이다. 즉, 모든 대칭쌍선형형식은 2-선형형식이며, 두 입력 벡터의 순서를 바꾸어도 값이 변하지 않는다.
+  </p>
+
+  <example xml:id="ex-polynomial-multiplication-symmetric-bilinear-map">
+    <title>다항식의 곱셈</title>
+    <p>
+      <m>V=\mathbb F[x]</m>를 체 <m>\mathbb F</m> 계수 다항식들의 벡터공간이라 하자. 두 다항식의 곱셈으로
+      정의되는 함수
+      <me>f:V\times V\to V,\qquad f(p,q)=pq</me>
+      를 생각하자. 모든 <m>p,q,r\in V</m>와 <m>a,b\in\bbF</m>에 대하여
+      <me>f(ap+bq,r)=(ap+bq)r=af(p,r)+bf(q,r)</me>
+      이고 다른 변수에 대해서도 같은 성질이 성립하므로, <m>f</m>는 쌍선형사상이다. 또한 다항식의
+      곱셈은 교환법칙을 만족하므로
+      <me>f(p,q)=pq=qp=f(q,p)</me>
+      이다. 따라서 다항식의 곱셈은 대칭쌍선형사상의 예이다.
+    </p>
+  </example>
+
+  <example xml:id="ex-matrix-multiplication-not-symmetric-bilinear-map">
+    <title>행렬의 곱셈은 대칭이 아닌 쌍선형사상</title>
+    <p>
+      <m>V=M_n(\mathbb F)</m>를 체 <m>\mathbb F</m> 위의 <m>n\times n</m> 정사각행렬들의 벡터공간이라 하자.
+      행렬의 곱셈으로 정의되는 함수
+      <me>f:V\times V\to V,\qquad f(A,B)=AB</me>
+      는 각 변수에 관하여 선형이므로 쌍선형사상이다. 그러나 일반적으로 행렬의 곱셈은 교환법칙을
+      만족하지 않는다. 예를 들어 <m>n=2</m>일 때
+      <me>A=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}</me>
+      라 하면
+      <me>AB=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\ne\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}=BA</me>
+      이다. 따라서 행렬의 곱셈은 쌍선형사상이지만 대칭쌍선형사상은 아니다.
+    </p>
+  </example>
+
+  <definition xml:id="def-inner-product-space">
+    <title>내적공간</title>
+    <p>
+      실수체 <m>\mathbb R</m> 위의 벡터공간 <m>V</m>와 대칭쌍선형형식
+      <m>\langle\mathord{\cdot},\mathord{\cdot}\rangle:V\times V\to\mathbb R</m>가 주어졌다고 하자.
+      모든 <m>v\in V</m>에 대하여
+      <me>\langle v,v\rangle\geq 0</me>
+      이고, <m>\langle v,v\rangle=0</m>이면 <m>v=0</m>일 때, 이 형식을 <term>내적</term>이라 한다.
+      내적이 주어진 벡터공간 <m>V</m>를 <term>내적공간</term>이라 한다.
+    </p>
+  </definition>
+
+  <example xml:id="ex-standard-inner-product-space">
+    <title>표준 내적공간</title>
+    <p>
+      <m>\mathbb R^n</m>에서 두 벡터
+      <m>u=(u_1,u_2,\ldots,u_n)</m>, <m>v=(v_1,v_2,\ldots,v_n)</m>에 대하여
+      <me>\langle u,v\rangle=u_1v_1+u_2v_2+\cdots+u_nv_n</me>
+      로 정의하자. 이 형식은 각 변수에 관하여 선형이고,
+      <me>\langle u,v\rangle=\langle v,u\rangle</me>
+      이므로 대칭쌍선형형식이다. 또한 모든 <m>v=(v_1,v_2,\ldots,v_n)\in\mathbb R^n</m>에 대하여
+      <me>\langle v,v\rangle=v_1^2+v_2^2+\cdots+v_n^2\geq 0</me>
+      이고, <m>\langle v,v\rangle=0</m>이면 <m>v_1=v_2=\cdots=v_n=0</m>이므로 <m>v=0</m>이다.
+      따라서 <m>\mathbb R^n</m>은 이 표준 내적에 의해 내적공간이 된다.
+    </p>
+  </example>
+
+  <example xml:id="ex-polynomial-integration-inner-product">
+    <title>적분으로 정의되는 다항식공간의 내적</title>
+    <p>
+      닫힌구간 <m>[-1,1]</m>에서 정의된 실계수 다항식들의 벡터공간 <m>V=\mathbb R[x]</m>를 생각하자.
+      두 다항식 <m>p,q\in V</m>에 대하여
+      <me>
+        \langle p,q\rangle=\int_{-1}^{1}p(t)q(t)\,dt
+      </me>
+      로 정의한다. 적분의 선형성에 의해 이 형식은 각 변수에 관하여 선형이고, 곱셈의 교환법칙에 의해
+      <me>
+        \langle p,q\rangle=\int_{-1}^{1}p(t)q(t)\,dt=\int_{-1}^{1}q(t)p(t)\,dt=\langle q,p\rangle
+      </me>
+      이므로 대칭쌍선형형식이다. 또한 모든 <m>p\in V</m>에 대하여
+      <me>
+        \langle p,p\rangle=\int_{-1}^{1}p(t)^2\,dt\geq 0
+      </me>
+      이고, 이 값이 <m>0</m>이면 연속함수 <m>p(t)^2</m>가 구간 <m>[-1,1]</m>에서 항상 <m>0</m>이므로
+      <m>p=0</m>이다. 따라서 이 적분으로 정의된 짝짓기는 <m>\mathbb R[x]</m> 위의 내적이다.
+    </p>
+  </example>
+
+  <definition xml:id="def-hermitian-space">
+    <title>에르미트 공간</title>
+    <p>
+      복소수체 <m>\mathbb C</m> 위의 벡터공간 <m>V</m>와 함수
+      <m>\langle\mathord{\cdot},\mathord{\cdot}\rangle:V\times V\to\mathbb C</m>가 주어졌다고 하자.
+      모든 <m>u,v,w\in V</m>와 <m>a,b\in\mathbb C</m>에 대하여
+      <me>\langle au+bv,w\rangle=a\langle u,w\rangle+b\langle v,w\rangle</me>
+      이고,
+      <me>\langle u,v\rangle=\overline{\langle v,u\rangle}</me>
+      이며, 모든 <m>v\in V</m>에 대하여 <m>\langle v,v\rangle\geq 0</m>이고
+      <m>\langle v,v\rangle=0</m>이면 <m>v=0</m>이라고 하자. 이때 이 함수를
+      <term>에르미트 내적</term>이라 하고, 에르미트 내적이 주어진 벡터공간 <m>V</m>를
+      <term>에르미트 공간</term>이라 한다. 켤레대칭성에 의해 둘째 변수에 대해서는
+      <me>\langle u,av+bw\rangle=\overline{a}\langle u,v\rangle+\overline{b}\langle u,w\rangle</me>
+      이 성립한다.
+    </p>
+  </definition>
+
+  <example xml:id="ex-standard-hermitian-space">
+    <title>표준 에르미트 공간</title>
+    <p>
+      <m>\mathbb C^n</m>에서 두 벡터
+      <m>u=(u_1,u_2,\ldots,u_n)</m>, <m>v=(v_1,v_2,\ldots,v_n)</m>에 대하여
+      <me>\langle u,v\rangle=u_1\overline{v_1}+u_2\overline{v_2}+\cdots+u_n\overline{v_n}</me>
+      로 정의하자. 이 형식은 첫째 변수에 관하여 선형이고,
+      <me>\langle u,v\rangle=\overline{\langle v,u\rangle}</me>
+      이므로 켤레대칭성을 만족한다. 또한 모든 <m>v=(v_1,v_2,\ldots,v_n)\in\mathbb C^n</m>에 대하여
+      <me>\langle v,v\rangle=|v_1|^2+|v_2|^2+\cdots+|v_n|^2\geq 0</me>
+      이고, <m>\langle v,v\rangle=0</m>이면 <m>v_1=v_2=\cdots=v_n=0</m>이므로 <m>v=0</m>이다.
+      따라서 <m>\mathbb C^n</m>은 이 표준 에르미트 내적에 의해 에르미트 공간이 된다.
+    </p>
+
+    
+  </example>
+
+  <example xml:id="ex-polynomial-unit-disc-hermitian-space">
+    <title>단위원판 위의 적분으로 정의되는 에르미트 내적</title>
+    <p>
+      복소계수 일변수 다항식들의 벡터공간 <m>V=\mathbb C[z]</m>와 단위원판
+      <m>D=\{z\in\mathbb C:|z|\leq 1\}</m>을 생각하자. 두 다항식 <m>p,q\in V</m>에 대하여
+      <me>
+        \langle p,q\rangle=\int_D p(z)\overline{q(z)}\,dA(z)
+      </me>
+      로 정의한다. 여기서 <m>dA</m>는 평면의 넓이요소이다. 적분의 선형성에 의해 이 형식은 첫째
+      변수에 관하여 선형이고,
+      <me>
+        \langle p,q\rangle=\overline{\langle q,p\rangle}
+      </me>
+      이므로 켤레대칭성을 만족한다. 또한 모든 <m>p\in V</m>에 대하여
+      <me>
+        \langle p,p\rangle=\int_D |p(z)|^2\,dA(z)\geq 0
+      </me>
+      이다. 이 값이 <m>0</m>이면 연속함수 <m>|p(z)|^2</m>가 <m>D</m>에서 항상 <m>0</m>이므로
+      <m>p=0</m>이다. 따라서 이 적분은 <m>\mathbb C[z]</m> 위의 에르미트 내적을 정의하며,
+      <m>\mathbb C[z]</m>는 에르미트 공간이 된다.
+    </p>
+  </example>
+
+  <example xml:id="ex-unit-disc-hermitian-inner-product-computation">
+    <title>극좌표를 이용한 내적의 계산</title>
+    <p>
+      앞의 에르미트 내적에서 두 다항식 <m>p(z)=1+z</m>, <m>q(z)=1+2z</m>를 택하자.
+      극좌표 <m>z=re^{i\theta}</m>를 사용하면 단위원판에서는 <m>0\leq r\leq 1</m>,
+      <m>0\leq\theta\leq 2\pi</m>이고 넓이요소는 <m>dA=r\,dr\,d\theta</m>이다. 따라서
+      <md>
+        <mrow>\langle p,q\rangle
+        &amp;=\int_D(1+z)(1+2\overline z)\,dA(z)</mrow>
+        <mrow>&amp;=\int_0^{2\pi}\int_0^1
+          \left(1+re^{i\theta}+2re^{-i\theta}+2r^2\right)r\,dr\,d\theta</mrow>
+        <mrow>&amp;=\int_0^{2\pi}\int_0^1\left(r+2r^3\right)\,dr\,d\theta</mrow>
+        <mrow>&amp;=2\pi\left(\frac12+\frac12\right)=2\pi.</mrow>
+      </md>
+      여기서 <m>e^{i\theta}</m> 및 <m>e^{-i\theta}</m>를 포함하는 항들의
+      <m>\theta</m>에 관한 적분은 <m>0</m>이다. 즉, 단위원판 위의 회전대칭성 때문에
+      서로 다른 차수의 항들은 이 내적에서 서로 직교한다.
+    </p>
+  </example>
+
+  <definition xml:id="def-matrix-representation-inner-product">
+    <title>내적의 행렬표현</title>
+    <p>
+      유한차원 실내적공간 <m>V</m>의 순서기저를
+      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 내적의 <term>행렬표현</term>은
+      <me>G_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}</me>
+      으로 정의되는 행렬이며, 이를 기저 <m>\mathcal B</m>에 관한 <term>그람 행렬</term>이라 한다.
+      <m>x,y\in V</m>의 좌표열벡터를 각각 <m>[x]_{\mathcal B}</m>,
+      <m>[y]_{\mathcal B}</m>라 하면
+      <me>\langle x,y\rangle=[x]_{\mathcal B}^{T}G_{\mathcal B}[y]_{\mathcal B}</me>
+      이다.
+    </p>
+  </definition>
+
+  <proposition xml:id="prop-inner-product-symmetric-positive-definite-matrix">
+    <title>내적과 대칭양의 정부호행렬</title>
+    <p>
+      실내적의 그람 행렬 <m>G_{\mathcal B}</m>는 대칭행렬이며 양의 정부호이다. 즉,
+      <me>G_{\mathcal B}^{T}=G_{\mathcal B},\qquad c^{T}G_{\mathcal B}c&gt;0
+      \quad(0\ne c\in\mathbb R^n)</me>
+      이다. 역으로, 대칭양의 정부호행렬 <m>G\in M_n(\mathbb R)</m>가 주어지면
+      <me>\langle x,y\rangle=x^{T}Gy</me>
+      는 <m>\mathbb R^n</m> 위의 내적을 정의한다. 따라서 기저를 고정하면 실내적과
+      대칭양의 정부호행렬은 서로 일대일로 대응한다.
+    </p>
+    <proof>
+      <p>
+        내적의 대칭성으로 <m>G_{ij}=G_{ji}</m>이고, <m>0\ne c\in\mathbb R^n</m>에 대하여
+        <m>v=\sum_i c_i v_i\ne0</m>이므로
+        <me>c^TG_{\mathcal B}c=\langle v,v\rangle&gt;0.</me>
+        역방향은 행렬곱의 쌍선형성, <m>G^T=G</m>, 그리고 양의 정부호성에서 바로 따른다.
+      </p>
+    </proof>
+  </proposition>
+
+  <definition xml:id="def-matrix-representation-hermitian-inner-product">
+    <title>에르미트 내적의 행렬표현</title>
+    <p>
+      유한차원 에르미트 공간 <m>V</m>의 순서기저를
+      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 에르미트 내적의 <term>행렬표현</term>은
+      <me>H_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}</me>
+      으로 정의되는 그람 행렬이다. 이 절에서 에르미트 내적은 첫째 변수에 관하여 선형이므로,
+      <m>x,y\in V</m>에 대하여
+      <me>\langle x,y\rangle=[x]_{\mathcal B}^{T}H_{\mathcal B}
+      \overline{[y]_{\mathcal B}}</me>
+      이다.
+    </p>
+  </definition>
+
+  <proposition xml:id="prop-hermitian-inner-product-positive-definite-matrix">
+    <title>에르미트 내적과 에르미트 양의 정부호행렬</title>
+    <p>
+      에르미트 내적의 그람 행렬 <m>H_{\mathcal B}</m>는 에르미트 행렬이며 양의 정부호이다. 즉,
+      켤레전치를 <m>H^*=\overline H^{T}</m>로 나타내면
+      <me>H_{\mathcal B}^{*}=H_{\mathcal B},\qquad
+      c^{T}H_{\mathcal B}\overline c&gt;0\quad(0\ne c\in\mathbb C^n)</me>
+      이다. 역으로, 에르미트 양의 정부호행렬 <m>H\in M_n(\mathbb C)</m>가 주어지면
+      <me>\langle x,y\rangle=x^{T}H\overline y</me>
+      는 첫째 변수에 관하여 선형인 <m>\mathbb C^n</m> 위의 에르미트 내적을 정의한다.
+      따라서 기저를 고정하면 에르미트 내적과 에르미트 양의 정부호행렬은 서로 일대일로 대응한다.
+    </p>
+    <proof>
+      <p>
+        에르미트 대칭성에 의하여
+        <m>(H_{\mathcal B})_{ji}=\langle v_j,v_i\rangle
+        =\overline{\langle v_i,v_j\rangle}</m>이므로
+        <m>H_{\mathcal B}^{*}=H_{\mathcal B}</m>이다. 또한
+        <m>0\ne c\in\mathbb C^n</m>에 대하여
+        <m>v=\sum_i c_i v_i\ne0</m>이므로
+        <me>c^T H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.</me>
+        역으로 <m>H^*=H</m>이면 행렬곱의 성질로
+        <m>\langle x,y\rangle=x^TH\overline y</m>는 첫째 변수에 선형이고 둘째 변수에
+        켤레선형이며, <m>\langle y,x\rangle=\overline{\langle x,y\rangle}</m>를 만족한다.
+        여기에 <m>H</m>의 양의 정부호성을 적용하면
+        <m>x\ne0</m>일 때 <m>\langle x,x\rangle=x^TH\overline x&gt;0</m>이므로
+        이는 에르미트 내적이다.
+      </p>
+    </proof>
+  </proposition>
+
+  <proposition xml:id="prop-gram-matrix-change-of-basis">
+    <title>기저변환과 그람 행렬</title>
+    <p>
+      새 기저 <m>\mathcal C=(w_1,\ldots,w_n)</m>의 벡터들이
+      <m>w_j=\sum_i v_iP_{ij}</m>를 만족한다고 하자. 그러면 실내적의 경우에는
+      <md>G_{\mathcal C}=P^TG_{\mathcal B}P</md>
+      이고, 이 절의 선형성 규약을 따르는 에르미트 내적의 경우에는
+      <md>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</md>
+      이다. 특히 정규직교기저에서는 두 그람 행렬이 모두 항등행렬이다.
+    </p>
+    <proof>
+      <p>
+        실내적의 경우에는
+        <md>
+          (G_{\mathcal C})_{jk}
+          =\langle w_j,w_k\rangle
+          =\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle
+          =\sum_{i,l}P_{ij}(G_{\mathcal B})_{il}P_{lk}
+          =(P^TG_{\mathcal B}P)_{jk}
+        </md>
+        이므로 <m>G_{\mathcal C}=P^TG_{\mathcal B}P</m>이다.
+        에르미트 내적의 경우에는 첫째 변수에 선형이고 둘째 변수에 켤레선형이므로
+        <md>
+          (H_{\mathcal C})_{jk}
+          =\langle w_j,w_k\rangle
+          =\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle
+          =\sum_{i,l}P_{ij}(H_{\mathcal B})_{il}\overline{P_{lk}}
+          =(P^TH_{\mathcal B}\overline P)_{jk}
+        </md>
+        이다. 따라서 <m>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</m>이다.
+        정규직교기저에서는 그람 행렬의 각 성분이 <m>\delta_{jk}</m>이므로 항등행렬이다.
+      </p>
+    </proof>
+  </proposition>
+
+<exercises xml:id="exercises-symmetric-bilinear-forms">
+  <title>연습문제</title>
+
+  <exercise xml:id="exer-quadratic-form-to-bilinear-form">
+    <title>이차 동차다항식에서 대칭쌍선형형식 복원하기</title>
+    <statement>
+      <p>
+        <m>V=\mathbb R^2</m> 위의 이차 동차다항식
+        <me>p(x,y)=2x^2-4xy+5y^2</me>
+        에 대하여 다음에 답하시오.
+        <ol>
+          <li>모든 <m>v\in V</m>에 대하여 <m>f(v,v)=p(v)</m>를 만족하는 대칭쌍선형형식
+            <m>f:V\times V\to\mathbb R</m>를 구하시오.</li>
+          <li>표준기저 <m>\mathcal E=(e_1,e_2)</m>에 관한 <m>f</m>의 그람 행렬
+            <m>G_{\mathcal E}=\big(f(e_i,e_j)\big)</m>를 구하시오.</li>
+          <li><m>f</m>가 <m>\mathbb R^2</m> 위의 내적인지 판정하시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <m>u=(x_1,y_1)</m>, <m>v=(x_2,y_2)</m>에 대하여
+            <me>f(u,v)=2x_1x_2-2x_1y_2-2y_1x_2+5y_1y_2</me>
+            로 두면 각 변수에 관하여 선형이고 <m>f(u,v)=f(v,u)</m>이며
+            <m>f((x,y),(x,y))=2x^2-4xy+5y^2=p(x,y)</m>이다. 교차항 <m>-4xy</m>를
+            두 자리 <m>x_1y_2</m>, <m>y_1x_2</m>에 균등하게 나누어야 대칭이 됨에 유의하라.
+          </li>
+          <li>
+            <me>G_{\mathcal E}=\begin{pmatrix}2&amp;-2\\-2&amp;5\end{pmatrix}.</me>
+          </li>
+          <li>
+            <m>p(x,y)=2(x-y)^2+3y^2\geq 0</m>이고, 등호가 성립하면 <m>y=0</m>, <m>x=y=0</m>이다.
+            따라서 <m>f</m>는 내적이다. (같은 결론을 <m>2&gt;0</m>, <m>\det G_{\mathcal E}=6&gt;0</m>으로부터도 얻는다.)
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-symmetric-but-not-inner-product">
+    <title>대칭이지만 내적이 아닌 쌍선형형식</title>
+    <statement>
+      <p>
+        <m>V=\mathbb R^2</m> 위에서
+        <me>f\big((x_1,y_1),(x_2,y_2)\big)=x_1x_2-y_1y_2</me>
+        로 정의하자. <m>f</m>가 대칭쌍선형형식임을 보이고, <m>f</m>가 내적이 아님을 보이시오.
+        또한 <m>v\ne0</m>이지만 <m>f(v,v)=0</m>인 벡터 <m>v</m>를 하나 찾으시오.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        각 변수에 관한 선형성과 대칭성은 좌표별 곱의 성질에서 바로 따른다.
+        <m>v=(0,1)</m>에 대하여 <m>f(v,v)=-1&lt;0</m>이므로 정의
+        <xref ref="def-hermitian-space"/>의 조건 <m>\langle v,v\rangle\geq0</m>이 깨져 내적이 아니다.
+        또한 <m>v=(1,1)\ne0</m>에 대하여 <m>f(v,v)=1-1=0</m>이다.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-gram-matrix-polynomial-integration">
+    <title>적분 내적의 그람 행렬</title>
+    <statement>
+      <p>
+        <xref ref="ex-polynomial-integration-inner-product"/>의 내적
+        <m>\langle p,q\rangle=\int_{-1}^1 p(t)q(t)\,dt</m>를 부분공간
+        <m>V=\operatorname{span}\{1,x,x^2\}</m>로 제한하자.
+        <ol>
+          <li>순서기저 <m>\mathcal B=(1,x,x^2)</m>에 관한 그람 행렬 <m>G_{\mathcal B}</m>를 구하시오.</li>
+          <li><m>G_{\mathcal B}</m>를 이용하여 <m>\langle 1+x,\,x^2\rangle</m>을 계산하고,
+            직접 적분한 값과 비교하시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <m>\int_{-1}^1 t^k\,dt</m>는 <m>k</m>가 홀수이면 <m>0</m>, 짝수이면 <m>\frac{2}{k+1}</m>이므로
+            <me>G_{\mathcal B}=\begin{pmatrix}2&amp;0&amp;\tfrac23\\0&amp;\tfrac23&amp;0\\\tfrac23&amp;0&amp;\tfrac25\end{pmatrix}.</me>
+          </li>
+          <li>
+            <m>[1+x]_{\mathcal B}=(1,1,0)^T</m>, <m>[x^2]_{\mathcal B}=(0,0,1)^T</m>이므로
+            <me>\langle 1+x,x^2\rangle=(1,1,0)\,G_{\mathcal B}\,(0,0,1)^T=\tfrac23+0=\tfrac23,</me>
+            이는 <m>\int_{-1}^1(t^2+t^3)\,dt=\tfrac23</m>과 일치한다.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-standard-hermitian-computation">
+    <title>표준 에르미트 내적의 계산</title>
+    <statement>
+      <p>
+        <m>\mathbb C^2</m>의 표준 에르미트 내적
+        <m>\langle u,v\rangle=u_1\overline{v_1}+u_2\overline{v_2}</m>에서
+        <m>u=(1,i)</m>, <m>v=(1,1)</m>이라 하자.
+        <ol>
+          <li><m>\langle u,v\rangle</m>, <m>\langle v,u\rangle</m>, <m>\langle u,u\rangle</m>을 계산하고
+            켤레대칭성 <m>\langle u,v\rangle=\overline{\langle v,u\rangle}</m>을 확인하시오.</li>
+          <li>켤레를 취하지 않은 형식 <m>g(u,v)=u_1v_1+u_2v_2</m>가 <m>\mathbb C^2</m> 위의
+            에르미트 내적이 아닌 이유를 구체적인 벡터로 보이시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <m>\langle u,v\rangle=1\cdot1+i\cdot1=1+i</m>,
+            <m>\langle v,u\rangle=1\cdot1+1\cdot\overline{i}=1-i=\overline{1+i}</m>,
+            <m>\langle u,u\rangle=|1|^2+|i|^2=2</m>.
+          </li>
+          <li>
+            <m>w=(i,0)\ne0</m>에 대하여 <m>g(w,w)=i^2=-1</m>이므로 <m>g(w,w)\geq0</m>이 성립하지 않는다.
+            (더 근본적으로 <m>g(w,w)</m>가 실수라는 보장조차 없다: <m>g((1+i,0),(1+i,0))=2i</m>.)
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-gram-matrix-change-of-basis">
+    <title>기저변환과 그람 행렬</title>
+    <statement>
+      <p>
+        <m>\mathbb R^2</m>에 표준 내적을 주고, 새 순서기저
+        <m>\mathcal C=(w_1,w_2)</m>, <m>w_1=(1,1)</m>, <m>w_2=(1,-1)</m>을 생각하자.
+        <ol>
+          <li>표준기저 <m>\mathcal E</m>에 대하여 <m>w_j=\sum_i e_iP_{ij}</m>를 만족하는 행렬 <m>P</m>를 쓰고,
+            <xref ref="prop-gram-matrix-change-of-basis"/>의 공식으로 <m>G_{\mathcal C}</m>를 구하시오.</li>
+          <li><m>x=w_1+2w_2</m>, <m>y=3w_1-w_2</m>에 대하여 <m>\langle x,y\rangle</m>을
+            (가) <m>G_{\mathcal C}</m>를 써서, (나) 표준좌표로 바꾸어 직접 계산하여 비교하시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <m>P</m>의 열이 <m>w_1,w_2</m>의 표준좌표이므로
+            <me>P=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\qquad
+            G_{\mathcal C}=P^TIP=P^TP=\begin{pmatrix}2&amp;0\\0&amp;2\end{pmatrix}.</me>
+            즉 <m>\mathcal C</m>는 직교기저이지만 정규직교기저는 아니다.
+          </li>
+          <li>
+            (가) <m>[x]_{\mathcal C}=(1,2)^T</m>, <m>[y]_{\mathcal C}=(3,-1)^T</m>이므로
+            <m>\langle x,y\rangle=(1,2)\,G_{\mathcal C}\,(3,-1)^T=2(3-2)=2</m>.
+            (나) <m>x=(3,-1)</m>, <m>y=(2,4)</m>이므로 <m>\langle x,y\rangle=6-4=2</m>. 두 값이 일치한다.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+   <exercise xml:id="exer-polarization-identity">
+    <title>편극항등식과 표수 2</title>
+    <statement>
+      <p>
+        체 <m>\mathbb F</m> 위의 벡터공간 <m>V</m>의 대칭쌍선형형식 <m>f</m>에 대하여
+        <m>q(v)=f(v,v)</m>로 두자.
+        <ol>
+          <li>모든 <m>u,v\in V</m>에 대하여
+            <me>q(u+v)-q(u)-q(v)=2f(u,v)</me>
+            임을 보이시오. 따라서 <m>\operatorname{char}\mathbb F\ne2</m>이면 <m>f</m>는
+            <m>q</m>에 의해 유일하게 결정된다.</li>
+          <li><m>\mathbb F=\mathbb F_2</m>, <m>V=\mathbb F_2^2</m> 위에서
+            <m>q</m>는 <m>0</m>이지만 <m>f\ne0</m>인 대칭쌍선형형식 <m>f</m>를 제시하시오.
+            즉 표수 2에서는 서로 다른 대칭쌍선형형식이 같은 <m>q</m>를 가질 수 있음을 보이시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            쌍선형성과 대칭성으로
+            <m>q(u+v)=f(u,u)+f(u,v)+f(v,u)+f(v,v)=q(u)+2f(u,v)+q(v)</m>.
+            <m>2</m>가 가역이면 <m>f(u,v)=\tfrac12\big(q(u+v)-q(u)-q(v)\big)</m>이다.
+          </li>
+          <li>
+            <m>f\big((x_1,y_1),(x_2,y_2)\big)=x_1y_2+y_1x_2</m>는 대칭쌍선형형식이고
+            <m>f(e_1,e_2)=1\ne0</m>이다. 그러나
+            <m>q(x,y)=2xy=0</m>이 <m>\mathbb F_2</m>에서 항상 성립한다.
+            따라서 <m>f</m>와 영형식은 같은 <m>q</m>를 가진다.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-cubic-polarization">
+    <title>대칭삼중선형형식의 편극</title>
+    <statement>
+      <p>
+        <m>\operatorname{char}\mathbb F\notin\{2,3\}</m>인 체 <m>\mathbb F</m> 위의 벡터공간 <m>V</m>의
+        대칭삼중선형형식 <m>f</m>에 대하여 <m>q(v)=f(v,v,v)</m>로 두자.
+        <ol>
+          <li>모든 <m>u,v,w\in V</m>에 대하여
+            <me>6f(u,v,w)=q(u+v+w)-q(u+v)-q(u+w)-q(v+w)+q(u)+q(v)+q(w)</me>
+            임을 보이시오. 따라서 <m>f</m>는 <m>q</m>에 의해 유일하게 결정된다.</li>
+          <li><xref ref="ex-cubic-polynomial-symmetric-trilinear-form"/>의
+            <m>p(x,y)=x^3+3x^2y+3xy^2+2y^3</m>에 위 공식을 적용하여
+            <m>f(e_1,e_1,e_2)</m>를 계산하고, 그 예에서 주어진 <m>f</m>의 값과 일치함을 확인하시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            대칭성을 써서 <m>q(u+v+w)</m>를 전개하면
+            <me>q(u+v+w)=q(u)+q(v)+q(w)+3\sum_{a\ne b}f(a,a,b)+6f(u,v,w),</me>
+            여기서 합은 <m>\{u,v,w\}</m>에서 뽑은 순서쌍 <m>(a,b)</m>, <m>a\ne b</m> 여섯 개에 걸친다.
+            마찬가지로 <m>q(u+v)=q(u)+q(v)+3f(u,u,v)+3f(u,v,v)</m> 등이 성립하므로,
+            세 개의 <m>q(\cdot+\cdot)</m>을 빼면 <m>3\sum f(a,a,b)</m>가 정확히 소거되고
+            <m>q(u),q(v),q(w)</m>는 각각 <m>1-2</m>번 남는다. 여기에 <m>q(u)+q(v)+q(w)</m>를 더하면
+            우변은 <m>6f(u,v,w)</m>가 된다. <m>6</m>이 가역이므로 <m>f</m>가 결정된다.
+          </li>
+          <li>
+            <m>u=v=e_1</m>, <m>w=e_2</m>를 대입하면
+            <me>6f(e_1,e_1,e_2)=p(2,1)-p(2,0)-2p(1,1)+2p(1,0)+p(0,1)=28-8-18+2+2=6,</me>
+            즉 <m>f(e_1,e_1,e_2)=1</m>. 예의 정의에서 <m>f(e_1,e_1,e_2)</m>는
+            <m>x_1x_2y_3</m>의 계수 <m>1</m>이므로 일치한다.
+            (일반적으로 <m>x^2y</m>의 계수 <m>3</m>이 세 자리 <m>f(e_1,e_1,e_2)</m>,
+            <m>f(e_1,e_2,e_1)</m>, <m>f(e_2,e_1,e_1)</m>에 균등하게 분배된다.)
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-cauchy-schwarz">
+    <title>코시<ndash/>슈바르츠 부등식</title>
+    <statement>
+      <p>
+        실내적공간 <m>V</m>의 <m>u,v\in V</m>에 대하여
+        <me>\langle u,v\rangle^2\leq\langle u,u\rangle\langle v,v\rangle</me>
+        임을 보이고, 등호가 성립할 필요충분조건이 <m>u,v</m>의 일차종속임을 보이시오.
+        이를 <xref ref="ex-polynomial-integration-inner-product"/>의 내적에 적용하여
+        모든 <m>p,q\in\mathbb R[x]</m>에 대하여
+        <me>\Big(\int_{-1}^1p(t)q(t)\,dt\Big)^2\leq\int_{-1}^1p(t)^2\,dt\int_{-1}^1q(t)^2\,dt</me>
+        임을 이끌어내시오.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <m>v=0</m>이면 양변이 <m>0</m>이다. <m>v\ne0</m>이라 하고 <m>t\in\mathbb R</m>에 대하여
+        <me>0\leq\langle u-tv,u-tv\rangle=\langle u,u\rangle-2t\langle u,v\rangle+t^2\langle v,v\rangle</me>
+        을 생각하자. <m>t=\langle u,v\rangle/\langle v,v\rangle</m>을 대입하면
+        <m>0\leq\langle u,u\rangle-\langle u,v\rangle^2/\langle v,v\rangle</m>, 즉 부등식을 얻는다.
+        등호는 <m>\langle u-tv,u-tv\rangle=0</m>, 곧 <m>u=tv</m>일 때이고 그 역도 대입으로 확인된다.
+        (<m>v=0</m>인 경우도 일차종속이다.) 적분 부등식은 이 내적에 부등식을 그대로 적용한 것이다.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-two-by-two-positive-definite">
+    <title><m>2\times2</m> 그람 행렬의 양의 정부호성</title>
+    <statement>
+      <p>
+        <ol>
+          <li><m>a\in\mathbb R</m>에 대하여
+            <m>G=\begin{pmatrix}1&amp;a\\a&amp;1\end{pmatrix}</m>가
+            <m>\mathbb R^2</m> 위의 내적 <m>x^TGy</m>를 정의할 필요충분조건을 구하시오.</li>
+          <li><m>\alpha\in\mathbb C</m>에 대하여
+            <m>H=\begin{pmatrix}1&amp;\alpha\\\overline\alpha&amp;1\end{pmatrix}</m>가
+            <m>\mathbb C^2</m> 위의 에르미트 내적 <m>x^TH\overline y</m>를 정의할 필요충분조건을 구하시오.</li>
+          <li>일반적으로 실내적공간의 일차독립인 <m>v_i,v_j</m>에 대하여 그람 행렬의 성분이
+            <m>G_{ij}^2&lt;G_{ii}G_{jj}</m>를 만족함을 보이시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <m>c=(c_1,c_2)^T</m>에 대하여
+            <m>c^TGc=c_1^2+2ac_1c_2+c_2^2=(c_1+ac_2)^2+(1-a^2)c_2^2</m>.
+            <m>|a|&lt;1</m>이면 <m>c\ne0</m>일 때 양수이다. <m>|a|\geq1</m>이면
+            <m>c=(a,-1)</m>에서 값이 <m>1-a^2\leq0</m>이므로 내적이 아니다.
+            따라서 조건은 <m>|a|&lt;1</m>이다.
+          </li>
+          <li>
+            <m>H^*=H</m>는 자명하다. <m>c\in\mathbb C^2</m>에 대하여
+            <m>c^TH\overline c=|c_1|^2+2\operatorname{Re}(\alpha c_1\overline{c_2})+|c_2|^2
+            =|c_1+\overline\alpha c_2|^2+(1-|\alpha|^2)|c_2|^2</m>.
+            (1)과 같은 논증으로 조건은 <m>|\alpha|&lt;1</m>이다.
+          </li>
+          <li>
+            <xref ref="exer-cauchy-schwarz"/>를 <m>u=v_i</m>, <m>v=v_j</m>에 적용하면
+            <m>\langle v_i,v_j\rangle^2\leq\langle v_i,v_i\rangle\langle v_j,v_j\rangle</m>이고,
+            일차독립이므로 등호가 성립하지 않는다.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="exer-unit-disc-monomials-orthogonal">
+    <title>단위원판 위에서 단항식들의 직교성</title>
+    <statement>
+      <p>
+        <xref ref="ex-polynomial-unit-disc-hermitian-space"/>의 에르미트 내적
+        <m>\langle p,q\rangle=\int_Dp(z)\overline{q(z)}\,dA(z)</m>를 생각하자.
+        <ol>
+          <li>음이 아닌 정수 <m>m,n</m>에 대하여
+            <me>\langle z^m,z^n\rangle=\begin{cases}\dfrac{\pi}{n+1}&amp;m=n,\\[1ex]0&amp;m\ne n\end{cases}</me>
+            임을 보이시오.</li>
+          <li><m>p=\sum_{k=0}^d a_kz^k</m>, <m>q=\sum_{k=0}^d b_kz^k</m>에 대하여
+            <m>\langle p,q\rangle=\pi\sum_{k=0}^d\dfrac{a_k\overline{b_k}}{k+1}</m>임을 보이시오.</li>
+          <li>순서기저 <m>(1,z,z^2)</m>에 관한 그람 행렬을 쓰고 <m>\langle 1+z+z^2,\,1+z+z^2\rangle</m>을 계산하시오.</li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            극좌표 <m>z=re^{i\theta}</m>에서
+            <me>\langle z^m,z^n\rangle=\int_0^{2\pi}\int_0^1r^{m+n}e^{i(m-n)\theta}\,r\,dr\,d\theta
+            =\Big(\int_0^1r^{m+n+1}dr\Big)\Big(\int_0^{2\pi}e^{i(m-n)\theta}d\theta\Big).</me>
+            둘째 인자는 <m>m\ne n</m>이면 <m>0</m>, <m>m=n</m>이면 <m>2\pi</m>이고,
+            <m>m=n</m>일 때 첫째 인자는 <m>\frac1{2n+2}</m>이다.
+          </li>
+          <li>
+            첫째 변수의 선형성과 둘째 변수의 켤레선형성으로
+            <m>\langle p,q\rangle=\sum_{j,k}a_j\overline{b_k}\langle z^j,z^k\rangle</m>이고,
+            (1)에 의해 <m>j=k</m>인 항만 남는다.
+          </li>
+          <li>
+            <m>H=\operatorname{diag}(\pi,\pi/2,\pi/3)</m>이고
+            <m>\langle 1+z+z^2,1+z+z^2\rangle=\pi\big(1+\tfrac12+\tfrac13\big)=\tfrac{11\pi}{6}</m>.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>
+
 
 </section>

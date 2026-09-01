@@ -22,9 +22,6 @@
     <xi:include href="./ch-fast-fourier-transform.ptx" />
     <xi:include href="./ch-fast-matrix-multiplication.ptx" />
     <xi:include href="./ch-sparse-matrices.ptx"/>
-    
-    
-
 
     <!-- Include backmatter -->
     <xi:include href="./backmatter.ptx" />
