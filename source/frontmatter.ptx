@@ -22,12 +22,12 @@
 
   <copyright>
     <year>2026<ndash />2026</year>
-    <holder>You</holder>
+    <holder>김도형</holder>
     <shortlicense>
     이 웹문서는 크리에이티브 커먼즈 [저작자표시-동일조건변경허락 4.0 국제]에 따라 이용할 수 있습니다. 이용자의 권리 확인을 위해 아래 웹사이트를 방문하십시오.
     <p>
-    (국문) <url href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko/" visual="https://creativecommons.org/licenses/by-sa/4.0/deed.ko/"> CreativeCommons.org</url>
-    (영문) <url href="https://creativecommons.org/licenses/by-sa/4.0/" visual="https://creativecommons.org/licenses/by-sa/4.0/"> CreativeCommons.org</url>
+      (국문) <url href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko/" visual="https://creativecommons.org/licenses/by-sa/4.0/deed.ko/"> CreativeCommons.org</url>
+      (영문) <url href="https://creativecommons.org/licenses/by-sa/4.0/" visual="https://creativecommons.org/licenses/by-sa/4.0/"> CreativeCommons.org</url>
     </p>
     </shortlicense>
   </copyright>
@@ -42,5 +42,12 @@
   <colophon xml:id="front-colophon">
     <colophon-items/>
   </colophon>
+  <section xml:id="sec-introduction">
+    <title>소개</title>
+    <p>
+      추상선형대수학을 접해 본 학생들을 대상으로, 선형대수학이 어떻게 문제 해결에 활용되는지 소개하는 것을 목표로 구성한 강의자료입니다. 가능한 다양한 주제를 다루고자 하였으며, 챕터별 논리적 의존이 제한적이기 때문에 발췌하여 읽어도 큰 문제가 없을 것입니다. 문의나 오류 제보는 <url href="https://www.math.snu.ac.kr/~dohyeongkim">저자웹사이트</url>의 연락처를 통해 해주시기 바랍니다. 예고 없이 사소한 교정, 오탈자 수정, 오류 정정이 있을 수 있습니다.
+    </p>
+    
+  </section>
 </frontmatter>
 
