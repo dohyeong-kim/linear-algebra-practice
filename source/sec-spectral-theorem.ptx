@@ -24,7 +24,83 @@
       </p>
     </statement>
   </example>
-  
+
+  <example xml:id="ex-adjoint-real-standard-matrix">
+    <statement>
+      <p>
+        표준 벡터공간 <m>\mathbb R^n</m>에 표준 내적 <m>\langle u,v\rangle=u^{\mathsf T}v</m>를 주고, 선형변환 <m>T</m>의 표준기저에 대한 행렬을 <m>A</m>라고 하자. 그러면 <m>T</m>의 수반연산자 <m>T^*</m>의 행렬은 <m>A^{\mathsf T}</m>, 즉 <m>A</m>의 전치행렬이다.
+      </p>
+    </statement>
+  </example>
+
+  <definition xml:id="def-self-adjoint-operator">
+    <statement>
+      <p>
+        내적공간의 선형변환 <m>T</m>가 <m>T=T^*</m>를 만족하면 <m>T</m>를 <em>자기수반 연산자</em>라고 한다.
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    자기수반 연산자는 대칭행렬과 에르미트 행렬의 개념을 좌표에 의존하지 않는 방식으로 일반화한다. 실제로 유한 차원 내적공간에서 임의의 정규직교기저를 선택하면, <m>T</m>의 행렬을 <m>A</m>라 할 때 <m>T^*</m>의 행렬은 실수 내적공간에서는 <m>A^{\\mathsf T}</m>, 복소 내적공간에서는 <m>A^*</m>이다. 따라서 <m>T=T^*</m>라는 조건은 각각 <m>A=A^{\\mathsf T}</m>인 대칭행렬, 또는 <m>A=A^*</m>인 에르미트 행렬이라는 조건과 정확히 일치한다. 더 나아가 수반연산자는 내적을 통해 정의되므로, 자기수반성은 특정 행렬 표현이 아니라 연산자 자체의 성질이다.
+  </p>  
+
+  <proposition xml:id="prop-self-adjoint-real-eigenvalues">
+    <title>자기수반 연산자의 고윳값</title>
+    <statement>
+      <p>
+        유한 차원 내적공간 <m>V</m> 위의 자기수반 연산자 <m>T</m>의 모든 고윳값은 실수이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        <m>Tv=\lambda v</m>인 영벡터가 아닌 벡터 <m>v</m>를 택하자. 자기수반성에 의해
+        <me>
+          \lambda\langle v,v\rangle
+          =\langle v,Tv\rangle
+          =\langle Tv,v\rangle
+          =\overline{\lambda}\langle v,v\rangle.
+        </me>
+        <m>\langle v,v\rangle&gt;0</m>이므로 <m>\lambda=\overline{\lambda}</m>이고, 따라서 <m>\lambda\in\mathbb R</m>이다.
+      </p>
+    </proof>
+  </proposition>
+
+  <p>
+    이제 스칼라체에 따라 스펙트럴 정리를 각각 서술한다. 복소수체에서는 특성다항식이 항상 분해된다는 사실을 바로 사용할 수 있지만, 실수체에서는 특성다항식이 실수 위에서 분해된다는 점도 결론에 포함된다.
+  </p>
+
+  <theorem xml:id="thm-spectral-self-adjoint-complex">
+    <title>스펙트럴 정리: 복소수체</title>
+    <statement>
+      <p>
+        유한 차원 복소 에르미트 내적공간 <m>V</m> 위의 선형변환 <m>T</m>에 대하여 다음 두 조건은 동치이다.
+      </p>
+      <ol>
+        <li><p><m>T</m>는 자기수반 연산자이다.</p></li>
+        <li><p><m>V</m>에는 <m>T</m>의 고유벡터로 이루어진 정규직교기저가 있고, 이에 대응하는 모든 고윳값은 실수이다.</p></li>
+      </ol>
+      <p>
+        동치인 행렬 표현으로, 어떤 정규직교기저에 대한 <m>T</m>의 행렬은 실수 대각행렬이다.
+      </p>
+    </statement>
+  </theorem>
+
+  <theorem xml:id="thm-spectral-self-adjoint-real">
+    <title>스펙트럴 정리: 실수체</title>
+    <statement>
+      <p>
+        유한 차원 실수 내적공간 <m>V</m> 위의 선형변환 <m>T</m>에 대하여 다음 두 조건은 동치이다.
+      </p>
+      <ol>
+        <li><p><m>T</m>는 자기수반 연산자이다.</p></li>
+        <li><p><m>V</m>에는 <m>T</m>의 고유벡터로 이루어진 정규직교기저가 있다.</p></li>
+      </ol>
+      <p>
+        따라서 <m>T</m>의 특성다항식은 <m>\mathbb R</m> 위에서 일차인수로 분해되며, 어떤 정규직교기저에 대한 <m>T</m>의 행렬은 실수 대각행렬이다.
+      </p>
+    </statement>
+  </theorem>
 
   
 
