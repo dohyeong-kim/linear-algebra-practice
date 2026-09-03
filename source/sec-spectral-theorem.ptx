@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-spectral-theorem" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>스펙트럴 정리</title>
+  <title>스펙트럴 정리: 실수체의 경우</title>
   <p>
-    이 절에서 다루는 내적공간의 스칼라체는 실수체 또는 복소수체로 가정한다. 즉, <m>\mathbb F=\mathbb R</m>이면 내적공간을 다루고, <m>\mathbb F=\mathbb C</m>이면 에르미트 내적공간을 다룬다.
+    이 절에서는 주로 실수 내적공간, 즉 <m>\mathbb F=\mathbb R</m>인 경우에 초점을 맞춘다. 
   </p>
   
   <definition xml:id="def-adjoint-operator">
+    <title>수반연산자</title>
     <statement>
       <p>
         내적공간의 선형변환 <m>T</m>에 대하여, 모든 벡터 <m>u,v</m>가 <m>\langle Tu,v\rangle=\langle u,T^*v\rangle</m>를 만족하도록 하는 선형변환 <m>T^*</m>를 <m>T</m>의 <em>수반연산자</em>라고 한다.
@@ -14,18 +15,11 @@
     </statement>
   </definition>
   <p>
-    유한 차원 내적공간에서 수반연산자의 행렬은 주어진 기저에서 <m>T</m>의 행렬의 켤레전치와 관련되며, 수반연산자는 자기수반 연산자와 정규 연산자를 정의하고 스펙트럴 정리를 이해하는 데 중요한 역할을 한다.
+    유한 차원 내적공간에서 수반연산자의 행렬은 주어진 기저에서 <m>T</m>의 행렬의 전치와 관련되며, 수반연산자는 자기수반 연산자와 정규 연산자를 정의하고 스펙트럴 정리를 이해하는 데 중요한 역할을 한다.
   </p>
 
-  <example xml:id="ex-adjoint-standard-matrix">
-    <statement>
-      <p>
-        표준 벡터공간 <m>\mathbb C^n</m>에 표준 에르미트 내적 <m>\langle u,v\rangle=\overline{u}^{\mathsf T}v=u^*v</m>를 주고, 선형변환 <m>T</m>의 표준기저에 대한 행렬을 <m>A</m>라고 하자. 그러면 <m>T</m>의 수반연산자 <m>T^*</m>의 행렬은 <m>A^*</m>, 즉 <m>A</m>의 켤레전치이다.
-      </p>
-    </statement>
-  </example>
-
   <example xml:id="ex-adjoint-real-standard-matrix">
+    <title>표준 내적에서 수반연산자의 행렬</title>
     <statement>
       <p>
         표준 벡터공간 <m>\mathbb R^n</m>에 표준 내적 <m>\langle u,v\rangle=u^{\mathsf T}v</m>를 주고, 선형변환 <m>T</m>의 표준기저에 대한 행렬을 <m>A</m>라고 하자. 그러면 <m>T</m>의 수반연산자 <m>T^*</m>의 행렬은 <m>A^{\mathsf T}</m>, 즉 <m>A</m>의 전치행렬이다.
@@ -34,6 +28,7 @@
   </example>
 
   <definition xml:id="def-self-adjoint-operator">
+    <title>자기수반 연산자</title>
     <statement>
       <p>
         내적공간의 선형변환 <m>T</m>가 <m>T=T^*</m>를 만족하면 <m>T</m>를 <em>자기수반 연산자</em>라고 한다.
@@ -42,8 +37,8 @@
   </definition>
 
   <p>
-    자기수반 연산자는 대칭행렬과 에르미트 행렬의 개념을 좌표에 의존하지 않는 방식으로 일반화한다. 실제로 유한 차원 내적공간에서 임의의 정규직교기저를 선택하면, <m>T</m>의 행렬을 <m>A</m>라 할 때 <m>T^*</m>의 행렬은 실수 내적공간에서는 <m>A^{\\mathsf T}</m>, 복소 내적공간에서는 <m>A^*</m>이다. 따라서 <m>T=T^*</m>라는 조건은 각각 <m>A=A^{\\mathsf T}</m>인 대칭행렬, 또는 <m>A=A^*</m>인 에르미트 행렬이라는 조건과 정확히 일치한다. 더 나아가 수반연산자는 내적을 통해 정의되므로, 자기수반성은 특정 행렬 표현이 아니라 연산자 자체의 성질이다.
-  </p>  
+    자기수반 연산자는 대칭행렬의 개념을 좌표에 의존하지 않는 방식으로 일반화한다. 유한 차원 실수 내적공간에서 정규직교기저를 선택하고 <m>T</m>의 행렬을 <m>A</m>라 하면, <m>T^*</m>의 행렬은 <m>A^{\mathsf T}</m>이다. 따라서 <m>T=T^*</m>라는 조건은 <m>A=A^{\mathsf T}</m>인 대칭행렬이라는 조건과 일치한다. 수반연산자는 내적을 통해 정의되므로, 자기수반성은 특정 행렬 표현이 아니라 연산자 자체의 성질이다.
+  </p>
 
   <proposition xml:id="prop-self-adjoint-real-eigenvalues">
     <title>자기수반 연산자의 고윳값</title>
@@ -54,37 +49,18 @@
     </statement>
     <proof>
       <p>
-        <m>Tv=\lambda v</m>인 영벡터가 아닌 벡터 <m>v</m>를 택하자. 자기수반성에 의해
-        <me>
-          \lambda\langle v,v\rangle
-          =\langle v,Tv\rangle
-          =\langle Tv,v\rangle
-          =\overline{\lambda}\langle v,v\rangle.
-        </me>
-        <m>\langle v,v\rangle&gt;0</m>이므로 <m>\lambda=\overline{\lambda}</m>이고, 따라서 <m>\lambda\in\mathbb R</m>이다.
+        <m>V</m>가 실수 내적공간인 경우에는 복소화 <m>V_{\mathbb C}=V\otimes_{\mathbb R}\mathbb C</m>를 취하고, <m>T</m>를 복소선형 연산자 <m>T_{\mathbb C}</m>로 확장한다. <m>V</m>의 내적도 <m>V_{\mathbb C}</m> 위의 에르미트 내적으로 확장한다. 그러면 <m>T=T^*</m>로부터 <m>T_{\mathbb C}=T_{\mathbb C}^*</m>가 따른다. <m>V</m>가 복소 내적공간인 경우에는 <m>V_{\mathbb C}=V</m>, <m>T_{\mathbb C}=T</m>로 둔다.
+      </p>
+      <p>
+        이제 <m>\lambda\in\mathbb C</m>를 <m>T_{\mathbb C}</m>의 고윳값이라 하고, <m>T_{\mathbb C}v=\lambda v</m>를 만족하는 영이 아닌 벡터 <m>v\in V_{\mathbb C}</m>를 택하자. <m>T_{\mathbb C}</m>가 자기수반이므로
+        <m>\langle T_{\mathbb C}v,v\rangle=\langle v,T_{\mathbb C}v\rangle</m>이다. 한편 내적의 켤레대칭성에 의해
+        <m>\langle T_{\mathbb C}v,v\rangle=\lambda\langle v,v\rangle</m>이고
+        <m>\langle v,T_{\mathbb C}v\rangle=\overline{\lambda}\langle v,v\rangle</m>이다. 따라서
+        <m>(\lambda-\overline{\lambda})\langle v,v\rangle=0</m>이다. <m>v\ne0</m>이므로
+        <m>\langle v,v\rangle&gt;0</m>이고, 따라서 <m>\lambda=\overline{\lambda}</m>이다. 그러므로 <m>\lambda</m>는 실수이다.
       </p>
     </proof>
   </proposition>
-
-  <p>
-    이제 스칼라체에 따라 스펙트럴 정리를 각각 서술한다. 복소수체에서는 특성다항식이 항상 분해된다는 사실을 바로 사용할 수 있지만, 실수체에서는 특성다항식이 실수 위에서 분해된다는 점도 결론에 포함된다.
-  </p>
-
-  <theorem xml:id="thm-spectral-self-adjoint-complex">
-    <title>스펙트럴 정리: 복소수체</title>
-    <statement>
-      <p>
-        유한 차원 복소 에르미트 내적공간 <m>V</m> 위의 선형변환 <m>T</m>에 대하여 다음 두 조건은 동치이다.
-      </p>
-      <ol>
-        <li><p><m>T</m>는 자기수반 연산자이다.</p></li>
-        <li><p><m>V</m>에는 <m>T</m>의 고유벡터로 이루어진 정규직교기저가 있고, 이에 대응하는 모든 고윳값은 실수이다.</p></li>
-      </ol>
-      <p>
-        동치인 행렬 표현으로, 어떤 정규직교기저에 대한 <m>T</m>의 행렬은 실수 대각행렬이다.
-      </p>
-    </statement>
-  </theorem>
 
   <theorem xml:id="thm-spectral-self-adjoint-real">
     <title>스펙트럴 정리: 실수체</title>
@@ -92,16 +68,112 @@
       <p>
         유한 차원 실수 내적공간 <m>V</m> 위의 선형변환 <m>T</m>에 대하여 다음 두 조건은 동치이다.
       </p>
-      <ol>
-        <li><p><m>T</m>는 자기수반 연산자이다.</p></li>
-        <li><p><m>V</m>에는 <m>T</m>의 고유벡터로 이루어진 정규직교기저가 있다.</p></li>
-      </ol>
+      <p>
+        <ol>
+          <li xml:id="item-spectral-real-self-adjoint"><p><m>T</m>는 자기수반 연산자이다.</p></li>
+          <li xml:id="item-spectral-real-orthonormal-eigenbasis"><p><m>V</m>에는 <m>T</m>의 고유벡터로 이루어진 정규직교기저가 있다.</p></li>
+        </ol>
+      </p>
       <p>
         따라서 <m>T</m>의 특성다항식은 <m>\mathbb R</m> 위에서 일차인수로 분해되며, 어떤 정규직교기저에 대한 <m>T</m>의 행렬은 실수 대각행렬이다.
       </p>
     </statement>
+    <proof>
+      <p>
+        먼저 <xref ref="item-spectral-real-self-adjoint"/>이 <xref ref="item-spectral-real-orthonormal-eigenbasis"/>를 함의함을 보이자. <m>V</m>의 차원에 대한 귀납법을 사용한다. <m>V=\{0\}</m>인 경우에는 자명하다. 이제 <m>V\ne\{0\}</m>이고, <m>T</m>가 자기수반이라고 하자. 복소화 <m>V_{\mathbb C}=V\otimes_{\mathbb R}\mathbb C</m>와 복소선형 연산자 <m>T_{\mathbb C}</m>를 생각한다. 복소화된 연산자도 자기수반이므로, 복소 내적공간에서의 고윳값 존재 정리와 <xref ref="prop-self-adjoint-real-eigenvalues"/>에 의해 <m>T_{\mathbb C}</m>는 실수 고윳값 <m>\lambda</m>를 갖는다.</p>
+      <p>
+        <m>T_{\mathbb C}</m>의 행렬을 <m>T</m>의 실수 기저에 대하여 쓰면 실수 행렬이다. 따라서 <m>\ker(T_{\mathbb C}-\lambda I)</m>은 <m>\ker(T-\lambda I)</m>의 복소화이고, 이 공간이 영이 아니므로 <m>\ker(T-\lambda I)</m>도 영이 아니다. 그러므로 <m>\lambda</m>에 대응하는 영이 아닌 실수 고유벡터 <m>u</m>가 존재한다. <m>u</m>를 정규화하여 <m>\lVert u\rVert=1</m>로 둘 수 있다.</p>
+      <p>
+        이제 <m>U=\operatorname{span}\{u\}</m>와 그 직교여공간 <m>U^{\perp}</m>를 생각하자. 임의의 <m>x\in U^{\perp}</m>에 대하여
+        <m>\langle Tx,u\rangle=\langle x,T^*u\rangle=\langle x,Tu\rangle=\langle x,\lambda u\rangle=0</m>
+        이므로 <m>Tx\in U^{\perp}</m>이다. 따라서 <m>U^{\perp}</m>는 <m>T</m>에 의해 불변이다. 또한 <m>U^{\perp}</m>에 제한한 연산자 <m>T|_{U^{\perp}}</m>도 자기수반이다. 실제로 <m>x,y\in U^{\perp}</m>이면
+        <m>\langle T|_{U^{\perp}}x,y\rangle=\langle Tx,y\rangle=\langle x,Ty\rangle=\langle x,T|_{U^{\perp}}y\rangle</m>이다.</p>
+      <p>
+        귀납 가정에 따라 <m>U^{\perp}</m>에는 <m>T|_{U^{\perp}}</m>의 고유벡터로 이루어진 정규직교기저가 있다. 여기에 <m>u</m>를 추가하면 <m>V=U\oplus U^{\perp}</m>의 정규직교기저가 되고, 그 모든 벡터는 <m>T</m>의 고유벡터이다. 이로써 <m>(2)</m>를 얻는다.</p>
+      <p>
+        반대로 <m>(2)</m>를 가정하자. <m>V</m>의 정규직교기저를 고유벡터 <m>u_1,\ldots,u_n</m>으로 잡고, <m>Tu_i=\lambda_i u_i</m>라 하자. 실수 내적공간에서 자기수반성은 모든 <m>x,y\in V</m>에 대하여 <m>\langle Tx,y\rangle=\langle x,Ty\rangle</m>인 것과 동치이다. 선형성만 확인하면 충분하므로 <m>x=\sum_i a_i u_i</m>, <m>y=\sum_i b_i u_i</m>로 쓰면
+        <m>\langle Tx,y\rangle=\sum_i a_i\lambda_i b_i=\langle x,Ty\rangle</m>이다. 따라서 <m>T=T^*</m>이고, <m>(1)</m>이 성립한다.</p>
+      <p>
+        마지막으로 <m>(2)</m>의 정규직교 고유기저에서 <m>T</m>의 행렬은 <m>\operatorname{diag}(\lambda_1,\ldots,\lambda_n)</m>인 실수 대각행렬이다. 그러므로 특성다항식은 <m>\prod_{i=1}^n(t-\lambda_i)</m>로 주어져 <m>\mathbb R</m> 위에서 일차인수로 분해된다.</p>
+    </proof>
   </theorem>
 
+  <remark xml:id="rem-spectral-tensor-decomposition">
+    <title>스펙트럴 정리의 텐서 분해 해석</title>
+    <p>
+    스펙트럴 정리는 연산자를 고유벡터 방향으로의 직교 사영들의 선형결합으로 분해한다는 뜻으로도 이해할 수 있다. 위 정리의 정규직교 고유기저를 <m>u_1,\ldots,u_n</m>이라 하고 <m>Tu_i=\lambda_i u_i</m>라 하자. 각 <m>u_i</m>에 대응하는 선형함수 <m>u_i^\flat:V\to\mathbb R</m>를
+    <m>u_i^\flat(x)=\langle x,u_i\rangle</m>로 정의하면, <m>u_i\otimes u_i^\flat</m>는
+    <m>x\mapsto\langle x,u_i\rangle u_i</m>로 주어지는 <m>u_i</m> 방향의 직교 사영이다. 따라서
+    <m>
+      I_V=\sum_{i=1}^n u_i\otimes u_i^\flat
+      \,\text{ 및 }\,
+      T=\sum_{i=1}^n\lambda_i\bigl(u_i\otimes u_i^\flat\bigr)
+    </m>
+    이다. 두 식은 임의의 <m>x\in V</m>에 작용시켰을 때 각각
+    <m>x=\sum_i\langle x,u_i\rangle u_i</m>와
+    <m>Tx=\sum_i\lambda_i\langle x,u_i\rangle u_i</m>를 뜻한다.
+    </p>
+    <p>
+      즉 자기수반 연산자는 각 고유공간 위에서는 스칼라 곱으로 작용하고, 전체 공간에서는 그 작용들을 직교하게 합친 것이다. 고윳값이 중복되는 경우에는 개별 고유벡터 대신 해당 고유공간의 직교 사영 <m>P_\mu</m>를 사용하여
+      <m>T=\sum_\mu \mu P_\mu</m>로 쓸 수 있다. 이 표현은 기저를 고르는 방식과 무관하며, 자기수반 연산자의 텐서 분해를 나타낸다.
+    </p>
+  </remark>
+
+  <p>
+    다음으로는 자기수반 연산자와 관련된 네 가지 기본 부분공간의 기하를 살펴본다. 즉 <m>\operatorname{im}T</m>, <m>\ker T</m>, <m>\operatorname{im}T^*</m>, <m>\ker T^*</m>를 서로 연결하여 각각의 직교여공간 관계와 상호 직교성을 분석할 것이다. 자기수반성에 의해 <m>T^*=T</m>이므로 이 부분공간들 사이에는 특별한 일치와 직교 분해가 나타나며, 스펙트럴 정리에서 얻은 직교 고유공간 분해는 이러한 구조를 이해하는 자연스러운 출발점을 제공한다.
+  </p>
+
+  <proposition xml:id="prop-self-adjoint-image-kernel-orthogonal">
+    <title>자기수반 연산자의 이미지와 커널</title>
+    <statement>
+      <p>
+        유한 차원 내적공간 <m>V</m> 위의 자기수반 연산자 <m>T</m>에 대하여
+        <m>\operatorname{im}T=(\ker T)^{\perp}</m> 및
+        <m>\ker T=(\operatorname{im}T)^{\perp}</m>이다. 따라서
+        <m>V=\operatorname{im}T\mathbin{\oplus^{\perp}}\ker T</m>이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        먼저 <m>\operatorname{im}T\subseteq(\ker T)^{\perp}</m>임을 보이자. <m>y\in\operatorname{im}T</m>와 <m>z\in\ker T</m>를 임의로 택하면 어떤 <m>x\in V</m>에 대하여 <m>y=Tx</m>이고, <m>Tz=0</m>이다. 자기수반성에 의해
+        <m>\langle y,z\rangle=\langle Tx,z\rangle=\langle x,T^*z\rangle=\langle x,Tz\rangle=0</m>
+        이다. 따라서 <m>y</m>는 <m>\ker T</m>의 모든 벡터에 직교하고, 원하는 포함관계를 얻는다.
+      </p>
+      <p>
+        이제 두 부분공간의 차원을 비교하자. 랭크-널리티 정리에 의해
+        <m>\dim(\operatorname{im}T)=\dim V-\dim(\ker T)</m>
+        이다. 한편 유한 차원 내적공간에서 부분공간과 그 직교여공간의 차원 합은 전체 공간의 차원과 같으므로
+        <m>\dim((\ker T)^{\perp})=\dim V-\dim(\ker T)</m>
+        이다. 앞에서 얻은 포함관계와 두 공간의 같은 차원으로부터
+        <m>\operatorname{im}T=(\ker T)^{\perp}</m>
+        이다.
+      </p>
+      <p>
+        두 번째 등식은 같은 방식으로 직접 확인할 수 있다. <m>z\in\ker T</m>이고 <m>y\in\operatorname{im}T</m>라 하자. <m>y=Tx</m>인 <m>x\in V</m>가 존재하므로
+        <m>\langle z,y\rangle=\langle z,Tx\rangle=\langle T^*z,x\rangle=\langle Tz,x\rangle=0</m>
+        이다. 따라서 <m>\ker T\subseteq(\operatorname{im}T)^{\perp}</m>이다. 또한
+        <m>\dim((\operatorname{im}T)^{\perp})=\dim V-\dim(\operatorname{im}T)=\dim(\ker T)</m>
+        이므로
+        <m>\ker T=(\operatorname{im}T)^{\perp}</m>
+        이다. 또는 첫 번째 등식의 양변에 직교여공간을 취해도 같은 결론을 얻는다.
+      </p>
+      <p>
+        마지막으로 모든 유한 차원 내적공간의 부분공간 <m>W</m>에 대하여
+        <m>V=W\oplus^{\perp}W^{\perp}</m>
+        이다. 첫 번째 등식에 <m>W=\operatorname{im}T</m>를 적용하면
+        <m>W^{\perp}=(\operatorname{im}T)^{\perp}=\ker T</m>
+        이므로
+        <m>V=\operatorname{im}T\mathbin{\oplus^{\perp}}\ker T</m>
+        를 얻는다.
+      </p>
+    </proof>
+  </proposition>
+
+  <p>
+    
+  </p>
+  
+  
   
 
 </section>
