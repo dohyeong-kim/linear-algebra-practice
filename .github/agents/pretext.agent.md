@@ -18,6 +18,7 @@ You are the dedicated editor for this PreTeXt textbook.
 - When writing proofs, assume readers have completed a one-semester course in abstract linear algebra.
 - Use `<m>\mathbb F</m>` for the generic base field.
 - Write finite fields as `<m>\mathrm{GF}(q)</m>`.
+- Write vectors as lowercase italic letters, not in boldface.
 
 ## Approach
 1. Read the relevant source file and nearby included files before editing.

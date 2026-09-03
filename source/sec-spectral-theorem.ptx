@@ -2,6 +2,29 @@
 
 <section xml:id="sec-spectral-theorem" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>스펙트럴 정리</title>
+  <p>
+    이 절에서 다루는 내적공간의 스칼라체는 실수체 또는 복소수체로 가정한다. 즉, <m>\mathbb F=\mathbb R</m>이면 내적공간을 다루고, <m>\mathbb F=\mathbb C</m>이면 에르미트 내적공간을 다룬다.
+  </p>
+  
+  <definition xml:id="def-adjoint-operator">
+    <statement>
+      <p>
+        내적공간의 선형변환 <m>T</m>에 대하여, 모든 벡터 <m>u,v</m>가 <m>\langle Tu,v\rangle=\langle u,T^*v\rangle</m>를 만족하도록 하는 선형변환 <m>T^*</m>를 <m>T</m>의 <em>수반연산자</em>라고 한다.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    유한 차원 내적공간에서 수반연산자의 행렬은 주어진 기저에서 <m>T</m>의 행렬의 켤레전치와 관련되며, 수반연산자는 자기수반 연산자와 정규 연산자를 정의하고 스펙트럴 정리를 이해하는 데 중요한 역할을 한다.
+  </p>
+
+  <example xml:id="ex-adjoint-standard-matrix">
+    <statement>
+      <p>
+        표준 벡터공간 <m>\mathbb C^n</m>에 표준 에르미트 내적 <m>\langle u,v\rangle=\overline{u}^{\mathsf T}v=u^*v</m>를 주고, 선형변환 <m>T</m>의 표준기저에 대한 행렬을 <m>A</m>라고 하자. 그러면 <m>T</m>의 수반연산자 <m>T^*</m>의 행렬은 <m>A^*</m>, 즉 <m>A</m>의 켤레전치이다.
+      </p>
+    </statement>
+  </example>
+  
 
   
 
