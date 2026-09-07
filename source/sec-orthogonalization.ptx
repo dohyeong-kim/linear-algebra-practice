@@ -114,4 +114,803 @@
     이다.
   </p>
 
+<exercises xml:id="exercises-orthogonalization">
+  <title>연습문제</title>
+  <p>
+    에르미트 공간에 관한 문제에서는 본문의 그람-슈미트 과정과 같이 내적이
+    첫 번째 변수에 대하여 선형이고 두 번째 변수에 대하여 켤레선형인 것으로
+    약속한다. 즉, <m>\mathbb{C}^n</m>에서
+    <me>
+      \langle z,w\rangle=\sum_i z_i\overline{w_i}
+    </me>
+    이다.
+  </p>
+  <exercise xml:id="exer-orth-routine-1">
+
+    <title>직교여공간과 직합 분해</title>
+
+    <statement>
+      <p>
+        표준 내적을 갖는 <m>\mathbb{R}^3</m>에서
+        <me>
+          W=\operatorname{span}\{(1,1,0),(0,1,1)\}
+        </me>
+        라 하자.
+      </p>
+      <ol>
+        <li>
+          <p><m>W^{\perp}</m>의 기저와 직교정규 기저를 각각 구하여라.</p>
+        </li>
+        <li>
+          <p>
+            <xref ref="prop-orthogonal-complement-direct-sum"/>의 차원 등식이
+            성립함을 확인하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x=(1,2,3)</m>을
+            <m>w\in W</m>와 <m>w'\in W^{\perp}</m>를 이용하여
+            <m>x=w+w'</m>의 꼴로 나타내어라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <solution>
+      <p>
+        <m>(a,b,c)\in W^{\perp}</m>일 필요충분조건은
+        <m>a+b=0</m>이고 <m>b+c=0</m>인 것이다. 따라서
+        <me>
+          W^{\perp}=\operatorname{span}\{(1,-1,1)\}.
+        </me>
+        특히 <m>\dim W+\dim W^{\perp}=2+1=3</m>이다.
+        <m>W^{\perp}</m>의 직교정규 기저 하나는
+        <m>\{(1,-1,1)/\sqrt3\}</m>이다.
+      </p>
+      <p>
+        <m>x</m>의 <m>W^{\perp}</m> 성분은
+        <me>
+          w'=\frac{\langle x,(1,-1,1)\rangle}{3}(1,-1,1)
+            =\frac23(1,-1,1)
+        </me>
+        이다. 따라서
+        <me>
+          w=x-w'=\left(\frac13,\frac83,\frac73\right).
+        </me>
+      </p>
+    </solution>
+
+  </exercise>
+  <exercise xml:id="exer-orth-routine-2">
+
+    <title>그람-슈미트 과정의 계산</title>
+
+    <statement>
+      <p>
+        표준 내적을 갖는 <m>\mathbb{R}^3</m>에서
+        <me>
+          v_1=(1,1,1),\qquad
+          v_2=(1,1,0),\qquad
+          v_3=(1,0,0)
+        </me>
+        에 그람-슈미트 과정을 적용하여 직교정규 기저
+        <m>u_1,u_2,u_3</m>을 구하여라. 각 단계에서 생기는
+        <m>w_j</m>도 함께 적어라.
+      </p>
+    </statement>
+
+    <solution>
+      <p>
+        첫 단계에서는
+        <me>
+          u_1=\frac1{\sqrt3}(1,1,1)
+        </me>
+        을 얻는다. 다음 단계에서는
+        <me>
+          w_2=v_2-\frac23(1,1,1)
+              =\frac13(1,1,-2),
+          \qquad
+          u_2=\frac1{\sqrt6}(1,1,-2).
+        </me>
+        마지막으로
+        <me>
+          w_3
+          =v_3-\frac13(1,1,1)-\frac16(1,1,-2)
+          =\frac12(1,-1,0),
+        </me>
+        이므로
+        <me>
+          u_3=\frac1{\sqrt2}(1,-1,0).
+        </me>
+      </p>
+    </solution>
+
+  </exercise>
+  <exercise xml:id="exer-orth-routine-3">
+
+    <title>에르미트 공간의 직교여공간</title>
+
+    <statement>
+      <p>
+        표준 에르미트 내적을 갖는 <m>\mathbb{C}^2</m>에서
+        <m>W=\operatorname{span}\{(1,i)\}</m>라 하자.
+      </p>
+      <ol>
+        <li>
+          <p><m>W^{\perp}</m>와 그 직교정규 기저를 구하여라.</p>
+        </li>
+        <li>
+          <p><m>W\oplus W^{\perp}=\mathbb{C}^2</m>임을 직접 확인하여라.</p>
+        </li>
+        <li>
+          <p>
+            에르미트 내적에서 켤레를 잊고 계산하면 어떤 잘못된 결론에
+            이르는지 설명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <solution>
+      <p>
+        <m>(a,b)\in W^{\perp}</m>일 필요충분조건은
+        <me>
+          \langle(a,b),(1,i)\rangle=a-ib=0
+        </me>
+        인 것이다. 따라서
+        <me>
+          W^{\perp}=\operatorname{span}\{(i,1)\}.
+        </me>
+        그 직교정규 기저 하나는
+        <m>\{(i,1)/\sqrt2\}</m>이다.
+      </p>
+      <p>
+        <m>(1,i)</m>와 <m>(i,1)</m>은 선형독립이므로 두 공간의 합은
+        <m>\mathbb{C}^2</m>이다. 켤레를 잊으면 잘못된 방정식
+        <m>a+ib=0</m>을 얻고, 이로부터 <m>W^{\perp}=W</m>라는
+        모순된 결론에 이르게 된다.
+      </p>
+    </solution>
+
+  </exercise>
+  <exercise xml:id="exer-orth-routine-4">
+
+    <title>직교정규 기저를 이용한 정사영</title>
+
+    <statement>
+      <p>
+        표준 내적을 갖는 <m>\mathbb{R}^4</m>에서
+        <me>
+          u_1=\frac1{\sqrt2}(1,1,0,0),\qquad
+          u_2=\frac1{\sqrt2}(0,0,1,-1)
+        </me>
+        이라 하고, <m>W=\operatorname{span}\{u_1,u_2\}</m>라 하자.
+      </p>
+      <ol>
+        <li>
+          <p><m>u_1,u_2</m>가 직교정규 집합임을 확인하여라.</p>
+        </li>
+        <li>
+          <p><m>W^{\perp}</m>의 직교정규 기저 하나를 구하여라.</p>
+        </li>
+        <li>
+          <p>
+            <m>v=(2,0,3,1)</m>을
+            <m>w\in W</m>와 <m>w'\in W^{\perp}</m>를 이용하여
+            <m>v=w+w'</m>의 꼴로 나타내어라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <solution>
+      <p>
+        <m>u_1,u_2</m>는 서로 직교하고 각각 노름이 <m>1</m>이다.
+        또한
+        <me>
+          W^{\perp}
+          =\operatorname{span}\{(1,-1,0,0),(0,0,1,1)\}.
+        </me>
+        따라서 이 공간의 직교정규 기저 하나는
+        <me>
+          \frac1{\sqrt2}(1,-1,0,0),\qquad
+          \frac1{\sqrt2}(0,0,1,1)
+        </me>
+        이다.
+      </p>
+      <p>
+        <m>v</m>의 <m>W</m> 성분은
+        <me>
+          w=\langle v,u_1\rangle u_1+\langle v,u_2\rangle u_2
+            =(1,1,1,-1)
+        </me>
+        이고, 따라서
+        <me>
+          w'=v-w=(1,-1,2,2)
+        </me>
+        이다.
+      </p>
+    </solution>
+
+  </exercise>
+  <exercise xml:id="exer-orth-routine-5">
+
+    <title>벡터의 순서와 그람-슈미트 과정</title>
+
+    <statement>
+      <p>
+        <m>\mathbb{R}^2</m>에서
+        <m>v_1=(1,0)</m>, <m>v_2=(1,1)</m>이라 하자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            순서 있는 기저 <m>v_1,v_2</m>에 그람-슈미트 과정을
+            적용하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            순서를 바꾸어 <m>v_2,v_1</m>에 그람-슈미트 과정을
+            적용하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            두 결과가 모두 같은 공간의 직교정규 기저이지만 일반적으로
+            서로 일치하지 않는 이유를 설명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <solution>
+      <p>
+        순서 <m>v_1,v_2</m>에서는
+        <me>
+          u_1=(1,0),\qquad u_2=(0,1)
+        </me>
+        을 얻는다. 반대 순서에서는
+        <me>
+          u'_1=\frac1{\sqrt2}(1,1),\qquad
+          u'_2=\frac1{\sqrt2}(1,-1)
+        </me>
+        을 얻는다. 첫 번째 출력 벡터가 첫 번째 입력 벡터의 방향으로
+        정해지므로 입력 순서가 바뀌면 결과도 달라질 수 있다.
+      </p>
+    </solution>
+
+  </exercise>
+  <exercise xml:id="exer-orth-standard-1">
+
+    <title>직교여공간의 대수적 성질</title>
+
+    <statement>
+      <p>
+        유한 차원 내적공간 또는 에르미트 공간 <m>V</m>의 부분공간
+        <m>W,W_1,W_2</m>에 대하여 다음을 증명하여라.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>W^{\perp}</m>은 부분공간이고
+            <m>W\cap W^{\perp}=\{0\}</m>이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>W_1\subseteq W_2</m>이면
+            <m>W_2^{\perp}\subseteq W_1^{\perp}</m>이다.
+          </p>
+        </li>
+        <li>
+          <p><m>(W^{\perp})^{\perp}=W</m>이다.</p>
+        </li>
+        <li>
+          <p>
+            다음 두 등식을 증명하여라.
+            <me>
+              (W_1+W_2)^{\perp}
+              =W_1^{\perp}\cap W_2^{\perp},
+            </me>
+            <me>
+              (W_1\cap W_2)^{\perp}
+              =W_1^{\perp}+W_2^{\perp}.
+            </me>
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        세 번째 명제에서 포함관계
+        <m>W\subseteq(W^{\perp})^{\perp}</m>는 정의에서 바로 나온다.
+        등호는 차원을 비교하여 얻을 수 있다. 마지막 두 번째 등식에는
+        첫 번째 등식과 이중 직교여공간에 관한 결과를 적용하여라.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-standard-2">
+
+    <title>다항식의 직교화</title>
+
+    <statement>
+      <p>
+        차수가 <m>2</m> 이하인 실계수 다항식의 공간 <m>P_2</m>에
+        <me>
+          \langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx
+        </me>
+        로 내적을 정의한다. 순서 있는 기저 <m>1,x,x^2</m>에
+        그람-슈미트 과정을 적용하여 직교정규 기저를 구하여라.
+        얻은 다항식들이 서로 직교하고 노름이 <m>1</m>인지 직접 확인하여라.
+      </p>
+    </statement>
+
+    <solution>
+      <p>
+        첫 두 단계에서
+        <me>
+          u_1=\frac1{\sqrt2},\qquad
+          w_2=x,\qquad
+          u_2=\sqrt{\frac32}\,x
+        </me>
+        를 얻는다. 세 번째 단계에서는
+        <me>
+          w_3=x^2-\frac13,\qquad
+          \lVert w_3\rVert^2=\frac8{45}
+        </me>
+        이므로
+        <me>
+          u_3=\sqrt{\frac{45}{8}}
+                \left(x^2-\frac13\right)
+        </me>
+        이다.
+      </p>
+    </solution>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-standard-3">
+
+    <title>그람-슈미트 과정의 유일성</title>
+
+    <statement>
+      <p>
+        <m>v_1,\ldots,v_k</m>가 선형독립이고
+        <m>u_1,\ldots,u_k</m>가 직교정규 벡터들이라고 하자. 모든
+        <m>j</m>에 대하여
+        <me>
+          \operatorname{span}\{u_1,\ldots,u_j\}
+          =
+          \operatorname{span}\{v_1,\ldots,v_j\}
+        </me>
+        이고
+        <me>
+          \langle v_j,u_j\rangle&gt;0
+        </me>
+        라고 가정하자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>L_j=\operatorname{span}\{v_1,\ldots,v_j\}</m>라 할 때
+            <me>
+              \operatorname{span}\{u_j\}
+              =L_j\cap L_{j-1}^{\perp}
+            </me>
+            임을 증명하여라. 여기서 <m>L_0=\{0\}</m>이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>u_1,\ldots,u_k</m>가 그람-슈미트 과정으로 얻는 벡터들과
+            정확히 일치함을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            조건 <m>\langle v_j,u_j\rangle&gt;0</m>을 제거하면 실수
+            내적공간과 복소 에르미트 공간에서 각각 어떤 자유도가 남는지
+            설명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <m>L_j\cap L_{j-1}^{\perp}</m>가 1차원임을 먼저 보여라.
+        실수의 경우 각 <m>u_j</m>의 부호를 바꿀 수 있고, 복소수의 경우
+        절댓값이 <m>1</m>인 복소수를 곱할 수 있다.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-standard-4">
+
+    <title>정사영과 최단 거리</title>
+
+    <statement>
+      <p>
+        유한 차원 내적공간 또는 에르미트 공간 <m>V</m>의 부분공간
+        <m>W</m>와 벡터 <m>v\in V</m>를 생각하자. 직교직합 분해에 따라
+        <me>
+          v=w+w',\qquad w\in W,\quad w'\in W^{\perp}
+        </me>
+        로 쓰자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>u_1,\ldots,u_r</m>이 <m>W</m>의 직교정규 기저이면
+            <me>
+              w=\sum_{i=1}^r\langle v,u_i\rangle u_i
+            </me>
+            임을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            모든 <m>x\in W</m>에 대하여
+            <me>
+              \lVert v-x\rVert^2
+              =\lVert w'\rVert^2+\lVert w-x\rVert^2
+            </me>
+            임을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>w</m>가 <m>W</m>의 벡터 중 <m>v</m>와의 거리가 가장
+            가까운 유일한 벡터임을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            그람-슈미트 과정에서 <m>v_j-w_j</m>는
+            <m>\operatorname{span}\{v_1,\ldots,v_{j-1}\}</m>에서
+            <m>v_j</m>와 가장 가까운 벡터임을 설명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <m>v-x=w'+(w-x)</m>이고 두 항은 서로 직교한다.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-standard-5">
+
+    <title>직교정규 집합의 확장</title>
+
+    <statement>
+      <p>
+        <m>V</m>가 유한 차원 내적공간 또는 에르미트 공간이고
+        <m>u_1,\ldots,u_r</m>가 <m>V</m>의 직교정규 집합이라고 하자.
+        다음을 증명하여라.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>W=\operatorname{span}\{u_1,\ldots,u_r\}</m>라 하면
+            <m>V=W\oplus W^{\perp}</m>이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>W^{\perp}</m>의 직교정규 기저를 선택하여
+            <m>u_1,\ldots,u_r</m>에 덧붙이면 <m>V</m>의 직교정규
+            기저를 얻는다.
+          </p>
+        </li>
+        <li>
+          <p>
+            모든 직교정규 집합은 어떤 직교정규 기저의 부분집합임을
+            결론지어라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <xref ref="prop-orthogonal-complement-direct-sum"/>과
+        <xref ref="prop-orthonormal-basis-existence"/>를
+        <m>W^{\perp}</m>에 적용하여라.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-standard-6">
+
+    <title>선형종속성과 과정의 중단</title>
+
+    <statement>
+      <p>
+        벡터 <m>v_1,\ldots,v_k</m>에 그람-슈미트 과정을 순서대로
+        적용한다고 하자. 이전 단계들이 모두 실행되었다고 가정할 때,
+        다음을 증명하여라.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>w_j=0</m>일 필요충분조건은
+            <me>
+              v_j\in\operatorname{span}\{v_1,\ldots,v_{j-1}\}
+            </me>
+            인 것이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            그람-슈미트 과정이 모든 단계에서 영이 아닌 <m>w_j</m>를
+            만들 필요충분조건은 <m>v_1,\ldots,v_k</m>가 선형독립인
+            것이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\mathbb{R}^3</m>의 벡터
+            <me>
+              v_1=(1,0,1),\qquad
+              v_2=(0,1,1),\qquad
+              v_3=(1,1,2)
+            </me>
+            에 과정을 적용하여 처음으로 영벡터가 생기는 단계를 확인하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <m>w_j</m>는 <m>v_j</m>에서 이전 벡터들이 생성하는 공간으로의
+        정사영을 뺀 벡터이다.
+      </p>
+    </hint>
+
+  </exercise>
+
+
+  <exercise xml:id="exer-orth-challenge-1">
+
+    <title>유한 차원 가정의 필요성</title>
+
+    <statement>
+      <p>
+        여기서
+        <m>V</m>는 유한개의 항을 제외하고 모두 <m>0</m>인 실수열들의 공간,
+        즉
+        <me>
+          V=\bigl\{x=(x_n)_{n\ge1}\in\mathbb{R}^{\mathbb{N}}:
+          x_n=0 \text{ for all but finitely many } n\bigr\}
+        </me>
+        로 정의하자.
+        <me>
+          \langle x,y\rangle=\sum_{n\geq 1}x_ny_n
+        </me>
+        로 내적을 정의하고,
+        <me>
+          W=\left\{x\in V:
+          \sum_{n\geq 1}\frac{x_n}{n}=0\right\}
+        </me>
+        이라 하자.
+      </p>
+      <ol>
+        <li>
+          <p><m>W^{\perp}=\{0\}</m>임을 증명하여라.</p>
+        </li>
+        <li>
+          <p>
+            <m>W\neq V</m>임을 보이고, 따라서
+            <m>V\neq W\oplus W^{\perp}</m>이며
+            <m>(W^{\perp})^{\perp}\neq W</m>임을 결론지어라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <xref ref="prop-orthogonal-complement-direct-sum"/>의 증명에서
+            유한 차원 가정에 의존하는 단계가 무엇인지 정확히 지적하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        표준벡터를 <m>e_n</m>이라 하자. <m>m\neq n</m>일 때
+        <m>ne_n-me_m\in W</m>이다. 따라서 <m>y\in W^{\perp}</m>이면
+        <m>ny_n=my_m</m>이다. 한편 <m>y</m>는 유한 지지를 갖는다.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-challenge-qr">
+
+    <title>그람-슈미트 과정과 QR 분해</title>
+
+    <statement>
+      <p>
+        가역인 복소 <m>n\times n</m> 행렬 <m>A</m>의 열벡터를
+        <m>v_1,\ldots,v_n</m>이라 하자. 이 벡터들에 그람-슈미트 과정을
+        적용하여 <m>q_1,\ldots,q_n</m>을 얻는다. <m>Q</m>를 이들을
+        열벡터로 갖는 행렬이라 하자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>Q^*Q=I</m>임을 증명하여라. 여기서 <m>Q^*</m>는
+            <m>Q</m>의 켤레전치이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>i\leq j</m>일 때
+            <m>r_{ij}=\langle v_j,q_i\rangle</m>로 두고,
+            <m>i&gt;j</m>일 때 <m>r_{ij}=0</m>으로 두자.
+            <m>R=(r_{ij})</m>가 대각성분이 양수인 상삼각행렬이고
+            <me>
+              A=QR
+            </me>
+            임을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>A=Q_1R_1=Q_2R_2</m>이고 각 <m>Q_i</m>가 유니터리
+            행렬이며 각 <m>R_i</m>가 양의 대각성분을 갖는
+            상삼각행렬이면
+            <m>Q_1=Q_2</m>이고 <m>R_1=R_2</m>임을 증명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        유일성을 보이기 위하여
+        <me>
+          Q_2^*Q_1=R_2R_1^{-1}
+        </me>
+        을 관찰하여라. 왼쪽 행렬은 유니터리이고 오른쪽 행렬은
+        양의 대각성분을 갖는 상삼각행렬이다. 이러한 성질을 동시에 갖는
+        행렬이 항등행렬뿐임을 증명하여라.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-challenge-gram">
+
+    <title>그람 행렬식과 아다마르 부등식</title>
+
+    <statement>
+      <p>
+        내적공간 또는 에르미트 공간의 선형독립인 벡터
+        <m>v_1,\ldots,v_k</m>에 대하여 그람 행렬을
+        <me>
+          G=(\langle v_i,v_j\rangle)_{i,j}
+        </me>
+        로 정의한다. 그람-슈미트 과정에서 얻는 벡터를
+        <m>w_j,u_j</m>라 하자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <me>
+              v_j=\sum_{i\leq j}r_{ij}u_i
+            </me>
+            로 쓸 때 <m>R=(r_{ij})</m>가 상삼각행렬이고
+            <m>r_{jj}=\lVert w_j\rVert&gt;0</m>임을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            내적이 첫 번째 변수에 선형이라는 약속 아래
+            <me>
+              G=R^{\mathsf T}\overline{R}
+            </me>
+            임을 보이고, 이로부터
+            <me>
+              \det G=\prod_{j=1}^k\lVert w_j\rVert^2
+            </me>
+            를 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            다음 아다마르 부등식을 증명하여라.
+            <me>
+              \det G\leq\prod_{j=1}^k\lVert v_j\rVert^2
+            </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            등호가 성립할 필요충분조건이
+            <m>v_1,\ldots,v_k</m>가 서로 직교하는 것임을 증명하여라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <xref ref="exer-orth-standard-4"/>를 이용하면
+        <m>\lVert w_j\rVert\leq\lVert v_j\rVert</m>를 얻는다.
+        등호가 모든 <m>j</m>에서 성립하기 위한 조건을 조사하여라.
+      </p>
+    </hint>
+
+  </exercise>
+
+  <exercise xml:id="exer-orth-challenge-polynomial-roots">
+
+    <title>직교다항식의 근</title>
+
+    <statement>
+      <p>
+        차수가 <m>n</m> 이하인 실계수 다항식의 공간 <m>P_n</m>에
+        <me>
+          \langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx
+        </me>
+        로 내적을 정의한다. 순서 있는 기저
+        <m>1,x,\ldots,x^n</m>에 그람-슈미트 과정을 적용하여 얻은
+        직교정규 다항식을 <m>p_0,p_1,\ldots,p_n</m>이라 하자.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>p_k</m>의 차수가 정확히 <m>k</m>이고, 차수가
+            <m>k</m> 미만인 모든 다항식과 직교함을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>p_k</m>가 열린 구간 <m>(-1,1)</m>에서 서로 다른
+            <m>k</m>개의 실근을 가짐을 증명하여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            구간과 내적을 각각
+            <me>
+              [a,b],\qquad
+              \langle f,g\rangle
+              =\int_a^b f(x)g(x)\rho(x)\,dx
+            </me>
+            로 바꾸자. 여기서 <m>\rho</m>는 <m>[a,b]</m>에서 양의
+            연속함수이다. 두 번째 결론이 여전히 성립함을 증명하고,
+            증명에서 <m>\rho&gt;0</m>이 사용되는 부분을 밝혀라.
+          </p>
+        </li>
+      </ol>
+    </statement>
+
+    <hint>
+      <p>
+        <m>(-1,1)</m>에서 <m>p_k</m>의 부호를 바꾸는 서로 다른 근을
+        <m>r_1,\ldots,r_s</m>라 하고
+        <me>
+          q(x)=\prod_{j=1}^s(x-r_j)
+        </me>
+        로 두어라. 만약 <m>s&lt;k</m>이면 첫 번째 결과에 의해
+        <m>\langle p_k,q\rangle=0</m>이다. 그러나 <m>p_kq</m>는
+        구간 전체에서 한쪽 부호를 가지며 항등적으로 영이 아니다.
+      </p>
+    </hint>
+
+  </exercise>
+</exercises>
 </section>
