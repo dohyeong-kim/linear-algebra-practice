@@ -13,7 +13,7 @@
       체 <m>\mathbb F</m>상 벡터공간 <m>V</m> 위의 <m>n</m>-선형형식 <m>f:V^n\to \mathbb F</m>가 모든 벡터
       <m>v_1, \cdots ,v_n \in V</m>와 모든 순열 <m>\sigma \in S_n</m>에 대하여
       <me>f(v_1, \cdots,v_n)=f(v_{\sigma(1)}, \cdots ,v_{\sigma(n)})</me>
-      를 만족하면, <m>f</m>를 <term>대칭 다중선형형식</term>이라 한다. 즉, 대칭 다중선형형식의 값은
+      를 만족하면, <m>f</m>를 <term>대칭 다중선형형식</term><aside><p>대칭 다중선형형식:symmetric multilinear form</p></aside>이라 한다. 즉, 대칭 다중선형형식의 값은
       입력 벡터들의 순서에 의존하지 않는다.
     </p>
   </definition>
