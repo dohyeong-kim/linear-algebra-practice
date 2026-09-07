@@ -58,8 +58,9 @@
   <rename element="algorithm">알고리즘</rename> <!--잘 작동함-->
   <rename element="solution">예시답안</rename> <!--잘 작동함-->
   <rename element="divisionalexercise">연습문제</rename> <!--잘 작동함-->
-
-
+  <rename element="previous-short">이전</rename> <!--잘 작동함-->
+  <rename element="next-short">다음</rename> <!--잘 작동함-->
+  <rename element="up-short">상위항목</rename> <!--잘 작동함-->
   <!-- 미사용
     <rename element="inlineexercise">문
     제</rename> 잘 작동함
