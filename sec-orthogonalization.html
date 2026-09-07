@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="ko-KO" dir="">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>직교화</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="선형대수학">
+<meta property="book:author" content="김도형">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='[evaluate] (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.2.10';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.e3f9706509fcf6f7.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.c5ba0ffa5f963084.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.efe427683fc41f98.css">
+<style>
+#exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
+#exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
+#exer-quadratic-form-to-bilinear-form-2-1-3 > li { counter-increment: exer-quadratic-form-to-bilinear-form-2-1-3; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 { counter-set: exer-quadratic-form-to-bilinear-form-3-1-1 0; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-3-1-1,lower-alpha)")"; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 > li { counter-increment: exer-quadratic-form-to-bilinear-form-3-1-1; }
+#exer-gram-matrix-polynomial-integration-2-1-4 { counter-set: exer-gram-matrix-polynomial-integration-2-1-4 0; }
+#exer-gram-matrix-polynomial-integration-2-1-4 > li::marker { content: "("counter(exer-gram-matrix-polynomial-integration-2-1-4,lower-alpha)")"; }
+#exer-gram-matrix-polynomial-integration-2-1-4 > li { counter-increment: exer-gram-matrix-polynomial-integration-2-1-4; }
+#exer-gram-matrix-polynomial-integration-3-1-1 { counter-set: exer-gram-matrix-polynomial-integration-3-1-1 0; }
+#exer-gram-matrix-polynomial-integration-3-1-1 > li::marker { content: "("counter(exer-gram-matrix-polynomial-integration-3-1-1,lower-alpha)")"; }
+#exer-gram-matrix-polynomial-integration-3-1-1 > li { counter-increment: exer-gram-matrix-polynomial-integration-3-1-1; }
+#exer-standard-hermitian-computation-2-1-5 { counter-set: exer-standard-hermitian-computation-2-1-5 0; }
+#exer-standard-hermitian-computation-2-1-5 > li::marker { content: "("counter(exer-standard-hermitian-computation-2-1-5,lower-alpha)")"; }
+#exer-standard-hermitian-computation-2-1-5 > li { counter-increment: exer-standard-hermitian-computation-2-1-5; }
+#exer-standard-hermitian-computation-3-1-1 { counter-set: exer-standard-hermitian-computation-3-1-1 0; }
+#exer-standard-hermitian-computation-3-1-1 > li::marker { content: "("counter(exer-standard-hermitian-computation-3-1-1,lower-alpha)")"; }
+#exer-standard-hermitian-computation-3-1-1 > li { counter-increment: exer-standard-hermitian-computation-3-1-1; }
+#exer-gram-matrix-change-of-basis-2-1-5 { counter-set: exer-gram-matrix-change-of-basis-2-1-5 0; }
+#exer-gram-matrix-change-of-basis-2-1-5 > li::marker { content: "("counter(exer-gram-matrix-change-of-basis-2-1-5,lower-alpha)")"; }
+#exer-gram-matrix-change-of-basis-2-1-5 > li { counter-increment: exer-gram-matrix-change-of-basis-2-1-5; }
+#exer-gram-matrix-change-of-basis-3-1-1 { counter-set: exer-gram-matrix-change-of-basis-3-1-1 0; }
+#exer-gram-matrix-change-of-basis-3-1-1 > li::marker { content: "("counter(exer-gram-matrix-change-of-basis-3-1-1,lower-alpha)")"; }
+#exer-gram-matrix-change-of-basis-3-1-1 > li { counter-increment: exer-gram-matrix-change-of-basis-3-1-1; }
+#exer-polarization-identity-2-1-5 { counter-set: exer-polarization-identity-2-1-5 0; }
+#exer-polarization-identity-2-1-5 > li::marker { content: "("counter(exer-polarization-identity-2-1-5,lower-alpha)")"; }
+#exer-polarization-identity-2-1-5 > li { counter-increment: exer-polarization-identity-2-1-5; }
+#exer-polarization-identity-3-1-1 { counter-set: exer-polarization-identity-3-1-1 0; }
+#exer-polarization-identity-3-1-1 > li::marker { content: "("counter(exer-polarization-identity-3-1-1,lower-alpha)")"; }
+#exer-polarization-identity-3-1-1 > li { counter-increment: exer-polarization-identity-3-1-1; }
+#exer-cubic-polarization-2-1-6 { counter-set: exer-cubic-polarization-2-1-6 0; }
+#exer-cubic-polarization-2-1-6 > li::marker { content: "("counter(exer-cubic-polarization-2-1-6,lower-alpha)")"; }
+#exer-cubic-polarization-2-1-6 > li { counter-increment: exer-cubic-polarization-2-1-6; }
+#exer-cubic-polarization-3-1-1 { counter-set: exer-cubic-polarization-3-1-1 0; }
+#exer-cubic-polarization-3-1-1 > li::marker { content: "("counter(exer-cubic-polarization-3-1-1,lower-alpha)")"; }
+#exer-cubic-polarization-3-1-1 > li { counter-increment: exer-cubic-polarization-3-1-1; }
+#exer-two-by-two-positive-definite-2-1-1 { counter-set: exer-two-by-two-positive-definite-2-1-1 0; }
+#exer-two-by-two-positive-definite-2-1-1 > li::marker { content: "("counter(exer-two-by-two-positive-definite-2-1-1,lower-alpha)")"; }
+#exer-two-by-two-positive-definite-2-1-1 > li { counter-increment: exer-two-by-two-positive-definite-2-1-1; }
+#exer-two-by-two-positive-definite-3-1-1 { counter-set: exer-two-by-two-positive-definite-3-1-1 0; }
+#exer-two-by-two-positive-definite-3-1-1 > li::marker { content: "("counter(exer-two-by-two-positive-definite-3-1-1,lower-alpha)")"; }
+#exer-two-by-two-positive-definite-3-1-1 > li { counter-increment: exer-two-by-two-positive-definite-3-1-1; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 { counter-set: exer-unit-disc-monomials-orthogonal-2-1-3 0; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 > li::marker { content: "("counter(exer-unit-disc-monomials-orthogonal-2-1-3,lower-alpha)")"; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 > li { counter-increment: exer-unit-disc-monomials-orthogonal-2-1-3; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 { counter-set: exer-unit-disc-monomials-orthogonal-3-1-1 0; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 > li::marker { content: "("counter(exer-unit-disc-monomials-orthogonal-3-1-1,lower-alpha)")"; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 > li { counter-increment: exer-unit-disc-monomials-orthogonal-3-1-1; }
+#exer-invariant-forms-on-matrices-2-1-6 { counter-set: exer-invariant-forms-on-matrices-2-1-6 0; }
+#exer-invariant-forms-on-matrices-2-1-6 > li::marker { content: "("counter(exer-invariant-forms-on-matrices-2-1-6,lower-alpha)")"; }
+#exer-invariant-forms-on-matrices-2-1-6 > li { counter-increment: exer-invariant-forms-on-matrices-2-1-6; }
+#exer-invariant-forms-on-matrices-3-1-1 { counter-set: exer-invariant-forms-on-matrices-3-1-1 0; }
+#exer-invariant-forms-on-matrices-3-1-1 > li::marker { content: "("counter(exer-invariant-forms-on-matrices-3-1-1,lower-alpha)")"; }
+#exer-invariant-forms-on-matrices-3-1-1 > li { counter-increment: exer-invariant-forms-on-matrices-3-1-1; }
+#exer-minimal-determining-set-2-1-8 { counter-set: exer-minimal-determining-set-2-1-8 0; }
+#exer-minimal-determining-set-2-1-8 > li::marker { content: "("counter(exer-minimal-determining-set-2-1-8,lower-alpha)")"; }
+#exer-minimal-determining-set-2-1-8 > li { counter-increment: exer-minimal-determining-set-2-1-8; }
+#exer-minimal-determining-set-3-1-1 { counter-set: exer-minimal-determining-set-3-1-1 0; }
+#exer-minimal-determining-set-3-1-1 > li::marker { content: "("counter(exer-minimal-determining-set-3-1-1,lower-alpha)")"; }
+#exer-minimal-determining-set-3-1-1 > li { counter-increment: exer-minimal-determining-set-3-1-1; }
+#exer-hermitian-from-real-diagonal-2-1-1 { counter-set: exer-hermitian-from-real-diagonal-2-1-1 0; }
+#exer-hermitian-from-real-diagonal-2-1-1 > li::marker { content: "("counter(exer-hermitian-from-real-diagonal-2-1-1,lower-alpha)")"; }
+#exer-hermitian-from-real-diagonal-2-1-1 > li { counter-increment: exer-hermitian-from-real-diagonal-2-1-1; }
+#exer-hermitian-from-real-diagonal-3-1-1 { counter-set: exer-hermitian-from-real-diagonal-3-1-1 0; }
+#exer-hermitian-from-real-diagonal-3-1-1 > li::marker { content: "("counter(exer-hermitian-from-real-diagonal-3-1-1,lower-alpha)")"; }
+#exer-hermitian-from-real-diagonal-3-1-1 > li { counter-increment: exer-hermitian-from-real-diagonal-3-1-1; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 { counter-set: exer-nonpositive-offdiagonal-gram-2-1-5 0; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 > li::marker { content: "("counter(exer-nonpositive-offdiagonal-gram-2-1-5,lower-alpha)")"; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 > li { counter-increment: exer-nonpositive-offdiagonal-gram-2-1-5; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 { counter-set: exer-nonpositive-offdiagonal-gram-3-1-1 0; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 > li::marker { content: "("counter(exer-nonpositive-offdiagonal-gram-3-1-1,lower-alpha)")"; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 > li { counter-increment: exer-nonpositive-offdiagonal-gram-3-1-1; }
+#exer-orth-routine-1-2-2 { counter-set: exer-orth-routine-1-2-2 0; }
+#exer-orth-routine-1-2-2 > li::marker { content: "("counter(exer-orth-routine-1-2-2,lower-alpha)")"; }
+#exer-orth-routine-1-2-2 > li { counter-increment: exer-orth-routine-1-2-2; }
+#exer-orth-routine-3-2-2 { counter-set: exer-orth-routine-3-2-2 0; }
+#exer-orth-routine-3-2-2 > li::marker { content: "("counter(exer-orth-routine-3-2-2,lower-alpha)")"; }
+#exer-orth-routine-3-2-2 > li { counter-increment: exer-orth-routine-3-2-2; }
+#exer-orth-routine-4-2-2 { counter-set: exer-orth-routine-4-2-2 0; }
+#exer-orth-routine-4-2-2 > li::marker { content: "("counter(exer-orth-routine-4-2-2,lower-alpha)")"; }
+#exer-orth-routine-4-2-2 > li { counter-increment: exer-orth-routine-4-2-2; }
+#exer-orth-routine-5-2-2 { counter-set: exer-orth-routine-5-2-2 0; }
+#exer-orth-routine-5-2-2 > li::marker { content: "("counter(exer-orth-routine-5-2-2,lower-alpha)")"; }
+#exer-orth-routine-5-2-2 > li { counter-increment: exer-orth-routine-5-2-2; }
+#exer-orth-standard-1-2-2 { counter-set: exer-orth-standard-1-2-2 0; }
+#exer-orth-standard-1-2-2 > li::marker { content: "("counter(exer-orth-standard-1-2-2,lower-alpha)")"; }
+#exer-orth-standard-1-2-2 > li { counter-increment: exer-orth-standard-1-2-2; }
+#exer-orth-standard-3-2-2 { counter-set: exer-orth-standard-3-2-2 0; }
+#exer-orth-standard-3-2-2 > li::marker { content: "("counter(exer-orth-standard-3-2-2,lower-alpha)")"; }
+#exer-orth-standard-3-2-2 > li { counter-increment: exer-orth-standard-3-2-2; }
+#exer-orth-standard-4-2-2 { counter-set: exer-orth-standard-4-2-2 0; }
+#exer-orth-standard-4-2-2 > li::marker { content: "("counter(exer-orth-standard-4-2-2,lower-alpha)")"; }
+#exer-orth-standard-4-2-2 > li { counter-increment: exer-orth-standard-4-2-2; }
+#exer-orth-standard-5-2-2 { counter-set: exer-orth-standard-5-2-2 0; }
+#exer-orth-standard-5-2-2 > li::marker { content: "("counter(exer-orth-standard-5-2-2,lower-alpha)")"; }
+#exer-orth-standard-5-2-2 > li { counter-increment: exer-orth-standard-5-2-2; }
+#exer-orth-standard-6-2-2 { counter-set: exer-orth-standard-6-2-2 0; }
+#exer-orth-standard-6-2-2 > li::marker { content: "("counter(exer-orth-standard-6-2-2,lower-alpha)")"; }
+#exer-orth-standard-6-2-2 > li { counter-increment: exer-orth-standard-6-2-2; }
+#exer-orth-challenge-1-2-2 { counter-set: exer-orth-challenge-1-2-2 0; }
+#exer-orth-challenge-1-2-2 > li::marker { content: "("counter(exer-orth-challenge-1-2-2,lower-alpha)")"; }
+#exer-orth-challenge-1-2-2 > li { counter-increment: exer-orth-challenge-1-2-2; }
+#exer-orth-challenge-qr-2-2 { counter-set: exer-orth-challenge-qr-2-2 0; }
+#exer-orth-challenge-qr-2-2 > li::marker { content: "("counter(exer-orth-challenge-qr-2-2,lower-alpha)")"; }
+#exer-orth-challenge-qr-2-2 > li { counter-increment: exer-orth-challenge-qr-2-2; }
+#exer-orth-challenge-gram-2-2 { counter-set: exer-orth-challenge-gram-2-2 0; }
+#exer-orth-challenge-gram-2-2 > li::marker { content: "("counter(exer-orth-challenge-gram-2-2,lower-alpha)")"; }
+#exer-orth-challenge-gram-2-2 > li { counter-increment: exer-orth-challenge-gram-2-2; }
+#exer-orth-challenge-polynomial-roots-2-2 { counter-set: exer-orth-challenge-polynomial-roots-2-2 0; }
+#exer-orth-challenge-polynomial-roots-2-2 > li::marker { content: "("counter(exer-orth-challenge-polynomial-roots-2-2,lower-alpha)")"; }
+#exer-orth-challenge-polynomial-roots-2-2 > li { counter-increment: exer-orth-challenge-polynomial-roots-2-2; }
+#thm-spectral-self-adjoint-real-2-2-1 { counter-set: thm-spectral-self-adjoint-real-2-2-1 0; }
+#thm-spectral-self-adjoint-real-2-2-1 > li::marker { content: ""counter(thm-spectral-self-adjoint-real-2-2-1,decimal)"."; }
+#thm-spectral-self-adjoint-real-2-2-1 > li { counter-increment: thm-spectral-self-adjoint-real-2-2-1; }
+</style>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">[skip-to-content]</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="linear-algebra-practice.html"><span class="title">선형대수학:</span> <span class="subtitle">문제와 해결</span></a></h1>
+<p class="byline">김도형</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="목차"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">목차</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">[search-results-heading]: </h2>
+<div id="searchempty" class="searchempty"><span>[no-search-results].</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-symmetric-bilinear-forms.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="up-button button" href="ch-spectral-theorem.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">[up-short]</span></a><a class="next-button button" href="sec-spectral-theorem.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">머릿말</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="front-colophon.html" class="internal"><span class="title">판권</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-introduction.html" class="internal"><span class="codenumber">1</span> <span class="title">소개</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html#exercises-symmetric-bilinear-forms" class="internal"><span class="codenumber">1.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-orthogonalization.html" class="internal"><span class="codenumber">1.2</span> <span class="title">직교화</span></a></div>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-orthogonalization.html#exercises-orthogonalization" class="internal"><span class="codenumber">1.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.3</span> <span class="title">스펙트럴 정리: 실수체의 경우</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.4</span> <span class="title">특이값 분해</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-linear-codes.html" class="internal"><span class="codenumber">3</span> <span class="title">선형부호</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-graph-laplacian.html" class="internal"><span class="codenumber">5</span> <span class="title">그래프 라플라시안</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
+<li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-orthogonalization"><h2 class="heading hide-type">
+<span class="type">[section]</span><span class="space"> </span><span class="codenumber">1.2</span><span class="space"> </span><span class="title">직교화</span>
+</h2>
+<div class="para" id="sec-orthogonalization-2">이번 절에서는 직교화(orthogonalization) 과정을 통해서 벡터 공간의 기저를 직교 기저로 바꾸는 방법을 살펴보겠습니다. 그 대상은 내적공간 또는 에르미트 공간입니다.</div>
+<article class="definition definition-like" id="def-orthogonal-complement"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">직교여공간.</span>
+</h3>
+<div class="para" id="def-orthogonal-complement-2">내적공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <em class="emphasis">직교여공간</em>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
+<div class="para logical" id="def-orthogonal-complement-3"><div class="displaymath process-math">
+\begin{equation*}
+W^{\perp} = \{v \in V : \langle v,w \rangle = 0 \text{ for every } w \in W\}.
+\end{equation*}
+</div></div></article><div class="para" id="sec-orthogonalization-4">직교여공간은 내적 또는 에르미트 내적에 의존하는 기하학적 개념입니다. 그 기초적 대수적 성질은 다음과 같습니다.</div>
+<article class="proposition theorem-like" id="prop-orthogonal-complement-direct-sum"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">직교여공간에 의한 직합 분해.</span>
+</h3>
+<div class="para" id="prop-orthogonal-complement-direct-sum-2">유한 차원 내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여 다음이 성립한다.</div>
+<div class="para logical" id="prop-orthogonal-complement-direct-sum-3"><div class="displaymath process-math">
+\begin{equation*}
+V = W \oplus W^{\perp}, \qquad \dim V = \dim W + \dim W^{\perp}.
+\end{equation*}
+</div></div></article><details id="prop-orthogonal-complement-direct-sum-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-orthogonal-complement-direct-sum-4-1">
+<span class="process-math">\(W\)</span>의 직교정규 기저를 <span class="process-math">\(u_1,\ldots,u_r\)</span>라 하자. 이를 <span class="process-math">\(V\)</span>의 직교정규 기저 <span class="process-math">\(u_1,\ldots,u_r,u_{r+1},\ldots,u_n\)</span>으로 확장할 수 있다. <span class="process-math">\(j&gt;r\)</span>인 각 <span class="process-math">\(u_j\)</span>는 <span class="process-math">\(W\)</span>의 모든 벡터와 직교하므로 <span class="process-math">\(W^{\perp}\)</span>에 속한다.</div>
+<div class="para logical" id="prop-orthogonal-complement-direct-sum-4-2">
+<div class="para">반대로 <span class="process-math">\(v\in W^{\perp}\)</span>를 이 기저로 나타내면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+v=\sum_{i=1}^{n}a_i u_i.
+\end{equation*}
+</div>
+<div class="para">
+<span class="process-math">\(1\leq j\leq r\)</span>에 대하여 <span class="process-math">\(0=\langle v,u_j\rangle=a_j\)</span>이므로, <span class="process-math">\(v\)</span>는 <span class="process-math">\(u_{r+1},\ldots,u_n\)</span>의 선형결합이다. 따라서 이 벡터들이 <span class="process-math">\(W^{\perp}\)</span>의 기저이고 <span class="process-math">\(\dim W^{\perp}=n-r\)</span>이다.</div>
+</div>
+<div class="para logical" id="prop-orthogonal-complement-direct-sum-4-3">
+<div class="para">확장된 기저로부터 <span class="process-math">\(V=W+W^{\perp}\)</span>이다. 한편 <span class="process-math">\(x\in W\cap W^{\perp}\)</span>이면 <span class="process-math">\(\langle x,x\rangle=0\)</span>이므로 내적의 양의 정부호성에 의해 <span class="process-math">\(x=0\)</span>이다. 따라서 합은 직합이며,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dim V=n=r+(n-r)=\dim W+\dim W^{\perp}
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div></article></details><div class="para" id="sec-orthogonalization-6">위에서는 직교여공간의 정의를 내적공간에서 정의하였지만, 에르미트 공간에서도 동일하게 정의할 수 있습니다.</div>
+<article class="definition definition-like" id="def-hermitian-orthogonal-complement"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 공간의 직교여공간.</span>
+</h3>
+<div class="para" id="def-hermitian-orthogonal-complement-2">에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <em class="emphasis">직교여공간</em>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
+<div class="para logical" id="def-hermitian-orthogonal-complement-3"><div class="displaymath process-math">
+\begin{equation*}
+W^{\perp} = \{v \in V : \langle v,w \rangle = 0 \text{ for every } w \in W\}.
+\end{equation*}
+</div></div></article><article class="proposition theorem-like" id="prop-orthonormal-basis-existence"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">직교정규 기저의 존재.</span>
+</h3>
+<div class="para" id="prop-orthonormal-basis-existence-2">모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖는다.</div></article><details id="prop-orthonormal-basis-existence-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-orthonormal-basis-existence-3-1">
+<div class="para">차원에 대한 수학적 귀납법으로 증명한다. <span class="process-math">\(\dim V=1\)</span>인 경우, 영이 아닌 벡터 <span class="process-math">\(v\)</span>를 택하고</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u=\frac{v}{\sqrt{\langle v,v\rangle}}
+\end{equation*}
+</div>
+<div class="para">로 두면 <span class="process-math">\(\langle u,u\rangle=1\)</span>이고 <span class="process-math">\(\{u\}\)</span>는 <span class="process-math">\(V\)</span>의 직교정규 기저이다.</div>
+</div>
+<div class="para logical" id="prop-orthonormal-basis-existence-3-2">
+<div class="para">이제 차원이 <span class="process-math">\(n&gt;1\)</span>인 모든 공간이 직교정규 기저를 갖는다고 가정하고, <span class="process-math">\(\dim V=n+1\)</span>인 공간 <span class="process-math">\(V\)</span>를 생각하자. 영이 아닌 벡터 <span class="process-math">\(v_1\in V\)</span>를 택하고 <span class="process-math">\(u_1=v_1/\sqrt{\langle v_1,v_1\rangle}\)</span>로 두자. 그러면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W=\operatorname{span}\{u_1\}^{\perp}
+\end{equation*}
+</div>
+<div class="para">는 <span class="process-math">\(V\)</span>의 부분공간이며, 앞의 직합 분해에 의해 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>이고 <span class="process-math">\(\dim W=n\)</span>이다.</div>
+</div>
+<div class="para" id="prop-orthonormal-basis-existence-3-3">귀납 가정에 따라 <span class="process-math">\(W\)</span>는 직교정규 기저 <span class="process-math">\(u_2,\ldots,u_{n+1}\)</span>을 갖는다. <span class="process-math">\(W\)</span>의 모든 벡터는 <span class="process-math">\(u_1\)</span>과 직교하므로 <span class="process-math">\(u_1,u_2,\ldots,u_{n+1}\)</span>은 서로 직교하고 각각 길이가 1이다. 또한 이들은 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>를 생성하므로 <span class="process-math">\(V\)</span>의 직교정규 기저이다. 따라서 귀납법에 의해 모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖는다.</div></article></details><div class="para" id="sec-orthogonalization-9">직교정규 기저의 존재는 그 자체로 중요하지만, 실용적 측면에서는 한계가 있습니다. 많은 경우 벡터공간 <span class="process-math">\(V\)</span>는 <span class="process-math">\(V\)</span>로 주어지기보다 기저에 의해 주어지는 경우가 많기 때문입니다. 가령, 다항식의 공간을 생각할 때 함수를 저장하는 것은 사실상 불가능한 반면 단항식의 선형결합으로 표현하면 효율적입니다. 따라서, 주어진 기저를 정규직교화 하는 것이 중요합니다. 이를 위한 대표적 방법은 그람-슈미트 과정입니다.</div>
+<article class="definition definition-like" id="def-vector-norm"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">벡터의 노름.</span>
+</h3>
+<div class="para" id="def-vector-norm-2">내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(v\)</span>의 <em class="emphasis">노름</em>은 다음과 같이 정의하며, <span class="process-math">\(|\!|v |\!|\)</span>로 나타낸다.</div>
+<div class="para logical" id="def-vector-norm-3"><div class="displaymath process-math" id="def-vector-norm-3-1">
+\begin{gather*}
+\end{gather*}
+</div></div></article><article class="algorithm theorem-like" id="alg-gram-schmidt"><h3 class="heading">
+<span class="type">알고리즘</span><span class="space"> </span><span class="codenumber">1.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">그람-슈미트 과정.</span>
+</h3>
+<div class="para" id="alg-gram-schmidt-2">내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>에서 선형독립인 벡터 <span class="process-math">\(v_1, \cdots ,v_k\)</span>가 주어졌다고 하자. 다음과 같이 정의하면 <span class="process-math">\(u_1, \cdots ,u_k\)</span>는 같은 부분공간의 직교정규 기저가 된다.</div>
+<div class="para logical" id="alg-gram-schmidt-3">
+<div class="para">먼저</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_1=\frac{v_1}{|\!| v_1|\!|}
+\end{equation*}
+</div>
+<div class="para">로 둔다. <span class="process-math">\(j=2, \cdots ,k\)</span>에 대하여 이미 정의된 벡터들을 이용해</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w_j=v_j-\sum_{i=1}^{j-1}\frac{\langle v_j,u_i\rangle}{\langle u_i,u_i\rangle}u_i
+\end{equation*}
+</div>
+<div class="para">로 두고,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_j=\frac{w_j}{|\!| w_j|\!|}
+\end{equation*}
+</div>
+<div class="para">로 둔다. 앞에서 얻은 벡터들이 이미 정규화되어 있으므로 이 식은 다음과 같이 쓸 수도 있다.</div>
+</div>
+<div class="para logical" id="alg-gram-schmidt-4"><div class="displaymath process-math">
+\begin{equation*}
+w_j=v_j-\sum_{i=1}^{j-1}\langle v_j,u_i\rangle u_i,
+\qquad u_j=\frac{w_j}{|\!| w_j|\!|}.
+\end{equation*}
+</div></div>
+<div class="para" id="alg-gram-schmidt-5">즉, 각 단계에서 <span class="process-math">\(v_j\)</span>에서 이전 직교정규 벡터들이 생성하는 부분공간으로의 정사영을 빼서 모든 이전 벡터와 직교하는 벡터를 만든 뒤, 그 벡터의 길이를 1로 만든다. 선형독립성에 의해 <span class="process-math">\(w_j\neq 0\)</span>이므로 이 과정은 항상 실행 가능하다.</div></article><div class="para logical" id="sec-orthogonalization-12">
+<div class="para">그람-슈미트 과정에서 <span class="process-math">\(w_j\)</span>는 <span class="process-math">\(v_1, \cdots ,v_j\)</span>가 생성하는 부분공간에 속하고, 역으로 <span class="process-math">\(v_j\)</span>는 <span class="process-math">\(w_j\)</span>와 이전 벡터들의 선형결합으로 나타난다. 따라서 각 단계에서 생성된 벡터들은 원래 벡터들과 같은 부분공간을 생성하며, 최종적으로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{span}\{u_1, \cdots ,u_k\}
+=\operatorname{span}\{v_1, \cdots ,v_k\}
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div>
+<section class="exercises" id="exercises-orthogonalization"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<div class="para logical" id="exercises-orthogonalization-2">
+<div class="para">에르미트 공간에 관한 문제에서는 본문의 그람-슈미트 과정과 같이 내적이 첫 번째 변수에 대하여 선형이고 두 번째 변수에 대하여 켤레선형인 것으로 약속한다. 즉, <span class="process-math">\(\mathbb{C}^n\)</span>에서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle z,w\rangle=\sum_i z_i\overline{w_i}
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div>
+<article class="exercise exercise-like" id="exer-orth-routine-1"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">직교여공간과 직합 분해.</span>
+</h4>
+<div class="para logical" id="exer-orth-routine-1-2-1">
+<div class="para">표준 내적을 갖는 <span class="process-math">\(\mathbb{R}^3\)</span>에서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W=\operatorname{span}\{(1,1,0),(0,1,1)\}
+\end{equation*}
+</div>
+<div class="para">라 하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-routine-1-2-2">
+<li id="exer-orth-routine-1-2-2-1"><div class="para" id="exer-orth-routine-1-2-2-1-1">
+<span class="process-math">\(W^{\perp}\)</span>의 기저와 직교정규 기저를 각각 구하여라.</div></li>
+<li id="exer-orth-routine-1-2-2-2"><div class="para" id="exer-orth-routine-1-2-2-2-1">
+<a href="sec-orthogonalization.html#prop-orthogonal-complement-direct-sum" class="xref" data-knowl="./knowl/xref/prop-orthogonal-complement-direct-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.2.2: 직교여공간에 의한 직합 분해">명제 1.2.2</a>의 차원 등식이 성립함을 확인하여라.</div></li>
+<li id="exer-orth-routine-1-2-2-3"><div class="para" id="exer-orth-routine-1-2-2-3-1">
+<span class="process-math">\(x=(1,2,3)\)</span>을 <span class="process-math">\(w\in W\)</span>와 <span class="process-math">\(w'\in W^{\perp}\)</span>를 이용하여 <span class="process-math">\(x=w+w'\)</span>의 꼴로 나타내어라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-routine-1-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="exer-orth-routine-1-3-1">
+<div class="para">
+<span class="process-math">\((a,b,c)\in W^{\perp}\)</span>일 필요충분조건은 <span class="process-math">\(a+b=0\)</span>이고 <span class="process-math">\(b+c=0\)</span>인 것이다. 따라서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W^{\perp}=\operatorname{span}\{(1,-1,1)\}.
+\end{equation*}
+</div>
+<div class="para">특히 <span class="process-math">\(\dim W+\dim W^{\perp}=2+1=3\)</span>이다. <span class="process-math">\(W^{\perp}\)</span>의 직교정규 기저 하나는 <span class="process-math">\(\{(1,-1,1)/\sqrt3\}\)</span>이다.</div>
+</div>
+<div class="para logical" id="exer-orth-routine-1-3-2">
+<div class="para">
+<span class="process-math">\(x\)</span>의 <span class="process-math">\(W^{\perp}\)</span> 성분은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w'=\frac{\langle x,(1,-1,1)\rangle}{3}(1,-1,1)
+=\frac23(1,-1,1)
+\end{equation*}
+</div>
+<div class="para">이다. 따라서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w=x-w'=\left(\frac13,\frac83,\frac73\right).
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="exercise exercise-like" id="exer-orth-routine-2"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">그람-슈미트 과정의 계산.</span>
+</h4>
+<div class="para logical" id="exer-orth-routine-2-2-1">
+<div class="para">표준 내적을 갖는 <span class="process-math">\(\mathbb{R}^3\)</span>에서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+v_1=(1,1,1),\qquad
+v_2=(1,1,0),\qquad
+v_3=(1,0,0)
+\end{equation*}
+</div>
+<div class="para">에 그람-슈미트 과정을 적용하여 직교정규 기저 <span class="process-math">\(u_1,u_2,u_3\)</span>을 구하여라. 각 단계에서 생기는 <span class="process-math">\(w_j\)</span>도 함께 적어라.</div>
+</div>
+<div class="solutions"><details id="exer-orth-routine-2-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-orth-routine-2-3-1">
+<div class="para">첫 단계에서는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_1=\frac1{\sqrt3}(1,1,1)
+\end{equation*}
+</div>
+<div class="para">을 얻는다. 다음 단계에서는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w_2=v_2-\frac23(1,1,1)
+=\frac13(1,1,-2),
+\qquad
+u_2=\frac1{\sqrt6}(1,1,-2).
+\end{equation*}
+</div>
+<div class="para">마지막으로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w_3
+=v_3-\frac13(1,1,1)-\frac16(1,1,-2)
+=\frac12(1,-1,0),
+\end{equation*}
+</div>
+<div class="para">이므로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_3=\frac1{\sqrt2}(1,-1,0).
+\end{equation*}
+</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-routine-3"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">에르미트 공간의 직교여공간.</span>
+</h4>
+<div class="para" id="exer-orth-routine-3-2-1">표준 에르미트 내적을 갖는 <span class="process-math">\(\mathbb{C}^2\)</span>에서 <span class="process-math">\(W=\operatorname{span}\{(1,i)\}\)</span>라 하자.</div> <ol class="lower-alpha" id="exer-orth-routine-3-2-2">
+<li id="exer-orth-routine-3-2-2-1"><div class="para" id="exer-orth-routine-3-2-2-1-1">
+<span class="process-math">\(W^{\perp}\)</span>와 그 직교정규 기저를 구하여라.</div></li>
+<li id="exer-orth-routine-3-2-2-2"><div class="para" id="exer-orth-routine-3-2-2-2-1">
+<span class="process-math">\(W\oplus W^{\perp}=\mathbb{C}^2\)</span>임을 직접 확인하여라.</div></li>
+<li id="exer-orth-routine-3-2-2-3"><div class="para" id="exer-orth-routine-3-2-2-3-1">에르미트 내적에서 켤레를 잊고 계산하면 어떤 잘못된 결론에 이르는지 설명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-routine-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="exer-orth-routine-3-3-1">
+<div class="para">
+<span class="process-math">\((a,b)\in W^{\perp}\)</span>일 필요충분조건은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle(a,b),(1,i)\rangle=a-ib=0
+\end{equation*}
+</div>
+<div class="para">인 것이다. 따라서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W^{\perp}=\operatorname{span}\{(i,1)\}.
+\end{equation*}
+</div>
+<div class="para">그 직교정규 기저 하나는 <span class="process-math">\(\{(i,1)/\sqrt2\}\)</span>이다.</div>
+</div>
+<div class="para" id="exer-orth-routine-3-3-2">
+<span class="process-math">\((1,i)\)</span>와 <span class="process-math">\((i,1)\)</span>은 선형독립이므로 두 공간의 합은 <span class="process-math">\(\mathbb{C}^2\)</span>이다. 켤레를 잊으면 잘못된 방정식 <span class="process-math">\(a+ib=0\)</span>을 얻고, 이로부터 <span class="process-math">\(W^{\perp}=W\)</span>라는 모순된 결론에 이르게 된다.</div>
+</div></details></div></article><article class="exercise exercise-like" id="exer-orth-routine-4"><h4 class="heading">
+<span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">직교정규 기저를 이용한 정사영.</span>
+</h4>
+<div class="para logical" id="exer-orth-routine-4-2-1">
+<div class="para">표준 내적을 갖는 <span class="process-math">\(\mathbb{R}^4\)</span>에서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_1=\frac1{\sqrt2}(1,1,0,0),\qquad
+u_2=\frac1{\sqrt2}(0,0,1,-1)
+\end{equation*}
+</div>
+<div class="para">이라 하고, <span class="process-math">\(W=\operatorname{span}\{u_1,u_2\}\)</span>라 하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-routine-4-2-2">
+<li id="exer-orth-routine-4-2-2-1"><div class="para" id="exer-orth-routine-4-2-2-1-1">
+<span class="process-math">\(u_1,u_2\)</span>가 직교정규 집합임을 확인하여라.</div></li>
+<li id="exer-orth-routine-4-2-2-2"><div class="para" id="exer-orth-routine-4-2-2-2-1">
+<span class="process-math">\(W^{\perp}\)</span>의 직교정규 기저 하나를 구하여라.</div></li>
+<li id="exer-orth-routine-4-2-2-3"><div class="para" id="exer-orth-routine-4-2-2-3-1">
+<span class="process-math">\(v=(2,0,3,1)\)</span>을 <span class="process-math">\(w\in W\)</span>와 <span class="process-math">\(w'\in W^{\perp}\)</span>를 이용하여 <span class="process-math">\(v=w+w'\)</span>의 꼴로 나타내어라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-routine-4-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="exer-orth-routine-4-3-1">
+<div class="para">
+<span class="process-math">\(u_1,u_2\)</span>는 서로 직교하고 각각 노름이 <span class="process-math">\(1\)</span>이다. 또한</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W^{\perp}
+=\operatorname{span}\{(1,-1,0,0),(0,0,1,1)\}.
+\end{equation*}
+</div>
+<div class="para">따라서 이 공간의 직교정규 기저 하나는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\frac1{\sqrt2}(1,-1,0,0),\qquad
+\frac1{\sqrt2}(0,0,1,1)
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div>
+<div class="para logical" id="exer-orth-routine-4-3-2">
+<div class="para">
+<span class="process-math">\(v\)</span>의 <span class="process-math">\(W\)</span> 성분은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w=\langle v,u_1\rangle u_1+\langle v,u_2\rangle u_2
+=(1,1,1,-1)
+\end{equation*}
+</div>
+<div class="para">이고, 따라서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w'=v-w=(1,-1,2,2)
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div>
+</div></details></div></article><article class="exercise exercise-like" id="exer-orth-routine-5"><h4 class="heading">
+<span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">벡터의 순서와 그람-슈미트 과정.</span>
+</h4>
+<div class="para" id="exer-orth-routine-5-2-1">
+<span class="process-math">\(\mathbb{R}^2\)</span>에서 <span class="process-math">\(v_1=(1,0)\text{,}\)</span> <span class="process-math">\(v_2=(1,1)\)</span>이라 하자.</div> <ol class="lower-alpha" id="exer-orth-routine-5-2-2">
+<li id="exer-orth-routine-5-2-2-1"><div class="para" id="exer-orth-routine-5-2-2-1-1">순서 있는 기저 <span class="process-math">\(v_1,v_2\)</span>에 그람-슈미트 과정을 적용하여라.</div></li>
+<li id="exer-orth-routine-5-2-2-2"><div class="para" id="exer-orth-routine-5-2-2-2-1">순서를 바꾸어 <span class="process-math">\(v_2,v_1\)</span>에 그람-슈미트 과정을 적용하여라.</div></li>
+<li id="exer-orth-routine-5-2-2-3"><div class="para" id="exer-orth-routine-5-2-2-3-1">두 결과가 모두 같은 공간의 직교정규 기저이지만 일반적으로 서로 일치하지 않는 이유를 설명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-routine-5-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-orth-routine-5-3-1">
+<div class="para">순서 <span class="process-math">\(v_1,v_2\)</span>에서는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_1=(1,0),\qquad u_2=(0,1)
+\end{equation*}
+</div>
+<div class="para">을 얻는다. 반대 순서에서는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u'_1=\frac1{\sqrt2}(1,1),\qquad
+u'_2=\frac1{\sqrt2}(1,-1)
+\end{equation*}
+</div>
+<div class="para">을 얻는다. 첫 번째 출력 벡터가 첫 번째 입력 벡터의 방향으로 정해지므로 입력 순서가 바뀌면 결과도 달라질 수 있다.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-1"><h4 class="heading">
+<span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">직교여공간의 대수적 성질.</span>
+</h4>
+<div class="para" id="exer-orth-standard-1-2-1">유한 차원 내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W,W_1,W_2\)</span>에 대하여 다음을 증명하여라.</div> <ol class="lower-alpha" id="exer-orth-standard-1-2-2">
+<li id="exer-orth-standard-1-2-2-1"><div class="para" id="exer-orth-standard-1-2-2-1-1">
+<span class="process-math">\(W^{\perp}\)</span>은 부분공간이고 <span class="process-math">\(W\cap W^{\perp}=\{0\}\)</span>이다.</div></li>
+<li id="exer-orth-standard-1-2-2-2"><div class="para" id="exer-orth-standard-1-2-2-2-1">
+<span class="process-math">\(W_1\subseteq W_2\)</span>이면 <span class="process-math">\(W_2^{\perp}\subseteq W_1^{\perp}\)</span>이다.</div></li>
+<li id="exer-orth-standard-1-2-2-3"><div class="para" id="exer-orth-standard-1-2-2-3-1">
+<span class="process-math">\((W^{\perp})^{\perp}=W\)</span>이다.</div></li>
+<li id="exer-orth-standard-1-2-2-4"><div class="para logical" id="exer-orth-standard-1-2-2-4-1">
+<div class="para">다음 두 등식을 증명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(W_1+W_2)^{\perp}
+=W_1^{\perp}\cap W_2^{\perp},
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(W_1\cap W_2)^{\perp}
+=W_1^{\perp}+W_2^{\perp}.
+\end{equation*}
+</div>
+</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-standard-1-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-standard-1-3-1">세 번째 명제에서 포함관계 <span class="process-math">\(W\subseteq(W^{\perp})^{\perp}\)</span>는 정의에서 바로 나온다. 등호는 차원을 비교하여 얻을 수 있다. 마지막 두 번째 등식에는 첫 번째 등식과 이중 직교여공간에 관한 결과를 적용하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-2"><h4 class="heading">
+<span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">다항식의 직교화.</span>
+</h4>
+<div class="para logical" id="exer-orth-standard-2-2-1">
+<div class="para">차수가 <span class="process-math">\(2\)</span> 이하인 실계수 다항식의 공간 <span class="process-math">\(P_2\)</span>에</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx
+\end{equation*}
+</div>
+<div class="para">로 내적을 정의한다. 순서 있는 기저 <span class="process-math">\(1,x,x^2\)</span>에 그람-슈미트 과정을 적용하여 직교정규 기저를 구하여라. 얻은 다항식들이 서로 직교하고 노름이 <span class="process-math">\(1\)</span>인지 직접 확인하여라.</div>
+</div>
+<div class="solutions"><details id="exer-orth-standard-2-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-orth-standard-2-3-1">
+<div class="para">첫 두 단계에서</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_1=\frac1{\sqrt2},\qquad
+w_2=x,\qquad
+u_2=\sqrt{\frac32}\,x
+\end{equation*}
+</div>
+<div class="para">를 얻는다. 세 번째 단계에서는</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w_3=x^2-\frac13,\qquad
+\lVert w_3\rVert^2=\frac8{45}
+\end{equation*}
+</div>
+<div class="para">이므로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+u_3=\sqrt{\frac{45}{8}}
+\left(x^2-\frac13\right)
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-3"><h4 class="heading">
+<span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">그람-슈미트 과정의 유일성.</span>
+</h4>
+<div class="para logical" id="exer-orth-standard-3-2-1">
+<div class="para">
+<span class="process-math">\(v_1,\ldots,v_k\)</span>가 선형독립이고 <span class="process-math">\(u_1,\ldots,u_k\)</span>가 직교정규 벡터들이라고 하자. 모든 <span class="process-math">\(j\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{span}\{u_1,\ldots,u_j\}
+=
+\operatorname{span}\{v_1,\ldots,v_j\}
+\end{equation*}
+</div>
+<div class="para">이고</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle v_j,u_j\rangle&gt;0
+\end{equation*}
+</div>
+<div class="para">라고 가정하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-standard-3-2-2">
+<li id="exer-orth-standard-3-2-2-1"><div class="para logical" id="exer-orth-standard-3-2-2-1-1">
+<div class="para">
+<span class="process-math">\(L_j=\operatorname{span}\{v_1,\ldots,v_j\}\)</span>라 할 때</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{span}\{u_j\}
+=L_j\cap L_{j-1}^{\perp}
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라. 여기서 <span class="process-math">\(L_0=\{0\}\)</span>이다.</div>
+</div></li>
+<li id="exer-orth-standard-3-2-2-2"><div class="para" id="exer-orth-standard-3-2-2-2-1">
+<span class="process-math">\(u_1,\ldots,u_k\)</span>가 그람-슈미트 과정으로 얻는 벡터들과 정확히 일치함을 증명하여라.</div></li>
+<li id="exer-orth-standard-3-2-2-3"><div class="para" id="exer-orth-standard-3-2-2-3-1">조건 <span class="process-math">\(\langle v_j,u_j\rangle&gt;0\)</span>을 제거하면 실수 내적공간과 복소 에르미트 공간에서 각각 어떤 자유도가 남는지 설명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-standard-3-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-standard-3-3-1">
+<span class="process-math">\(L_j\cap L_{j-1}^{\perp}\)</span>가 1차원임을 먼저 보여라. 실수의 경우 각 <span class="process-math">\(u_j\)</span>의 부호를 바꿀 수 있고, 복소수의 경우 절댓값이 <span class="process-math">\(1\)</span>인 복소수를 곱할 수 있다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-4"><h4 class="heading">
+<span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">정사영과 최단 거리.</span>
+</h4>
+<div class="para logical" id="exer-orth-standard-4-2-1">
+<div class="para">유한 차원 내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>와 벡터 <span class="process-math">\(v\in V\)</span>를 생각하자. 직교직합 분해에 따라</div>
+<div class="displaymath process-math">
+\begin{equation*}
+v=w+w',\qquad w\in W,\quad w'\in W^{\perp}
+\end{equation*}
+</div>
+<div class="para">로 쓰자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-standard-4-2-2">
+<li id="exer-orth-standard-4-2-2-1"><div class="para logical" id="exer-orth-standard-4-2-2-1-1">
+<div class="para">
+<span class="process-math">\(u_1,\ldots,u_r\)</span>이 <span class="process-math">\(W\)</span>의 직교정규 기저이면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w=\sum_{i=1}^r\langle v,u_i\rangle u_i
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라.</div>
+</div></li>
+<li id="exer-orth-standard-4-2-2-2"><div class="para logical" id="exer-orth-standard-4-2-2-2-1">
+<div class="para">모든 <span class="process-math">\(x\in W\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert v-x\rVert^2
+=\lVert w'\rVert^2+\lVert w-x\rVert^2
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라.</div>
+</div></li>
+<li id="exer-orth-standard-4-2-2-3"><div class="para" id="exer-orth-standard-4-2-2-3-1">
+<span class="process-math">\(w\)</span>가 <span class="process-math">\(W\)</span>의 벡터 중 <span class="process-math">\(v\)</span>와의 거리가 가장 가까운 유일한 벡터임을 증명하여라.</div></li>
+<li id="exer-orth-standard-4-2-2-4"><div class="para" id="exer-orth-standard-4-2-2-4-1">그람-슈미트 과정에서 <span class="process-math">\(v_j-w_j\)</span>는 <span class="process-math">\(\operatorname{span}\{v_1,\ldots,v_{j-1}\}\)</span>에서 <span class="process-math">\(v_j\)</span>와 가장 가까운 벡터임을 설명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-standard-4-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-standard-4-3-1">
+<span class="process-math">\(v-x=w'+(w-x)\)</span>이고 두 항은 서로 직교한다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-5"><h4 class="heading">
+<span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">직교정규 집합의 확장.</span>
+</h4>
+<div class="para" id="exer-orth-standard-5-2-1">
+<span class="process-math">\(V\)</span>가 유한 차원 내적공간 또는 에르미트 공간이고 <span class="process-math">\(u_1,\ldots,u_r\)</span>가 <span class="process-math">\(V\)</span>의 직교정규 집합이라고 하자. 다음을 증명하여라.</div> <ol class="lower-alpha" id="exer-orth-standard-5-2-2">
+<li id="exer-orth-standard-5-2-2-1"><div class="para" id="exer-orth-standard-5-2-2-1-1">
+<span class="process-math">\(W=\operatorname{span}\{u_1,\ldots,u_r\}\)</span>라 하면 <span class="process-math">\(V=W\oplus W^{\perp}\)</span>이다.</div></li>
+<li id="exer-orth-standard-5-2-2-2"><div class="para" id="exer-orth-standard-5-2-2-2-1">
+<span class="process-math">\(W^{\perp}\)</span>의 직교정규 기저를 선택하여 <span class="process-math">\(u_1,\ldots,u_r\)</span>에 덧붙이면 <span class="process-math">\(V\)</span>의 직교정규 기저를 얻는다.</div></li>
+<li id="exer-orth-standard-5-2-2-3"><div class="para" id="exer-orth-standard-5-2-2-3-1">모든 직교정규 집합은 어떤 직교정규 기저의 부분집합임을 결론지어라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-standard-5-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-standard-5-3-1">
+<a href="sec-orthogonalization.html#prop-orthogonal-complement-direct-sum" class="xref" data-knowl="./knowl/xref/prop-orthogonal-complement-direct-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.2.2: 직교여공간에 의한 직합 분해">명제 1.2.2</a>과 <a href="sec-orthogonalization.html#prop-orthonormal-basis-existence" class="xref" data-knowl="./knowl/xref/prop-orthonormal-basis-existence.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.2.4: 직교정규 기저의 존재">명제 1.2.4</a>를 <span class="process-math">\(W^{\perp}\)</span>에 적용하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-standard-6"><h4 class="heading">
+<span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">선형종속성과 과정의 중단.</span>
+</h4>
+<div class="para" id="exer-orth-standard-6-2-1">벡터 <span class="process-math">\(v_1,\ldots,v_k\)</span>에 그람-슈미트 과정을 순서대로 적용한다고 하자. 이전 단계들이 모두 실행되었다고 가정할 때, 다음을 증명하여라.</div> <ol class="lower-alpha" id="exer-orth-standard-6-2-2">
+<li id="exer-orth-standard-6-2-2-1"><div class="para logical" id="exer-orth-standard-6-2-2-1-1">
+<div class="para">
+<span class="process-math">\(w_j=0\)</span>일 필요충분조건은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+v_j\in\operatorname{span}\{v_1,\ldots,v_{j-1}\}
+\end{equation*}
+</div>
+<div class="para">인 것이다.</div>
+</div></li>
+<li id="exer-orth-standard-6-2-2-2"><div class="para" id="exer-orth-standard-6-2-2-2-1">그람-슈미트 과정이 모든 단계에서 영이 아닌 <span class="process-math">\(w_j\)</span>를 만들 필요충분조건은 <span class="process-math">\(v_1,\ldots,v_k\)</span>가 선형독립인 것이다.</div></li>
+<li id="exer-orth-standard-6-2-2-3"><div class="para logical" id="exer-orth-standard-6-2-2-3-1">
+<div class="para">
+<span class="process-math">\(\mathbb{R}^3\)</span>의 벡터</div>
+<div class="displaymath process-math">
+\begin{equation*}
+v_1=(1,0,1),\qquad
+v_2=(0,1,1),\qquad
+v_3=(1,1,2)
+\end{equation*}
+</div>
+<div class="para">에 과정을 적용하여 처음으로 영벡터가 생기는 단계를 확인하여라.</div>
+</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-standard-6-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-standard-6-3-1">
+<span class="process-math">\(w_j\)</span>는 <span class="process-math">\(v_j\)</span>에서 이전 벡터들이 생성하는 공간으로의 정사영을 뺀 벡터이다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-challenge-1"><h4 class="heading">
+<span class="codenumber">12<span class="period">.</span></span><span class="space"> </span><span class="title">유한 차원 가정의 필요성.</span>
+</h4>
+<div class="para logical" id="exer-orth-challenge-1-2-1">
+<div class="para">여기서 <span class="process-math">\(V\)</span>는 유한개의 항을 제외하고 모두 <span class="process-math">\(0\)</span>인 실수열들의 공간, 즉</div>
+<div class="displaymath process-math">
+\begin{equation*}
+V=\bigl\{x=(x_n)_{n\ge1}\in\mathbb{R}^{\mathbb{N}}:
+x_n=0 \text{ for all but finitely many } n\bigr\}
+\end{equation*}
+</div>
+<div class="para">로 정의하자.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle x,y\rangle=\sum_{n\geq 1}x_ny_n
+\end{equation*}
+</div>
+<div class="para">로 내적을 정의하고,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W=\left\{x\in V:
+\sum_{n\geq 1}\frac{x_n}{n}=0\right\}
+\end{equation*}
+</div>
+<div class="para">이라 하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-challenge-1-2-2">
+<li id="exer-orth-challenge-1-2-2-1"><div class="para" id="exer-orth-challenge-1-2-2-1-1">
+<span class="process-math">\(W^{\perp}=\{0\}\)</span>임을 증명하여라.</div></li>
+<li id="exer-orth-challenge-1-2-2-2"><div class="para" id="exer-orth-challenge-1-2-2-2-1">
+<span class="process-math">\(W\neq V\)</span>임을 보이고, 따라서 <span class="process-math">\(V\neq W\oplus W^{\perp}\)</span>이며 <span class="process-math">\((W^{\perp})^{\perp}\neq W\)</span>임을 결론지어라.</div></li>
+<li id="exer-orth-challenge-1-2-2-3"><div class="para" id="exer-orth-challenge-1-2-2-3-1">
+<a href="sec-orthogonalization.html#prop-orthogonal-complement-direct-sum" class="xref" data-knowl="./knowl/xref/prop-orthogonal-complement-direct-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.2.2: 직교여공간에 의한 직합 분해">명제 1.2.2</a>의 증명에서 유한 차원 가정에 의존하는 단계가 무엇인지 정확히 지적하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-challenge-1-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-challenge-1-3-1">표준벡터를 <span class="process-math">\(e_n\)</span>이라 하자. <span class="process-math">\(m\neq n\)</span>일 때 <span class="process-math">\(ne_n-me_m\in W\)</span>이다. 따라서 <span class="process-math">\(y\in W^{\perp}\)</span>이면 <span class="process-math">\(ny_n=my_m\)</span>이다. 한편 <span class="process-math">\(y\)</span>는 유한 지지를 갖는다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-challenge-qr"><h4 class="heading">
+<span class="codenumber">13<span class="period">.</span></span><span class="space"> </span><span class="title">그람-슈미트 과정과 QR 분해.</span>
+</h4>
+<div class="para" id="exer-orth-challenge-qr-2-1">가역인 복소 <span class="process-math">\(n\times n\)</span> 행렬 <span class="process-math">\(A\)</span>의 열벡터를 <span class="process-math">\(v_1,\ldots,v_n\)</span>이라 하자. 이 벡터들에 그람-슈미트 과정을 적용하여 <span class="process-math">\(q_1,\ldots,q_n\)</span>을 얻는다. <span class="process-math">\(Q\)</span>를 이들을 열벡터로 갖는 행렬이라 하자.</div> <ol class="lower-alpha" id="exer-orth-challenge-qr-2-2">
+<li id="exer-orth-challenge-qr-2-2-1"><div class="para" id="exer-orth-challenge-qr-2-2-1-1">
+<span class="process-math">\(Q^*Q=I\)</span>임을 증명하여라. 여기서 <span class="process-math">\(Q^*\)</span>는 <span class="process-math">\(Q\)</span>의 켤레전치이다.</div></li>
+<li id="exer-orth-challenge-qr-2-2-2"><div class="para logical" id="exer-orth-challenge-qr-2-2-2-1">
+<div class="para">
+<span class="process-math">\(i\leq j\)</span>일 때 <span class="process-math">\(r_{ij}=\langle v_j,q_i\rangle\)</span>로 두고, <span class="process-math">\(i&gt;j\)</span>일 때 <span class="process-math">\(r_{ij}=0\)</span>으로 두자. <span class="process-math">\(R=(r_{ij})\)</span>가 대각성분이 양수인 상삼각행렬이고</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=QR
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라.</div>
+</div></li>
+<li id="exer-orth-challenge-qr-2-2-3"><div class="para" id="exer-orth-challenge-qr-2-2-3-1">
+<span class="process-math">\(A=Q_1R_1=Q_2R_2\)</span>이고 각 <span class="process-math">\(Q_i\)</span>가 유니터리 행렬이며 각 <span class="process-math">\(R_i\)</span>가 양의 대각성분을 갖는 상삼각행렬이면 <span class="process-math">\(Q_1=Q_2\)</span>이고 <span class="process-math">\(R_1=R_2\)</span>임을 증명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-challenge-qr-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para logical" id="exer-orth-challenge-qr-3-1">
+<div class="para">유일성을 보이기 위하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+Q_2^*Q_1=R_2R_1^{-1}
+\end{equation*}
+</div>
+<div class="para">을 관찰하여라. 왼쪽 행렬은 유니터리이고 오른쪽 행렬은 양의 대각성분을 갖는 상삼각행렬이다. 이러한 성질을 동시에 갖는 행렬이 항등행렬뿐임을 증명하여라.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-challenge-gram"><h4 class="heading">
+<span class="codenumber">14<span class="period">.</span></span><span class="space"> </span><span class="title">그람 행렬식과 아다마르 부등식.</span>
+</h4>
+<div class="para logical" id="exer-orth-challenge-gram-2-1">
+<div class="para">내적공간 또는 에르미트 공간의 선형독립인 벡터 <span class="process-math">\(v_1,\ldots,v_k\)</span>에 대하여 그람 행렬을</div>
+<div class="displaymath process-math">
+\begin{equation*}
+G=(\langle v_i,v_j\rangle)_{i,j}
+\end{equation*}
+</div>
+<div class="para">로 정의한다. 그람-슈미트 과정에서 얻는 벡터를 <span class="process-math">\(w_j,u_j\)</span>라 하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-challenge-gram-2-2">
+<li id="exer-orth-challenge-gram-2-2-1"><div class="para logical" id="exer-orth-challenge-gram-2-2-1-1">
+<div class="displaymath process-math">
+\begin{equation*}
+v_j=\sum_{i\leq j}r_{ij}u_i
+\end{equation*}
+</div>
+<div class="para">로 쓸 때 <span class="process-math">\(R=(r_{ij})\)</span>가 상삼각행렬이고 <span class="process-math">\(r_{jj}=\lVert w_j\rVert&gt;0\)</span>임을 증명하여라.</div>
+</div></li>
+<li id="exer-orth-challenge-gram-2-2-2"><div class="para logical" id="exer-orth-challenge-gram-2-2-2-1">
+<div class="para">내적이 첫 번째 변수에 선형이라는 약속 아래</div>
+<div class="displaymath process-math">
+\begin{equation*}
+G=R^{\mathsf T}\overline{R}
+\end{equation*}
+</div>
+<div class="para">임을 보이고, 이로부터</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det G=\prod_{j=1}^k\lVert w_j\rVert^2
+\end{equation*}
+</div>
+<div class="para">를 증명하여라.</div>
+</div></li>
+<li id="exer-orth-challenge-gram-2-2-3"><div class="para logical" id="exer-orth-challenge-gram-2-2-3-1">
+<div class="para">다음 아다마르 부등식을 증명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det G\leq\prod_{j=1}^k\lVert v_j\rVert^2
+\end{equation*}
+</div>
+</div></li>
+<li id="exer-orth-challenge-gram-2-2-4"><div class="para" id="exer-orth-challenge-gram-2-2-4-1">등호가 성립할 필요충분조건이 <span class="process-math">\(v_1,\ldots,v_k\)</span>가 서로 직교하는 것임을 증명하여라.</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-challenge-gram-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-orth-challenge-gram-3-1">
+<a href="sec-orthogonalization.html#exer-orth-standard-4" class="xref" data-knowl="./knowl/xref/exer-orth-standard-4.html" data-reveal-label="Reveal" data-close-label="Close" title="[divisionalexercise] 1.2.9: 정사영과 최단 거리">[divisionalexercise] 1.2.9</a>를 이용하면 <span class="process-math">\(\lVert w_j\rVert\leq\lVert v_j\rVert\)</span>를 얻는다. 등호가 모든 <span class="process-math">\(j\)</span>에서 성립하기 위한 조건을 조사하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-orth-challenge-polynomial-roots"><h4 class="heading">
+<span class="codenumber">15<span class="period">.</span></span><span class="space"> </span><span class="title">직교다항식의 근.</span>
+</h4>
+<div class="para logical" id="exer-orth-challenge-polynomial-roots-2-1">
+<div class="para">차수가 <span class="process-math">\(n\)</span> 이하인 실계수 다항식의 공간 <span class="process-math">\(P_n\)</span>에</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx
+\end{equation*}
+</div>
+<div class="para">로 내적을 정의한다. 순서 있는 기저 <span class="process-math">\(1,x,\ldots,x^n\)</span>에 그람-슈미트 과정을 적용하여 얻은 직교정규 다항식을 <span class="process-math">\(p_0,p_1,\ldots,p_n\)</span>이라 하자.</div>
+</div> <ol class="lower-alpha" id="exer-orth-challenge-polynomial-roots-2-2">
+<li id="exer-orth-challenge-polynomial-roots-2-2-1"><div class="para" id="exer-orth-challenge-polynomial-roots-2-2-1-1">
+<span class="process-math">\(p_k\)</span>의 차수가 정확히 <span class="process-math">\(k\)</span>이고, 차수가 <span class="process-math">\(k\)</span> 미만인 모든 다항식과 직교함을 증명하여라.</div></li>
+<li id="exer-orth-challenge-polynomial-roots-2-2-2"><div class="para" id="exer-orth-challenge-polynomial-roots-2-2-2-1">
+<span class="process-math">\(p_k\)</span>가 열린 구간 <span class="process-math">\((-1,1)\)</span>에서 서로 다른 <span class="process-math">\(k\)</span>개의 실근을 가짐을 증명하여라.</div></li>
+<li id="exer-orth-challenge-polynomial-roots-2-2-3"><div class="para logical" id="exer-orth-challenge-polynomial-roots-2-2-3-1">
+<div class="para">구간과 내적을 각각</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[a,b],\qquad
+\langle f,g\rangle
+=\int_a^b f(x)g(x)\rho(x)\,dx
+\end{equation*}
+</div>
+<div class="para">로 바꾸자. 여기서 <span class="process-math">\(\rho\)</span>는 <span class="process-math">\([a,b]\)</span>에서 양의 연속함수이다. 두 번째 결론이 여전히 성립함을 증명하고, 증명에서 <span class="process-math">\(\rho&gt;0\)</span>이 사용되는 부분을 밝혀라.</div>
+</div></li>
+</ol>
+<div class="solutions"><details id="exer-orth-challenge-polynomial-roots-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para logical" id="exer-orth-challenge-polynomial-roots-3-1">
+<div class="para">
+<span class="process-math">\((-1,1)\)</span>에서 <span class="process-math">\(p_k\)</span>의 부호를 바꾸는 서로 다른 근을 <span class="process-math">\(r_1,\ldots,r_s\)</span>라 하고</div>
+<div class="displaymath process-math">
+\begin{equation*}
+q(x)=\prod_{j=1}^s(x-r_j)
+\end{equation*}
+</div>
+<div class="para">로 두어라. 만약 <span class="process-math">\(s&lt;k\)</span>이면 첫 번째 결과에 의해 <span class="process-math">\(\langle p_k,q\rangle=0\)</span>이다. 그러나 <span class="process-math">\(p_kq\)</span>는 구간 전체에서 한쪽 부호를 가지며 항등적으로 영이 아니다.</div>
+</div></div></details></div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-symmetric-bilinear-forms.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-spectral-theorem.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>
