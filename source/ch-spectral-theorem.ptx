@@ -5,6 +5,7 @@
   <xi:include href="sec-symmetric-bilinear-forms.ptx" />
   <xi:include href="sec-orthogonalization.ptx" />
   <xi:include href="sec-spectral-theorem.ptx" />
+  <xi:include href="sec-spectral-theorem-complex.ptx" />
   <xi:include href="sec-singular-value-decomposition.ptx" />
 
 </chapter>

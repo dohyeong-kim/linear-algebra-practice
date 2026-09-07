@@ -43,6 +43,7 @@
   <rename element="observation">관찰 </rename> <!--잘 작동함-->
   <rename element="proof">증명</rename> <!--잘 작동함-->
   <rename element="proposition">명제</rename> <!--잘 작동함-->
+  <rename element="corollary">따름정리</rename> <!--잘 작동함-->
   <rename element="hint">단서</rename> <!--잘 작동함-->
   <rename element="exercises">연습문제</rename> <!--잘 작동함-->
   <rename element="figure">보기</rename> <!--잘 작동함-->
@@ -56,6 +57,7 @@
   <rename element="chapter">Ch.</rename> <!--잘 작동함-->
   <rename element="algorithm">알고리즘</rename> <!--잘 작동함-->
   <rename element="solution">예시답안</rename> <!--잘 작동함-->
+  <rename element="divisionalexercise">연습문제</rename> <!--잘 작동함-->
 
 
   <!-- 미사용

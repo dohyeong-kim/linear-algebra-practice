@@ -47,13 +47,21 @@
     </p>
   </example>
 
+  <remark xml:id="rem-polarization-exercises">
+    <title>편극</title>
+    <p>
+      대칭쌍선형형식과 대칭삼중선형형식을 각각 대응하는 동차다항식으로부터 복원하는 편극항등식은
+      연습문제 <xref ref="exer-polarization-identity"/>와 <xref ref="exer-cubic-polarization"/>에서 다룬다. 단, 체의 표수에 대한 조건이 있음에 유의하자. 
+    </p>
+  </remark>
+
   <definition xml:id="def-symmetric-bilinear-form">
     <title>대칭쌍선형형식</title>
     <p>
       체 <m>\mathbb F</m>상 벡터공간 <m>V</m> 위의 쌍선형형식
       <m>f:V\times V\to\mathbb F</m>가 모든 <m>u,v\in V</m>에 대하여
       <me>f(u,v)=f(v,u)</me>
-      를 만족하면, <m>f</m>를 <term>대칭쌍선형형식</term>이라 한다. 즉,
+      를 만족하면, <m>f</m>를 <term>대칭쌍선형형식</term><aside><p>대칭쌍선형형식:symmetric bilinear form</p></aside>이라 한다. 즉,
       대칭쌍선형형식은 두 입력 벡터의 순서를 바꾸어도 그 값이 변하지 않는 쌍선형형식이다.
     </p>
   </definition>
@@ -116,8 +124,8 @@
       <m>\langle\mathord{\cdot},\mathord{\cdot}\rangle:V\times V\to\mathbb R</m>가 주어졌다고 하자.
       모든 <m>v\in V</m>에 대하여
       <me>\langle v,v\rangle\geq 0</me>
-      이고, <m>\langle v,v\rangle=0</m>이면 <m>v=0</m>일 때, 이 형식을 <term>내적</term>이라 한다.
-      내적이 주어진 벡터공간 <m>V</m>를 <term>내적공간</term>이라 한다.
+      이고, <m>\langle v,v\rangle=0</m>이면 <m>v=0</m>일 때, 이 형식을 <term>내적</term><aside><p>내적:inner product</p></aside>이라 한다.
+      내적이 주어진 벡터공간 <m>V</m>를 <term>내적공간</term><aside><p>내적공간:inner product space</p></aside>이라 한다.
     </p>
   </definition>
 
@@ -168,8 +176,8 @@
       <me>\langle u,v\rangle=\overline{\langle v,u\rangle}</me>
       이며, 모든 <m>v\in V</m>에 대하여 <m>\langle v,v\rangle\geq 0</m>이고
       <m>\langle v,v\rangle=0</m>이면 <m>v=0</m>이라고 하자. 이때 이 함수를
-      <term>에르미트 내적</term>이라 하고, 에르미트 내적이 주어진 벡터공간 <m>V</m>를
-      <term>에르미트 공간</term>이라 한다. 켤레대칭성에 의해 둘째 변수에 대해서는
+      <term>에르미트 내적</term><aside><p>에르미트 내적:Hermitian inner product</p></aside>이라 하고, 에르미트 내적이 주어진 벡터공간 <m>V</m>를
+      <term>에르미트 공간</term><aside><p>에르미트 공간:Hermitian space</p></aside>이라 한다. 켤레대칭성에 의해 둘째 변수에 대해서는
       <me>\langle u,av+bw\rangle=\overline{a}\langle u,v\rangle+\overline{b}\langle u,w\rangle</me>
       이 성립한다.
     </p>
@@ -239,15 +247,28 @@
     <title>내적의 행렬표현</title>
     <p>
       유한차원 실내적공간 <m>V</m>의 순서기저를
-      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 내적의 <term>행렬표현</term>은
+      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 내적의 <term>행렬표현</term><aside><p>행렬표현:matrix representation</p></aside>은
       <me>G_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}</me>
-      으로 정의되는 행렬이며, 이를 기저 <m>\mathcal B</m>에 관한 <term>그람 행렬</term>이라 한다.
+      으로 정의되는 행렬이며, 이를 기저 <m>\mathcal B</m>에 관한 <term>그람 행렬</term><aside><p>그람 행렬:Gram matrix</p></aside>이라 한다.
       <m>x,y\in V</m>의 좌표열벡터를 각각 <m>[x]_{\mathcal B}</m>,
       <m>[y]_{\mathcal B}</m>라 하면
       <me>\langle x,y\rangle=[x]_{\mathcal B}^{T}G_{\mathcal B}[y]_{\mathcal B}</me>
       이다.
     </p>
   </definition>
+
+  <remark xml:id="rem-gram-matrix-general-bilinear-form">
+    <title>그람 행렬의 일반성</title>
+    <p>
+      그람 행렬의 정의에는 내적의 조건이 필요하지 않다. 실제로 체 <m>\mathbb F</m> 위의 유한차원
+      벡터공간 <m>V</m>에 주어진 임의의 쌍선형형식 <m>b:V\times V\to\mathbb F</m>와 임의의 순서기저
+      <m>\mathcal B=(v_1,\ldots,v_n)</m>에 대하여
+      <me>G_{\mathcal B}=\bigl(b(v_i,v_j)\bigr)_{1\leq i,j\leq n}</me>
+      을 <m>b</m>의 기저 <m>\mathcal B</m>에 관한 그람 행렬이라 한다. 따라서 그람 행렬이라는 개념 자체는
+      <m>b</m>가 내적인지, 또는 대응하는 이차형식 <m>q(v)=b(v,v)</m>가 양의 정부호인지에 의존하지 않는다.
+      일반적인 쌍선형형식의 그람 행렬은 대칭행렬이나 양의 정부호행렬일 필요도 없다.
+    </p>
+  </remark>
 
   <proposition xml:id="prop-inner-product-symmetric-positive-definite-matrix">
     <title>내적과 대칭 양의 정부호행렬</title>
@@ -274,7 +295,7 @@
     <title>에르미트 내적의 행렬표현</title>
     <p>
       유한차원 에르미트 공간 <m>V</m>의 순서기저를
-      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 에르미트 내적의 <term>행렬표현</term>은
+      <m>\mathcal B=(v_1,\ldots,v_n)</m>이라 하자. 에르미트 내적의 <term>행렬표현</term><aside><p>행렬표현:matrix representation</p></aside>은
       <me>H_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}</me>
       으로 정의되는 그람 행렬이다. 이 절에서 에르미트 내적은 첫째 변수에 관하여 선형이므로,
       <m>x,y\in V</m>에 대하여
@@ -766,7 +787,7 @@
       <title>내적을 결정하는 데 필요한 최소 개수의 노름값</title>
       <statement>
         <p>
-          유한집합 <m>S\subset\mathbb R^n</m>이 다음을 만족하면 <m>S</m>가 <term>내적을 결정한다</term>고 하자:
+          유한집합 <m>S\subset\mathbb R^n</m>이 다음을 만족하면 <m>S</m>가 <term>내적을 결정한다</term><aside><p>내적을 결정한다:determines the inner product</p></aside>고 하자:
           <m>\mathbb R^n</m> 위의 두 내적 <m>\langle\cdot,\cdot\rangle_1,\langle\cdot,\cdot\rangle_2</m>가
           모든 <m>v\in S</m>에 대하여 <m>\langle v,v\rangle_1=\langle v,v\rangle_2</m>이면
           두 내적은 같다.

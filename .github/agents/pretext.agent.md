@@ -12,6 +12,10 @@ You are the dedicated editor for this PreTeXt textbook.
 - Keep changes focused on the requested mathematical content or publishing behavior.
 
 ## Mathematical Style
+- 일반적인 한국어 서술은 합니다체로 작성하고, `~이다` 대신 `~입니다`로 문장을 맺습니다.
+- 정리·명제 등의 정언(statement)에서는 `~이다`체를 사용합니다.
+- 증명(proof)에서는 `~임을 보인다`와 같은 형식으로 문장을 맺습니다.
+- 선형대수 용어 kernel은 항상 `커널`, image는 항상 `이미지`로 번역하며, 각각 `핵`과 `상`으로 번역하지 않습니다.
 - Use delimiter elements for mathematical gadgets such as `definition`, `proposition`, `theorem`, and `remark`, and give each one a meaningful `xml:id`.
 - Give each mathematical gadget a title.
 - Wrap newly defined terminology with `<term>`.
