@@ -160,9 +160,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-invariant-forms-on-matrices-3-1-1 { counter-set: exer-invariant-forms-on-matrices-3-1-1 0; }
 #exer-invariant-forms-on-matrices-3-1-1 > li::marker { content: "("counter(exer-invariant-forms-on-matrices-3-1-1,lower-alpha)")"; }
 #exer-invariant-forms-on-matrices-3-1-1 > li { counter-increment: exer-invariant-forms-on-matrices-3-1-1; }
-#exer-minimal-determining-set-2-1-8 { counter-set: exer-minimal-determining-set-2-1-8 0; }
-#exer-minimal-determining-set-2-1-8 > li::marker { content: "("counter(exer-minimal-determining-set-2-1-8,lower-alpha)")"; }
-#exer-minimal-determining-set-2-1-8 > li { counter-increment: exer-minimal-determining-set-2-1-8; }
+#exer-minimal-determining-set-2-1-9 { counter-set: exer-minimal-determining-set-2-1-9 0; }
+#exer-minimal-determining-set-2-1-9 > li::marker { content: "("counter(exer-minimal-determining-set-2-1-9,lower-alpha)")"; }
+#exer-minimal-determining-set-2-1-9 > li { counter-increment: exer-minimal-determining-set-2-1-9; }
 #exer-minimal-determining-set-3-1-1 { counter-set: exer-minimal-determining-set-3-1-1 0; }
 #exer-minimal-determining-set-3-1-1 > li::marker { content: "("counter(exer-minimal-determining-set-3-1-1,lower-alpha)")"; }
 #exer-minimal-determining-set-3-1-1 > li { counter-increment: exer-minimal-determining-set-3-1-1; }
@@ -259,6 +259,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-spectral-positive-square-root-2-2-1 { counter-set: exer-spectral-positive-square-root-2-2-1 0; }
 #exer-spectral-positive-square-root-2-2-1 > li::marker { content: "("counter(exer-spectral-positive-square-root-2-2-1,lower-alpha)")"; }
 #exer-spectral-positive-square-root-2-2-1 > li { counter-increment: exer-spectral-positive-square-root-2-2-1; }
+#thm-spectral-theorem-normal-complex-2-3 { counter-set: thm-spectral-theorem-normal-complex-2-3 0; }
+#thm-spectral-theorem-normal-complex-2-3 > li::marker { content: ""counter(thm-spectral-theorem-normal-complex-2-3,decimal)"."; }
+#thm-spectral-theorem-normal-complex-2-3 > li { counter-increment: thm-spectral-theorem-normal-complex-2-3; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -311,7 +314,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.3</span> <span class="title">스펙트럴 정리: 실수체의 경우</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem.html#exercises-spectral-theorem-real" class="internal"><span class="codenumber">1.3</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.4</span> <span class="title">특이값 분해</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리:복소체의 경우</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div></li>
@@ -391,8 +395,11 @@ f((x,y),(x,y),(x,y))=x^3+3x^2y+3xy^2+2y^3=p(x,y)
 \end{equation*}
 </div>
 <div class="para">이므로, 이 대칭삼중선형형식은 주어진 삼차 동차다항식을 대각선 위에서 되돌려 준다.</div>
-</div></article></details><article class="definition definition-like" id="def-symmetric-bilinear-form"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">대칭쌍선형형식.</span>
+</div></article></details><article class="remark remark-like" id="rem-polarization-exercises"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">1.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">편극.</span>
+</h3>
+<div class="para" id="rem-polarization-exercises-2">대칭쌍선형형식과 대칭삼중선형형식을 각각 대응하는 동차다항식으로부터 복원하는 편극항등식은 연습문제 <a href="sec-symmetric-bilinear-forms.html#exer-polarization-identity" class="xref" data-knowl="./knowl/xref/exer-polarization-identity.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.1.6: 편극항등식과 표수 2">연습문제 1.1.6</a>와 <a href="sec-symmetric-bilinear-forms.html#exer-cubic-polarization" class="xref" data-knowl="./knowl/xref/exer-cubic-polarization.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.1.7: 대칭삼중선형형식의 편극">연습문제 1.1.7</a>에서 다룬다. 단, 체의 표수에 대한 조건이 있음에 유의하자.</div></article><article class="definition definition-like" id="def-symmetric-bilinear-form"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">대칭쌍선형형식.</span>
 </h3>
 <div class="para logical" id="def-symmetric-bilinear-form-2">
 <div class="para">체 <span class="process-math">\(\mathbb F\)</span>상 벡터공간 <span class="process-math">\(V\)</span> 위의 쌍선형형식 <span class="process-math">\(f:V\times V\to\mathbb F\)</span>가 모든 <span class="process-math">\(u,v\in V\)</span>에 대하여</div>
@@ -401,10 +408,10 @@ f((x,y),(x,y),(x,y))=x^3+3x^2y+3xy^2+2y^3=p(x,y)
 f(u,v)=f(v,u)
 \end{equation*}
 </div>
-<div class="para">를 만족하면, <span class="process-math">\(f\)</span>를 <dfn class="terminology">대칭쌍선형형식</dfn>이라 한다. 즉, 대칭쌍선형형식은 두 입력 벡터의 순서를 바꾸어도 그 값이 변하지 않는 쌍선형형식이다.</div>
-</div></article><div class="para" id="sec-symmetric-bilinear-forms-7">대칭쌍선형형식은 대칭 다중선형형식의 특별한 경우이다. 즉, 모든 대칭쌍선형형식은 2-선형형식이며, 두 입력 벡터의 순서를 바꾸어도 값이 변하지 않는다.</div>
+<div class="para">를 만족하면, <span class="process-math">\(f\)</span>를 <dfn class="terminology">대칭쌍선형형식</dfn><aside class="aside aside-like" id="def-symmetric-bilinear-form-2-8"><div class="para" id="def-symmetric-bilinear-form-2-8-1">대칭쌍선형형식:symmetric bilinear form</div></aside>이라 한다. 즉, 대칭쌍선형형식은 두 입력 벡터의 순서를 바꾸어도 그 값이 변하지 않는 쌍선형형식이다.</div>
+</div></article><div class="para" id="sec-symmetric-bilinear-forms-8">대칭쌍선형형식은 대칭 다중선형형식의 특별한 경우이다. 즉, 모든 대칭쌍선형형식은 2-선형형식이며, 두 입력 벡터의 순서를 바꾸어도 값이 변하지 않는다.</div>
 <details id="ex-polynomial-multiplication-symmetric-bilinear-map" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">다항식의 곱셈.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">다항식의 곱셈.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-polynomial-multiplication-symmetric-bilinear-map-2">
 <div class="para">
 <span class="process-math">\(V=\mathbb F[x]\)</span>를 체 <span class="process-math">\(\mathbb F\)</span> 계수 다항식들의 벡터공간이라 하자. 두 다항식의 곱셈으로 정의되는 함수</div>
@@ -427,7 +434,7 @@ f(p,q)=pq=qp=f(q,p)
 </div>
 <div class="para">이다. 따라서 다항식의 곱셈은 대칭쌍선형사상의 예이다.</div>
 </div></article></details><details id="ex-matrix-multiplication-not-symmetric-bilinear-map" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">행렬의 곱셈은 대칭이 아닌 쌍선형사상.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">행렬의 곱셈은 대칭이 아닌 쌍선형사상.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-matrix-multiplication-not-symmetric-bilinear-map-2">
 <div class="para">
 <span class="process-math">\(V=M_n(\mathbb F)\)</span>를 체 <span class="process-math">\(\mathbb F\)</span> 위의 <span class="process-math">\(n\times n\)</span> 정사각행렬들의 벡터공간이라 하자. 행렬의 곱셈으로 정의되는 함수</div>
@@ -450,7 +457,7 @@ AB=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\ne\begin{pmatrix}0&amp;0\\0&amp;
 </div>
 <div class="para">이다. 따라서 행렬의 곱셈은 쌍선형사상이지만 대칭쌍선형사상은 아니다.</div>
 </div></article></details><details id="ex-trace-of-matrix-product-symmetric-bilinear-form" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">행렬의 곱의 대각합.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">행렬의 곱의 대각합.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-trace-of-matrix-product-symmetric-bilinear-form-2">
 <div class="para">
 <span class="process-math">\(V=M_n(\mathbb F)\)</span>를 체 <span class="process-math">\(\mathbb F\)</span> 위의 <span class="process-math">\(n\times n\)</span> 정사각행렬들의 벡터공간이라 하자. 두 행렬의 곱의 대각합(trace)을 이용하여</div>
@@ -473,7 +480,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이다. 따라서 행렬의 곱의 대각합으로 정의된 <span class="process-math">\(f\)</span>는 대칭쌍선형형식이다.</div>
 </div></article></details><article class="definition definition-like" id="def-inner-product-space"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">내적공간.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">내적공간.</span>
 </h3>
 <div class="para logical" id="def-inner-product-space-2">
 <div class="para">실수체 <span class="process-math">\(\mathbb R\)</span> 위의 벡터공간 <span class="process-math">\(V\)</span>와 대칭쌍선형형식 <span class="process-math">\(\langle\mathord{\cdot},\mathord{\cdot}\rangle:V\times V\to\mathbb R\)</span>가 주어졌다고 하자. 모든 <span class="process-math">\(v\in V\)</span>에 대하여</div>
@@ -482,9 +489,9 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 \langle v,v\rangle\geq 0
 \end{equation*}
 </div>
-<div class="para">이고, <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v=0\)</span>일 때, 이 형식을 <dfn class="terminology">내적</dfn>이라 한다. 내적이 주어진 벡터공간 <span class="process-math">\(V\)</span>를 <dfn class="terminology">내적공간</dfn>이라 한다.</div>
+<div class="para">이고, <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v=0\)</span>일 때, 이 형식을 <dfn class="terminology">내적</dfn><aside class="aside aside-like" id="def-inner-product-space-2-9"><div class="para" id="def-inner-product-space-2-9-1">내적:inner product</div></aside>이라 한다. 내적이 주어진 벡터공간 <span class="process-math">\(V\)</span>를 <dfn class="terminology">내적공간</dfn><aside class="aside aside-like" id="def-inner-product-space-2-12"><div class="para" id="def-inner-product-space-2-12-1">내적공간:inner product space</div></aside>이라 한다.</div>
 </div></article><details id="ex-standard-inner-product-space" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">표준 내적공간.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">표준 내적공간.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-standard-inner-product-space-2">
 <div class="para">
 <span class="process-math">\(\mathbb R^n\)</span>에서 두 벡터 <span class="process-math">\(u=(u_1,u_2,\ldots,u_n)\text{,}\)</span> <span class="process-math">\(v=(v_1,v_2,\ldots,v_n)\)</span>에 대하여</div>
@@ -507,7 +514,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이고, <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v_1=v_2=\cdots=v_n=0\)</span>이므로 <span class="process-math">\(v=0\)</span>이다. 따라서 <span class="process-math">\(\mathbb R^n\)</span>은 이 표준 내적에 의해 내적공간이 된다.</div>
 </div></article></details><details id="ex-polynomial-integration-inner-product" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">적분으로 정의되는 다항식공간의 내적.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">적분으로 정의되는 다항식공간의 내적.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-polynomial-integration-inner-product-2">
 <div class="para">닫힌구간 <span class="process-math">\([-1,1]\)</span>에서 정의된 실계수 다항식들의 벡터공간 <span class="process-math">\(V=\mathbb R[x]\)</span>를 생각하자. 두 다항식 <span class="process-math">\(p,q\in V\)</span>에 대하여</div>
 <div class="displaymath process-math">
@@ -529,7 +536,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이고, 이 값이 <span class="process-math">\(0\)</span>이면 연속함수 <span class="process-math">\(p(t)^2\)</span>가 구간 <span class="process-math">\([-1,1]\)</span>에서 항상 <span class="process-math">\(0\)</span>이므로 <span class="process-math">\(p=0\)</span>이다. 따라서 이 적분으로 정의된 짝짓기는 <span class="process-math">\(\mathbb R[x]\)</span> 위의 내적이다.</div>
 </div></article></details><article class="definition definition-like" id="def-hermitian-space"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 공간.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 공간.</span>
 </h3>
 <div class="para logical" id="def-hermitian-space-2">
 <div class="para">복소수체 <span class="process-math">\(\mathbb C\)</span> 위의 벡터공간 <span class="process-math">\(V\)</span>와 함수 <span class="process-math">\(\langle\mathord{\cdot},\mathord{\cdot}\rangle:V\times V\to\mathbb C\)</span>가 주어졌다고 하자. 모든 <span class="process-math">\(u,v,w\in V\)</span>와 <span class="process-math">\(a,b\in\mathbb C\)</span>에 대하여</div>
@@ -544,7 +551,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 \langle u,v\rangle=\overline{\langle v,u\rangle}
 \end{equation*}
 </div>
-<div class="para">이며, 모든 <span class="process-math">\(v\in V\)</span>에 대하여 <span class="process-math">\(\langle v,v\rangle\geq 0\)</span>이고 <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v=0\)</span>이라고 하자. 이때 이 함수를 <dfn class="terminology">에르미트 내적</dfn>이라 하고, 에르미트 내적이 주어진 벡터공간 <span class="process-math">\(V\)</span>를 <dfn class="terminology">에르미트 공간</dfn>이라 한다. 켤레대칭성에 의해 둘째 변수에 대해서는</div>
+<div class="para">이며, 모든 <span class="process-math">\(v\in V\)</span>에 대하여 <span class="process-math">\(\langle v,v\rangle\geq 0\)</span>이고 <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v=0\)</span>이라고 하자. 이때 이 함수를 <dfn class="terminology">에르미트 내적</dfn><aside class="aside aside-like" id="def-hermitian-space-2-13"><div class="para" id="def-hermitian-space-2-13-1">에르미트 내적:Hermitian inner product</div></aside>이라 하고, 에르미트 내적이 주어진 벡터공간 <span class="process-math">\(V\)</span>를 <dfn class="terminology">에르미트 공간</dfn><aside class="aside aside-like" id="def-hermitian-space-2-16"><div class="para" id="def-hermitian-space-2-16-1">에르미트 공간:Hermitian space</div></aside>이라 한다. 켤레대칭성에 의해 둘째 변수에 대해서는</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \langle u,av+bw\rangle=\overline{a}\langle u,v\rangle+\overline{b}\langle u,w\rangle
@@ -552,7 +559,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이 성립한다.</div>
 </div></article><details id="ex-standard-hermitian-space" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">표준 에르미트 공간.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">표준 에르미트 공간.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-standard-hermitian-space-2">
 <div class="para">
 <span class="process-math">\(\mathbb C^n\)</span>에서 두 벡터 <span class="process-math">\(u=(u_1,u_2,\ldots,u_n)\text{,}\)</span> <span class="process-math">\(v=(v_1,v_2,\ldots,v_n)\)</span>에 대하여</div>
@@ -575,7 +582,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이고, <span class="process-math">\(\langle v,v\rangle=0\)</span>이면 <span class="process-math">\(v_1=v_2=\cdots=v_n=0\)</span>이므로 <span class="process-math">\(v=0\)</span>이다. 따라서 <span class="process-math">\(\mathbb C^n\)</span>은 이 표준 에르미트 내적에 의해 에르미트 공간이 된다.</div>
 </div></article></details><details id="ex-polynomial-unit-disc-hermitian-space" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">단위원판 위의 적분으로 정의되는 에르미트 내적.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">단위원판 위의 적분으로 정의되는 에르미트 내적.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-polynomial-unit-disc-hermitian-space-2">
 <div class="para">복소계수 일변수 다항식들의 벡터공간 <span class="process-math">\(V=\mathbb C[z]\)</span>와 단위원판 <span class="process-math">\(D=\{z\in\mathbb C:|z|\leq 1\}\)</span>을 생각하자. 두 다항식 <span class="process-math">\(p,q\in V\)</span>에 대하여</div>
 <div class="displaymath process-math">
@@ -597,7 +604,7 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">이다. 이 값이 <span class="process-math">\(0\)</span>이면 연속함수 <span class="process-math">\(|p(z)|^2\)</span>가 <span class="process-math">\(D\)</span>에서 항상 <span class="process-math">\(0\)</span>이므로 <span class="process-math">\(p=0\)</span>이다. 따라서 이 적분은 <span class="process-math">\(\mathbb C[z]\)</span> 위의 에르미트 내적을 정의하며, <span class="process-math">\(\mathbb C[z]\)</span>는 에르미트 공간이 된다.</div>
 </div></article></details><details id="ex-unit-disc-hermitian-inner-product-computation" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">극좌표를 이용한 내적의 계산.</span>
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">극좌표를 이용한 내적의 계산.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-unit-disc-hermitian-inner-product-computation-2">
 <div class="para">앞의 에르미트 내적에서 두 다항식 <span class="process-math">\(p(z)=1+z\text{,}\)</span> <span class="process-math">\(q(z)=1+2z\)</span>를 택하자. 극좌표 <span class="process-math">\(z=re^{i\theta}\)</span>를 사용하면 단위원판에서는 <span class="process-math">\(0\leq r\leq 1\text{,}\)</span> <span class="process-math">\(0\leq\theta\leq 2\pi\)</span>이고 넓이요소는 <span class="process-math">\(dA=r\,dr\,d\theta\)</span>이다. 따라서</div>
 <div class="displaymath process-math" id="ex-unit-disc-hermitian-inner-product-computation-2-7">
@@ -612,24 +619,35 @@ f(A,B)=\operatorname{tr}(AB)=\operatorname{tr}(BA)=f(B,A)
 </div>
 <div class="para">여기서 <span class="process-math">\(e^{i\theta}\)</span> 및 <span class="process-math">\(e^{-i\theta}\)</span>를 포함하는 항들의 <span class="process-math">\(\theta\)</span>에 관한 적분은 <span class="process-math">\(0\)</span>이다. 즉, 단위원판 위의 회전대칭성 때문에 서로 다른 차수의 항들은 이 내적에서 서로 직교한다.</div>
 </div></article></details><article class="definition definition-like" id="def-matrix-representation-inner-product"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">내적의 행렬표현.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.16</span><span class="period">.</span><span class="space"> </span><span class="title">내적의 행렬표현.</span>
 </h3>
 <div class="para logical" id="def-matrix-representation-inner-product-2">
-<div class="para">유한차원 실내적공간 <span class="process-math">\(V\)</span>의 순서기저를 <span class="process-math">\(\mathcal B=(v_1,\ldots,v_n)\)</span>이라 하자. 내적의 <dfn class="terminology">행렬표현</dfn>은</div>
+<div class="para">유한차원 실내적공간 <span class="process-math">\(V\)</span>의 순서기저를 <span class="process-math">\(\mathcal B=(v_1,\ldots,v_n)\)</span>이라 하자. 내적의 <dfn class="terminology">행렬표현</dfn><aside class="aside aside-like" id="def-matrix-representation-inner-product-2-4"><div class="para" id="def-matrix-representation-inner-product-2-4-1">행렬표현:matrix representation</div></aside>은</div>
 <div class="displaymath process-math">
 \begin{equation*}
 G_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}
 \end{equation*}
 </div>
-<div class="para">으로 정의되는 행렬이며, 이를 기저 <span class="process-math">\(\mathcal B\)</span>에 관한 <dfn class="terminology">그람 행렬</dfn>이라 한다. <span class="process-math">\(x,y\in V\)</span>의 좌표열벡터를 각각 <span class="process-math">\([x]_{\mathcal B}\text{,}\)</span> <span class="process-math">\([y]_{\mathcal B}\)</span>라 하면</div>
+<div class="para">으로 정의되는 행렬이며, 이를 기저 <span class="process-math">\(\mathcal B\)</span>에 관한 <dfn class="terminology">그람 행렬</dfn><aside class="aside aside-like" id="def-matrix-representation-inner-product-2-8"><div class="para" id="def-matrix-representation-inner-product-2-8-1">그람 행렬:Gram matrix</div></aside>이라 한다. <span class="process-math">\(x,y\in V\)</span>의 좌표열벡터를 각각 <span class="process-math">\([x]_{\mathcal B}\text{,}\)</span> <span class="process-math">\([y]_{\mathcal B}\)</span>라 하면</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \langle x,y\rangle=[x]_{\mathcal B}^{T}G_{\mathcal B}[y]_{\mathcal B}
 \end{equation*}
 </div>
 <div class="para">이다.</div>
+</div></article><article class="remark remark-like" id="rem-gram-matrix-general-bilinear-form"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">1.1.17</span><span class="period">.</span><span class="space"> </span><span class="title">그람 행렬의 일반성.</span>
+</h3>
+<div class="para logical" id="rem-gram-matrix-general-bilinear-form-2">
+<div class="para">그람 행렬의 정의에는 내적의 조건이 필요하지 않다. 실제로 체 <span class="process-math">\(\mathbb F\)</span> 위의 유한차원 벡터공간 <span class="process-math">\(V\)</span>에 주어진 임의의 쌍선형형식 <span class="process-math">\(b:V\times V\to\mathbb F\)</span>와 임의의 순서기저 <span class="process-math">\(\mathcal B=(v_1,\ldots,v_n)\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+G_{\mathcal B}=\bigl(b(v_i,v_j)\bigr)_{1\leq i,j\leq n}
+\end{equation*}
+</div>
+<div class="para">을 <span class="process-math">\(b\)</span>의 기저 <span class="process-math">\(\mathcal B\)</span>에 관한 그람 행렬이라 한다. 따라서 그람 행렬이라는 개념 자체는 <span class="process-math">\(b\)</span>가 내적인지, 또는 대응하는 이차형식 <span class="process-math">\(q(v)=b(v,v)\)</span>가 양의 정부호인지에 의존하지 않는다. 일반적인 쌍선형형식의 그람 행렬은 대칭행렬이나 양의 정부호행렬일 필요도 없다.</div>
 </div></article><article class="proposition theorem-like" id="prop-inner-product-symmetric-positive-definite-matrix"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.16</span><span class="period">.</span><span class="space"> </span><span class="title">내적과 대칭 양의 정부호행렬.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.18</span><span class="period">.</span><span class="space"> </span><span class="title">내적과 대칭 양의 정부호행렬.</span>
 </h3>
 <div class="para logical" id="prop-inner-product-symmetric-positive-definite-matrix-2">
 <div class="para">실내적의 그람 행렬 <span class="process-math">\(G_{\mathcal B}\)</span>는 대칭행렬이며 양의 정부호이다. 즉,</div>
@@ -655,10 +673,10 @@ c^TG_{\mathcal B}c=\langle v,v\rangle&gt;0.
 </div>
 <div class="para">역방향은 행렬곱의 쌍선형성, <span class="process-math">\(G^T=G\text{,}\)</span> 그리고 양의 정부호성에서 바로 따른다.</div>
 </div></article></details><article class="definition definition-like" id="def-matrix-representation-hermitian-inner-product"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.17</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 내적의 행렬표현.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.1.19</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 내적의 행렬표현.</span>
 </h3>
 <div class="para logical" id="def-matrix-representation-hermitian-inner-product-2">
-<div class="para">유한차원 에르미트 공간 <span class="process-math">\(V\)</span>의 순서기저를 <span class="process-math">\(\mathcal B=(v_1,\ldots,v_n)\)</span>이라 하자. 에르미트 내적의 <dfn class="terminology">행렬표현</dfn>은</div>
+<div class="para">유한차원 에르미트 공간 <span class="process-math">\(V\)</span>의 순서기저를 <span class="process-math">\(\mathcal B=(v_1,\ldots,v_n)\)</span>이라 하자. 에르미트 내적의 <dfn class="terminology">행렬표현</dfn><aside class="aside aside-like" id="def-matrix-representation-hermitian-inner-product-2-4"><div class="para" id="def-matrix-representation-hermitian-inner-product-2-4-1">행렬표현:matrix representation</div></aside>은</div>
 <div class="displaymath process-math">
 \begin{equation*}
 H_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}
@@ -673,7 +691,7 @@ H_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}
 </div>
 <div class="para">이다.</div>
 </div></article><article class="proposition theorem-like" id="prop-hermitian-inner-product-positive-definite-matrix"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.18</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 내적과 에르미트 양의 정부호행렬.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.20</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 내적과 에르미트 양의 정부호행렬.</span>
 </h3>
 <div class="para logical" id="prop-hermitian-inner-product-positive-definite-matrix-2">
 <div class="para">에르미트 내적의 그람 행렬 <span class="process-math">\(H_{\mathcal B}\)</span>는 에르미트 행렬이며 양의 정부호이다. 즉, 켤레전치를 <span class="process-math">\(H^*=\overline H^{T}\)</span>로 나타내면</div>
@@ -700,7 +718,7 @@ c^T H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.
 </div>
 <div class="para">역으로 <span class="process-math">\(H^*=H\)</span>이면 행렬곱의 성질로 <span class="process-math">\(\langle x,y\rangle=x^TH\overline y\)</span>는 첫째 변수에 선형이고 둘째 변수에 켤레선형이며, <span class="process-math">\(\langle y,x\rangle=\overline{\langle x,y\rangle}\)</span>를 만족한다. 여기에 <span class="process-math">\(H\)</span>의 양의 정부호성을 적용하면 <span class="process-math">\(x\ne0\)</span>일 때 <span class="process-math">\(\langle x,x\rangle=x^TH\overline x&gt;0\)</span>이므로 이는 에르미트 내적이다.</div>
 </div></article></details><article class="proposition theorem-like" id="prop-gram-matrix-change-of-basis"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.19</span><span class="period">.</span><span class="space"> </span><span class="title">기저변환과 그람 행렬.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.21</span><span class="period">.</span><span class="space"> </span><span class="title">기저변환과 그람 행렬.</span>
 </h3>
 <div class="para logical" id="prop-gram-matrix-change-of-basis-2">
 <div class="para">새 기저 <span class="process-math">\(\mathcal C=(w_1,\ldots,w_n)\)</span>의 벡터들이 <span class="process-math">\(w_j=\sum_i v_iP_{ij}\)</span>를 만족한다고 하자. 그러면 실내적의 경우에는</div>
@@ -786,12 +804,12 @@ f\big((x_1,y_1),(x_2,y_2)\big)=x_1x_2-y_1y_2
 </div>
 <div class="para">로 정의하자. <span class="process-math">\(f\)</span>가 대칭쌍선형형식임을 보이고, <span class="process-math">\(f\)</span>가 내적이 아님을 보이시오. 또한 <span class="process-math">\(v\ne0\)</span>이지만 <span class="process-math">\(f(v,v)=0\)</span>인 벡터 <span class="process-math">\(v\)</span>를 하나 찾으시오.</div>
 </div>
-<div class="solutions"><details id="exer-symmetric-but-not-inner-product-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-symmetric-but-not-inner-product-3-1">각 변수에 관한 선형성과 대칭성은 좌표별 곱의 성질에서 바로 따른다. <span class="process-math">\(v=(0,1)\)</span>에 대하여 <span class="process-math">\(f(v,v)=-1&lt;0\)</span>이므로 정의 <a href="sec-symmetric-bilinear-forms.html#def-hermitian-space" class="xref" data-knowl="./knowl/xref/def-hermitian-space.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.1.11: 에르미트 공간">정의 1.1.11</a>의 조건 <span class="process-math">\(\langle v,v\rangle\geq0\)</span>이 깨져 내적이 아니다. 또한 <span class="process-math">\(v=(1,1)\ne0\)</span>에 대하여 <span class="process-math">\(f(v,v)=1-1=0\)</span>이다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-gram-matrix-polynomial-integration"><h4 class="heading">
+<div class="solutions"><details id="exer-symmetric-but-not-inner-product-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-symmetric-but-not-inner-product-3-1">각 변수에 관한 선형성과 대칭성은 좌표별 곱의 성질에서 바로 따른다. <span class="process-math">\(v=(0,1)\)</span>에 대하여 <span class="process-math">\(f(v,v)=-1&lt;0\)</span>이므로 정의 <a href="sec-symmetric-bilinear-forms.html#def-hermitian-space" class="xref" data-knowl="./knowl/xref/def-hermitian-space.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.1.12: 에르미트 공간">정의 1.1.12</a>의 조건 <span class="process-math">\(\langle v,v\rangle\geq0\)</span>이 깨져 내적이 아니다. 또한 <span class="process-math">\(v=(1,1)\ne0\)</span>에 대하여 <span class="process-math">\(f(v,v)=1-1=0\)</span>이다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-gram-matrix-polynomial-integration"><h4 class="heading">
 <span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">적분 내적의 그람 행렬.</span>
 </h4>
 <div class="para logical" id="exer-gram-matrix-polynomial-integration-2-1">
 <div class="para">
-<a href="sec-symmetric-bilinear-forms.html#ex-polynomial-integration-inner-product" class="xref" data-knowl="./knowl/xref/ex-polynomial-integration-inner-product.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.10: 적분으로 정의되는 다항식공간의 내적">예시 1.1.10</a>의 내적 <span class="process-math">\(\langle p,q\rangle=\int_{-1}^1 p(t)q(t)\,dt\)</span>를 부분공간 <span class="process-math">\(V=\operatorname{span}\{1,x,x^2\}\)</span>로 제한하자.</div>
+<a href="sec-symmetric-bilinear-forms.html#ex-polynomial-integration-inner-product" class="xref" data-knowl="./knowl/xref/ex-polynomial-integration-inner-product.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.11: 적분으로 정의되는 다항식공간의 내적">예시 1.1.11</a>의 내적 <span class="process-math">\(\langle p,q\rangle=\int_{-1}^1 p(t)q(t)\,dt\)</span>를 부분공간 <span class="process-math">\(V=\operatorname{span}\{1,x,x^2\}\)</span>로 제한하자.</div>
 <ol class="lower-alpha" id="exer-gram-matrix-polynomial-integration-2-1-4">
 <li id="exer-gram-matrix-polynomial-integration-2-1-4-1"><div class="para" id="p-derived-exer-gram-matrix-polynomial-integration-2-1-4-1">순서기저 <span class="process-math">\(\mathcal B=(1,x,x^2)\)</span>에 관한 그람 행렬 <span class="process-math">\(G_{\mathcal B}\)</span>를 구하시오.</div></li>
 <li id="exer-gram-matrix-polynomial-integration-2-1-4-2"><div class="para" id="p-derived-exer-gram-matrix-polynomial-integration-2-1-4-2">
@@ -837,7 +855,7 @@ G_{\mathcal B}=\begin{pmatrix}2&amp;0&amp;\tfrac23\\0&amp;\tfrac23&amp;0\\\tfrac
 <div class="para">
 <span class="process-math">\(\mathbb R^2\)</span>에 표준 내적을 주고, 새 순서기저 <span class="process-math">\(\mathcal C=(w_1,w_2)\text{,}\)</span> <span class="process-math">\(w_1=(1,1)\text{,}\)</span> <span class="process-math">\(w_2=(1,-1)\)</span>을 생각하자.</div>
 <ol class="lower-alpha" id="exer-gram-matrix-change-of-basis-2-1-5">
-<li id="exer-gram-matrix-change-of-basis-2-1-5-1"><div class="para" id="p-derived-exer-gram-matrix-change-of-basis-2-1-5-1">표준기저 <span class="process-math">\(\mathcal E\)</span>에 대하여 <span class="process-math">\(w_j=\sum_i e_iP_{ij}\)</span>를 만족하는 행렬 <span class="process-math">\(P\)</span>를 쓰고, <a href="sec-symmetric-bilinear-forms.html#prop-gram-matrix-change-of-basis" class="xref" data-knowl="./knowl/xref/prop-gram-matrix-change-of-basis.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.1.19: 기저변환과 그람 행렬">명제 1.1.19</a>의 공식으로 <span class="process-math">\(G_{\mathcal C}\)</span>를 구하시오.</div></li>
+<li id="exer-gram-matrix-change-of-basis-2-1-5-1"><div class="para" id="p-derived-exer-gram-matrix-change-of-basis-2-1-5-1">표준기저 <span class="process-math">\(\mathcal E\)</span>에 대하여 <span class="process-math">\(w_j=\sum_i e_iP_{ij}\)</span>를 만족하는 행렬 <span class="process-math">\(P\)</span>를 쓰고, <a href="sec-symmetric-bilinear-forms.html#prop-gram-matrix-change-of-basis" class="xref" data-knowl="./knowl/xref/prop-gram-matrix-change-of-basis.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 1.1.21: 기저변환과 그람 행렬">명제 1.1.21</a>의 공식으로 <span class="process-math">\(G_{\mathcal C}\)</span>를 구하시오.</div></li>
 <li id="exer-gram-matrix-change-of-basis-2-1-5-2"><div class="para" id="p-derived-exer-gram-matrix-change-of-basis-2-1-5-2">
 <span class="process-math">\(x=w_1+2w_2\text{,}\)</span> <span class="process-math">\(y=3w_1-w_2\)</span>에 대하여 <span class="process-math">\(\langle x,y\rangle\)</span>을 (가) <span class="process-math">\(G_{\mathcal C}\)</span>를 써서, (나) 표준좌표로 바꾸어 직접 계산하여 비교하시오.</div></li>
 </ol>
@@ -908,7 +926,7 @@ q(u+v+w)=q(u)+q(v)+q(w)+3\sum_{a\ne b}f(a,a,b)+6f(u,v,w),
 \langle u,v\rangle^2\leq\langle u,u\rangle\langle v,v\rangle
 \end{equation*}
 </div>
-<div class="para">임을 보이고, 등호가 성립할 필요충분조건이 <span class="process-math">\(u,v\)</span>의 일차종속임을 보이시오. 이를 <a href="sec-symmetric-bilinear-forms.html#ex-polynomial-integration-inner-product" class="xref" data-knowl="./knowl/xref/ex-polynomial-integration-inner-product.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.10: 적분으로 정의되는 다항식공간의 내적">예시 1.1.10</a>의 내적에 적용하여 모든 <span class="process-math">\(p,q\in\mathbb R[x]\)</span>에 대하여</div>
+<div class="para">임을 보이고, 등호가 성립할 필요충분조건이 <span class="process-math">\(u,v\)</span>의 일차종속임을 보이시오. 이를 <a href="sec-symmetric-bilinear-forms.html#ex-polynomial-integration-inner-product" class="xref" data-knowl="./knowl/xref/ex-polynomial-integration-inner-product.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.11: 적분으로 정의되는 다항식공간의 내적">예시 1.1.11</a>의 내적에 적용하여 모든 <span class="process-math">\(p,q\in\mathbb R[x]\)</span>에 대하여</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-polynomial-integration-inner-product.html">
 \begin{equation*}
 \Big(\int_{-1}^1p(t)q(t)\,dt\Big)^2\leq\int_{-1}^1p(t)^2\,dt\int_{-1}^1q(t)^2\,dt
@@ -942,13 +960,13 @@ q(u+v+w)=q(u)+q(v)+q(w)+3\sum_{a\ne b}f(a,a,b)+6f(u,v,w),
 <span class="process-math">\(H^*=H\)</span>는 자명하다. <span class="process-math">\(c\in\mathbb C^2\)</span>에 대하여 <span class="process-math">\(c^TH\overline c=|c_1|^2+2\operatorname{Re}(\alpha c_1\overline{c_2})+|c_2|^2
 =|c_1+\overline\alpha c_2|^2+(1-|\alpha|^2)|c_2|^2\text{.}\)</span> (1)과 같은 논증으로 조건은 <span class="process-math">\(|\alpha|&lt;1\)</span>이다.</div></li>
 <li id="exer-two-by-two-positive-definite-3-1-1-3"><div class="para" id="p-derived-exer-two-by-two-positive-definite-3-1-1-3">
-<a href="sec-symmetric-bilinear-forms.html#exer-cauchy-schwarz" class="xref" data-knowl="./knowl/xref/exer-cauchy-schwarz.html" data-reveal-label="Reveal" data-close-label="Close" title="[divisionalexercise] 1.1.8: 코시–슈바르츠 부등식">[divisionalexercise] 1.1.8</a>를 <span class="process-math">\(u=v_i\text{,}\)</span> <span class="process-math">\(v=v_j\)</span>에 적용하면 <span class="process-math">\(\langle v_i,v_j\rangle^2\leq\langle v_i,v_i\rangle\langle v_j,v_j\rangle\)</span>이고, 일차독립이므로 등호가 성립하지 않는다.</div></li>
+<a href="sec-symmetric-bilinear-forms.html#exer-cauchy-schwarz" class="xref" data-knowl="./knowl/xref/exer-cauchy-schwarz.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.1.8: 코시–슈바르츠 부등식">연습문제 1.1.8</a>를 <span class="process-math">\(u=v_i\text{,}\)</span> <span class="process-math">\(v=v_j\)</span>에 적용하면 <span class="process-math">\(\langle v_i,v_j\rangle^2\leq\langle v_i,v_i\rangle\langle v_j,v_j\rangle\)</span>이고, 일차독립이므로 등호가 성립하지 않는다.</div></li>
 </ol></div></div></details></div></article><article class="exercise exercise-like" id="exer-unit-disc-monomials-orthogonal"><h4 class="heading">
 <span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">단위원판 위에서 단항식들의 직교성.</span>
 </h4>
 <div class="para logical" id="exer-unit-disc-monomials-orthogonal-2-1">
 <div class="para">
-<a href="sec-symmetric-bilinear-forms.html#ex-polynomial-unit-disc-hermitian-space" class="xref" data-knowl="./knowl/xref/ex-polynomial-unit-disc-hermitian-space.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.13: 단위원판 위의 적분으로 정의되는 에르미트 내적">예시 1.1.13</a>의 에르미트 내적 <span class="process-math">\(\langle p,q\rangle=\int_Dp(z)\overline{q(z)}\,dA(z)\)</span>를 생각하자.</div>
+<a href="sec-symmetric-bilinear-forms.html#ex-polynomial-unit-disc-hermitian-space" class="xref" data-knowl="./knowl/xref/ex-polynomial-unit-disc-hermitian-space.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.14: 단위원판 위의 적분으로 정의되는 에르미트 내적">예시 1.1.14</a>의 에르미트 내적 <span class="process-math">\(\langle p,q\rangle=\int_Dp(z)\overline{q(z)}\,dA(z)\)</span>를 생각하자.</div>
 <ol class="lower-alpha" id="exer-unit-disc-monomials-orthogonal-2-1-3">
 <li id="exer-unit-disc-monomials-orthogonal-2-1-3-1"><div class="para" id="p-derived-exer-unit-disc-monomials-orthogonal-2-1-3-1">음이 아닌 정수 <span class="process-math">\(m,n\)</span>에 대하여<div class="displaymath process-math">
 \begin{equation*}
@@ -1029,11 +1047,11 @@ c^TGc=\alpha|c|^2+\beta\Big(\sum c_i\Big)^2=\alpha|w|^2+n(\alpha+n\beta)t^2.
 <span class="codenumber">13<span class="period">.</span></span><span class="space"> </span><span class="title">내적을 결정하는 데 필요한 최소 개수의 노름값.</span>
 </h4>
 <div class="para logical" id="exer-minimal-determining-set-2-1">
-<div class="para">유한집합 <span class="process-math">\(S\subset\mathbb R^n\)</span>이 다음을 만족하면 <span class="process-math">\(S\)</span>가 <dfn class="terminology">내적을 결정한다</dfn>고 하자: <span class="process-math">\(\mathbb R^n\)</span> 위의 두 내적 <span class="process-math">\(\langle\cdot,\cdot\rangle_1,\langle\cdot,\cdot\rangle_2\)</span>가 모든 <span class="process-math">\(v\in S\)</span>에 대하여 <span class="process-math">\(\langle v,v\rangle_1=\langle v,v\rangle_2\)</span>이면 두 내적은 같다.</div>
-<ol class="lower-alpha" id="exer-minimal-determining-set-2-1-8">
-<li id="exer-minimal-determining-set-2-1-8-1"><div class="para" id="p-derived-exer-minimal-determining-set-2-1-8-1">
+<div class="para">유한집합 <span class="process-math">\(S\subset\mathbb R^n\)</span>이 다음을 만족하면 <span class="process-math">\(S\)</span>가 <dfn class="terminology">내적을 결정한다</dfn><aside class="aside aside-like" id="exer-minimal-determining-set-2-1-4"><div class="para" id="exer-minimal-determining-set-2-1-4-1">내적을 결정한다:determines the inner product</div></aside>고 하자: <span class="process-math">\(\mathbb R^n\)</span> 위의 두 내적 <span class="process-math">\(\langle\cdot,\cdot\rangle_1,\langle\cdot,\cdot\rangle_2\)</span>가 모든 <span class="process-math">\(v\in S\)</span>에 대하여 <span class="process-math">\(\langle v,v\rangle_1=\langle v,v\rangle_2\)</span>이면 두 내적은 같다.</div>
+<ol class="lower-alpha" id="exer-minimal-determining-set-2-1-9">
+<li id="exer-minimal-determining-set-2-1-9-1"><div class="para" id="p-derived-exer-minimal-determining-set-2-1-9-1">
 <span class="process-math">\(S=\{e_i\}_{i}\cup\{e_i+e_j\}_{i&lt;j}\)</span> (원소 <span class="process-math">\(\tfrac{n(n+1)}2\)</span>개)가 내적을 결정함을 보이시오.</div></li>
-<li id="exer-minimal-determining-set-2-1-8-2"><div class="para" id="p-derived-exer-minimal-determining-set-2-1-8-2">
+<li id="exer-minimal-determining-set-2-1-9-2"><div class="para" id="p-derived-exer-minimal-determining-set-2-1-9-2">
 <span class="process-math">\(|S|&lt;\tfrac{n(n+1)}2\)</span>이면 <span class="process-math">\(S\)</span>는 내적을 결정하지 못함을 보이시오.</div></li>
 </ol>
 </div>

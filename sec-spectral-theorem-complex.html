@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>고속푸리에변환</title>
+<title>스펙트럴 정리:복소체의 경우</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -282,7 +282,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="ch-attention.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">[up-short]</span></a><a class="next-button button" href="ch-fast-matrix-multiplication.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="up-button button" href="ch-spectral-theorem.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">[up-short]</span></a><a class="next-button button" href="sec-singular-value-decomposition.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -299,9 +299,9 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-introduction.html" class="internal"><span class="codenumber">1</span> <span class="title">소개</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter">
+<li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></div>
-<ul class="structural toc-item-list">
+<ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-section">
 <div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html#exercises-symmetric-bilinear-forms" class="internal"><span class="codenumber">1.1</span> <span class="title">연습문제</span></a></div></li></ul>
@@ -314,7 +314,7 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.3</span> <span class="title">스펙트럴 정리: 실수체의 경우</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem.html#exercises-spectral-theorem-real" class="internal"><span class="codenumber">1.3</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리:복소체의 경우</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리:복소체의 경우</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해</span></a></div></li>
 </ul>
 </li>
@@ -323,16 +323,65 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-graph-laplacian.html" class="internal"><span class="codenumber">5</span> <span class="title">그래프 라플라시안</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div></li>
-<li class="toc-item toc-chapter active"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div></li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-fast-fourier-transform"><h2 class="heading">
-<span class="type">Ch.</span><span class="space"> </span><span class="codenumber">7</span><span class="space"> </span><span class="title">고속푸리에변환</span>
-</h2></section></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-spectral-theorem-complex"><h2 class="heading hide-type">
+<span class="type">[section]</span><span class="space"> </span><span class="codenumber">1.4</span><span class="space"> </span><span class="title">스펙트럴 정리:복소체의 경우</span>
+</h2>
+<div class="para" id="sec-spectral-theorem-complex-2">이 절에서는 복소체 위의 유한차원 에르미트 공간에 정의된 작용소에 대하여 스펙트럴 정리를 다룹니다.</div>
+<article class="definition definition-like" id="def-normal-operator-complex"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.4.1</span><span class="period">.</span><span class="space"> </span><span class="title">정규 작용소.</span>
+</h3>
+<div class="para" id="def-normal-operator-complex-2">복소 내적공간 <span class="process-math">\(V\)</span> 위의 선형작용소 <span class="process-math">\(T:V\to V\)</span>가 정규 작용소라고 함은 <span class="process-math">\(T^*T=TT^*\)</span>를 만족하는 것을 말한다. 여기서 <span class="process-math">\(T^*\)</span>는 <span class="process-math">\(T\)</span>의 수반작용소이다.</div></article><article class="proposition theorem-like" id="prop-self-adjoint-implies-normal-complex"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.4.2</span><span class="period">.</span><span class="space"> </span><span class="title">자기수반 작용소는 정규 작용소이다.</span>
+</h3>
+<div class="para" id="prop-self-adjoint-implies-normal-complex-2">복소 내적공간 <span class="process-math">\(V\)</span> 위의 자기수반 작용소 <span class="process-math">\(T:V\to V\)</span>는 정규 작용소이다.</div></article><details id="prop-self-adjoint-implies-normal-complex-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-self-adjoint-implies-normal-complex-3-1">
+<span class="process-math">\(T\)</span>가 자기수반 작용소이므로 <span class="process-math">\(T^*=T\)</span>이다. 따라서 <span class="process-math">\(T^*T=TT=T T^*=TT^*\)</span>이므로 <span class="process-math">\(T\)</span>는 정규 작용소이다.</div></article></details><details id="ex-self-adjoint-identity-complex" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.4.3</span><span class="period">.</span><span class="space"> </span><span class="title">항등 작용소의 자기수반성.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-self-adjoint-identity-complex-2">복소 내적공간 <span class="process-math">\(V\)</span>에서 항등 작용소 <span class="process-math">\(I:V\to V\)</span>는 자기수반 작용소이다. 실제로 <span class="process-math">\(I^*=I\)</span>이므로 자기수반이다.</div></article></details><details id="ex-self-adjoint-diagonal-complex" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.4.4</span><span class="period">.</span><span class="space"> </span><span class="title">실수 대각 원소를 갖는 대각 작용소.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-self-adjoint-diagonal-complex-2">
+<span class="process-math">\(\mathbb{C}^2\)</span>의 표준 내적에 대하여 <span class="process-math">\(T=\begin{pmatrix}2&amp;0\\0&amp;-1\end{pmatrix}\)</span>로 두자. 그러면 <span class="process-math">\(T^*=\overline{T}^{\mathsf{T}}=T\)</span>이므로 <span class="process-math">\(T\)</span>는 자기수반 작용소이다.</div></article></details><details id="ex-normal-not-self-adjoint-complex" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.4.5</span><span class="period">.</span><span class="space"> </span><span class="title">정규이지만 자기수반이 아닌 작용소.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-normal-not-self-adjoint-complex-2">
+<span class="process-math">\(\mathbb{C}^2\)</span>의 표준 내적에 대하여 <span class="process-math">\(T=\begin{pmatrix}i&amp;0\\0&amp;1\end{pmatrix}\)</span>로 두자. 그러면 <span class="process-math">\(T^*=\begin{pmatrix}-i&amp;0\\0&amp;1\end{pmatrix}\)</span>이고 <span class="process-math">\(T^*T=TT^*=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}\)</span>이므로 <span class="process-math">\(T\)</span>는 정규 작용소이다. 그러나 <span class="process-math">\(T^*\ne T\)</span>이므로 자기수반 작용소는 아니다.</div></article></details><article class="proposition theorem-like" id="prop-image-kernel-orthogonal-complements-normal-complex"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">정규 작용소의 이미지와 커널.</span>
+</h3>
+<div class="para" id="prop-image-kernel-orthogonal-complements-normal-complex-2">복소 유한차원 내적공간 <span class="process-math">\(V\)</span> 위의 정규 작용소 <span class="process-math">\(T:V\to V\)</span>에 대하여 <span class="process-math">\(\operatorname{im}T\)</span>와 <span class="process-math">\(\ker T\)</span>는 서로 직교 여공간이다. 즉, <span class="process-math">\(\operatorname{im}T=(\ker T)^\perp\)</span>이고 <span class="process-math">\(\ker T=(\operatorname{im}T)^\perp\)</span>이다.</div></article><details id="prop-image-kernel-orthogonal-complements-normal-complex-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-image-kernel-orthogonal-complements-normal-complex-3-1">임의의 <span class="process-math">\(x\in V\)</span>에 대하여 <span class="process-math">\(x\in\ker T\)</span>이면 <span class="process-math">\(\lVert T^*x\rVert^2=\langle T^*x,T^*x\rangle
+=\langle TT^*x,x\rangle=\langle T^*Tx,x\rangle
+=\lVert Tx\rVert^2=0\)</span>이므로 <span class="process-math">\(x\in\ker T^*\)</span>이다. 같은 방식으로 <span class="process-math">\(\ker T^*\subseteq\ker T\)</span>를 얻으므로 <span class="process-math">\(\ker T=\ker T^*\)</span>이다. 한편 유한차원 내적공간에서 <span class="process-math">\(\operatorname{im}T=(\ker T^*)^\perp\)</span>이므로 <span class="process-math">\(\operatorname{im}T=(\ker T)^\perp\)</span>이다. 양변의 직교 여공간을 취하면 <span class="process-math">\(\ker T=(\operatorname{im}T)^\perp\)</span>도 얻는다.</div></article></details><article class="theorem theorem-like" id="thm-spectral-theorem-normal-complex"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.4.7</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럴 정리 (정규 작용소).</span>
+</h3>
+<div class="para logical" id="thm-spectral-theorem-normal-complex-2">
+<div class="para">복소 유한차원 내적공간 <span class="process-math">\(V\)</span> 위의 선형작용소 <span class="process-math">\(T:V\to V\)</span>에 대하여 다음은 동치이다.</div>
+<ol class="decimal" id="thm-spectral-theorem-normal-complex-2-3">
+<li id="thm-spectral-theorem-normal-complex-2-3-1"><div class="para" id="thm-spectral-theorem-normal-complex-2-3-1-1">
+<span class="process-math">\(T\)</span>는 정규 작용소이다.</div></li>
+<li id="thm-spectral-theorem-normal-complex-2-3-2"><div class="para" id="thm-spectral-theorem-normal-complex-2-3-2-1">
+<span class="process-math">\(V\)</span>는 <span class="process-math">\(T\)</span>의 고유벡터로 이루어진 정규직교기저를 갖는다.</div></li>
+</ol>
+</div></article><details id="thm-spectral-theorem-normal-complex-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-spectral-theorem-normal-complex-3-1">
+<span class="process-math">\((2)\Rightarrow(1)\text{:}\)</span> <span class="process-math">\(V\)</span>의 정규직교기저 <span class="process-math">\(\beta=(v_1,\dots,v_n)\)</span>가 <span class="process-math">\(T\)</span>의 고유벡터로 이루어져 있다고 하자. 이 기저에 대한 <span class="process-math">\(T\)</span>의 표현행렬을 <span class="process-math">\(D\)</span>라 하면 <span class="process-math">\(D\)</span>는 대각행렬이다. 정규직교기저에 대한 표현행렬이므로 <span class="process-math">\(T^*\)</span>의 표현행렬은 <span class="process-math">\(D^*=\overline{D}^{\mathsf{T}}\)</span>이고, 이 역시 대각행렬이다. 두 대각행렬은 항상 가환이므로 <span class="process-math">\(D^*D=DD^*\)</span>이고, 따라서 <span class="process-math">\(T^*T=TT^*\text{,}\)</span> 즉 <span class="process-math">\(T\)</span>는 정규 작용소이다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-2">
+<span class="process-math">\((1)\Rightarrow(2)\text{:}\)</span> <span class="process-math">\(\dim V=n\)</span>에 대한 귀납법으로 증명한다. <span class="process-math">\(n=1\)</span>인 경우는 자명하다. <span class="process-math">\(n-1\)</span>이하의 차원에서 명제가 성립한다고 가정하자.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-3">복소수체는 대수적으로 닫혀 있으므로 <span class="process-math">\(T\)</span>의 특성다항식은 근을 가지며, 따라서 <span class="process-math">\(T\)</span>는 적어도 하나의 고유값 <span class="process-math">\(\lambda\)</span>를 갖는다. 이에 대응하는 고유벡터 <span class="process-math">\(v_1\)</span>을 택하고 <span class="process-math">\(\lVert v_1\rVert=1\)</span>이 되도록 정규화하자. <span class="process-math">\(W=\operatorname{span}(v_1)\)</span>이라 하면 <span class="process-math">\(v_1\)</span>은 <span class="process-math">\(T\)</span>의 고유벡터이므로 <span class="process-math">\(W\)</span>는 <span class="process-math">\(T\)</span>-불변이다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-4">
+<span class="process-math">\(T\)</span>가 정규 작용소이므로 <span class="process-math">\(Tv_1=\lambda v_1\)</span>은 <span class="process-math">\(T^*v_1=\overline{\lambda}v_1\)</span>을 함의한다. 실제로 임의의 정규 작용소 <span class="process-math">\(T\)</span>와 고유값 <span class="process-math">\(\lambda\)</span> 및 대응하는 고유벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(\lVert (T^*-\overline{\lambda}I)v\rVert
+=\lVert (T-\lambda I)^*v\rVert=\lVert (T-\lambda I)v\rVert=0\)</span>이므로 <span class="process-math">\(T^*v=\overline{\lambda}v\)</span>가 성립한다. 여기서 <span class="process-math">\(T-\lambda I\)</span>도 정규 작용소임을 사용하였다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-5">이로부터 <span class="process-math">\(W^\perp\)</span>도 <span class="process-math">\(T\)</span>-불변임을 보이자. <span class="process-math">\(w\in W^\perp\)</span>라 하면 <span class="process-math">\(\langle Tw,v_1\rangle=\langle w,T^*v_1\rangle
+=\langle w,\overline{\lambda}v_1\rangle=\lambda\langle w,v_1\rangle=0\)</span>이므로 <span class="process-math">\(Tw\in W^\perp\)</span>이다. 따라서 <span class="process-math">\(T\)</span>를 <span class="process-math">\(W^\perp\)</span>에 제한한 작용소 <span class="process-math">\(T|_{W^\perp}:W^\perp\to W^\perp\)</span>가 잘 정의된다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-6">
+<span class="process-math">\(T^*\)</span>도 정규 작용소이며 <span class="process-math">\((T^*)^*=T\)</span>이므로, 같은 논법으로 <span class="process-math">\(T^*w\in W^\perp\)</span>임을 보일 수 있고, 따라서 <span class="process-math">\(T^*|_{W^\perp}=(T|_{W^\perp})^*\)</span>임을 알 수 있다. 이로부터 <span class="process-math">\(T|_{W^\perp}\)</span>도 정규 작용소임이 따른다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-7">
+<span class="process-math">\(\dim W^\perp=n-1\)</span>이므로 귀납법의 가정에 의하여 <span class="process-math">\(W^\perp\)</span>는 <span class="process-math">\(T|_{W^\perp}\)</span>의 고유벡터로 이루어진 정규직교기저 <span class="process-math">\((v_2,\dots,v_n)\)</span>를 갖는다. 그러면 <span class="process-math">\((v_1,v_2,\dots,v_n)\)</span>은 <span class="process-math">\(V=W\oplus W^\perp\)</span>의 정규직교기저이며, 각 <span class="process-math">\(v_i\)</span>는 <span class="process-math">\(T\)</span>의 고유벡터이다.</div></article></details><article class="corollary theorem-like" id="cor-self-adjoint-spectral-theorem-complex"><h3 class="heading">
+<span class="type">따름정리</span><span class="space"> </span><span class="codenumber">1.4.8</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럴 정리 (자기수반 작용소).</span>
+</h3>
+<div class="para" id="cor-self-adjoint-spectral-theorem-complex-2">복소 유한차원 내적공간 <span class="process-math">\(V\)</span> 위의 자기수반 작용소 <span class="process-math">\(T\)</span>에 대하여 <span class="process-math">\(V\)</span>는 <span class="process-math">\(T\)</span>의 고유벡터로 이루어진 정규직교기저를 갖고, <span class="process-math">\(T\)</span>의 모든 고유값은 실수이다. 따라서 어떤 정규직교기저에 대한 <span class="process-math">\(T\)</span>의 표현행렬은 실수 대각행렬이다.</div></article><details id="cor-self-adjoint-spectral-theorem-complex-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="cor-self-adjoint-spectral-theorem-complex-3-1">자기수반 작용소는 정규 작용소이므로 앞의 스펙트럴 정리에 의하여 <span class="process-math">\(V\)</span>는 <span class="process-math">\(T\)</span>의 고유벡터로 이루어진 정규직교기저를 갖는다. 이제 <span class="process-math">\(Tv=\lambda v\)</span>인 영이 아닌 고유벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(T=T^*\)</span>이므로 <span class="process-math">\(\langle Tv,v\rangle=\langle T^*v,v\rangle=\langle v,Tv\rangle\)</span>이다. 한편 <span class="process-math">\(Tv=\lambda v\)</span>이므로 내적의 켤레대칭성을 사용하면 <span class="process-math">\(\lambda\langle v,v\rangle=\overline{\lambda}\langle v,v\rangle\)</span>을 얻는다. <span class="process-math">\(v\ne0\)</span>이므로 <span class="process-math">\(\langle v,v\rangle &gt; 0\)</span>이고, 따라서 <span class="process-math">\(\lambda=\overline{\lambda}\)</span>이다. 즉 모든 고유값은 실수이다. 그러므로 위 정규직교기저에 대한 <span class="process-math">\(T\)</span>의 표현행렬은 고유값을 대각원소로 갖는 대각행렬이며, 그 대각원소가 모두 실수이므로 실수 대각행렬이다.</div></article></details></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="ch-attention.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-fast-matrix-multiplication.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-spectral-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">[previous-short]</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-singular-value-decomposition.html" title="[next]"><span class="name">[next-short]</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">

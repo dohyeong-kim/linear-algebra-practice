@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">대칭삼중선형형식의 편극.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(\operatorname{char}\mathbb F\notin\{2,3\}\)</span>인 체 <span class="process-math">\(\mathbb F\)</span> 위의 벡터공간 <span class="process-math">\(V\)</span>의 대칭삼중선형형식 <span class="process-math">\(f\)</span>에 대하여 <span class="process-math">\(q(v)=f(v,v,v)\)</span>로 두자.</div>
+<ol class="lower-alpha" id="exer-cubic-polarization-2-1-6">
+<li><div class="para">모든 <span class="process-math">\(u,v,w\in V\)</span>에 대하여<div class="displaymath process-math">
+\begin{equation*}
+6f(u,v,w)=q(u+v+w)-q(u+v)-q(u+w)-q(v+w)+q(u)+q(v)+q(w)
+\end{equation*}
+</div>임을 보이시오. 따라서 <span class="process-math">\(f\)</span>는 <span class="process-math">\(q\)</span>에 의해 유일하게 결정된다.</div></li>
+<li><div class="para">
+<a href="sec-symmetric-bilinear-forms.html#ex-cubic-polynomial-symmetric-trilinear-form" class="xref" data-knowl="./knowl/xref/ex-cubic-polynomial-symmetric-trilinear-form.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.1.3: 삼차 동차다항식에서 얻는 대칭삼중선형형식">예시 1.1.3</a>의 <span class="process-math">\(p(x,y)=x^3+3x^2y+3xy^2+2y^3\)</span>에 위 공식을 적용하여 <span class="process-math">\(f(e_1,e_1,e_2)\)</span>를 계산하고, 그 예에서 주어진 <span class="process-math">\(f\)</span>의 값과 일치함을 확인하시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-cubic-polarization-3-1-1">
+<li><div class="para">대칭성을 써서 <span class="process-math">\(q(u+v+w)\)</span>를 전개하면<div class="displaymath process-math">
+\begin{equation*}
+q(u+v+w)=q(u)+q(v)+q(w)+3\sum_{a\ne b}f(a,a,b)+6f(u,v,w),
+\end{equation*}
+</div>여기서 합은 <span class="process-math">\(\{u,v,w\}\)</span>에서 뽑은 순서쌍 <span class="process-math">\((a,b)\text{,}\)</span> <span class="process-math">\(a\ne b\)</span> 여섯 개에 걸친다. 마찬가지로 <span class="process-math">\(q(u+v)=q(u)+q(v)+3f(u,u,v)+3f(u,v,v)\)</span> 등이 성립하므로, 세 개의 <span class="process-math">\(q(\cdot+\cdot)\)</span>을 빼면 <span class="process-math">\(3\sum f(a,a,b)\)</span>가 정확히 소거되고 <span class="process-math">\(q(u),q(v),q(w)\)</span>는 각각 <span class="process-math">\(1-2\)</span>번 남는다. 여기에 <span class="process-math">\(q(u)+q(v)+q(w)\)</span>를 더하면 우변은 <span class="process-math">\(6f(u,v,w)\)</span>가 된다. <span class="process-math">\(6\)</span>이 가역이므로 <span class="process-math">\(f\)</span>가 결정된다.</div></li>
+<li><div class="para">
+<span class="process-math">\(u=v=e_1\text{,}\)</span> <span class="process-math">\(w=e_2\)</span>를 대입하면<div class="displaymath process-math">
+\begin{equation*}
+6f(e_1,e_1,e_2)=p(2,1)-p(2,0)-2p(1,1)+2p(1,0)+p(0,1)=28-8-18+2+2=6,
+\end{equation*}
+</div>즉 <span class="process-math">\(f(e_1,e_1,e_2)=1\text{.}\)</span> 예의 정의에서 <span class="process-math">\(f(e_1,e_1,e_2)\)</span>는 <span class="process-math">\(x_1x_2y_3\)</span>의 계수 <span class="process-math">\(1\)</span>이므로 일치한다. (일반적으로 <span class="process-math">\(x^2y\)</span>의 계수 <span class="process-math">\(3\)</span>이 세 자리 <span class="process-math">\(f(e_1,e_1,e_2)\text{,}\)</span> <span class="process-math">\(f(e_1,e_2,e_1)\text{,}\)</span> <span class="process-math">\(f(e_2,e_1,e_1)\)</span>에 균등하게 분배된다.)</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-symmetric-bilinear-forms.html#exer-cubic-polarization">[incontext]</a></span>
+</body>
+</html>
