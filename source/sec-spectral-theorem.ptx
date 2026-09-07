@@ -285,11 +285,412 @@
     </proof>
   </proposition>
 
-  <p>
-    
-  </p>
-  
-  
+  <exercises xml:id="exercises-spectral-theorem-real">
+  <title>연습문제</title>
+
+  <exercise xml:id="exer-spectral-riesz-computation">
+    <title>리스 표현 벡터의 계산</title>
+    <statement>
+      <p>다음 각 선형함수에 대하여 <xref ref="prop-riesz-representation-real"/>의 벡터 <m>y</m>를 구하여라.</p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\mathbb R^3</m>에 표준 내적을 주고, <m>f(x_1,x_2,x_3)=x_1-2x_3</m>로 둔다.</p></li>
+          <li>
+            <p>
+              차수가 <m>1</m> 이하인 실계수 다항식 공간 <m>\mathcal P_1</m>에
+              <m>\langle p,q\rangle=\int_0^1p(t)q(t)\,dt</m>를 주고, <m>f(p)=p(0)</m>로 둔다.
+              <m>\mathcal P_1</m>의 정규직교기저를 먼저 구하여
+              <m>y=\sum_i f(u_i)u_i</m>를 적용하여라. 얻은 <m>y</m>가 실제로
+              <m>\int_0^1p(t)y(t)\,dt=p(0)</m>을 만족하는지도 직접 확인하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <hint><p>(b)에서 <m>y(t)=4-6t</m>이다.</p></hint>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-adjoint-matrix">
+    <title>수반행렬의 계산</title>
+    <statement>
+      <p>
+        표준 내적을 갖는 <m>\mathbb R^3</m> 위의 선형연산자 <m>T</m>의 행렬이
+        <m>A=\begin{pmatrix}2&amp;-1&amp;0\\3&amp;0&amp;4\\0&amp;1&amp;5\end{pmatrix}</m>이다.
+        <m>T^*</m>의 행렬을 구하여라. 또한 <m>T+T^*</m>와 <m>T-T^*</m> 중 어느 것이
+        자기수반이고 어느 것이 <m>S^*=-S</m>를 만족하는지 판정하여라.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-two-by-two-decomposition">
+    <title>스펙트럴 분해의 직접 계산</title>
+    <statement>
+      <p>
+        <m>A=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}</m>가 표준 내적에 대하여 자기수반인 이유를 말하고,
+        고유벡터로 이루어진 정규직교기저 <m>u_1,u_2</m>를 구하여라.
+        <xref ref="rem-spectral-tensor-decomposition"/>의 형태
+        <m>A=\lambda_1u_1u_1^{\mathsf T}+\lambda_2u_2u_2^{\mathsf T}</m>를 실제 행렬로 써서 확인하고,
+        <m>u_1u_1^{\mathsf T}+u_2u_2^{\mathsf T}=I</m>도 확인하여라.
+      </p>
+    </statement>
+    <hint>
+      <p>고윳값은 <m>3,1</m>이고, <m>u_1=\tfrac1{\sqrt2}(1,1)</m>, <m>u_2=\tfrac1{\sqrt2}(1,-1)</m>로 둘 수 있다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-adjoint-depends-on-inner-product">
+    <title>수반연산자와 내적</title>
+    <statement>
+      <p><m>\mathbb R^2</m> 위의 선형변환 <m>T(x,y)=(x+2y,3x)</m>를 생각하자.</p>
+      <p>
+        <ol marker="(a)">
+          <li><p>표준 내적에 대한 <m>T^*</m>의 표준기저 행렬을 구하여라.</p></li>
+          <li>
+            <p>
+              <m>G=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}</m>에 대하여
+              <m>\langle u,v\rangle_G=u^{\mathsf T}Gv</m>로 새 내적을 정의하자.
+              이 내적에 대한 수반연산자 <m>T^{*_G}</m>의 표준기저 행렬을 구하고 (a)의 답과 다름을 확인하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              일반적으로 <m>T</m>의 표준기저 행렬이 <m>A</m>이고 내적이 양의 정부호 대칭행렬 <m>G</m>로 주어지면
+              <m>T^{*_G}</m>의 행렬이 <m>G^{-1}A^{\mathsf T}G</m>임을 보여라.
+              <xref ref="ex-adjoint-real-standard-matrix"/>는 <m>G=I</m>인 경우임을 확인하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-adjoint-algebra">
+    <title>수반연산자의 대수적 성질</title>
+    <statement>
+      <p>
+        유한 차원 실수 내적공간 <m>V</m> 위의 선형연산자 <m>S,T</m>와 <m>a\in\mathbb R</m>에 대하여
+        다음을 증명하여라. 행렬 표현을 쓰지 말고 <xref ref="prop-adjoint-existence-real"/>의 유일성을 사용하여라.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>(S+T)^*=S^*+T^*</m> 및 <m>(aT)^*=aT^*</m>.</p></li>
+          <li><p><m>(ST)^*=T^*S^*</m>.</p></li>
+          <li><p><m>(T^*)^*=T</m>.</p></li>
+          <li><p><m>T</m>가 가역이면 <m>T^*</m>도 가역이고 <m>(T^{-1})^*=(T^*)^{-1}</m>이다.</p></li>
+          <li>
+            <p>
+              <m>\dim V=n</m>일 때 자기수반 연산자들의 집합이 <m>\operatorname{End}(V)</m>의 부분공간임을 보이고
+              그 차원을 구하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-weighted-self-adjoint">
+    <title>가중 내적에서의 자기수반성</title>
+    <statement>
+      <p>
+        <m>\mathbb R^2</m>에 <m>\langle x,y\rangle_G=x^{\mathsf T}Gy</m>,
+        <m>G=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}</m>로 주어지는 내적을 주자.
+        표준기저에 대한 행렬이 <m>A=\begin{pmatrix}1&amp;2\\1&amp;3\end{pmatrix}</m>인 연산자 <m>T</m>를 생각한다.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>T^*</m>의 행렬을 구하고 <m>T</m>가 이 내적에 관하여 자기수반임을 확인하여라.</p></li>
+          <li>
+            <p>
+              <m>T</m>의 서로 다른 두 고윳값에 대응하는 고유벡터를 하나씩 구하고,
+              두 벡터가 <m>\langle\ ,\ \rangle_G</m>에 관하여 직교함을 확인하여라.
+            </p>
+          </li>
+          <li><p>두 고유벡터를 정규화하여 <m>T</m>의 정규직교 고유기저를 구하여라.</p></li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-invariant-complements">
+    <title>불변부분공간과 고유공간의 직교성</title>
+    <statement>
+      <p><m>T</m>를 유한 차원 실수 내적공간 <m>V</m> 위의 자기수반 연산자라 하자.</p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>T</m>-불변 부분공간 <m>W</m>에 대하여 <m>W^\perp</m>도 <m>T</m>-불변임을 증명하여라.</p></li>
+          <li><p>제한 연산자 <m>T|_W</m>와 <m>T|_{W^\perp}</m>가 각각 자기수반임을 증명하여라.</p></li>
+          <li>
+            <p>
+              스펙트럴 정리를 쓰지 않고, <m>Tu=\lambda u</m>, <m>Tv=\mu v</m>, <m>\lambda\ne\mu</m>이면
+              <m>\langle u,v\rangle=0</m>임을 직접 증명하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>T</m>의 서로 다른 고윳값을 <m>\mu_1,\ldots,\mu_r</m>, 대응하는 고유공간을
+              <m>E_1,\ldots,E_r</m>라 하자. (c)와 스펙트럴 정리를 결합하여
+              <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>임을 보여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-image-kernel-computation">
+    <title>이미지와 커널의 직교분해</title>
+    <statement>
+      <p>
+        표준 내적을 갖는 <m>\mathbb R^3</m>에서 대칭행렬
+        <m>A=\begin{pmatrix}1&amp;1&amp;0\\1&amp;2&amp;1\\0&amp;1&amp;1\end{pmatrix}</m>로 주어지는 연산자 <m>T</m>를 생각하자.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\ker T</m>와 <m>\operatorname{im}T</m>의 기저를 각각 구하여라.</p></li>
+          <li><p><m>\operatorname{im}T=(\ker T)^\perp</m>임을 계산으로 확인하여라.</p></li>
+          <li>
+            <p>
+              <m>(2,0,1)</m>을 <m>\operatorname{im}T</m>에 속하는 벡터와 <m>\ker T</m>에 속하는 벡터의 합으로
+              유일하게 나타내어라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-four-subspaces">
+    <title>일반 연산자의 네 기본 부분공간</title>
+    <statement>
+      <p>
+        <m>T</m>를 유한 차원 실수 내적공간 <m>V</m> 위의 임의의 선형연산자라 하자.
+        이 문제에서는 <m>T</m>가 자기수반이라고 가정하지 않는다.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\ker T^*=(\operatorname{im}T)^\perp</m> 및 <m>\operatorname{im}T^*=(\ker T)^\perp</m>를 증명하여라.</p></li>
+          <li>
+            <p>
+              (a)로부터 <m>\operatorname{rank}T=\operatorname{rank}T^*</m>를 유도하고,
+              이것이 행렬의 행계수와 열계수가 같다는 사실의 좌표에 의존하지 않는 형태임을 설명하여라.
+            </p>
+          </li>
+          <li><p><xref ref="prop-self-adjoint-image-kernel-orthogonal"/>가 (a)의 특수한 경우임을 확인하여라.</p></li>
+          <li>
+            <p>
+              <m>\ker(T^*T)=\ker T</m> 및 <m>\operatorname{im}(T^*T)=\operatorname{im}T^*</m>를 증명하여라.
+              특히 <m>T</m>가 자기수반이면 <m>T^2x=0</m>으로부터 <m>Tx=0</m>이 따름을 보여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <hint><p>(d)에서 <m>T^*Tx=0</m>이면 <m>\lVert Tx\rVert^2=\langle T^*Tx,x\rangle=0</m>이다.</p></hint>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-self-adjoint-idempotents">
+    <title>자기수반 멱등연산자와 직교 사영</title>
+    <statement>
+      <p>유한 차원 실수 내적공간 <m>V</m> 위의 선형연산자 <m>P</m>가 <m>P^2=P</m>를 만족한다고 하자.</p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>V=\operatorname{im}P\oplus\ker P</m>임을 증명하여라.</p></li>
+          <li><p><m>P</m>가 자기수반일 필요충분조건은 <m>\operatorname{im}P\perp\ker P</m>임을 증명하여라.</p></li>
+          <li>
+            <p>
+              (b)의 조건이 성립하면 <m>P</m>가 <m>\operatorname{im}P</m> 위로의 직교 사영임을 보이고,
+              그 고윳값은 <m>0</m> 또는 <m>1</m>뿐임을 증명하여라.
+            </p>
+          </li>
+          <li><p>역으로 부분공간 <m>W</m> 위로의 직교 사영은 자기수반이고 멱등임을 증명하여라.</p></li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-rayleigh-quotient">
+    <title>레일리 몫</title>
+    <statement>
+      <p>
+        영이 아닌 유한 차원 실수 내적공간 <m>V</m> 위의 자기수반 연산자 <m>T</m>의 가장 작은 고윳값과
+        가장 큰 고윳값을 각각 <m>\lambda_{\min}</m>, <m>\lambda_{\max}</m>라 하자.
+        영이 아닌 <m>x\in V</m>에 대하여
+        <m>R_T(x)=\dfrac{\langle Tx,x\rangle}{\langle x,x\rangle}</m>로 둔다.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p>모든 <m>x\ne0</m>에 대하여 <m>\lambda_{\min}\le R_T(x)\le\lambda_{\max}</m>임을 증명하여라.</p></li>
+          <li>
+            <p>
+              <m>R_T(x)=\lambda_{\max}</m>일 필요충분조건은 <m>x</m>가 <m>\lambda_{\max}</m>-고유공간에
+              속하는 것임을 증명하여라. 최솟값에 대해서도 같은 결론을 증명하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\lVert x\rVert=1</m>인 벡터 전체에서 함수
+              <m>x\mapsto\langle Tx,x\rangle</m>의 최댓값과 최솟값을 구하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-polynomial-projections">
+    <title>고유공간 사영은 연산자의 다항식이다</title>
+    <statement>
+      <p>
+        자기수반 연산자 <m>T</m>의 서로 다른 고윳값을 <m>\mu_1,\ldots,\mu_r</m>라 하고,
+        <m>E_i</m>를 <m>\mu_i</m>-고유공간이라 하자. 각 <m>i</m>에 대하여
+        <m>\ell_i(t)=\prod_{j\ne i}\dfrac{t-\mu_j}{\mu_i-\mu_j}</m>, <m>P_i=\ell_i(T)</m>로 둔다.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li>
+            <p>
+              <m>P_i</m>가 <m>E_i</m> 위에서는 항등연산자로, 다른 고유공간 위에서는 영연산자로 작용함을 보여라.
+              따라서 <m>P_i</m>는 <m>E_i</m> 위로의 직교 사영이다.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>P_iP_j=0</m> (<m>i\ne j</m>), <m>P_i^2=P_i=P_i^*</m>,
+              <m>\sum_iP_i=I_V</m>, <m>T=\sum_i\mu_iP_i</m>를 증명하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              영이 아닌 자기수반 사영 <m>Q_1,\ldots,Q_s</m>이 <m>Q_iQ_j=0</m> (<m>i\ne j</m>),
+              <m>\sum_iQ_i=I_V</m>를 만족하고, 서로 다른 실수 <m>\nu_1,\ldots,\nu_s</m>에 대하여
+              <m>T=\sum_i\nu_iQ_i</m>라고 하자. 그러면 <m>s=r</m>이고, 적당히 순서를 바꾸면
+              <m>\nu_i=\mu_i</m>, <m>Q_i=P_i</m>임을 증명하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-real-eigenvalue-without-complexification">
+    <title>복소화 없이 실수 고윳값 얻기</title>
+    <statement>
+      <p>
+        <m>T</m>를 영이 아닌 유한 차원 실수 내적공간 <m>V</m> 위의 자기수반 연산자라 하자.
+        다음 단계에 따라 <xref ref="thm-spectral-self-adjoint-real"/>의 한 방향을 복소화 없이 다시 증명하여라.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li>
+            <p>
+              <m>b,c\in\mathbb R</m>, <m>b^2&lt;4c</m>이면 모든 <m>x\ne0</m>에 대하여
+              <m>\langle(T^2+bT+cI)x,x\rangle&gt;0</m>임을 보여라. 따라서 <m>T^2+bT+cI</m>는 가역이다.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>T</m>의 최소다항식 <m>m_T(t)</m>의 실수계수 기약인수가 모두 일차식임을 보여라.
+              따라서 <m>T</m>가 실수 고윳값을 가짐을 결론지어라.
+            </p>
+          </li>
+          <li>
+            <p>
+              (b)와 차원에 대한 귀납법을 사용하여 <m>V</m>에 <m>T</m>의 고유벡터로 이루어진
+              정규직교기저가 존재함을 증명하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              별해로, 단위구면이 콤팩트임을 이용하여 <m>x\mapsto\langle Tx,x\rangle</m>의 최댓값을 주는
+              단위벡터 <m>u</m>를 잡자. 임의의 <m>v\perp u</m>에 대하여
+              <m>g(t)=\dfrac{\langle T(u+tv),u+tv\rangle}{\lVert u+tv\rVert^2}</m>의
+              <m>t=0</m>에서의 미분을 계산하여 <m>Tu\in\operatorname{span}\{u\}</m>임을 증명하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        (a)에서 <m>T^2+bT+cI=(T+\tfrac b2I)^2+(c-\tfrac{b^2}{4})I</m>를 사용하여라.
+        (b)에서 기약 이차인수 <m>q</m>가 <m>m_T=qr</m>을 만족한다면
+        <m>q(T)r(T)=0</m>과 <m>q(T)</m>의 가역성이 최소성에 모순을 일으킨다.
+      </p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-commuting-self-adjoint">
+    <title>가환하는 자기수반 연산자의 동시 대각화</title>
+    <statement>
+      <p><m>S,T</m>를 유한 차원 실수 내적공간 <m>V</m> 위의 자기수반 연산자라 하자.</p>
+      <p>
+        <ol marker="(a)">
+          <li>
+            <p>
+              <m>ST=TS</m>이면 <m>T</m>의 각 고유공간 <m>E_\mu(T)</m>가 <m>S</m>에 의하여 불변이고,
+              <m>S|_{E_\mu(T)}</m>가 자기수반임을 보여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>ST=TS</m>이면 <m>S</m>와 <m>T</m>의 공통 고유벡터로 이루어진
+              <m>V</m>의 정규직교기저가 존재함을 증명하여라.
+            </p>
+          </li>
+          <li><p>역으로 공통 정규직교 고유기저가 존재하면 <m>ST=TS</m>임을 보여라.</p></li>
+          <li><p><m>ST</m>가 자기수반일 필요충분조건이 <m>ST=TS</m>임을 증명하여라.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        (b)에서 직교분해 <m>V=\bigoplus_\mu^\perp E_\mu(T)</m>의 각 성분에
+        <m>S|_{E_\mu(T)}</m>에 대한 스펙트럴 정리를 적용하여라.
+      </p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-spectral-positive-square-root">
+    <title>양의 자기수반 연산자의 제곱근</title>
+    <statement>
+      <p>
+        자기수반 연산자 <m>T</m>가 모든 <m>x\in V</m>에 대하여 <m>\langle Tx,x\rangle\ge0</m>을 만족하면
+        <m>T</m>를 <em>양</em>이라고 하자.
+      </p>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>T</m>가 양일 필요충분조건은 모든 고윳값이 <m>0</m> 이상인 것임을 증명하여라.</p></li>
+          <li>
+            <p>
+              <m>T</m>가 양이면 <m>S^2=T</m>를 만족하는 양의 자기수반 연산자 <m>S</m>가 존재함을 보여라.
+              또한 <m>S</m>를 <m>T</m>의 다항식으로 쓸 수 있음을 보여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S_1,S_2</m>가 모두 양의 자기수반 연산자이고 <m>S_1^2=S_2^2=T</m>이면
+              <m>S_1=S_2</m>임을 증명하여라.
+            </p>
+          </li>
+          <li>
+            <p>
+              임의의 선형연산자 <m>A:V\to V</m>에 대하여 <m>A^*A</m>가 양의 자기수반임을 보이고,
+              그 유일한 양의 제곱근을 <m>|A|</m>라 할 때 모든 <m>x\in V</m>에 대하여
+              <m>\lVert|A|x\rVert=\lVert Ax\rVert</m>임을 증명하여라.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        (c)에서 <m>S_i</m>는 <m>T=S_i^2</m>와 가환한다. <m>T</m>의 각 고유공간에 제한한
+        <m>S_i</m>에 스펙트럴 정리를 적용하여라.
+      </p>
+    </hint>
+  </exercise>
+</exercises>
+
   
 
 </section>
