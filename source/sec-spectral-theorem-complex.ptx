@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-spectral-theorem-complex" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>스펙트럴 정리:복소체의 경우</title>
+  <title>스펙트럴 정리: 복소체의 경우</title>
   <p>
     이 절에서는 복소체 위의 유한차원 에르미트 공간에 정의된 작용소에 대하여 스펙트럴 정리를 다룹니다. 
   </p>
@@ -138,6 +138,41 @@
     </proof>
   </theorem>
 
+  <p>
+    스펙트럴 정리를 정사영과 관련지어 서술해 봅시다. 
+  </p>
+
+  <corollary xml:id="cor-spectral-decomposition-complex">
+    <title>스펙트럴 분해</title>
+    <p>
+      복소 유한차원 내적공간 <m>V</m> 위의 정규 작용소 <m>T</m>의 서로 다른 고유값을
+      <m>\lambda_1,\dots,\lambda_r</m>라 하고, 각 고유값에 대응하는 고유공간을
+      <m>E_j=\\ker(T-\lambda_j I)</m>라 하자. <m>P_j</m>를 <m>E_j</m>로의
+      정사영이라 하면
+      <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>이고,
+      <m>P_1+\cdots+P_r=I</m> 및
+      <m>T=\lambda_1P_1+\cdots+\lambda_rP_r</m>이다.
+      즉, 정규 작용소는 서로 직교하는 고유공간으로의 정사영들의 선형결합으로 표현된다.
+    </p>
+    <proof>
+      <p>
+        스펙트럴 정리에 의하여 <m>V</m>는 <m>T</m>의 고유벡터로 이루어진 정규직교기저를
+        갖는다. 서로 다른 고유값에 대응하는 고유공간은 서로 직교하므로
+        <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>이다.
+        따라서 모든 <m>v\in V</m>는 유일하게
+        <m>v=v_1+\cdots+v_r</m> (<m>v_j\in E_j</m>)로 쓸 수 있고,
+        <m>P_jv=v_j</m>이다. 그러므로
+        <m>(P_1+\cdots+P_r)v=v</m>이고
+        <m>Tv=\lambda_1v_1+\cdots+\lambda_rv_r
+        =(\lambda_1P_1+\cdots+\lambda_rP_r)v</m>이다.
+        모든 <m>v\in V</m>에 대하여 이 등식이 성립하므로
+        <m>P_1+\cdots+P_r=I</m> 및
+        <m>T=\lambda_1P_1+\cdots+\lambda_rP_r</m>를 얻는다.
+      </p>
+    </proof>
+  </corollary>
+  
+
   <corollary xml:id="cor-self-adjoint-spectral-theorem-complex">
     <title>스펙트럴 정리 (자기수반 작용소)</title>
     <p>
@@ -161,6 +196,309 @@
       </p>
     </proof>
   </corollary>
+
+  <exercises xml:id="exercises-spectral-theorem-complex-merged" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>연습문제</title>
+
+    <p>
+      이 문제들에서 복소 내적은 본문과 같이 첫 번째 변수에 대하여 선형이고 두 번째 변수에 대하여 켤레선형이라고 약속한다.
+      특히 <m>\mathbb{C}^n</m>에서는 <m>\langle z,w\rangle=\sum_i z_i\overline{w_i}</m>이다.
+    </p>
+
+    <exercise xml:id="exer-spectral-complex-merged-01">
+      <title>대각행렬의 정규성과 자기수반성</title>
+      <statement>
+        <p>
+          표준 내적을 갖는 <m>\mathbb{C}^2</m>에서
+          <m>A=\begin{pmatrix}2&amp;0\\0&amp;-i\end{pmatrix}</m>라 하자.
+          <m>A^*</m>를 구하고, <m>A</m>가 정규 작용소인지와 자기수반 작용소인지를 각각 판정하라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>A^*=\begin{pmatrix}2&amp;0\\0&amp;i\end{pmatrix}</m>이고
+          <m>A^*A=AA^*=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix}</m>이므로 <m>A</m>는 정규이다.
+          그러나 <m>A^*\ne A</m>이므로 자기수반은 아니다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-02">
+      <title>정규가 아닌 행렬과 고유기저</title>
+      <statement>
+        <p>
+          <m>T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</m>가 정규 작용소가 아님을 보여라.
+          스펙트럴 정리를 이용하여 <m>\mathbb{C}^2</m>가 <m>T</m>의 고유벡터로 이루어진 정규직교기저를
+          갖지 않음을 설명하고, 이를 고유공간을 직접 계산하여 확인하라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>T^*=\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}</m>이고
+          <m>T^*T=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}</m>인 반면
+          <m>TT^*=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}</m>이므로 <m>T</m>는 정규가 아니다.
+          따라서 스펙트럴 정리에 의하여 정규직교 고유기저를 가질 수 없다.
+          또한 유일한 고유값은 <m>1</m>이고
+          <m>\ker(T-I)=\operatorname{span}\{(1,0)\}</m>이므로, 고유벡터들만으로는
+          <m>\mathbb{C}^2</m>의 기저조차 만들 수 없다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-03">
+      <title>커널과 이미지의 직교성</title>
+      <statement>
+        <p>
+          <m>D=\operatorname{diag}(0,2-i,0)</m>를 <m>\mathbb{C}^3</m>의 작용소로 보자.
+          <m>\ker D</m>와 <m>\operatorname{im}D</m>의 정규직교기저를 각각 구하고,
+          <m>\operatorname{im}D=(\ker D)^\perp</m>임을 직접 확인하라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          표준기저를 <m>e_1,e_2,e_3</m>라 하면
+          <m>\ker D=\operatorname{span}\{e_1,e_3\}</m>이고
+          <m>\operatorname{im}D=\operatorname{span}\{e_2\}</m>이다.
+          따라서 각각 <m>(e_1,e_3)</m>와 <m>(e_2)</m>가 정규직교기저이고,
+          <m>(\ker D)^\perp=\operatorname{span}\{e_2\}=\operatorname{im}D</m>이다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-04">
+      <title>스칼라 작용소</title>
+      <statement>
+        <p>
+          <m>0\ne V</m>인 복소 내적공간과 <m>c\in\mathbb{C}</m>에 대하여
+          <m>T=cI_V</m>라 하자. <m>T^*</m>를 구하고, <m>T</m>가 언제나 정규 작용소임을 보여라.
+          또한 <m>T</m>가 자기수반 작용소일 필요충분조건이 <m>c\in\mathbb{R}</m>임을 보여라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>\langle cx,y\rangle=c\langle x,y\rangle=\langle x,\overline c,y\rangle</m>이므로
+          <m>T^*=\overline c,I_V</m>이다. 따라서
+          <m>T^*T=|c|^2I_V=TT^*</m>이다. 한편 <m>T=T^*</m>일 필요충분조건은
+          <m>c=\overline c</m>, 즉 <m>c\in\mathbb{R}</m>인 것이다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-05">
+      <title>정규이지만 자기수반이 아닌 비대각행렬</title>
+      <statement>
+        <p>
+          <m>\mathbb{C}^2</m>의 표준 내적에 대하여
+          <m>T=\begin{pmatrix}1&amp;i\\i&amp;1\end{pmatrix}</m>라 하자.
+          <m>T</m>가 정규 작용소이지만 자기수반은 아님을 보이고, <m>T</m>의 고유값과
+          고유벡터로 이루어진 정규직교기저를 구하라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>T^*=\begin{pmatrix}1&amp;-i\\-i&amp;1\end{pmatrix}</m>이고
+          <m>T^*T=TT^*=2I</m>이므로 <m>T</m>는 정규이지만 <m>T^*\ne T</m>이므로 자기수반은 아니다.
+          고유값 <m>1+i</m>, <m>1-i</m>에 각각 대응하는 단위 고유벡터로
+          <m>2^{-1/2}(1,1)</m>, <m>2^{-1/2}(1,-1)</m>을 택할 수 있으며, 이 두 벡터는 정규직교기저를 이룬다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-06">
+      <title>정규성의 보존과 고유벡터</title>
+      <statement>
+        <p>
+          <m>T</m>가 정규 작용소이면 <m>T^*</m>, <m>cT</m>
+          <m>(c\in\mathbb{C})</m>, <m>T-\lambda I</m> <m>(\lambda\in\mathbb{C})</m>가 모두 정규 작용소임을 보여라.
+          이를 이용하여 <m>Tv=\lambda v</m>이면 <m>T^*v=\overline\lambda v</m>임을 증명하라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>(T-\lambda I)^*=T^*-\overline\lambda I</m>를 이용하여 두 곱을 전개하라.
+          정규 작용소 <m>S</m>에 대해서는
+          <m>\lVert Sx\rVert^2=\langle S^*Sx,x\rangle
+          =\langle SS^*x,x\rangle=\lVert S^*x\rVert^2</m>이다.
+          이제 <m>S=T-\lambda I</m>와 <m>x=v</m>를 택하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-07">
+      <title>서로 다른 고유공간의 직교성</title>
+      <statement>
+        <p>
+          <m>T</m>가 정규 작용소이고 <m>v,w\ne0</m>가 각각 서로 다른 고유값
+          <m>\lambda,\mu</m>에 대응하는 고유벡터라고 하자. <m>\langle v,w\rangle=0</m>임을 증명하라.
+          이어서 서로 다른 고유값에 대응하는 고유공간들이 서로 직교하며, 그 직교직합이 <m>V</m> 전체임을 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          앞 문제에서 <m>T^*w=\overline\mu w</m>임을 안다. 내적이 첫 번째 변수에 대하여 선형임에 유의하여
+          <m>\lambda\langle v,w\rangle=\langle Tv,w\rangle
+          =\langle v,T^*w\rangle=\mu\langle v,w\rangle</m>를 얻어라.
+          마지막 주장은 스펙트럴 정리를 적용하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-08">
+      <title>고유공간과 비제차 방정식</title>
+      <statement>
+        <p>
+          <m>T</m>가 정규 작용소이고 <m>\lambda</m>가 <m>T</m>의 고유값이라고 하자.
+          <m>E_\lambda=\ker(T-\lambda I)</m>에 대하여
+          <m>\operatorname{im}(T-\lambda I)=E_\lambda^\perp</m>임을 증명하라.
+          이를 이용하여 방정식 <m>(T-\lambda I)x=y</m>가 해를 가질 필요충분조건을 서술하라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>S=T-\lambda I</m>도 정규이므로 본문의 이미지와 커널에 관한 명제를 <m>S</m>에 적용하라.
+          방정식이 풀릴 필요충분조건은 <m>y\in\operatorname{im}S</m>, 다시 말해 모든
+          <m>v\in E_\lambda</m>에 대하여 <m>\langle y,v\rangle=0</m>인 것이다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-09">
+      <title>정규 작용소의 역작용소</title>
+      <statement>
+        <p>
+          <m>T</m>가 가역인 정규 작용소라고 하자.
+          <m>(T^{-1})^*=(T^*)^{-1}</m>임을 보이고, <m>T^{-1}</m>도 정규 작용소임을 증명하라.
+          또한 <m>T</m>의 고유값이 <m>\lambda_1,\ldots,\lambda_n</m>이면
+          <m>T^{-1}</m>의 고유값이 <m>\lambda_1^{-1},\ldots,\lambda_n^{-1}</m>임을 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>TT^{-1}=T^{-1}T=I</m>의 수반을 취하라. 또한 <m>T^*T=TT^*</m>의 양변의 역을 취하여
+          <m>T^{-1}(T^*)^{-1}=(T^*)^{-1}T^{-1}</m>을 얻어라. 마지막 주장은 정규직교 고유기저에서 확인하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-10">
+      <title>정규 작용소의 커널과 멱영성</title>
+      <statement>
+        <p>
+          정규 작용소 <m>T</m>에 대하여 모든 <m>k\ge1</m>에 대해
+          <m>\ker T^k=\ker T</m>임을 증명하라. 따라서 어떤 양의 정수 <m>m</m>에 대하여
+          <m>T^m=0</m>이면 <m>T=0</m>임을 보여라. 정규성 조건을 빼면 이 결론이 거짓임을
+          <m>\mathbb{C}^2</m>의 구체적인 예로 설명하라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>V=\ker T\oplus\operatorname{im}T</m>이므로
+          <m>\ker T\cap\operatorname{im}T=\{0\}</m>이다. <m>T^kx=0</m>이면
+          <m>T^{k-1}x\in\ker T\cap\operatorname{im}T</m>이고, 이 관찰을 반복하라.
+          반례로 <m>\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</m>를 조사하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-11">
+      <title>수반작용소를 나타내는 다항식</title>
+      <statement>
+        <p>
+          <m>T</m>가 정규 작용소이면 <m>T^*=p(T)</m>를 만족하는 다항식
+          <m>p\in\mathbb{C}[x]</m>가 존재함을 보여라. 역으로 <m>T^*</m>가 <m>T</m>의 다항식이면
+          <m>T</m>가 정규 작용소임을 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>T</m>의 서로 다른 고유값을 <m>\lambda_1,\ldots,\lambda_r</m>라 하자.
+          라그랑주 보간으로 <m>p(\lambda_j)=\overline{\lambda_j}</m>를 만족하는 <m>p</m>를 만들고,
+          정규직교 고유기저에서 <m>p(T)</m>와 <m>T^*</m>를 비교하라. 역방향에서는 모든 작용소가
+          자신의 다항식과 가환한다는 사실을 사용하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-12">
+      <title>상삼각 정규행렬</title>
+      <statement>
+        <p>
+          <m>A=(a_{ij})\in M_n(\mathbb{C})</m>가 상삼각행렬이고 정규행렬이라고 하자.
+          스펙트럴 정리를 인용하지 말고 <m>A</m>가 대각행렬임을 증명하라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>A^*A=AA^*</m>의 <m>(1,1)</m>-성분을 비교하면
+          <m>|a_{11}|^2=|a_{11}|^2+\sum_{j=2}^n|a_{1j}|^2</m>를 얻는다.
+          따라서 첫째 행의 비대각성분은 모두 <m>0</m>이다. 이제 <m>A</m>를
+          <m>\begin{pmatrix}a_{11}&amp;0\\0&amp;A_1\end{pmatrix}</m>로 쓰고 <m>A_1</m>에 귀납법을 적용하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-13">
+      <title>노름으로 판정하는 정규성</title>
+      <statement>
+        <p>
+          먼저 복소 내적공간 위의 선형작용소 <m>A</m>가 모든 <m>x</m>에 대하여
+          <m>\langle Ax,x\rangle=0</m>을 만족하면 <m>A=0</m>임을 보여라. 이를 이용하여 <m>T</m>가 정규인 것과
+          모든 <m>x</m>에 대하여 <m>\lVert Tx\rVert=\lVert T^*x\rVert</m>인 것이 동치임을 증명하라.
+          마지막으로 첫 번째 명제가 실내적공간에서는 거짓임을 <m>\mathbb{R}^2</m>의 예로 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          첫 주장에는 <m>x+y</m>와 <m>x+iy</m>를 차례로 대입하여
+          <m>\langle Ax,y\rangle+\langle Ay,x\rangle=0</m>과
+          <m>-i\langle Ax,y\rangle+i\langle Ay,x\rangle=0</m>을 얻어라.
+          정규성의 역방향에는 <m>A=T^*T-TT^*</m>를 사용하라.
+          실수에서의 반례는 <m>90^\circ</m> 회전이다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-14">
+      <title>정규 작용소의 불변부분공간</title>
+      <statement>
+        <p>
+          <m>T</m>가 정규 작용소이고 <m>W\subseteq V</m>가 <m>T</m>-불변 부분공간이라고 하자.
+          <m>W</m>가 <m>T^*</m>-불변이고 <m>W^\perp</m>가 <m>T</m> 및 <m>T^*</m>-불변임을 증명하라.
+          또한 <m>T|_W</m>와 <m>T|_{W^\perp}</m>가 모두 정규 작용소임을 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          문제 <xref ref="exer-spectral-complex-merged-11"/>의 보간 다항식을 더 세분하여,
+          각 고유공간 <m>E_{\lambda_j}</m>으로의 직교사영
+          <m>P_j</m>를 <m>T</m>의 다항식으로 나타내어라. 그러면 <m>P_jW\subseteq W</m>이고
+          <m>T^*=\sum_j\overline{\lambda_j}P_j</m>이므로 <m>T^*W\subseteq W</m>이다.
+          직교 여공간의 불변성은 수반의 정의로부터 얻고, 제한작용소의 수반을 확인하라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-spectral-complex-merged-15">
+      <title>가환하는 정규 작용소의 동시 대각화</title>
+      <statement>
+        <p>
+          정규 작용소 <m>S,T</m>가 <m>ST=TS</m>를 만족한다고 하자.
+          <m>S</m>와 <m>T</m>의 공통 고유벡터로 이루어진 <m>V</m>의 정규직교기저가 존재함을 증명하라.
+          이로부터 <m>S+T</m>와 <m>ST</m>가 정규임을 보여라. 마지막으로 가환 조건을 빼면
+          합과 곱이 정규일 필요가 없음을 구체적인 <m>2\times2</m> 행렬로 보여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>V</m>를 <m>T</m>의 서로 다른 고유공간들의 직교직합으로 분해하라.
+          <m>ST=TS</m>이므로 각 고유공간은 <m>S</m>-불변이고, 앞 문제에 의하여 그 위의 <m>S</m>의 제한은 정규이다.
+          각 고유공간에 스펙트럴 정리를 적용하라. 가환 조건이 없는 경우에는
+          <m>S=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}</m>,
+          <m>T=i\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}</m>를 조사하라.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 
   
 
