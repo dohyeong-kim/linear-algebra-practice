@@ -143,6 +143,7 @@
       따라서 <m>\mathbb R^n</m>은 이 표준 내적에 의해 내적공간이 된다.
     </p>
   </example>
+  
 
   <example xml:id="ex-polynomial-integration-inner-product">
     <title>적분으로 정의되는 다항식공간의 내적</title>
@@ -252,7 +253,7 @@
       으로 정의되는 행렬이며, 이를 기저 <m>\mathcal B</m>에 관한 <term>그람 행렬</term><aside><p>그람 행렬:Gram matrix</p></aside>이라 한다.
       <m>x,y\in V</m>의 좌표열벡터를 각각 <m>[x]_{\mathcal B}</m>,
       <m>[y]_{\mathcal B}</m>라 하면
-      <me>\langle x,y\rangle=[x]_{\mathcal B}^{T}G_{\mathcal B}[y]_{\mathcal B}</me>
+      <me>\langle x,y\rangle=[x]_{\mathcal B}^{\operatorname{T}}G_{\mathcal B}[y]_{\mathcal B}</me>
       이다.
     </p>
   </definition>
@@ -274,10 +275,10 @@
     <title>내적과 대칭 양의 정부호행렬</title>
     <p>
       실내적의 그람 행렬 <m>G_{\mathcal B}</m>는 대칭행렬이며 양의 정부호이다. 즉,
-      <me>G_{\mathcal B}^{T}=G_{\mathcal B},\qquad c^{T}G_{\mathcal B}c&gt;0
+      <me>G_{\mathcal B}^{\operatorname{T}}=G_{\mathcal B},\qquad c^{\operatorname{T}}G_{\mathcal B}c&gt;0
       \quad(0\ne c\in\mathbb R^n)</me>
       이다. 역으로, 대칭양의 정부호행렬 <m>G\in M_n(\mathbb R)</m>가 주어지면
-      <me>\langle x,y\rangle=x^{T}Gy</me>
+      <me>\langle x,y\rangle=x^{\operatorname{T}}Gy</me>
       는 <m>\mathbb R^n</m> 위의 내적을 정의한다. 따라서 기저를 고정하면 실내적과
       대칭양의 정부호행렬은 서로 일대일로 대응한다.
     </p>
@@ -285,12 +286,24 @@
       <p>
         내적의 대칭성으로 <m>G_{ij}=G_{ji}</m>이고, <m>0\ne c\in\mathbb R^n</m>에 대하여
         <m>v=\sum_i c_i v_i\ne0</m>이므로
-        <me>c^TG_{\mathcal B}c=\langle v,v\rangle&gt;0.</me>
-        역방향은 행렬곱의 쌍선형성, <m>G^T=G</m>, 그리고 양의 정부호성에서 바로 따른다.
+        <me>c^{\operatorname{T}}G_{\mathcal B}c=\langle v,v\rangle&gt;0.</me>
+        역방향은 행렬곱의 쌍선형성, <m>G^{\operatorname{T}}=G</m>, 그리고 양의 정부호성에서 바로 따른다.
       </p>
     </proof>
   </proposition>
 
+  <remark xml:id="rem-standard-real-vector-space-multiple-inner-products">
+    <title>표준 실벡터공간의 여러 내적 구조</title>
+    <p>
+      벡터공간 <m>\mathbb R^n</m>에 벡터공간 구조만 주어져 있다고 해서 내적이 하나로 정해지는 것은 아니다.
+      서로 다른 대칭 양의 정부호행렬 <m>G</m>와 <m>H</m>는 각각
+      <me>\langle x,y\rangle_G=x^{\operatorname{T}}Gy,
+      \qquad \langle x,y\rangle_H=x^{\operatorname{T}}Hy</me>
+      라는 서로 다른 내적을 정의한다. 따라서 표준 실벡터공간은 양의 정부호행렬의 선택에 따라
+      여러 내적공간 구조를 가질 수 있다.
+    </p>
+  </remark>
+  
   <definition xml:id="def-matrix-representation-hermitian-inner-product">
     <title>에르미트 내적의 행렬표현</title>
     <p>
@@ -299,7 +312,7 @@
       <me>H_{\mathcal B}=\big(\langle v_i,v_j\rangle\big)_{1\leq i,j\leq n}</me>
       으로 정의되는 그람 행렬이다. 이 절에서 에르미트 내적은 첫째 변수에 관하여 선형이므로,
       <m>x,y\in V</m>에 대하여
-      <me>\langle x,y\rangle=[x]_{\mathcal B}^{T}H_{\mathcal B}
+      <me>\langle x,y\rangle=[x]_{\mathcal B}^{\operatorname{T}}H_{\mathcal B}
       \overline{[y]_{\mathcal B}}</me>
       이다.
     </p>
@@ -309,11 +322,11 @@
     <title>에르미트 내적과 에르미트 양의 정부호행렬</title>
     <p>
       에르미트 내적의 그람 행렬 <m>H_{\mathcal B}</m>는 에르미트 행렬이며 양의 정부호이다. 즉,
-      켤레전치를 <m>H^*=\overline H^{T}</m>로 나타내면
+      켤레전치를 <m>H^*=\overline H^{\operatorname{T}}</m>로 나타내면
       <me>H_{\mathcal B}^{*}=H_{\mathcal B},\qquad
-      c^{T}H_{\mathcal B}\overline c&gt;0\quad(0\ne c\in\mathbb C^n)</me>
+      c^{\operatorname{T}}H_{\mathcal B}\overline c&gt;0\quad(0\ne c\in\mathbb C^n)</me>
       이다. 역으로, 에르미트 양의 정부호행렬 <m>H\in M_n(\mathbb C)</m>가 주어지면
-      <me>\langle x,y\rangle=x^{T}H\overline y</me>
+      <me>\langle x,y\rangle=x^{\operatorname{T}}H\overline y</me>
       는 첫째 변수에 관하여 선형인 <m>\mathbb C^n</m> 위의 에르미트 내적을 정의한다.
       따라서 기저를 고정하면 에르미트 내적과 에르미트 양의 정부호행렬은 서로 일대일로 대응한다.
     </p>
@@ -325,12 +338,12 @@
         <m>H_{\mathcal B}^{*}=H_{\mathcal B}</m>이다. 또한
         <m>0\ne c\in\mathbb C^n</m>에 대하여
         <m>v=\sum_i c_i v_i\ne0</m>이므로
-        <me>c^T H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.</me>
+        <me>c^{\operatorname{T}} H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.</me>
         역으로 <m>H^*=H</m>이면 행렬곱의 성질로
-        <m>\langle x,y\rangle=x^TH\overline y</m>는 첫째 변수에 선형이고 둘째 변수에
+        <m>\langle x,y\rangle=x^{\operatorname{T}}H\overline y</m>는 첫째 변수에 선형이고 둘째 변수에
         켤레선형이며, <m>\langle y,x\rangle=\overline{\langle x,y\rangle}</m>를 만족한다.
         여기에 <m>H</m>의 양의 정부호성을 적용하면
-        <m>x\ne0</m>일 때 <m>\langle x,x\rangle=x^TH\overline x&gt;0</m>이므로
+        <m>x\ne0</m>일 때 <m>\langle x,x\rangle=x^{\operatorname{T}}H\overline x&gt;0</m>이므로
         이는 에르미트 내적이다.
       </p>
     </proof>
@@ -341,9 +354,9 @@
     <p>
       새 기저 <m>\mathcal C=(w_1,\ldots,w_n)</m>의 벡터들이
       <m>w_j=\sum_i v_iP_{ij}</m>를 만족한다고 하자. 그러면 실내적의 경우에는
-      <me>G_{\mathcal C}=P^TG_{\mathcal B}P</me>
+      <me>G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P</me>
       이고, 이 절의 선형성 규약을 따르는 에르미트 내적의 경우에는
-      <me>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</me>
+      <me>H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P</me>
       이다. 특히 정규직교기저에서는 두 그람 행렬이 모두 항등행렬이다.
     </p>
     <proof>
@@ -354,10 +367,10 @@
             (G_{\mathcal C})_{jk} &amp;=\langle w_j,w_k\rangle \\
             &amp;=\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle \\
             &amp;=\sum_{i,l}P_{ij}(G_{\mathcal B})_{il}P_{lk} \\
-            &amp;=(P^TG_{\mathcal B}P)_{jk}
+            &amp;=(P^{\operatorname{T}}G_{\mathcal B}P)_{jk}
           </mrow>
         </md>
-        이므로 <m>G_{\mathcal C}=P^TG_{\mathcal B}P</m>이다.
+        이므로 <m>G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P</m>이다.
         에르미트 내적의 경우에는 첫째 변수에 선형이고 둘째 변수에 켤레선형이므로
         <md>
           <mrow>
@@ -365,10 +378,10 @@
             &amp;=\langle w_j,w_k\rangle \\
             &amp;=\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle \\
             &amp;=\sum_{i,l}P_{ij}(H_{\mathcal B})_{il}\overline{P_{lk}} \\
-            &amp;=(P^TH_{\mathcal B}\overline P)_{jk}
+            &amp;=(P^{\operatorname{T}}H_{\mathcal B}\overline P)_{jk}
           </mrow>
         </md>
-        이다. 따라서 <m>H_{\mathcal C}=P^TH_{\mathcal B}\overline P</m>이다.
+        이다. 따라서 <m>H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P</m>이다.
         정규직교기저에서는 그람 행렬의 각 성분이 <m>\delta_{jk}</m>이므로 항등행렬이다.
       </p>
     </proof>

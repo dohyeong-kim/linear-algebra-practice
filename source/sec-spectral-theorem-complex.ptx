@@ -147,7 +147,7 @@
     <p>
       복소 유한차원 내적공간 <m>V</m> 위의 정규 작용소 <m>T</m>의 서로 다른 고유값을
       <m>\lambda_1,\dots,\lambda_r</m>라 하고, 각 고유값에 대응하는 고유공간을
-      <m>E_j=\\ker(T-\lambda_j I)</m>라 하자. <m>P_j</m>를 <m>E_j</m>로의
+      <m>E_j=\operatorname{ker}(T-\lambda_j I)</m>라 하자. <m>P_j</m>를 <m>E_j</m>로의
       정사영이라 하면
       <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>이고,
       <m>P_1+\cdots+P_r=I</m> 및
