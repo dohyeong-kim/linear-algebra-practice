@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>특이값 분해</title>
+<title>특이값 분해: 내적 공간</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -262,6 +262,12 @@ eBookConfig.enable_chatcodes =  false;
 #thm-spectral-theorem-normal-complex-2-3 { counter-set: thm-spectral-theorem-normal-complex-2-3 0; }
 #thm-spectral-theorem-normal-complex-2-3 > li::marker { content: ""counter(thm-spectral-theorem-normal-complex-2-3,decimal)"."; }
 #thm-spectral-theorem-normal-complex-2-3 > li { counter-increment: thm-spectral-theorem-normal-complex-2-3; }
+#exer-spectral-complex-merged-15-2-1-6 { counter-set: exer-spectral-complex-merged-15-2-1-6 0; }
+#exer-spectral-complex-merged-15-2-1-6 > li::marker { content: "("counter(exer-spectral-complex-merged-15-2-1-6,lower-alpha)")"; }
+#exer-spectral-complex-merged-15-2-1-6 > li { counter-increment: exer-spectral-complex-merged-15-2-1-6; }
+#prop-isometry-properties-2-2 { counter-set: prop-isometry-properties-2-2 0; }
+#prop-isometry-properties-2-2 > li::marker { content: ""counter(prop-isometry-properties-2-2,decimal)"."; }
+#prop-isometry-properties-2-2 > li { counter-increment: prop-isometry-properties-2-2; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -318,7 +324,7 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리: 복소체의 경우</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html#exercises-spectral-theorem-complex-merged" class="internal"><span class="codenumber">1.4</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해: 내적 공간</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div></li>
@@ -332,8 +338,159 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-backmatter"><div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div></li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-singular-value-decomposition"><h2 class="heading hide-type">
-<span class="type">[section]</span><span class="space"> </span><span class="codenumber">1.5</span><span class="space"> </span><span class="title">특이값 분해</span>
-</h2></section></div>
+<span class="type">[section]</span><span class="space"> </span><span class="codenumber">1.5</span><span class="space"> </span><span class="title">특이값 분해: 내적 공간</span>
+</h2>
+<div class="para" id="sec-singular-value-decomposition-2">유한 차원 내적공간 사이의 선형사상에서는 내적이 길이와 각도를 결정하며, 사상이 이들을 어떻게 변화시키는지를 이해하는 것이 중요합니다. 자기수반 사상은 고유값과 고유벡터로 잘 설명되지만, 일반적인 선형사상은 정의역과 공역의 서로 다른 기저와 방향을 동시에 고려해야 합니다. <em class="emphasis">특이값 분해</em>는 이러한 문제를 해결하기 위해, 선형사상을 직교변환과 양의 스칼라배의 조합으로 표현함으로써 기하학적 의미를 드러냅니다. <aside class="aside aside-like" id="sec-singular-value-decomposition-2-2"><div class="para" id="sec-singular-value-decomposition-2-2-1">특이값분해: singular value decomposition(SVD)</div></aside>
+</div>
+<div class="para" id="sec-singular-value-decomposition-3">내적공간 <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span> 사이의 선형사상 <span class="process-math">\(T:V\to W\)</span>에 대해, 적절한 정규직교기저를 택하면 <span class="process-math">\(T\)</span>는 특이값을 대각 성분으로 가지는 대각 형태로 표현됩니다. 동등하게, <span class="process-math">\(T\)</span>는 직교사상과 양의 반정부호 자기수반 사상의 합성으로 분해되며, 이는 <span class="process-math">\(T\)</span>가 서로 직교하는 방향들을 얼마나 늘이거나 줄이는지를 분리해 보여 줍니다. 따라서 특이값 분해는 선형사상의 크기와 방향 변형을 한눈에 파악하게 하며, 근사, 압축, 차원 축소, 데이터 분석 등 여러 응용에서 핵심적인 역할을 합니다.</div>
+<div class="para" id="sec-singular-value-decomposition-4">이 절에서는 특이값과 특이벡터의 의미, 내적공간에서의 특이값 분해의 존재성과 구성, 그리고 그 기하학적 해석을 살펴봅니다. 특히 선형사상이 어떤 직교 방향들을 보존하고 어떤 방향들을 축소 또는 확장하는지를 이해하는 것이 특이값 분해의 본질입니다.</div>
+<article class="definition definition-like" id="def-isometry"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.5.1</span><span class="period">.</span><span class="space"> </span><span class="title">등장변환.</span>
+</h3>
+<div class="para logical" id="def-isometry-2">
+<div class="para">내적공간 <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span> 사이의 선형사상 <span class="process-math">\(U:V\to W\)</span>가 모든 <span class="process-math">\(v,w\in V\)</span>에 대해</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle Uv,Uw\rangle = \langle v,w\rangle
+\end{equation*}
+</div>
+<div class="para">를 만족하면, <span class="process-math">\(U\)</span>를 <dfn class="terminology">등장변환</dfn>이라고 한다.</div>
+</div></article><article class="proposition theorem-like" id="prop-isometry-properties"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.5.2</span><span class="period">.</span><span class="space"> </span><span class="title">등장변환의 성질.</span>
+</h3>
+<div class="para" id="prop-isometry-properties-2-1">내적공간 <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span> 사이의 등장변환 <span class="process-math">\(U:V\to W\)</span>는 다음을 만족한다:</div> <ol class="decimal" id="prop-isometry-properties-2-2">
+<li id="prop-isometry-properties-2-2-1"><div class="para" id="p-derived-prop-isometry-properties-2-2-1">모든 <span class="process-math">\(v\in V\)</span>에 대해 <span class="process-math">\(\|Uv\|=\|v\|\)</span>이다.</div></li>
+<li id="prop-isometry-properties-2-2-2"><div class="para" id="p-derived-prop-isometry-properties-2-2-2">벡터의 크기를 유지하면서, 직교하는 방향을 직교하는 방향으로 보낸다.</div></li>
+<li id="prop-isometry-properties-2-2-3"><div class="para" id="p-derived-prop-isometry-properties-2-2-3">유한차원 실내적공간에서 등장변환은 정규직교기저를 정규직교기저로 보내므로, 행렬 표현은 직교행렬이 된다.</div></li>
+</ol></article><details id="prop-isometry-properties-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-isometry-properties-3-1">
+<div class="para">실제로 <span class="process-math">\(w=v\)</span>를 등장변환의 정의에 넣으면</div>
+<div class="displaymath process-math" id="prop-isometry-properties-3-1-2">
+\begin{gather*}
+\|Uv\|^2 = \langle Uv, Uv\rangle = \langle v,v\rangle = \|v\|^2,
+\end{gather*}
+</div>
+<div class="para">즉 <span class="process-math">\(\|Uv\|=\|v\|\)</span>를 얻는다. 나머지는 등장변환의 정의로부터 직접 따라온다.</div>
+</div></article></details><details id="ex-orthogonal-matrix-isometry" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.5.3</span><span class="period">.</span><span class="space"> </span><span class="title">직교행렬과 등장변환.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-orthogonal-matrix-isometry-2">
+<div class="para">표준내적공간 <span class="process-math">\(V=\mathbb R^n\)</span>에서 표준기저를 사용하여 선형사상 <span class="process-math">\(U:V\to V\)</span>를 나타내는 행렬을 <span class="process-math">\(Q\)</span>라고 하겠습니다. <span class="process-math">\(U\)</span>가 등장사상이면 모든 벡터의 내적을 보존하므로</div>
+<div class="displaymath process-math" id="ex-orthogonal-matrix-isometry-2-5">
+\begin{gather*}
+Q^{\operatorname{T}}Q=I.
+\end{gather*}
+</div>
+<div class="para">입니다. 이러한 행렬을 <dfn class="terminology">직교행렬</dfn>이라고 하며, 이때 <span class="process-math">\(Q^{-1}=Q^{\operatorname{T}}\)</span>입니다.</div>
+</div>
+<div class="para logical" id="ex-orthogonal-matrix-isometry-3">
+<div class="para">반대로 <span class="process-math">\(Q^{\operatorname{T}}Q=I\)</span>인 행렬은</div>
+<div class="displaymath process-math" id="ex-orthogonal-matrix-isometry-3-2">
+\begin{gather*}
+\langle Qv,Qw\rangle=\langle v,Q^{\operatorname{T}}Qw\rangle=\langle v,w\rangle
+\end{gather*}
+</div>
+<div class="para">를 만족하므로, <span class="process-math">\(v\)</span>와 <span class="process-math">\(w\)</span> 사이의 내적과 각도를 보존하는 등장변환을 정의합니다. 예를 들어 평면의 회전과 반사는 직교행렬로 나타나며, 등장변환의 예입니다.</div>
+</div></article></details><article class="proposition theorem-like" id="prop-norm-preserving-isometry"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.5.4</span><span class="period">.</span><span class="space"> </span><span class="title">노름 보존 사상은 등장변환이다.</span>
+</h3>
+<div class="para logical" id="prop-norm-preserving-isometry-2-1">
+<div class="para">내적공간 <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span> 사이의 선형사상 <span class="process-math">\(T:V\to W\)</span>가 모든 <span class="process-math">\(v\in V\)</span>에 대해</div>
+<div class="displaymath process-math" id="prop-norm-preserving-isometry-2-1-5">
+\begin{gather*}
+\|Tv\|=\|v\|
+\end{gather*}
+</div>
+<div class="para">를 만족하면, <span class="process-math">\(T\)</span>는 등장변환이다.</div>
+</div></article><details id="prop-norm-preserving-isometry-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-norm-preserving-isometry-3-1">
+<div class="para">노름 보존성과 선형성을 이용하면 모든 <span class="process-math">\(v,w\in V\)</span>에 대해</div>
+<div class="displaymath process-math" id="prop-norm-preserving-isometry-3-1-2">
+\begin{gather*}
+\langle Tv,Tw\rangle = \frac{1}{2}\bigl(\|T(v+w)\|^2-\|Tv\|^2-\|Tw\|^2\bigr) = \frac{1}{2}\bigl(\|v+w\|^2-\|v\|^2-\|w\|^2\bigr)=\langle v,w\rangle.
+\end{gather*}
+</div>
+<div class="para">따라서 <span class="process-math">\(T\)</span>는 등장변환이라고 합니다.</div>
+</div></article></details><details id="ex-isometry-nonstandard-inner-product" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.5.5</span><span class="period">.</span><span class="space"> </span><span class="title">비표준 내적 공간에서의 등장변환.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-isometry-nonstandard-inner-product-2">
+<div class="para">폐구간 상 연속함수로 구성된 함수공간 <span class="process-math">\(V=C[0,1]\)</span>에</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle f,g\rangle = \int_0^1 f(t)g(t)\,dt
+\end{equation*}
+</div>
+<div class="para">를 내적으로 주면, 이것은 표준 내적과 다른 내적공간이 된다.</div>
+</div>
+<div class="para logical" id="ex-isometry-nonstandard-inner-product-3">
+<div class="para">선형사상 <span class="process-math">\(R:V\to V\)</span>를</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(Rf)(t)=f(1-t)
+\end{equation*}
+</div>
+<div class="para">로 정의하자. 이는 함수를 <span class="process-math">\(t\mapsto 1-t\)</span>에 대해 반사시키는 연산이다. 그러면</div>
+<div class="displaymath process-math" id="ex-isometry-nonstandard-inner-product-3-4">
+\begin{gather*}
+\langle Rf,Rg\rangle
+= \int_0^1 (Rf)(t)(Rg)(t)\,dt
+= \int_0^1 f(1-t)g(1-t)\,dt.
+\end{gather*}
+</div>
+<div class="para">변수 <span class="process-math">\(s=1-t\)</span>로 바꾸면</div>
+<div class="displaymath process-math" id="ex-isometry-nonstandard-inner-product-3-6">
+\begin{gather*}
+\langle Rf,Rg\rangle = \int_0^1 f(s)g(s)\,ds = \langle f,g\rangle.
+\end{gather*}
+</div>
+<div class="para">따라서 <span class="process-math">\(R\)</span>은 등장변환이다. 이 예시는 등장변환이 <span class="process-math">\(\mathbb R^n\)</span>의 표준내적에만 국한되지 않고, 함수공간처럼 다른 내적을 가진 공간에서도 자연스럽게 정의됨을 보여 준다.</div>
+</div></article></details><article class="definition definition-like" id="def-positive-definite-semidefinite-operator"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.5.6</span><span class="period">.</span><span class="space"> </span><span class="title">양의 정부호 사상과 양의 준정부호 사상.</span>
+</h3>
+<div class="para logical" id="def-positive-definite-semidefinite-operator-2">
+<div class="para">내적공간 <span class="process-math">\(V\)</span>의 자기수반사상 <span class="process-math">\(T:V\to V\)</span>가 모든 영이 아닌 벡터 <span class="process-math">\(x\)</span>에 대해</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle Tx,x\rangle&gt;0
+\end{equation*}
+</div>
+<div class="para">을 만족하면 <dfn class="terminology">양의 정부호 사상</dfn>이라고 한다. 모든 벡터 <span class="process-math">\(x\)</span>에 대해</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle Tx,x\rangle\geq 0
+\end{equation*}
+</div>
+<div class="para">을 만족하면 <dfn class="terminology">양의 준정부호 사상</dfn>이라고 한다.</div>
+</div></article><article class="remark remark-like" id="rem-positive-definite-semidefinite-operator"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">1.5.7</span><span class="period">.</span><span class="space"> </span><span class="title">지난 연습문제.</span>
+</h3>
+<div class="para" id="rem-positive-definite-semidefinite-operator-2">이 정의는 연습문제 <a href="sec-spectral-theorem.html#exer-spectral-positive-square-root" class="xref" data-knowl="./knowl/xref/exer-spectral-positive-square-root.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.3.15: 양의 자기수반 연산자의 제곱근">연습문제 1.3.15</a>에서 다룬 내용을 다시 제시한 것이다.</div></article><article class="remark remark-like" id="rem-positive-definite-matrix"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">1.5.8</span><span class="period">.</span><span class="space"> </span><span class="title">표준내적공간에서의 행렬 표현.</span>
+</h3>
+<div class="para logical" id="rem-positive-definite-matrix-2">
+<div class="para">표준내적공간 <span class="process-math">\(\mathbb R^n\)</span>에서 선형사상 <span class="process-math">\(T\)</span>의 행렬을 <span class="process-math">\(A\)</span>라고 하자. <span class="process-math">\(T\)</span>가 자기수반사상이라는 것은 <span class="process-math">\(A^{\operatorname{T}}=A\)</span>라는 것과 동치이다. 따라서 <span class="process-math">\(T\)</span>가 양의 정부호인 것은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x^{\operatorname{T}}Ax&gt;0\quad\text{for all }x\ne 0
+\end{equation*}
+</div>
+<div class="para">인 것과 동치이며, 양의 준정부호인 것은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x^{\operatorname{T}}Ax\geq 0\quad\text{for all }x \in \mathbb R^n
+\end{equation*}
+</div>
+<div class="para">인 것과 동치이다.</div>
+</div></article><article class="definition definition-like" id="def-singular-values"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.5.9</span><span class="period">.</span><span class="space"> </span><span class="title">특이값.</span>
+</h3>
+<div class="para logical" id="def-singular-values-2">
+<div class="para">유한 차원 내적공간 사이의 선형사상 <span class="process-math">\(T:V\to W\)</span>와 그 수반사상 <span class="process-math">\(T^*:W\to V\)</span>에 대해, 양의 준정부호 자기수반사상 <span class="process-math">\(T^*T\)</span>의 고유값들의 음이 아닌 제곱근을 <dfn class="terminology">특이값</dfn>이라고 합니다. 중복도를 고려하여 특이값을</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma_1\geq \sigma_2\geq\cdots\geq 0
+\end{equation*}
+</div>
+<div class="para">로 나타냅니다.</div>
+</div></article><div class="para" id="sec-singular-value-decomposition-14">
+<a href="sec-singular-value-decomposition.html#def-singular-values" class="xref" data-knowl="./knowl/xref/def-singular-values.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.5.9: 특이값">정의 1.5.9</a>가 의미를 가지는 것은 <span class="process-math">\(T^*T\)</span>가 양의 준정부호 자기수반사상이기 때문입니다. <a href="sec-spectral-theorem.html#exer-spectral-positive-square-root" class="xref" data-knowl="./knowl/xref/exer-spectral-positive-square-root.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.3.15: 양의 자기수반 연산자의 제곱근">연습문제 1.3.15</a>에서 보인 것처럼, 이러한 사상은 양의 준정부호 제곱근을 가지며 스펙트럼 정리에 의해 고유값이 음이 아닌 실수입니다. 따라서 <span class="process-math">\(T^*T\)</span>의 고유값의 음이 아닌 제곱근을 특이값으로 정의할 수 있습니다.</div></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-spectral-theorem-complex.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-rigid-motion.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

@@ -12,19 +12,19 @@
 </head>
 <body class="ignore-math">
 <article class="proposition theorem-like"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.21</span><span class="period">.</span><span class="space"> </span><span class="title">기저변환과 그람 행렬.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">1.1.22</span><span class="period">.</span><span class="space"> </span><span class="title">기저변환과 그람 행렬.</span>
 </h3>
 <div class="para logical">
 <div class="para">새 기저 <span class="process-math">\(\mathcal C=(w_1,\ldots,w_n)\)</span>의 벡터들이 <span class="process-math">\(w_j=\sum_i v_iP_{ij}\)</span>를 만족한다고 하자. 그러면 실내적의 경우에는</div>
 <div class="displaymath process-math">
 \begin{equation*}
-G_{\mathcal C}=P^TG_{\mathcal B}P
+G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P
 \end{equation*}
 </div>
 <div class="para">이고, 이 절의 선형성 규약을 따르는 에르미트 내적의 경우에는</div>
 <div class="displaymath process-math">
 \begin{equation*}
-H_{\mathcal C}=P^TH_{\mathcal B}\overline P
+H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P
 \end{equation*}
 </div>
 <div class="para">이다. 특히 정규직교기저에서는 두 그람 행렬이 모두 항등행렬이다.</div>
@@ -35,20 +35,20 @@ H_{\mathcal C}=P^TH_{\mathcal B}\overline P
 (G_{\mathcal C})_{jk} &amp;=\langle w_j,w_k\rangle \\
 &amp;=\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle \\
 &amp;=\sum_{i,l}P_{ij}(G_{\mathcal B})_{il}P_{lk} \\
-&amp;=(P^TG_{\mathcal B}P)_{jk}
+&amp;=(P^{\operatorname{T}}G_{\mathcal B}P)_{jk}
 \end{align*}
 </div>
-<div class="para">이므로 <span class="process-math">\(G_{\mathcal C}=P^TG_{\mathcal B}P\)</span>이다. 에르미트 내적의 경우에는 첫째 변수에 선형이고 둘째 변수에 켤레선형이므로</div>
+<div class="para">이므로 <span class="process-math">\(G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P\)</span>이다. 에르미트 내적의 경우에는 첫째 변수에 선형이고 둘째 변수에 켤레선형이므로</div>
 <div class="displaymath process-math">
 \begin{align*}
 (H_{\mathcal C})_{jk}
 &amp;=\langle w_j,w_k\rangle \\
 &amp;=\left\langle \sum_i v_iP_{ij},\sum_l v_lP_{lk}\right\rangle \\
 &amp;=\sum_{i,l}P_{ij}(H_{\mathcal B})_{il}\overline{P_{lk}} \\
-&amp;=(P^TH_{\mathcal B}\overline P)_{jk}
+&amp;=(P^{\operatorname{T}}H_{\mathcal B}\overline P)_{jk}
 \end{align*}
 </div>
-<div class="para">이다. 따라서 <span class="process-math">\(H_{\mathcal C}=P^TH_{\mathcal B}\overline P\)</span>이다. 정규직교기저에서는 그람 행렬의 각 성분이 <span class="process-math">\(\delta_{jk}\)</span>이므로 항등행렬이다.</div>
+<div class="para">이다. 따라서 <span class="process-math">\(H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P\)</span>이다. 정규직교기저에서는 그람 행렬의 각 성분이 <span class="process-math">\(\delta_{jk}\)</span>이므로 항등행렬이다.</div>
 </div></article></details><span class="incontext"><a class="internal" href="sec-symmetric-bilinear-forms.html#prop-gram-matrix-change-of-basis">[incontext]</a></span>
 </body>
 </html>

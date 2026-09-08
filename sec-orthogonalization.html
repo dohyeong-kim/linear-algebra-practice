@@ -262,6 +262,12 @@ eBookConfig.enable_chatcodes =  false;
 #thm-spectral-theorem-normal-complex-2-3 { counter-set: thm-spectral-theorem-normal-complex-2-3 0; }
 #thm-spectral-theorem-normal-complex-2-3 > li::marker { content: ""counter(thm-spectral-theorem-normal-complex-2-3,decimal)"."; }
 #thm-spectral-theorem-normal-complex-2-3 > li { counter-increment: thm-spectral-theorem-normal-complex-2-3; }
+#exer-spectral-complex-merged-15-2-1-6 { counter-set: exer-spectral-complex-merged-15-2-1-6 0; }
+#exer-spectral-complex-merged-15-2-1-6 > li::marker { content: "("counter(exer-spectral-complex-merged-15-2-1-6,lower-alpha)")"; }
+#exer-spectral-complex-merged-15-2-1-6 > li { counter-increment: exer-spectral-complex-merged-15-2-1-6; }
+#prop-isometry-properties-2-2 { counter-set: prop-isometry-properties-2-2 0; }
+#prop-isometry-properties-2-2 > li::marker { content: ""counter(prop-isometry-properties-2-2,decimal)"."; }
+#prop-isometry-properties-2-2 > li { counter-increment: prop-isometry-properties-2-2; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -318,7 +324,7 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리: 복소체의 경우</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html#exercises-spectral-theorem-complex-merged" class="internal"><span class="codenumber">1.4</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해: 내적 공간</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div></li>
@@ -334,11 +340,11 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-orthogonalization"><h2 class="heading hide-type">
 <span class="type">[section]</span><span class="space"> </span><span class="codenumber">1.2</span><span class="space"> </span><span class="title">직교화</span>
 </h2>
-<div class="para" id="sec-orthogonalization-2">이번 절에서는 직교화(orthogonalization) 과정을 통해서 벡터 공간의 기저를 직교 기저로 바꾸는 방법을 살펴보겠습니다. 그 대상은 내적공간 또는 에르미트 공간입니다.</div>
+<div class="para" id="sec-orthogonalization-2">이번 절에서는 직교화<aside class="aside aside-like" id="sec-orthogonalization-2-1"><div class="para" id="sec-orthogonalization-2-1-1">직교화:orthogonalization</div></aside> 과정을 통해서 벡터 공간의 기저를 직교 기저로 바꾸는 방법을 살펴보겠습니다. 그 대상은 내적공간 또는 에르미트 공간입니다.</div>
 <article class="definition definition-like" id="def-orthogonal-complement"><h3 class="heading">
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">직교여공간.</span>
 </h3>
-<div class="para" id="def-orthogonal-complement-2">내적공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <em class="emphasis">직교여공간</em>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
+<div class="para" id="def-orthogonal-complement-2">내적공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <dfn class="terminology">직교여공간</dfn><aside class="aside aside-like" id="def-orthogonal-complement-2-7"><div class="para" id="def-orthogonal-complement-2-7-1">직교여공간:orthogonal complement</div></aside>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
 <div class="para logical" id="def-orthogonal-complement-3"><div class="displaymath process-math">
 \begin{equation*}
 W^{\perp} = \{v \in V : \langle v,w \rangle = 0 \text{ for every } w \in W\}.
@@ -376,7 +382,7 @@ v=\sum_{i=1}^{n}a_i u_i.
 <article class="definition definition-like" id="def-hermitian-orthogonal-complement"><h3 class="heading">
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">에르미트 공간의 직교여공간.</span>
 </h3>
-<div class="para" id="def-hermitian-orthogonal-complement-2">에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <em class="emphasis">직교여공간</em>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
+<div class="para" id="def-hermitian-orthogonal-complement-2">에르미트 공간 <span class="process-math">\(V\)</span>의 부분공간 <span class="process-math">\(W\)</span>에 대하여, <span class="process-math">\(W\)</span>의 모든 벡터와 직교하는 <span class="process-math">\(V\)</span>의 벡터 전체의 집합을 <span class="process-math">\(W\)</span>의 <dfn class="terminology">직교여공간</dfn><aside class="aside aside-like" id="def-hermitian-orthogonal-complement-2-7"><div class="para" id="def-hermitian-orthogonal-complement-2-7-1">직교여공간:orthogonal complement</div></aside>이라 하고 <span class="process-math">\(W^{\perp}\)</span>로 나타낸다. 즉,</div>
 <div class="para logical" id="def-hermitian-orthogonal-complement-3"><div class="displaymath process-math">
 \begin{equation*}
 W^{\perp} = \{v \in V : \langle v,w \rangle = 0 \text{ for every } w \in W\}.
@@ -384,29 +390,29 @@ W^{\perp} = \{v \in V : \langle v,w \rangle = 0 \text{ for every } w \in W\}.
 </div></div></article><article class="proposition theorem-like" id="prop-orthonormal-basis-existence"><h3 class="heading">
 <span class="type">명제</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">직교정규 기저의 존재.</span>
 </h3>
-<div class="para" id="prop-orthonormal-basis-existence-2">모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖는다.</div></article><details id="prop-orthonormal-basis-existence-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-orthonormal-basis-existence-3-1">
-<div class="para">차원에 대한 수학적 귀납법으로 증명한다. <span class="process-math">\(\dim V=1\)</span>인 경우, 영이 아닌 벡터 <span class="process-math">\(v\)</span>를 택하고</div>
+<aside class="aside aside-like" id="prop-orthonormal-basis-existence-2"><div class="para" id="prop-orthonormal-basis-existence-2-1">직교정규=정규직교:orthonormal</div></aside><div class="para" id="prop-orthonormal-basis-existence-3">모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖는다.</div></article><details id="prop-orthonormal-basis-existence-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-orthonormal-basis-existence-4-1">
+<div class="para">차원에 대한 수학적 귀납법으로 증명합니다. <span class="process-math">\(\dim V=1\)</span>인 경우, 영이 아닌 벡터 <span class="process-math">\(v\)</span>를 택하고</div>
 <div class="displaymath process-math">
 \begin{equation*}
 u=\frac{v}{\sqrt{\langle v,v\rangle}}
 \end{equation*}
 </div>
-<div class="para">로 두면 <span class="process-math">\(\langle u,u\rangle=1\)</span>이고 <span class="process-math">\(\{u\}\)</span>는 <span class="process-math">\(V\)</span>의 직교정규 기저이다.</div>
+<div class="para">로 두면 <span class="process-math">\(\langle u,u\rangle=1\)</span>이고 <span class="process-math">\(\{u\}\)</span>는 <span class="process-math">\(V\)</span>의 직교정규 기저입니다.</div>
 </div>
-<div class="para logical" id="prop-orthonormal-basis-existence-3-2">
-<div class="para">이제 차원이 <span class="process-math">\(n&gt;1\)</span>인 모든 공간이 직교정규 기저를 갖는다고 가정하고, <span class="process-math">\(\dim V=n+1\)</span>인 공간 <span class="process-math">\(V\)</span>를 생각하자. 영이 아닌 벡터 <span class="process-math">\(v_1\in V\)</span>를 택하고 <span class="process-math">\(u_1=v_1/\sqrt{\langle v_1,v_1\rangle}\)</span>로 두자. 그러면</div>
+<div class="para logical" id="prop-orthonormal-basis-existence-4-2">
+<div class="para">이제 차원이 <span class="process-math">\(n&gt;1\)</span>인 모든 공간이 직교정규 기저를 갖는다고 가정하고, <span class="process-math">\(\dim V=n+1\)</span>인 공간 <span class="process-math">\(V\)</span>를 생각하겠습니다. 영이 아닌 벡터 <span class="process-math">\(v_1\in V\)</span>를 택하고 <span class="process-math">\(u_1=v_1/\sqrt{\langle v_1,v_1\rangle}\)</span>로 두겠습니다. 그러면</div>
 <div class="displaymath process-math">
 \begin{equation*}
 W=\operatorname{span}\{u_1\}^{\perp}
 \end{equation*}
 </div>
-<div class="para">는 <span class="process-math">\(V\)</span>의 부분공간이며, 앞의 직합 분해에 의해 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>이고 <span class="process-math">\(\dim W=n\)</span>이다.</div>
+<div class="para">는 <span class="process-math">\(V\)</span>의 부분공간이며, 앞의 직합 분해에 의해 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>이고 <span class="process-math">\(\dim W=n\)</span>입니다.</div>
 </div>
-<div class="para" id="prop-orthonormal-basis-existence-3-3">귀납 가정에 따라 <span class="process-math">\(W\)</span>는 직교정규 기저 <span class="process-math">\(u_2,\ldots,u_{n+1}\)</span>을 갖는다. <span class="process-math">\(W\)</span>의 모든 벡터는 <span class="process-math">\(u_1\)</span>과 직교하므로 <span class="process-math">\(u_1,u_2,\ldots,u_{n+1}\)</span>은 서로 직교하고 각각 길이가 1이다. 또한 이들은 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>를 생성하므로 <span class="process-math">\(V\)</span>의 직교정규 기저이다. 따라서 귀납법에 의해 모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖는다.</div></article></details><div class="para" id="sec-orthogonalization-9">직교정규 기저의 존재는 그 자체로 중요하지만, 실용적 측면에서는 한계가 있습니다. 많은 경우 벡터공간 <span class="process-math">\(V\)</span>는 <span class="process-math">\(V\)</span>로 주어지기보다 기저에 의해 주어지는 경우가 많기 때문입니다. 가령, 다항식의 공간을 생각할 때 함수를 저장하는 것은 사실상 불가능한 반면 단항식의 선형결합으로 표현하면 효율적입니다. 따라서, 주어진 기저를 정규직교화 하는 것이 중요합니다. 이를 위한 대표적 방법은 그람-슈미트 과정입니다.</div>
+<div class="para" id="prop-orthonormal-basis-existence-4-3">귀납 가정에 따라 <span class="process-math">\(W\)</span>는 직교정규 기저 <span class="process-math">\(u_2,\ldots,u_{n+1}\)</span>을 갖습니다. <span class="process-math">\(W\)</span>의 모든 벡터는 <span class="process-math">\(u_1\)</span>과 직교하므로 <span class="process-math">\(u_1,u_2,\ldots,u_{n+1}\)</span>은 서로 직교하고 각각 길이가 1입니다. 또한 이들은 <span class="process-math">\(V=\operatorname{span}\{u_1\}\oplus W\)</span>를 생성하므로 <span class="process-math">\(V\)</span>의 직교정규 기저입니다. 따라서 귀납법에 의해 모든 유한 차원 내적공간 또는 에르미트 공간은 직교정규 기저를 갖습니다.</div></article></details><div class="para" id="sec-orthogonalization-9">직교정규 기저의 존재는 그 자체로 중요하지만, 실용적 측면에서는 한계가 있습니다. 많은 경우 벡터공간 <span class="process-math">\(V\)</span>는 벡터의 집합 <span class="process-math">\(V\)</span>로 주어지기보다 기저에 의해 주어지는 경우가 많기 때문입니다. 가령, 다항식의 공간을 생각할 때 함수 그 자체를 표현하는 것보다는 단항식의 선형결합으로 표현하는 것이 효율적입니다. 따라서 기저로 주어진 벡터공간을 다룸에 있어 주어진 기저를 정규직교화 하는 것이 중요합니다. 이를 위한 대표적 방법은 그람-슈미트 과정입니다.</div>
 <article class="definition definition-like" id="def-vector-norm"><h3 class="heading">
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">벡터의 노름.</span>
 </h3>
-<div class="para" id="def-vector-norm-2">내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(v\)</span>의 <em class="emphasis">노름</em>은 다음과 같이 정의하며, <span class="process-math">\(|\!|v |\!|\)</span>로 나타낸다.</div>
+<div class="para" id="def-vector-norm-2">내적공간 또는 에르미트 공간 <span class="process-math">\(V\)</span>의 벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(v\)</span>의 <dfn class="terminology">노름</dfn><aside class="aside aside-like" id="def-vector-norm-2-5"><div class="para" id="def-vector-norm-2-5-1">노름:norm</div></aside>은 다음과 같이 정의하며, <span class="process-math">\(|\!|v |\!|\)</span>로 나타낸다.</div>
 <div class="para logical" id="def-vector-norm-3"><div class="displaymath process-math" id="def-vector-norm-3-1">
 \begin{gather*}
 \end{gather*}
