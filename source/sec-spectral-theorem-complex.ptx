@@ -477,27 +477,75 @@
         </p>
       </hint>
     </exercise>
-
     <exercise xml:id="exer-spectral-complex-merged-15">
-      <title>가환하는 정규 작용소의 동시 대각화</title>
-      <statement>
-        <p>
-          정규 작용소 <m>S,T</m>가 <m>ST=TS</m>를 만족한다고 하자.
-          <m>S</m>와 <m>T</m>의 공통 고유벡터로 이루어진 <m>V</m>의 정규직교기저가 존재함을 증명하라.
-          이로부터 <m>S+T</m>와 <m>ST</m>가 정규임을 보여라. 마지막으로 가환 조건을 빼면
-          합과 곱이 정규일 필요가 없음을 구체적인 <m>2\times2</m> 행렬로 보여라.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          <m>V</m>를 <m>T</m>의 서로 다른 고유공간들의 직교직합으로 분해하라.
-          <m>ST=TS</m>이므로 각 고유공간은 <m>S</m>-불변이고, 앞 문제에 의하여 그 위의 <m>S</m>의 제한은 정규이다.
-          각 고유공간에 스펙트럴 정리를 적용하라. 가환 조건이 없는 경우에는
-          <m>S=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}</m>,
-          <m>T=i\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}</m>를 조사하라.
-        </p>
-      </hint>
-    </exercise>
+  <title>수반작용소의 등거리 인자</title>
+  <statement>
+    <p>
+      복소 유한차원 내적공간 <m>V</m> 위의 선형작용소 <m>T</m>에 대하여, <m>U^*U=I</m>를 만족하는
+      작용소 <m>U</m>를 등거리작용소라 부르자. (유한차원이므로 이는 <m>UU^*=I</m>와 동치이다.)
+      <ol>
+        <li>
+          <p>
+            <m>T</m>가 가역이라 하자. <m>T</m>가 정규 작용소일 필요충분조건은
+            <m>U=T^*T^{-1}</m>이 등거리작용소인 것임을 보여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>T</m>가 (가역이 아닐 수도 있는) 정규 작용소라 하자. <m>T^*=UT=TU</m>를 만족하는
+            등거리작용소 <m>U</m>가 존재하며, 더욱이 <m>U=q(T)</m>인 다항식
+            <m>q\in\mathbb{C}[x]</m>를 택할 수 있음을 보여라.
+          </p>
+        </li>
+        <li>
+          <p>
+            역으로 어떤 등거리작용소 <m>U</m>에 대하여 <m>T^*=UT</m>가 성립하면
+            (<m>TU=UT</m>를 가정하지 않아도) <m>T</m>가 정규 작용소임을 증명하라.
+            따라서 <m>T</m>가 정규일 필요충분조건은 <m>T^*\in\{UT: U^*U=I\}</m>인 것이다.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>T</m>가 정규 작용소일 때, <m>T^*=UT</m>를 만족하는 등거리작용소 <m>U</m> 전체의 집합을
+            기술하라. 특히 그러한 <m>U</m>가 유일할 필요충분조건이 <m>T</m>가 가역인 것임을 보여라.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint>
+    <p>
+      (a) <xref ref="exer-spectral-complex-merged-09"/>에 의하여 <m>(T^{-1})^*=(T^*)^{-1}</m>이므로
+      <m>U^*U=(T^*)^{-1}TT^*T^{-1}</m>이다. 이것이 <m>I</m>와 같을 필요충분조건을
+      왼쪽에 <m>T^*</m>, 오른쪽에 <m>T</m>를 곱하여 읽어라.
+    </p>
+    <p>
+      (b) <m>T=\sum_j\lambda_jP_j</m>를 스펙트럴 분해라 하고,
+      <m>\lambda_j\ne0</m>이면 <m>u_j=\overline{\lambda_j}/\lambda_j</m>, <m>\lambda_j=0</m>이면
+      <m>u_j=1</m>로 두어 <m>U=\sum_ju_jP_j</m>를 정의하라. <m>|u_j|=1</m>과
+      <m>P_jP_k=\delta_{jk}P_j</m>, <m>P_j^*=P_j</m>로부터 <m>U^*U=I</m>를, 모든 <m>j</m>에 대하여
+      <m>u_j\lambda_j=\overline{\lambda_j}</m>임으로부터 <m>UT=TU=T^*</m>를 얻어라.
+      <m>q(\lambda_j)=u_j</m>인 라그랑주 보간 다항식을 취하면 <m>q(T)=U</m>이다
+      (문제 <xref ref="exer-spectral-complex-merged-11"/> 참고).
+    </p>
+    <p>
+      (c) 등거리작용소는 <m>\lVert Uy\rVert^2=\langle U^*Uy,y\rangle=\lVert y\rVert^2</m>을 만족하므로
+      모든 <m>x</m>에 대하여 <m>\lVert T^*x\rVert=\lVert UTx\rVert=\lVert Tx\rVert</m>이다.
+      이제 문제 <xref ref="exer-spectral-complex-merged-13"/>을 적용하라.
+    </p>
+    <p>
+      (d) <m>T^*=UT</m>는 <m>U</m>를 <m>\operatorname{im}T</m> 위에서 완전히 결정한다:
+      <m>Tx=Tx'</m>이면 <m>x-x'\in\ker T=\ker T^*</m>이므로 <m>U(Tx)=T^*x</m>는 잘 정의된다.
+      한편 본문의 명제에 의하여 <m>\operatorname{im}T=(\ker T)^\perp=\operatorname{im}T^*</m>이고,
+      가역인 등거리작용소 <m>U</m>는 <m>U(\operatorname{im}T)=\operatorname{im}T^*=\operatorname{im}T</m>이므로
+      직교 여공간도 보존하여 <m>U(\ker T)=\ker T</m>이다. 따라서 <m>U</m>는
+      <m>\operatorname{im}T</m> 위에서는 유일하게 정해진 작용소이고, <m>\ker T</m> 위에서는
+      <m>\ker T</m>의 임의의 등거리작용소이다. <m>\ker T\ne0</m>이면 예컨대 <m>\ker T</m> 위에서
+      <m>e^{i\theta}I</m>를 취하여 서로 다른 <m>U</m>를 무한히 많이 얻는다.
+    </p>
+  </hint>
+</exercise>
+
   </exercises>
 
   
