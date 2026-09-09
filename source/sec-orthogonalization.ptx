@@ -88,7 +88,7 @@
   <definition xml:id="def-vector-norm">
     <title>벡터의 노름</title>
     <p>내적공간 또는 에르미트 공간 <m>V</m>의 벡터 <m>v</m>에 대하여 <m>v</m>의 <term>노름</term><aside><p>노름:norm</p></aside>은 다음과 같이 정의하며, <m>|\!|v |\!|</m>로 나타낸다.</p>
-    <p><md>|\!|v |\!|=\sqrt{\langle v,v\rangle}</md></p>
+    <p><md><mrow>|\!|v |\!|=\sqrt{\langle v,v\rangle}</mrow></md></p>
   </definition>
   
   <algorithm xml:id="alg-gram-schmidt">
