@@ -20,6 +20,7 @@
     <title>등장의 의미</title>
     <p>등장이란 길이를 보존한다는 뜻입니다. 이는 <xref ref="exer-spectral-complex-merged-15"/>에서 다룬 등거리작용소의 개념과 본질적으로 같습니다. 다만 그 연습문제에서는 하나의 내적공간 <m>V</m> 위의 사상 <m>U:V\to V</m>로 다루었던 반면, 여기서는 서로 다른 내적공간 <m>V</m>와 <m>W</m> 사이의 사상 <m>U:V\to W</m>로 일반화하여 정의하였습니다.</p>
   </remark>
+  
 
   <proposition xml:id="prop-isometry-properties">
     <title>등장변환의 성질</title>
