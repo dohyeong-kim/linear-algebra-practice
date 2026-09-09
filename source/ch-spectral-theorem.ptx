@@ -7,5 +7,9 @@
   <xi:include href="sec-spectral-theorem.ptx" />
   <xi:include href="sec-spectral-theorem-complex.ptx" />
   <xi:include href="sec-singular-value-decomposition.ptx" />
+  <xi:include href="sec-singular-value-decomposition-complex.ptx" />
+  <xi:include href="sec-image-compression.ptx" />
+  <xi:include href="sec-principal-component-analysis.ptx" />
+  
 
 </chapter>

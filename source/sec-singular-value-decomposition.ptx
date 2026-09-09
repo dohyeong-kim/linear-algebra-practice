@@ -28,7 +28,7 @@
       <ol>
         <li>모든 <m>v\in V</m>에 대해 <m>\|Uv\|=\|v\|</m>이다.</li>
         <li>벡터의 크기를 유지하면서, 직교하는 방향을 직교하는 방향으로 보낸다.</li>
-        <li>유한차원 실내적공간에서 등장변환은 정규직교기저를 정규직교기저로 보내므로, 행렬 표현은 직교행렬이 된다.</li>
+        <li><m>\dim V= \dim W &lt; \infty </m> 일 때, 등장변환의 행렬 표현은 직교행렬이다.</li>
       </ol>
     </statement>
     <proof>
@@ -118,7 +118,272 @@
     <xref ref="def-singular-values"/>가 의미를 가지는 것은 <m>T^*T</m>가 양의 준정부호 자기수반사상이기 때문입니다. <xref ref="exer-spectral-positive-square-root"/>에서 보인 것처럼, 이러한 사상은 양의 준정부호 제곱근을 가지며 고유값이 음이 아닌 실수입니다. 따라서 <m>T^*T</m>의 고유값의 음이 아닌 제곱근을 특이값으로 정의할 수 있습니다.
   </p>
 
+  <theorem xml:id="thm-singular-value-decomposition">
+    <title>특이값 분해의 존재</title>
+    <statement>
+      <p>유한 차원 실내적공간 <m>V</m>와 <m>W</m> 사이의 선형사상 <m>T:V\to W</m>에 대해, <m>V</m>의 정규직교기저 <m>(v_1,\ldots,v_n)</m>와 <m>W</m>의 정규직교기저 <m>(w_1,\ldots,w_m)</m>를 택할 수 있다. 이때 <m>r=\operatorname{rank}(T)</m>라 하면, 양의 특이값 <m>\sigma_1\geq\cdots\geq\sigma_r&gt;0</m>에 대하여</p>
+      <me>T(v_i)=\sigma_i w_i\quad (1\leq i\leq r),\qquad T(v_i)=0\quad (r&lt;i\leq n)</me>
+      <p>가 성립한다. 따라서 이 정규직교기저들에 대한 <m>T</m>의 행렬은 대각 성분이 특이값인 직사각 대각행렬이다.</p>
+    </statement>
+    <proof>
+      <p>사상 <m>A=T^*T:V\to V</m>는 자기수반이고, 모든 <m>v\in V</m>에 대하여
+        <md><mrow>\langle Av,v\rangle=\langle T^*Tv,v\rangle=\langle Tv,Tv\rangle=\|Tv\|^2\geq 0</mrow></md>
+        이므로 양의 준정부호입니다. 스펙트럼 정리에 따라 <m>V</m>에는 <m>A</m>의 고유벡터들로 이루어진 정규직교기저를 택할 수 있습니다. <m>A</m>의 양의 고유값을 중복도를 포함하여 <m>\sigma_1^2\geq\cdots\geq\sigma_r^2&gt;0</m>라 하고, 이에 대응하는 단위 고유벡터를 <m>v_1,\ldots,v_r</m>라 하겠습니다.</p>
+      <p><m>\langle Av,v\rangle=\|Tv\|^2</m>이므로 <m>\operatorname{ker}(A)=\operatorname{ker}(T)</m>입니다. 따라서 영 고유값의 중복도는 <m>\dim\operatorname{ker}(T)=n-r</m>이고, 위의 기저를 적절히 순서 지으면 <m>v_{r+1},\ldots,v_n</m>은 <m>\operatorname{ker}(T)</m>의 정규직교기저가 됩니다. 특히 <m>i&gt;r</m>이면 <m>T(v_i)=0</m>입니다.</p>
+      <p><m>1\leq i\leq r</m>에 대하여
+        <me>w_i=\frac{1}{\sigma_i}T(v_i)</me>
+        로 정의합니다. 그러면 모든 <m>1\leq i,j\leq r</m>에 대해
+        <md><mrow>\langle w_i,w_j\rangle=\frac{1}{\sigma_i\sigma_j}\langle T(v_i),T(v_j)\rangle=\frac{1}{\sigma_i\sigma_j}\langle v_i,Av_j\rangle=\frac{\sigma_j}{\sigma_i}\langle v_i,v_j\rangle=\delta_{ij}</mrow></md>
+        이므로 <m>w_1,\ldots,w_r</m>은 <m>W</m>의 정규직교집합입니다. 이를 <m>W</m>의 정규직교기저 <m>(w_1,\ldots,w_m)</m>로 확장할 수 있습니다. 정의에 의해 <m>T(v_i)=\sigma_iw_i</m>이고, 앞에서 본 바와 같이 <m>i&gt;r</m>이면 <m>T(v_i)=0</m>입니다. 따라서 이 두 정규직교기저에 대한 <m>T</m>의 행렬은 대각 성분이 특이값인 직사각 대각행렬입니다.</p>
+    </proof>
+  </theorem>
 
-  
+  <exercises xml:id="exercises-singular-value-decomposition">
+  <title>연습문제</title>
+
+    <exercise xml:id="exer-svd-easy-1">
+      <title>특이값과 고유값</title>
+      <statement>
+        <p>표준내적공간 <m>\mathbb R^2</m> 위의 선형사상을 표준기저로 나타낸 행렬이 각각
+          <me>A=\begin{pmatrix}3&amp;0\\0&amp;-2\end{pmatrix},\qquad
+          B=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</me>
+          일 때, <m>A</m>와 <m>B</m>의 고유값과 특이값을 모두 구하여라. 또한 <m>B</m>에 대하여
+          <xref ref="thm-singular-value-decomposition"/>의 정규직교기저 <m>(v_1,v_2)</m>,
+          <m>(w_1,w_2)</m>를 하나 구하여라. 일반적인 선형사상의 특이값은 고유값의 절댓값이라고 말할 수 있는가?</p>
+      </statement>
+      <hint>
+        <p>특이값을 구할 때에는 <m>A</m>나 <m>B</m>가 아니라 <m>A^{\operatorname T}A</m>와
+        <m>B^{\operatorname T}B</m>의 고유값을 계산하라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-easy-2">
+      <title>등장변환의 기본 성질</title>
+      <statement>
+        <p>내적공간 사이의 등장변환 <m>U:V\to W</m>에 대하여 다음을 보여라.</p>
+        <ol>
+          <li>두 등장변환의 합성은 등장변환이다.</li>
+          <li><m>U</m>는 단사이다.</li>
+          <li><m>V</m>와 <m>W</m>가 유한차원이면 <m>U^*U=I_V</m>이다.</li>
+          <li><m>\dim V=n</m>이면 <m>U</m>의 특이값은 <m>n</m>개 모두 <m>1</m>이다.</li>
+        </ol>
+      </statement>
+      <hint>
+        <p><m>Uv=0</m>일 때 노름 보존성을 적용하고, 수반사상의 정의로
+        <m>\langle U^*Uv,w\rangle=\langle v,w\rangle</m>임을 보여라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-easy-3">
+      <title>전사가 아닌 등장변환</title>
+      <statement>
+        <p>선형사상 <m>T:\mathbb R^2\to\mathbb R^3</m>, <m>T(x,y)=(x,y,0)</m>이 등장변환임을 보이고
+        전사가 아님을 확인하여라. 표준기저에 대한 <m>T</m>의 행렬 <m>Q</m>에 대하여
+        <m>Q^{\operatorname T}Q</m>와 <m>QQ^{\operatorname T}</m>를 계산하여라. 일반적으로
+        <m>m\times n</m> 행렬 <m>Q</m>에 대하여 <m>Q^{\operatorname T}Q=I_n</m>인 것과
+        <m>Q</m>의 열벡터들이 정규직교집합을 이루는 것이 동치임을 보여라.</p>
+        <aside><p>정규직교집합이란, 서로 직교하고 각 벡터의 길이가 1인 벡터들의 집합을 말한다.</p></aside>
+      </statement>
+      <hint>
+        <p><m>(Q^{\operatorname T}Q)_{ij}</m>는 <m>Q</m>의 <m>i</m>번째 열과 <m>j</m>번째 열의 내적이다.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-easy-4">
+      <title>직사각행렬의 특이값</title>
+      <statement>
+        <p>표준내적을 갖는 공간 사이의 선형사상 <m>T:\mathbb R^2\to\mathbb R^3</m>의 행렬이
+          <me>A=\begin{pmatrix}1&amp;0\\2&amp;0\\0&amp;3\end{pmatrix}</me>
+          일 때, <m>A^{\operatorname T}A</m>를 구하고 <m>T</m>의 특이값을 큰 것부터 나열하여라.
+          또한 각 특이값에 대응하는 오른쪽 특이벡터를 하나씩 구하여라.</p>
+      </statement>
+      <hint>
+        <p><m>A^{\operatorname T}A</m>는 대각행렬이다.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-easy-5">
+      <title>함수공간에서의 등장변환</title>
+      <statement>
+        <p><xref ref="ex-isometry-nonstandard-inner-product"/>의 내적공간 <m>V=C[0,1]</m>에서
+          <me>(Sf)(t)=\sqrt{2t}\,f(t^2),\qquad (Mf)(t)=t f(t)</me>
+          로 선형사상 <m>S,M:V\to V</m>를 정의하자. <m>S</m>가 등장변환임을 보여라. 한편 <m>M</m>은 등장변환이 아니며,
+          더 정확히 말하면 영이 아닌 모든 <m>f\in V</m>에 대하여 <m>\|Mf\|&lt;\|f\|</m>임을 보여라.</p>
+      </statement>
+      <hint>
+        <p><m>S</m>에 대해서는 <m>s=t^2</m>로 치환하라. <m>M</m>에 대해서는
+        <m>(1-t^2)f(t)^2</m>가 음이 아닌 연속함수이고 <m>[0,1)</m>의 어떤 점에서 양수임을 이용하라.</p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-svd-standard-1">
+      <title>정규직교기저를 이용한 등장변환의 판정</title>
+      <statement>
+        <p><m>V,W</m>를 유한 차원 내적공간, <m>(e_1,\ldots,e_n)</m>을 <m>V</m>의 정규직교기저라 하자.
+        선형사상 <m>U:V\to W</m>가 등장변환인 것과 <m>(Ue_1,\ldots,Ue_n)</m>이 <m>W</m>의 정규직교집합인 것이
+        동치임을 보여라. 또한 <m>\dim V=\dim W</m>이면 <m>U</m>가 가역이고 <m>U^{-1}=U^*</m>임을 보여라.
+        마지막으로 <xref ref="prop-isometry-properties"/>의 세 번째 항목을 <m>\dim V&lt;\dim W</m>인 경우에도
+        옳도록 수정하여 서술하여라.</p>
+      </statement>
+      <hint>
+        <p><m>v=\sum_i a_ie_i</m>, <m>w=\sum_i b_ie_i</m>로 놓고 내적을 전개하라. 차원이 다르면
+        <m>(Ue_1,\ldots,Ue_n)</m>은 <m>W</m>의 기저가 아니라 정규직교집합이다.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-standard-2">
+      <title>특이값 분해의 계산과 기하</title>
+      <statement>
+        <p>표준내적공간에서 행렬
+          <me>A=\begin{pmatrix}2&amp;2\\-1&amp;1\end{pmatrix}</me>
+          이 나타내는 선형사상에 대하여 <xref ref="thm-singular-value-decomposition"/>의 증명을 따라 특이값
+          <m>\sigma_1\geq\sigma_2</m>와 정규직교기저 <m>(v_1,v_2)</m>, <m>(w_1,w_2)</m>를 구하여라.
+          그 결과를 직교행렬 <m>P,Q</m>와 대각행렬 <m>\Sigma</m>에 의한 분해
+          <m>A=Q\Sigma P^{\operatorname T}</m>로 써라. 단위원의 <m>A</m>에 의한 상은 어떤 도형이며,
+          그 축은 <m>w_1,w_2,\sigma_1,\sigma_2</m>와 어떤 관계에 있는가?</p>
+      </statement>
+      <hint>
+        <p><m>A^{\operatorname T}A</m>를 먼저 대각화하고, <m>w_i=Av_i/\sigma_i</m>로 정의하라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-standard-3">
+      <title>자기수반사상의 특이값</title>
+      <statement>
+        <p><m>T:V\to V</m>가 자기수반사상이고 정규직교 고유벡터 기저 <m>(u_1,\ldots,u_n)</m>과
+        대응하는 고유값 <m>\lambda_1,\ldots,\lambda_n</m>을 가진다고 하자. <m>T</m>의 특이값이
+        <m>|\lambda_1|,\ldots,|\lambda_n|</m>을 내림차순으로 나열한 것임을 보여라. 이 고유벡터들을 이용하여
+        SVD에 나타나는 두 정규직교기저를 명시적으로 구성하고, 두 기저를 같게 택할 수 있는 정확한 조건을 구하여라.</p>
+      </statement>
+      <hint>
+        <p><m>T^*T=T^2</m>이고 <m>T^2u_i=\lambda_i^2u_i</m>이다. <m>\lambda_i&lt;0</m>이면
+        공역 쪽 특이벡터의 부호를 바꾸어야 한다.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-standard-4">
+      <title>특이값과 늘어남의 한계</title>
+      <statement>
+        <p><m>\dim V=n</m>이고 <m>T:V\to W</m>의 특이값을 영 특이값까지 포함하여
+        <m>\sigma_1\geq\cdots\geq\sigma_n\geq0</m>이라 하자. 다음 등식을 보여라.
+          <me>\max_{\|v\|=1}\|Tv\|=\sigma_1,
+          \qquad
+          \min_{\|v\|=1}\|Tv\|=\sigma_n.</me>
+        또한 <m>\|Tv\|=\sigma_1\|v\|</m>을 만족하는 모든 <m>v</m>의 집합이 부분공간임을 보이고,
+        그 차원을 특이값 <m>\sigma_1</m>의 중복도로 표현하여라.</p>
+      </statement>
+      <hint>
+        <p>오른쪽 특이벡터의 기저에 대하여 <m>v=\sum_i a_iv_i</m>로 쓰면
+        <m>\|Tv\|^2=\sum_i\sigma_i^2a_i^2</m>이다. 등호 조건도 이 식에서 읽어 내어라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-standard-5">
+      <title>수반사상과 역사상의 특이값</title>
+      <statement>
+        <p><xref ref="thm-singular-value-decomposition"/>의 기호를 사용하자. 먼저
+        <m>T^*w_i=\sigma_iv_i</m> (<m>1\leq i\leq r</m>)이고
+        <m>T^*w_i=0</m> (<m>r&lt;i\leq m</m>)임을 보여라. 이로부터 <m>T^*</m>의 양의 특이값이
+        <m>T</m>의 양의 특이값과 중복도까지 일치하고 <m>\operatorname{rank}T^*=\operatorname{rank}T</m>임을 보여라.
+        마지막으로 <m>T:V\to V</m>가 가역이면 <m>T^{-1}</m>의 특이값이
+        <m>\sigma_n^{-1}\geq\cdots\geq\sigma_1^{-1}</m>임을 증명하여라.</p>
+      </statement>
+      <hint>
+        <p><m>\langle T^*w_i,v_j\rangle=\langle w_i,Tv_j\rangle</m>를 계산하라. 역행렬에 대해서는
+        <m>T^{-1}w_i=\sigma_i^{-1}v_i</m>를 이용하라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-standard-6">
+      <title>직교변환에 대한 특이값의 불변성</title>
+      <statement>
+        <p><m>T:V\to W</m>를 선형사상이라 하자. <m>R:V'\to V</m>와 <m>Q:W\to W'</m>가 전사인 등장변환이면
+        <m>QTR:V'\to W'</m>의 특이값은 <m>T</m>의 특이값과 중복도까지 같음을 보여라.
+        이로부터 정규직교기저를 바꾸어도 특이값은 변하지 않음을 설명하여라.</p>
+      </statement>
+      <hint>
+        <p><m>(QTR)^*(QTR)=R^*(T^*T)R</m>이고 <m>R^{-1}=R^*</m>이다.</p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-svd-challenge-1">
+      <title>특이값 분해는 얼마나 유일한가</title>
+      <statement>
+        <p><m>T:V\to W</m>, <m>\dim V=n</m>, <m>\dim W=m</m>, <m>p=\min(m,n)</m>이라 하자.
+        <m>V</m>와 <m>W</m>의 정규직교기저 <m>(v_1',\ldots,v_n')</m>, <m>(w_1',\ldots,w_m')</m> 및
+        <m>\tau_1\geq\cdots\geq\tau_p\geq0</m>이
+          <me>Tv_i'=\tau_iw_i'\quad(1\leq i\leq p),
+          \qquad Tv_i'=0\quad(p&lt;i\leq n)</me>
+        을 만족한다고 하자. 각 <m>i</m>에 대해 <m>\tau_i=\sigma_i</m>임을 보여라. 양의 특이값들이 모두 서로 다르면
+        이에 대응하는 오른쪽 특이벡터는 부호를 제외하고 유일함을 보여라. 반면 특이값 <m>\sigma&gt;0</m>의 중복도가
+        <m>d</m>이면 그 특이벡터들의 선택에 정확히 어떤 자유도가 있는지 설명하여라. 영 특이값에 대응하는 오른쪽
+        특이벡터들이 생성하는 부분공간도 구하여라.</p>
+      </statement>
+      <hint>
+        <p><m>T^*w_i'=\tau_iv_i'</m>를 먼저 보이면 <m>T^*Tv_i'=\tau_i^2v_i'</m>이다.
+        중복도가 <m>d</m>인 경우에는 해당 고유공간의 임의의 정규직교기저를 택할 수 있으며, 공역 쪽 특이벡터는
+        <m>w_i'=Tv_i'/\sigma</m>로 함께 결정된다.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-challenge-2">
+      <title>극분해</title>
+      <statement>
+        <p><m>T:V\to V</m>를 유한 차원 내적공간 위의 선형사상이라 하고
+        <m>P=(T^*T)^{1/2}</m>라 하자. 다음을 보여라.</p>
+        <ol>
+          <li>모든 <m>v\in V</m>에 대해 <m>\|Pv\|=\|Tv\|</m>이고 <m>\ker P=\ker T</m>이다.</li>
+          <li><m>T=UP</m>를 만족하는 직교사상 <m>U:V\to V</m>가 존재한다.</li>
+          <li>이 분해에서 <m>P</m>는 유일하며, <m>U</m>가 유일할 필요충분조건은 <m>T</m>가 가역인 것이다.</li>
+          <li><m>T=P''U''</m> 꼴의 분해도 존재한다. 여기서 <m>U''</m>은 직교사상이고 <m>P''</m>은 양의 준정부호
+          자기수반사상이다. <m>P''</m>를 <m>T</m>로 표현하고, <m>P=P''</m>일 필요충분조건을 구하여라.</li>
+        </ol>
+      </statement>
+      <hint>
+        <p>SVD의 기저에서 <m>Pv_i=\sigma_iv_i</m>이다. 양의 특이값에 대해서는 <m>Uv_i=w_i</m>로 정하고,
+        <m>\ker P</m>의 정규직교기저를 <m>(\operatorname{im}T)^\perp</m>의 정규직교기저로 보내도록 확장하라.
+        반대 순서의 분해에는 <m>P''=(TT^*)^{1/2}</m>를 사용하라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-challenge-3">
+      <title>최적 저계수 근사</title>
+      <statement>
+        <p><m>T:V\to W</m>의 양의 특이값을 <m>\sigma_1\geq\cdots\geq\sigma_r&gt;0</m>이라 하고
+        <m>0\leq k&lt;r</m>라 하자. 선형사상 <m>A:V\to W</m>의 작용소 노름을
+          <me>\|A\|_{\mathrm{op}}=\max_{\|v\|=1}\|Av\|</me>
+        로 정의한다. 절단된 SVD를
+          <me>T_k(v)=\sum_{i=1}^{k}\sigma_i\langle v,v_i\rangle w_i</me>
+        로 정의하자. <m>\operatorname{rank}T_k=k</m>이고
+        <m>\|T-T_k\|_{\mathrm{op}}=\sigma_{k+1}</m>임을 보여라. 또한 계수가 <m>k</m> 이하인 모든
+        <m>S:V\to W</m>에 대하여
+          <me>\|T-S\|_{\mathrm{op}}\geq\sigma_{k+1}</me>
+        임을 증명하여라. 마지막으로 <m>1\leq k&lt;r</m>이고 <m>\sigma_k&gt;\sigma_{k+1}</m>이어도
+        최적 근사 <m>S</m>가 유일하지 않을 수 있음을
+        <m>\mathbb R^2</m>의 예로 보여라.</p>
+      </statement>
+      <hint>
+        <p><m>E=\operatorname{span}\{v_1,\ldots,v_{k+1}\}</m>로 두면 차원 정리에 의해
+        <m>\ker S\cap E</m>에는 영이 아닌 벡터가 있다. 마지막 질문에는
+        <m>T=\operatorname{diag}(2,1)</m>, <m>k=1</m>을 살펴보라.</p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-svd-challenge-4">
+      <title>길이 변형이 같은 두 선형사상</title>
+      <statement>
+        <p>유한 차원 실내적공간 사이의 두 선형사상 <m>S,T:V\to W</m>가 모든 <m>v\in V</m>에 대하여
+          <me>\|Sv\|=\|Tv\|</me>
+        를 만족한다고 하자. 그러면 <m>W</m> 위의 직교사상 <m>Q:W\to W</m>가 존재하여
+        <m>T=QS</m>가 됨을 보여라. 즉, 모든 벡터의 길이를 같은 방식으로 변화시키는 두 사상은 공역에서의
+        직교변환만큼만 다름을 증명하여라.</p>
+      </statement>
+      <hint>
+        <p>편극항등식으로부터 <m>S^*S=T^*T</m>를 보여라. 이 공통 사상의 정규직교 고유기저
+        <m>(v_i)</m>를 택한 뒤, 양의 특이값에 대해
+        <m>Sv_i/\sigma_i\mapsto Tv_i/\sigma_i</m>로 정의한 등장을 두 영상공간 사이에 구성하고,
+        이를 <m>W</m> 전체의 직교사상으로 확장하라.</p>
+      </hint>
+    </exercise>
+  </exercises>
+
 
 </section>
