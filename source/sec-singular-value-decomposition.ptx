@@ -16,6 +16,10 @@
       <me>\langle Uv,Uw\rangle = \langle v,w\rangle</me>
       를 만족하면, <m>U</m>를 <term>등장변환</term><idx><h>isometry</h><h>등장변환</h></idx>이라고 한다.</p>
   </definition>
+  <remark xml:id="rem-isometry-meaning">
+    <title>등장의 의미</title>
+    <p>등장이란 길이를 보존한다는 뜻입니다. 이는 <xref ref="exer-spectral-complex-merged-15"/>에서 다룬 등거리작용소의 개념과 본질적으로 같습니다. 다만 그 연습문제에서는 하나의 내적공간 <m>V</m> 위의 사상 <m>U:V\to V</m>로 다루었던 반면, 여기서는 서로 다른 내적공간 <m>V</m>와 <m>W</m> 사이의 사상 <m>U:V\to W</m>로 일반화하여 정의하였습니다.</p>
+  </remark>
 
   <proposition xml:id="prop-isometry-properties">
     <title>등장변환의 성질</title>
@@ -86,8 +90,8 @@
   </definition>
 
   <remark xml:id="rem-positive-definite-semidefinite-operator">
-    <title>지난 연습문제</title>
-    <p>이 정의는 연습문제 <xref ref="exer-spectral-positive-square-root"/>에서 다룬 내용을 다시 제시한 것이다.</p>
+    <title>연습문제 복습</title>
+    <p>이 정의는 연습문제 <xref ref="exer-spectral-positive-square-root"/>에서 다룬 내용입니다.</p>
   </remark>
 
   <remark xml:id="rem-positive-definite-matrix">
@@ -111,7 +115,7 @@
       로 나타냅니다.</p>
   </definition>
   <p>
-    <xref ref="def-singular-values"/>가 의미를 가지는 것은 <m>T^*T</m>가 양의 준정부호 자기수반사상이기 때문입니다. <xref ref="exer-spectral-positive-square-root"/>에서 보인 것처럼, 이러한 사상은 양의 준정부호 제곱근을 가지며 스펙트럼 정리에 의해 고유값이 음이 아닌 실수입니다. 따라서 <m>T^*T</m>의 고유값의 음이 아닌 제곱근을 특이값으로 정의할 수 있습니다.
+    <xref ref="def-singular-values"/>가 의미를 가지는 것은 <m>T^*T</m>가 양의 준정부호 자기수반사상이기 때문입니다. <xref ref="exer-spectral-positive-square-root"/>에서 보인 것처럼, 이러한 사상은 양의 준정부호 제곱근을 가지며 고유값이 음이 아닌 실수입니다. 따라서 <m>T^*T</m>의 고유값의 음이 아닌 제곱근을 특이값으로 정의할 수 있습니다.
   </p>
 
 
