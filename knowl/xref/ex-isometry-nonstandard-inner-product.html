@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.5.6</span><span class="period">.</span><span class="space"> </span><span class="title">비표준 내적 공간에서의 등장변환.</span>
+</h3>
+<div class="para logical">
+<div class="para">폐구간 상 연속함수로 구성된 함수공간 <span class="process-math">\(V=C[0,1]\)</span>에</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\langle f,g\rangle = \int_0^1 f(t)g(t)\,dt
+\end{equation*}
+</div>
+<div class="para">를 내적으로 주면, 이것은 표준 내적과 다른 내적공간이 됩니다.</div>
+</div>
+<div class="para logical">
+<div class="para">선형사상 <span class="process-math">\(R:V\to V\)</span>를</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(Rf)(t)=f(1-t)
+\end{equation*}
+</div>
+<div class="para">로 정의하겠습니다. 이는 함수를 <span class="process-math">\(t\mapsto 1-t\)</span>에 대해 반사시키는 연산입니다. 그러면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\langle Rf,Rg\rangle
+= \int_0^1 (Rf)(t)(Rg)(t)\,dt
+= \int_0^1 f(1-t)g(1-t)\,dt.
+\end{gather*}
+</div>
+<div class="para">변수 <span class="process-math">\(s=1-t\)</span>로 바꾸면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\langle Rf,Rg\rangle = \int_0^1 f(s)g(s)\,ds = \langle f,g\rangle.
+\end{gather*}
+</div>
+<div class="para">따라서 <span class="process-math">\(R\)</span>은 등장변환입니다. 이 예시는 등장변환이 <span class="process-math">\(\mathbb R^n\)</span>의 표준내적에만 국한되지 않고, 함수공간처럼 다른 내적을 가진 공간에서도 자연스럽게 정의됨을 보여 줍니다.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-singular-value-decomposition.html#ex-isometry-nonstandard-inner-product">[incontext]</a></span>
+</body>
+</html>

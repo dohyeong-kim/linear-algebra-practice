@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.5.11</span><span class="period">.</span><span class="space"> </span><span class="title">특이값 분해의 존재.</span>
+</h3>
+<div class="para">유한 차원 실내적공간 <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span> 사이의 선형사상 <span class="process-math">\(T:V\to W\)</span>에 대해, <span class="process-math">\(V\)</span>의 정규직교기저 <span class="process-math">\((v_1,\ldots,v_n)\)</span>와 <span class="process-math">\(W\)</span>의 정규직교기저 <span class="process-math">\((w_1,\ldots,w_m)\)</span>를 택할 수 있다. 이때 <span class="process-math">\(r=\operatorname{rank}(T)\)</span>라 하면, 양의 특이값 <span class="process-math">\(\sigma_1\geq\cdots\geq\sigma_r&gt;0\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T(v_i)=\sigma_i w_i\quad (1\leq i\leq r),\qquad T(v_i)=0\quad (r&lt;i\leq n)
+\end{equation*}
+</div>
+<div class="para">가 성립한다. 따라서 이 정규직교기저들에 대한 <span class="process-math">\(T\)</span>의 행렬은 대각 성분이 특이값인 직사각 대각행렬이다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">사상 <span class="process-math">\(A=T^*T:V\to V\)</span>는 자기수반이고, 모든 <span class="process-math">\(v\in V\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\langle Av,v\rangle=\langle T^*Tv,v\rangle=\langle Tv,Tv\rangle=\|Tv\|^2\geq 0
+\end{gather*}
+</div>
+<div class="para">이므로 양의 준정부호입니다. 스펙트럼 정리에 따라 <span class="process-math">\(V\)</span>에는 <span class="process-math">\(A\)</span>의 고유벡터들로 이루어진 정규직교기저를 택할 수 있습니다. <span class="process-math">\(A\)</span>의 양의 고유값을 중복도를 포함하여 <span class="process-math">\(\sigma_1^2\geq\cdots\geq\sigma_r^2&gt;0\)</span>라 하고, 이에 대응하는 단위 고유벡터를 <span class="process-math">\(v_1,\ldots,v_r\)</span>라 하겠습니다.</div>
+</div>
+<div class="para">
+<span class="process-math">\(\langle Av,v\rangle=\|Tv\|^2\)</span>이므로 <span class="process-math">\(\operatorname{ker}(A)=\operatorname{ker}(T)\)</span>입니다. 따라서 영 고유값의 중복도는 <span class="process-math">\(\dim\operatorname{ker}(T)=n-r\)</span>이고, 위의 기저를 적절히 순서 지으면 <span class="process-math">\(v_{r+1},\ldots,v_n\)</span>은 <span class="process-math">\(\operatorname{ker}(T)\)</span>의 정규직교기저가 됩니다. 특히 <span class="process-math">\(i&gt;r\)</span>이면 <span class="process-math">\(T(v_i)=0\)</span>입니다.</div>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(1\leq i\leq r\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+w_i=\frac{1}{\sigma_i}T(v_i)
+\end{equation*}
+</div>
+<div class="para">로 정의합니다. 그러면 모든 <span class="process-math">\(1\leq i,j\leq r\)</span>에 대해</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\langle w_i,w_j\rangle=\frac{1}{\sigma_i\sigma_j}\langle T(v_i),T(v_j)\rangle=\frac{1}{\sigma_i\sigma_j}\langle v_i,Av_j\rangle=\frac{\sigma_j}{\sigma_i}\langle v_i,v_j\rangle=\delta_{ij}
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(w_1,\ldots,w_r\)</span>은 <span class="process-math">\(W\)</span>의 정규직교집합입니다. 이를 <span class="process-math">\(W\)</span>의 정규직교기저 <span class="process-math">\((w_1,\ldots,w_m)\)</span>로 확장할 수 있습니다. 정의에 의해 <span class="process-math">\(T(v_i)=\sigma_iw_i\)</span>이고, 앞에서 본 바와 같이 <span class="process-math">\(i&gt;r\)</span>이면 <span class="process-math">\(T(v_i)=0\)</span>입니다. 따라서 이 두 정규직교기저에 대한 <span class="process-math">\(T\)</span>의 행렬은 대각 성분이 특이값인 직사각 대각행렬입니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-singular-value-decomposition.html#thm-singular-value-decomposition">[incontext]</a></span>
+</body>
+</html>
