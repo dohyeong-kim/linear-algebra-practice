@@ -9,7 +9,7 @@
   <definition xml:id="def-normal-operator-complex">
     <title>정규 작용소</title>
     <p>
-      복소 내적공간 <m>V</m> 위의 선형작용소 <m>T:V\to V</m>가 정규 작용소라고 함은
+      복소 내적공간 <m>V</m> 위의 선형작용소 <m>T:V\to V</m>가 <term>정규 작용소</term><aside><p>정규 작용소:normal operator</p></aside>라고 함은
       <m>T^*T=TT^*</m>를 만족하는 것을 말한다. 여기서 <m>T^*</m>는 <m>T</m>의 수반작용소이다.
     </p>
   </definition>
@@ -21,8 +21,8 @@
     </p>
     <proof>
       <p>
-        <m>T</m>가 자기수반 작용소이므로 <m>T^*=T</m>이다. 따라서
-        <m>T^*T=TT=T T^*=TT^*</m>이므로 <m>T</m>는 정규 작용소이다.
+        <m>T</m>가 자기수반 작용소이므로 <m>T^*=T</m>입니다. 따라서
+        <m>T^*T=TT=T T^*=TT^*</m>이므로 <m>T</m>는 정규 작용소입니다.
       </p>
     </proof>
   </proposition>
@@ -30,8 +30,8 @@
   <example xml:id="ex-self-adjoint-identity-complex">
     <title>항등 작용소의 자기수반성</title>
     <p>
-      복소 내적공간 <m>V</m>에서 항등 작용소 <m>I:V\to V</m>는 자기수반 작용소이다. 실제로
-      <m>I^*=I</m>이므로 자기수반이다.
+      복소 내적공간 <m>V</m>에서 항등 작용소 <m>I:V\to V</m>는 자기수반 작용소입니다. 실제로
+      <m>I^*=I</m>이므로 자기수반입니다.
     </p>
   </example>
 
@@ -39,8 +39,8 @@
     <title>실수 대각 원소를 갖는 대각 작용소</title>
     <p>
       <m>\mathbb{C}^2</m>의 표준 내적에 대하여
-      <m>T=\begin{pmatrix}2&amp;0\\0&amp;-1\end{pmatrix}</m>로 두자. 그러면
-      <m>T^*=\overline{T}^{\mathsf{T}}=T</m>이므로 <m>T</m>는 자기수반 작용소이다.
+      <m>T=\begin{pmatrix}2&amp;0\\0&amp;-1\end{pmatrix}</m>로 두겠습니다. 그러면
+      <m>T^*=\overline{T}^{\mathsf{T}}=T</m>이므로 <m>T</m>는 자기수반 작용소입니다.
     </p>
   </example>
 
@@ -48,10 +48,10 @@
     <title>정규이지만 자기수반이 아닌 작용소</title>
     <p>
       <m>\mathbb{C}^2</m>의 표준 내적에 대하여
-      <m>T=\begin{pmatrix}i&amp;0\\0&amp;1\end{pmatrix}</m>로 두자. 그러면
+      <m>T=\begin{pmatrix}i&amp;0\\0&amp;1\end{pmatrix}</m>로 두겠습니다. 그러면
       <m>T^*=\begin{pmatrix}-i&amp;0\\0&amp;1\end{pmatrix}</m>이고
       <m>T^*T=TT^*=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}</m>이므로 <m>T</m>는 정규
-      작용소이다. 그러나 <m>T^*\ne T</m>이므로 자기수반 작용소는 아니다.
+      작용소입니다. 그러나 <m>T^*\ne T</m>이므로 자기수반 작용소는 아닙니다.
     </p>
   </example>
 
@@ -59,21 +59,21 @@
     <title>정규 작용소의 이미지와 커널</title>
     <p>
       복소 유한차원 내적공간 <m>V</m> 위의 정규 작용소 <m>T:V\to V</m>에 대하여
-      <m>\operatorname{im}T</m>와 <m>\ker T</m>는 서로 직교 여공간이다. 즉,
-      <m>\operatorname{im}T=(\ker T)^\perp</m>이고
-      <m>\ker T=(\operatorname{im}T)^\perp</m>이다.
+      <m>\operatorname{im}T</m>와 <m>\operatorname{ker} T</m>는 서로 직교 여공간이다. 즉,
+      <m>\operatorname{im}T=(\operatorname{ker} T)^\perp</m>이고
+      <m>\operatorname{ker} T=(\operatorname{im}T)^\perp</m>이다.
     </p>
     <proof>
       <p>
-        임의의 <m>x\in V</m>에 대하여 <m>x\in\ker T</m>이면
+        임의의 <m>x\in V</m>에 대하여 <m>x\in\operatorname{ker} T</m>이면
         <m>\lVert T^*x\rVert^2=\langle T^*x,T^*x\rangle
         =\langle TT^*x,x\rangle=\langle T^*Tx,x\rangle
-        =\lVert Tx\rVert^2=0</m>이므로 <m>x\in\ker T^*</m>이다.
-        같은 방식으로 <m>\ker T^*\subseteq\ker T</m>를 얻으므로
-        <m>\ker T=\ker T^*</m>이다. 한편 유한차원 내적공간에서
-        <m>\operatorname{im}T=(\ker T^*)^\perp</m>이므로
-        <m>\operatorname{im}T=(\ker T)^\perp</m>이다. 양변의 직교 여공간을 취하면
-        <m>\ker T=(\operatorname{im}T)^\perp</m>도 얻는다.
+        =\lVert Tx\rVert^2=0</m>이므로 <m>x\in\operatorname{ker} T^*</m>입니다.
+        같은 방식으로 <m>\operatorname{ker} T^*\subseteq\operatorname{ker} T</m>를 얻으므로
+        <m>\operatorname{ker} T=\operatorname{ker} T^*</m>입니다. 한편 유한차원 내적공간에서
+        <m>\operatorname{im}T=(\operatorname{ker} T^*)^\perp</m>이므로
+        <m>\operatorname{im}T=(\operatorname{ker} T)^\perp</m>입니다. 양변의 직교 여공간을 취하면
+        <m>\operatorname{ker} T=(\operatorname{im}T)^\perp</m>도 얻습니다.
       </p>
     </proof>
   </proposition>
@@ -94,46 +94,46 @@
     <proof>
       <p>
         <m>(2)\Rightarrow(1)</m>: <m>V</m>의 정규직교기저 <m>\beta=(v_1,\dots,v_n)</m>가
-        <m>T</m>의 고유벡터로 이루어져 있다고 하자. 이 기저에 대한 <m>T</m>의 표현행렬을 <m>D</m>라 하면
-        <m>D</m>는 대각행렬이다. 정규직교기저에 대한 표현행렬이므로 <m>T^*</m>의 표현행렬은
-        <m>D^*=\overline{D}^{\mathsf{T}}</m>이고, 이 역시 대각행렬이다. 두 대각행렬은 항상 가환이므로
-        <m>D^*D=DD^*</m>이고, 따라서 <m>T^*T=TT^*</m>, 즉 <m>T</m>는 정규 작용소이다.
+        <m>T</m>의 고유벡터로 이루어져 있다고 하겠습니다. 이 기저에 대한 <m>T</m>의 표현행렬을 <m>D</m>라 하면
+        <m>D</m>는 대각행렬입니다. 정규직교기저에 대한 표현행렬이므로 <m>T^*</m>의 표현행렬은
+        <m>D^*=\overline{D}^{\mathsf{T}}</m>이고, 이 역시 대각행렬입니다. 두 대각행렬은 항상 가환이므로
+        <m>D^*D=DD^*</m>이고, 따라서 <m>T^*T=TT^*</m>, 즉 <m>T</m>는 정규 작용소입니다.
       </p>
       <p>
-        <m>(1)\Rightarrow(2)</m>: <m>\dim V=n</m>에 대한 귀납법으로 증명한다. <m>n=1</m>인 경우는
-        자명하다. <m>n-1</m>이하의 차원에서 명제가 성립한다고 가정하자.
+        <m>(1)\Rightarrow(2)</m>: <m>\dim V=n</m>에 대한 귀납법으로 증명합니다. <m>n=1</m>인 경우는
+        자명합니다. <m>n-1</m>이하의 차원에서 명제가 성립한다고 가정하겠습니다.
       </p>
       <p>
         복소수체는 대수적으로 닫혀 있으므로 <m>T</m>의 특성다항식은 근을 가지며, 따라서 <m>T</m>는
-        적어도 하나의 고유값 <m>\lambda</m>를 갖는다. 이에 대응하는 고유벡터 <m>v_1</m>을 택하고
-        <m>\lVert v_1\rVert=1</m>이 되도록 정규화하자. <m>W=\operatorname{span}(v_1)</m>이라 하면
-        <m>v_1</m>은 <m>T</m>의 고유벡터이므로 <m>W</m>는 <m>T</m>-불변이다.
+        적어도 하나의 고유값 <m>\lambda</m>를 갖습니다. 이에 대응하는 고유벡터 <m>v_1</m>을 택하고
+        <m>\lVert v_1\rVert=1</m>이 되도록 정규화하겠습니다. <m>W=\operatorname{span}(v_1)</m>이라 하면
+        <m>v_1</m>은 <m>T</m>의 고유벡터이므로 <m>W</m>는 <m>T</m>-불변입니다.
       </p>
       <p>
         <m>T</m>가 정규 작용소이므로 <m>Tv_1=\lambda v_1</m>은 <m>T^*v_1=\overline{\lambda}v_1</m>을
-        함의한다. 실제로 임의의 정규 작용소 <m>T</m>와 고유값 <m>\lambda</m> 및 대응하는 고유벡터
+        함의합니다. 실제로 임의의 정규 작용소 <m>T</m>와 고유값 <m>\lambda</m> 및 대응하는 고유벡터
         <m>v</m>에 대하여 <m>\lVert (T^*-\overline{\lambda}I)v\rVert
         =\lVert (T-\lambda I)^*v\rVert=\lVert (T-\lambda I)v\rVert=0</m>이므로
-        <m>T^*v=\overline{\lambda}v</m>가 성립한다. 여기서 <m>T-\lambda I</m>도 정규 작용소임을
-        사용하였다.
+        <m>T^*v=\overline{\lambda}v</m>가 성립합니다. 여기서 <m>T-\lambda I</m>도 정규 작용소임을
+        사용하였습니다.
       </p>
       <p>
-        이로부터 <m>W^\perp</m>도 <m>T</m>-불변임을 보이자. <m>w\in W^\perp</m>라 하면
+        이로부터 <m>W^\perp</m>도 <m>T</m>-불변임을 보이겠습니다. <m>w\in W^\perp</m>라 하면
         <m>\langle Tw,v_1\rangle=\langle w,T^*v_1\rangle
         =\langle w,\overline{\lambda}v_1\rangle=\lambda\langle w,v_1\rangle=0</m>이므로
-        <m>Tw\in W^\perp</m>이다. 따라서 <m>T</m>를 <m>W^\perp</m>에 제한한 작용소
-        <m>T|_{W^\perp}:W^\perp\to W^\perp</m>가 잘 정의된다.
+        <m>Tw\in W^\perp</m>입니다. 따라서 <m>T</m>를 <m>W^\perp</m>에 제한한 작용소
+        <m>T|_{W^\perp}:W^\perp\to W^\perp</m>가 잘 정의됩니다.
       </p>
       <p>
         <m>T^*</m>도 정규 작용소이며 <m>(T^*)^*=T</m>이므로, 같은 논법으로 <m>T^*w\in W^\perp</m>임을
-        보일 수 있고, 따라서 <m>T^*|_{W^\perp}=(T|_{W^\perp})^*</m>임을 알 수 있다. 이로부터
-        <m>T|_{W^\perp}</m>도 정규 작용소임이 따른다.
+        보일 수 있고, 따라서 <m>T^*|_{W^\perp}=(T|_{W^\perp})^*</m>임을 알 수 있습니다. 이로부터
+        <m>T|_{W^\perp}</m>도 정규 작용소임이 따릅니다.
       </p>
       <p>
         <m>\dim W^\perp=n-1</m>이므로 귀납법의 가정에 의하여 <m>W^\perp</m>는 <m>T|_{W^\perp}</m>의
-        고유벡터로 이루어진 정규직교기저 <m>(v_2,\dots,v_n)</m>를 갖는다. 그러면
+        고유벡터로 이루어진 정규직교기저 <m>(v_2,\dots,v_n)</m>를 갖습니다. 그러면
         <m>(v_1,v_2,\dots,v_n)</m>은 <m>V=W\oplus W^\perp</m>의 정규직교기저이며, 각 <m>v_i</m>는
-        <m>T</m>의 고유벡터이다.
+        <m>T</m>의 고유벡터입니다.
       </p>
     </proof>
   </theorem>
@@ -157,17 +157,17 @@
     <proof>
       <p>
         스펙트럴 정리에 의하여 <m>V</m>는 <m>T</m>의 고유벡터로 이루어진 정규직교기저를
-        갖는다. 서로 다른 고유값에 대응하는 고유공간은 서로 직교하므로
-        <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>이다.
+        갖습니다. 서로 다른 고유값에 대응하는 고유공간은 서로 직교하므로
+        <m>V=E_1\mathbin{\oplus^\perp}\cdots\mathbin{\oplus^\perp}E_r</m>입니다.
         따라서 모든 <m>v\in V</m>는 유일하게
         <m>v=v_1+\cdots+v_r</m> (<m>v_j\in E_j</m>)로 쓸 수 있고,
-        <m>P_jv=v_j</m>이다. 그러므로
+        <m>P_jv=v_j</m>입니다. 그러므로
         <m>(P_1+\cdots+P_r)v=v</m>이고
         <m>Tv=\lambda_1v_1+\cdots+\lambda_rv_r
-        =(\lambda_1P_1+\cdots+\lambda_rP_r)v</m>이다.
+        =(\lambda_1P_1+\cdots+\lambda_rP_r)v</m>입니다.
         모든 <m>v\in V</m>에 대하여 이 등식이 성립하므로
         <m>P_1+\cdots+P_r=I</m> 및
-        <m>T=\lambda_1P_1+\cdots+\lambda_rP_r</m>를 얻는다.
+        <m>T=\lambda_1P_1+\cdots+\lambda_rP_r</m>를 얻습니다.
       </p>
     </proof>
   </corollary>
@@ -183,16 +183,16 @@
     <proof>
       <p>
         자기수반 작용소는 정규 작용소이므로 앞의 스펙트럴 정리에 의하여
-        <m>V</m>는 <m>T</m>의 고유벡터로 이루어진 정규직교기저를 갖는다.
+        <m>V</m>는 <m>T</m>의 고유벡터로 이루어진 정규직교기저를 갖습니다.
         이제 <m>Tv=\lambda v</m>인 영이 아닌 고유벡터 <m>v</m>에 대하여
         <m>T=T^*</m>이므로
-        <m>\langle Tv,v\rangle=\langle T^*v,v\rangle=\langle v,Tv\rangle</m>이다.
+        <m>\langle Tv,v\rangle=\langle T^*v,v\rangle=\langle v,Tv\rangle</m>입니다.
         한편 <m>Tv=\lambda v</m>이므로 내적의 켤레대칭성을 사용하면
-        <m>\lambda\langle v,v\rangle=\overline{\lambda}\langle v,v\rangle</m>을 얻는다.
+        <m>\lambda\langle v,v\rangle=\overline{\lambda}\langle v,v\rangle</m>을 얻습니다.
         <m>v\ne0</m>이므로 <m>\langle v,v\rangle &gt; 0</m>이고, 따라서
-        <m>\lambda=\overline{\lambda}</m>이다. 즉 모든 고유값은 실수이다.
+        <m>\lambda=\overline{\lambda}</m>입니다. 즉 모든 고유값은 실수입니다.
         그러므로 위 정규직교기저에 대한 <m>T</m>의 표현행렬은 고유값을 대각원소로
-        갖는 대각행렬이며, 그 대각원소가 모두 실수이므로 실수 대각행렬이다.
+        갖는 대각행렬이며, 그 대각원소가 모두 실수이므로 실수 대각행렬입니다.
       </p>
     </proof>
   </corollary>
@@ -239,7 +239,7 @@
           <m>TT^*=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}</m>이므로 <m>T</m>는 정규가 아니다.
           따라서 스펙트럴 정리에 의하여 정규직교 고유기저를 가질 수 없다.
           또한 유일한 고유값은 <m>1</m>이고
-          <m>\ker(T-I)=\operatorname{span}\{(1,0)\}</m>이므로, 고유벡터들만으로는
+          <m>\operatorname{ker}(T-I)=\operatorname{span}\{(1,0)\}</m>이므로, 고유벡터들만으로는
           <m>\mathbb{C}^2</m>의 기저조차 만들 수 없다.
         </p>
       </solution>
@@ -250,17 +250,17 @@
       <statement>
         <p>
           <m>D=\operatorname{diag}(0,2-i,0)</m>를 <m>\mathbb{C}^3</m>의 작용소로 보자.
-          <m>\ker D</m>와 <m>\operatorname{im}D</m>의 정규직교기저를 각각 구하고,
-          <m>\operatorname{im}D=(\ker D)^\perp</m>임을 직접 확인하라.
+          <m>\operatorname{ker} D</m>와 <m>\operatorname{im}D</m>의 정규직교기저를 각각 구하고,
+          <m>\operatorname{im}D=(\operatorname{ker} D)^\perp</m>임을 직접 확인하라.
         </p>
       </statement>
       <solution>
         <p>
           표준기저를 <m>e_1,e_2,e_3</m>라 하면
-          <m>\ker D=\operatorname{span}\{e_1,e_3\}</m>이고
+          <m>\operatorname{ker} D=\operatorname{span}\{e_1,e_3\}</m>이고
           <m>\operatorname{im}D=\operatorname{span}\{e_2\}</m>이다.
           따라서 각각 <m>(e_1,e_3)</m>와 <m>(e_2)</m>가 정규직교기저이고,
-          <m>(\ker D)^\perp=\operatorname{span}\{e_2\}=\operatorname{im}D</m>이다.
+          <m>(\operatorname{ker} D)^\perp=\operatorname{span}\{e_2\}=\operatorname{im}D</m>이다.
         </p>
       </solution>
     </exercise>
@@ -348,7 +348,7 @@
       <statement>
         <p>
           <m>T</m>가 정규 작용소이고 <m>\lambda</m>가 <m>T</m>의 고유값이라고 하자.
-          <m>E_\lambda=\ker(T-\lambda I)</m>에 대하여
+          <m>E_\lambda=\operatorname{ker}(T-\lambda I)</m>에 대하여
           <m>\operatorname{im}(T-\lambda I)=E_\lambda^\perp</m>임을 증명하라.
           이를 이용하여 방정식 <m>(T-\lambda I)x=y</m>가 해를 가질 필요충분조건을 서술하라.
         </p>
@@ -385,16 +385,16 @@
       <statement>
         <p>
           정규 작용소 <m>T</m>에 대하여 모든 <m>k\ge1</m>에 대해
-          <m>\ker T^k=\ker T</m>임을 증명하라. 따라서 어떤 양의 정수 <m>m</m>에 대하여
+          <m>\operatorname{ker} T^k=\operatorname{ker} T</m>임을 증명하라. 따라서 어떤 양의 정수 <m>m</m>에 대하여
           <m>T^m=0</m>이면 <m>T=0</m>임을 보여라. 정규성 조건을 빼면 이 결론이 거짓임을
           <m>\mathbb{C}^2</m>의 구체적인 예로 설명하라.
         </p>
       </statement>
       <hint>
         <p>
-          <m>V=\ker T\oplus\operatorname{im}T</m>이므로
-          <m>\ker T\cap\operatorname{im}T=\{0\}</m>이다. <m>T^kx=0</m>이면
-          <m>T^{k-1}x\in\ker T\cap\operatorname{im}T</m>이고, 이 관찰을 반복하라.
+          <m>V=\operatorname{ker} T\oplus\operatorname{im}T</m>이므로
+          <m>\operatorname{ker} T\cap\operatorname{im}T=\{0\}</m>이다. <m>T^kx=0</m>이면
+          <m>T^{k-1}x\in\operatorname{ker} T\cap\operatorname{im}T</m>이고, 이 관찰을 반복하라.
           반례로 <m>\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</m>를 조사하라.
         </p>
       </hint>
@@ -535,12 +535,12 @@
         </p>
         <p>
           (d) <m>T^*=UT</m>는 <m>U</m>를 <m>\operatorname{im}T</m> 위에서 완전히 결정한다:
-          <m>Tx=Tx'</m>이면 <m>x-x'\in\ker T=\ker T^*</m>이므로 <m>U(Tx)=T^*x</m>는 잘 정의된다.
-          한편 본문의 명제에 의하여 <m>\operatorname{im}T=(\ker T)^\perp=\operatorname{im}T^*</m>이고,
+          <m>Tx=Tx'</m>이면 <m>x-x'\in\operatorname{ker} T=\operatorname{ker} T^*</m>이므로 <m>U(Tx)=T^*x</m>는 잘 정의된다.
+          한편 본문의 명제에 의하여 <m>\operatorname{im}T=(\operatorname{ker} T)^\perp=\operatorname{im}T^*</m>이고,
           가역인 등거리작용소 <m>U</m>는 <m>U(\operatorname{im}T)=\operatorname{im}T^*=\operatorname{im}T</m>이므로
-          직교 여공간도 보존하여 <m>U(\ker T)=\ker T</m>이다. 따라서 <m>U</m>는
-          <m>\operatorname{im}T</m> 위에서는 유일하게 정해진 작용소이고, <m>\ker T</m> 위에서는
-          <m>\ker T</m>의 임의의 등거리작용소이다. <m>\ker T\ne0</m>이면 예컨대 <m>\ker T</m> 위에서
+          직교 여공간도 보존하여 <m>U(\operatorname{ker} T)=\operatorname{ker} T</m>이다. 따라서 <m>U</m>는
+          <m>\operatorname{im}T</m> 위에서는 유일하게 정해진 작용소이고, <m>\operatorname{ker} T</m> 위에서는
+          <m>\operatorname{ker} T</m>의 임의의 등거리작용소이다. <m>\operatorname{ker} T\ne0</m>이면 예컨대 <m>\operatorname{ker} T</m> 위에서
           <m>e^{i\theta}I</m>를 취하여 서로 다른 <m>U</m>를 무한히 많이 얻는다.
         </p>
       </hint>

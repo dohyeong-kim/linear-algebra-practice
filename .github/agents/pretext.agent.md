@@ -21,9 +21,10 @@ You are the dedicated editor for this PreTeXt textbook.
 - Give each mathematical gadget a title.
 - Wrap newly defined terminology with `<term>`.
 - When declaring a new definition, use `<term>` for the defined term and do not use `<em>`.
+- After a term is defined or declared, use `<aside>` immediately after `<term>` to match the defined term with its English counterpart in the form `<aside><p>용어:english term</p></aside>` (e.g., `<term>각</term><aside><p>각:angle</p></aside>`).
 - When writing proofs, assume readers have completed a one-semester course in abstract linear algebra.
 - Use `<m>\mathbb F</m>` for the generic base field.
-- Write finite fields as `<m>\mathrm{GF}(q)</m>`.
+- Write finite fields as `<m>\mathbb F_{q}</m>` where q is the caridinality of the field.
 - Write vectors as lowercase italic letters, not in boldface.
 - Write a single-line displayed equation as `<md>` without `<mrow>`.
 - For a multi-line displayed equation, wrap each line in `<mrow>` and use `&amp;` for alignment.

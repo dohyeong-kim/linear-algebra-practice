@@ -2,11 +2,13 @@
 
 <section xml:id="sec-symmetric-bilinear-forms" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>대칭쌍선형형식과 내적공간</title>
+
   <p>
-    체 <m>\mathbb F</m>상 벡터공간 <m>V</m>에 대하여, 함수 <m>f:V^n\to\mathbb F</m>가 각 변수에
-    관하여 선형이면 <m>n</m>-선형형식이라 한다. 특히 <m>n=2</m>인 경우를 쌍선형형식이라 하며,
-    <m>f:V\times V\to\mathbb F</m>는 두 변수 각각에 관하여 선형이다.
+    체 <m>\mathbb F</m> 상의 벡터공간 <m>V</m>에 대하여, 함수 <m>f:V^n\to\mathbb F</m>가 각 변수에 관하여 선형이면
+    <m>n</m>-선형형식이라 합니다. 특히 <m>n=2</m>인 경우를 쌍선형형식이라 하며, <m>f:V\times V\to\mathbb F</m>는
+    두 변수 각각에 관하여 선형입니다.
   </p>
+
   <definition xml:id="def-symmetric-multilinear-form">
     <title>대칭 다중선형형식</title>
     <p>
@@ -51,7 +53,7 @@
     <title>편극</title>
     <p>
       대칭쌍선형형식과 대칭삼중선형형식을 각각 대응하는 동차다항식으로부터 복원하는 편극항등식은
-      연습문제 <xref ref="exer-polarization-identity"/>와 <xref ref="exer-cubic-polarization"/>에서 다룬다. 단, 체의 표수에 대한 조건이 있음에 유의하자. 
+      연습문제 <xref ref="exer-polarization-identity"/>와 <xref ref="exer-cubic-polarization"/>에서 다룹니다. 단, 체의 표수에 대한 조건이 있음에 유의합시다. 
     </p>
   </remark>
 
@@ -67,7 +69,7 @@
   </definition>
 
   <p>
-    대칭쌍선형형식은 대칭 다중선형형식의 특별한 경우이다. 즉, 모든 대칭쌍선형형식은 2-선형형식이며, 두 입력 벡터의 순서를 바꾸어도 값이 변하지 않는다.
+    대칭쌍선형형식은 대칭 다중선형형식의 특별한 경우입니다. 즉, 모든 대칭쌍선형형식은 2-선형형식이며, 두 입력 벡터의 순서를 바꾸어도 값이 변하지 않습니다.
   </p>
 
   <example xml:id="ex-polynomial-multiplication-symmetric-bilinear-map">
@@ -261,13 +263,13 @@
   <remark xml:id="rem-gram-matrix-general-bilinear-form">
     <title>그람 행렬의 일반성</title>
     <p>
-      그람 행렬의 정의에는 내적의 조건이 필요하지 않다. 실제로 체 <m>\mathbb F</m> 위의 유한차원
+      그람 행렬의 정의에는 내적의 조건이 필요하지 않습니다. 실제로 체 <m>\mathbb F</m> 위의 유한차원
       벡터공간 <m>V</m>에 주어진 임의의 쌍선형형식 <m>b:V\times V\to\mathbb F</m>와 임의의 순서기저
       <m>\mathcal B=(v_1,\ldots,v_n)</m>에 대하여
       <me>G_{\mathcal B}=\bigl(b(v_i,v_j)\bigr)_{1\leq i,j\leq n}</me>
-      을 <m>b</m>의 기저 <m>\mathcal B</m>에 관한 그람 행렬이라 한다. 따라서 그람 행렬이라는 개념 자체는
-      <m>b</m>가 내적인지, 또는 대응하는 이차형식 <m>q(v)=b(v,v)</m>가 양의 정부호인지에 의존하지 않는다.
-      일반적인 쌍선형형식의 그람 행렬은 대칭행렬이나 양의 정부호행렬일 필요도 없다.
+      을 <m>b</m>의 기저 <m>\mathcal B</m>에 관한 그람 행렬이라 합니다. 따라서 그람 행렬이라는 개념 자체는
+      <m>b</m>가 내적인지, 또는 대응하는 이차형식 <m>q(v)=b(v,v)</m>가 양의 정부호인지에 의존하지 않습니다.
+      일반적인 쌍선형형식의 그람 행렬은 대칭행렬이나 양의 정부호행렬일 필요도 없습니다.
     </p>
   </remark>
 
@@ -286,8 +288,8 @@
       <p>
         내적의 대칭성으로 <m>G_{ij}=G_{ji}</m>이고, <m>0\ne c\in\mathbb R^n</m>에 대하여
         <m>v=\sum_i c_i v_i\ne0</m>이므로
-        <me>c^{\operatorname{T}}G_{\mathcal B}c=\langle v,v\rangle&gt;0.</me>
-        역방향은 행렬곱의 쌍선형성, <m>G^{\operatorname{T}}=G</m>, 그리고 양의 정부호성에서 바로 따른다.
+        <me>c^{\operatorname{T}}G_{\mathcal B}c=\langle v,v\rangle&gt;0</me>
+        입니다. 역방향은 행렬곱의 쌍선형성, <m>G^{\operatorname{T}}=G</m>, 그리고 양의 정부호성에서 바로 따릅니다.
       </p>
     </proof>
   </proposition>
@@ -295,12 +297,12 @@
   <remark xml:id="rem-standard-real-vector-space-multiple-inner-products">
     <title>표준 실벡터공간의 여러 내적 구조</title>
     <p>
-      벡터공간 <m>\mathbb R^n</m>에 벡터공간 구조만 주어져 있다고 해서 내적이 하나로 정해지는 것은 아니다.
+      벡터공간 <m>\mathbb R^n</m>에 벡터공간 구조만 주어져 있다고 해서 내적이 하나로 정해지는 것은 아닙니다.
       서로 다른 대칭 양의 정부호행렬 <m>G</m>와 <m>H</m>는 각각
       <me>\langle x,y\rangle_G=x^{\operatorname{T}}Gy,
       \qquad \langle x,y\rangle_H=x^{\operatorname{T}}Hy</me>
-      라는 서로 다른 내적을 정의한다. 따라서 표준 실벡터공간은 양의 정부호행렬의 선택에 따라
-      여러 내적공간 구조를 가질 수 있다.
+      라는 서로 다른 내적을 정의합니다. 따라서 표준 실벡터공간은 양의 정부호행렬의 선택에 따라
+      여러 내적공간 구조를 가질 수 있습니다.
     </p>
   </remark>
   
@@ -335,16 +337,16 @@
         에르미트 대칭성에 의하여
         <m>(H_{\mathcal B})_{ji}=\langle v_j,v_i\rangle
         =\overline{\langle v_i,v_j\rangle}</m>이므로
-        <m>H_{\mathcal B}^{*}=H_{\mathcal B}</m>이다. 또한
+        <m>H_{\mathcal B}^{*}=H_{\mathcal B}</m>입니다. 또한
         <m>0\ne c\in\mathbb C^n</m>에 대하여
         <m>v=\sum_i c_i v_i\ne0</m>이므로
-        <me>c^{\operatorname{T}} H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0.</me>
-        역으로 <m>H^*=H</m>이면 행렬곱의 성질로
+        <me>c^{\operatorname{T}} H_{\mathcal B}\overline c=\langle v,v\rangle&gt;0</me>
+        입니다. 역으로 <m>H^*=H</m>이면 행렬곱의 성질로
         <m>\langle x,y\rangle=x^{\operatorname{T}}H\overline y</m>는 첫째 변수에 선형이고 둘째 변수에
-        켤레선형이며, <m>\langle y,x\rangle=\overline{\langle x,y\rangle}</m>를 만족한다.
+        켤레선형이며, <m>\langle y,x\rangle=\overline{\langle x,y\rangle}</m>를 만족합니다.
         여기에 <m>H</m>의 양의 정부호성을 적용하면
         <m>x\ne0</m>일 때 <m>\langle x,x\rangle=x^{\operatorname{T}}H\overline x&gt;0</m>이므로
-        이는 에르미트 내적이다.
+        이는 에르미트 내적입니다.
       </p>
     </proof>
   </proposition>
@@ -370,7 +372,7 @@
             &amp;=(P^{\operatorname{T}}G_{\mathcal B}P)_{jk}
           </mrow>
         </md>
-        이므로 <m>G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P</m>이다.
+        이므로 <m>G_{\mathcal C}=P^{\operatorname{T}}G_{\mathcal B}P</m>입니다.
         에르미트 내적의 경우에는 첫째 변수에 선형이고 둘째 변수에 켤레선형이므로
         <md>
           <mrow>
@@ -381,8 +383,8 @@
             &amp;=(P^{\operatorname{T}}H_{\mathcal B}\overline P)_{jk}
           </mrow>
         </md>
-        이다. 따라서 <m>H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P</m>이다.
-        정규직교기저에서는 그람 행렬의 각 성분이 <m>\delta_{jk}</m>이므로 항등행렬이다.
+        입니다. 따라서 <m>H_{\mathcal C}=P^{\operatorname{T}}H_{\mathcal B}\overline P</m>입니다.
+        정규직교기저에서는 그람 행렬의 각 성분이 <m>\delta_{jk}</m>이므로 항등행렬입니다.
       </p>
     </proof>
   </proposition>
@@ -747,9 +749,9 @@
               <m>C=I</m>를 대입하면 <m>f(A,B)=f(AB,I)</m>이므로 <m>g(X)=f(X,I)</m>로 두면 <m>g</m>는 선형이고
               <m>f(A,B)=g(AB)</m>이다. 대칭성으로 <m>g(AB)=f(A,B)=f(B,A)=g(BA)</m>, 즉 <m>g</m>는 모든 교환자
               <m>AB-BA</m>에서 <m>0</m>이다. 그런데 <m>i\ne j</m>에 대하여 <m>E_{ij}=E_{ii}E_{ij}-E_{ij}E_{ii}</m>이고
-              <m>E_{ii}-E_{jj}=E_{ij}E_{ji}-E_{ji}E_{ij}</m>이므로, 교환자들은 <m>\ker\operatorname{tr}</m>의 기저
-              <m>\{E_{ij}\}_{i\ne j}\cup\{E_{ii}-E_{nn}\}_{i&lt;n}</m>을 포함한다. 따라서 <m>g</m>는 <m>\ker\operatorname{tr}</m>에서
-              <m>0</m>이고, <m>\operatorname{tr}\ne0</m>인 선형범함수의 핵에서 사라지는 선형범함수는 그 상수배이므로
+              <m>E_{ii}-E_{jj}=E_{ij}E_{ji}-E_{ji}E_{ij}</m>이므로, 교환자들은 <m>\operatorname{ker}\operatorname{tr}</m>의 기저
+              <m>\{E_{ij}\}_{i\ne j}\cup\{E_{ii}-E_{nn}\}_{i&lt;n}</m>을 포함한다. 따라서 <m>g</m>는 <m>\operatorname{ker}\operatorname{tr}</m>에서
+              <m>0</m>이고, <m>\operatorname{tr}\ne0</m>인 선형범함수의 커널에서 사라지는 선형범함수는 그 상수배이므로
               <m>g=c\operatorname{tr}</m>. (표수가 <m>n</m>을 나누어도 이 논증은 유효하다.)
               역: <m>\operatorname{tr}(ABC)</m>는 <m>(AB)C</m>와 <m>A(BC)</m>로 읽어도 같고,
               <m>\operatorname{tr}(AB)=\operatorname{tr}(BA)</m>이므로 대칭이다.
@@ -805,8 +807,8 @@
           모든 <m>v\in S</m>에 대하여 <m>\langle v,v\rangle_1=\langle v,v\rangle_2</m>이면
           두 내적은 같다.
           <ol>
-            <li><m>S=\{e_i\}_{i}\cup\{e_i+e_j\}_{i&lt;j}</m> (원소 <m>\tfrac{n(n+1)}2</m>개)가 내적을 결정함을 보이시오.</li>
-            <li><m>|S|&lt;\tfrac{n(n+1)}2</m>이면 <m>S</m>는 내적을 결정하지 못함을 보이시오.</li>
+            <li xml:id="exer-minimal-determining-set-1"><m>S=\{e_i\}_{i}\cup\{e_i+e_j\}_{i&lt;j}</m> (원소 <m>\tfrac{n(n+1)}2</m>개)가 내적을 결정함을 보이시오.</li>
+            <li xml:id="exer-minimal-determining-set-2"><m>|S|&lt;\tfrac{n(n+1)}2</m>이면 <m>S</m>는 내적을 결정하지 못함을 보이시오.</li>
           </ol>
         </p>
       </statement>
@@ -820,13 +822,13 @@
             <li>
               대칭행렬들의 공간 <m>\operatorname{Sym}_n(\mathbb R)</m>은 차원이 <m>\tfrac{n(n+1)}2</m>이므로 선형사상
               <m>\Phi:\operatorname{Sym}_n(\mathbb R)\to\mathbb R^S</m>, <m>H\mapsto(v^THv)_{v\in S}</m>는
-              <m>|S|&lt;\tfrac{n(n+1)}2</m>일 때 영이 아닌 핵원소 <m>H</m>를 가진다.
+              <m>|S|&lt;\tfrac{n(n+1)}2</m>일 때 영이 아닌 커널 원소 <m>H</m>를 가진다.
               임의의 내적의 그람 행렬 <m>G</m>(예컨대 <m>G=I</m>)에 대하여 <m>G_\varepsilon=G+\varepsilon H</m>를 생각하자.
               <m>\varepsilon\ne0</m>이면 <m>G_\varepsilon\ne G</m>이고, <m>S</m>의 모든 <m>v</m>에서 <m>v^TG_\varepsilon v=v^TGv</m>이다.
               남은 것은 작은 <m>\varepsilon</m>에 대해 <m>G_\varepsilon</m>이 양의 정부호임을 보이는 것이다.
               단위구면 <m>\{|c|=1\}</m>은 콤팩트하고 <m>c\mapsto c^TGc</m>는 연속이며 양수이므로 최솟값 <m>m&gt;0</m>을 가지고,
               <m>c\mapsto|c^THc|</m>는 최댓값 <m>M</m>을 가진다. <m>M=0</m>이면 <m>c^THc=0</m>이 모든 <m>c</m>에 대해 성립하여
-              (1)의 계산으로 <m>H=0</m>이 되어 모순이므로 <m>M&gt;0</m>. 동차성으로 모든 <m>c</m>에 대하여
+              <xref ref="exer-minimal-determining-set-1"/>의 계산으로 <m>H=0</m>이 되어 모순이므로 <m>M&gt;0</m>. 동차성으로 모든 <m>c</m>에 대하여
               <m>c^TG_\varepsilon c\ge(m-|\varepsilon|M)|c|^2</m>이므로 <m>0&lt;|\varepsilon|&lt;m/M</m>이면 <m>G_\varepsilon</m>은
               양의 정부호이다. 따라서 <m>S</m> 위의 값이 같은 서로 다른 두 내적이 존재한다.
             </li>
@@ -841,13 +843,18 @@
         <p>
           <ol>
             <li><m>H\in M_n(\mathbb C)</m>가 모든 <m>c\in\mathbb C^n</m>에 대하여 <m>c^TH\overline c\in\mathbb R</m>를
-              만족하면 <m>H^*=H</m>임을 보이시오. 실수체에서는 대응하는 명제가 거짓임을 지적하시오.</li>
+              만족하면 <m>H^*=H</m>임을 보이시오. 실수체에서는 대응하는 명제가 거짓임을 지적하시오.
+            </li>
             <li>복소벡터공간 <m>V</m>를 실벡터공간으로 보고, 그 위의 실내적 <m>g</m>가 모든 <m>u,v</m>에 대하여
               <m>g(iu,iv)=g(u,v)</m>를 만족한다고 하자.
+              <fn>
+                <m>u \in V</m>일 때, <m>iu</m>는 <m>V</m>가 복소벡터공간이기 때문에 정의되는 스칼라곱이다.
+              </fn>
               <me>h(u,v)=g(u,v)+i\,g(u,iv)</me>
               가 <m>V</m> 위의 에르미트 내적이고 <m>\operatorname{Re}h=g</m>임을 보이시오.
               역으로 모든 에르미트 내적 <m>\langle\cdot,\cdot\rangle</m>에 대하여 <m>g=\operatorname{Re}\langle\cdot,\cdot\rangle</m>는
-              위 조건을 만족하는 실내적이고, 이때 <m>h=\langle\cdot,\cdot\rangle</m>임을 보이시오.</li>
+              위 조건을 만족하는 실내적이고, 이때 <m>h=\langle\cdot,\cdot\rangle</m>임을 보이시오.
+            </li>
           </ol>
         </p>
       </statement>
@@ -890,11 +897,11 @@
           <m>\mathbb R^n</m> 위의 내적의 표준기저에 관한 그람 행렬 <m>G</m>가 모든 <m>i\ne j</m>에 대하여
           <m>G_{ij}\le0</m>을 만족한다고 하자.
           <ol>
-            <li><m>G</m>가 가역임을 보이시오.</li>
-            <li><m>G^{-1}</m>의 모든 성분이 <m>0</m> 이상임을 보이시오.</li>
-            <li>(2)를 다음과 같이 해석하시오: 모든 <m>i,j</m>에 대하여 <m>\langle u_j,e_i\rangle=\delta_{ij}</m>인
+            <li xml:id="exer-nonpositive-offdiagonal-gram-1"><m>G</m>가 가역임을 보이시오.</li>
+            <li xml:id="exer-nonpositive-offdiagonal-gram-2"><m>G^{-1}</m>의 모든 성분이 <m>0</m> 이상임을 보이시오.</li>
+            <li><xref ref="exer-nonpositive-offdiagonal-gram-2"/>를 다음과 같이 해석하시오: 모든 <m>i,j</m>에 대하여 <m>\langle u_j,e_i\rangle=\delta_{ij}</m>인
               벡터 <m>u_1,\ldots,u_n</m>이 존재하며, 이들의 모든 좌표는 <m>0</m> 이상이다.</li>
-            <li>가정 <m>G_{ij}\le0</m>을 빼면 (2)가 거짓임을 예로 보이시오.</li>
+            <li>가정 <m>G_{ij}\le0</m>을 빼면 <xref ref="exer-nonpositive-offdiagonal-gram-2"/>가 거짓임을 예로 보이시오.</li>
           </ol>
         </p>
       </statement>
@@ -908,14 +915,14 @@
               <m>y\in\mathbb R^n</m>의 모든 성분이 <m>0</m> 이상이라 하고 <m>x=G^{-1}y</m>로 두자.
               <m>x=x^+-x^-</m>, <m>x^\pm_i=\max(\pm x_i,0)</m>로 쓰면 <m>x^\pm\ge0</m>이고
               각 <m>i</m>에서 <m>x^+_ix^-_i=0</m>이다. 그러면
-              <me>(x^-)^TGx^-=(x^-)^TG(x^+-x)=\sum_{i\ne j}x^-_iG_{ij}x^+_j-(x^-)^Ty\le0,</me>
+              <md>(x^-)^TGx^-=(x^-)^TG(x^+-x)=\sum_{i\ne j}x^-_iG_{ij}x^+_j-(x^-)^Ty\le0,</md>
               여기서 <m>i=j</m>인 항은 <m>x^-_ix^+_i=0</m>으로 사라지고 <m>i\ne j</m>인 항은 <m>G_{ij}\le0</m>,
               <m>x^-_i,x^+_j\ge0</m>으로 양이 아니며 <m>(x^-)^Ty\ge0</m>이다.
               양의 정부호성으로 <m>x^-=0</m>, 즉 <m>x\ge0</m>. <m>y=e_j</m>를 택하면 <m>G^{-1}</m>의 <m>j</m>열이 <m>0</m> 이상이다.
             </li>
             <li>
               <m>u_j=G^{-1}e_j</m>로 두면 <m>\langle u_j,e_i\rangle=e_i^TG\,G^{-1}e_j=\delta_{ij}</m>이고,
-              (2)에 의해 <m>u_j</m>의 좌표는 모두 <m>0</m> 이상이다. (즉 <m>e_i</m>들이 서로 「둔각 이하」로 놓여 있으면
+              <xref ref="exer-nonpositive-offdiagonal-gram-2"/>에 의해 <m>u_j</m>의 좌표는 모두 <m>0</m> 이상이다. (즉 <m>e_i</m>들의 임의의 두 서로 다른 벡터의 내적이 모두 음이 아니면
               쌍대기저는 원래 기저의 음이 아닌 결합이다.)
             </li>
             <li>

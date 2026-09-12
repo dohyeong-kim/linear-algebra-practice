@@ -96,11 +96,11 @@
   <p>
     그람-슈미트 과정에서 <m>w_j</m>는 <m>v_1, \cdots ,v_j</m>가 생성하는
     부분공간에 속하고, 역으로 <m>v_j</m>는 <m>w_j</m>와 이전 벡터들의 선형결합으로
-    나타난다. 따라서 각 단계에서 생성된 벡터들은 원래 벡터들과 같은 부분공간을
+    나타납니다. 따라서 각 단계에서 생성된 벡터들은 원래 벡터들과 같은 부분공간을
     생성하며, 최종적으로
     <me>\operatorname{span}\{u_1, \cdots ,u_k\}
       =\operatorname{span}\{v_1, \cdots ,v_k\}</me>
-    이다.
+    입니다.
   </p>
 
 <exercises xml:id="exercises-orthogonalization">
