@@ -212,7 +212,7 @@
       <p>
         귀납 가정에 따라 <m>U^{\perp}</m>에는 <m>T|_{U^{\perp}}</m>의 고유벡터로 이루어진 정규직교기저가 있습니다. 여기에 <m>u</m>를 추가하면 <m>V=U\oplus U^{\perp}</m>의 정규직교기저가 되고, 그 모든 벡터는 <m>T</m>의 고유벡터입니다. 이로써 <m>(2)</m>를 얻습니다.</p>
       <p>
-        반대로 <m>(2)</m>를 가정하겠습니다. <m>V</m>의 정규직교기저를 고유벡터 <m>u_1,\ldots,u_n</m>으로 잡고, <m>Tu_i=\lambda_i u_i</m>라 하겠습니다. 실수 내적공간에서 자기수반성은 모든 <m>x,y\in V</m>에 대하여 <m>\langle Tx,y\rangle=\langle x,Ty\rangle</m>인 것과 동치입니다. 선형성만 확인하면 충분하므로 <m>x=\sum_i a_i u_i</m>, <m>y=\sum_i b_i u_i</m>로 쓰면
+        반대로 <m>(2)</m>를 가정하겠습니다. <m>V</m>의 정규직교기저를 고유벡터 <m>u_1,\ldots,u_n</m>으로 잡고, <m>Tu_i=\lambda_i u_i</m>라 하겠습니다. 실수 내적공간에서 자기수반성은 모든 <m>x,y\in V</m>에 대하여 <m>\langle Tx,y\rangle=\langle x,Ty\rangle</m>인 것과 동치입니다. 이를 확인하기 위하여 기저의 성질을 이용해 <m>x=\sum_i a_i u_i</m>, <m>y=\sum_i b_i u_i</m>로 쓰면
         <m>\langle Tx,y\rangle=\sum_i a_i\lambda_i b_i=\langle x,Ty\rangle</m>입니다. 따라서 <m>T=T^*</m>이고, <m>(1)</m>이 성립합니다.</p>
       <p>
         마지막으로 <m>(2)</m>의 정규직교 고유기저에서 <m>T</m>의 행렬은 <m>\operatorname{diag}(\lambda_1,\ldots,\lambda_n)</m>인 실수 대각행렬입니다. 그러므로 특성다항식은 <m>\prod_{i=1}^n(t-\lambda_i)</m>로 주어져 <m>\mathbb R</m> 위에서 일차인수로 분해됩니다.</p>
