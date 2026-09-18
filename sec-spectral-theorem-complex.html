@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.2.10';
+eBookConfig.runestone_version = '8.2.13';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.e3f9706509fcf6f7.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.c5ba0ffa5f963084.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.efe427683fc41f98.css">
+<script src="_static/prefix-runtime.a45d14e8fc8c534a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.538acb8e671a3b5d.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.1bda041f5a098305.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -344,7 +344,10 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html" class="internal"><span class="codenumber">1.6</span> <span class="title">특이값 분해: 에르미트 공간</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html#exercises-singular-value-decomposition-hermitian" class="internal"><span class="codenumber">1.6</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-image-compression.html#exercises-image-compression" class="internal"><span class="codenumber">1.7</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-principal-component-analysis.html" class="internal"><span class="codenumber">1.8</span> <span class="title">주성분 분석</span></a></div></li>
 </ul>
 </li>
@@ -397,7 +400,7 @@ eBookConfig.enable_chatcodes =  false;
 <span class="process-math">\((2)\Rightarrow(1)\text{:}\)</span> <span class="process-math">\(V\)</span>의 정규직교기저 <span class="process-math">\(\beta=(v_1,\dots,v_n)\)</span>가 <span class="process-math">\(T\)</span>의 고유벡터로 이루어져 있다고 하겠습니다. 이 기저에 대한 <span class="process-math">\(T\)</span>의 표현행렬을 <span class="process-math">\(D\)</span>라 하면 <span class="process-math">\(D\)</span>는 대각행렬입니다. 정규직교기저에 대한 표현행렬이므로 <span class="process-math">\(T^*\)</span>의 표현행렬은 <span class="process-math">\(D^*=\overline{D}^{\mathsf{T}}\)</span>이고, 이 역시 대각행렬입니다. 두 대각행렬은 항상 가환이므로 <span class="process-math">\(D^*D=DD^*\)</span>이고, 따라서 <span class="process-math">\(T^*T=TT^*\text{,}\)</span> 즉 <span class="process-math">\(T\)</span>는 정규 작용소입니다.</div>
 <div class="para" id="thm-spectral-theorem-normal-complex-3-2">
 <span class="process-math">\((1)\Rightarrow(2)\text{:}\)</span> <span class="process-math">\(\dim V=n\)</span>에 대한 귀납법으로 증명합니다. <span class="process-math">\(n=1\)</span>인 경우는 자명합니다. <span class="process-math">\(n-1\)</span>이하의 차원에서 명제가 성립한다고 가정하겠습니다.</div>
-<div class="para" id="thm-spectral-theorem-normal-complex-3-3">복소수체는 대수적으로 닫혀 있으므로 <span class="process-math">\(T\)</span>의 특성다항식은 근을 가지며, 따라서 <span class="process-math">\(T\)</span>는 적어도 하나의 고유값 <span class="process-math">\(\lambda\)</span>를 갖습니다. 이에 대응하는 고유벡터 <span class="process-math">\(v_1\)</span>을 택하고 <span class="process-math">\(\lVert v_1\rVert=1\)</span>이 되도록 정규화하겠습니다. <span class="process-math">\(W=\operatorname{span}(v_1)\)</span>이라 하면 <span class="process-math">\(v_1\)</span>은 <span class="process-math">\(T\)</span>의 고유벡터이므로 <span class="process-math">\(W\)</span>는 <span class="process-math">\(T\)</span>-불변입니다.</div>
+<div class="para" id="thm-spectral-theorem-normal-complex-3-3">복소수체는 대수적으로 닫혀 있으므로<details class="ptx-footnote" aria-live="polite" id="thm-spectral-theorem-normal-complex-3-3-1"><summary class="ptx-footnote__number" title="[fn] 1.4.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="thm-spectral-theorem-normal-complex-3-3-1">대수학의 기본정리: 상수가 아닌 다항식은 반드시 근을 가진다.</div></details> <span class="process-math">\(T\)</span>의 특성다항식은 근을 가지며, 따라서 <span class="process-math">\(T\)</span>는 적어도 하나의 고유값 <span class="process-math">\(\lambda\)</span>를 갖습니다. 이에 대응하는 고유벡터 <span class="process-math">\(v_1\)</span>을 택하고 <span class="process-math">\(\lVert v_1\rVert=1\)</span>이 되도록 정규화하겠습니다. <span class="process-math">\(W=\operatorname{span}(v_1)\)</span>이라 하면 <span class="process-math">\(v_1\)</span>은 <span class="process-math">\(T\)</span>의 고유벡터이므로 <span class="process-math">\(W\)</span>는 <span class="process-math">\(T\)</span>-불변입니다.</div>
 <div class="para" id="thm-spectral-theorem-normal-complex-3-4">
 <span class="process-math">\(T\)</span>가 정규 작용소이므로 <span class="process-math">\(Tv_1=\lambda v_1\)</span>은 <span class="process-math">\(T^*v_1=\overline{\lambda}v_1\)</span>을 함의합니다. 실제로 임의의 정규 작용소 <span class="process-math">\(T\)</span>와 고유값 <span class="process-math">\(\lambda\)</span> 및 대응하는 고유벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(\lVert (T^*-\overline{\lambda}I)v\rVert
 =\lVert (T-\lambda I)^*v\rVert=\lVert (T-\lambda I)v\rVert=0\)</span>이므로 <span class="process-math">\(T^*v=\overline{\lambda}v\)</span>가 성립합니다. 여기서 <span class="process-math">\(T-\lambda I\)</span>도 정규 작용소임을 사용하였습니다.</div>

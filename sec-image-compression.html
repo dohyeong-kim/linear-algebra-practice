@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.2.10';
+eBookConfig.runestone_version = '8.2.13';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.e3f9706509fcf6f7.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.c5ba0ffa5f963084.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.efe427683fc41f98.css">
+<script src="_static/prefix-runtime.a45d14e8fc8c534a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.538acb8e671a3b5d.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.1bda041f5a098305.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -344,7 +344,10 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html" class="internal"><span class="codenumber">1.6</span> <span class="title">특이값 분해: 에르미트 공간</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html#exercises-singular-value-decomposition-hermitian" class="internal"><span class="codenumber">1.6</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></div></li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></div>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-image-compression.html#exercises-image-compression" class="internal"><span class="codenumber">1.7</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-principal-component-analysis.html" class="internal"><span class="codenumber">1.8</span> <span class="title">주성분 분석</span></a></div></li>
 </ul>
 </li>
@@ -360,7 +363,112 @@ eBookConfig.enable_chatcodes =  false;
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-image-compression"><h2 class="heading hide-type">
 <span class="type">절</span><span class="space"> </span><span class="codenumber">1.7</span><span class="space"> </span><span class="title">이미지압축</span>
-</h2></section></div>
+</h2>
+<div class="para" id="sec-image-compression-2">이 절에서는 실수 성분을 갖는 행렬로 모델링한 이미지를 특이값 분해(SVD)를 이용하여 압축하는 방법을 살펴봅니다. 특이값 분해를 사용하면 이미지 행렬을 더 낮은 계수의 행렬로 근사하여 중요한 시각적 정보를 유지하면서 저장해야 할 데이터의 양을 줄일 수 있습니다.</div>
+<div class="para" id="sec-image-compression-3">디지털 이미지는 가로와 세로 방향으로 배열된 픽셀로 이루어져 있으므로 행렬로 나타낼 수 있습니다. 흑백 이미지에서는 각 픽셀의 밝기를 실수로 나타내어, 행과 열의 위치에 밝기값을 대응시키는 행렬을 만듭니다. 컬러 이미지에서는 각 픽셀의 색을 빨강(R), 초록(G), 파랑(B)의 세 성분으로 모델링합니다. 각 성분은 보통 일정한 범위의 수로 표현되며, 세 성분의 조합이 픽셀의 색을 결정합니다. 따라서 컬러 이미지는 하나의 행렬이 아니라 R, G, B 성분에 해당하는 세 행렬로 나타낼 수 있습니다.</div>
+<div class="para logical" id="sec-image-compression-4">
+<div class="para">행렬 <span class="process-math">\(A\)</span>의 특이값 분해를 <span class="process-math">\(A=U\Sigma V^{\mathsf T}\)</span>라 하고, 특이값을 내림차순으로 <span class="process-math">\(\sigma_1\geq\sigma_2\geq\cdots\)</span>라 합니다. 양의 정수 <span class="process-math">\(r\)</span>에 대한 <span class="process-math">\(A\)</span>의 계수 <span class="process-math">\(r\)</span>인 근사는 가장 큰 <span class="process-math">\(r\)</span>개의 특이값과 이에 대응하는 특이벡터만을 사용하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A_r=U_r\Sigma_rV_r^{\mathsf T}=\sum_{i=1}^{r}\sigma_i u_i v_i^{\mathsf T}
+\end{equation*}
+</div>
+<div class="para">로 정의합니다. 여기서 <span class="process-math">\(U_r\text{,}\)</span> <span class="process-math">\(\Sigma_r\text{,}\)</span> <span class="process-math">\(V_r\)</span>는 각각 <span class="process-math">\(U\text{,}\)</span> <span class="process-math">\(\Sigma\text{,}\)</span> <span class="process-math">\(V\)</span>에서 처음 <span class="process-math">\(r\)</span>개의 특이값에 대응하는 열과 성분만 취한 것입니다.</div>
+</div>
+<div class="para" id="sec-image-compression-5">이미지 행렬을 계수 <span class="process-math">\(r\)</span>인 낮은 계수 행렬로 근사한다는 것은, 원래 행렬의 특이값 중 가장 큰 <span class="process-math">\(r\)</span>개만 사용하여 이미지를 다시 구성한다는 뜻입니다. 이 근사는 원래 이미지의 모든 픽셀값을 저장하는 대신 중요한 밝기와 색의 패턴을 주로 저장합니다. 낮은 계수 행렬은 원래 행렬보다 적은 수의 수로 표현할 수 있으므로 저장 공간이 줄어들며, 이를 이미지의 낮은 계수 근사에 의한 압축이라고 합니다. <span class="process-math">\(r\)</span>을 크게 하면 원본에 더 가까워지지만 필요한 데이터가 많아지고, <span class="process-math">\(r\)</span>을 작게 하면 더 많이 압축되지만 세부 정보가 손실될 수 있습니다.</div>
+<aside class="aside aside-like" id="sec-image-compression-6"><div class="para" id="sec-image-compression-6-1">실습은 <a class="external" href="https://timbaumann.info/svd-image-compression-demo/" target="_blank">https://timbaumann.info/svd-image-compression-demo/</a><details class="ptx-footnote" aria-live="polite" id="sec-image-compression-6-1-2"><summary class="ptx-footnote__number" title="[fn] 1.7.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-image-compression-6-1-2"><code class="code-inline tex2jax_ignore">timbaumann.info/svd-image-compression-demo/</code></div></details>을 활용하였다.</div></aside><details id="ex-image-compression-grid" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.7.1</span><span class="period">.</span><span class="space"> </span><span class="title">격자 압축.</span>
+</h3></summary><article class="example example-like knowl__content"><figure class="figure figure-like" id="fig-3-by-by-grayscale"><div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="external//image-compression-images/3-by-3-grayscale.png" class="contained"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.2<span class="period">.</span></span><span class="space"> </span>흑백 격자</figcaption></figure><figure class="figure figure-like" id="fig-video-3-by-3-grayscale"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><video id="fig-video-3-by-3-grayscale-2" class="video" controls=""><source src="external//image-compression-animations/3-by-3-grayscale.mp4" type="video/mp4"></source>Your browser does not support the &lt;video&gt; tag.</video></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.3<span class="period">.</span></span><span class="space"> </span>흑백 격자 압축</figcaption></figure><aside class="aside aside-like" id="ex-image-compression-grid-4"><div class="para" id="ex-image-compression-grid-4-1">유의미한 특잇값은 3개이다.</div></aside></article></details><details id="ex-image-compression-cow" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.7.4</span><span class="period">.</span><span class="space"> </span><span class="title">소 이미지 압축.</span>
+</h3></summary><article class="example example-like knowl__content"><figure class="figure figure-like" id="fig-cow-large"><div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="external//image-compression-images/cow-large.jpg" class="contained"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.5<span class="period">.</span></span><span class="space"> </span>소 이미지</figcaption></figure><figure class="figure figure-like" id="fig-cow-compression"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><video id="fig-cow-compression-2" class="video" controls=""><source src="external//image-compression-animations/cow.mp4" type="video/mp4"></source>Your browser does not support the &lt;video&gt; tag.</video></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.6<span class="period">.</span></span><span class="space"> </span>소 이미지 압축</figcaption></figure></article></details><details id="ex-image-compression-shaded-tree" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.7.7</span><span class="period">.</span><span class="space"> </span><span class="title">그늘 속 나무 사진 압축.</span>
+</h3></summary><article class="example example-like knowl__content"><figure class="figure figure-like" id="fig-shaded-tree-large"><div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="external//image-compression-images/shaded-tree.jpg" class="contained"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.8<span class="period">.</span></span><span class="space"> </span>그늘 속 나무 사진</figcaption></figure><figure class="figure figure-like" id="fig-shaded-tree-compression"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><video id="fig-shaded-tree-compression-2" class="video" controls=""><source src="external//image-compression-animations/tree.mp4" type="video/mp4"></source>Your browser does not support the &lt;video&gt; tag.</video></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.7.9<span class="period">.</span></span><span class="space"> </span>그늘 속 나무 사진 압축</figcaption></figure></article></details><div class="para" id="sec-image-compression-10">위의 예제들을 통해 특이값 분해를 이용한 이미지 압축의 원리를 이해할 수 있습니다. 낮은 계수 행렬로 이미지를 근사하면 중요한 시각적 정보를 유지하면서 저장 공간을 절약할 수 있습니다. 그러나 계수 <span class="process-math">\(r\)</span>을 너무 작게 설정하면 이미지의 세부 정보가 손실될 수 있으므로 적절한 균형을 찾는 것이 중요합니다.</div>
+<div class="para" id="sec-image-compression-11">적절한 균형이 어디인지 판단하는 것은 이미지의 특성과 사용 목적에 따라 달라집니다.</div>
+<article class="remark remark-like" id="rmk-singular-value-distribution"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">1.7.10</span><span class="period">.</span><span class="space"> </span><span class="title">특이값의 분포가 가지는 특성?</span>
+</h3>
+<div class="para" id="rmk-singular-value-distribution-2">이미지의 특성에 따라 특이값의 분포가 다를까요? 관찰에 따르면 풍경 사진의 경우 지수적 감소를 보이는 경향이 있습니다. 이는 몇 개의 큰 특이값이 대부분의 시각적 정보를 담고 있음을 의미합니다. 반면, 어떤 복잡한 패턴을 가진 이미지에서는 특이값이 더 천천히 감소할 수 있습니다. 실제로, 추상 회화에서는 그 특이값이 선형적으로 감소하는 경향이 관찰되기도 합니다.</div>
+<div class="para" id="rmk-singular-value-distribution-3">무작위행렬에서의 특이값 분포는 일반적으로 균일하게 퍼지는 경향이 있습니다. 이는 이미지와 달리 특정한 구조나 패턴이 없기 때문입니다. 따라서 무작위행렬의 경우 몇 개의 큰 특이값이 전체 정보를 지배하는 현상이 덜 나타납니다.</div></article><div class="para" id="sec-image-compression-13">여기까지는 실용적 관점에서 이미지 압축을 이해하는 데 필요한 기본 개념과 예제를 살펴보았습니다. 이를 뒷받침하는 이론적 근거로 특이값 분해와 관련된 수학적 정리들을 살펴보겠습니다.</div>
+<article class="definition definition-like" id="def-frobenius-norm"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.7.11</span><span class="period">.</span><span class="space"> </span><span class="title">프로베니우스 노름.</span>
+</h3>
+<div class="para logical" id="def-frobenius-norm-2">
+<div class="para">행렬 <span class="process-math">\(A=(a_{ij})\)</span>의 프로베니우스 노름은 모든 성분의 제곱합의 제곱근으로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A\rVert_F=\left(\sum_{i,j}|a_{ij}|^2\right)^{1/2}
+\end{equation*}
+</div>
+<div class="para">로 정의합니다.</div>
+</div></article><article class="definition definition-like" id="def-spectral-norm"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">1.7.12</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 노름.</span>
+</h3>
+<div class="para logical" id="def-spectral-norm-2">
+<div class="para">행렬 <span class="process-math">\(A\)</span>의 스펙트럼 노름은 단위 벡터에 대한 <span class="process-math">\(A\)</span>의 작용의 최댓값으로</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A\rVert_2=\max_{\lVert x\rVert_2=1}\lVert Ax\rVert_2
+\end{equation*}
+</div>
+<div class="para">로 정의합니다. 이는 <span class="process-math">\(A\)</span>의 가장 큰 특이값과 같습니다.</div>
+</div></article><article class="theorem theorem-like" id="thm-eckart-young"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.7.13</span><span class="period">.</span><span class="space"> </span><span class="title">에카르트-영 정리.</span>
+</h3>
+<div class="para logical" id="thm-eckart-young-2">
+<div class="para">
+<span class="process-math">\(A\)</span>의 특이값을 <span class="process-math">\(\sigma_1\geq\sigma_2\geq\cdots\geq\sigma_q\geq 0\)</span>라 하고, <span class="process-math">\(A_r\)</span>를 <span class="process-math">\(A\)</span>의 계수 <span class="process-math">\(r\)</span>인 특이값 분해 근사라고 하자. 그러면 계수가 <span class="process-math">\(r\)</span> 이하인 모든 행렬 <span class="process-math">\(B\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_2\leq\lVert A-B\rVert_2
+\end{equation*}
+</div>
+<div class="para">이고,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_F\leq\lVert A-B\rVert_F
+\end{equation*}
+</div>
+<div class="para">이다. 특히,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_2=\sigma_{r+1},\qquad \lVert A-A_r\rVert_F=\left(\sum_{i=r+1}^{q}\sigma_i^2\right)^{1/2}
+\end{equation*}
+</div>
+<div class="para">이므로 <span class="process-math">\(A_r\)</span>는 스펙트럼 노름과 프로베니우스 노름에서 <span class="process-math">\(A\)</span>에 가장 가까운 계수 <span class="process-math">\(r\)</span> 이하의 행렬이다.</div>
+</div></article><details id="thm-eckart-young-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-eckart-young-3-1">연습문제.</div></article></details><section class="exercises" id="exercises-image-compression"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<article class="exercise exercise-like" id="ex-eckart-young-proof"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">에카르트-영 정리의 증명.</span>
+</h4>
+<div class="para logical" id="ex-eckart-young-proof-2-1">
+<div class="para">위의 에카르트-영 정리를 증명하여라. 즉, <span class="process-math">\(A\)</span>의 특이값 분해가 <span class="process-math">\(A=U\,\Sigma V^{\mathsf T}\)</span>이고 <span class="process-math">\(A_r\)</span>가 처음 <span class="process-math">\(r\)</span>개의 특이값을 사용한 근사일 때, 계수가 <span class="process-math">\(r\)</span> 이하인 임의의 행렬 <span class="process-math">\(B\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_2\leq\lVert A-B\rVert_2
+\end{equation*}
+</div>
+<div class="para">및</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_F\leq\lVert A-B\rVert_F
+\end{equation*}
+</div>
+<div class="para">임을 보여라. 또한 두 오차가 각각</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lVert A-A_r\rVert_2=\sigma_{r+1},\qquad \lVert A-A_r\rVert_F=\left(\sum_{i=r+1}^{q}\sigma_i^2\right)^{1/2}
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라.</div>
+</div> <details id="ex-eckart-young-proof-2-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">1</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="ex-eckart-young-proof-2-2-1">스펙트럼 노름의 경우 <span class="process-math">\(\operatorname{ker}(B)\)</span>의 차원과 <span class="process-math">\(\operatorname{rank}(B)\)</span>를 이용하여 <span class="process-math">\(\operatorname{ker}(B)\)</span>와 처음 <span class="process-math">\(r\)</span>개의 오른쪽 특이벡터가 생성하는 공간의 교집합에 0이 아닌 벡터가 존재함을 보여라. 그 벡터에 <span class="process-math">\(A-B\)</span>를 작용시키면 <span class="process-math">\(\sigma_{r+1}\)</span> 이상의 하한을 얻을 수 있다.</div></div></details> <details id="ex-eckart-young-proof-2-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">2</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="ex-eckart-young-proof-2-3-1">프로베니우스 노름의 경우 <span class="process-math">\(U\)</span>와 <span class="process-math">\(V\)</span>가 직교행렬이라는 사실에 의해 노름이 직교변환에 대해 불변임을 사용하라. <span class="process-math">\(U^{\mathsf T}BV\)</span>의 계수도 <span class="process-math">\(r\)</span> 이하임을 확인한 뒤, 대각행렬 <span class="process-math">\(\Sigma\)</span>와의 차이의 대각 성분을 살펴보라.</div></div></details> <details id="ex-eckart-young-proof-2-4" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">3</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="ex-eckart-young-proof-2-4-1">
+<span class="process-math">\(A_r\)</span>를 직접 대입하면 <span class="process-math">\(A-A_r=U\operatorname{diag}(0,\ldots,0,\sigma_{r+1},\ldots,\sigma_q)V^{\mathsf T}\)</span>이다. 따라서 스펙트럼 노름은 가장 큰 남은 특이값이고, 프로베니우스 노름의 제곱은 남은 특이값의 제곱합이다.</div></div></details></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-singular-value-decomposition-complex.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-principal-component-analysis.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
