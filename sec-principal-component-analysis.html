@@ -363,7 +363,143 @@ eBookConfig.enable_chatcodes =  false;
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-principal-component-analysis"><h2 class="heading hide-type">
 <span class="type">절</span><span class="space"> </span><span class="codenumber">1.8</span><span class="space"> </span><span class="title">주성분 분석</span>
-</h2></section></div>
+</h2>
+<div class="para" id="sec-principal-component-analysis-2">앞에서 배운 특이값 분해는 하나의 행렬을 서로 다른 방향으로의 작용과 크기로 나누어 살펴보는 방법이었습니다. 이 절에서는 이 관점을 자료에 적용하는 <dfn class="terminology">주성분 분석</dfn><aside class="aside aside-like" id="sec-principal-component-analysis-2-2"><div class="para" id="sec-principal-component-analysis-2-2-1">주성분 분석:principal component analysis(PCA)</div></aside>을 소개합니다. 자료를 여러 개의 관측값으로 나타낼 때, 각 관측값을 벡터로 표현하면 여러 변수의 값을 한꺼번에 다루고 관측값들 사이의 관계를 선형대수의 언어로 살펴볼 수 있습니다. 그러나 자료가 많은 변수와 관측값을 포함하면 그 안에 담긴 정보를 그대로 모두 다루기 어렵습니다. 따라서 자료를 잘 설명하는 몇 개의 중요한 방향을 찾아 정보를 간결하게 요약하는 방법이 필요하며, 주성분 분석은 이러한 질문에 답하기 위한 도구입니다. 여기서는 행렬과 특이값 분해를 바탕으로 주성분이 어떻게 자료의 주요한 변화를 포착하는지 살펴봅니다.</div>
+<div class="para logical" id="sec-principal-component-analysis-3">
+<div class="para">곡물,  콩류, 견과류 각 3종의 성분에 관한 자료 <a href="sec-principal-component-analysis.html#table-food-constituents" class="xref" data-knowl="./knowl/xref/table-food-constituents.html" data-reveal-label="Reveal" data-close-label="Close" title="표 1.8.1: 식품성분(출처:국가표준식품성분표, 농촌진흥청)">표 1.8.1</a>를 생각해보자. <figure class="table table-like" id="table-food-constituents"><figcaption><span class="type">표</span><span class="space"> </span><span class="codenumber">1.8.1<span class="period">.</span></span><span class="space"> </span>식품성분(출처:국가표준식품성분표, 농촌진흥청)</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b0 r0 l0 t0 lines"></td>
+<td class="l m b0 r0 l0 t0 lines">수분</td>
+<td class="l m b0 r0 l0 t0 lines">단백질</td>
+<td class="l m b0 r0 l0 t0 lines">지방</td>
+<td class="l m b0 r0 l0 t0 lines">회분</td>
+<td class="l m b0 r0 l0 t0 lines">탄수화물</td>
+<td class="l m b0 r0 l0 t0 lines">당류</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">메밀</td>
+<td class="l m b0 r0 l0 t0 lines">13.1</td>
+<td class="l m b0 r0 l0 t0 lines">13.64</td>
+<td class="l m b0 r0 l0 t0 lines">3.38</td>
+<td class="l m b0 r0 l0 t0 lines">2.04</td>
+<td class="l m b0 r0 l0 t0 lines">67.84</td>
+<td class="l m b0 r0 l0 t0 lines">0.30</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">멥쌀</td>
+<td class="l m b0 r0 l0 t0 lines">13.0</td>
+<td class="l m b0 r0 l0 t0 lines">6.81</td>
+<td class="l m b0 r0 l0 t0 lines">1.05</td>
+<td class="l m b0 r0 l0 t0 lines">0.40</td>
+<td class="l m b0 r0 l0 t0 lines">78.74</td>
+<td class="l m b0 r0 l0 t0 lines">0.50</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">보리</td>
+<td class="l m b0 r0 l0 t0 lines">11.8</td>
+<td class="l m b0 r0 l0 t0 lines">8.75</td>
+<td class="l m b0 r0 l0 t0 lines">1.67</td>
+<td class="l m b0 r0 l0 t0 lines">0.90</td>
+<td class="l m b0 r0 l0 t0 lines">76.89</td>
+<td class="l m b0 r0 l0 t0 lines">0.92</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">강낭콩</td>
+<td class="l m b0 r0 l0 t0 lines">56.1</td>
+<td class="l m b0 r0 l0 t0 lines">8.80</td>
+<td class="l m b0 r0 l0 t0 lines">0.86</td>
+<td class="l m b0 r0 l0 t0 lines">1.86</td>
+<td class="l m b0 r0 l0 t0 lines">32.38</td>
+<td class="l m b0 r0 l0 t0 lines">0</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">동부</td>
+<td class="l m b0 r0 l0 t0 lines">58.5</td>
+<td class="l m b0 r0 l0 t0 lines">9.51</td>
+<td class="l m b0 r0 l0 t0 lines">1.02</td>
+<td class="l m b0 r0 l0 t0 lines">1.63</td>
+<td class="l m b0 r0 l0 t0 lines">29.34</td>
+<td class="l m b0 r0 l0 t0 lines">0.21</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">완두</td>
+<td class="l m b0 r0 l0 t0 lines">71.0</td>
+<td class="l m b0 r0 l0 t0 lines">7.92</td>
+<td class="l m b0 r0 l0 t0 lines">0.44</td>
+<td class="l m b0 r0 l0 t0 lines">1.13</td>
+<td class="l m b0 r0 l0 t0 lines">19.51</td>
+<td class="l m b0 r0 l0 t0 lines">0</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">밤</td>
+<td class="l m b0 r0 l0 t0 lines">61.5</td>
+<td class="l m b0 r0 l0 t0 lines">3.28</td>
+<td class="l m b0 r0 l0 t0 lines">0.50</td>
+<td class="l m b0 r0 l0 t0 lines">1.33</td>
+<td class="l m b0 r0 l0 t0 lines">33.39</td>
+<td class="l m b0 r0 l0 t0 lines">4.95</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">은행</td>
+<td class="l m b0 r0 l0 t0 lines">49.6</td>
+<td class="l m b0 r0 l0 t0 lines">4.69</td>
+<td class="l m b0 r0 l0 t0 lines">1.53</td>
+<td class="l m b0 r0 l0 t0 lines">1.40</td>
+<td class="l m b0 r0 l0 t0 lines">42.78</td>
+<td class="l m b0 r0 l0 t0 lines">2.95</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines">잣</td>
+<td class="l m b0 r0 l0 t0 lines">3.3</td>
+<td class="l m b0 r0 l0 t0 lines">15.96</td>
+<td class="l m b0 r0 l0 t0 lines">59.28</td>
+<td class="l m b0 r0 l0 t0 lines">2.11</td>
+<td class="l m b0 r0 l0 t0 lines">19.38</td>
+<td class="l m b0 r0 l0 t0 lines">1.33</td>
+</tr>
+</table></div></figure> 수분, 단백질, 지방, 회분, 탄수화물, 당류 여섯 성분을 축에 대응시키면 각 식품은 <span class="process-math">\(\mathbf R^6\)</span>의 벡터이다. 각 행은 아홉 종류의 식품에 해당되므로 아홉 벡터</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/table-food-constituents.html ./knowl/xref/example-demonstration-pca-food.html">
+\begin{equation*}
+\boldsymbol x_1,\cdots,\boldsymbol x_9 \in \mathbf R^6
+\end{equation*}
+</div>
+<div class="para">를 얻는다. 아홉 벡터 중 어떤 것이 비슷한 성분을 가지고 있는지 알아보자. 행렬</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/table-food-constituents.html ./knowl/xref/example-demonstration-pca-food.html">
+\begin{equation*}
+A = \begin{bmatrix}\boldsymbol x_1 \\ \vdots \\ \boldsymbol x_9\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">의 특잇값분해</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/table-food-constituents.html ./knowl/xref/example-demonstration-pca-food.html">
+\begin{equation*}
+A= \sigma_1 \boldsymbol u_1 \boldsymbol v_1^{\operatorname T} + \sigma_2 \boldsymbol u_2 \boldsymbol v_2^{\operatorname T} + \cdots + \sigma_6 \boldsymbol u_6 \boldsymbol v_6^{\operatorname T}
+\end{equation*}
+</div>
+<div class="para">
+<aside class="aside aside-like" id="sec-principal-component-analysis-3-7"><div class="para" id="sec-principal-component-analysis-3-7-1">
+<span class="process-math">\(A\)</span>의 랭크가 6임을 암묵적으로 사용하고 있다.</div></aside> 에서 <span class="process-math">\(\boldsymbol v_1,\cdots\boldsymbol v_6\)</span>은 우특이벡터이고, <span class="process-math">\(\mathbf R^6\)</span>의 정규직교기저임을 상기하자. 각 <span class="process-math">\(\boldsymbol v_i\)</span>를 주축이라 하며, <span class="process-math">\(\boldsymbol v_1\)</span>을 제1주축, <span class="process-math">\(\boldsymbol v_2\)</span>제2주축 등으로 부른다. 각 주축 방향의 크기를 주성분이라 하며 <span class="process-math">\(\boldsymbol x \in \mathbf R^6\)</span>를 선형결합</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/table-food-constituents.html ./knowl/xref/example-demonstration-pca-food.html">
+\begin{equation*}
+\boldsymbol x = (\boldsymbol x \bullet \boldsymbol v_1) \boldsymbol v_1 + \cdots +( \boldsymbol x \bullet \boldsymbol v_6) \boldsymbol v_6
+\end{equation*}
+</div>
+<div class="para">으로 나타내면 그 계수들이 <span class="process-math">\(\boldsymbol x\)</span>의 해당 주축 성분이 된다. 부분공간</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/table-food-constituents.html ./knowl/xref/example-demonstration-pca-food.html">
+\begin{equation*}
+S_k := \operatorname{span} \left(\boldsymbol v_1, \cdots, \boldsymbol v_k\right)
+\end{equation*}
+</div>
+<div class="para">으로 자료 <span class="process-math">\(\boldsymbol x_1,\cdots,\boldsymbol x_9\)</span>를 정사영해보고, <span class="process-math">\(k=1,2,3\)</span>에서 각 식품의 특징이 어떻게 드러나는지 <a href="sec-principal-component-analysis.html#example-demonstration-pca-food" class="xref" data-knowl="./knowl/xref/example-demonstration-pca-food.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 1.8.2: 식품 9종 주성분분석">예시 1.8.2</a>에서 관찰하였다. <aside class="aside aside-like" id="sec-principal-component-analysis-3-20"><div class="para" id="sec-principal-component-analysis-3-20-1">
+<a class="external" href="https://www.statskingdom.com/pca-calculator.html" target="_blank"><code class="code-inline tex2jax_ignore">https://www.statskingdom.com/pca-calculator.html</code></a>을 활용하였다.</div></aside>
+</div>
+</div>
+<details id="example-demonstration-pca-food" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.8.2</span><span class="period">.</span><span class="space"> </span><span class="title">식품 9종 주성분분석.</span>
+</h3></summary><article class="example example-like knowl__content"><figure class="figure figure-like" id="fig-demonstration-pca-food-k-1"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/food-1d.png" class="contained" alt="1차원 주성분분석 결과"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.8.3<span class="period">.</span></span><span class="space"> </span><span class="process-math">\(k=1\)</span></figcaption></figure><figure class="figure figure-like" id="fig-demonstration-pca-food-k-2"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/food-2d.png" class="contained" alt="2차원 주성분분석 결과"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.8.4<span class="period">.</span></span><span class="space"> </span><span class="process-math">\(k=2\)</span></figcaption></figure><figure class="figure figure-like" id="fig-demonstration-pca-food-k-3-xy"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/food-3d-xy.png" class="contained" alt="3차원 주성분분석 결과 - xy축 방향"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.8.5<span class="period">.</span></span><span class="space"> </span><span class="process-math">\(k=3\text{,}\)</span> <span class="process-math">\(S_2\)</span>방향에서</figcaption></figure><figure class="figure figure-like" id="fig-demonstration-pca-food-k-3"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="external/food-3d.png" class="contained" alt="3차원 주성분분석 결과 - 다른 방향"></div>
+<figcaption><span class="type">보기</span><span class="space"> </span><span class="codenumber">1.8.6<span class="period">.</span></span><span class="space"> </span><span class="process-math">\(k=3\text{,}\)</span> 다른 방향</figcaption></figure></article></details></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-image-compression.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-rigid-motion.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
