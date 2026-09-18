@@ -3,9 +3,114 @@
 <section xml:id="sec-principal-component-analysis" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>주성분 분석</title>
   <p>
-    앞에서 배운 특이값 분해는 하나의 행렬을 서로 다른 방향으로의 작용과 크기로 나누어 살펴보는 방법이었습니다. 이 절에서는 이 관점을 자료에 적용하는 <term>주성분 분석</term><aside>주성분 분석:principal component analysis(PCA)</aside>을 소개합니다. 자료를 여러 개의 관측값으로 나타낼 때, 각 관측값을 벡터로 표현하면 여러 변수의 값을 한꺼번에 다루고 관측값들 사이의 관계를 선형대수의 언어로 살펴볼 수 있습니다. 그러나 자료가 많은 변수와 관측값을 포함하면 그 안에 담긴 정보를 그대로 모두 다루기 어렵습니다. 따라서 자료를 잘 설명하는 몇 개의 중요한 방향을 찾아 정보를 간결하게 요약하는 방법이 필요하며, 주성분 분석은 이러한 질문에 답하기 위한 도구입니다. 여기서는 행렬과 특이값 분해를 바탕으로 주성분이 어떻게 자료의 주요한 변화를 포착하는지 살펴봅니다.
+    앞에서 배운 특이값 분해는 하나의 행렬을 서로 다른 방향으로의 작용과 크기로 나누어 살펴보는 방법이었습니다. 이 절에서는 이 관점을 자료에 적용하는 <term>주성분 분석</term><aside><p>주성분 분석:principal component analysis(PCA)</p></aside>을 소개합니다. 자료를 여러 개의 관측값으로 나타낼 때, 각 관측값을 벡터로 표현하면 여러 변수의 값을 한꺼번에 다루고 관측값들 사이의 관계를 선형대수의 언어로 살펴볼 수 있습니다. 그러나 자료가 많은 변수와 관측값을 포함하면 그 안에 담긴 정보를 그대로 모두 다루기 어렵습니다. 따라서 자료를 잘 설명하는 몇 개의 중요한 방향을 찾아 정보를 간결하게 요약하는 방법이 필요하며, 주성분 분석은 이러한 질문에 답하기 위한 도구입니다. 여기서는 행렬과 특이값 분해를 바탕으로 주성분이 어떻게 자료의 주요한 변화를 포착하는지 살펴봅니다.
   </p>
-
-  
+      <p>
+      곡물,  콩류, 견과류 각 3종의 성분에 관한 자료 <xref ref="table-food-constituents"/>를 생각해보자. 
+      <table xml:id="table-food-constituents">
+        <title>식품성분(출처:국가표준식품성분표, 농촌진흥청)</title>
+        <tabular>
+          <row>
+            <cell></cell><cell>수분</cell><cell>단백질</cell><cell>	지방</cell><cell>회분</cell><cell>탄수화물</cell><cell>당류</cell>
+          </row>
+          <row>
+            <cell>메밀</cell><cell> 13.1	</cell><cell>13.64	</cell><cell>  3.38	</cell><cell>2.04</cell><cell>	67.84</cell>	<cell>0.30</cell>
+          </row>
+          <row>
+            <cell>멥쌀</cell> <cell>  13.0</cell><cell>	6.81	</cell><cell>  1.05	</cell><cell>0.40</cell><cell>	78.74</cell>	<cell>0.50</cell>
+          </row>
+          <row>
+            <cell>보리</cell><cell>  11.8</cell><cell>	8.75	</cell><cell>  1.67	</cell><cell>0.90</cell><cell>	76.89</cell>	<cell>0.92</cell>
+          </row>
+          <row>
+            <cell>강낭콩</cell><cell>	56.1</cell><cell>	8.80 </cell><cell> 	0.86	</cell><cell>1.86</cell><cell>	32.38</cell>	<cell>0</cell>
+          </row>
+          <row>
+            <cell>동부</cell><cell>  58.5</cell><cell>	9.51	</cell><cell>  1.02	</cell><cell>1.63</cell><cell>	29.34</cell>	<cell>0.21</cell>
+          </row>
+          <row>
+            <cell>완두</cell><cell>  71.0</cell><cell>	7.92	</cell><cell>  0.44	</cell><cell>1.13</cell><cell>	19.51</cell>	<cell>0</cell>
+          </row>
+          <row>
+            <cell>밤</cell>	  <cell>  61.5</cell><cell>	3.28	</cell><cell>  0.50	</cell><cell>1.33</cell><cell>	33.39</cell>	<cell>4.95</cell>
+          </row>
+          <row>
+            <cell>은행</cell> <cell> 	49.6</cell><cell>	4.69 </cell><cell> 	1.53	</cell><cell>1.40</cell><cell>	42.78</cell>	<cell>2.95</cell>
+          </row>
+          <row>
+            <cell>잣</cell>  	  <cell>3.3	  </cell><cell>15.96 </cell><cell>	59.28	</cell><cell>2.11</cell><cell>	19.38</cell>	<cell>1.33</cell>
+          </row>
+        </tabular>
+        <!-- 
+        13.1	13.64	3.38	2.04	67.84	0.30
+        13.0	6.81	1.05	0.40	78.74	0.50
+        11.8	8.75	1.67	0.90	76.89	0.92
+        56.1	8.80	0.86	1.86	32.38	0
+        58.5	9.51	1.02	1.63	29.34	0.21
+        71.0	7.92	0.44	1.13	19.51	0
+        61.5	3.28	0.50	1.33	33.39	4.95
+        49.6	4.69	1.53	1.40	42.78	2.95
+        3.3	15.96	59.28	2.11	19.38	1.33
+        -->
+      </table>
+      수분, 단백질, 지방, 회분, 탄수화물, 당류 여섯 성분을 축에 대응시키면 각 식품은 <m>\mathbf R^6</m>의 벡터이다. 각 행은 아홉 종류의 식품에 해당되므로 아홉 벡터
+      <me>
+        \boldsymbol x_1,\cdots,\boldsymbol x_9 \in \mathbf R^6
+      </me>
+      를 얻는다. 아홉 벡터 중 어떤 것이 비슷한 성분을 가지고 있는지 알아보자. 행렬
+      <me>
+        A = \begin{bmatrix}\boldsymbol x_1 \\ \vdots \\ \boldsymbol x_9\end{bmatrix}
+      </me>
+      의 특잇값분해
+      <me>
+        A= \sigma_1 \boldsymbol u_1 \boldsymbol v_1^{\operatorname T} + \sigma_2 \boldsymbol u_2 \boldsymbol v_2^{\operatorname T} + \cdots + \sigma_6 \boldsymbol u_6 \boldsymbol v_6^{\operatorname T}
+      </me>
+      <aside>
+        <p>
+          <m>A</m>의 랭크가 6임을 암묵적으로 사용하고 있다.
+        </p>
+      </aside>
+      에서 <m>\boldsymbol v_1,\cdots\boldsymbol v_6</m>은 우특이벡터이고, <m>\mathbf R^6</m>의 정규직교기저임을 상기하자. 각 <m>\boldsymbol v_i</m>를 주축이라 하며, <m>\boldsymbol v_1</m>을 제1주축, <m>\boldsymbol v_2</m>제2주축 등으로 부른다. 각 주축 방향의 크기를 주성분이라 하며 <m>\boldsymbol x \in \mathbf R^6</m>를 선형결합
+      <me>
+        \boldsymbol x = (\boldsymbol x \bullet \boldsymbol v_1) \boldsymbol v_1 + \cdots +( \boldsymbol x \bullet \boldsymbol v_6) \boldsymbol v_6
+      </me>
+      으로 나타내면 그 계수들이 <m>\boldsymbol x</m>의 해당 주축 성분이 된다. 부분공간
+      <me>
+        S_k := \operatorname{span} \left(\boldsymbol v_1, \cdots, \boldsymbol v_k\right)
+      </me>
+      으로 자료 <m>\boldsymbol x_1,\cdots,\boldsymbol x_9</m>를 정사영해보고, <m>k=1,2,3</m>에서 각 식품의 특징이 어떻게 드러나는지 <xref ref="example-demonstration-pca-food"/>에서 관찰하였다. 
+      <aside>
+        <p>
+          <url href="https://www.statskingdom.com/pca-calculator.html" />을 활용하였다. 
+        </p>
+      </aside>
+    </p>
+    <example xml:id="example-demonstration-pca-food">
+      <title>식품 9종 주성분분석</title>     
+      <figure xml:id="fig-demonstration-pca-food-k-1">
+        <caption><m>k=1</m></caption>
+        <image source="food-1d.png">
+          <shortdescription>1차원 주성분분석 결과</shortdescription>
+        </image>
+      </figure>
+      <figure xml:id="fig-demonstration-pca-food-k-2">
+        <caption><m>k=2</m></caption>
+        <image source="food-2d.png">
+          <shortdescription>2차원 주성분분석 결과</shortdescription>
+        </image>
+      </figure>
+      <figure xml:id="fig-demonstration-pca-food-k-3-xy">
+        <caption><m>k=3</m>, <m>S_2</m>방향에서</caption>
+        <image source="food-3d-xy.png">
+          <shortdescription>3차원 주성분분석 결과 - xy축 방향</shortdescription>
+        </image>
+      </figure>
+      <figure xml:id="fig-demonstration-pca-food-k-3">
+        <caption><m>k=3</m>, 다른 방향</caption>
+        <image source="food-3d.png">
+          <shortdescription>3차원 주성분분석 결과 - 다른 방향</shortdescription>
+        </image>
+      </figure>
+    </example>
 
 </section>
