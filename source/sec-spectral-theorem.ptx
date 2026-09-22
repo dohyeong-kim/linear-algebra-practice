@@ -382,9 +382,9 @@
           <m>T</m>의 표준기저 행렬은 <m>A=\begin{pmatrix}1&amp;2\\3&amp;0\end{pmatrix}</m>이다.
           따라서 표준 내적에 대한 수반행렬은
           <m>A^{\mathsf T}=\begin{pmatrix}1&amp;3\\2&amp;0\end{pmatrix}</m>이다.
-          가중 내적에서는
+          가중 내적의 경우 그람행렬을 직접 구해보면
           <m>G^{-1}A^{\mathsf T}G=\begin{pmatrix}1&amp;3/2\\4&amp;0\end{pmatrix}</m>이므로 두 수반은 서로 다르다.
-          일반적으로 수반행렬을 <m>B</m>라 하면 모든 <m>u,v</m>에 대하여
+          앞에서 관찰한 가중에 따른 그람행렬의 변화를 일반해보자. 가중 후 수반행렬을 <m>B</m>라 하면 모든 <m>u,v</m>에 대하여
           <m>u^{\mathsf T}A^{\mathsf T}Gv=u^{\mathsf T}GBv</m>이므로
           <m>A^{\mathsf T}G=GB</m>, 즉 <m>B=G^{-1}A^{\mathsf T}G</m>이다.
         </p>
