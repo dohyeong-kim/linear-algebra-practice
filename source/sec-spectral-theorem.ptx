@@ -536,8 +536,9 @@
             <li><p><m>\operatorname{ker} T^*=(\operatorname{im}T)^\perp</m> 및 <m>\operatorname{im}T^*=(\operatorname{ker} T)^\perp</m>를 증명하여라.</p></li>
             <li>
               <p>
-                (a)로부터 <m>\operatorname{rank}T=\operatorname{rank}T^*</m>를 유도하고,
-                이것이 행렬의 행계수와 열계수가 같다는 사실의 좌표에 의존하지 않는 형태임을 설명하여라.
+                (a)로부터 <m>\operatorname{rank}T=\operatorname{rank}T^*</m>를 유도하여라. 이로부터 복소수 성분 행렬의 행계수와 열계수가 같다는 사실을 새로이 증명하여라. 
+                <fn>행계수:row rank, 열계수:column rank</fn>
+                <fn>많은 독자들이 이미 아는 바, 행렬 소거를 이용해 행계수와 열계수가 같음을 증명할 수 있다. 여기서는 좌표에 덜 의존하는 형태를 소개하고 있다.</fn>
               </p>
             </li>
             <li><p><xref ref="prop-self-adjoint-image-kernel-orthogonal"/>가 (a)의 특수한 경우임을 확인하여라.</p></li>
