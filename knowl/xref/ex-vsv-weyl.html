@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">바일 부등식.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<a href="sec-image-compression.html#ex-vsv-expansion" class="xref" data-knowl="./knowl/xref/ex-vsv-expansion.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.7.3: 특이값의 변분적 특성화: 기본 계산">연습문제 1.7.3</a>의 기호를 사용한다. <span class="process-math">\(A,B\in\mathbb{R}^{m\times n}\)</span>이고 <span class="process-math">\(i,j\geq1\text{,}\)</span> <span class="process-math">\(i+j-1\leq q\)</span>이면 다음이 성립함을 보여라.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-vsv-expansion.html">
+\begin{equation*}
+\sigma_{i+j-1}(A+B)\leq\sigma_i(A)+\sigma_j(B)
+\end{equation*}
+</div>
+<div class="para">이로부터 모든 <span class="process-math">\(k\)</span>에 대하여 다음을 유도하여라.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-vsv-expansion.html">
+\begin{equation*}
+\lvert\sigma_k(A)-\sigma_k(B)\rvert\leq\lVert A-B\rVert_2
+\end{equation*}
+</div>
+<div class="para">예를 들어 <span class="process-math">\(A=\operatorname{diag}(1,0)\text{,}\)</span> <span class="process-math">\(B=\operatorname{diag}(0,1)\)</span>이면 <span class="process-math">\(\sigma_2(A+B)=1=\sigma_1(A)+\sigma_2(B)\)</span>이다. 이 예로부터 부등식의 등호가 성립할 수 있음을 확인하여라.</div>
+</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">1</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(\operatorname{rank}(A_{i-1}+B_{j-1})\leq i+j-2\)</span>이다. 따라서 <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "ex-vsv-eckart-young-spectral" missing or not unique]</code>과 삼각부등식에 의해 다음을 얻는다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{equation*}
+\sigma_{i+j-1}(A+B)\leq\lVert (A-A_{i-1})+(B-B_{j-1})\rVert_2\leq\sigma_i(A)+\sigma_j(B)
+\end{equation*}
+</div>
+</div></div></details><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">2</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">두 번째 부등식은 <span class="process-math">\(A=B+(A-B)\)</span>에 <span class="process-math">\(j=1\)</span>을 적용하고, <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>를 바꾸어 한 번 더 적용하여 얻는다.</div></div></details>
+</div></article><span class="incontext"><a class="internal" href="sec-image-compression.html#ex-vsv-weyl">[incontext]</a></span>
+</body>
+</html>

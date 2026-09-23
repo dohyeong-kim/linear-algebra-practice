@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 노름에서의 최량근사.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<a href="sec-image-compression.html#ex-vsv-expansion" class="xref" data-knowl="./knowl/xref/ex-vsv-expansion.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.7.3: 특이값의 변분적 특성화: 기본 계산">연습문제 1.7.3</a>의 기호를 사용한다. <span class="process-math">\(1\leq k\leq q\)</span>에 대하여 다음을 보이고, 최솟값이 <span class="process-math">\(B=A_{k-1}\)</span>에서 달성됨을 보여라. 단, <span class="process-math">\(A_0=0\)</span>이다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-vsv-expansion.html">
+\begin{equation*}
+\sigma_k=\min_{\operatorname{rank}B\leq k-1}\lVert A-B\rVert_2
+\end{equation*}
+</div>
+<div class="para">이는 에카르트-영 정리의 스펙트럼 노름 부분이다.</div>
+</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">1</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(\dim\ker B\geq n-k+1\)</span>이므로 <span class="process-math">\(\ker B\)</span> 안에서 <span class="process-math">\(\dim T=n-k+1\)</span>인 부분공간 <span class="process-math">\(T\)</span>를 택할 수 있다. <span class="process-math">\(T\)</span> 위에서는 <span class="process-math">\((A-B)x=Ax\)</span>이다. 따라서 <a href="sec-image-compression.html#ex-vsv-minmax" class="xref" data-knowl="./knowl/xref/ex-vsv-minmax.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 1.7.7: 최소-최대 특성화">연습문제 1.7.7</a>에 의해 다음이 성립한다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-vsv-minmax.html">
+\begin{equation*}
+\lVert A-B\rVert_2\geq\max_{x\in T,\lVert x\rVert=1}\lVert Ax\rVert\geq\sigma_k
+\end{equation*}
+</div>
+</div></div></details><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="space"> </span><span class="codenumber">2</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">등호의 경우에는 <span class="process-math">\(A-A_{k-1}=\sum_{i\geq k}\sigma_iu_iv_i^{\mathsf T}\)</span>를 이용하여라.</div></div></details>
+</div></article><span class="incontext"><a class="internal" href="sec-image-compression.html#ex-vsv-eckart-young-spectral">[incontext]</a></span>
+</body>
+</html>
