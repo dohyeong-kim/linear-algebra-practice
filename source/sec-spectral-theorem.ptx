@@ -571,6 +571,11 @@
             <li><p>역으로 부분공간 <m>W</m> 위로의 직교 사영은 자기수반이고 멱등임을 증명하여라.</p></li>
           </ol>
         </p>
+        <aside>
+          <p>
+            멱등:idempotent
+          </p>
+        </aside>
       </statement>
       <hint>
         <p>
