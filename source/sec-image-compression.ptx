@@ -121,6 +121,32 @@
   
 
   <exercises xml:id="exercises-image-compression">
+    <exercise xml:id="ex-matrix-norm-pixel-error">
+      <title>픽셀값의 변화와 프로베니우스 노름</title>
+      <statement>
+        <p>
+          두 흑백 이미지를 나타내는 행렬을
+          <me>
+            A=\begin{pmatrix} 1&amp;2\\ 3&amp;4 \end{pmatrix},
+            \qquad
+            B=\begin{pmatrix} 1&amp;2\\ 2&amp;4 \end{pmatrix}
+          </me>
+          라 하자. <m>\lVert A-B\rVert_F</m>를 계산하여라. 일반적으로 같은 크기의 두 이미지 행렬
+          <m>A=(a_{ij})</m>와 <m>B=(b_{ij})</m>에 대하여
+          <me>\lVert A-B\rVert_F^2 =\sum_{i,j}|a_{ij}-b_{ij}|^2</me>
+          임을 확인하고, 이 식이 두 이미지 사이의 오차를 측정하는 방법으로 자연스러운 이유를 설명하여라.
+        </p>
+        <solution>
+          <p>
+            이 경우
+            <me>A-B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}</me>
+            이므로 <m>\lVert A-B\rVert_F=1</m>이다. 일반적인 식은 프로베니우스 노름의 정의에서 바로 따른다.
+            따라서 프로베니우스 노름의 제곱은 모든 픽셀에서 발생한 오차의 제곱을 더한 값이다. 특히 이미지의
+            여러 픽셀에서 발생하는 오차를 하나의 수로 나타낼 수 있다.
+          </p>
+        </solution>
+      </statement>
+    </exercise>
     <exercise xml:id="ex-eckart-young-proof">
       <title>에카르트-영 정리의 증명</title>
       <statement>
@@ -150,6 +176,127 @@
           </p>
         </hint>
       </statement>
+    </exercise>
+    <exercise xml:id="ex-vsv-expansion">
+      <title>특이값의 변분적 특성화: 기본 계산</title>
+      <statement>
+        <p>
+          이 연습문제와 이어지는 연습문제들에서는 특이값을 분해에 의존하지 않는 최적화 문제의 값으로 기술한다. 즉, 특이값을 <q><m>A</m>가 <m>k</m>차원 부분공간의 단위벡터를 적어도 얼마만큼 늘이는가</q>라는 질문의 답으로 기술한다. 이어서 이 기술을 이용하여 에카르트-영 정리와 특이값의 섭동에 관한 부등식을 유도한다.
+        </p>
+        <p>
+          <m>A</m>는 <m>m\times n</m> 실행렬이고 <m>q=\min(m,n)</m>이다. <m>A=U\Sigma V^{\mathsf T}</m>는 특이값 분해이며, 여기서 <m>U\in\mathbb{R}^{m\times m}</m>, <m>V\in\mathbb{R}^{n\times n}</m>는 직교행렬이다. <m>U</m>, <m>V</m>의 열을 각각 <m>u_1,\ldots,u_m</m>, <m>v_1,\ldots,v_n</m>이라 하자. 행렬 <m>M</m>의 <m>k</m>번째로 큰 특이값을 <m>\sigma_k(M)</m>으로 쓰고, <m>\sigma_k=\sigma_k(A)</m>로 줄여 쓴다. 편의상 <m>k\gt\min(\text{행의 수},\text{열의 수})</m>이면 <m>\sigma_k(M)=0</m>으로 약속한다. 벡터의 노름은 유클리드 노름이다.
+        </p>
+        <p>
+          단위벡터 <m>x\in\mathbb{R}^n</m>을 <m>x=\sum_{i=1}^{n}c_iv_i</m>로 나타내자. 이때 다음이 성립함을 보여라.
+          <me>\sum_{i=1}^{n}c_i^2=1,\qquad \lVert Ax\rVert^2=\sum_{i=1}^{n}\sigma_i^2c_i^2</me>
+          이를 이용하여 다음을 보이고, 최댓값이 <m>x=v_1</m>, <m>y=u_1</m>에서 달성됨을 확인하여라.
+          <me>\sigma_1=\max_{\lVert x\rVert=1}\lVert Ax\rVert=\max_{\lVert x\rVert=\lVert y\rVert=1}y^{\mathsf T}Ax</me>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>i\leq q</m>이면 <m>Av_i=\sigma_iu_i</m>이고, <m>i\gt q</m>이면 <m>Av_i=0</m>이다. 또한 <m>u_i</m>들은 정규직교이다. 두 번째 등식에는 코시-슈바르츠 부등식 <m>y^{\mathsf T}Ax\leq\lVert y\rVert\,\lVert Ax\rVert</m>를 사용하여라. 이 부등식은 <m>y</m>가 <m>Ax</m>와 같은 방향일 때 등호가 성립한다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="ex-vsv-example">
+      <title>특이값의 변분적 특성화: 예제</title>
+      <statement>
+        <p>
+          <m>A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</m>, <m>x(\theta)=(\cos\theta,\sin\theta)^{\mathsf T}</m>라 하자. 먼저 다음을 보여라.
+          <me>\lVert Ax(\theta)\rVert^2=\tfrac32+\sin2\theta-\tfrac12\cos2\theta</me>
+          이어서 이 함수의 최댓값과 최솟값을 구하고, 각각이 <m>A^{\mathsf T}A</m>의 두 고윳값과 일치함을 확인하여라. 최댓값은 <m>\sigma_1^2</m>이고 최솟값은 <m>\sigma_2^2</m>이다. 최솟값에 대한 이 사실은 <xref ref="ex-vsv-minmax"/>에서 <m>k=n=2</m>인 경우이다.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>a\sin t+b\cos t</m>의 진폭은 <m>\sqrt{a^2+b^2}</m>이다.
+        </p>
+      </hint>
+      <answer>
+        <p>
+          진폭이 <m>\sqrt{1+1/4}=\sqrt5/2</m>이므로 다음을 얻는다.
+          <me>\sigma_1^2=\tfrac{3+\sqrt5}{2},\quad\sigma_2^2=\tfrac{3-\sqrt5}{2},\quad \sigma_1=\tfrac{1+\sqrt5}{2},\quad \sigma_2=\tfrac{\sqrt5-1}{2}</me>
+          검산하면 <m>\sigma_1\sigma_2=1=\lvert\det A\rvert</m>이고 <m>\sigma_1^2+\sigma_2^2=3=\lVert A\rVert_F^2</m>이다.
+        </p>
+      </answer>
+    </exercise>
+
+    <exercise xml:id="ex-vsv-sequential">
+      <title>특이값의 순차적 특성화</title>
+      <statement>
+        <p>
+          <xref ref="ex-vsv-expansion"/>의 기호를 사용한다. <m>1\leq k\leq n</m>에 대하여 다음을 보여라.
+          <me>\sigma_k=\max\{\lVert Ax\rVert : \lVert x\rVert=1,\ x\perp v_1,\ldots,v_{k-1}\}</me>
+          그러나 이 식의 제약조건은 특이벡터 <m>v_i</m>를 참조하므로, 아직 분해와 무관한 기술은 아니다. 이 점에 유의하여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <xref ref="ex-vsv-expansion"/>에서 <m>c_1=\cdots=c_{k-1}=0</m>인 경우이다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="ex-vsv-maxmin">
+      <title>최대-최소 특성화 (쿠란트-피셔)</title>
+      <statement>
+        <p>
+          <xref ref="ex-vsv-expansion"/>의 기호를 사용한다. <m>1\leq k\leq n</m>에 대하여 다음을 보여라. 단, <m>S</m>는 <m>\mathbb{R}^n</m>의 부분공간이다.
+          <me>\sigma_k=\max_{\dim S=k}\ \min_{x\in S,\ \lVert x\rVert=1}\lVert Ax\rVert</me>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (<m>\geq</m>) <m>S=\operatorname{span}(v_1,\ldots,v_k)</m>를 택하면 <m>\lVert Ax\rVert^2=\sum_{i\leq k}\sigma_i^2c_i^2\geq\sigma_k^2</m>이다. 이로써 바깥의 최댓값이 실제로 달성됨도 알 수 있다.
+        </p>
+      </hint>
+      <hint>
+        <p>
+          (<m>\leq</m>) <m>W_k=\operatorname{span}(v_k,\ldots,v_n)</m>으로 두면 <m>\dim W_k=n-k+1</m>이다. <m>\dim S+\dim W_k=n+1\gt n</m>이므로 <m>S\cap W_k</m>는 단위벡터 <m>x</m>를 포함한다. 이 <m>x</m>에 대하여 <m>\lVert Ax\rVert^2=\sum_{i\geq k}\sigma_i^2c_i^2\leq\sigma_k^2</m>이다. 안쪽의 최솟값은 단위구면이 컴팩트하므로 존재한다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="ex-vsv-minmax">
+      <title>최소-최대 특성화</title>
+      <statement>
+        <p>
+          <xref ref="ex-vsv-expansion"/>의 기호를 사용한다. <m>1\leq k\leq n</m>에 대하여 다음을 보여라.
+          <me>\sigma_k=\min_{\dim T=n-k+1}\ \max_{x\in T,\ \lVert x\rVert=1}\lVert Ax\rVert</me>
+          <xref ref="ex-vsv-maxmin"/>과 이 결과의 우변은 특이값 분해를 전혀 언급하지 않는다. 따라서 특이값은 <m>A</m>가 정의하는 선형사상만으로 결정된다.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <xref ref="ex-vsv-maxmin"/>에서 <m>\operatorname{span}(v_1,\ldots,v_k)</m>와 <m>W_k</m>의 역할을 바꾸어라.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="ex-vsv-weyl">
+      <title>바일 부등식</title>
+      <statement>
+        <p>
+          <xref ref="ex-vsv-expansion"/>의 기호를 사용한다. <m>A,B\in\mathbb{R}^{m\times n}</m>이고 <m>i,j\geq1</m>, <m>i+j-1\leq q</m>이면 다음이 성립함을 보여라.
+          <me>\sigma_{i+j-1}(A+B)\leq\sigma_i(A)+\sigma_j(B)</me>
+          이로부터 모든 <m>k</m>에 대하여 다음을 유도하여라.
+          <me>\lvert\sigma_k(A)-\sigma_k(B)\rvert\leq\lVert A-B\rVert_2</me>
+          예를 들어 <m>A=\operatorname{diag}(1,0)</m>, <m>B=\operatorname{diag}(0,1)</m>이면 <m>\sigma_2(A+B)=1=\sigma_1(A)+\sigma_2(B)</m>이다. 이 예로부터 부등식의 등호가 성립할 수 있음을 확인하여라.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\operatorname{rank}(A_{i-1}+B_{j-1})\leq i+j-2</m>이다. 따라서 에카르트-영 정리와 삼각부등식에 의해 다음을 얻는다.
+          <me>\sigma_{i+j-1}(A+B)\leq\lVert (A-A_{i-1})+(B-B_{j-1})\rVert_2\leq\sigma_i(A)+\sigma_j(B)</me>
+        </p>
+      </hint>
+      <hint>
+        <p>
+          두 번째 부등식은 <m>A=B+(A-B)</m>에 <m>j=1</m>을 적용하고, <m>A</m>와 <m>B</m>를 바꾸어 한 번 더 적용하여 얻는다.
+        </p>
+      </hint>
     </exercise>
   </exercises>
   
