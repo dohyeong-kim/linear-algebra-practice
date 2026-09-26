@@ -2,6 +2,11 @@
 
 <chapter xml:id="ch-spectral-theorem" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>스펙트럴 정리</title>
+  <introduction>
+    <p>
+      스펙트럴 정리는 심오하면서도 아름답습니다. 동시에, 수학 내외를 불문하고 다양한 선형대수 응용의 기반이 됩니다. 이 장에서는 스펙트럴 정리를 이론적인 관점에서 소개하고, 그 다양한 응용 중 몇 가지를 살펴보겠습니다.
+    </p>
+  </introduction>
   <xi:include href="sec-symmetric-bilinear-forms.ptx" />
   <xi:include href="sec-orthogonalization.ptx" />
   <xi:include href="sec-spectral-theorem.ptx" />
