@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>선형대수학</title>
+<title>최대-최소 정리의 일반화와 콤팩트 집합</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -303,7 +303,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><span class="previous-button button disabled"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></span><span class="up-button button disabled"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></span><a class="next-button button" href="frontmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="backmatter.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="backmatter.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="backmatter-3.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -312,7 +312,7 @@ eBookConfig.enable_chatcodes =  false;
 \newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
 \)</span></div>
 <div class="ptx-page">
-<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-frontmatter">
 <div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">머릿말</span></a></div>
 <ul class="structural toc-item-list">
@@ -371,32 +371,61 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
-<li class="toc-item toc-backmatter">
+<li class="toc-item toc-backmatter contains-active">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-section">
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section contains-active">
 <div class="toc-title-box"><a href="app-minmax-compact.html" class="internal"><span class="codenumber">1</span> <span class="title">최대-최소 정리의 일반화와 콤팩트 집합</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="exercises-minmax.html" class="internal"><span class="codenumber">1</span> <span class="title">연습문제</span></a></div></li></ul>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="exercises-minmax.html" class="internal"><span class="codenumber">1</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">판권</span></a></div></li>
 </ul>
 </li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="book" id="linear-algebra-practice"><nav class="summary-links"><ul>
-<li><a href="frontmatter.html" class="internal"><span class="title">머릿말</span></a></li>
-<li><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></li>
-<li><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></li>
-<li><a href="ch-linear-codes.html" class="internal"><span class="codenumber">3</span> <span class="title">선형부호</span></a></li>
-<li><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></li>
-<li><a href="ch-graph-laplacian.html" class="internal"><span class="codenumber">5</span> <span class="title">그래프 라플라시안</span></a></li>
-<li><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></li>
-<li><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></li>
-<li><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></li>
-<li><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></li>
-<li><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></li>
-</ul></nav></section></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="app-minmax-compact"><h2 class="heading hide-type">
+<span class="type">절</span><span class="space"> </span><span class="codenumber">1</span><span class="space"> </span><span class="title">최대-최소 정리의 일반화와 콤팩트 집합</span>
+</h2>
+<section class="introduction" id="app-minmax-compact-2"><div class="para" id="app-minmax-compact-2-1">최대-최소 정리는 연속 함수가 닫힌 구간에서 최대값과 최소값을 가진다는 내용입니다. 콤팩트 집합은 이러한 정리를 일반화하는 데 중요한 역할을 합니다.</div></section><article class="theorem theorem-like" id="thm-maxmin-closed-interval"><h2 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.0.1</span><span class="period">.</span><span class="space"> </span><span class="title">최대-최소 정리.</span>
+</h2>
+<div class="para" id="thm-maxmin-closed-interval-2-1">닫힌 구간 <span class="process-math">\([a,b]\)</span>에서 정의된 연속 함수 <span class="process-math">\(f:[a,b]	\to \mathbb{R}\)</span>는 최대값과 최소값을 가진다.</div></article><details id="thm-maxmin-closed-interval-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period">.</span></span></h2></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-maxmin-closed-interval-3-1">생략.</div></article></details><div class="para" id="app-minmax-compact-4">
+<span class="process-math">\(X \subset \mathbb R^n\)</span>이 부분집합일 때, 연속함수 <span class="process-math">\(f:X \to \mathbb R\)</span>가 최대값과 최소값을 가지도록 보장하려면 <span class="process-math">\(X\)</span>가 어떤 조건을 만족해야 할까요? “닫힌 구간”개념을 일반화해야 합니다. 이 내용은 위상수에서 다루는 “콤팩트 집합”과 관련이 있습니다. 여기서는 하이네-보렐 정리, 콤팩트 집합, 일반화된 최대-최소 정리를 살펴보고 필요시 증명 없이 활용하겠습니다. <details class="ptx-footnote" aria-live="polite" id="app-minmax-compact-4-6"><summary class="ptx-footnote__number" title="[fn] 1.0.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="app-minmax-compact-4-6">이 장에서 생략된 증명이 궁금한 독자는 위상수학 교재를 참고하십시오.</div></details>
+</div>
+<article class="theorem theorem-like" id="thm-extreme-value-compact"><h2 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.0.2</span><span class="period">.</span><span class="space"> </span><span class="title">콤팩트 집합에서의 최대-최소 정리.</span>
+</h2>
+<div class="para" id="thm-extreme-value-compact-2-1">콤팩트 집합 <span class="process-math">\(K\)</span>에서 실수로 가는 연속 함수 <span class="process-math">\(f:K \to \mathbb R\)</span>는 최댓값과 최솟값을 가진다. 즉, 어떤 <span class="process-math">\(x_{\min},x_{\max} \in K\)</span>가 존재하여 모든 <span class="process-math">\(x \in K\)</span>에 대하여</div>
+<div class="displaymath process-math" id="thm-extreme-value-compact-2-2">
+\begin{gather*}
+f(x_{\min}) \leq f(x) \leq f(x_{\max})
+\end{gather*}
+</div>
+<div class="para" id="thm-extreme-value-compact-2-3">이다.</div></article><details id="thm-extreme-value-compact-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period">.</span></span></h2></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-extreme-value-compact-3-1">생략.</div></article></details><div class="para" id="app-minmax-compact-6">
+<a href="app-minmax-compact.html#thm-extreme-value-compact" class="xref" data-knowl="./knowl/xref/thm-extreme-value-compact.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 1.0.2: 콤팩트 집합에서의 최대-최소 정리">정리 1.0.2</a>를 이용하면 연속 함수가 콤팩트 집합에서 최대값과 최소값을 가진다는 것을 알 수 있습니다. 이를 이용하기 위해서 주어진 집합이 콤팩트인지 확인할 줄 알아야 합니다. 만약 주어진 집합이 유클리드 공간의 부분집합이라면 다음 정리가 유용합니다.</div>
+<article class="theorem theorem-like" id="thm-heine-borel"><h2 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">1.0.3</span><span class="period">.</span><span class="space"> </span><span class="title">하이네-보렐 정리.</span>
+</h2>
+<aside class="aside aside-like" id="thm-heine-borel-2"><div class="para" id="thm-heine-borel-2-1">하이네:Heine</div>
+<div class="para" id="thm-heine-borel-2-2">보렐:Borel</div></aside><div class="para" id="thm-heine-borel-3-1">집합 <span class="process-math">\(K \subset \mathbb R^n\)</span>이 콤팩트일 필요충분조건은 <span class="process-math">\(K\)</span>가 닫혀 있고 유계인 것이다.</div></article><details id="thm-heine-borel-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period">.</span></span></h2></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-heine-borel-4-1">생략.</div></article></details><div class="para" id="app-minmax-compact-8">하이네-보렐 정리를 적용하기 위해서는 주어진 부분집합 <span class="process-math">\(K \subset \mathbb R^n\)</span>이 닫혀 있고 유계인 것을 확인할 줄 알아야 합니다. 유계인 것은 어떤 실수 <span class="process-math">\(M &gt; 0\)</span>에 대하여 모든 <span class="process-math">\(x \in K\)</span>에 대해 <span class="process-math">\(\|x\| \leq M\)</span>가 성립함을 의미합니다. 닫힌 집합의 정의는 그 여집합이 열린 것으로 정의하지만, 종종 유용한 판정법은 연속함수의 등가면이 닫힌 집합임을 이용한 것입니다. 즉, 연속함수 <span class="process-math">\(q \colon \mathbb R^n \to \mathbb R^m\)</span>에 대하여 <span class="process-math">\(q^{-1}(0)\)</span>은 닫힌 집합입니다.</div>
+<details id="ex-orthogonal-matrices-compact" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.0.4</span><span class="period">.</span><span class="space"> </span><span class="title">직교행렬들의 집합은 콤팩트.</span>
+</h2></summary><article class="example example-like knowl__content"><div class="para" id="ex-orthogonal-matrices-compact-2-1">
+<span class="process-math">\(n \times n\)</span> 직교행렬들의 집합은 <span class="process-math">\(\mathbb R^{n^2}\)</span>의 콤팩트 부분집합입니다.</div> <div class="para" id="ex-orthogonal-matrices-compact-2-2">행렬을 성분으로 이루어진 벡터로 보면, 직교행렬들의 집합은 연속함수 <span class="process-math">\(q\colon \mathbb R^{n^2} \to \mathbb R^{n^2}\text{,}\)</span> <span class="process-math">\(q(A)=A^{\mathsf T}A-I\)</span>의 영점집합입니다. 실제로 <span class="process-math">\(A^{\mathsf T}A=I\)</span>가 직교행렬의 조건입니다. 따라서 이 집합은 닫혀 있습니다. 직교행렬의 각 열은 단위벡터이므로 모든 성분의 절댓값이 <span class="process-math">\(1\)</span> 이하이고, 따라서 집합은 유계입니다. 하이네-보렐 정리에 따라 직교행렬들의 집합은 콤팩트입니다.</div></article></details><details id="ex-upper-triangular-matrices-not-compact" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">1.0.5</span><span class="period">.</span><span class="space"> </span><span class="title">상삼각행렬들의 집합은 콤팩트하지 않음.</span>
+</h2></summary><article class="example example-like knowl__content"><div class="para" id="ex-upper-triangular-matrices-not-compact-2-1">
+<span class="process-math">\(n \times n\)</span> 상삼각행렬들의 집합은 <span class="process-math">\(\mathbb R^{n^2}\)</span>의 콤팩트 부분집합이 아닙니다.</div> <div class="para" id="ex-upper-triangular-matrices-not-compact-2-2">상삼각행렬들의 집합은 닫혀 있습니다. 실제로 하삼각 성분이 모두 <span class="process-math">\(0\)</span>이라는 조건은 행렬 성분에 대한 연속함수들의 영점집합으로 나타낼 수 있습니다. 그러나 이 집합은 유계가 아닙니다. 예를 들어 <span class="process-math">\(tI\)</span>는 모든 실수 <span class="process-math">\(t\)</span>에 대하여 상삼각행렬이고, <span class="process-math">\(\|tI\|\)</span>는 <span class="process-math">\(\lvert t\rvert\)</span>가 커짐에 따라 무한히 커집니다. 따라서 하이네-보렐 정리에 의해 상삼각행렬들의 집합은 콤팩트하지 않습니다.</div></article></details><section class="exercises" id="exercises-minmax"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<article class="exercise exercise-like" id="ex-derive-one-dimensional-extreme-value"><h3 class="heading"><span class="codenumber">1<span class="period">.</span></span></h3>
+<div class="para" id="ex-derive-one-dimensional-extreme-value-1-1">
+<a href="app-minmax-compact.html#thm-extreme-value-compact" class="xref" data-knowl="./knowl/xref/thm-extreme-value-compact.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 1.0.2: 콤팩트 집합에서의 최대-최소 정리">정리 1.0.2</a>를 이용하여 일변수 최대-최소 정리를 유도하시오. 즉, 닫힌 구간 <span class="process-math">\([a,b]\)</span>에서 정의된 연속 함수 <span class="process-math">\(f:[a,b] \to \mathbb R\)</span>가 최댓값과 최솟값을 갖는다는 것을 보이시오. <span class="process-math">\([a,b]\)</span>가 <span class="process-math">\(\mathbb R\)</span>의 콤팩트 집합임을 설명하고, 정리를 적용하시오.</div>
+<div class="solutions"><details id="ex-derive-one-dimensional-extreme-value-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="ex-derive-one-dimensional-extreme-value-2-1">닫힌 구간은 연속함수의 등가면입니다.</div></div></details></div></article><article class="exercise exercise-like" id="ex-unitary-matrices-compact"><h3 class="heading"><span class="codenumber">2<span class="period">.</span></span></h3>
+<div class="para" id="ex-unitary-matrices-compact-1-1">
+<span class="process-math">\(n \times n\)</span> 유니터리 행렬들의 집합이 <span class="process-math">\(\mathbb R^{2n^2}\)</span>의 콤팩트 부분집합임을 보이시오.</div>
+<div class="solutions"><details id="ex-unitary-matrices-compact-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="ex-unitary-matrices-compact-2-1">행렬을 실수부와 허수부의 성분으로 이루어진 벡터로 보고, 하이네-보렐 정리를 이용하시오.</div></div></details></div></article><article class="exercise exercise-like" id="ex-closed-bounded-subsets-rn"><h3 class="heading"><span class="codenumber">3<span class="period">.</span></span></h3>
+<div class="para" id="ex-closed-bounded-subsets-rn-1-1">각각 다음 조건을 만족하는 <span class="process-math">\(\mathbb R^n\)</span>의 부분집합을 하나씩 제시하시오: (a) 닫혀 있지만 유계가 아닌 집합, (b) 유계이지만 닫히지 않은 집합, (c) 닫히지도 유계이지도 않은 집합.</div></article></section></section></div>
 <div class="ptx-content-footer">
-<span class="previous-button button disabled"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></span><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="frontmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="backmatter.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter-3.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
