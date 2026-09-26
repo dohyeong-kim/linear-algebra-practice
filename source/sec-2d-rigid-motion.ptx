@@ -1,8 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <section xml:id="sec-2d-rigid-motion" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>2차원 강체운동</title>
+  <definition xml:id="def-rigid-motion-plane">
+    <statement>
+      <p>
+        평면의 <term>강체운동</term>은 평면에서 평면으로의 변환 중 두 점 사이의 거리를 보존하는 함수이다. 즉, 함수 <m>f \colon \mathbb R^2 \to \mathbb R^2</m>가 임의의 점 <m>x,y \in \mathbb R^2</m>에 대하여, <m>|\!|x-y|\!|=|\!|f(x)-f(y)|\!|</m>가 성립하면 <m>f</m>를 강체운동이라 한다.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    강체운동의 조건에서 <m>f(0)=0</m>은 요구되지 <em>않습니다.</em> 강체운동은 반드시 선형변환은 아닙니다.
+  </p>
+  <example xml:id="ex-translation-rigid-motion">
+    <title>평행이동은 강체운동</title>
+    <statement>
+      <p>
+        벡터 <m>v \,	\in\, \mathbb R^2</m>에 의한 평행이동 <m>T_v \,	\in\, \mathbb R^2</m>를 <m>T_v(x)=x+v</m>로 정의합니다. 임의의 점 <m>x,y \,	\in\, \mathbb R^2</m>에 대하여
+        <m>T_v(x)-T_v(y)=(x+v)-(y+v)=x-y</m>이므로
+        <m>|\!|T_v(x)-T_v(y)|\!|=|\!|x-y|\!|</m>입니다. 따라서 평행이동은 강체운동입니다. 그러나 <m>v \not 0</m>에 대하여 평행이동은 선형변환은 아닙니다.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="ex-rotation-rigid-motion">
+    <title>회전은 강체운동</title>
+    <statement>
+      <p>
+        원점을 중심으로 한 각도 <m>\theta</m>의 회전 <m>R_\theta \colon \mathbb R^2 \to \mathbb R^2</m>를 정의합니다. 임의의 점 <m>x,y \in \mathbb R^2</m>에 대하여
+        <m>|\!|R_\theta(x)-R_\theta(y)|\!|=|\!|x-y|\!|</m>이므로 회전은 강체운동입니다. <fn>회전을 나타내는 행렬이은 피타고라스의 정리에 의하여 직교행렬이다.</fn>
+      </p>
+    </statement>
+  </example>
 
+  <example xml:id="ex-reflection-rigid-motion">
+    <title>원점에 대한 대칭은 강체운동</title>
+    <statement>
+      <p>
+        원점에 대한 대칭 <m>x \mapsto -x</m>는 강체운동입니다.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <xref ref="ex-rotation-rigid-motion"/>과 <xref ref="ex-reflection-rigid-motion"/>은 모두 강체운동의 예이면서 선형변환이기도 합니다. 선형성이 보장되는 것은 회전 또는 대칭의 기준이 원점이기 때문이었습니다. 그러나 일반적으로 원점이 아닌 점에 대해서도 회전이나 대칭은 가능합니다.
+  </p>
+
+  <example xml:id="ex-arbitrary-center-rigid-motion">
+    <title>원점이 아닌 점을 기준으로 한 회전과 대칭</title>
+    <statement>
+      <p>
+        점 <m>a \in \mathbb R^2</m>를 중심으로 한 각도 <m>\theta</m>의 회전은 <m>F(x)=a+R_\theta(x-a)</m>로 나타낼 수 있습니다. 임의의 점 <m>x,y \in \mathbb R^2</m>에 대하여
+        <m>F(x)-F(y)=R_\theta(x-y)</m>이므로 <m>\|F(x)-F(y)\|=\|x-y\|</m>입니다. 따라서 원점이 아닌 점을 중심으로 한 회전도 강체운동입니다. 
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-reflection-arbitrary-line-rigid-motion">
+    <title>임의의 직선에 대한 대칭은 강체운동</title>
+    <statement>
+      <p>
+       임의의 직선에 대한 대칭은 강체운동입니다.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    여러가지 강체운동을 살펴보았습니다. 이 중에서는 선형인 것도 있고 아닌 것도 있습니다. 이를 체계적으로 다루기 위하여 아핀변환의 개념을 도입하겠습니다.
+  </p>
+
+  <definition xml:id="def-affine-transformation">
+    <title>아핀변환</title>
+    <statement>
+      <p>
+        <term>아핀변환</term>은 평면에서 평면으로의 함수 <m>f</m>로서, 어떤 선형변환 <m>L \colon \mathbb R^2 \to \mathbb R^2</m>와 벡터 <m>b \in \mathbb R^2</m>가 존재하여 모든 <m>x \in \mathbb R^2</m>에 대하여 <m>f(x)=L(x)+b</m>를 만족하는 함수이다. 여기서 <m>L</m>을 <m>f</m>의 선형부분, <m>b</m>를 평행이동 부분이라고 한다. 
+      </p>
+    </statement>
+  </definition>
+  <p>
+    아핀변환 <m>f(x)=L(x)+b</m>에서 <m>b=0</m>이면 <m>f</m>는 선형변환이며, 일반적으로 아핀변환은 선형변환이 아니다.
+  </p>
+
+  <theorem xml:id="thm-classification-rigid-motions">
+    <title>평면 강체운동의 분류</title>
+    <statement>
+      <p>
+        함수 <m>f \colon \mathbb R^2 \to \mathbb R^2</m>가 강체운동일 필요충분조건은 어떤 직교행렬 <m>Q</m>와 벡터 <m>b \in \mathbb R^2</m>가 존재하여 모든 <m>x \in \mathbb R^2</m>에 대하여 <m>f(x)=Qx+b</m>인 것이다. 따라서 모든 강체운동은 아핀변환이며, 그 선형부분은 직교변환이다. 역으로, 직교변환과 평행이동의 합성은 강체운동이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        먼저 <m>f(x)=Qx+b</m>이고 <m>Q</m>가 직교행렬이라고 하겠습니다. 임의의 <m>x,y \in \mathbb R^2</m>에 대하여 <m>f(x)-f(y)=Q(x-y)</m>입니다. 직교행렬은 길이를 보존하므로 <m>\|f(x)-f(y)\|=\|x-y\|</m>이고, 따라서 <m>f</m>는 강체운동입니다.
+      </p>
+      <p>
+        이제 <m>f</m>가 강체운동이라고 하겠습니다. <m>g(x)=f(x)-f(0)</m>로 놓으면 <m>g(0)=0</m>이고, 모든 <m>x,y</m>에 대하여 <m>\|g(x)-g(y)\|=\|x-y\|</m>입니다. 특히 <m>\|g(x)\|=\|x\|</m>입니다. 거리와 노름으로 내적을 표현하면
+        <m>\langle g(x),g(y)\rangle=\frac{\|g(x)\|^2+\|g(y)\|^2-\|g(x)-g(y)\|^2}{2}=\langle x,y\rangle</m>입니다.
+      </p>
+      <p>
+        표준기저를 <m>e_1,e_2</m>라 하고, 행렬 <m>Q</m>의 두 열을 각각 <m>g(e_1),g(e_2)</m>로 정합니다. 이 두 열은 위 내적 보존 성질에 의해 정규직교하므로 <m>Q</m>는 직교행렬입니다. 또한 <m>i=1,2</m>에 대하여
+        <m>\langle g(x),g(e_i)\rangle=\langle x,e_i\rangle=\langle Qx,g(e_i)\rangle</m>입니다. <m>g(e_1),g(e_2)</m>가 기저이므로 <m>g(x)=Qx</m>이고, 따라서 <m>f(x)=Qx+f(0)</m>입니다. <m>b=f(0)</m>로 두면 정리를 얻습니다.
+      </p>
+    </proof>
+  </theorem>
+
+  <p>
+    두 강체운동을 차례로 적용하면 어떤 변환이 될까요? 앞의 분류 정리에 따라 각 강체운동은 직교행렬에 의한 변환과 평행이동의 합으로 나타낼 수 있으므로, 합성의 형태를 직접 계산할 수 있습니다.
+  </p>
+  <theorem xml:id="thm-composition-rigid-motions">
+    <title>강체운동의 합성</title>
+    <statement>
+      <p>
+        두 강체운동 <m>f(x)=Q_1x+b_1</m>, <m>g(x)=Q_2x+b_2</m>에 대하여
+        <m>(g\circ f)(x)=Q_2Q_1x+Q_2b_1+b_2</m>이다. 특히 <m>g\circ f</m>도 강체운동이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        분류 정리에 의해 <m>Q_1,Q_2</m>는 직교행렬이다. 합성식을 계산하면 <m>(g\circ f)(x)=g(Q_1x+b_1)=Q_2Q_1x+Q_2b_1+b_2</m>이다. 또한 <m>(Q_2Q_1)^T(Q_2Q_1)=Q_1^TQ_2^TQ_2Q_1=I</m>이므로 <m>Q_2Q_1</m>도 직교행렬이다. 따라서 분류 정리에 의해 <m>g\circ f</m>는 강체운동이다.
+      </p>
+    </proof>
+  </theorem>
+
+  <p>
+    강체운동의 합성 공식은 행렬로 표현할 수 있습니다. 이를 위해서는 동차좌표 개념이 유용합니다.
+  </p>
+  <definition xml:id="def-homogeneous-coordinate-plane">
+    <title>평면의 점의 동차좌표</title>
+    <statement>
+      <p>
+        평면의 점 <m>x=(x_1,x_2)</m>의 <term>동차좌표</term><aside><p>동차좌표:homogeneous coordinates</p></aside>는 <m>(x_1,x_2,1)^T</m>로 정의합니다.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    동차좌표의 정의에서 전치 여부보다는 세 번째 좌표 <m>1</m>을 추가한 것이 중요합니다.
+  </p>
+  <p>
+    아핀변환 <m>f(x)=Qx+b</m>는 동차좌표를 이용하면 다음의 <m>3\times 3</m> 행렬로 나타낼 수 있습니다.
+    <me>\begin{pmatrix}Q &amp; b \\ 0\;0 &amp; 1\end{pmatrix}</me>
+    여기서 <m>Q</m>는 <m>2\times 2</m> 행렬이고 <m>b</m>는 <m>2</m>차원 열벡터입니다. 이 행렬은 아래쪽 삼각형 형태의 블록 행렬이며, 동차좌표 <m>(x_1,x_2,1)^T</m>에 작용하여 <m>(Qx+b,1)^T</m>를 만듭니다.
+  </p>
+  <p>
+    두 강체운동의 행렬을 곱하면 합성에 해당하는 행렬을 얻습니다.
+    <me>\begin{pmatrix}Q_2 &amp; b_2 \\ 0\;0 &amp; 1\end{pmatrix}\begin{pmatrix}Q_1 &amp; b_1 \\ 0\;0 &amp; 1\end{pmatrix}=\begin{pmatrix}Q_2Q_1 &amp; Q_2b_1+b_2 \\ 0\;0 &amp; 1\end{pmatrix}</me>
+    오른쪽 행렬은 <m>(g\circ f)(x)=Q_2Q_1x+Q_2b_1+b_2</m>를 나타냅니다. 따라서 평면 강체운동의 합성은 이러한 <m>3\times 3</m> 블록 행렬의 곱셈으로 표현됩니다.
+  </p>
   
 
 </section>
