@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">2.2.15</span><span class="period">.</span><span class="space"> </span><span class="title">로드리게스 공식; <span class="process-math">\(\exp\)</span>는 <span class="process-math">\(\operatorname{SO}(3)\)</span>로 전사.</span>
+</h3>
+<div class="para">단위벡터 <span class="process-math">\(n\in\mathbb{R}^3\)</span>와 <span class="process-math">\(\theta\in\mathbb{R}\)</span>에 대하여,</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\exp\big(\theta[n]_\times\big) \;=\; I + \sin\theta\,[n]_\times
++ (1-\cos\theta)\,[n]_\times^2,
+\end{gather*}
+</div>
+<div class="para">이 행렬은 축 <span class="process-math">\(n\)</span>을 중심으로 각도 <span class="process-math">\(\theta\)</span>만큼의 회전입니다. 따라서 지수 사상 <span class="process-math">\(\exp\colon\mathfrak{so}(3)\to SO(3)\)</span>은 전사입니다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">
+<a href="sec-3d-rigid-motion.html#lem-hatmap-calculus" class="xref" data-knowl="./knowl/xref/lem-hatmap-calculus.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 2.2.13: 햇맵의 계산">보조정리 2.2.13</a>(2)에 의하면, <span class="process-math">\([n]_\times^{2k+1}=(-1)^k[n]_\times\)</span> 그리고 <span class="process-math">\([n]_\times^{2k+2}=(-1)^k[n]_\times^2\)</span>가 모든 <span class="process-math">\(k\ge0\)</span>에 대하여 성립합니다. 급수 <span class="process-math">\(\exp(\theta[n]_\times)=\sum_{m\ge0}\theta^m[n]_\times^m/m!\)</span> 를 홀수항과 짝수항으로 나누면 홀수항은 <span class="process-math">\(\sin\theta\,[n]_\times\)</span>가 되고, <span class="process-math">\(m=0\)</span> 항 <span class="process-math">\(I\)</span>를 제외한 짝수항은 <span class="process-math">\((1-\cos\theta)[n]_\times^2\)</span>가 되어 위의 식이 얻어집니다.</div>
+<div class="para">이 행렬은 <span class="process-math">\([n]_\times n=0\)</span>이므로 <span class="process-math">\(n\)</span>을 고정합니다. 평면 <span class="process-math">\(n^\perp\)</span>에서 <a href="sec-3d-rigid-motion.html#lem-hatmap-calculus" class="xref" data-knowl="./knowl/xref/lem-hatmap-calculus.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 2.2.13: 햇맵의 계산">보조정리 2.2.13</a>의 (1)에 의해 <span class="process-math">\([n]_\times\)</span>은 <span class="process-math">\(90^\circ\)</span> 회전으로 제한되며(즉 <span class="process-math">\(x\mapsto n\times x\)</span>), 그래서 <span class="process-math">\(n^\perp\)</span> 위에서는 이 식이 <span class="process-math">\(\cos\theta\,I+\sin\theta\,[n]_\times\)</span>가 되어 평면에서의 각도 <span class="process-math">\(\theta\)</span> 회전이 됩니다. 따라서 <span class="process-math">\(\exp(\theta[n]_\times)\)</span>는 축 <span class="process-math">\(n\)</span>을 중심으로 하는 각도 <span class="process-math">\(\theta\)</span> 회전입니다.</div>
+<div class="para">전사성은 <a href="sec-3d-rigid-motion.html#thm-euler-3d-rotation" class="xref" data-knowl="./knowl/xref/thm-euler-3d-rotation.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 2.2.6: 오일러의 정리">정리 2.2.6</a>로부터 얻습니다: <span class="process-math">\(\operatorname{SO}(3)\)</span>의 모든 <span class="process-math">\(R\ne I\)</span>는 단위 축 <span class="process-math">\(n\)</span>과 각도 <span class="process-math">\(\theta\in(0,\pi]\)</span>를 가지며, 이때 <span class="process-math">\(R\)</span>은 정확히 위에서 설명한 회전이고, <span class="process-math">\(R=I=\exp(0)\)</span>입니다.</div></article></details><span class="incontext"><a class="internal" href="sec-3d-rigid-motion.html#thm-rodrigues">[incontext]</a></span>
+</body>
+</html>

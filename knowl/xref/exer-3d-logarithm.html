@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">회전행렬에서 축과 각 구하기.</span>
+</h4>
+<div class="para logical">
+<div class="para">단위벡터 <span class="process-math">\(n\)</span>과 <span class="process-math">\(\theta\in[0,\pi]\)</span>에 대하여 <span class="process-math">\(A=\exp(\theta[n]_\times)\)</span>라 합니다.</div>
+<ol class="lower-alpha" id="exer-3d-logarithm-2-1-4">
+<li><div class="para">
+<span class="process-math">\(A-A^{\operatorname{T}}=2\sin\theta\,[n]_\times\)</span>이고 <span class="process-math">\(\operatorname{tr}A=1+2\cos\theta\)</span>임을 보여라.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(0&lt;\theta&lt;\pi\)</span>이면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\theta=\arccos\frac{\operatorname{tr}A-1}{2},\qquad n=\frac{1}{2\sin\theta}\,(A-A^{\operatorname{T}})^\vee
+\end{equation*}
+</div>
+<div class="para">임을 보여라. 따라서 이 경우 <span class="process-math">\(\theta n\)</span>은 <span class="process-math">\(A\)</span>에 의해 유일하게 결정된다.</div>
+</div></li>
+<li><div class="para">(b)를 <span class="process-math">\(P\)</span>에 적용하여 <a href="sec-3d-rigid-motion.html#exer-3d-trace-angle" class="xref" data-knowl="./knowl/xref/exer-3d-trace-angle.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 2.2.2: 대각합과 회전각">연습문제 2.2.2</a>의 결과와 비교하여라.</div></li>
+<li><div class="para">
+<span class="process-math">\(\theta=\pi\)</span>이면 (b)의 공식을 쓸 수 없음을 설명하고, <span class="process-math">\(A+I=2nn^{\operatorname{T}}\)</span>로부터 <span class="process-math">\(n\)</span>이 부호를 제외하고 결정됨을 보여라. 이를 <span class="process-math">\(\tfrac23\mathbf 1-I\)</span>와 <span class="process-math">\(\operatorname{diag}(-1,-1,1)\)</span>에 적용하여라.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para">(a) <a href="sec-3d-rigid-motion.html#lem-hatmap-calculus" class="xref" data-knowl="./knowl/xref/lem-hatmap-calculus.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 2.2.13: 햇맵의 계산">보조정리 2.2.13</a>에 의해 <span class="process-math">\([n]_\times^2=nn^{\operatorname{T}}-I\)</span>는 대칭이고 <span class="process-math">\([n]_\times\)</span>는 반대칭이므로 <span class="process-math">\(A^{\operatorname{T}}=I-\sin\theta[n]_\times+(1-\cos\theta)[n]_\times^2\)</span>이고, 빼면 첫 식을 얻습니다. 또 <span class="process-math">\(\operatorname{tr}[n]_\times=0\text{,}\)</span> <span class="process-math">\(\operatorname{tr}[n]_\times^2=\lVert n\rVert^2-3=-2\)</span>이므로 <span class="process-math">\(\operatorname{tr}A=3-2(1-\cos\theta)=1+2\cos\theta\)</span>입니다.</div>
+<div class="para">(b) <span class="process-math">\(\arccos\)</span>은 <span class="process-math">\([-1,1]\to[0,\pi]\)</span>에서 단사이므로 <span class="process-math">\(\theta\)</span>가 결정되고, <span class="process-math">\(\sin\theta&gt;0\)</span>이므로 (a)를 <span class="process-math">\(2\sin\theta\)</span>로 나누고 햇맵의 역 <span class="process-math">\({}^\vee\)</span>를 취하면 <span class="process-math">\(n\)</span>이 결정됩니다.</div>
+<div class="para">(c) <span class="process-math">\(P-P^{\operatorname{T}}=\begin{pmatrix}0&amp;-1&amp;1\\1&amp;0&amp;-1\\-1&amp;1&amp;0\end{pmatrix}=[(1,1,1)^{\operatorname{T}}]_\times\)</span>이고 <span class="process-math">\(2\sin\tfrac{2\pi}3=\sqrt3\)</span>이므로 <span class="process-math">\(n=(1,1,1)^{\operatorname{T}}/\sqrt3\text{,}\)</span> <span class="process-math">\(\theta=2\pi/3\)</span>입니다. 이번에는 회전의 방향까지 결정됩니다.</div>
+<div class="para">(d) <span class="process-math">\(\theta=\pi\)</span>이면 <span class="process-math">\(A-A^{\operatorname{T}}=0\text{,}\)</span> <span class="process-math">\(\sin\theta=0\)</span>이므로 (b)의 공식은 <span class="process-math">\(0/0\)</span>이 됩니다. 이때 <span class="process-math">\(A=I+2[n]_\times^2=2nn^{\operatorname{T}}-I\)</span>이므로 <span class="process-math">\(\tfrac12(A+I)=nn^{\operatorname{T}}\)</span>이고, 이 행렬의 영이 아닌 열은 <span class="process-math">\(n\)</span>의 스칼라배이므로 정규화하면 <span class="process-math">\(\pm n\)</span>을 얻습니다. <span class="process-math">\(A=\tfrac23\mathbf 1-I\)</span>이면 <span class="process-math">\(\tfrac12(A+I)=\tfrac13\mathbf 1\)</span>이므로 <span class="process-math">\(n=\pm(1,1,1)^{\operatorname{T}}/\sqrt3\)</span>이고, <span class="process-math">\(A=\operatorname{diag}(-1,-1,1)\)</span>이면 <span class="process-math">\(\tfrac12(A+I)=\operatorname{diag}(0,0,1)\)</span>이므로 <span class="process-math">\(n=\pm e_3\)</span>입니다. <span class="process-math">\(\exp(\pi[n]_\times)=\exp(\pi[-n]_\times)\)</span>이므로 부호는 원리적으로 결정될 수 없습니다.</div>
+</div></details></div></article><span class="incontext"><a class="internal" href="sec-3d-rigid-motion.html#exer-3d-logarithm">[incontext]</a></span>
+</body>
+</html>
