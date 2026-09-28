@@ -396,6 +396,9 @@
     <title>극분해</title>
     <statement>
       <p>
+        <aside>
+          <p>극분해:polar decomposition</p>
+        </aside>
         복소선형 사상 <m>T:V\to W</m>에 대하여 <m>|T|=(T^*T)^{1/2}</m>라 두자.
         그러면 <m>(\operatorname{ker} T)^\perp</m>에서 <m>\operatorname{im}T</m>로 가는 유니터리
         사상 <m>Q</m>가 존재하여
