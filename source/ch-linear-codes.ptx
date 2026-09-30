@@ -12,6 +12,7 @@
   </introduction>
   
   <xi:include href="sec-hamming-distance.ptx"/>
+  <xi:include href="sec-information-and-redundancy.ptx" />
   <!-- <xi:include href="sec-repetition-and-parity-check.ptx"/> -->
   <xi:include href="sec-hamming-code.ptx" />
   

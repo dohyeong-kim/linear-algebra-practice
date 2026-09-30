@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-information-and-redundancy" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>정보와 중복</title>
+  <p>
+    부호의 기본 개념은 정보를 중복해서 기록함으로서 오류의 검출과 수정을 가능하게 하는 것입니다. 길이 <m>n</m>, 차원 <m>k</m>인 선형부호는 단사인 선형사상
+    <md number="yes">
+      <mrow>\mathbb F_2^k \amp  \hookrightarrow \mathbb F_2^n </mrow>
+    </md>
+    으로 표현됩니다. 왜냐하면, 그 이미지를 <m>C</m>라 하면 <m>C</m>가 <m>k</m>차원 부분공간이기 때문입니다.
+  </p>
+  <definition xml:id="def-">
+    <title>메시지와 부호</title>
+    <statement>
+      <p>
+        <term>메시지</term><aside><p>메시지:message</p></aside>는 보내려는 정보를 나타내는 원소 <m>x \in\mathbb F_2^k</m>입니다. 메시지 전체의 집합 <m>\mathbb F_2^k</m>를 메시지 공간이라고 합니다. 메시지와 연결된 부호는 메시지를 부호어로 보내는 단사인 선형사상
+        <md><mrow>\mathbb F_2^k \hookrightarrow \mathbb F_2^n</mrow></md>
+        의 이미지 <m>C</m>입니다. 즉, <m>C</m>의 원소를 <term>부호어</term><aside><p>부호어:codeword</p></aside>라고 하며, <m>C</m>를 메시지에 연결된 <term>부호</term><aside><p>부호:code</p></aside>라고 합니다.
+      </p>
+    </statement>
+  </definition>
+  <definition xml:id="def-generator-matrix">
+    <title>생성행렬</title>
+    <p>
+      <term>생성행렬</term><aside><p>생성행렬:generator matrix</p></aside>은 <m>k</m>개의 행과 <m>n</m>개의 열을 가지는 행렬 <m>G</m>입니다. 메시지 <m>x\in\mathbb F_2^k</m>를 부호어 <m>xG\in\mathbb F_2^n</m>으로 보내는 사상
+      <md><mrow>x\longmapsto xG</mrow></md>
+      을 생각하면, 행렬 곱셈의 분배법칙에 따라 이 사상은 선형입니다. 따라서 <m>G</m>의 행들이 선형독립이면 이 사상은 단사이고, 그 이미지
+      <md><mrow>C=\{xG:x\in\mathbb F_2^k\}\subseteq\mathbb F_2^n</mrow></md>
+      는 길이 <m>n</m>, 차원 <m>k</m>인 선형부호가 됩니다. 행들이 선형독립이라는 것은 <m>G</m>의 계수가 <m>k</m>라는 것과 동치이므로, 서로 다른 메시지는 서로 다른 부호어로 보내집니다.
+    </p>
+  </definition>
+  <remark xml:id="rem-row-convention-practical">
+    <title>행벡터 표기의 편리함</title>
+    <p>
+      생성행렬은 행이 많은 세로로 긴 행렬보다 열이 많은 넓은 행렬로 제시하는 편이 한 페이지에 배치하기 쉬워, 내용을 읽고 비교하기에도 편리합니다.
+    </p>
+  </remark>
+
+  <p>
+    처음 <m>k \times k </m> 블록이 항등행렬인 <m>G</m>를 생각합시다. 임의의 <m>k \times (n-k)</m> 행렬 <m>A</m>에 대하여
+    <md>
+      <mrow>G = \begin{pmatrix} I_k &amp; A \end{pmatrix}</mrow>
+    </md>
+    의 꼴을 갖는 생성행렬을 생각할 수 있습니다.
+    이러한 꼴의 생성행렬을 <term>표준형</term><aside><p>표준형:standard form</p></aside>이라고 합니다. 표준형의 생성행렬을 사용하면 부호의 구조를 분석하고 부호어를 생성하는 과정이 더 명확해집니다.
+  </p>
+
+  <proposition xml:id="prop-standard-form-exists">
+    <title>표준형 생성행렬의 존재</title>
+    <statement>
+      <p>
+        길이 <m>n</m>, 차원 <m>k</m>인 임의의 선형부호는 좌표의 순서를 적절히 바꾸면 표준형 생성행렬 <m>G=\begin{pmatrix} I_k &amp; A \end{pmatrix}</m>을 가집니다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        부호의 생성행렬을 <m>H</m>라 하고, <m>H</m>의 행 계수가 <m>k</m>라고 합시다. <m>H</m>를 기약 행 사다리꼴로 만들면 행 연산은 행공간을 바꾸지 않으므로 같은 부호의 생성행렬을 얻습니다. 이 기약 행 사다리꼴에는 피벗 열이 <m>k</m>개 있습니다. 좌표의 순서를 바꾸어 이 피벗 열들을 처음 <m>k</m>개 열로 옮기면, 처음 <m>k</m>개 열은 <m>I_k</m>가 됩니다. 따라서 이 생성행렬은 <m>\begin{pmatrix} I_k &amp; A \end{pmatrix}</m> 꼴의 표준형입니다.
+      </p>
+    </proof>
+  </proposition>
+  <p>
+    표준형 생성행렬 <m>G=\begin{pmatrix} I_k &amp; A \end{pmatrix}</m>에서 처음 <m>k</m>개의 열은 메시지의 각 성분이 그대로 전달되는 정보 부분을 나타냅니다. 즉, <m>I_k</m>는 원래 메시지의 정보를 그대로 보존하는 역할을 하고, 나머지 <m>n-k</m>개의 열에 들어있는 <m>A</m>는 오류 검출과 수정을 가능하게 하는 중복 정보, 즉 여분의 정보를 나타냅니다. 따라서 <m>I_k</m>는 정보, <m>A</m>는 중복이라고 생각할 수 있습니다.
+  </p>
+
+  
+  
+
+  
+
+</section> 
