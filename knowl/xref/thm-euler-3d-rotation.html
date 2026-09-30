@@ -15,23 +15,23 @@
 <span class="type">정리</span><span class="space"> </span><span class="codenumber">2.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">오일러의 정리.</span>
 </h3>
 <div class="para">
-<span class="process-math">\(A\in SO(3)\)</span>이면, 어떤 원점을 지나는 직선 <span class="process-math">\(L\)</span>이 존재하여 <span class="process-math">\(A\)</span>는 <span class="process-math">\(L\)</span>의 모든 점을 고정하고 <span class="process-math">\(L^{\perp}\)</span>에서 어떤 각 <span class="process-math">\(\theta\)</span>만큼의 회전으로 작용한다. 즉, <span class="process-math">\(A\)</span>는 어떤 축을 중심으로 한 회전행렬이다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">
-<span class="process-math">\(A\)</span>의 특성다항식을 <span class="process-math">\(p(t)=\det(tI-A)\)</span>라 하자. <span class="process-math">\(A\)</span>가 실수행렬이므로 복소 고유값은 켤레쌍으로 나타난다. 또한 <span class="process-math">\(A\)</span>가 직교행렬이므로 모든 고유값의 절댓값은 <span class="process-math">\(1\)</span>이다. <span class="process-math">\(p\)</span>의 차수가 홀수이므로 실수 고유값 <span class="process-math">\(\lambda\)</span>가 하나 이상 존재하며, 직교성에 의해 <span class="process-math">\(\lambda=1\)</span> 또는 <span class="process-math">\(\lambda=-1\)</span>이다. 가능한 경우를 따져보면 세 고유값이 모두 실수이거나, 하나는 실수이고 나머지 둘은 켤레를 이루어야 한다. 전자의 경우 세 고유값의 곱이 <span class="process-math">\(\det A=1\)</span>이어야 하므로, 세 고유값 중 적어도 하나는 <span class="process-math">\(1\)</span>이다. 후자의 경우 복소 켤레 고유값들의 곱은 양수이므로 역시 고유값의 곱 조건 <span class="process-math">\(\det A=1\)</span>으로부터 실수 고유값은 <span class="process-math">\(1\)</span>이어야 함을 안다. 종합하면 어느 경우에도 <span class="process-math">\(Av=v\)</span>인 영이 아닌 벡터 <span class="process-math">\(v\)</span>가 존재함을 알 수 있다.</div>
+<span class="process-math">\(A\in SO(3)\)</span> 이면, 어떤 원점을 지나는 직선 <span class="process-math">\(L\)</span> 이 존재하여 <span class="process-math">\(A\)</span> 는 <span class="process-math">\(L\)</span> 의 모든 점을 고정하고 <span class="process-math">\(L^{\perp}\)</span> 에서 어떤 각 <span class="process-math">\(\theta\)</span> 만큼의 회전으로 작용한다. 즉, <span class="process-math">\(A\)</span> 는 어떤 축을 중심으로 한 회전행렬이다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">
+<span class="process-math">\(A\)</span> 의 특성다항식을 <span class="process-math">\(p(t)=\det(tI-A)\)</span> 라 하자. <span class="process-math">\(A\)</span> 가 실수행렬이므로 복소 고유값은 켤레쌍으로 나타난다. 또한 <span class="process-math">\(A\)</span> 가 직교행렬이므로 모든 고유값의 절댓값은 <span class="process-math">\(1\)</span> 이다. <span class="process-math">\(p\)</span> 의 차수가 홀수이므로 실수 고유값 <span class="process-math">\(\lambda\)</span> 가 하나 이상 존재하며, 직교성에 의해 <span class="process-math">\(\lambda=1\)</span> 또는 <span class="process-math">\(\lambda=-1\)</span> 이다. 가능한 경우를 따져보면 세 고유값이 모두 실수이거나, 하나는 실수이고 나머지 둘은 켤레를 이루어야 한다. 전자의 경우 세 고유값의 곱이 <span class="process-math">\(\det A=1\)</span> 이어야 하므로, 세 고유값 중 적어도 하나는 <span class="process-math">\(1\)</span> 이다. 후자의 경우 복소 켤레 고유값들의 곱은 양수이므로 역시 고유값의 곱 조건 <span class="process-math">\(\det A=1\)</span> 으로부터 실수 고유값은 <span class="process-math">\(1\)</span> 이어야 함을 안다. 종합하면 어느 경우에도 <span class="process-math">\(Av=v\)</span> 인 영이 아닌 벡터 <span class="process-math">\(v\)</span> 가 존재함을 알 수 있다.</div>
 <div class="para logical">
 <div class="para">
-<span class="process-math">\(L=\operatorname{span}\{v\}\)</span>라 두면 <span class="process-math">\(A\)</span>는 <span class="process-math">\(L\)</span>을 점별로 고정한다. 직교성에 의해 <span class="process-math">\(L^{\perp}\)</span>도 보존된다. <span class="process-math">\(L^{\perp}\)</span>의 직교정규기저를 적절히 잡으면, 이 평면에서의 <span class="process-math">\(A\)</span>의 행렬은 어떤 <span class="process-math">\(2\times2\)</span> 직교행렬 <span class="process-math">\(B\)</span>이다. 기저를 <span class="process-math">\((v/\|v\|,u_1,u_2)\)</span>로 잡으면</div>
+<span class="process-math">\(L=\operatorname{span}\{v\}\)</span> 라 두면 <span class="process-math">\(A\)</span> 는 <span class="process-math">\(L\)</span> 을 점별로 고정한다. 직교성에 의해 <span class="process-math">\(L^{\perp}\)</span> 도 보존된다. <span class="process-math">\(L^{\perp}\)</span> 의 직교정규기저를 적절히 잡으면, 이 평면에서의 <span class="process-math">\(A\)</span> 의 행렬은 어떤 <span class="process-math">\(2\times2\)</span> 직교행렬 <span class="process-math">\(B\)</span> 이다. 기저를 <span class="process-math">\((v/\|v\|,u_1,u_2)\)</span> 로 잡으면</div>
 <div class="displaymath process-math">
 \begin{equation*}
-A=\begin{bmatrix}1&amp;0\\0&amp;B\end{bmatrix}
+A=\begin{pmatrix}1&amp;0\\0&amp;B\end{pmatrix}
 \end{equation*}
 </div>
-<div class="para">이고, 따라서 <span class="process-math">\(\det B=\det A=1\)</span>이다. <span class="process-math">\(SO(2)\)</span>의 모든 행렬은 어떤 각 <span class="process-math">\(\theta\)</span>에 대하여</div>
+<div class="para">이고, 따라서 <span class="process-math">\(\det B=\det A=1\)</span> 이다. <span class="process-math">\(SO(2)\)</span> 의 모든 행렬은 어떤 각 <span class="process-math">\(\theta\)</span> 에 대하여</div>
 <div class="displaymath process-math">
 \begin{equation*}
-B=\begin{bmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{bmatrix}
+B=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}
 \end{equation*}
 </div>
-<div class="para">꼴이다. 그러므로 <span class="process-math">\(A\)</span>는 축 <span class="process-math">\(L\)</span>을 중심으로 각 <span class="process-math">\(\theta\)</span>만큼 회전하는 행렬이다.</div>
+<div class="para">꼴이다. 그러므로 <span class="process-math">\(A\)</span> 는 축 <span class="process-math">\(L\)</span> 을 중심으로 각 <span class="process-math">\(\theta\)</span> 만큼 회전하는 행렬이다.</div>
 </div></article></details><span class="incontext"><a class="internal" href="sec-3d-rigid-motion.html#thm-euler-3d-rotation">[incontext]</a></span>
 </body>
 </html>

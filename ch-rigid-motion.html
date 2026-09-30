@@ -328,6 +328,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-3d-half-turns-2-1-5 { counter-set: exer-3d-half-turns-2-1-5 0; }
 #exer-3d-half-turns-2-1-5 > li::marker { content: "("counter(exer-3d-half-turns-2-1-5,lower-alpha)")"; }
 #exer-3d-half-turns-2-1-5 > li { counter-increment: exer-3d-half-turns-2-1-5; }
+#def-metric-space-3 { counter-set: def-metric-space-3 0; }
+#def-metric-space-3 > li::marker { content: ""counter(def-metric-space-3,decimal)"."; }
+#def-metric-space-3 > li { counter-increment: def-metric-space-3; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -418,9 +421,8 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter">
 <div class="toc-title-box"><a href="ch-linear-codes.html" class="internal"><span class="codenumber">3</span> <span class="title">선형부호</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-hamming-distance.html" class="internal"><span class="codenumber">3.1</span> <span class="title">해밍 거리</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-repetition-and-parity-check.html" class="internal"><span class="codenumber">3.2</span> <span class="title">반복 부호와 홀짝 검사 부호</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-hamming-code.html" class="internal"><span class="codenumber">3.3</span> <span class="title">해밍 부호</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-hamming-distance.html" class="internal"><span class="codenumber">3.1</span> <span class="title">해밍 거리와 선형부호</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-hamming-code.html" class="internal"><span class="codenumber">3.2</span> <span class="title">해밍 부호</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div></li>
@@ -446,7 +448,8 @@ eBookConfig.enable_chatcodes =  false;
 <section class="introduction" id="ch-rigid-motion-3"><div class="para" id="ch-rigid-motion-3-1">강체운동은 평면이나 공간에서 점들의 거리와 각도를 보존하는 변환입니다. 물리적 개념으로서 강체란 변형되지 않는 물체를 의미합니다.</div>
 <div class="para" id="ch-rigid-motion-3-2">예를 들어, 단단한 금속 막대나 구체는 외부 힘에 의해 변형되지 않는 한 강체로 간주할 수 있습니다. 옷이나 고무줄처럼 쉽게 변형되거나 탄성이 있는 경우 강체로 간주할 수 없습니다.</div>
 <div class="para" id="ch-rigid-motion-3-3">강체는 대칭성을 가지기도 합니다. 가령, 원기둥 모양의 막대는 축을 기준으로 회전하여도 모양이 변하지 않습니다. 구체는 중심을 지나는 어떠한 축을 기준으로 회전하더라도 모양이 변하지 않습니다. 불규칙한 모양의 바위와 같은 일반적 모양의 강체는 대칭성을 갖지 않습니다.</div>
-<div class="para" id="ch-rigid-motion-3-4">이 장에서는, 선형대수학을 이용해 강체를 기술해 보겠습니다.</div></section><nav class="summary-links"><ul>
+<div class="para" id="ch-rigid-motion-3-4">강체 운동을 기술하는 것은 공학적으로 중요합니다. 로봇제어, 기계설계, 드론비행, 동작계획 등 다양한 분야에서 필수적입니다.</div>
+<div class="para" id="ch-rigid-motion-3-5">이 장에서는, 선형대수학을 이용해 강체 운동을 기술해 보겠습니다.</div></section><nav class="summary-links"><ul>
 <li><a href="sec-2d-rigid-motion.html" class="internal"><span class="codenumber">2.1</span> <span class="title">2차원 강체운동</span></a></li>
 <li><a href="sec-3d-rigid-motion.html" class="internal"><span class="codenumber">2.2</span> <span class="title">3차원 강체운동</span></a></li>
 </ul></nav></section></div>
