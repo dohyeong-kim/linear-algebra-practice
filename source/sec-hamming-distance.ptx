@@ -1,8 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-hamming-distance" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>해밍 거리</title>
+  <title>해밍 거리와 선형부호</title>
+  <definition xml:id="def-hamming-distance">
+    <title>해밍 거리</title>
+    <p>
+      <term>해밍 거리</term><aside><p>해밍 거리:Hamming distance</p></aside>는
+      <m>\mathbb F_2^n</m>의 두 원소 <m>x=(x_1,\ldots,x_n)</m>과
+      <m>y=(y_1,\ldots,y_n)</m>에 대하여 서로 다른 좌표의 개수입니다. 즉,
+      <md><mrow>d_H(x,y)=\left|\{i\in\{1,\ldots,n\}:x_i\ne y_i\}\right|</mrow></md>
+      로 정의합니다.
+    </p>
+  </definition>
 
+  <p>
+    <m>\mathbb F_2^n</m>의 해밍 거리는 거리공간 공리를 만족합니다.
+  </p>
+  <definition xml:id="def-metric-space">
+    <title>거리공간</title>
+    <p>
+      집합 <m>X</m>와 함수 <m>d\colon X\times X\to \mathbb R</m>에 대하여 다음 조건을 만족할 때,
+      <term>거리</term><aside><p>거리:distance</p></aside>라고 합니다.
+    </p>
+    <ol>
+      <li>
+        <p>
+          모든 <m>x,y\in X</m>에 대하여 <m>d(x,y)\ge 0</m>이고,
+          <m>d(x,y)=0</m>이면 <m>x=y</m>입니다.
+        </p>
+      </li>
+      <li>
+        <p>
+          모든 <m>x,y\in X</m>에 대하여 <m>d(x,y)=d(y,x)</m>입니다.
+        </p>
+      </li>
+      <li>
+        <p>
+          모든 <m>x,y,z\in X</m>에 대하여
+          <m>d(x,z)\le d(x,y)+d(y,z)</m>입니다.
+        </p>
+      </li>
+    </ol>
+    <p>
+      이와 같이 거리 함수 <m>d</m>가 주어진 집합 <m>X</m>를
+      <term>거리공간</term><aside><p>거리공간:metric space</p></aside>이라고 합니다.
+    </p>
+  </definition>
+
+  <proposition xml:id="prop-hamming-distance-metric">
+    <title>해밍 거리공간</title>
+    <statement>
+      <p>
+        <m>(\mathbb F_2^n,d_H)</m>는 거리공간이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        모든 <m>x,y\in\mathbb F_2^n</m>에 대하여 <m>d_H(x,y)</m>는 서로 다른 좌표의 개수이므로 음이 아닙니다.
+        그리고 <m>d_H(x,y)=0</m>이면 모든 좌표에서 <m>x_i=y_i</m>이므로 <m>x=y</m>입니다.
+        좌표가 다른 개수는 순서를 바꾸어도 같으므로 <m>d_H(x,y)=d_H(y,x)</m>입니다.
+        마지막으로 각 좌표 <m>i</m>에 대하여 <m>x_i\ne z_i</m>이면 <m>x_i\ne y_i</m>이거나 <m>y_i\ne z_i</m>입니다.
+        따라서 <m>d_H(x,z)\le d_H(x,y)+d_H(y,z)</m>이고, 해밍 거리는 거리공간의 공리들을 만족합니다.
+      </p>
+    </proof>
+  </proposition>
+
+  <definition xml:id="def-code">
+    <title>부호</title>
+    <p>
+      <aside><p>부호:code</p></aside>
+      <term>부호</term>
+      란,
+      <m>\mathbb F_2^n</m>의 부분집합입니다. 부호의 원소는 <term>부호어</term>이라 합니다.
+      만약 부호 <m>C \subset \mathbb F_2^n</m>이 부분공간이면, <m>C</m>를 <term>선형부호</term>
+      라 합니다.
+      <aside><p>부호어:codeword</p></aside>
+    </p>
+    <aside><p>선형부호:linear code</p></aside>
+  </definition>
+
+  <definition xml:id="def-linear-code-parameters">
+    <title>선형부호의 매개변수</title>
+    <aside><p>부호의 길이:code length</p></aside>
+    <p>
+      길이가 <m>n</m>인 선형부호 <m>C
+      \subset \mathbb F_2^n</m>의 차원이 <m>k</m>이고
+      최소 해밍 거리가 <m>d</m>일 때, <m>C</m>의 매개변수를
+      <m>[n,k,d]</m>로 나타냅니다. 이때 <m>n</m>을 <term>부호의 길이</term>,
+      <m>k</m>를 <term>부호의 차원</term><aside><p>부호의 차원:code dimension</p></aside>,
+      <m>d</m>를 <term>최소 거리</term>라고 합니다. 즉,
+      <md><mrow>k=\dim C, \quad d=\min\{d_H(x,y):x,y
+      \in C, \text{ }x \ne y\}</mrow></md>
+      입니다.
+    </p>
+    <aside><p>최소 거리:minimum distance</p></aside>
+  </definition>
+
+  <p>
+    부호어는 <m>(0,1,0,1)</m> 대신 간략히 <m>0101</m>으로 나타냅시다.
+  </p>
+
+  <definition xml:id="def-codeword-weight">
+    <title>부호어의 무게</title>
+    <p>
+      부호어 <m>x=(x_1,\ldots,x_n)\in\mathbb F_2^n</m>의 <term>무게</term><aside><p>무게:weight</p></aside>는 1인 좌표의 개수입니다. 즉,
+      <md>\operatorname{wt}(x)=\left|\{i\in\{1,\ldots,n\}:x_i=1\}\right|</md>
+      로 정의합니다. 이는 영벡터와의 해밍 거리 <m>d_H(x,0)</m>와 같습니다.
+    </p>
+  </definition>
   
+  
+
+  <example xml:id="ex-repetition-code">
+    <title>반복 부호</title>
+    <p>
+      반복 부호 <m>R_n=\{00\cdots0,11\cdots1\} \subset \mathbb F_2^n</m>는 차원이 <m>1</m>인 부분공간입니다. 영벡터가 아닌 유일한 단어의 무게는 <m>n</m>이므로, <m>R_n</m>은 비율이 <m>1/n</m>인 <m>[n,1,n]_2</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>R_3=\{000,111\}</m>이고, 이는 <m>[3,1,3]_2</m> 부호입니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-single-parity-check-code">
+    <title>단일 패리티 검사 부호</title>
+    <p>
+      단일 패리티 검사 부호 <m>P_n=\{x\in\mathbb F_2^n:x_1+\cdots+x_n=0\}</m> (<m>n\ge 2</m>)은 영이 아닌 선형사상 <m>x\mapsto\sum_{i=1}^n x_i</m>의 커널이므로 차원이 <m>n-1</m>입니다. 무게가 <m>1</m>인 단어는 좌표의 합이 홀수이므로 <m>P_n</m>에 속하지 않지만, 무게가 <m>2</m>인 <m>110\cdots0</m>은 <m>P_n</m>에 속합니다. 따라서 <m>P_n</m>은 비율이 <m>(n-1)/n</m>인 <m>[n,n-1,2]_2</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>P_3=\{000,011,101,110\}</m>이고, 이는 <m>[3,2,2]_2</m> 부호입니다.
+    </p>
+  </example>
+
+  <p>
+    어떤 단어가 부호어인지 판정한다는 것은 주어진 단어가 부호 <m>C</m>에 속하는지 확인하는 것입니다.
+    예를 들어 단일 패리티 검사 부호 <m>P_n</m>에서는 단어를 열벡터 <m>x</m>로 나타내고,
+    행렬 곱 <m>(1\,\cdots\,1)x</m>를 계산하면 됩니다. 그 값이 <m>0</m>일 때 그리고 그때에만
+    <m>x\in P_n</m>이므로, 행렬 곱으로 부호어 여부를 판정할 수 있습니다.
+  </p>
+
+  <definition xml:id="def-check-matrix">
+    <title>검사 행렬</title>
+    <p>
+      선형부호 <m>C \subset \mathbb F_2^n</m>에 대해, <m>H\in\mathbb F_2^{(n-k)\times n}</m>가
+      <m>C=\{x\in\mathbb F_2^n:Hx=0\}</m>을 만족하면, <m>H</m>를 <term>검사 행렬</term>이라 합니다.
+      <aside><p>검사 행렬:parity-check matrix</p></aside>
+    </p>
+  </definition>
+
+  <example xml:id="ex-repetition-code-check-matrix">
+    <title>반복 부호의 검사 행렬</title>
+    <p>
+      반복 부호 <m>R_n=\{00\cdots0,11\cdots1\}</m>는 다음 검사 행렬을 가집니다.
+      <md>
+      <mrow>
+      H=\begin{pmatrix}
+      1&amp;1&amp;0&amp;\cdots&amp;0\\
+      0&amp;1&amp;1&amp;\cdots&amp;0\\
+      \vdots&amp;&amp;\ddots&amp;\ddots&amp;\vdots\\
+      0&amp;0&amp;\cdots&amp;1&amp;1
+      \end{pmatrix}\in\mathbb F_2^{(n-1)\times n}
+      </mrow>
+      </md>
+      이 행렬의 각 행은 연속한 두 좌표가 같다는 조건을 나타냅니다. 따라서
+      <m>Hx=0</m>인 벡터는 모든 좌표가 같은 벡터이고,
+      <m>R_n=\{x\in\mathbb F_2^n:Hx=0\}</m>입니다.
+    </p>
+  </example>
+  <p>
+    <xref ref="ex-repetition-code"/>와 <xref ref="ex-single-parity-check-code"/>에서 선형부호와 그 매개변수를 알아보았습니다. 일반적인 선형부호는 어떤 매개변수를 가질 수 있을까요? 특히 주어진 길이 <m>n</m>과 차원 <m>k</m>에 대해 최소 거리 <m>d</m>를 얼마나 크게 만들 수 있는지 묻는 것은 중요한 문제입니다. 해당 최소 거리가 계속 커질 수 없음을 먼저 알아봅시다.
+  </p>
+  <definition xml:id="def-hamming-ball">
+    <title>해밍 공</title>
+    <p>
+      <m>x\in\mathbb F_2^n</m>와 음이 아닌 정수 <m>r</m>에 대하여,
+      중심이 <m>x</m>이고 반지름이 <m>r</m>인 <term>해밍 공</term><aside><p>해밍 공:Hamming ball</p></aside>은
+      <md><mrow>B_H(x,r)=\{y\in\mathbb F_2^n:d_H(x,y)\le r\}</mrow></md>
+      입니다.
+    </p>
+  </definition>
+  <theorem xml:id="thm-hamming-bound">
+    <title>해밍 상한</title>
+    <statement>
+      <p>
+        길이 <m>n</m>, 차원 <m>k</m>, 최소 거리 <m>d</m>인 이진 선형부호 <m>C</m>에 대하여
+        다음 부등식이 성립한다.
+      </p>
+      <md><mrow>2^k\sum_{j=0}^{\lfloor(d-1)/2\rfloor}\binom{n}{j}\le 2^n</mrow></md>
+    </statement>
+    <proof>
+      <p>
+        <m>r=\lfloor(d-1)/2\rfloor</m>로 놓습니다. 서로 다른 두 부호어 <m>x,y\in C</m>에 대해
+        <m>d_H(x,y)\ge d</m>이고 <m>2r&lt;d</m>입니다. 따라서 반지름 <m>r</m>인 해밍 공
+        <m>B_H(x,r)</m>와 <m>B_H(y,r)</m>은 서로소입니다. 공통 원소 <m>z</m>가 있다면 삼각부등식에 의해
+        <m>d_H(x,y)\le d_H(x,z)+d_H(z,y)\le 2r&lt;d</m>가 되어 모순이기 때문입니다.
+      </p>
+      <p>
+        반지름 <m>r</m>인 각 해밍 공의 크기는
+        <m>\sum_{j=0}^{r}\binom{n}{j}</m>입니다. 중심에서 정확히 <m>j</m>개 좌표가 다른 벡터가
+        <m>\binom{n}{j}</m>개이기 때문입니다. 선형부호 <m>C</m>에는 <m>2^k</m>개의 부호어가 있으므로,
+        이 부호어들을 중심으로 하는 서로소인 해밍 공들의 합집합 크기는
+        <m>2^k\sum_{j=0}^{r}\binom{n}{j}</m>입니다. 이 합집합은 크기가 <m>2^n</m>인
+        <m>\mathbb F_2^n</m>에 포함되므로
+        <md><mrow>2^k\sum_{j=0}^{\lfloor(d-1)/2\rfloor}\binom{n}{j}\le 2^n</mrow></md>
+        입니다.
+      </p>
+    </proof>
+  </theorem>
+  <p>
+    
+  </p>
 
 </section>

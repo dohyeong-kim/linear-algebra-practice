@@ -2,44 +2,72 @@
 
 <section xml:id="sec-3d-rigid-motion" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>3차원 강체운동</title>
+
   <p>
     3차원 공간에서의 강체운동은 2차원과 같은 방식으로 정의합니다.
   </p>
+
   <definition xml:id="def-3d-rigid-motion">
     <statement>
       <p>
-        3차원 공간의 <term>강체운동</term>이란, 함수 <m>T \colon\mathbb R^3 \to \mathbb R^3</m>가 모든 점 <m>P,Q\in\mathbb{R}^3</m>에 대하여
-        <m>\|T(P)-T(Q)\|=\|P-Q\|</m>를 만족하는 것을 말합니다.
+        3차원 공간의 <term>강체운동</term> 이란, 함수
+        <m>T \colon\mathbb R^3 \to \mathbb R^3</m> 가 모든 점
+        <m>P,Q\in\mathbb{R}^3</m> 에 대하여 <m>\|T(P)-T(Q)\|=\|P-Q\|</m> 를 만족하는 것을
+        말합니다.
       </p>
     </statement>
   </definition>
-  
+
   <p>
-    2차원의 경우와 마찬가지로 회전과 평행이동은 강체운동입니다. 다만 3차원에서의 회전은 회전축을 중심으로 이루어집니다. <fn>2차원에서는 점을 중심으로 회전합니다.</fn> 점, 직선, 평면에 대한 대칭도 강체운동입니다. 
+    2차원의 경우와 마찬가지로 회전과 평행이동은 강체운동입니다.
+    다만 3차원에서의 회전은 회전축을 중심으로 이루어집니다.
+    <fn>2차원에서는 점을 중심으로 회전합니다.</fn> 점, 직선, 평면에 대한 대칭도 강체운동입니다.
   </p>
 
   <definition xml:id="def-3d-affine-transformation">
     <title>3차원 아핀변환</title>
+
     <statement>
       <p>
-        함수 <m>T\colon\mathbb R^3\to\mathbb R^3</m>가 <m>T(x)=Ax+b</m>로 주어지고, 여기서 <m>A</m>는 <m>3\times 3</m> 실수 행렬이며 <m>b\in\mathbb R^3</m>이면, <m>T</m>를 3차원 <term>아핀변환</term>이라고 합니다. 이때 <m>A</m>가 가역행렬이면 <m>T</m>를 가역 아핀변환이라고 합니다.
+        함수 <m>T\colon\mathbb R^3\to\mathbb R^3</m> 가 <m>T(x)=Ax+b</m> 로 주어지고,
+        여기서 <m>A</m> 는 <m>3\times 3</m> 실수 행렬이며 <m>b\in\mathbb R^3</m> 이면,
+        <m>T</m> 를 3차원 <term>아핀변환</term> 이라고 합니다.
+        이때 <m>A</m> 가 가역행렬이면 <m>T</m> 를 가역 아핀변환이라고 합니다.
       </p>
     </statement>
   </definition>
 
   <theorem xml:id="thm-3d-rigid-motion-affine">
     <title>3차원 강체운동은 아핀변환</title>
+
     <statement>
-      <p>모든 3차원 강체운동은 가역 아핀변환이다.</p>
+      <p>
+        모든 3차원 강체운동은 가역 아핀변환이다.
+      </p>
     </statement>
+
     <proof>
       <p>
-        강체운동 <m>T\colon\mathbb R^3\to\mathbb R^3</m>에 대하여 <m>f(x)=T(x)-T(0)</m>으로 놓습니다. 그러면 <m>f(0)=0</m>이고, 거리 보존으로부터 <m>\|f(x)\|=\|x\|</m> 및 <m>\|f(x)-f(y)\|=\|x-y\|</m>입니다. 따라서 내적을 거리로 나타내면
-        <me>f(x)\bullet f(y)=\frac{\|f(x)\|^2+\|f(y)\|^2-\|f(x)-f(y)\|^2}{2}=x\bullet y</me>
+        강체운동 <m>T\colon\mathbb R^3\to\mathbb R^3</m> 에 대하여 <m>f(x)=T(x)-T(0)</m>
+        으로 놓습니다.
+        그러면 <m>f(0)=0</m> 이고, 거리 보존으로부터 <m>\|f(x)\|=\|x\|</m> 및
+        <m>\|f(x)-f(y)\|=\|x-y\|</m> 입니다.
+        따라서 내적을 거리로 나타내면
+        <me>
+          f(x)\bullet f(y)=\frac{\|f(x)\|^2+\|f(y)\|^2-\|f(x)-f(y)\|^2}{2}=x\bullet y
+        </me>
         입니다.
       </p>
+
       <p>
-        표준기저를 <m>e_1,e_2,e_3</m>라 하고 <m>u_i=f(e_i)</m>로 놓으면, 내적 보존에 의해 <m>u_1,u_2,u_3</m>은 정규직교기저입니다. 임의의 <m>x\in\mathbb R^3</m>와 <m>i=1,2,3</m>에 대해 <m>f(x)\bullet u_i=f(x)\bullet f(e_i)=x\bullet e_i</m>이므로, <m>f(x)</m>의 <m>u_i</m> 방향 성분은 <m>x</m>의 <m>e_i</m> 좌표와 같습니다. <m>A</m>를 열벡터가 <m>u_1,u_2,u_3</m>인 행렬로 두면 <m>f(x)=Ax</m>입니다. 이 행렬은 정규직교 열벡터를 가지므로 가역입니다. 따라서 <m>T(x)=Ax+T(0)</m>이며, <m>T</m>는 가역 아핀변환입니다.
+        표준기저를 <m>e_1,e_2,e_3</m> 라 하고 <m>u_i=f(e_i)</m> 로 놓으면, 내적 보존에 의해
+        <m>u_1,u_2,u_3</m> 은 정규직교기저입니다.
+        임의의 <m>x\in\mathbb R^3</m> 와 <m>i=1,2,3</m> 에 대해
+        <m>f(x)\bullet u_i=f(x)\bullet f(e_i)=x\bullet e_i</m> 이므로, <m>f(x)</m>
+        의 <m>u_i</m> 방향 성분은 <m>x</m> 의 <m>e_i</m> 좌표와 같습니다.
+        <m>A</m> 를 열벡터가 <m>u_1,u_2,u_3</m> 인 행렬로 두면 <m>f(x)=Ax</m> 입니다.
+        이 행렬은 정규직교 열벡터를 가지므로 가역입니다.
+        따라서 <m>T(x)=Ax+T(0)</m> 이며, <m>T</m> 는 가역 아핀변환입니다.
       </p>
     </proof>
   </theorem>
@@ -47,86 +75,199 @@
   <p>
     동차좌표를 이용한 아핀변환의 표현은 2차원과 마찬가지로 3차원에서 다음과 같이 나타낼 수 있습니다.
   </p>
+
   <definition xml:id="def-homogeneous-coordinates">
     <title>동차좌표</title>
+
     <statement>
       <p>
-        3차원 공간의 점 <m>x=(x_1,x_2,x_3)^T</m>의 <term>동차좌표</term>(homogeneous coordinates)를 <m>\widetilde{x}=(x_1,x_2,x_3,1)^T</m>로 정의합니다.
+        3차원 공간의 점 <m>x=(x_1,x_2,x_3)^T</m> 의 <term>동차좌표</term> (homogeneous
+        coordinates)를 <m>\widetilde{x}=(x_1,x_2,x_3,1)^T</m> 로 정의합니다.
       </p>
     </statement>
   </definition>
+
   <p>
-    3차원 아핀변환 <m>T(x)=Ax+b</m>에 대하여, 점 <m>x=(x_1,x_2,x_3)^T</m>의 동차좌표를 <m>\widetilde{x}=(x_1,x_2,x_3,1)^T</m>라 하면
-    <md><mrow>\widetilde{T(x)}=\begin{bmatrix}A&amp;b\\0&amp;1\end{bmatrix}\widetilde{x}</mrow></md>
-    입니다. 여기서 <m>0</m>은 <m>1\times 3</m> 영행벡터입니다. 특히 <m>A</m>가 가역이면 이 동차좌표 행렬도 가역입니다.
+    3차원 아핀변환 <m>T(x)=Ax+b</m> 에 대하여, 점 <m>x=(x_1,x_2,x_3)^T</m> 의 동차좌표를
+    <m>\widetilde{x}=(x_1,x_2,x_3,1)^T</m> 라 하면
+    <md>
+      <mrow>\widetilde{T(x)}=\begin{pmatrix}A&amp;b\\0&amp;1\end{pmatrix}\widetilde{x}</mrow>
+    </md>
+    입니다.
+    여기서 <m>0</m> 은 <m>1\times 3</m> 영행벡터입니다.
+    특히 <m>A</m> 가 가역이면 이 동차좌표 행렬도 가역입니다.
   </p>
+
   <p>
-    강체운동의 선형 부분, 즉 <m>T(x)=Ax+b</m>에서 <m>A</m>에 대해 자세히 살펴봅시다. <m>A</m>가 직교행렬임은 내적 보존으로부터 쉽게 알 수 있습니다. 즉, 임의의 <m>x,y\in\mathbb R^3</m>에 대하여 <m>(Ax)\bullet (Ay)=x\bullet y</m>으로부터 <m>AA^{\operatorname{T}}=A^{\operatorname{T}}A=I</m>를 얻습니다. 그 역에 관하여 알아봅시다.
+    강체운동의 선형 부분, 즉 <m>T(x)=Ax+b</m> 에서 <m>A</m> 에 대해 자세히 살펴봅시다.
+    <m>A</m> 가 직교행렬임은 내적 보존으로부터 쉽게 알 수 있습니다.
+    즉, 임의의 <m>x,y\in\mathbb R^3</m> 에 대하여 <m>(Ax)\bullet (Ay)=x\bullet y</m>
+    으로부터 <m>AA^{\operatorname{T}}=A^{\operatorname{T}}A=I</m> 를 얻습니다.
+    그 역에 관하여 알아봅시다.
   </p>
 
   <definition xml:id="def-special-orthogonal-matrices">
     <title>특수직교행렬</title>
+
     <statement>
       <p>
-        <m>n\times n</m> 실수행렬 <m>A</m>가 <m>A^{\operatorname{T}}A=I</m>이고 <m>\det A=1</m>이면, <term>특수직교행렬</term><aside><p>용어:special orthogonal matrix</p></aside>이라고 합니다. 모든 <m>n\times n</m> 특수직교행렬의 집합을
-        <md><mrow>\operatorname{SO}(n)=\{A\in M_n(\mathbb R):A^{\operatorname{T}}A=I,\ \det A=1\}</mrow></md>
-        로 나타냅니다.<fn>특수직교행렬은 군(group)을 이루므로 그 모임을 특수직교군이라고도 합니다. 군(group)의 개념은 본 강의록의 범위 밖입니다.</fn>
+        <m>n\times n</m> 실수행렬 <m>A</m> 가 <m>A^{\operatorname{T}}A=I</m> 이고
+        <m>\det A=1</m> 이면, <term>특수직교행렬</term>
+        <aside><p>용어:special orthogonal matrix</p></aside> 이라고 합니다.
+        모든 <m>n\times n</m> 특수직교행렬의 집합을
+        <md>
+          <mrow>\operatorname{SO}(n)=\{A\in M_n(\mathbb R):A^{\operatorname{T}}A=I,\ \det A=1\}</mrow>
+        </md>
+        로 나타냅니다.
+        <fn>특수직교행렬은 군(group)을 이루므로 그 모임을 특수직교군이라고도 합니다. 군(group)의 개념은 본 강의록의 범위 밖입니다.</fn>
       </p>
     </statement>
   </definition>
-  
+
   <theorem xml:id="thm-euler-3d-rotation">
     <title>오일러의 정리</title>
+
     <statement>
       <p>
-        <m>A\in SO(3)</m>이면, 어떤 원점을 지나는 직선 <m>L</m>이 존재하여 <m>A</m>는 <m>L</m>의 모든 점을 고정하고 <m>L^{\perp}</m>에서 어떤 각 <m>\theta</m>만큼의 회전으로 작용한다. 즉, <m>A</m>는 어떤 축을 중심으로 한 회전행렬이다.
+        <m>A\in SO(3)</m> 이면, 어떤 원점을 지나는 직선 <m>L</m> 이 존재하여 <m>A</m> 는 <m>L</m>
+        의 모든 점을 고정하고 <m>L^{\perp}</m> 에서 어떤 각 <m>\theta</m> 만큼의 회전으로 작용한다.
+        즉, <m>A</m> 는 어떤 축을 중심으로 한 회전행렬이다.
       </p>
     </statement>
+
     <proof>
       <p>
-        <m>A</m>의 특성다항식을 <m>p(t)=\det(tI-A)</m>라 하자. <m>A</m>가 실수행렬이므로 복소 고유값은 켤레쌍으로 나타난다. 또한 <m>A</m>가 직교행렬이므로 모든 고유값의 절댓값은 <m>1</m>이다. <m>p</m>의 차수가 홀수이므로 실수 고유값 <m>\lambda</m>가 하나 이상 존재하며, 직교성에 의해 <m>\lambda=1</m> 또는 <m>\lambda=-1</m>이다. 가능한 경우를 따져보면 세 고유값이 모두 실수이거나, 하나는 실수이고 나머지 둘은 켤레를 이루어야 한다. 전자의 경우 세 고유값의 곱이 <m>\det A=1</m>이어야 하므로, 세 고유값 중 적어도 하나는 <m>1</m>이다. 후자의 경우 복소 켤레 고유값들의 곱은 양수이므로 역시 고유값의 곱 조건 <m>\det A=1</m>으로부터 실수 고유값은 <m>1</m>이어야 함을 안다. 종합하면 어느 경우에도 <m>Av=v</m>인 영이 아닌 벡터 <m>v</m>가 존재함을 알 수 있다.
+        <m>A</m> 의 특성다항식을 <m>p(t)=\det(tI-A)</m> 라 하자.
+        <m>A</m> 가 실수행렬이므로 복소 고유값은 켤레쌍으로 나타난다.
+        또한 <m>A</m> 가 직교행렬이므로 모든 고유값의 절댓값은 <m>1</m> 이다.
+        <m>p</m> 의 차수가 홀수이므로 실수 고유값 <m>\lambda</m> 가 하나 이상 존재하며, 직교성에 의해
+        <m>\lambda=1</m> 또는 <m>\lambda=-1</m> 이다.
+        가능한 경우를 따져보면 세 고유값이 모두 실수이거나, 하나는 실수이고 나머지 둘은 켤레를 이루어야 한다.
+        전자의 경우 세 고유값의 곱이 <m>\det A=1</m> 이어야 하므로, 세 고유값 중 적어도 하나는 <m>1</m> 이다.
+        후자의 경우 복소 켤레 고유값들의 곱은 양수이므로 역시 고유값의 곱 조건 <m>\det A=1</m> 으로부터 실수 고유값은
+        <m>1</m> 이어야 함을 안다.
+        종합하면 어느 경우에도 <m>Av=v</m> 인 영이 아닌 벡터 <m>v</m> 가 존재함을 알 수 있다.
       </p>
+
       <p>
-        <m>L=\operatorname{span}\{v\}</m>라 두면 <m>A</m>는 <m>L</m>을 점별로 고정한다. 직교성에 의해 <m>L^{\perp}</m>도 보존된다. <m>L^{\perp}</m>의 직교정규기저를 적절히 잡으면, 이 평면에서의 <m>A</m>의 행렬은 어떤 <m>2\times2</m> 직교행렬 <m>B</m>이다. 기저를 <m>(v/\|v\|,u_1,u_2)</m>로 잡으면
-        <me>A=\begin{bmatrix}1&amp;0\\0&amp;B\end{bmatrix}</me>
-        이고, 따라서 <m>\det B=\det A=1</m>이다. <m>SO(2)</m>의 모든 행렬은 어떤 각 <m>\theta</m>에 대하여
-        <me>B=\begin{bmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{bmatrix}</me>
-        꼴이다. 그러므로 <m>A</m>는 축 <m>L</m>을 중심으로 각 <m>\theta</m>만큼 회전하는 행렬이다.
+        <m>L=\operatorname{span}\{v\}</m> 라 두면 <m>A</m> 는 <m>L</m> 을 점별로 고정한다.
+        직교성에 의해 <m>L^{\perp}</m> 도 보존된다.
+        <m>L^{\perp}</m> 의 직교정규기저를 적절히 잡으면, 이 평면에서의 <m>A</m> 의 행렬은 어떤
+        <m>2\times2</m> 직교행렬 <m>B</m> 이다.
+        기저를 <m>(v/\|v\|,u_1,u_2)</m> 로 잡으면
+        <me>
+          A=\begin{pmatrix}1&amp;0\\0&amp;B\end{pmatrix}
+        </me>
+        이고, 따라서 <m>\det B=\det A=1</m> 이다.
+        <m>SO(2)</m> 의 모든 행렬은 어떤 각 <m>\theta</m> 에 대하여
+        <me>
+          B=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}
+        </me>
+        꼴이다.
+        그러므로 <m>A</m> 는 축 <m>L</m> 을 중심으로 각 <m>\theta</m> 만큼 회전하는 행렬이다.
       </p>
     </proof>
   </theorem>
+
+  <example xml:id="ex-euler-3d-rotation">
+    <title>오일러의 정리의 예</title>
+
+    <statement>
+      <p>
+        <m>z</m> 축을 중심으로 각 <m>\frac{\pi}{2}</m> 만큼 회전하는 행렬
+        <md>
+          <mrow>R_z\left(\frac{\pi}{2}\right)=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}</mrow>
+        </md>
+        은 <m>(0,0,1)^T</m> 를 고정하고, <m>xy</m> 평면에서는 <m>(x,y,0)^T</m> 를
+        <m>(-y,x,0)^T</m> 로 보냅니다.
+        따라서 이 행렬은 축 <m>z</m> 를 중심으로 한 회전이며, 오일러의 정리에서 말하는 회전축은 <m>z</m> 축입니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-plane-reflection-not-euler-rotation">
+    <title>평면에 대한 반사와 오일러의 정리</title>
+    <statement>
+      <p>
+        <m>xy</m> 평면에 대한 반사는
+        <md>
+          <mrow>S=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;-1 \displaystyle\end{pmatrix}</mrow>
+        </md>
+        로 주어집니다.
+        이 행렬은 직교행렬이고 <m>xy</m> 평면의 모든 점을 고정하지만, <m>\det S=-1</m> 이므로
+        <m>S\notin\operatorname{SO}(3)</m> 입니다.
+        따라서 이는 회전행렬이 아니며 오일러의 정리의 적용 대상이 아닙니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-line-reflection-euler-rotation">
+    <title>직선에 대한 반사와 오일러의 정리</title>
+
+    <statement>
+      <p>
+        <m>z</m> 축에 대한 반사는
+        <md>
+          <mrow>S=\begin{pmatrix}-1&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;0&amp;1\end{pmatrix}</mrow>
+        </md>
+        로 주어집니다.
+        이 행렬은 직교행렬이고 <m>z</m> 축의 모든 점을 고정하며 <m>\det S=1</m> 이므로
+        <m>S\in\operatorname{SO}(3)</m> 입니다.
+        따라서 오일러의 정리가 적용됩니다.
+        정확히 말하자면 이는 <m>z</m> 축을 중심으로 한 <m>\pi</m> 회전입니다.
+      </p>
+    </statement>
+  </example>
+
   <p>
-    2차원과 3차원의 특수직교행렬은 모두 회전행렬이라는 공통점을 갖지만, 3차원에서만 나타나는 현상도 있습니다. 예를 들면, 벡터의 외적은 3차원 공간에서만 정의됩니다. 이러한 차이에 대하여 면밀히 알아봅시다.
+    2차원과 3차원의 특수직교행렬은 모두 회전행렬이라는 공통점을 갖지만, 3차원에서만 나타나는 현상도 있습니다.
+    예를 들면, 벡터의 외적은 3차원 공간에서만 정의됩니다.
+    이러한 차이에 대하여 면밀히 알아봅시다.
   </p>
 
   <definition xml:id="def-infinitesimal-generator-so2">
-    <title><m>\operatorname{SO}(2)</m>의 무한소 생성자</title>
+    <title><m>\operatorname{SO}(2)</m> 의 무한소 생성자</title>
+
     <statement>
       <p>
-        회전행렬 <m>R(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}</m>에 대하여, <m>\theta=0</m>에서의 도함수
-        <md><mrow>J=R'(0)=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}</mrow></md>
-        를 <m>\operatorname{SO}(2)</m>의 <term>무한소 생성자</term><aside><p>용어:infinitesimal generator</p></aside>라고 합니다. 이 행렬은 <m>R(\theta)=e^{\theta J}</m>을 만족합니다.
+        회전행렬
+        <m>R(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}</m>
+        에 대하여, <m>\theta=0</m> 에서의 도함수
+        <md>
+          <mrow>J=R'(0)=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}</mrow>
+        </md>
+        를 <m>\operatorname{SO}(2)</m> 의 <term>무한소 생성자</term>
+        <aside><p>용어:infinitesimal generator</p></aside> 라고 합니다.
+        이 행렬은 <m>R(\theta)=e^{\theta J}</m> 을 만족합니다.
       </p>
     </statement>
   </definition>
 
   <p>
-    <m>\theta \mapsto R(\theta)</m>는 전사함수입니다. 즉, 모든 <m>R\in\operatorname{SO}(2)</m>에 대하여 어떤 <m>\theta</m>가 존재하여 <m>R=R(\theta)</m>입니다.
+    <m>\theta \mapsto R(\theta)</m> 는 전사함수입니다.
+    즉, 모든 <m>R\in\operatorname{SO}(2)</m> 에 대하여 어떤 <m>\theta</m> 가 존재하여
+    <m>R=R(\theta)</m> 입니다.
   </p>
+
   <p>
-    <xref ref="thm-euler-3d-rotation"/>에 따라서 모든 <m>A\in\operatorname{SO}(3)</m>는 어떤 축을 중심으로 한 회전으로 나타낼 수 있고, 직교좌표계를 잘 고르면 블록행렬 
+    <xref ref="thm-euler-3d-rotation"/> 에 따라서 모든 <m>A\in\operatorname{SO}(3)</m>
+    는 어떤 축을 중심으로 한 회전으로 나타낼 수 있고, 직교좌표계를 잘 고르면 블록행렬
     <md>
       <mrow>\begin{pmatrix}1&amp;0\\0&amp;R(\theta)\end{pmatrix}</mrow>
     </md>
-    로 쓸 수 있습니다. 이를 체계화해 봅시다.
+    로 쓸 수 있습니다.
+    이를 체계화해 봅시다.
   </p>
-  
   <observation xml:id="obs-so2-generator-skew-symmetric">
-    <title><m>\operatorname{SO}(2)</m>의 무한소 생성자와 전치</title>
+    <title><m>\operatorname{SO}(2)</m> 의 무한소 생성자와 전치</title>
+
     <statement>
       <p>
-        앞서 정의한 <m>\operatorname{SO}(2)</m>의 무한소 생성자 <m>J</m>는 전치에 대해 부호가 바뀝니다. 즉,
-        <me>J^{\operatorname{T}}=-J</me>
+        앞서 정의한 <m>\operatorname{SO}(2)</m> 의 무한소 생성자 <m>J</m> 는 전치에 대해 부호가 바뀝니다.
+        즉,
+        <me>
+          J^{\operatorname{T}}=-J
+        </me>
         입니다.
       </p>
     </statement>
@@ -134,51 +275,85 @@
 
   <definition xml:id="def-skew-symmetric-matrix">
     <title>반대칭행렬</title>
+
     <statement>
       <p>
-        정사각행렬 <m>A</m>가 <m>A^{\operatorname{T}}=-A</m>를 만족하면 <term>반대칭행렬</term>(skew-symmetric matrix)이라고 합니다. 즉, 모든 <m>i,j</m>에 대하여 <m>a_{ij}=-a_{ji}</m>이고, 특히 대각성분은 모두 <m>0</m>입니다. 3차원에서 반대칭행렬은 다음과 같은 형태입니다.
-        <md><mrow>A=\begin{pmatrix}0&amp;-c&amp;b\\c&amp;0&amp;-a\\-b&amp;a&amp;0\end{pmatrix}</mrow></md>
+        정사각행렬 <m>A</m> 가 <m>A^{\operatorname{T}}=-A</m> 를 만족하면
+        <term>반대칭행렬</term> (skew-symmetric matrix)이라고 합니다.
+        즉, 모든 <m>i,j</m> 에 대하여 <m>a_{ij}=-a_{ji}</m> 이고, 특히 대각성분은 모두 <m>0</m>
+        입니다.
+        3차원에서 반대칭행렬은 다음과 같은 형태입니다.
+        <md>
+          <mrow>A=\begin{pmatrix}0&amp;-c&amp;b\\c&amp;0&amp;-a\\-b&amp;a&amp;0\end{pmatrix}</mrow>
+        </md>
       </p>
     </statement>
   </definition>
 
   <p>
-    3차원 공간에서 각 좌표축을 중심으로 하는 회전의 무한소 생성자를 계산해 봅시다. <m>x</m>축, <m>y</m>축, <m>z</m>축을 중심으로 한 회전행렬을 각각
-    <md><mrow>R_x(\theta)=\begin{pmatrix}1&amp;0&amp;0\\0&amp;\cos\theta&amp;-\sin\theta\\0&amp;\sin\theta&amp;\cos\theta\end{pmatrix},\quad R_y(\theta)=\begin{pmatrix}\cos\theta&amp;0&amp;\sin\theta\\0&amp;1&amp;0\\-\sin\theta&amp;0&amp;\cos\theta\end{pmatrix},\quad R_z(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}</mrow></md>
-    로 두면, <m>\theta=0</m>에서의 도함수인 무한소 생성자는 각각
-    <md><mrow>J_x=R_x'(0)=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;-1\\0&amp;1&amp;0\end{pmatrix},\quad J_y=R_y'(0)=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\-1&amp;0&amp;0\end{pmatrix},\quad J_z=R_z'(0)=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}</mrow></md>
-    입니다. 이들은 모두 <m>J_x^{\operatorname{T}}=-J_x</m>, <m>J_y^{\operatorname{T}}=-J_y</m>, <m>J_z^{\operatorname{T}}=-J_z</m>를 만족하므로 반대칭행렬입니다. 따라서 각 축을 중심으로 한 회전의 무한소 생성자는 <m>3\times3</m> 반대칭행렬입니다.
+    3차원 공간에서 각 좌표축을 중심으로 하는 회전의 무한소 생성자를 계산해 봅시다.
+    <m>x</m> 축, <m>y</m> 축, <m>z</m> 축을 중심으로 한 회전행렬을 각각
+    <md>
+      <mrow>R_x(\theta)=\begin{pmatrix}1&amp;0&amp;0\\0&amp;\cos\theta&amp;-\sin\theta\\0&amp;\sin\theta&amp;\cos\theta\end{pmatrix},\quad R_y(\theta)=\begin{pmatrix}\cos\theta&amp;0&amp;\sin\theta\\0&amp;1&amp;0\\-\sin\theta&amp;0&amp;\cos\theta\end{pmatrix},\quad R_z(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}</mrow>
+    </md>
+    로 두면, <m>\theta=0</m> 에서의 도함수인 무한소 생성자는 각각
+    <md>
+      <mrow>J_x=R_x'(0)=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;-1\\0&amp;1&amp;0\end{pmatrix},\quad J_y=R_y'(0)=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\-1&amp;0&amp;0\end{pmatrix},\quad J_z=R_z'(0)=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}</mrow>
+    </md>
+    입니다.
+    이들은 모두 <m>J_x^{\operatorname{T}}=-J_x</m>,
+    <m>J_y^{\operatorname{T}}=-J_y</m>, <m>J_z^{\operatorname{T}}=-J_z</m> 를
+    만족하므로 반대칭행렬입니다.
+    따라서 각 축을 중심으로 한 회전의 무한소 생성자는 <m>3\times3</m> 반대칭행렬입니다.
   </p>
 
   <proposition xml:id="prop-so3-generated-by-infinitesimal-generators">
     <title>3차원 반대칭행렬의 생성</title>
+
     <statement>
       <p>
-        모든 <m>3\times 3</m> 반대칭행렬의 공간은 세 무한소 생성자 <m>J_x,J_y,J_z</m>에 의해 생성된다. 즉,
-        <md><mrow>
+        모든 <m>3\times 3</m> 반대칭행렬의 공간은 세 무한소 생성자 <m>J_x,J_y,J_z</m> 에 의해 생성된다.
+        즉,
+        <md>
+          <mrow>
           \operatorname{span}\{J_x,J_y,J_z\}=\{A\in M_3(\mathbb R):A^{\operatorname{T}}=-A\}
-        </mrow></md>
-        이다. 더 나아가, 세 생성자는 선형독립이므로 기저를 이룬다.
+        </mrow>
+        </md>
+        이다.
+        더 나아가, 세 생성자는 선형독립이므로 기저를 이룬다.
       </p>
     </statement>
+
     <proof>
       <p>
         임의의 <m>3\times 3</m> 반대칭행렬
-        <me>A=\begin{pmatrix}0&amp;-c&amp;b\\ c&amp;0&amp;-a\\ -b&amp;a&amp;0\end{pmatrix}</me>
-        를 생각해 봅시다. 그러면
-        <me>A=aJ_x+bJ_y+cJ_z</me>
-        임을 직접 계산할 수 있습니다. 여기서
-        <md><mrow>
+        <me>
+          A=\begin{pmatrix}0&amp;-c&amp;b\\ c&amp;0&amp;-a\\ -b&amp;a&amp;0\end{pmatrix}
+        </me>
+        를 생각해 봅시다.
+        그러면
+        <me>
+          A=aJ_x+bJ_y+cJ_z
+        </me>
+        임을 직접 계산할 수 있습니다.
+        여기서
+        <md>
+          <mrow>
           J_x=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;-1\\0&amp;1&amp;0\end{pmatrix},\quad
           J_y=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\-1&amp;0&amp;0\end{pmatrix},\quad
           J_z=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}
-        </mrow></md>
-        입니다. 따라서 임의의 반대칭행렬은 <m>J_x,J_y,J_z</m>의 선형결합으로 표현되므로
-        <m>\{A\in M_3(\mathbb R):A^{\operatorname{T}}=-A\}\subseteq\operatorname{span}\{J_x,J_y,J_z\}</m>입니다.
-        반대로 각 <m>J_x,J_y,J_z</m>는 모두 반대칭행렬이므로
-        <m>\operatorname{span}\{J_x,J_y,J_z\}\subseteq\{A\in M_3(\mathbb R):A^{\operatorname{T}}=-A\}</m>입니다.
+        </mrow>
+        </md>
+        입니다.
+        따라서 임의의 반대칭행렬은 <m>J_x,J_y,J_z</m> 의 선형결합으로 표현되므로
+        <m>\{A\in M_3(\mathbb R):A^{\operatorname{T}}=-A\}\subseteq\operatorname{span}\{J_x,J_y,J_z\}</m>
+        입니다.
+        반대로 각 <m>J_x,J_y,J_z</m> 는 모두 반대칭행렬이므로
+        <m>\operatorname{span}\{J_x,J_y,J_z\}\subseteq\{A\in M_3(\mathbb R):A^{\operatorname{T}}=-A\}</m>
+        입니다.
         두 포함관계가 같으므로 원하는 등식이 성립합니다.
       </p>
+
       <p>
         세 생성자가 선형독립임은 자명합니다.
       </p>
@@ -186,26 +361,29 @@
   </proposition>
 
   <p>
-    <xref ref="prop-so3-generated-by-infinitesimal-generators"/>에 의하여 얻어진 동형사상에 이름을 붙입시다. 
+    <xref ref="prop-so3-generated-by-infinitesimal-generators"/> 에 의하여 얻어진 동형사상에
+    이름을 붙입시다.
   </p>
 
   <definition xml:id="def-hatmap">
     <title>햇맵</title>
+
     <statement>
       <p>
-        <m>\omega=(\omega_1,\omega_2,\omega_3)\in\mathbb{R}^3</m>에 대하여,
-        <term>햇맵</term><aside><p>햇맵:hat map</p></aside>을 다음과 같이 정의합니다.
+        <m>\omega=(\omega_1,\omega_2,\omega_3)\in\mathbb{R}^3</m> 에 대하여,
+        <term>햇맵</term> <aside><p>햇맵:hat map</p></aside> 을 다음과 같이 정의합니다.
       </p>
       <md>
         <mrow>
         [\omega]_\times \;:=\;
-        \begin{bmatrix}
+        \begin{pmatrix}
           0 &amp; -\omega_3 &amp; \omega_2 \\
           \omega_3 &amp; 0 &amp; -\omega_1 \\
           -\omega_2 &amp; \omega_1 &amp; 0
-        \end{bmatrix}.
+        \end{pmatrix}.
         </mrow>
       </md>
+
       <p>
         그 이미지
         <md>
@@ -216,56 +394,69 @@
         </md>
         는 <m>3\times3</m> 반대칭행렬의 공간입니다.
         <fn><m>\mathfrak{so}</m>는 <m>\operatorname{SO}</m>에서 유래했음을 나타내는 기호로, 리 대수(Lie algebra)를 의미합니다. 리 대수의 개념은 본 강의록의 범위 밖입니다.</fn>
-        <m>\omega\mapsto[\omega]_\times</m>는 선형사상이며, 그
-        역함수를 <m>{}^\vee</m>로 나타냅니다. 따라서
-        <m>[\omega]_\times^\vee=\omega</m>입니다.
+        <m>\omega\mapsto[\omega]_\times</m> 는 선형사상이며, 그 역함수를 <m>{}^\vee</m> 로
+        나타냅니다.
+        따라서 <m>[\omega]_\times^\vee=\omega</m> 입니다.
       </p>
     </statement>
   </definition>
+
   <remark xml:id="rem-hatmap-notation">
     <title>햇맵 표기</title>
+
     <p>
-      <q>햇맵</q>은 널리 쓰이는 표준 용어이지만, 이 표기 <m>[\omega]_{\times}</m>에는 햇(hat) 기호가 없습니다.<fn><m>\hat{\omega}</m>와 같이 햇 기호를 사용하여 나타내기도 합니다.</fn> 대신 <m>\times</m> 기호를 사용하여 외적과의 관련성을 나타냅니다.
+      <q>햇맵</q> 은 널리 쓰이는 표준 용어이지만, 이 표기 <m>[\omega]_{\times}</m> 에는 햇(hat) 기호가
+      없습니다.
+      <fn><m>\hat{\omega}</m>와 같이 햇 기호를 사용하여 나타내기도 합니다.</fn> 대신 <m>\times</m>
+      기호를 사용하여 외적과의 관련성을 나타냅니다.
     </p>
   </remark>
+
   <lemma xml:id="lem-hatmap-calculus">
     <title>햇맵의 계산</title>
+
     <statement>
       <p>
-        모든 <m>a,b\in\mathbb{R}^3</m>에 대하여 다음이 성립합니다.
+        모든 <m>a,b\in\mathbb{R}^3</m> 에 대하여 다음이 성립합니다.
       </p>
+
       <p>
         <m>[a]_\times b = a\times b</m>;
       </p>
+
       <p>
-        <m>[a]_\times^2 = aa^{\mathsf T}-\lVert a\rVert^2 I</m>
-        및 <m>[a]_\times^3 = -\lVert a\rVert^2\,[a]_\times</m>.
+        <m>[a]_\times^2 = aa^{\mathsf T}-\lVert a\rVert^2 I</m> 및
+        <m>[a]_\times^3 = -\lVert a\rVert^2\,[a]_\times</m>.
       </p>
     </statement>
+
     <proof>
       <p>
-        (1)은 <m>[a]_\times</m>의 정의입니다. (2)에 대해서는 벡터 삼중곱 공식에 의해
-        모든 <m>b</m>에 대하여
-        <m>a\times(a\times b)=a(a\cdot b)-b\lVert a\rVert^2</m>
-        가 성립합니다. 이것이 첫 번째 항등식이며, <m>[a]_\times</m>를 한 번 더 곱하고
-        <m>[a]_\times a=0</m>을 이용하면 두 번째 항등식이 얻어집니다.
+        (1)은 <m>[a]_\times</m> 의 정의입니다.
+        (2)에 대해서는 벡터 삼중곱 공식에 의해 모든 <m>b</m> 에 대하여
+        <m>a\times(a\times b)=a(a\cdot b)-b\lVert a\rVert^2</m> 가 성립합니다.
+        이것이 첫 번째 항등식이며, <m>[a]_\times</m> 를 한 번 더 곱하고 <m>[a]_\times a=0</m> 을
+        이용하면 두 번째 항등식이 얻어집니다.
       </p>
     </proof>
   </lemma>
-  
+
   <remark xml:id="rem-matrix-exponential-series">
     <title>행렬 지수의 정의와 수렴</title>
+
     <p>
-      정사각행렬 <m>A</m>의 지수는 함수의 경우와 마찬가지로 다음 급수로 정의됩니다:
+      정사각행렬 <m>A</m> 의 지수는 함수의 경우와 마찬가지로 다음 급수로 정의됩니다:
       <m>\exp(A)=\sum_{m=0}^{\infty}A^m/m!</m>.
-      이 급수는 <m>A</m>의 조르당 표준형을 이용하여 수렴함을 보일 수 있습니다.
+      이 급수는 <m>A</m> 의 조르당 표준형을 이용하여 수렴함을 보일 수 있습니다.
     </p>
   </remark>
+
   <theorem xml:id="thm-rodrigues">
-    <title>로드리게스 공식; <m>\exp</m>는 <m>\operatorname{SO}(3)</m>로 전사</title>
+    <title>로드리게스 공식; <m>\exp</m> 는 <m>\operatorname{SO}(3)</m> 로 전사</title>
+
     <statement>
       <p>
-        단위벡터 <m>n\in\mathbb{R}^3</m>와 <m>\theta\in\mathbb{R}</m>에 대하여,
+        단위벡터 <m>n\in\mathbb{R}^3</m> 와 <m>\theta\in\mathbb{R}</m> 에 대하여,
       </p>
       <md>
         <mrow>
@@ -273,409 +464,893 @@
           + (1-\cos\theta)\,[n]_\times^2,
         </mrow>
       </md>
+
       <p>
-        이 행렬은 축 <m>n</m>을 중심으로 각도 <m>\theta</m>만큼의 회전입니다.
-        따라서 지수 사상 <m>\exp\colon\mathfrak{so}(3)\to SO(3)</m>은 전사입니다.
+        이 행렬은 축 <m>n</m> 을 중심으로 각도 <m>\theta</m> 만큼의 회전입니다.
+        따라서 지수 사상 <m>\exp\colon\mathfrak{so}(3)\to SO(3)</m> 은 전사입니다.
       </p>
     </statement>
+
     <proof>
       <p>
-        <xref ref="lem-hatmap-calculus"/>(2)에 의하면,
+        <xref ref="lem-hatmap-calculus"/> (2)에 의하면,
         <m>[n]_\times^{2k+1}=(-1)^k[n]_\times</m> 그리고
-        <m>[n]_\times^{2k+2}=(-1)^k[n]_\times^2</m>가 모든 <m>k\ge0</m>에 대하여 성립합니다.
-        급수
-        <m>\exp(\theta[n]_\times)=\sum_{m\ge0}\theta^m[n]_\times^m/m!</m>
-        를 홀수항과 짝수항으로 나누면 홀수항은 <m>\sin\theta\,[n]_\times</m>가 되고,
-        <m>m=0</m> 항 <m>I</m>를 제외한 짝수항은 <m>(1-\cos\theta)[n]_\times^2</m>가 되어
-        위의 식이 얻어집니다.
+        <m>[n]_\times^{2k+2}=(-1)^k[n]_\times^2</m> 가 모든 <m>k\ge0</m> 에 대하여
+        성립합니다.
+        급수 <m>\exp(\theta[n]_\times)=\sum_{m\ge0}\theta^m[n]_\times^m/m!</m> 를
+        홀수항과 짝수항으로 나누면 홀수항은 <m>\sin\theta\,[n]_\times</m> 가 되고, <m>m=0</m> 항
+        <m>I</m> 를 제외한 짝수항은 <m>(1-\cos\theta)[n]_\times^2</m> 가 되어 위의 식이 얻어집니다.
       </p>
+
       <p>
-        이 행렬은 <m>[n]_\times n=0</m>이므로 <m>n</m>을 고정합니다. 평면
-        <m>n^\perp</m>에서 <xref ref="lem-hatmap-calculus"/>의 (1)에 의해
-        <m>[n]_\times</m>은 <m>90^\circ</m> 회전으로 제한되며(즉 <m>x\mapsto n\times x</m>),
-        그래서 <m>n^\perp</m> 위에서는 이 식이 <m>\cos\theta\,I+\sin\theta\,[n]_\times</m>가 되어
-        평면에서의 각도 <m>\theta</m> 회전이 됩니다. 따라서
-        <m>\exp(\theta[n]_\times)</m>는 축 <m>n</m>을 중심으로 하는 각도 <m>\theta</m> 회전입니다.
+        이 행렬은 <m>[n]_\times n=0</m> 이므로 <m>n</m> 을 고정합니다.
+        평면 <m>n^\perp</m> 에서 <xref ref="lem-hatmap-calculus"/> 의 (1)에 의해
+        <m>[n]_\times</m> 은 <m>90^\circ</m> 회전으로 제한되며(즉
+        <m>x\mapsto n\times x</m> ), 그래서 <m>n^\perp</m> 위에서는 이 식이
+        <m>\cos\theta\,I+\sin\theta\,[n]_\times</m> 가 되어 평면에서의 각도 <m>\theta</m>
+        회전이 됩니다.
+        따라서 <m>\exp(\theta[n]_\times)</m> 는 축 <m>n</m> 을 중심으로 하는 각도
+        <m>\theta</m> 회전입니다.
       </p>
+
       <p>
-        전사성은 <xref ref="thm-euler-3d-rotation"/>로부터 얻습니다: <m>\operatorname{SO}(3)</m>의 모든 <m>R\ne I</m>는
-        단위 축 <m>n</m>과 각도 <m>\theta\in(0,\pi]</m>를 가지며, 이때 <m>R</m>은
-        정확히 위에서 설명한 회전이고, <m>R=I=\exp(0)</m>입니다.
+        전사성은 <xref ref="thm-euler-3d-rotation"/> 로부터 얻습니다:
+        <m>\operatorname{SO}(3)</m> 의 모든 <m>R\ne I</m> 는 단위 축 <m>n</m> 과 각도
+        <m>\theta\in(0,\pi]</m> 를 가지며, 이때 <m>R</m> 은 정확히 위에서 설명한 회전이고,
+        <m>R=I=\exp(0)</m> 입니다.
       </p>
     </proof>
   </theorem>
-
   <exercises xml:id="exercises-3d-rigid-motion">
-  <title>연습문제</title>
+    <title>연습문제</title>
 
-  <introduction>
-    <p>
-      아래 문제에서 다음 행렬을 공통으로 사용합니다.
-      <me>
-        P=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}
-      </me>
-      또한 단위벡터 <m>u</m>에 대하여 <m>S_u=2uu^{\operatorname{T}}-I</m>로 둡니다.
-    </p>
-  </introduction>
-
-  <!-- ===================== 1 ===================== -->
-  <exercise xml:id="exer-3d-homogeneous-inverse">
-    <title>동차좌표와 역변환</title>
-    <statement>
+    <introduction>
       <p>
-        아핀변환 <m>T(x)=Ax+b</m>에 대하여 <m>M_T=\begin{bmatrix}A&amp;b\\0&amp;1\end{bmatrix}</m>로 둡니다(<xref ref="def-homogeneous-coordinates"/>).
-        <ol marker="(a)">
-          <li><p>두 아핀변환 <m>T_1,T_2</m>에 대하여 <m>M_{T_1\circ T_2}=M_{T_1}M_{T_2}</m>임을 보여라.</p></li>
-          <li><p><m>A</m>가 직교행렬이면 <m>M_T^{-1}=\begin{bmatrix}A^{\operatorname{T}}&amp;-A^{\operatorname{T}}b\\0&amp;1\end{bmatrix}</m>임을 보여라.</p></li>
-          <li><p><m>A=R_z(\pi/2)</m>, <m>b=(1,-1,2)^{\operatorname{T}}</m>일 때 <m>T^{-1}</m>을 구하여라. 또한 직선 <m>L=\{(1,0,t)^{\operatorname{T}}:t\in\mathbb R\}</m>에 대하여 <m>T(L)=L</m>이고, <m>L</m>의 각 점은 <m>L</m>을 따라 <m>2</m>만큼 이동함을 확인하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <solution>
-      <p>
-        (a) <m>T_1(T_2(x))=A_1(A_2x+b_2)+b_1=A_1A_2x+(A_1b_2+b_1)</m>이고, 블록곱 <m>M_{T_1}M_{T_2}</m>의 성분도 <m>A_1A_2</m>와 <m>A_1b_2+b_1</m>입니다.
-      </p>
-      <p>
-        (b) 블록곱을 계산하면 <m>\begin{bmatrix}A&amp;b\\0&amp;1\end{bmatrix}\begin{bmatrix}A^{\operatorname{T}}&amp;-A^{\operatorname{T}}b\\0&amp;1\end{bmatrix}=\begin{bmatrix}AA^{\operatorname{T}}&amp;-AA^{\operatorname{T}}b+b\\0&amp;1\end{bmatrix}=I</m>입니다.
-      </p>
-      <p>
-        (c) <m>A^{\operatorname{T}}=\begin{pmatrix}0&amp;1&amp;0\\-1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}</m>, <m>A^{\operatorname{T}}b=(-1,-1,2)^{\operatorname{T}}</m>이므로 <m>T^{-1}(x)=A^{\operatorname{T}}x+(1,1,-2)^{\operatorname{T}}</m>입니다. 또
-        <m>T(1,0,t)^{\operatorname{T}}=(0,1,t)^{\operatorname{T}}+(1,-1,2)^{\operatorname{T}}=(1,0,t+2)^{\operatorname{T}}</m>이므로 <m>T(L)=L</m>이고 각 점은 <m>L</m> 방향으로 <m>2</m>만큼 이동합니다. 즉 <m>T</m>는 <m>L</m>을 축으로 한 <m>90^\circ</m> 회전과 <m>L</m> 방향 평행이동을 합친 나선운동입니다.
-      </p>
-    </solution>
-  </exercise>
-
-  <!-- ===================== 2 ===================== -->
-  <exercise xml:id="exer-3d-trace-angle">
-    <title>대각합과 회전각</title>
-    <statement>
-      <p>
-        <ol marker="(a)">
-          <li><p><m>A\in\operatorname{SO}(3)</m>가 어떤 축을 중심으로 한 각 <m>\theta</m>의 회전이면 <m>\operatorname{tr}A=1+2\cos\theta</m>임을 보여라.</p></li>
-          <li><p><m>P\in\operatorname{SO}(3)</m>임을 확인하고, <m>P</m>의 회전축과 회전각 <m>\theta\in[0,\pi]</m>를 구하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p>(a) 대각합은 기저변환 <m>A\mapsto QAQ^{-1}</m>에 대하여 불변입니다.</p>
-    </hint>
-    <solution>
-      <p>
-        (a) <xref ref="thm-euler-3d-rotation"/>의 증명에서처럼 직교행렬 <m>Q</m>로 <m>A=Q\begin{bmatrix}1&amp;0\\0&amp;R(\theta)\end{bmatrix}Q^{\operatorname{T}}</m>이고, <m>\operatorname{tr}(QBQ^{\operatorname{T}})=\operatorname{tr}(BQ^{\operatorname{T}}Q)=\operatorname{tr}B=1+2\cos\theta</m>입니다.
-      </p>
-      <p>
-        (b) <m>P</m>의 열은 표준기저를 재배열한 것이므로 <m>P^{\operatorname{T}}P=I</m>이고, 여인수 전개로 <m>\det P=1</m>입니다. <m>P(1,1,1)^{\operatorname{T}}=(1,1,1)^{\operatorname{T}}</m>이므로 축은 <m>(1,1,1)^{\operatorname{T}}</m>이 생성하는 직선입니다. 축에 수직인 시험벡터 <m>u=(1,-1,0)^{\operatorname{T}}</m>를 택하면 <m>Pu=(0,1,-1)^{\operatorname{T}}</m>입니다. 따라서 <m>\cos\theta=\frac{u^{\operatorname{T}}Pu}{\lVert u\rVert\,\lVert Pu\rVert}=\frac{-1}{2}</m>이고, <m>\theta\in[0,\pi]</m>이므로 <m>\theta=\frac{2\pi}{3}</m>입니다.
-      </p>
-    </solution>
-  </exercise>
-
-  <!-- ===================== 3 ===================== -->
-  <exercise xml:id="exer-3d-hatmap-compute">
-    <title>햇맵의 계산</title>
-    <statement>
-      <p>
-        <ol marker="(a)">
-          <li><p><m>\omega=(1,2,3)^{\operatorname{T}}</m>, <m>v=(4,5,6)^{\operatorname{T}}</m>에 대하여 <m>[\omega]_\times</m>를 쓰고, <m>[\omega]_\times v=\omega\times v</m>임을 직접 확인하여라.</p></li>
-          <li><p><m>\omega\ne0</m>이면 <m>\ker[\omega]_\times=\operatorname{span}\{\omega\}</m>이고 <m>\operatorname{rank}[\omega]_\times=2</m>임을 보여라.</p></li>
-          <li><p><m>\det(tI-[\omega]_\times)=t^3+\lVert\omega\rVert^2t</m>임을 보이고, (a)의 <m>\omega</m>에 대하여 <m>[\omega]_\times</m>의 고유값을 구하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <solution>
-      <p>
-        (a) <m>[\omega]_\times=\begin{pmatrix}0&amp;-3&amp;2\\3&amp;0&amp;-1\\-2&amp;1&amp;0\end{pmatrix}</m>이고 <m>[\omega]_\times v=(-3,6,-3)^{\operatorname{T}}</m>입니다. 한편 <m>\omega\times v=(2\cdot6-3\cdot5,\ 3\cdot4-1\cdot6,\ 1\cdot5-2\cdot4)^{\operatorname{T}}=(-3,6,-3)^{\operatorname{T}}</m>입니다.
-      </p>
-      <p>
-        (b) <m>[\omega]_\times x=\omega\times x</m>이고 <m>\lVert\omega\times x\rVert=\lVert\omega\rVert\lVert x\rVert\sin\varphi</m>(<m>\varphi</m>는 사잇각)이므로, <m>[\omega]_\times x=0</m>일 필요충분조건은 <m>x</m>가 <m>\omega</m>와 평행한 것입니다. 차원정리에 의해 계수는 <m>3-1=2</m>입니다.
-      </p>
-      <p>
-        (c) 첫 행으로 전개하면
+        아래 문제에서 다음 행렬을 공통으로 사용합니다.
         <me>
-          \det\begin{pmatrix}t&amp;\omega_3&amp;-\omega_2\\-\omega_3&amp;t&amp;\omega_1\\\omega_2&amp;-\omega_1&amp;t\end{pmatrix}
+          P=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}
+        </me>
+        또한 단위벡터 <m>u</m> 에 대하여 <m>S_u=2uu^{\operatorname{T}}-I</m> 로 둡니다.
+      </p>
+    </introduction>
+    <!-- ===================== 1 ===================== -->
+    <exercise xml:id="exer-3d-homogeneous-inverse">
+      <title>동차좌표와 역변환</title>
+
+      <statement>
+        <p>
+          아핀변환 <m>T(x)=Ax+b</m> 에 대하여
+          <m>M_T=\begin{pmatrix}A&amp;b\\0&amp;1\end{pmatrix}</m> 로 둡니다(
+          <xref ref="def-homogeneous-coordinates"/> ).
+          <ol marker="(a)">
+            <li>
+              <p>
+                두 아핀변환 <m>T_1,T_2</m> 에 대하여
+                <m>M_{T_1\circ T_2}=M_{T_1}M_{T_2}</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>A</m> 가 직교행렬이면
+                <m>M_T^{-1}=\begin{pmatrix}A^{\operatorname{T}}&amp;-A^{\operatorname{T}}b\\0&amp;1\end{pmatrix}</m>
+                임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>A=R_z(\pi/2)</m>, <m>b=(1,-1,2)^{\operatorname{T}}</m> 일 때
+                <m>T^{-1}</m> 을 구하여라.
+                또한 직선 <m>L=\{(1,0,t)^{\operatorname{T}}:t\in\mathbb R\}</m> 에
+                대하여 <m>T(L)=L</m> 이고, <m>L</m> 의 각 점은 <m>L</m> 을 따라 <m>2</m> 만큼
+                이동함을 확인하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          (a) <m>T_1(T_2(x))=A_1(A_2x+b_2)+b_1=A_1A_2x+(A_1b_2+b_1)</m> 이고, 블록곱
+          <m>M_{T_1}M_{T_2}</m> 의 성분도 <m>A_1A_2</m> 와 <m>A_1b_2+b_1</m> 입니다.
+        </p>
+
+        <p>
+          (b) 블록곱을 계산하면
+          <m>\begin{pmatrix}A&amp;b\\0&amp;1\end{pmatrix}\begin{pmatrix}A^{\operatorname{T}}&amp;-A^{\operatorname{T}}b\\0&amp;1\end{pmatrix}=\begin{pmatrix}AA^{\operatorname{T}}&amp;-AA^{\operatorname{T}}b+b\\0&amp;1\end{pmatrix}=I</m>
+          입니다.
+        </p>
+
+        <p>
+          (c)
+          <m>A^{\operatorname{T}}=\begin{pmatrix}0&amp;1&amp;0\\-1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}</m>,
+          <m>A^{\operatorname{T}}b=(-1,-1,2)^{\operatorname{T}}</m> 이므로
+          <m>T^{-1}(x)=A^{\operatorname{T}}x+(1,1,-2)^{\operatorname{T}}</m>
+          입니다.
+          또
+          <m>T(1,0,t)^{\operatorname{T}}=(0,1,t)^{\operatorname{T}}+(1,-1,2)^{\operatorname{T}}=(1,0,t+2)^{\operatorname{T}}</m>
+          이므로 <m>T(L)=L</m> 이고 각 점은 <m>L</m> 방향으로 <m>2</m> 만큼 이동합니다.
+          즉 <m>T</m> 는 <m>L</m> 을 축으로 한 <m>90^\circ</m> 회전과 <m>L</m> 방향 평행이동을 합친
+          나선운동입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 2 ===================== -->
+    <exercise xml:id="exer-3d-trace-angle">
+      <title>대각합과 회전각</title>
+
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>A\in\operatorname{SO}(3)</m> 가 어떤 축을 중심으로 한 각 <m>\theta</m> 의
+                회전이면 <m>\operatorname{tr}A=1+2\cos\theta</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>P\in\operatorname{SO}(3)</m> 임을 확인하고, <m>P</m> 의 회전축과 회전각
+                <m>\theta\in[0,\pi]</m> 를 구하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          (a) 대각합은 기저변환 <m>A\mapsto QAQ^{-1}</m> 에 대하여 불변입니다.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) <xref ref="thm-euler-3d-rotation"/> 의 증명에서처럼 직교행렬 <m>Q</m> 로
+          <m>A=Q\begin{pmatrix}1&amp;0\\0&amp;R(\theta)\end{pmatrix}Q^{\operatorname{T}}</m>
+          이고,
+          <m>\operatorname{tr}(QBQ^{\operatorname{T}})=\operatorname{tr}(BQ^{\operatorname{T}}Q)=\operatorname{tr}B=1+2\cos\theta</m>
+          입니다.
+        </p>
+
+        <p>
+          (b) <m>P</m> 의 열은 표준기저를 재배열한 것이므로 <m>P^{\operatorname{T}}P=I</m> 이고,
+          여인수 전개로 <m>\det P=1</m> 입니다.
+          <m>P(1,1,1)^{\operatorname{T}}=(1,1,1)^{\operatorname{T}}</m> 이므로 축은
+          <m>(1,1,1)^{\operatorname{T}}</m> 이 생성하는 직선입니다.
+          축에 수직인 시험벡터 <m>u=(1,-1,0)^{\operatorname{T}}</m> 를 택하면
+          <m>Pu=(0,1,-1)^{\operatorname{T}}</m> 입니다.
+          따라서
+          <m>\cos\theta=\frac{u^{\operatorname{T}}Pu}{\lVert u\rVert\,\lVert Pu\rVert}=\frac{-1}{2}</m>
+          이고, <m>\theta\in[0,\pi]</m> 이므로 <m>\theta=\frac{2\pi}{3}</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 3 ===================== -->
+    <exercise xml:id="exer-3d-hatmap-compute">
+      <title>햇맵의 계산</title>
+
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>\omega=(1,2,3)^{\operatorname{T}}</m>,
+                <m>v=(4,5,6)^{\operatorname{T}}</m> 에 대하여 <m>[\omega]_\times</m>
+                를 쓰고, <m>[\omega]_\times v=\omega\times v</m> 임을 직접 확인하여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>\omega\ne0</m> 이면
+                <m>\ker[\omega]_\times=\operatorname{span}\{\omega\}</m> 이고
+                <m>\operatorname{rank}[\omega]_\times=2</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>\det(tI-[\omega]_\times)=t^3+\lVert\omega\rVert^2t</m> 임을
+                보이고, (a)의 <m>\omega</m> 에 대하여 <m>[\omega]_\times</m> 의 고유값을
+                구하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          (a)
+          <m>[\omega]_\times=\begin{pmatrix}0&amp;-3&amp;2\\3&amp;0&amp;-1\\-2&amp;1&amp;0\end{pmatrix}</m>
+          이고 <m>[\omega]_\times v=(-3,6,-3)^{\operatorname{T}}</m> 입니다.
+          한편
+          <m>\omega\times v=(2\cdot6-3\cdot5,\ 3\cdot4-1\cdot6,\ 1\cdot5-2\cdot4)^{\operatorname{T}}=(-3,6,-3)^{\operatorname{T}}</m>
+          입니다.
+        </p>
+
+        <p>
+          (b) <m>[\omega]_\times x=\omega\times x</m> 이고
+          <m>\lVert\omega\times x\rVert=\lVert\omega\rVert\lVert x\rVert\sin\varphi</m>
+          ( <m>\varphi</m> 는 사잇각)이므로, <m>[\omega]_\times x=0</m> 일 필요충분조건은
+          <m>x</m> 가 <m>\omega</m> 와 평행한 것입니다.
+          차원정리에 의해 계수는 <m>3-1=2</m> 입니다.
+        </p>
+
+        <p>
+          (c) 첫 행으로 전개하면
+          <me>
+            \det\begin{pmatrix}t&amp;\omega_3&amp;-\omega_2\\-\omega_3&amp;t&amp;\omega_1\\\omega_2&amp;-\omega_1&amp;t\end{pmatrix}
           =t(t^2+\omega_1^2)-\omega_3(-\omega_3t-\omega_1\omega_2)-\omega_2(\omega_1\omega_3-\omega_2t)
           =t^3+\lVert\omega\rVert^2t
-        </me>
-        입니다. <m>\lVert\omega\rVert^2=14</m>이므로 고유값은 <m>0,\ \pm i\sqrt{14}</m>입니다.
-      </p>
-    </solution>
-  </exercise>
+          </me>
+          입니다.
+          <m>\lVert\omega\rVert^2=14</m> 이므로 고유값은 <m>0,\ \pm i\sqrt{14}</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 4 ===================== -->
+    <exercise xml:id="exer-3d-reflections">
+      <title>대칭과 <m>\operatorname{SO}(3)</m></title>
 
-  <!-- ===================== 4 ===================== -->
-  <exercise xml:id="exer-3d-reflections">
-    <title>대칭과 <m>\operatorname{SO}(3)</m></title>
-    <statement>
-      <p>
-        단위벡터 <m>u\in\mathbb R^3</m>에 대하여 <m>H_u=I-2uu^{\operatorname{T}}</m>로 둡니다.
-        <ol marker="(a)">
-          <li><p><m>H_u</m>는 직교행렬이고, 평면 <m>u^\perp</m>에 대한 대칭이며, <m>\det H_u=-1</m>임을 보여라.</p></li>
-          <li><p>원점에 대한 대칭 <m>x\mapsto-x</m>는 강체운동이지만 회전이 아님을 보여라. 2차원에서 <m>-I</m>는 무엇인가?</p></li>
-          <li><p>직선 <m>\operatorname{span}\{u\}</m>에 대한 대칭 <m>S_u=2uu^{\operatorname{T}}-I</m>는 <m>\operatorname{SO}(3)</m>에 속하며 <m>S_u=\exp(\pi[u]_\times)</m>임을 보여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <solution>
-      <p>
-        (a) <m>H_u</m>는 대칭행렬이고 <m>H_u^2=I-4uu^{\operatorname{T}}+4u(u^{\operatorname{T}}u)u^{\operatorname{T}}=I</m>이므로 <m>H_u^{\operatorname{T}}H_u=I</m>입니다. <m>H_uu=-u</m>이고 <m>x\perp u</m>이면 <m>H_ux=x</m>이므로 <m>H_u</m>는 <m>u^\perp</m>에 대한 대칭입니다. 고유값이 <m>-1,1,1</m>이므로 <m>\det H_u=-1</m>입니다.
-      </p>
-      <p>
-        (b) <m>\lVert-x-(-y)\rVert=\lVert x-y\rVert</m>이지만 <m>\det(-I)=(-1)^3=-1</m>이므로 <m>-I\notin\operatorname{SO}(3)</m>입니다. 2차원에서는 <m>\det(-I)=1</m>이고 <m>-I=R(\pi)</m>, 즉 반바퀴 회전입니다. 차원의 홀짝이 차이를 만듭니다.
-      </p>
-      <p>
-        (c) <m>S_u=-H_u</m>이므로 직교이고 <m>\det S_u=(-1)^3\det H_u=1</m>입니다. <xref ref="thm-rodrigues"/>에서 <m>\theta=\pi</m>로 두고 <xref ref="lem-hatmap-calculus"/>의 <m>[u]_\times^2=uu^{\operatorname{T}}-I</m>를 쓰면 <m>\exp(\pi[u]_\times)=I+2(uu^{\operatorname{T}}-I)=S_u</m>입니다.
-      </p>
-    </solution>
-  </exercise>
+      <statement>
+        <p>
+          단위벡터 <m>u\in\mathbb R^3</m> 에 대하여 <m>H_u=I-2uu^{\operatorname{T}}</m>
+          로 둡니다.
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>H_u</m> 는 직교행렬이고, 평면 <m>u^\perp</m> 에 대한 대칭이며,
+                <m>\det H_u=-1</m> 임을 보여라.
+              </p>
+            </li>
 
-  <!-- ===================== 5 ===================== -->
-  <exercise xml:id="exer-3d-eigenvalue-one">
-    <title>고유값 <m>1</m>의 존재</title>
-    <statement>
-      <p>
-        <ol marker="(a)">
-          <li><p><m>D=\operatorname{diag}(1,-1,-1)</m>은 <m>\operatorname{SO}(3)</m>의 원소임을 확인하고, 고유값과 회전축, 회전각을 구하여라. <m>D</m>는 실수 고유값 <m>-1</m>을 가짐에 유의하여라.</p></li>
-          <li><p><m>A\in\operatorname{SO}(3)</m>이면 <m>\det(A-I)=0</m>임을 <m>\det(A-I)=\det(A-AA^{\operatorname{T}})</m>을 이용하여 보여라.</p></li>
-          <li><p>(b)와 다른 방법으로, <m>A</m>의 고유값이 모두 실수인 경우와 그렇지 않은 경우로 나누어 <m>A</m>의 고유값 중 적어도 하나가 <m>1</m>임을 보여라.</p></li>
-          <li><p><m>A\in\operatorname{SO}(3)</m>, <m>A\ne I</m>이면 <m>\dim\ker(A-I)=1</m>임을 보여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <solution>
-      <p>
-        (a) <m>D^{\operatorname{T}}D=I</m>, <m>\det D=1</m>입니다. 고유값은 <m>1,-1,-1</m>이고, <m>e_1</m>을 고정하며 <m>e_1^\perp</m>에서 <m>-I=R(\pi)</m>로 작용하므로 <m>x</m>축을 중심으로 한 각 <m>\pi</m>의 회전입니다.
-      </p>
-      <p>
-        (b) <m>\det(A-I)=\det\big(A(I-A^{\operatorname{T}})\big)=\det A\cdot\det\big((I-A)^{\operatorname{T}}\big)=\det(I-A)=(-1)^3\det(A-I)</m>이므로 <m>\det(A-I)=0</m>입니다.
-      </p>
-      <p>
-        (c) 직교행렬의 실수 고유값은 <m>\lVert Av\rVert=\lVert v\rVert</m>에서 <m>\pm1</m>입니다. 고유값이 모두 실수이면 곱이 <m>\det A=1</m>이므로 <m>-1</m>의 개수는 <m>0</m> 또는 <m>2</m>이고, 따라서 나머지 중 적어도 하나는 <m>1</m>입니다. 그렇지 않으면 켤레쌍 <m>\lambda,\bar\lambda</m>의 곱이 <m>\lvert\lambda\rvert^2=1</m>이므로 남은 실수 고유값은 <m>\det A=1</m>과 같습니다.
-      </p>
-      <p>
-        (d) <m>W=\ker(A-I)</m>의 차원이 <m>3</m>이면 <m>A=I</m>입니다. 차원이 <m>2</m>라 하면 직교성에 의해 <m>W^\perp=\operatorname{span}\{w\}</m>도 <m>A</m>로 보존되므로 <m>Aw=\pm w</m>이고, <m>\det A=\pm1</m>에서 부호는 <m>+</m>입니다. 그러면 <m>A=I</m>가 되어 모순입니다. (b)에 의해 차원은 <m>1</m> 이상이므로 <m>1</m>입니다.
-      </p>
-    </solution>
-  </exercise>
+            <li>
+              <p>
+                원점에 대한 대칭 <m>x\mapsto-x</m> 는 강체운동이지만 회전이 아님을 보여라.
+                2차원에서 <m>-I</m> 는 무엇인가?
+              </p>
+            </li>
 
-  <!-- ===================== 6 ===================== -->
-  <exercise xml:id="exer-3d-rodrigues-compute">
-    <title>로드리게스 공식의 계산</title>
-    <statement>
-      <p>
-        <ol marker="(a)">
-          <li><p><xref ref="thm-rodrigues"/>을 이용하여 <m>\exp(\theta J_z)=R_z(\theta)</m>임을 보여라. <m>J_x,J_y</m>에 대해서도 마찬가지이다.</p></li>
-          <li><p><m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m>에 대하여 <m>\exp\big(\tfrac{2\pi}{3}[n]_\times\big)=P</m>임을 보여라.</p></li>
-          <li><p>같은 <m>n</m>에 대하여 <m>\exp(\pi[n]_\times)</m>를 구하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p><m>[n]_\times^2=nn^{\operatorname{T}}-I</m>이고, <m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m>이면 <m>nn^{\operatorname{T}}=\tfrac13\mathbf 1</m>(모든 성분이 <m>1</m>인 행렬 <m>\mathbf 1</m>)입니다.</p>
-    </hint>
-    <solution>
-      <p>
-        (a) <m>J_z=[e_3]_\times</m>이고 <m>J_z^2=\operatorname{diag}(-1,-1,0)</m>이므로 <m>I+\sin\theta J_z+(1-\cos\theta)J_z^2=R_z(\theta)</m>입니다. <m>J_x=[e_1]_\times</m>, <m>J_y=[e_2]_\times</m>도 같습니다.
-      </p>
-      <p>
-        (b) <m>K=\begin{pmatrix}0&amp;-1&amp;1\\1&amp;0&amp;-1\\-1&amp;1&amp;0\end{pmatrix}</m>라 하면 <m>[n]_\times=K/\sqrt3</m>이고, <m>\sin\tfrac{2\pi}3=\tfrac{\sqrt3}2</m>, <m>1-\cos\tfrac{2\pi}3=\tfrac32</m>이므로
-        <me>
-          \exp\big(\tfrac{2\pi}{3}[n]_\times\big)=I+\tfrac12K+\tfrac32\big(\tfrac13\mathbf 1-I\big)=-\tfrac12I+\tfrac12K+\tfrac12\mathbf 1=P
-        </me>
-        입니다(성분별로 확인할 수 있습니다).
-      </p>
-      <p>
-        (c) <m>\exp(\pi[n]_\times)=I+2[n]_\times^2=2nn^{\operatorname{T}}-I=\tfrac23\mathbf 1-I=\tfrac13\begin{pmatrix}-1&amp;2&amp;2\\2&amp;-1&amp;2\\2&amp;2&amp;-1\end{pmatrix}</m>이고, 이것은 <xref ref="exer-3d-reflections"/>의 <m>S_n</m>입니다.
-      </p>
-    </solution>
-  </exercise>
+            <li>
+              <p>
+                직선 <m>\operatorname{span}\{u\}</m> 에 대한 대칭
+                <m>S_u=2uu^{\operatorname{T}}-I</m> 는
+                <m>\operatorname{SO}(3)</m> 에 속하며 <m>S_u=\exp(\pi[u]_\times)</m>
+                임을 보여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
 
-  <!-- ===================== 7 ===================== -->
-  <exercise xml:id="exer-3d-logarithm">
-    <title>회전행렬에서 축과 각 구하기</title>
-    <statement>
-      <p>
-        단위벡터 <m>n</m>과 <m>\theta\in[0,\pi]</m>에 대하여 <m>A=\exp(\theta[n]_\times)</m>라 합니다.
-        <ol marker="(a)">
-          <li><p><m>A-A^{\operatorname{T}}=2\sin\theta\,[n]_\times</m>이고 <m>\operatorname{tr}A=1+2\cos\theta</m>임을 보여라.</p></li>
-          <li><p><m>0&lt;\theta&lt;\pi</m>이면
-            <me>\theta=\arccos\frac{\operatorname{tr}A-1}{2},\qquad n=\frac{1}{2\sin\theta}\,(A-A^{\operatorname{T}})^\vee</me>
-            임을 보여라. 따라서 이 경우 <m>\theta n</m>은 <m>A</m>에 의해 유일하게 결정된다.</p></li>
-          <li><p>(b)를 <m>P</m>에 적용하여 <xref ref="exer-3d-trace-angle"/>의 결과와 비교하여라.</p></li>
-          <li><p><m>\theta=\pi</m>이면 (b)의 공식을 쓸 수 없음을 설명하고, <m>A+I=2nn^{\operatorname{T}}</m>로부터 <m>n</m>이 부호를 제외하고 결정됨을 보여라. 이를 <m>\tfrac23\mathbf 1-I</m>와 <m>\operatorname{diag}(-1,-1,1)</m>에 적용하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <solution>
-      <p>
-        (a) <xref ref="lem-hatmap-calculus"/>에 의해 <m>[n]_\times^2=nn^{\operatorname{T}}-I</m>는 대칭이고 <m>[n]_\times</m>는 반대칭이므로 <m>A^{\operatorname{T}}=I-\sin\theta[n]_\times+(1-\cos\theta)[n]_\times^2</m>이고, 빼면 첫 식을 얻습니다. 또 <m>\operatorname{tr}[n]_\times=0</m>, <m>\operatorname{tr}[n]_\times^2=\lVert n\rVert^2-3=-2</m>이므로 <m>\operatorname{tr}A=3-2(1-\cos\theta)=1+2\cos\theta</m>입니다.
-      </p>
-      <p>
-        (b) <m>\arccos</m>은 <m>[-1,1]\to[0,\pi]</m>에서 단사이므로 <m>\theta</m>가 결정되고, <m>\sin\theta&gt;0</m>이므로 (a)를 <m>2\sin\theta</m>로 나누고 햇맵의 역 <m>{}^\vee</m>를 취하면 <m>n</m>이 결정됩니다.
-      </p>
-      <p>
-        (c) <m>P-P^{\operatorname{T}}=\begin{pmatrix}0&amp;-1&amp;1\\1&amp;0&amp;-1\\-1&amp;1&amp;0\end{pmatrix}=[(1,1,1)^{\operatorname{T}}]_\times</m>이고 <m>2\sin\tfrac{2\pi}3=\sqrt3</m>이므로 <m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m>, <m>\theta=2\pi/3</m>입니다. 이번에는 회전의 방향까지 결정됩니다.
-      </p>
-      <p>
-        (d) <m>\theta=\pi</m>이면 <m>A-A^{\operatorname{T}}=0</m>, <m>\sin\theta=0</m>이므로 (b)의 공식은 <m>0/0</m>이 됩니다. 이때 <m>A=I+2[n]_\times^2=2nn^{\operatorname{T}}-I</m>이므로 <m>\tfrac12(A+I)=nn^{\operatorname{T}}</m>이고, 이 행렬의 영이 아닌 열은 <m>n</m>의 스칼라배이므로 정규화하면 <m>\pm n</m>을 얻습니다. <m>A=\tfrac23\mathbf 1-I</m>이면 <m>\tfrac12(A+I)=\tfrac13\mathbf 1</m>이므로 <m>n=\pm(1,1,1)^{\operatorname{T}}/\sqrt3</m>이고, <m>A=\operatorname{diag}(-1,-1,1)</m>이면 <m>\tfrac12(A+I)=\operatorname{diag}(0,0,1)</m>이므로 <m>n=\pm e_3</m>입니다. <m>\exp(\pi[n]_\times)=\exp(\pi[-n]_\times)</m>이므로 부호는 원리적으로 결정될 수 없습니다.
-      </p>
-    </solution>
-  </exercise>
+      <solution>
+        <p>
+          (a) <m>H_u</m> 는 대칭행렬이고
+          <m>H_u^2=I-4uu^{\operatorname{T}}+4u(u^{\operatorname{T}}u)u^{\operatorname{T}}=I</m>
+          이므로 <m>H_u^{\operatorname{T}}H_u=I</m> 입니다.
+          <m>H_uu=-u</m> 이고 <m>x\perp u</m> 이면 <m>H_ux=x</m> 이므로 <m>H_u</m> 는
+          <m>u^\perp</m> 에 대한 대칭입니다.
+          고유값이 <m>-1,1,1</m> 이므로 <m>\det H_u=-1</m> 입니다.
+        </p>
 
-  <!-- ===================== 8 ===================== -->
-  <exercise xml:id="exer-3d-commutator">
-    <title>교환자와 외적</title>
-    <statement>
-      <p>
-        <m>a,b\in\mathbb R^3</m>라 합니다.
-        <ol marker="(a)">
-          <li><p><m>[a]_\times[b]_\times=ba^{\operatorname{T}}-(a\bullet b)I</m>임을 보여라.</p></li>
-          <li><p><m>[a]_\times[b]_\times-[b]_\times[a]_\times=[a\times b]_\times</m>임을 보여라.</p></li>
-          <li><p><m>J_xJ_y-J_yJ_x=J_z</m>, <m>J_yJ_z-J_zJ_y=J_x</m>, <m>J_zJ_x-J_xJ_z=J_y</m>임을 보여라.</p></li>
-          <li><p><m>[a]_\times</m>와 <m>[b]_\times</m>가 교환가능할 필요충분조건은 <m>a</m>와 <m>b</m>가 평행한 것(둘 중 하나가 <m>0</m>인 경우 포함)임을 보여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p>벡터 삼중곱 공식 <m>a\times(b\times x)=b(a\bullet x)-x(a\bullet b)</m>를 이용하여라.</p>
-    </hint>
-    <solution>
-      <p>
-        (a) 모든 <m>x</m>에 대하여 <m>[a]_\times[b]_\times x=a\times(b\times x)=b(a\bullet x)-x(a\bullet b)=\big(ba^{\operatorname{T}}-(a\bullet b)I\big)x</m>입니다.
-      </p>
-      <p>
-        (b) (a)에서 좌변은 <m>ba^{\operatorname{T}}-ab^{\operatorname{T}}</m>입니다. 한편 <m>(a\times b)\times x=-x\times(a\times b)=-\big(a(x\bullet b)-b(x\bullet a)\big)=(ba^{\operatorname{T}}-ab^{\operatorname{T}})x</m>입니다.
-      </p>
-      <p>
-        (c) <m>J_x=[e_1]_\times</m>, <m>J_y=[e_2]_\times</m>, <m>J_z=[e_3]_\times</m>이고 <m>e_1\times e_2=e_3</m>, <m>e_2\times e_3=e_1</m>, <m>e_3\times e_1=e_2</m>이므로 (b)에서 바로 나옵니다.
-      </p>
-      <p>
-        (d) (b)에 의해 교환자는 <m>[a\times b]_\times</m>이고, 햇맵은 단사이므로 이것이 <m>0</m>일 필요충분조건은 <m>a\times b=0</m>, 즉 <m>a,b</m>가 일차종속인 것입니다.
-      </p>
-    </solution>
-  </exercise>
+        <p>
+          (b) <m>\lVert-x-(-y)\rVert=\lVert x-y\rVert</m> 이지만
+          <m>\det(-I)=(-1)^3=-1</m> 이므로 <m>-I\notin\operatorname{SO}(3)</m> 입니다.
+          2차원에서는 <m>\det(-I)=1</m> 이고 <m>-I=R(\pi)</m>, 즉 반바퀴 회전입니다.
+          차원의 홀짝이 차이를 만듭니다.
+        </p>
 
-  <!-- ===================== 9 ===================== -->
-  <exercise xml:id="exer-3d-conjugation">
-    <title>회전과 외적, 켤레</title>
-    <statement>
-      <p>
-        <m>R\in\operatorname{SO}(3)</m>이라 합니다.
-        <ol marker="(a)">
-          <li><p>모든 <m>a,b</m>에 대하여 <m>R(a\times b)=(Ra)\times(Rb)</m>임을 보여라.</p></li>
-          <li><p><m>R[a]_\times R^{\operatorname{T}}=[Ra]_\times</m>임을 보여라.</p></li>
-          <li><p>단위벡터 <m>n</m>에 대하여 <m>R\exp(\theta[n]_\times)R^{\operatorname{T}}=\exp(\theta[Rn]_\times)</m>임을 보이고, 기하학적 의미를 설명하여라.</p></li>
-          <li><p><m>A</m>가 <m>\det A=-1</m>인 직교행렬이면 <m>A(a\times b)=-(Aa)\times(Ab)</m>임을 보이고, <m>A=-I</m>로 확인하여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p>(a) 모든 <m>c</m>에 대하여 <m>(a\times b)\bullet c=\det[a\ b\ c]</m>입니다.</p>
-    </hint>
-    <solution>
-      <p>
-        (a) 모든 <m>c</m>에 대하여
-        <me>
-          \big(R(a\times b)\big)\bullet(Rc)=(a\times b)\bullet c=\det[a\ b\ c]=\det R\cdot\det[a\ b\ c]=\det[Ra\ Rb\ Rc]=\big((Ra)\times(Rb)\big)\bullet(Rc)
-        </me>
-        입니다. <m>R</m>은 가역이므로 <m>Rc</m>는 <m>\mathbb R^3</m> 전체를 지나고, 따라서 두 벡터는 같습니다.
-      </p>
-      <p>
-        (b) 모든 <m>y</m>에 대하여 <m>R[a]_\times R^{\operatorname{T}}y=R(a\times R^{\operatorname{T}}y)=(Ra)\times(RR^{\operatorname{T}}y)=(Ra)\times y</m>입니다.
-      </p>
-      <p>
-        (c) <m>(RXR^{\operatorname{T}})^m=RX^mR^{\operatorname{T}}</m>이므로 부분합에서 <m>R\big(\sum_{m\le N}X^m/m!\big)R^{\operatorname{T}}=\sum_{m\le N}(RXR^{\operatorname{T}})^m/m!</m>이고, 극한을 취하면 <m>R\exp(X)R^{\operatorname{T}}=\exp(RXR^{\operatorname{T}})</m>입니다. <m>X=\theta[n]_\times</m>에 (b)를 적용하면 됩니다. 의미: 축 <m>n</m>에 대한 각 <m>\theta</m>의 회전을 <m>R</m>로 옮겨 보면, 옮겨진 축 <m>Rn</m>에 대한 같은 각의 회전입니다. 예를 들어 <m>R_z(\theta)</m>를 켤레하여 임의의 축에 대한 회전을 얻을 수 있습니다.
-      </p>
-      <p>
-        (d) (a)의 계산에서 <m>\det A=-1</m>이 부호를 바꿉니다. <m>A=-I</m>이면 <m>(-a)\times(-b)=a\times b</m>이지만 <m>A(a\times b)=-(a\times b)</m>입니다. 외적은 방향(손대칭성)에 의존하는 연산입니다.
-      </p>
-    </solution>
-  </exercise>
+        <p>
+          (c) <m>S_u=-H_u</m> 이므로 직교이고 <m>\det S_u=(-1)^3\det H_u=1</m> 입니다.
+          <xref ref="thm-rodrigues"/> 에서 <m>\theta=\pi</m> 로 두고
+          <xref ref="lem-hatmap-calculus"/> 의
+          <m>[u]_\times^2=uu^{\operatorname{T}}-I</m> 를 쓰면
+          <m>\exp(\pi[u]_\times)=I+2(uu^{\operatorname{T}}-I)=S_u</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 5 ===================== -->
+    <exercise xml:id="exer-3d-eigenvalue-one">
+      <title>고유값 <m>1</m> 의 존재</title>
 
-  <!-- ===================== 10 ===================== -->
-  <exercise xml:id="exer-3d-nonadditive">
-    <title>지수함수는 합을 곱으로 보내지 않는다</title>
-    <statement>
-      <p>
-        <ol marker="(a)">
-          <li><p><m>R_x(\pi/2)R_y(\pi/2)=P</m>임을 보이고, 이 합성의 회전축과 회전각을 구하여라.</p></li>
-          <li><p><m>m=(1,1,0)^{\operatorname{T}}/\sqrt2</m>에 대하여 <m>\tfrac\pi2(J_x+J_y)=\tfrac{\pi}{\sqrt2}[m]_\times</m>임을 보이고, <m>\exp\big(\tfrac\pi2(J_x+J_y)\big)</m>의 회전축과 회전각을 구하여라.</p></li>
-          <li><p>(a), (b)로부터 <m>\exp\big(\tfrac\pi2J_x\big)\exp\big(\tfrac\pi2J_y\big)\ne\exp\big(\tfrac\pi2(J_x+J_y)\big)</m>임을 결론지어라.</p></li>
-          <li><p><m>t\to0</m>일 때
-            <me>\exp(tJ_x)\exp(tJ_y)-\exp\big(t(J_x+J_y)\big)=\tfrac{t^2}{2}J_z+O(t^3)</me>
-            임을 보여라. 따라서 차이는 각이 작아도 사라지지 않고 2차 항으로 나타난다.</p></li>
-          <li><p><m>a</m>와 <m>b</m>가 평행하면 <m>\exp([a]_\times)\exp([b]_\times)=\exp([a+b]_\times)</m>임을 보여라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p>(d) <m>\exp(X)=I+X+\tfrac12X^2+\sum_{m\ge3}X^m/m!</m>이고 <m>\big\lVert\sum_{m\ge3}t^mX^m/m!\big\rVert\le\sum_{m\ge3}\lvert t\rvert^m\lVert X\rVert^m/m!=O(t^3)</m>입니다. (e) <xref ref="exer-3d-commutator"/>(d)와 이항정리를 이용하여라.</p>
-    </hint>
-    <solution>
-      <p>
-        (a) <xref ref="exer-3d-rodrigues-compute"/>(a)에 의해 <m>\exp(\tfrac\pi2J_x)=R_x(\pi/2)</m>, <m>\exp(\tfrac\pi2J_y)=R_y(\pi/2)</m>이고, 직접 곱하면 <m>P</m>입니다. <xref ref="exer-3d-logarithm"/>(c)에 의해 축은 <m>(1,1,1)^{\operatorname{T}}/\sqrt3</m>, 각은 <m>2\pi/3=120^\circ</m>입니다.
-      </p>
-      <p>
-        (b) <m>J_x+J_y=[(1,1,0)^{\operatorname{T}}]_\times=\sqrt2[m]_\times</m>이므로 <xref ref="thm-rodrigues"/>에 의해 <m>\exp\big(\tfrac\pi2(J_x+J_y)\big)</m>는 축 <m>m</m>에 대한 각 <m>\pi/\sqrt2\approx127.3^\circ</m>의 회전입니다.
-      </p>
-      <p>
-        (c) 축이 다르고(<m>(1,1,1)</m> 방향과 <m>(1,1,0)</m> 방향), 대각합도 <m>0</m>과 <m>1+2\cos(\pi/\sqrt2)\approx-0.211</m>로 다릅니다.
-      </p>
-      <p>
-        (d) 힌트에 의해
-        <md>
-          <mrow>\exp(tJ_x)\exp(tJ_y)\amp=I+t(J_x+J_y)+t^2\big(\tfrac12J_x^2+J_xJ_y+\tfrac12J_y^2\big)+O(t^3),</mrow>
-          <mrow>\exp\big(t(J_x+J_y)\big)\amp=I+t(J_x+J_y)+\tfrac{t^2}{2}\big(J_x^2+J_xJ_y+J_yJ_x+J_y^2\big)+O(t^3)</mrow>
-        </md>
-        이므로 차이는 <m>\tfrac{t^2}2(J_xJ_y-J_yJ_x)+O(t^3)=\tfrac{t^2}2J_z+O(t^3)</m>입니다(<xref ref="exer-3d-commutator"/>(c)).
-      </p>
-      <p>
-        (e) <m>X=[a]_\times</m>, <m>Y=[b]_\times</m>는 <xref ref="exer-3d-commutator"/>(d)에 의해 교환가능합니다. 두 급수는 절대수렴하므로 곱을 항별로 전개하여 재배열할 수 있고,
-        <me>\exp X\exp Y=\sum_{m\ge0}\frac1{m!}\sum_{j+k=m}\binom mjX^jY^k=\sum_{m\ge0}\frac{(X+Y)^m}{m!}=\exp(X+Y)</me>
-        입니다. 둘째 등호에서 교환가능성과 이항정리를 썼습니다. 햇맵의 선형성에 의해 <m>X+Y=[a+b]_\times</m>입니다.
-      </p>
-    </solution>
-  </exercise>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>D=\operatorname{diag}(1,-1,-1)</m> 은
+                <m>\operatorname{SO}(3)</m> 의 원소임을 확인하고, 고유값과 회전축, 회전각을 구하여라.
+                <m>D</m> 는 실수 고유값 <m>-1</m> 을 가짐에 유의하여라.
+              </p>
+            </li>
 
-  <!-- ===================== 11 ===================== -->
-  <exercise xml:id="exer-3d-half-turns">
-    <title>반회전의 곱</title>
-    <statement>
-      <p>
-        단위벡터 <m>u</m>에 대하여 <m>S_u=2uu^{\operatorname{T}}-I=\exp(\pi[u]_\times)</m>는 축 <m>u</m>에 대한 반회전입니다(<xref ref="exer-3d-reflections"/>).
-        <ol marker="(a)">
-          <li><p>평행하지 않은 단위벡터 <m>u,v</m>에 대하여 <m>u\bullet v=\cos\alpha</m> (<m>0&lt;\alpha&lt;\pi</m>)이고 <m>w=(u\times v)/\lVert u\times v\rVert</m>라 하자. 그러면 <m>S_vS_u=\exp(2\alpha[w]_\times)</m>, 즉 <m>S_vS_u</m>는 축 <m>w</m>에 대한 각 <m>2\alpha</m>의 회전임을 보여라.</p></li>
-          <li><p><m>A=\exp(\theta[n]_\times)</m>, <m>0&lt;\theta\le\pi</m>라 하자. <m>n\perp u</m>인 임의의 단위벡터 <m>u</m>에 대하여 <m>v=\exp(\tfrac\theta2[n]_\times)u</m>로 두면 <m>A=S_vS_u</m>임을 보여라. 따라서 <m>\operatorname{SO}(3)</m>의 모든 원소는 두 반회전의 곱이다.</p></li>
-          <li><p>두 회전 <m>A_1=\exp(\theta_1[n_1]_\times)</m>, <m>A_2=\exp(\theta_2[n_2]_\times)</m> (<m>0&lt;\theta_i\le\pi</m>, <m>n_1,n_2</m>는 평행하지 않은 단위벡터)에 대하여 <m>v=(n_1\times n_2)/\lVert n_1\times n_2\rVert</m>,
-            <m>u=\exp(-\tfrac{\theta_1}2[n_1]_\times)v</m>, <m>w=\exp(\tfrac{\theta_2}2[n_2]_\times)v</m>로 두면 <m>A_2A_1=S_wS_u</m>임을 보여라. 이로부터 <m>u\times w\ne0</m>일 때 <m>A_2A_1</m>의 회전축과 회전각을 <m>u,w</m>로 나타내어라.</p></li>
-        </ol>
-      </p>
-    </statement>
-    <hint>
-      <p>
-        (a) <m>w</m>가 고정됨을 보이고, 대각합으로 각의 크기를, <m>u</m>의 상으로 회전의 방향을 정하여라. 축 <m>w</m>에 대한 각 <m>\beta</m>의 회전은 <m>w\perp x</m>인 <m>x</m>를 <m>\cos\beta\,x+\sin\beta\,(w\times x)</m>로 보냅니다(<xref ref="thm-rodrigues"/>의 증명).
-        (c) <m>S_v^2=I</m>입니다.
-      </p>
-    </hint>
-    <solution>
-      <p>
-        (a) <m>S_uw=2u(u\bullet w)-w=-w</m>이고 마찬가지로 <m>S_v(-w)=w</m>이므로 <m>S_vS_uw=w</m>입니다. <m>S_vS_u\in\operatorname{SO}(3)</m>이고
-        <me>\operatorname{tr}(S_vS_u)=\operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)=4\cos^2\alpha-1=1+2\cos2\alpha</me>
-        이므로 <xref ref="exer-3d-trace-angle"/>에 의해 회전각은 <m>2\alpha</m> 또는 <m>-2\alpha</m>(축 <m>w</m> 기준)입니다. 방향을 정하기 위해 <m>u\perp w</m>의 상을 봅니다. <m>(u\times v)\times u=v-(u\bullet v)u</m>이므로 <m>w\times u=(v-\cos\alpha\,u)/\sin\alpha</m>이고,
-        <me>\cos2\alpha\,u+\sin2\alpha\,(w\times u)=\cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)=2\cos\alpha\,v-u=S_vS_uu</me>
-        입니다. 따라서 <m>S_vS_u</m>는 축 <m>w</m>에 대한 각 <m>+2\alpha</m>의 회전, 즉 <m>\exp(2\alpha[w]_\times)</m>입니다. (<m>2\alpha</m>가 <m>(\pi,2\pi)</m>에 있으면 이는 축 <m>-w</m>에 대한 각 <m>2\pi-2\alpha</m>의 회전과 같습니다.)
-      </p>
-      <p>
-        (b) <m>u\perp n</m>이므로 <m>v=\cos\tfrac\theta2\,u+\sin\tfrac\theta2\,(n\times u)</m>는 단위벡터이고 <m>u\bullet v=\cos\tfrac\theta2</m>입니다. 또 <m>u\times v=\sin\tfrac\theta2\,u\times(n\times u)=\sin\tfrac\theta2\big(n(u\bullet u)-u(u\bullet n)\big)=\sin\tfrac\theta2\,n</m>이고 <m>\sin\tfrac\theta2&gt;0</m>이므로 <m>w=n</m>, <m>\alpha=\theta/2</m>입니다. (a)에 의해 <m>S_vS_u=\exp(\theta[n]_\times)=A</m>입니다. <m>A=I</m>이면 <m>A=S_uS_u</m>입니다.
-      </p>
-      <p>
-        (c) <m>v\perp n_1</m>이고 <m>n_1</m>에 대한 회전은 <m>n_1^\perp</m>을 보존하므로 <m>u\perp n_1</m>이고 <m>v=\exp(\tfrac{\theta_1}2[n_1]_\times)u</m>입니다. (b)에 의해 <m>A_1=S_vS_u</m>입니다. 같은 이유로 <m>v\perp n_2</m>, <m>w=\exp(\tfrac{\theta_2}2[n_2]_\times)v</m>이므로 <m>A_2=S_wS_v</m>입니다. 따라서
-        <me>A_2A_1=S_wS_vS_vS_u=S_wS_u</me>
-        이고, (a)에 의해 <m>u\times w\ne0</m>이면 <m>A_2A_1</m>은 축 <m>(u\times w)/\lVert u\times w\rVert</m>에 대한 각 <m>2\arccos(u\bullet w)</m>의 회전입니다. 즉 두 회전의 합성은 두 축의 공통수직선 <m>v</m>를 기준으로 한 반각들로 기하학적으로 작도됩니다(해밀턴의 작도). 
-      </p>
-    </solution>
-  </exercise>
-</exercises>
+            <li>
+              <p>
+                <m>A\in\operatorname{SO}(3)</m> 이면 <m>\det(A-I)=0</m> 임을
+                <m>\det(A-I)=\det(A-AA^{\operatorname{T}})</m> 을 이용하여 보여라.
+              </p>
+            </li>
 
+            <li>
+              <p>
+                (b)와 다른 방법으로, <m>A</m> 의 고유값이 모두 실수인 경우와 그렇지 않은 경우로 나누어 <m>A</m>
+                의 고유값 중 적어도 하나가 <m>1</m> 임을 보여라.
+              </p>
+            </li>
 
-  
-  
-  
+            <li>
+              <p>
+                <m>A\in\operatorname{SO}(3)</m>, <m>A\ne I</m> 이면
+                <m>\dim\ker(A-I)=1</m> 임을 보여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          (a) <m>D^{\operatorname{T}}D=I</m>, <m>\det D=1</m> 입니다.
+          고유값은 <m>1,-1,-1</m> 이고, <m>e_1</m> 을 고정하며 <m>e_1^\perp</m> 에서
+          <m>-I=R(\pi)</m> 로 작용하므로 <m>x</m> 축을 중심으로 한 각 <m>\pi</m> 의 회전입니다.
+        </p>
+
+        <p>
+          (b)
+          <m>\det(A-I)=\det\big(A(I-A^{\operatorname{T}})\big)=\det A\cdot\det\big((I-A)^{\operatorname{T}}\big)=\det(I-A)=(-1)^3\det(A-I)</m>
+          이므로 <m>\det(A-I)=0</m> 입니다.
+        </p>
+
+        <p>
+          (c) 직교행렬의 실수 고유값은 <m>\lVert Av\rVert=\lVert v\rVert</m> 에서 <m>\pm1</m>
+          입니다.
+          고유값이 모두 실수이면 곱이 <m>\det A=1</m> 이므로 <m>-1</m> 의 개수는 <m>0</m> 또는
+          <m>2</m> 이고, 따라서 나머지 중 적어도 하나는 <m>1</m> 입니다.
+          그렇지 않으면 켤레쌍 <m>\lambda,\bar\lambda</m> 의 곱이
+          <m>\lvert\lambda\rvert^2=1</m> 이므로 남은 실수 고유값은 <m>\det A=1</m> 과 같습니다.
+        </p>
+
+        <p>
+          (d) <m>W=\ker(A-I)</m> 의 차원이 <m>3</m> 이면 <m>A=I</m> 입니다.
+          차원이 <m>2</m> 라 하면 직교성에 의해 <m>W^\perp=\operatorname{span}\{w\}</m> 도
+          <m>A</m> 로 보존되므로 <m>Aw=\pm w</m> 이고, <m>\det A=\pm1</m> 에서 부호는
+          <m>+</m> 입니다.
+          그러면 <m>A=I</m> 가 되어 모순입니다.
+          (b)에 의해 차원은 <m>1</m> 이상이므로 <m>1</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 6 ===================== -->
+    <exercise xml:id="exer-3d-rodrigues-compute">
+      <title>로드리게스 공식의 계산</title>
+
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li>
+              <p>
+                <xref ref="thm-rodrigues"/> 을 이용하여
+                <m>\exp(\theta J_z)=R_z(\theta)</m> 임을 보여라.
+                <m>J_x,J_y</m> 에 대해서도 마찬가지이다.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m> 에 대하여
+                <m>\exp\big(\tfrac{2\pi}{3}[n]_\times\big)=P</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                같은 <m>n</m> 에 대하여 <m>\exp(\pi[n]_\times)</m> 를 구하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          <m>[n]_\times^2=nn^{\operatorname{T}}-I</m> 이고,
+          <m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m> 이면
+          <m>nn^{\operatorname{T}}=\tfrac13\mathbf 1</m> (모든 성분이 <m>1</m> 인 행렬
+          <m>\mathbf 1</m> )입니다.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) <m>J_z=[e_3]_\times</m> 이고
+          <m>J_z^2=\operatorname{diag}(-1,-1,0)</m> 이므로
+          <m>I+\sin\theta J_z+(1-\cos\theta)J_z^2=R_z(\theta)</m> 입니다.
+          <m>J_x=[e_1]_\times</m>, <m>J_y=[e_2]_\times</m> 도 같습니다.
+        </p>
+
+        <p>
+          (b)
+          <m>K=\begin{pmatrix}0&amp;-1&amp;1\\1&amp;0&amp;-1\\-1&amp;1&amp;0\end{pmatrix}</m>
+          라 하면 <m>[n]_\times=K/\sqrt3</m> 이고,
+          <m>\sin\tfrac{2\pi}3=\tfrac{\sqrt3}2</m>,
+          <m>1-\cos\tfrac{2\pi}3=\tfrac32</m> 이므로
+          <me>
+            \exp\big(\tfrac{2\pi}{3}[n]_\times\big)=I+\tfrac12K+\tfrac32\big(\tfrac13\mathbf 1-I\big)=-\tfrac12I+\tfrac12K+\tfrac12\mathbf 1=P
+          </me>
+          입니다(성분별로 확인할 수 있습니다).
+        </p>
+
+        <p>
+          (c)
+          <m>\exp(\pi[n]_\times)=I+2[n]_\times^2=2nn^{\operatorname{T}}-I=\tfrac23\mathbf 1-I=\tfrac13\begin{pmatrix}-1&amp;2&amp;2\\2&amp;-1&amp;2\\2&amp;2&amp;-1\end{pmatrix}</m>
+          이고, 이것은 <xref ref="exer-3d-reflections"/> 의 <m>S_n</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 7 ===================== -->
+    <exercise xml:id="exer-3d-logarithm">
+      <title>회전행렬에서 축과 각 구하기</title>
+
+      <statement>
+        <p>
+          단위벡터 <m>n</m> 과 <m>\theta\in[0,\pi]</m> 에 대하여
+          <m>A=\exp(\theta[n]_\times)</m> 라 합니다.
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>A-A^{\operatorname{T}}=2\sin\theta\,[n]_\times</m> 이고
+                <m>\operatorname{tr}A=1+2\cos\theta</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>0&lt;\theta&lt;\pi</m> 이면
+                <me>
+                  \theta=\arccos\frac{\operatorname{tr}A-1}{2},\qquad n=\frac{1}{2\sin\theta}\,(A-A^{\operatorname{T}})^\vee
+                </me>
+                임을 보여라.
+                따라서 이 경우 <m>\theta n</m> 은 <m>A</m> 에 의해 유일하게 결정된다.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                (b)를 <m>P</m> 에 적용하여 <xref ref="exer-3d-trace-angle"/> 의 결과와
+                비교하여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>\theta=\pi</m> 이면 (b)의 공식을 쓸 수 없음을 설명하고,
+                <m>A+I=2nn^{\operatorname{T}}</m> 로부터 <m>n</m> 이 부호를 제외하고 결정됨을
+                보여라.
+                이를 <m>\tfrac23\mathbf 1-I</m> 와
+                <m>\operatorname{diag}(-1,-1,1)</m> 에 적용하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          (a) <xref ref="lem-hatmap-calculus"/> 에 의해
+          <m>[n]_\times^2=nn^{\operatorname{T}}-I</m> 는 대칭이고 <m>[n]_\times</m> 는
+          반대칭이므로
+          <m>A^{\operatorname{T}}=I-\sin\theta[n]_\times+(1-\cos\theta)[n]_\times^2</m>
+          이고, 빼면 첫 식을 얻습니다.
+          또 <m>\operatorname{tr}[n]_\times=0</m>,
+          <m>\operatorname{tr}[n]_\times^2=\lVert n\rVert^2-3=-2</m> 이므로
+          <m>\operatorname{tr}A=3-2(1-\cos\theta)=1+2\cos\theta</m> 입니다.
+        </p>
+
+        <p>
+          (b) <m>\arccos</m> 은 <m>[-1,1]\to[0,\pi]</m> 에서 단사이므로 <m>\theta</m> 가
+          결정되고, <m>\sin\theta&gt;0</m> 이므로 (a)를 <m>2\sin\theta</m> 로 나누고 햇맵의 역
+          <m>{}^\vee</m> 를 취하면 <m>n</m> 이 결정됩니다.
+        </p>
+
+        <p>
+          (c)
+          <m>P-P^{\operatorname{T}}=\begin{pmatrix}0&amp;-1&amp;1\\1&amp;0&amp;-1\\-1&amp;1&amp;0\end{pmatrix}=[(1,1,1)^{\operatorname{T}}]_\times</m>
+          이고 <m>2\sin\tfrac{2\pi}3=\sqrt3</m> 이므로
+          <m>n=(1,1,1)^{\operatorname{T}}/\sqrt3</m>, <m>\theta=2\pi/3</m> 입니다.
+          이번에는 회전의 방향까지 결정됩니다.
+        </p>
+
+        <p>
+          (d) <m>\theta=\pi</m> 이면 <m>A-A^{\operatorname{T}}=0</m>,
+          <m>\sin\theta=0</m> 이므로 (b)의 공식은 <m>0/0</m> 이 됩니다.
+          이때 <m>A=I+2[n]_\times^2=2nn^{\operatorname{T}}-I</m> 이므로
+          <m>\tfrac12(A+I)=nn^{\operatorname{T}}</m> 이고, 이 행렬의 영이 아닌 열은 <m>n</m>
+          의 스칼라배이므로 정규화하면 <m>\pm n</m> 을 얻습니다.
+          <m>A=\tfrac23\mathbf 1-I</m> 이면 <m>\tfrac12(A+I)=\tfrac13\mathbf 1</m>
+          이므로 <m>n=\pm(1,1,1)^{\operatorname{T}}/\sqrt3</m> 이고,
+          <m>A=\operatorname{diag}(-1,-1,1)</m> 이면
+          <m>\tfrac12(A+I)=\operatorname{diag}(0,0,1)</m> 이므로 <m>n=\pm e_3</m>
+          입니다.
+          <m>\exp(\pi[n]_\times)=\exp(\pi[-n]_\times)</m> 이므로 부호는 원리적으로 결정될 수
+          없습니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 8 ===================== -->
+    <exercise xml:id="exer-3d-commutator">
+      <title>교환자와 외적</title>
+
+      <statement>
+        <p>
+          <m>a,b\in\mathbb R^3</m> 라 합니다.
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>[a]_\times[b]_\times=ba^{\operatorname{T}}-(a\bullet b)I</m>
+                임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>[a]_\times[b]_\times-[b]_\times[a]_\times=[a\times b]_\times</m>
+                임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>J_xJ_y-J_yJ_x=J_z</m>, <m>J_yJ_z-J_zJ_y=J_x</m>,
+                <m>J_zJ_x-J_xJ_z=J_y</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>[a]_\times</m> 와 <m>[b]_\times</m> 가 교환가능할 필요충분조건은 <m>a</m> 와
+                <m>b</m> 가 평행한 것(둘 중 하나가 <m>0</m> 인 경우 포함)임을 보여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          벡터 삼중곱 공식 <m>a\times(b\times x)=b(a\bullet x)-x(a\bullet b)</m> 를
+          이용하여라.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) 모든 <m>x</m> 에 대하여
+          <m>[a]_\times[b]_\times x=a\times(b\times x)=b(a\bullet x)-x(a\bullet b)=\big(ba^{\operatorname{T}}-(a\bullet b)I\big)x</m>
+          입니다.
+        </p>
+
+        <p>
+          (b) (a)에서 좌변은 <m>ba^{\operatorname{T}}-ab^{\operatorname{T}}</m> 입니다.
+          한편
+          <m>(a\times b)\times x=-x\times(a\times b)=-\big(a(x\bullet b)-b(x\bullet a)\big)=(ba^{\operatorname{T}}-ab^{\operatorname{T}})x</m>
+          입니다.
+        </p>
+
+        <p>
+          (c) <m>J_x=[e_1]_\times</m>, <m>J_y=[e_2]_\times</m>,
+          <m>J_z=[e_3]_\times</m> 이고 <m>e_1\times e_2=e_3</m>,
+          <m>e_2\times e_3=e_1</m>, <m>e_3\times e_1=e_2</m> 이므로 (b)에서 바로 나옵니다.
+        </p>
+
+        <p>
+          (d) (b)에 의해 교환자는 <m>[a\times b]_\times</m> 이고, 햇맵은 단사이므로 이것이 <m>0</m>
+          일 필요충분조건은 <m>a\times b=0</m>, 즉 <m>a,b</m> 가 일차종속인 것입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 9 ===================== -->
+    <exercise xml:id="exer-3d-conjugation">
+      <title>회전과 외적, 켤레</title>
+
+      <statement>
+        <p>
+          <m>R\in\operatorname{SO}(3)</m> 이라 합니다.
+          <ol marker="(a)">
+            <li>
+              <p>
+                모든 <m>a,b</m> 에 대하여 <m>R(a\times b)=(Ra)\times(Rb)</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>R[a]_\times R^{\operatorname{T}}=[Ra]_\times</m> 임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                단위벡터 <m>n</m> 에 대하여
+                <m>R\exp(\theta[n]_\times)R^{\operatorname{T}}=\exp(\theta[Rn]_\times)</m>
+                임을 보이고, 기하학적 의미를 설명하여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>A</m> 가 <m>\det A=-1</m> 인 직교행렬이면
+                <m>A(a\times b)=-(Aa)\times(Ab)</m> 임을 보이고, <m>A=-I</m> 로 확인하여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          (a) 모든 <m>c</m> 에 대하여 <m>(a\times b)\bullet c=\det[a\ b\ c]</m> 입니다.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) 모든 <m>c</m> 에 대하여
+          <me>
+            \big(R(a\times b)\big)\bullet(Rc)=(a\times b)\bullet c=\det[a\ b\ c]=\det R\cdot\det[a\ b\ c]=\det[Ra\ Rb\ Rc]=\big((Ra)\times(Rb)\big)\bullet(Rc)
+          </me>
+          입니다.
+          <m>R</m> 은 가역이므로 <m>Rc</m> 는 <m>\mathbb R^3</m> 전체를 지나고, 따라서 두 벡터는
+          같습니다.
+        </p>
+
+        <p>
+          (b) 모든 <m>y</m> 에 대하여
+          <m>R[a]_\times R^{\operatorname{T}}y=R(a\times R^{\operatorname{T}}y)=(Ra)\times(RR^{\operatorname{T}}y)=(Ra)\times y</m>
+          입니다.
+        </p>
+
+        <p>
+          (c) <m>(RXR^{\operatorname{T}})^m=RX^mR^{\operatorname{T}}</m> 이므로
+          부분합에서
+          <m>R\big(\sum_{m\le N}X^m/m!\big)R^{\operatorname{T}}=\sum_{m\le N}(RXR^{\operatorname{T}})^m/m!</m>
+          이고, 극한을 취하면
+          <m>R\exp(X)R^{\operatorname{T}}=\exp(RXR^{\operatorname{T}})</m> 입니다.
+          <m>X=\theta[n]_\times</m> 에 (b)를 적용하면 됩니다.
+          의미: 축 <m>n</m> 에 대한 각 <m>\theta</m> 의 회전을 <m>R</m> 로 옮겨 보면, 옮겨진 축
+          <m>Rn</m> 에 대한 같은 각의 회전입니다.
+          예를 들어 <m>R_z(\theta)</m> 를 켤레하여 임의의 축에 대한 회전을 얻을 수 있습니다.
+        </p>
+
+        <p>
+          (d) (a)의 계산에서 <m>\det A=-1</m> 이 부호를 바꿉니다.
+          <m>A=-I</m> 이면 <m>(-a)\times(-b)=a\times b</m> 이지만
+          <m>A(a\times b)=-(a\times b)</m> 입니다.
+          외적은 방향(손대칭성)에 의존하는 연산입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 10 ===================== -->
+    <exercise xml:id="exer-3d-nonadditive">
+      <title>지수함수는 합을 곱으로 보내지 않는다</title>
+
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li>
+              <p>
+                <m>R_x(\pi/2)R_y(\pi/2)=P</m> 임을 보이고, 이 합성의 회전축과 회전각을 구하여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>m=(1,1,0)^{\operatorname{T}}/\sqrt2</m> 에 대하여
+                <m>\tfrac\pi2(J_x+J_y)=\tfrac{\pi}{\sqrt2}[m]_\times</m> 임을 보이고,
+                <m>\exp\big(\tfrac\pi2(J_x+J_y)\big)</m> 의 회전축과 회전각을 구하여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                (a), (b)로부터
+                <m>\exp\big(\tfrac\pi2J_x\big)\exp\big(\tfrac\pi2J_y\big)\ne\exp\big(\tfrac\pi2(J_x+J_y)\big)</m>
+                임을 결론지어라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>t\to0</m> 일 때
+                <me>
+                  \exp(tJ_x)\exp(tJ_y)-\exp\big(t(J_x+J_y)\big)=\tfrac{t^2}{2}J_z+O(t^3)
+                </me>
+                임을 보여라.
+                따라서 차이는 각이 작아도 사라지지 않고 2차 항으로 나타난다.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>a</m> 와 <m>b</m> 가 평행하면
+                <m>\exp([a]_\times)\exp([b]_\times)=\exp([a+b]_\times)</m> 임을
+                보여라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          (d) <m>\exp(X)=I+X+\tfrac12X^2+\sum_{m\ge3}X^m/m!</m> 이고
+          <m>\big\lVert\sum_{m\ge3}t^mX^m/m!\big\rVert\le\sum_{m\ge3}\lvert t\rvert^m\lVert X\rVert^m/m!=O(t^3)</m>
+          입니다.
+          (e) <xref ref="exer-3d-commutator"/> (d)와 이항정리를 이용하여라.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) <xref ref="exer-3d-rodrigues-compute"/> (a)에 의해
+          <m>\exp(\tfrac\pi2J_x)=R_x(\pi/2)</m>,
+          <m>\exp(\tfrac\pi2J_y)=R_y(\pi/2)</m> 이고, 직접 곱하면 <m>P</m> 입니다.
+          <xref ref="exer-3d-logarithm"/> (c)에 의해 축은
+          <m>(1,1,1)^{\operatorname{T}}/\sqrt3</m>, 각은 <m>2\pi/3=120^\circ</m>
+          입니다.
+        </p>
+
+        <p>
+          (b)
+          <m>J_x+J_y=[(1,1,0)^{\operatorname{T}}]_\times=\sqrt2[m]_\times</m>
+          이므로 <xref ref="thm-rodrigues"/> 에 의해
+          <m>\exp\big(\tfrac\pi2(J_x+J_y)\big)</m> 는 축 <m>m</m> 에 대한 각
+          <m>\pi/\sqrt2\approx127.3^\circ</m> 의 회전입니다.
+        </p>
+
+        <p>
+          (c) 축이 다르고( <m>(1,1,1)</m> 방향과 <m>(1,1,0)</m> 방향), 대각합도 <m>0</m> 과
+          <m>1+2\cos(\pi/\sqrt2)\approx-0.211</m> 로 다릅니다.
+        </p>
+
+        <p>
+          (d) 힌트에 의해
+          <md>
+            <mrow>\exp(tJ_x)\exp(tJ_y)\amp=I+t(J_x+J_y)+t^2\big(\tfrac12J_x^2+J_xJ_y+\tfrac12J_y^2\big)+O(t^3),</mrow>
+            <mrow>\exp\big(t(J_x+J_y)\big)\amp=I+t(J_x+J_y)+\tfrac{t^2}{2}\big(J_x^2+J_xJ_y+J_yJ_x+J_y^2\big)+O(t^3)</mrow>
+          </md>
+          이므로 차이는
+          <m>\tfrac{t^2}2(J_xJ_y-J_yJ_x)+O(t^3)=\tfrac{t^2}2J_z+O(t^3)</m> 입니다(
+          <xref ref="exer-3d-commutator"/> (c)).
+        </p>
+
+        <p>
+          (e) <m>X=[a]_\times</m>, <m>Y=[b]_\times</m> 는
+          <xref ref="exer-3d-commutator"/> (d)에 의해 교환가능합니다.
+          두 급수는 절대수렴하므로 곱을 항별로 전개하여 재배열할 수 있고,
+          <me>
+            \exp X\exp Y=\sum_{m\ge0}\frac1{m!}\sum_{j+k=m}\binom mjX^jY^k=\sum_{m\ge0}\frac{(X+Y)^m}{m!}=\exp(X+Y)
+          </me>
+          입니다.
+          둘째 등호에서 교환가능성과 이항정리를 썼습니다.
+          햇맵의 선형성에 의해 <m>X+Y=[a+b]_\times</m> 입니다.
+        </p>
+      </solution>
+    </exercise>
+    <!-- ===================== 11 ===================== -->
+    <exercise xml:id="exer-3d-half-turns">
+      <title>반회전의 곱</title>
+
+      <statement>
+        <p>
+          단위벡터 <m>u</m> 에 대하여
+          <m>S_u=2uu^{\operatorname{T}}-I=\exp(\pi[u]_\times)</m> 는 축 <m>u</m> 에
+          대한 반회전입니다( <xref ref="exer-3d-reflections"/> ).
+          <ol marker="(a)">
+            <li>
+              <p>
+                평행하지 않은 단위벡터 <m>u,v</m> 에 대하여 <m>u\bullet v=\cos\alpha</m> (
+                <m>0&lt;\alpha&lt;\pi</m> )이고
+                <m>w=(u\times v)/\lVert u\times v\rVert</m> 라 하자.
+                그러면 <m>S_vS_u=\exp(2\alpha[w]_\times)</m>, 즉 <m>S_vS_u</m> 는 축
+                <m>w</m> 에 대한 각 <m>2\alpha</m> 의 회전임을 보여라.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>A=\exp(\theta[n]_\times)</m>, <m>0&lt;\theta\le\pi</m> 라 하자.
+                <m>n\perp u</m> 인 임의의 단위벡터 <m>u</m> 에 대하여
+                <m>v=\exp(\tfrac\theta2[n]_\times)u</m> 로 두면 <m>A=S_vS_u</m> 임을
+                보여라.
+                따라서 <m>\operatorname{SO}(3)</m> 의 모든 원소는 두 반회전의 곱이다.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                두 회전 <m>A_1=\exp(\theta_1[n_1]_\times)</m>,
+                <m>A_2=\exp(\theta_2[n_2]_\times)</m> (
+                <m>0&lt;\theta_i\le\pi</m>, <m>n_1,n_2</m> 는 평행하지 않은 단위벡터)에 대하여
+                <m>v=(n_1\times n_2)/\lVert n_1\times n_2\rVert</m>,
+                <m>u=\exp(-\tfrac{\theta_1}2[n_1]_\times)v</m>,
+                <m>w=\exp(\tfrac{\theta_2}2[n_2]_\times)v</m> 로 두면
+                <m>A_2A_1=S_wS_u</m> 임을 보여라.
+                이로부터 <m>u\times w\ne0</m> 일 때 <m>A_2A_1</m> 의 회전축과 회전각을
+                <m>u,w</m> 로 나타내어라.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+
+      <hint>
+        <p>
+          (a) <m>w</m> 가 고정됨을 보이고, 대각합으로 각의 크기를, <m>u</m> 의 상으로 회전의 방향을 정하여라.
+          축 <m>w</m> 에 대한 각 <m>\beta</m> 의 회전은 <m>w\perp x</m> 인 <m>x</m> 를
+          <m>\cos\beta\,x+\sin\beta\,(w\times x)</m> 로 보냅니다(
+          <xref ref="thm-rodrigues"/> 의 증명).
+          (c) <m>S_v^2=I</m> 입니다.
+        </p>
+      </hint>
+
+      <solution>
+        <p>
+          (a) <m>S_uw=2u(u\bullet w)-w=-w</m> 이고 마찬가지로 <m>S_v(-w)=w</m> 이므로
+          <m>S_vS_uw=w</m> 입니다.
+          <m>S_vS_u\in\operatorname{SO}(3)</m> 이고
+          <me>
+            \operatorname{tr}(S_vS_u)=\operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)=4\cos^2\alpha-1=1+2\cos2\alpha
+          </me>
+          이므로 <xref ref="exer-3d-trace-angle"/> 에 의해 회전각은 <m>2\alpha</m> 또는
+          <m>-2\alpha</m> (축 <m>w</m> 기준)입니다.
+          방향을 정하기 위해 <m>u\perp w</m> 의 상을 봅니다.
+          <m>(u\times v)\times u=v-(u\bullet v)u</m> 이므로
+          <m>w\times u=(v-\cos\alpha\,u)/\sin\alpha</m> 이고,
+          <me>
+            \cos2\alpha\,u+\sin2\alpha\,(w\times u)=\cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)=2\cos\alpha\,v-u=S_vS_uu
+          </me>
+          입니다.
+          따라서 <m>S_vS_u</m> 는 축 <m>w</m> 에 대한 각 <m>+2\alpha</m> 의 회전, 즉
+          <m>\exp(2\alpha[w]_\times)</m> 입니다.
+          ( <m>2\alpha</m> 가 <m>(\pi,2\pi)</m> 에 있으면 이는 축 <m>-w</m> 에 대한 각
+          <m>2\pi-2\alpha</m> 의 회전과 같습니다.)
+        </p>
+
+        <p>
+          (b) <m>u\perp n</m> 이므로
+          <m>v=\cos\tfrac\theta2\,u+\sin\tfrac\theta2\,(n\times u)</m> 는 단위벡터이고
+          <m>u\bullet v=\cos\tfrac\theta2</m> 입니다.
+          또
+          <m>u\times v=\sin\tfrac\theta2\,u\times(n\times u)=\sin\tfrac\theta2\big(n(u\bullet u)-u(u\bullet n)\big)=\sin\tfrac\theta2\,n</m>
+          이고 <m>\sin\tfrac\theta2&gt;0</m> 이므로 <m>w=n</m>,
+          <m>\alpha=\theta/2</m> 입니다.
+          (a)에 의해 <m>S_vS_u=\exp(\theta[n]_\times)=A</m> 입니다.
+          <m>A=I</m> 이면 <m>A=S_uS_u</m> 입니다.
+        </p>
+
+        <p>
+          (c) <m>v\perp n_1</m> 이고 <m>n_1</m> 에 대한 회전은 <m>n_1^\perp</m> 을 보존하므로
+          <m>u\perp n_1</m> 이고 <m>v=\exp(\tfrac{\theta_1}2[n_1]_\times)u</m>
+          입니다.
+          (b)에 의해 <m>A_1=S_vS_u</m> 입니다.
+          같은 이유로 <m>v\perp n_2</m>,
+          <m>w=\exp(\tfrac{\theta_2}2[n_2]_\times)v</m> 이므로 <m>A_2=S_wS_v</m>
+          입니다.
+          따라서
+          <me>
+            A_2A_1=S_wS_vS_vS_u=S_wS_u
+          </me>
+          이고, (a)에 의해 <m>u\times w\ne0</m> 이면 <m>A_2A_1</m> 은 축
+          <m>(u\times w)/\lVert u\times w\rVert</m> 에 대한 각
+          <m>2\arccos(u\bullet w)</m> 의 회전입니다.
+          즉 두 회전의 합성은 두 축의 공통수직선 <m>v</m> 를 기준으로 한 반각들로 기하학적으로 작도됩니다(해밀턴의 작도).
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
 </section>
