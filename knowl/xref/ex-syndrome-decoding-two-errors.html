@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">3.2.14</span><span class="period">.</span><span class="space"> </span><span class="title">두 오류의 정확한 복구.</span>
+</h3>
+<div class="para logical">
+<div class="para">반복부호 <span class="process-math">\(R_5=\{00000,11111\}\)</span>는 <span class="process-math">\([5,1,5]\)</span> 부호이므로 정정 반경은 <span class="process-math">\(t=2\)</span>입니다. 부호어 <span class="process-math">\(c=11111\)</span>를 전송하고 오류 패턴 <span class="process-math">\(e=01001\)</span>이 발생하면 <span class="process-math">\(r=10110\)</span>을 수신합니다. 검사 행렬을</div>
+<div class="displaymath process-math">
+\begin{align*}
+H=\begin{pmatrix}1 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">로 두면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+Hr=He=\begin{pmatrix}1\\1\\0\\1\end{pmatrix}
+\end{gather*}
+</div>
+<div class="para">입니다. 이 신드롬을 갖는 두 오류 패턴은 <span class="process-math">\(01001\)</span>과 <span class="process-math">\(10110\)</span>이고 무게는 각각 <span class="process-math">\(2\)</span>와 <span class="process-math">\(3\)</span>이므로, 코셋 대표원소는 <span class="process-math">\(e_s=01001\)</span>입니다. 따라서 신드롬 복호는</div>
+<div class="displaymath process-math">
+\begin{gather*}
+r-e_s=10110-01001=11111
+\end{gather*}
+</div>
+<div class="para">을 출력하여 원래 부호어와 메시지 <span class="process-math">\(1\)</span>을 정확히 복원합니다.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#ex-syndrome-decoding-two-errors">[incontext]</a></span>
+</body>
+</html>

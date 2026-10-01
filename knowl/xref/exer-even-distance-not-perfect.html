@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">최소 거리가 짝수인 부호.</span>
+</h4>
+<div class="para">부호어가 둘 이상인 부호 <span class="process-math">\(C\subseteq\mathbb F_2^n\)</span>의 최소 거리 <span class="process-math">\(d\)</span>가 짝수이면 <span class="process-math">\(C\)</span>는 완전 부호가 아님을 보이십시오. 이 결과를 본문 <a href="sec-hamming-code.html#ex-not-perfect-code" class="xref" data-knowl="./knowl/xref/ex-not-perfect-code.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 3.3.8: 완전 부호가 아닌 부호">예시 3.3.8</a>와 비교하십시오.</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">거리가 <span class="process-math">\(d\)</span>인 두 부호어의 “중간점”을 만드십시오.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para">
+<span class="process-math">\(d=2t+2\)</span>이므로 <span class="process-math">\(t=\lfloor (d-1)/2\rfloor\)</span>입니다. <span class="process-math">\(\operatorname{dist}(c,c')=d\)</span>인 부호어 <span class="process-math">\(c,c'\)</span>를 택하고, 두 부호어의 성분이 다른 <span class="process-math">\(2t+2\)</span>개의 위치 중 <span class="process-math">\(t+1\)</span>개를 골라 <span class="process-math">\(T\)</span>라 합시다. <span class="process-math">\(i\in T\)</span>이면 <span class="process-math">\(v_i=c'_i\text{,}\)</span> 아니면 <span class="process-math">\(v_i=c_i\)</span>로 정하면 <span class="process-math">\(\operatorname{dist}(v,c)=\operatorname{dist}(v,c')=t+1\)</span>입니다. <span class="process-math">\(v\in B(c'',t)\)</span>인 부호어 <span class="process-math">\(c''\)</span>가 있다면 <span class="process-math">\(\operatorname{dist}(c,c'')\le (t+1)+t=d-1\)</span>이므로 <span class="process-math">\(c''=c\)</span>인데, <span class="process-math">\(\operatorname{dist}(v,c)=t+1&gt;t\)</span>이므로 모순입니다. 따라서 <span class="process-math">\(v\)</span>는 어느 구에도 속하지 않습니다.</div>
+<div class="para">본문의 예제는 <span class="process-math">\(d=2\text{,}\)</span> <span class="process-math">\(t=0\)</span>인 경우입니다. 이 구성으로 <span class="process-math">\(c=000\text{,}\)</span> <span class="process-math">\(c'=011\)</span>에서 <span class="process-math">\(T=\{2\}\)</span>를 택하면 <span class="process-math">\(v=010\)</span>을 얻고, 본문의 <span class="process-math">\(001\)</span>은 <span class="process-math">\(T=\{3\}\)</span>을 택한 경우입니다.</div>
+</div></details>
+</div></article><span class="incontext"><a class="internal" href="sec-hamming-code.html#exer-even-distance-not-perfect">[incontext]</a></span>
+</body>
+</html>

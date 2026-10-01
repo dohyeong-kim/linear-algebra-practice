@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">해밍 구의 크기.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-hamming-ball-size-2-1-1">
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(0\le t\le n\)</span>일 때 임의의 <span class="process-math">\(x\in\mathbb F_2^n\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{gather*}
+|B(x,t)|=V(n,t):=\sum_{i=0}^{t}\binom{n}{i}
+\end{gather*}
+</div>
+<div class="para">임을 보이십시오. 특히 구의 크기는 중심에 의존하지 않습니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(V(7,1)\text{,}\)</span> <span class="process-math">\(V(15,1)\text{,}\)</span> <span class="process-math">\(V(5,2)\text{,}\)</span> <span class="process-math">\(V(7,2)\)</span>를 계산하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(r=3\)</span>인 해밍 부호에서 <span class="process-math">\(B(1101000,1)\)</span>의 원소를 모두 나열하고, 중심 외에는 부호어가 없음을 확인하십시오.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-hamming-ball-size-3-1-1">
+<li><div class="para">
+<span class="process-math">\(x\)</span>와 거리가 정확히 <span class="process-math">\(i\)</span>인 벡터는 성분이 다를 <span class="process-math">\(i\)</span>개의 위치를 고르고 그 위치의 성분을 모두 바꾸면 정확히 한 번씩 얻어지므로 <span class="process-math">\(\binom ni\)</span>개입니다. 이를 <span class="process-math">\(i=0,\dots,t\)</span>에 대해 더하면 됩니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(V(7,1)=8\text{,}\)</span> <span class="process-math">\(V(15,1)=16\text{,}\)</span> <span class="process-math">\(V(5,2)=1+5+10=16\text{,}\)</span> <span class="process-math">\(V(7,2)=1+7+21=29\)</span>입니다.</div></li>
+<li><div class="para">원소는 <span class="process-math">\(1101000\)</span>과 한 성분을 바꾼 <span class="process-math">\(0101000,\ 1001000,\ 1111000,\ 1100000,\ 1101100,\ 1101010,\ 1101001\)</span>의 여덟 개입니다. <a href="sec-hamming-code.html#exer-hamming-single-error" class="xref" data-knowl="./knowl/xref/exer-hamming-single-error.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.3.3: 한 성분 오류의 위치 찾기">연습문제 3.3.3</a>(a)에 의해 <span class="process-math">\(1101000+e_j\)</span>의 신드롬은 <span class="process-math">\(h_j\ne 0\)</span>이므로 중심 외에는 부호어가 없습니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-hamming-code.html#exer-hamming-ball-size">[incontext]</a></span>
+</body>
+</html>

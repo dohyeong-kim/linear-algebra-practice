@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">3.2.15</span><span class="period">.</span><span class="space"> </span><span class="title">정정 반경을 넘는 오류.</span>
+</h3>
+<div class="para logical">
+<div class="para">반복부호 <span class="process-math">\(R_3=\{000,111\}\)</span>는 <span class="process-math">\([3,1,3]\)</span> 부호이므로 정정 반경은 <span class="process-math">\(t=1\)</span>입니다. 부호어 <span class="process-math">\(c=111\)</span>을 전송했는데 오류 패턴 <span class="process-math">\(e=110\)</span>이 발생하면 수신 벡터는 <span class="process-math">\(r=001\)</span>입니다. 앞에서 사용한 검사 행렬에 대하여</div>
+<div class="displaymath process-math">
+\begin{gather*}
+Hr=He=\begin{pmatrix}0\\1\end{pmatrix}
+\end{gather*}
+</div>
+<div class="para">이고, 이 신드롬의 코셋 대표원소는 무게가 <span class="process-math">\(1\)</span>인 <span class="process-math">\(e_s=001\)</span>입니다. 따라서 신드롬 복호는</div>
+<div class="displaymath process-math">
+\begin{gather*}
+r-e_s=001-001=000
+\end{gather*}
+</div>
+<div class="para">을 출력합니다. 실제 오류의 무게 <span class="process-math">\(2\)</span>가 정정 반경 <span class="process-math">\(1\)</span>을 넘었으므로 정리의 가정이 성립하지 않으며, 실제로 원래 부호어 <span class="process-math">\(111\)</span>과 메시지 <span class="process-math">\(1\)</span>을 복원하지 못합니다.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#ex-syndrome-decoding-beyond-radius">[incontext]</a></span>
+</body>
+</html>

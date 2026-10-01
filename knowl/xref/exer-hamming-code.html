@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">13<span class="period">.</span></span><span class="space"> </span><span class="title">길이 7인 해밍 부호.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(j\)</span>번째 열이 <span class="process-math">\(j\)</span>의 이진 표현인 행렬</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-distance-from-columns.html">
+\begin{align*}
+H=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">에 대하여 <span class="process-math">\(C=\{v\in\mathbb F_2^7:Hv=0\}\)</span>이라 합시다.</div>
+<ol class="lower-alpha" id="exer-hamming-code-2-1-5">
+<li><div class="para">
+<span class="process-math">\(\dim C=4\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<a href="sec-information-and-redundancy.html#exer-distance-from-columns" class="xref" data-knowl="./knowl/xref/exer-distance-from-columns.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.12: 검사 행렬의 열로 읽는 최소 거리">연습문제 3.2.12</a>을 사용하여 <span class="process-math">\(d=3\)</span>임을 보이십시오.</div></li>
+<li><div class="para">영이 아닌 모든 신드롬은 코셋 대표원소가 유일하고 그 무게가 <span class="process-math">\(1\)</span>임을 보이십시오. 또한 신드롬을 이진수로 읽으면 오류의 위치가 됨을 설명하십시오.</div></li>
+<li><div class="para">수신 벡터 <span class="process-math">\(r=1011011\)</span>을 신드롬 복호하십시오.</div></li>
+<li><div class="para">무게가 <span class="process-math">\(2\)</span>인 오류가 발생하면 신드롬 복호는 항상 전송한 부호어가 아닌 부호어를 출력함을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-hamming-code-3-1-1">
+<li><div class="para">네 번째, 두 번째, 첫 번째 열이 <span class="process-math">\(\mathbb F_2^3\)</span>의 표준기저이므로 <span class="process-math">\(H\)</span>의 계수는 <span class="process-math">\(3\)</span>이고, <span class="process-math">\(\dim C=7-3=4\)</span>입니다.</div></li>
+<li><div class="para">영열이 없고 모든 열이 서로 다르므로 <span class="process-math">\(d\ge 3\)</span>입니다. <span class="process-math">\(h_1+h_2+h_3=(0,0,1)^{\mathsf T}+(0,1,0)^{\mathsf T}+(0,1,1)^{\mathsf T}=0\)</span>이므로 <span class="process-math">\(d=3\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(H\)</span>의 열은 <span class="process-math">\(\mathbb F_2^3\)</span>의 영이 아닌 벡터 일곱 개와 정확히 한 번씩 일치합니다. 따라서 <span class="process-math">\(s\ne 0\)</span>이면 <span class="process-math">\(s=h_j\)</span>인 <span class="process-math">\(j\)</span>가 유일하고, 신드롬이 <span class="process-math">\(s\)</span>인 무게 <span class="process-math">\(1\)</span>인 벡터는 <span class="process-math">\(j\)</span>번째 표준기저벡터뿐입니다. 무게 <span class="process-math">\(0\)</span>인 벡터의 신드롬은 <span class="process-math">\(0\)</span>이므로 이것이 유일한 대표원소입니다. <span class="process-math">\(h_j\)</span>가 <span class="process-math">\(j\)</span>의 이진 표현이므로 신드롬은 오류 위치의 이진 표현입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(Hr=h_1+h_3+h_4+h_6+h_7\)</span>이며, 이진수로 <span class="process-math">\(001\oplus011\oplus100\oplus110\oplus111=111\)</span>입니다. 따라서 오류는 일곱 번째 위치에 있고 출력은 <span class="process-math">\(1011010\)</span>입니다. 실제로 <span class="process-math">\(h_1+h_3+h_4+h_6=0\)</span>이므로 이는 부호어입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(e\)</span>의 지지집합을 <span class="process-math">\(\{i,j\}\)</span>라 하면 <span class="process-math">\(h_i\ne h_j\)</span>이므로 <span class="process-math">\(s=h_i+h_j\ne 0\)</span>이고, <span class="process-math">\(s=h_l\)</span>인 <span class="process-math">\(l\)</span>이 유일합니다. <span class="process-math">\(l=i\)</span>이면 <span class="process-math">\(h_j=0\)</span>이 되어 모순이므로 <span class="process-math">\(l\notin\{i,j\}\)</span>입니다. 출력 <span class="process-math">\(c+e+e_l\)</span>에서 <span class="process-math">\(e+e_l\)</span>은 무게가 <span class="process-math">\(3\)</span>인 부호어이므로, 출력은 <span class="process-math">\(c\)</span>와 다른 부호어입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-hamming-code">[incontext]</a></span>
+</body>
+</html>

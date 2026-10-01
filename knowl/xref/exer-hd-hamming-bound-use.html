@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">해밍 상한의 사용.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-hd-hamming-bound-use-2-1-1">
+<li><div class="para">
+<span class="process-math">\([6,4,3]\)</span> 선형부호가 존재하지 않음을 보이십시오. 이와 <a href="sec-hamming-distance.html#exer-hd-six-three-three" class="xref" data-knowl="./knowl/xref/exer-hd-six-three-three.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.1.7: 검사 행렬로 주어진 부호의 매개변수">연습문제 3.1.7</a>로부터, 길이 <span class="process-math">\(6\)</span>이고 최소 거리가 <span class="process-math">\(3\)</span>인 선형부호의 최대 차원은 <span class="process-math">\(3\)</span>입니다.</div></li>
+<li><div class="para">길이 <span class="process-math">\(7\text{,}\)</span> 최소 거리 <span class="process-math">\(3\)</span>인 선형부호와 길이 <span class="process-math">\(10\text{,}\)</span> 최소 거리 <span class="process-math">\(5\)</span>인 선형부호의 차원이 모두 <span class="process-math">\(4\)</span> 이하임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(d\le 2\)</span>이면 해밍 상한이 아무 정보도 주지 않음을 설명하십시오.</div></li>
+<li><div class="para">
+<a href="sec-hamming-distance.html#thm-hamming-bound" class="xref" data-knowl="./knowl/xref/thm-hamming-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 3.1.12: 해밍 상한">정리 3.1.12</a>의 증명을 고쳐, 선형이 아닌 부호 <span class="process-math">\(C\)</span>에 대해서도 <span class="process-math">\(|C|\sum_{j=0}^{\lfloor(d-1)/2\rfloor}\binom nj\le 2^n\)</span>이 성립함을 보이십시오.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-hd-hamming-bound-use-3-1-1">
+<li><div class="para">
+<span class="process-math">\(2^4\cdot 7=112&gt;64\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(2^k\cdot 8\le 2^7\)</span>에서 <span class="process-math">\(k\le 4\)</span>입니다. <span class="process-math">\(2^k(1+10+45)\le 2^{10}\)</span>에서 <span class="process-math">\(2^k\le 1024/56&lt;32\)</span>이므로 <span class="process-math">\(k\le 4\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(d\le 2\)</span>이면 합은 <span class="process-math">\(\binom n0=1\)</span>뿐이므로 부등식은 <span class="process-math">\(2^k\le 2^n\text{,}\)</span> 즉 <span class="process-math">\(k\le n\)</span>이 되어 자명합니다.</div></li>
+<li><div class="para">증명에서 선형성은 부호어의 수가 <span class="process-math">\(2^k\)</span>라는 데에만 쓰였습니다. 공들이 서로소라는 논법은 임의의 부호에 대해 성립하므로 <span class="process-math">\(2^k\)</span>를 <span class="process-math">\(|C|\)</span>로 바꾸면 됩니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-hamming-distance.html#exer-hd-hamming-bound-use">[incontext]</a></span>
+</body>
+</html>

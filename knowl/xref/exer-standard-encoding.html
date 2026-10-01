@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">표준형 생성행렬로 부호화하기.</span>
+</h4>
+<div class="para logical">
+<div class="para">생성행렬</div>
+<div class="displaymath process-math">
+\begin{align*}
+G=\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">로 주어진 길이 <span class="process-math">\(5\text{,}\)</span> 차원 <span class="process-math">\(3\)</span>인 부호를 <span class="process-math">\(D\)</span>라 합시다. 부호 <span class="process-math">\(D\)</span>는 이후의 문제에서도 사용합니다.</div>
+<ol class="lower-alpha" id="exer-standard-encoding-2-1-6">
+<li><div class="para">메시지 <span class="process-math">\((1,1,0)\)</span>의 부호어를 구하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(D\)</span>의 부호어 여덟 개를 모두 나열하십시오.</div></li>
+<li><div class="para">부호어 <span class="process-math">\(01111\)</span>을 생성한 메시지를 구하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(G=\begin{pmatrix}I_3 &amp; A\end{pmatrix}\text{,}\)</span> <span class="process-math">\(A=\begin{pmatrix}1 &amp; 1\\ 1 &amp; 0\\ 0 &amp; 1\end{pmatrix}\)</span>인 표준형이므로</div>
+<div class="displaymath process-math">
+\begin{gather*}
+(a,b,c)G=(a,b,c,\,a+b,\,a+c)
+\end{gather*}
+</div>
+<div class="para">입니다.</div>
+<ol class="lower-alpha" id="exer-standard-encoding-3-1-4">
+<li><div class="para">
+<span class="process-math">\((1,1,0)G=(1,1,0,0,1)=11001\)</span>입니다.</div></li>
+<li><div class="para">메시지 <span class="process-math">\(000,100,010,001,110,101,011,111\)</span>의 부호어는 차례로 <span class="process-math">\(00000,\ 10011,\ 01010,\ 00101,\ 11001,\ 10110,\ 01111,\ 11100\)</span>입니다.</div></li>
+<li><div class="para">표준형이므로 처음 세 성분이 메시지입니다. 따라서 메시지는 <span class="process-math">\((0,1,1)\)</span>이고, 실제로 <span class="process-math">\((0,1,1)G=01111\)</span>입니다.</div></li>
+</ol>
+</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-standard-encoding">[incontext]</a></span>
+</body>
+</html>

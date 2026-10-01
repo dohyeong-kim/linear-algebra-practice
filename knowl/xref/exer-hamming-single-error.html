@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">한 성분 오류의 위치 찾기.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-hamming-single-error-2-1-1">
+<li><div class="para">부호어 <span class="process-math">\(c\)</span>에 대하여 <span class="process-math">\(H(c+e_j)=h_j\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(v=1111000\)</span>과 <span class="process-math">\(u=0011111\)</span> 각각에 대해, 거리가 <span class="process-math">\(1\)</span> 이하인 부호어를 구하십시오.</div></li>
+<li><div class="para">(b)에서 구한 부호어가 유일함을 <a href="sec-hamming-code.html#thm-hamming-code-parameters" class="xref" data-knowl="./knowl/xref/thm-hamming-code-parameters.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 3.3.4: 해밍 부호의 매개변수">정리 3.3.4</a>를 사용하여 보이십시오.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-hamming-single-error-3-1-1">
+<li><div class="para">
+<span class="process-math">\(H(c+e_j)=Hc+He_j=0+h_j\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(Hv=h_1+h_2+h_3+h_4=001=h_3\)</span>이므로 <span class="process-math">\(v+e_3=1101000\)</span>은 부호어이며, 이는 본문의 예제에 나온 부호어입니다. <span class="process-math">\(Hu=h_3+h_4+h_5+h_6+h_7=110=h_4\)</span>이므로 <span class="process-math">\(u+e_4=0010111\)</span>이 부호어입니다. 실제로 <span class="process-math">\(h_3+h_5+h_6+h_7=001+101+011+111=000\)</span>입니다.</div></li>
+<li><div class="para">서로 다른 두 부호어 <span class="process-math">\(c,c'\)</span>가 모두 <span class="process-math">\(v\)</span>와 거리 <span class="process-math">\(1\)</span> 이하이면 삼각부등식에 의해 <span class="process-math">\(\operatorname{dist}(c,c')\le 2\)</span>인데, 이는 최소 거리가 <span class="process-math">\(3\)</span>이라는 것과 모순입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-hamming-code.html#exer-hamming-single-error">[incontext]</a></span>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">4.3.7</span><span class="period">.</span><span class="space"> </span><span class="title">페론 정리.</span>
+</h3>
+<div class="para">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. 그러면 <span class="process-math">\(\rho\)</span>는 양의 고유벡터를 갖는 대수적 중복도 <span class="process-math">\(1\)</span>의 고윳값이다. 또한 <span class="process-math">\(\rho\)</span>가 아닌 모든 고윳값 <span class="process-math">\(\lambda\)</span>에 대하여 <span class="process-math">\(|\lambda|&lt;\rho\)</span>이다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">
+<a href="sec-perron-frobenius.html#cor-perron-positive-eigenvector" class="xref" data-knowl="./knowl/xref/cor-perron-positive-eigenvector.html" data-reveal-label="Reveal" data-close-label="Close" title="따름정리 4.3.4: 스펙트럼 반지름의 양의 고유벡터">따름정리 4.3.4</a>에 의해 <span class="process-math">\(\rho&gt;0\)</span>는 양의 고유벡터 <span class="process-math">\(v\)</span>를 갖는 고윳값입니다. <a href="sec-perron-frobenius.html#lem-perron-phase-rigidity" class="xref" data-knowl="./knowl/xref/lem-perron-phase-rigidity.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.5: 스펙트럼 원 위 고유벡터의 위상">보조정리 4.3.5</a>에 의해 스펙트럼 원 <span class="process-math">\(|\lambda|=\rho\)</span> 위에는 <span class="process-math">\(\rho\)</span> 이외의 고윳값이 없습니다. 또한 <a href="sec-perron-frobenius.html#lem-perron-geometric-multiplicity-one" class="xref" data-knowl="./knowl/xref/lem-perron-geometric-multiplicity-one.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.6: 페론 고유공간의 차원">보조정리 4.3.6</a>에 의해 <span class="process-math">\(\rho\)</span>의 기하적 중복도는 <span class="process-math">\(1\)</span>입니다.</div>
+<div class="para logical">
+<div class="para">대수적 중복도도 <span class="process-math">\(1\)</span>임을 보이겠습니다. 전치행렬 <span class="process-math">\(A^{\mathsf T}\)</span>도 양의 행렬이고 <span class="process-math">\(A\)</span>와 같은 특성다항식을 가지므로, 양의 벡터 <span class="process-math">\(w\)</span>에 대하여 <span class="process-math">\(A^{\mathsf T}w=\rho w\)</span>입니다. 초평면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+H=\{x\in\mathbb C^d:w^{\mathsf T}x=0\}
+\end{equation*}
+</div>
+<div class="para">을 생각합시다. <span class="process-math">\(x\in H\)</span>이면 <span class="process-math">\(w^{\mathsf T}Ax=(A^{\mathsf T}w)^{\mathsf T}x=\rho w^{\mathsf T}x=0\)</span>이므로 <span class="process-math">\(H\)</span>는 <span class="process-math">\(A\)</span>-불변입니다. 또한 <span class="process-math">\(w^{\mathsf T}v&gt;0\)</span>이므로 <span class="process-math">\(v\notin H\)</span>입니다.</div>
+</div>
+<div class="para logical">
+<div class="para">따라서 <span class="process-math">\(v\)</span>와 <span class="process-math">\(H\)</span>의 한 기저를 이어 붙인 기저에서 <span class="process-math">\(A\)</span>의 행렬은</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-perron-geometric-multiplicity-one.html">
+\begin{equation*}
+\begin{pmatrix}\rho&amp;0\\0&amp;B\end{pmatrix}
+\end{equation*}
+</div>
+<div class="para">꼴입니다. 만약 <span class="process-math">\(\rho\)</span>의 대수적 중복도가 <span class="process-math">\(1\)</span>보다 크다면 <span class="process-math">\(\rho\)</span>는 <span class="process-math">\(B\)</span>의 고윳값입니다. 그러면 <span class="process-math">\(H\)</span> 안에 <span class="process-math">\(\rho\)</span>의 고유벡터가 존재하여 <span class="process-math">\(v\)</span>와 선형독립이 되므로 <a href="sec-perron-frobenius.html#lem-perron-geometric-multiplicity-one" class="xref" data-knowl="./knowl/xref/lem-perron-geometric-multiplicity-one.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.6: 페론 고유공간의 차원">보조정리 4.3.6</a>에 모순입니다. 따라서 <span class="process-math">\(\rho\)</span>의 대수적 중복도는 <span class="process-math">\(1\)</span>입니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-perron-frobenius.html#thm-perron-positive-matrix">[incontext]</a></span>
+</body>
+</html>

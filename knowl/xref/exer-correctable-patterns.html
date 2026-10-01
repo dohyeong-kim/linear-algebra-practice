@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">정정되는 오류 패턴은 정확히 코셋 대표원소.</span>
+</h4>
+<div class="para logical">
+<div class="para">코셋 대표원소의 선택 <span class="process-math">\(s\mapsto e_s\)</span>를 고정합시다.</div>
+<ol class="lower-alpha" id="exer-correctable-patterns-2-1-2">
+<li><div class="para">임의의 부호어 <span class="process-math">\(c\)</span>와 오류 패턴 <span class="process-math">\(e\)</span>에 대해, <span class="process-math">\(r=c+e\)</span>의 신드롬 복호 출력이 <span class="process-math">\(c\)</span>일 필요충분조건은 <span class="process-math">\(e=e_{He}\)</span>임을 보이십시오.</div></li>
+<li><div class="para">정정되는 오류 패턴의 집합 <span class="process-math">\(L=\{e_s:s\in\mathbb F_2^{n-k}\}\)</span>는 전송한 부호어에 의존하지 않으며 정확히 <span class="process-math">\(2^{n-k}\)</span>개의 원소를 가짐을 보이십시오.</div></li>
+<li><div class="para">본문 <a href="sec-information-and-redundancy.html#ex-syndrome-decoding-choice" class="xref" data-knowl="./knowl/xref/ex-syndrome-decoding-choice.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 3.2.12: 코셋 대표원소의 선택과 신드롬 복호">예시 3.2.12</a>의 선택에서 <span class="process-math">\(L\)</span>을 구하고, <a href="sec-information-and-redundancy.html#ex-syndrome-decoding-beyond-radius" class="xref" data-knowl="./knowl/xref/ex-syndrome-decoding-beyond-radius.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 3.2.15: 정정 반경을 넘는 오류">예시 3.2.15</a>의 결과를 이 관점에서 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-correctable-patterns-3-1-1">
+<li><div class="para">
+<span class="process-math">\(s=Hr=He\)</span>이므로 출력은 <span class="process-math">\(r-e_s=c+(e-e_{He})\)</span>이고, 이것이 <span class="process-math">\(c\)</span>일 필요충분조건은 <span class="process-math">\(e=e_{He}\)</span>입니다.</div></li>
+<li><div class="para">(a)의 조건에 <span class="process-math">\(c\)</span>가 나타나지 않습니다. 서로 다른 신드롬의 대표원소는 신드롬이 다르므로 서로 다르고, <a href="sec-information-and-redundancy.html#exer-syndrome-cosets" class="xref" data-knowl="./knowl/xref/exer-syndrome-cosets.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.8: 신드롬과 코셋">연습문제 3.2.8</a>에서 신드롬이 <span class="process-math">\(2^{n-k}\)</span>개이므로 <span class="process-math">\(|L|=2^{n-k}\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(L=\{000,100,010,001\}\)</span>입니다. <span class="process-math">\(110\notin L\)</span>이므로 어떤 부호어를 보내더라도 오류 <span class="process-math">\(110\)</span>은 정정되지 않습니다. 실제로 <span class="process-math">\(110\)</span>과 같은 코셋에 있는 <span class="process-math">\(001\)</span>이 대표원소로 선택되어 있습니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-correctable-patterns">[incontext]</a></span>
+</body>
+</html>

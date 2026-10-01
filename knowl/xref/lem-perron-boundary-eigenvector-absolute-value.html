@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="lemma theorem-like"><h3 class="heading">
+<span class="type">보조정리</span><span class="space"> </span><span class="codenumber">4.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 원 위 고유벡터의 절댓값.</span>
+</h3>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(|\lambda|=\rho\)</span>인 고윳값이고 <span class="process-math">\(z\in\mathbb C^d\)</span>가 이에 대응하는 고유벡터이면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A|z|=\rho|z|
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">성분별 삼각부등식에 의하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-positive-matrix-strict-order.html">
+\begin{equation*}
+A|z|\ge |Az|=|\lambda z|=\rho|z|
+\end{equation*}
+</div>
+<div class="para">입니다. 이 부등식이 등식이 아니라고 가정합시다. <a href="sec-perron-frobenius.html#lem-positive-matrix-strict-order" class="xref" data-knowl="./knowl/xref/lem-positive-matrix-strict-order.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.2: 양의 행렬의 순서 보존">보조정리 4.3.2</a>에 따라 <span class="process-math">\(A^2|z|&gt;\rho A|z|\)</span>입니다. 두 벡터 <span class="process-math">\(A^2|z|\)</span>와 <span class="process-math">\(A|z|\)</span>의 모든 성분이 양수이므로, 어떤 실수 <span class="process-math">\(r&gt;\rho\)</span>에 대하여 <span class="process-math">\(A^2|z|\ge rA|z|\)</span>입니다.</div>
+</div>
+<div class="para logical">
+<div class="para">이 부등식에 <span class="process-math">\(A\)</span>를 거듭 적용하면 모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(A^{k+1}|z|\ge r^kA|z|\)</span>입니다. 따라서 연산자 1-노름에 대하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-gelfand-formula.html">
+\begin{equation*}
+\|A^{k+1}\|_1\ge r^k\frac{\|A|z|\|_1}{\||z|\|_1}
+\end{equation*}
+</div>
+<div class="para">입니다. 양변에 <span class="process-math">\(1/(k+1)\)</span>제곱을 취하고 <span class="process-math">\(k\to\infty\)</span>로 보내면 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\rho\ge r\)</span>를 얻습니다. 이는 <span class="process-math">\(r&gt;\rho\)</span>와 모순이므로 처음의 부등식은 등식입니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-perron-frobenius.html#lem-perron-boundary-eigenvector-absolute-value">[incontext]</a></span>
+</body>
+</html>

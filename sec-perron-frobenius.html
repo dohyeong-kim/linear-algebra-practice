@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="ko-KO" dir="">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>페론-프로베니우스 정리</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="선형대수학">
+<meta property="book:author" content="김도형">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='[evaluate] (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.3';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.dd07797f77620576.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.11d27cdc38930c2c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<style>
+#exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
+#exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
+#exer-quadratic-form-to-bilinear-form-2-1-3 > li { counter-increment: exer-quadratic-form-to-bilinear-form-2-1-3; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 { counter-set: exer-quadratic-form-to-bilinear-form-3-1-1 0; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-3-1-1,lower-alpha)")"; }
+#exer-quadratic-form-to-bilinear-form-3-1-1 > li { counter-increment: exer-quadratic-form-to-bilinear-form-3-1-1; }
+#exer-gram-matrix-polynomial-integration-2-1-4 { counter-set: exer-gram-matrix-polynomial-integration-2-1-4 0; }
+#exer-gram-matrix-polynomial-integration-2-1-4 > li::marker { content: "("counter(exer-gram-matrix-polynomial-integration-2-1-4,lower-alpha)")"; }
+#exer-gram-matrix-polynomial-integration-2-1-4 > li { counter-increment: exer-gram-matrix-polynomial-integration-2-1-4; }
+#exer-gram-matrix-polynomial-integration-3-1-1 { counter-set: exer-gram-matrix-polynomial-integration-3-1-1 0; }
+#exer-gram-matrix-polynomial-integration-3-1-1 > li::marker { content: "("counter(exer-gram-matrix-polynomial-integration-3-1-1,lower-alpha)")"; }
+#exer-gram-matrix-polynomial-integration-3-1-1 > li { counter-increment: exer-gram-matrix-polynomial-integration-3-1-1; }
+#exer-standard-hermitian-computation-2-1-5 { counter-set: exer-standard-hermitian-computation-2-1-5 0; }
+#exer-standard-hermitian-computation-2-1-5 > li::marker { content: "("counter(exer-standard-hermitian-computation-2-1-5,lower-alpha)")"; }
+#exer-standard-hermitian-computation-2-1-5 > li { counter-increment: exer-standard-hermitian-computation-2-1-5; }
+#exer-standard-hermitian-computation-3-1-1 { counter-set: exer-standard-hermitian-computation-3-1-1 0; }
+#exer-standard-hermitian-computation-3-1-1 > li::marker { content: "("counter(exer-standard-hermitian-computation-3-1-1,lower-alpha)")"; }
+#exer-standard-hermitian-computation-3-1-1 > li { counter-increment: exer-standard-hermitian-computation-3-1-1; }
+#exer-gram-matrix-change-of-basis-2-1-5 { counter-set: exer-gram-matrix-change-of-basis-2-1-5 0; }
+#exer-gram-matrix-change-of-basis-2-1-5 > li::marker { content: "("counter(exer-gram-matrix-change-of-basis-2-1-5,lower-alpha)")"; }
+#exer-gram-matrix-change-of-basis-2-1-5 > li { counter-increment: exer-gram-matrix-change-of-basis-2-1-5; }
+#exer-gram-matrix-change-of-basis-3-1-1 { counter-set: exer-gram-matrix-change-of-basis-3-1-1 0; }
+#exer-gram-matrix-change-of-basis-3-1-1 > li::marker { content: "("counter(exer-gram-matrix-change-of-basis-3-1-1,lower-alpha)")"; }
+#exer-gram-matrix-change-of-basis-3-1-1 > li { counter-increment: exer-gram-matrix-change-of-basis-3-1-1; }
+#exer-polarization-identity-2-1-5 { counter-set: exer-polarization-identity-2-1-5 0; }
+#exer-polarization-identity-2-1-5 > li::marker { content: "("counter(exer-polarization-identity-2-1-5,lower-alpha)")"; }
+#exer-polarization-identity-2-1-5 > li { counter-increment: exer-polarization-identity-2-1-5; }
+#exer-polarization-identity-3-1-1 { counter-set: exer-polarization-identity-3-1-1 0; }
+#exer-polarization-identity-3-1-1 > li::marker { content: "("counter(exer-polarization-identity-3-1-1,lower-alpha)")"; }
+#exer-polarization-identity-3-1-1 > li { counter-increment: exer-polarization-identity-3-1-1; }
+#exer-cubic-polarization-2-1-6 { counter-set: exer-cubic-polarization-2-1-6 0; }
+#exer-cubic-polarization-2-1-6 > li::marker { content: "("counter(exer-cubic-polarization-2-1-6,lower-alpha)")"; }
+#exer-cubic-polarization-2-1-6 > li { counter-increment: exer-cubic-polarization-2-1-6; }
+#exer-cubic-polarization-3-1-1 { counter-set: exer-cubic-polarization-3-1-1 0; }
+#exer-cubic-polarization-3-1-1 > li::marker { content: "("counter(exer-cubic-polarization-3-1-1,lower-alpha)")"; }
+#exer-cubic-polarization-3-1-1 > li { counter-increment: exer-cubic-polarization-3-1-1; }
+#exer-two-by-two-positive-definite-2-1-1 { counter-set: exer-two-by-two-positive-definite-2-1-1 0; }
+#exer-two-by-two-positive-definite-2-1-1 > li::marker { content: "("counter(exer-two-by-two-positive-definite-2-1-1,lower-alpha)")"; }
+#exer-two-by-two-positive-definite-2-1-1 > li { counter-increment: exer-two-by-two-positive-definite-2-1-1; }
+#exer-two-by-two-positive-definite-3-1-1 { counter-set: exer-two-by-two-positive-definite-3-1-1 0; }
+#exer-two-by-two-positive-definite-3-1-1 > li::marker { content: "("counter(exer-two-by-two-positive-definite-3-1-1,lower-alpha)")"; }
+#exer-two-by-two-positive-definite-3-1-1 > li { counter-increment: exer-two-by-two-positive-definite-3-1-1; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 { counter-set: exer-unit-disc-monomials-orthogonal-2-1-3 0; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 > li::marker { content: "("counter(exer-unit-disc-monomials-orthogonal-2-1-3,lower-alpha)")"; }
+#exer-unit-disc-monomials-orthogonal-2-1-3 > li { counter-increment: exer-unit-disc-monomials-orthogonal-2-1-3; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 { counter-set: exer-unit-disc-monomials-orthogonal-3-1-1 0; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 > li::marker { content: "("counter(exer-unit-disc-monomials-orthogonal-3-1-1,lower-alpha)")"; }
+#exer-unit-disc-monomials-orthogonal-3-1-1 > li { counter-increment: exer-unit-disc-monomials-orthogonal-3-1-1; }
+#exer-invariant-forms-on-matrices-2-1-6 { counter-set: exer-invariant-forms-on-matrices-2-1-6 0; }
+#exer-invariant-forms-on-matrices-2-1-6 > li::marker { content: "("counter(exer-invariant-forms-on-matrices-2-1-6,lower-alpha)")"; }
+#exer-invariant-forms-on-matrices-2-1-6 > li { counter-increment: exer-invariant-forms-on-matrices-2-1-6; }
+#exer-invariant-forms-on-matrices-3-1-1 { counter-set: exer-invariant-forms-on-matrices-3-1-1 0; }
+#exer-invariant-forms-on-matrices-3-1-1 > li::marker { content: "("counter(exer-invariant-forms-on-matrices-3-1-1,lower-alpha)")"; }
+#exer-invariant-forms-on-matrices-3-1-1 > li { counter-increment: exer-invariant-forms-on-matrices-3-1-1; }
+#exer-minimal-determining-set-2-1-9 { counter-set: exer-minimal-determining-set-2-1-9 0; }
+#exer-minimal-determining-set-2-1-9 > li::marker { content: "("counter(exer-minimal-determining-set-2-1-9,lower-alpha)")"; }
+#exer-minimal-determining-set-2-1-9 > li { counter-increment: exer-minimal-determining-set-2-1-9; }
+#exer-minimal-determining-set-3-1-1 { counter-set: exer-minimal-determining-set-3-1-1 0; }
+#exer-minimal-determining-set-3-1-1 > li::marker { content: "("counter(exer-minimal-determining-set-3-1-1,lower-alpha)")"; }
+#exer-minimal-determining-set-3-1-1 > li { counter-increment: exer-minimal-determining-set-3-1-1; }
+#exer-hermitian-from-real-diagonal-2-1-1 { counter-set: exer-hermitian-from-real-diagonal-2-1-1 0; }
+#exer-hermitian-from-real-diagonal-2-1-1 > li::marker { content: "("counter(exer-hermitian-from-real-diagonal-2-1-1,lower-alpha)")"; }
+#exer-hermitian-from-real-diagonal-2-1-1 > li { counter-increment: exer-hermitian-from-real-diagonal-2-1-1; }
+#exer-hermitian-from-real-diagonal-3-1-1 { counter-set: exer-hermitian-from-real-diagonal-3-1-1 0; }
+#exer-hermitian-from-real-diagonal-3-1-1 > li::marker { content: "("counter(exer-hermitian-from-real-diagonal-3-1-1,lower-alpha)")"; }
+#exer-hermitian-from-real-diagonal-3-1-1 > li { counter-increment: exer-hermitian-from-real-diagonal-3-1-1; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 { counter-set: exer-nonpositive-offdiagonal-gram-2-1-5 0; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 > li::marker { content: "("counter(exer-nonpositive-offdiagonal-gram-2-1-5,lower-alpha)")"; }
+#exer-nonpositive-offdiagonal-gram-2-1-5 > li { counter-increment: exer-nonpositive-offdiagonal-gram-2-1-5; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 { counter-set: exer-nonpositive-offdiagonal-gram-3-1-1 0; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 > li::marker { content: "("counter(exer-nonpositive-offdiagonal-gram-3-1-1,lower-alpha)")"; }
+#exer-nonpositive-offdiagonal-gram-3-1-1 > li { counter-increment: exer-nonpositive-offdiagonal-gram-3-1-1; }
+#exer-orth-routine-1-2-2 { counter-set: exer-orth-routine-1-2-2 0; }
+#exer-orth-routine-1-2-2 > li::marker { content: "("counter(exer-orth-routine-1-2-2,lower-alpha)")"; }
+#exer-orth-routine-1-2-2 > li { counter-increment: exer-orth-routine-1-2-2; }
+#exer-orth-routine-3-2-2 { counter-set: exer-orth-routine-3-2-2 0; }
+#exer-orth-routine-3-2-2 > li::marker { content: "("counter(exer-orth-routine-3-2-2,lower-alpha)")"; }
+#exer-orth-routine-3-2-2 > li { counter-increment: exer-orth-routine-3-2-2; }
+#exer-orth-routine-4-2-2 { counter-set: exer-orth-routine-4-2-2 0; }
+#exer-orth-routine-4-2-2 > li::marker { content: "("counter(exer-orth-routine-4-2-2,lower-alpha)")"; }
+#exer-orth-routine-4-2-2 > li { counter-increment: exer-orth-routine-4-2-2; }
+#exer-orth-routine-5-2-2 { counter-set: exer-orth-routine-5-2-2 0; }
+#exer-orth-routine-5-2-2 > li::marker { content: "("counter(exer-orth-routine-5-2-2,lower-alpha)")"; }
+#exer-orth-routine-5-2-2 > li { counter-increment: exer-orth-routine-5-2-2; }
+#exer-orth-standard-1-2-2 { counter-set: exer-orth-standard-1-2-2 0; }
+#exer-orth-standard-1-2-2 > li::marker { content: "("counter(exer-orth-standard-1-2-2,lower-alpha)")"; }
+#exer-orth-standard-1-2-2 > li { counter-increment: exer-orth-standard-1-2-2; }
+#exer-orth-standard-3-2-2 { counter-set: exer-orth-standard-3-2-2 0; }
+#exer-orth-standard-3-2-2 > li::marker { content: "("counter(exer-orth-standard-3-2-2,lower-alpha)")"; }
+#exer-orth-standard-3-2-2 > li { counter-increment: exer-orth-standard-3-2-2; }
+#exer-orth-standard-4-2-2 { counter-set: exer-orth-standard-4-2-2 0; }
+#exer-orth-standard-4-2-2 > li::marker { content: "("counter(exer-orth-standard-4-2-2,lower-alpha)")"; }
+#exer-orth-standard-4-2-2 > li { counter-increment: exer-orth-standard-4-2-2; }
+#exer-orth-standard-5-2-2 { counter-set: exer-orth-standard-5-2-2 0; }
+#exer-orth-standard-5-2-2 > li::marker { content: "("counter(exer-orth-standard-5-2-2,lower-alpha)")"; }
+#exer-orth-standard-5-2-2 > li { counter-increment: exer-orth-standard-5-2-2; }
+#exer-orth-standard-6-2-2 { counter-set: exer-orth-standard-6-2-2 0; }
+#exer-orth-standard-6-2-2 > li::marker { content: "("counter(exer-orth-standard-6-2-2,lower-alpha)")"; }
+#exer-orth-standard-6-2-2 > li { counter-increment: exer-orth-standard-6-2-2; }
+#exer-orth-challenge-1-2-2 { counter-set: exer-orth-challenge-1-2-2 0; }
+#exer-orth-challenge-1-2-2 > li::marker { content: "("counter(exer-orth-challenge-1-2-2,lower-alpha)")"; }
+#exer-orth-challenge-1-2-2 > li { counter-increment: exer-orth-challenge-1-2-2; }
+#exer-orth-challenge-qr-2-2 { counter-set: exer-orth-challenge-qr-2-2 0; }
+#exer-orth-challenge-qr-2-2 > li::marker { content: "("counter(exer-orth-challenge-qr-2-2,lower-alpha)")"; }
+#exer-orth-challenge-qr-2-2 > li { counter-increment: exer-orth-challenge-qr-2-2; }
+#exer-orth-challenge-gram-2-2 { counter-set: exer-orth-challenge-gram-2-2 0; }
+#exer-orth-challenge-gram-2-2 > li::marker { content: "("counter(exer-orth-challenge-gram-2-2,lower-alpha)")"; }
+#exer-orth-challenge-gram-2-2 > li { counter-increment: exer-orth-challenge-gram-2-2; }
+#exer-orth-challenge-polynomial-roots-2-2 { counter-set: exer-orth-challenge-polynomial-roots-2-2 0; }
+#exer-orth-challenge-polynomial-roots-2-2 > li::marker { content: "("counter(exer-orth-challenge-polynomial-roots-2-2,lower-alpha)")"; }
+#exer-orth-challenge-polynomial-roots-2-2 > li { counter-increment: exer-orth-challenge-polynomial-roots-2-2; }
+#thm-spectral-self-adjoint-real-2-2-1 { counter-set: thm-spectral-self-adjoint-real-2-2-1 0; }
+#thm-spectral-self-adjoint-real-2-2-1 > li::marker { content: ""counter(thm-spectral-self-adjoint-real-2-2-1,decimal)"."; }
+#thm-spectral-self-adjoint-real-2-2-1 > li { counter-increment: thm-spectral-self-adjoint-real-2-2-1; }
+#exer-spectral-riesz-computation-2-2-1 { counter-set: exer-spectral-riesz-computation-2-2-1 0; }
+#exer-spectral-riesz-computation-2-2-1 > li::marker { content: "("counter(exer-spectral-riesz-computation-2-2-1,lower-alpha)")"; }
+#exer-spectral-riesz-computation-2-2-1 > li { counter-increment: exer-spectral-riesz-computation-2-2-1; }
+#exer-spectral-adjoint-depends-on-inner-product-2-2-1 { counter-set: exer-spectral-adjoint-depends-on-inner-product-2-2-1 0; }
+#exer-spectral-adjoint-depends-on-inner-product-2-2-1 > li::marker { content: "("counter(exer-spectral-adjoint-depends-on-inner-product-2-2-1,lower-alpha)")"; }
+#exer-spectral-adjoint-depends-on-inner-product-2-2-1 > li { counter-increment: exer-spectral-adjoint-depends-on-inner-product-2-2-1; }
+#exer-spectral-adjoint-algebra-2-2-1 { counter-set: exer-spectral-adjoint-algebra-2-2-1 0; }
+#exer-spectral-adjoint-algebra-2-2-1 > li::marker { content: "("counter(exer-spectral-adjoint-algebra-2-2-1,lower-alpha)")"; }
+#exer-spectral-adjoint-algebra-2-2-1 > li { counter-increment: exer-spectral-adjoint-algebra-2-2-1; }
+#exer-spectral-weighted-self-adjoint-2-2-1 { counter-set: exer-spectral-weighted-self-adjoint-2-2-1 0; }
+#exer-spectral-weighted-self-adjoint-2-2-1 > li::marker { content: "("counter(exer-spectral-weighted-self-adjoint-2-2-1,lower-alpha)")"; }
+#exer-spectral-weighted-self-adjoint-2-2-1 > li { counter-increment: exer-spectral-weighted-self-adjoint-2-2-1; }
+#exer-spectral-invariant-complements-2-2-1 { counter-set: exer-spectral-invariant-complements-2-2-1 0; }
+#exer-spectral-invariant-complements-2-2-1 > li::marker { content: "("counter(exer-spectral-invariant-complements-2-2-1,lower-alpha)")"; }
+#exer-spectral-invariant-complements-2-2-1 > li { counter-increment: exer-spectral-invariant-complements-2-2-1; }
+#exer-spectral-image-kernel-computation-2-2-1 { counter-set: exer-spectral-image-kernel-computation-2-2-1 0; }
+#exer-spectral-image-kernel-computation-2-2-1 > li::marker { content: "("counter(exer-spectral-image-kernel-computation-2-2-1,lower-alpha)")"; }
+#exer-spectral-image-kernel-computation-2-2-1 > li { counter-increment: exer-spectral-image-kernel-computation-2-2-1; }
+#exer-spectral-four-subspaces-2-2-1 { counter-set: exer-spectral-four-subspaces-2-2-1 0; }
+#exer-spectral-four-subspaces-2-2-1 > li::marker { content: "("counter(exer-spectral-four-subspaces-2-2-1,lower-alpha)")"; }
+#exer-spectral-four-subspaces-2-2-1 > li { counter-increment: exer-spectral-four-subspaces-2-2-1; }
+#exer-spectral-self-adjoint-idempotents-2-2-1 { counter-set: exer-spectral-self-adjoint-idempotents-2-2-1 0; }
+#exer-spectral-self-adjoint-idempotents-2-2-1 > li::marker { content: "("counter(exer-spectral-self-adjoint-idempotents-2-2-1,lower-alpha)")"; }
+#exer-spectral-self-adjoint-idempotents-2-2-1 > li { counter-increment: exer-spectral-self-adjoint-idempotents-2-2-1; }
+#exer-spectral-rayleigh-quotient-2-2-1 { counter-set: exer-spectral-rayleigh-quotient-2-2-1 0; }
+#exer-spectral-rayleigh-quotient-2-2-1 > li::marker { content: "("counter(exer-spectral-rayleigh-quotient-2-2-1,lower-alpha)")"; }
+#exer-spectral-rayleigh-quotient-2-2-1 > li { counter-increment: exer-spectral-rayleigh-quotient-2-2-1; }
+#exer-spectral-polynomial-projections-2-2-1 { counter-set: exer-spectral-polynomial-projections-2-2-1 0; }
+#exer-spectral-polynomial-projections-2-2-1 > li::marker { content: "("counter(exer-spectral-polynomial-projections-2-2-1,lower-alpha)")"; }
+#exer-spectral-polynomial-projections-2-2-1 > li { counter-increment: exer-spectral-polynomial-projections-2-2-1; }
+#exer-spectral-real-eigenvalue-without-complexification-2-2-1 { counter-set: exer-spectral-real-eigenvalue-without-complexification-2-2-1 0; }
+#exer-spectral-real-eigenvalue-without-complexification-2-2-1 > li::marker { content: "("counter(exer-spectral-real-eigenvalue-without-complexification-2-2-1,lower-alpha)")"; }
+#exer-spectral-real-eigenvalue-without-complexification-2-2-1 > li { counter-increment: exer-spectral-real-eigenvalue-without-complexification-2-2-1; }
+#exer-spectral-commuting-self-adjoint-2-2-1 { counter-set: exer-spectral-commuting-self-adjoint-2-2-1 0; }
+#exer-spectral-commuting-self-adjoint-2-2-1 > li::marker { content: "("counter(exer-spectral-commuting-self-adjoint-2-2-1,lower-alpha)")"; }
+#exer-spectral-commuting-self-adjoint-2-2-1 > li { counter-increment: exer-spectral-commuting-self-adjoint-2-2-1; }
+#exer-spectral-positive-square-root-2-2-1 { counter-set: exer-spectral-positive-square-root-2-2-1 0; }
+#exer-spectral-positive-square-root-2-2-1 > li::marker { content: "("counter(exer-spectral-positive-square-root-2-2-1,lower-alpha)")"; }
+#exer-spectral-positive-square-root-2-2-1 > li { counter-increment: exer-spectral-positive-square-root-2-2-1; }
+#thm-spectral-theorem-normal-complex-2-3 { counter-set: thm-spectral-theorem-normal-complex-2-3 0; }
+#thm-spectral-theorem-normal-complex-2-3 > li::marker { content: ""counter(thm-spectral-theorem-normal-complex-2-3,decimal)"."; }
+#thm-spectral-theorem-normal-complex-2-3 > li { counter-increment: thm-spectral-theorem-normal-complex-2-3; }
+#exer-spectral-complex-merged-15-2-1-6 { counter-set: exer-spectral-complex-merged-15-2-1-6 0; }
+#exer-spectral-complex-merged-15-2-1-6 > li::marker { content: "("counter(exer-spectral-complex-merged-15-2-1-6,lower-alpha)")"; }
+#exer-spectral-complex-merged-15-2-1-6 > li { counter-increment: exer-spectral-complex-merged-15-2-1-6; }
+#prop-isometry-properties-2-2 { counter-set: prop-isometry-properties-2-2 0; }
+#prop-isometry-properties-2-2 > li::marker { content: ""counter(prop-isometry-properties-2-2,decimal)"."; }
+#prop-isometry-properties-2-2 > li { counter-increment: prop-isometry-properties-2-2; }
+#exer-svd-easy-2-2-2 { counter-set: exer-svd-easy-2-2-2 0; }
+#exer-svd-easy-2-2-2 > li::marker { content: "("counter(exer-svd-easy-2-2-2,lower-alpha)")"; }
+#exer-svd-easy-2-2-2 > li { counter-increment: exer-svd-easy-2-2-2; }
+#exer-svd-challenge-2-2-2 { counter-set: exer-svd-challenge-2-2-2 0; }
+#exer-svd-challenge-2-2-2 > li::marker { content: "("counter(exer-svd-challenge-2-2-2,lower-alpha)")"; }
+#exer-svd-challenge-2-2-2 > li { counter-increment: exer-svd-challenge-2-2-2; }
+#thm-spectral-self-adjoint-hermitian-2-2 { counter-set: thm-spectral-self-adjoint-hermitian-2-2 0; }
+#thm-spectral-self-adjoint-hermitian-2-2 > li::marker { content: ""counter(thm-spectral-self-adjoint-hermitian-2-2,decimal)"."; }
+#thm-spectral-self-adjoint-hermitian-2-2 > li { counter-increment: thm-spectral-self-adjoint-hermitian-2-2; }
+#cor-svd-geometric-data-2-2 { counter-set: cor-svd-geometric-data-2-2 0; }
+#cor-svd-geometric-data-2-2 > li::marker { content: ""counter(cor-svd-geometric-data-2-2,decimal)"."; }
+#cor-svd-geometric-data-2-2 > li { counter-increment: cor-svd-geometric-data-2-2; }
+#ex-rgb-flags-svd-2-2 { counter-set: ex-rgb-flags-svd-2-2 0; }
+#ex-rgb-flags-svd-2-2 > li::marker { content: "("counter(ex-rgb-flags-svd-2-2,lower-alpha)")"; }
+#ex-rgb-flags-svd-2-2 > li { counter-increment: ex-rgb-flags-svd-2-2; }
+#ex-svd-lines-and-rotation-2-2 { counter-set: ex-svd-lines-and-rotation-2-2 0; }
+#ex-svd-lines-and-rotation-2-2 > li::marker { content: "("counter(ex-svd-lines-and-rotation-2-2,lower-alpha)")"; }
+#ex-svd-lines-and-rotation-2-2 > li { counter-increment: ex-svd-lines-and-rotation-2-2; }
+#exer-pca-coordinate-scaling-1-2 { counter-set: exer-pca-coordinate-scaling-1-2 0; }
+#exer-pca-coordinate-scaling-1-2 > li::marker { content: "("counter(exer-pca-coordinate-scaling-1-2,lower-alpha)")"; }
+#exer-pca-coordinate-scaling-1-2 > li { counter-increment: exer-pca-coordinate-scaling-1-2; }
+#exer-rigid-motion-recognition-2-2 { counter-set: exer-rigid-motion-recognition-2-2 0; }
+#exer-rigid-motion-recognition-2-2 > li::marker { content: "("counter(exer-rigid-motion-recognition-2-2,lower-alpha)")"; }
+#exer-rigid-motion-recognition-2-2 > li { counter-increment: exer-rigid-motion-recognition-2-2; }
+#exer-rigid-motion-two-reflections-2-2 { counter-set: exer-rigid-motion-two-reflections-2-2 0; }
+#exer-rigid-motion-two-reflections-2-2 > li::marker { content: "("counter(exer-rigid-motion-two-reflections-2-2,lower-alpha)")"; }
+#exer-rigid-motion-two-reflections-2-2 > li { counter-increment: exer-rigid-motion-two-reflections-2-2; }
+#exer-projective-plane-affine-transformations-2-2 { counter-set: exer-projective-plane-affine-transformations-2-2 0; }
+#exer-projective-plane-affine-transformations-2-2 > li::marker { content: "("counter(exer-projective-plane-affine-transformations-2-2,lower-alpha)")"; }
+#exer-projective-plane-affine-transformations-2-2 > li { counter-increment: exer-projective-plane-affine-transformations-2-2; }
+#exer-projective-lines-homogeneous-2-2 { counter-set: exer-projective-lines-homogeneous-2-2 0; }
+#exer-projective-lines-homogeneous-2-2 > li::marker { content: "("counter(exer-projective-lines-homogeneous-2-2,lower-alpha)")"; }
+#exer-projective-lines-homogeneous-2-2 > li { counter-increment: exer-projective-lines-homogeneous-2-2; }
+#exer-circular-points-similarities-2-2 { counter-set: exer-circular-points-similarities-2-2 0; }
+#exer-circular-points-similarities-2-2 > li::marker { content: "("counter(exer-circular-points-similarities-2-2,lower-alpha)")"; }
+#exer-circular-points-similarities-2-2 > li { counter-increment: exer-circular-points-similarities-2-2; }
+#exer-3d-homogeneous-inverse-2-1-4 { counter-set: exer-3d-homogeneous-inverse-2-1-4 0; }
+#exer-3d-homogeneous-inverse-2-1-4 > li::marker { content: "("counter(exer-3d-homogeneous-inverse-2-1-4,lower-alpha)")"; }
+#exer-3d-homogeneous-inverse-2-1-4 > li { counter-increment: exer-3d-homogeneous-inverse-2-1-4; }
+#exer-3d-trace-angle-2-1-1 { counter-set: exer-3d-trace-angle-2-1-1 0; }
+#exer-3d-trace-angle-2-1-1 > li::marker { content: "("counter(exer-3d-trace-angle-2-1-1,lower-alpha)")"; }
+#exer-3d-trace-angle-2-1-1 > li { counter-increment: exer-3d-trace-angle-2-1-1; }
+#exer-3d-hatmap-compute-2-1-1 { counter-set: exer-3d-hatmap-compute-2-1-1 0; }
+#exer-3d-hatmap-compute-2-1-1 > li::marker { content: "("counter(exer-3d-hatmap-compute-2-1-1,lower-alpha)")"; }
+#exer-3d-hatmap-compute-2-1-1 > li { counter-increment: exer-3d-hatmap-compute-2-1-1; }
+#exer-3d-reflections-2-1-3 { counter-set: exer-3d-reflections-2-1-3 0; }
+#exer-3d-reflections-2-1-3 > li::marker { content: "("counter(exer-3d-reflections-2-1-3,lower-alpha)")"; }
+#exer-3d-reflections-2-1-3 > li { counter-increment: exer-3d-reflections-2-1-3; }
+#exer-3d-eigenvalue-one-2-1-1 { counter-set: exer-3d-eigenvalue-one-2-1-1 0; }
+#exer-3d-eigenvalue-one-2-1-1 > li::marker { content: "("counter(exer-3d-eigenvalue-one-2-1-1,lower-alpha)")"; }
+#exer-3d-eigenvalue-one-2-1-1 > li { counter-increment: exer-3d-eigenvalue-one-2-1-1; }
+#exer-3d-rodrigues-compute-2-1-1 { counter-set: exer-3d-rodrigues-compute-2-1-1 0; }
+#exer-3d-rodrigues-compute-2-1-1 > li::marker { content: "("counter(exer-3d-rodrigues-compute-2-1-1,lower-alpha)")"; }
+#exer-3d-rodrigues-compute-2-1-1 > li { counter-increment: exer-3d-rodrigues-compute-2-1-1; }
+#exer-3d-logarithm-2-1-4 { counter-set: exer-3d-logarithm-2-1-4 0; }
+#exer-3d-logarithm-2-1-4 > li::marker { content: "("counter(exer-3d-logarithm-2-1-4,lower-alpha)")"; }
+#exer-3d-logarithm-2-1-4 > li { counter-increment: exer-3d-logarithm-2-1-4; }
+#exer-3d-commutator-2-1-2 { counter-set: exer-3d-commutator-2-1-2 0; }
+#exer-3d-commutator-2-1-2 > li::marker { content: "("counter(exer-3d-commutator-2-1-2,lower-alpha)")"; }
+#exer-3d-commutator-2-1-2 > li { counter-increment: exer-3d-commutator-2-1-2; }
+#exer-3d-conjugation-2-1-2 { counter-set: exer-3d-conjugation-2-1-2 0; }
+#exer-3d-conjugation-2-1-2 > li::marker { content: "("counter(exer-3d-conjugation-2-1-2,lower-alpha)")"; }
+#exer-3d-conjugation-2-1-2 > li { counter-increment: exer-3d-conjugation-2-1-2; }
+#exer-3d-nonadditive-2-1-1 { counter-set: exer-3d-nonadditive-2-1-1 0; }
+#exer-3d-nonadditive-2-1-1 > li::marker { content: "("counter(exer-3d-nonadditive-2-1-1,lower-alpha)")"; }
+#exer-3d-nonadditive-2-1-1 > li { counter-increment: exer-3d-nonadditive-2-1-1; }
+#exer-3d-half-turns-2-1-5 { counter-set: exer-3d-half-turns-2-1-5 0; }
+#exer-3d-half-turns-2-1-5 > li::marker { content: "("counter(exer-3d-half-turns-2-1-5,lower-alpha)")"; }
+#exer-3d-half-turns-2-1-5 > li { counter-increment: exer-3d-half-turns-2-1-5; }
+#def-metric-space-3 { counter-set: def-metric-space-3 0; }
+#def-metric-space-3 > li::marker { content: ""counter(def-metric-space-3,decimal)"."; }
+#def-metric-space-3 > li { counter-increment: def-metric-space-3; }
+#exer-hd-compute-2-1-4 { counter-set: exer-hd-compute-2-1-4 0; }
+#exer-hd-compute-2-1-4 > li::marker { content: "("counter(exer-hd-compute-2-1-4,lower-alpha)")"; }
+#exer-hd-compute-2-1-4 > li { counter-increment: exer-hd-compute-2-1-4; }
+#exer-hd-compute-3-1-1 { counter-set: exer-hd-compute-3-1-1 0; }
+#exer-hd-compute-3-1-1 > li::marker { content: "("counter(exer-hd-compute-3-1-1,lower-alpha)")"; }
+#exer-hd-compute-3-1-1 > li { counter-increment: exer-hd-compute-3-1-1; }
+#exer-hd-weight-identities-2-1-2 { counter-set: exer-hd-weight-identities-2-1-2 0; }
+#exer-hd-weight-identities-2-1-2 > li::marker { content: "("counter(exer-hd-weight-identities-2-1-2,lower-alpha)")"; }
+#exer-hd-weight-identities-2-1-2 > li { counter-increment: exer-hd-weight-identities-2-1-2; }
+#exer-hd-weight-identities-3-1-1 { counter-set: exer-hd-weight-identities-3-1-1 0; }
+#exer-hd-weight-identities-3-1-1 > li::marker { content: "("counter(exer-hd-weight-identities-3-1-1,lower-alpha)")"; }
+#exer-hd-weight-identities-3-1-1 > li { counter-increment: exer-hd-weight-identities-3-1-1; }
+#exer-hd-balls-2-1-1 { counter-set: exer-hd-balls-2-1-1 0; }
+#exer-hd-balls-2-1-1 > li::marker { content: "("counter(exer-hd-balls-2-1-1,lower-alpha)")"; }
+#exer-hd-balls-2-1-1 > li { counter-increment: exer-hd-balls-2-1-1; }
+#exer-hd-balls-3-1-1 { counter-set: exer-hd-balls-3-1-1 0; }
+#exer-hd-balls-3-1-1 > li::marker { content: "("counter(exer-hd-balls-3-1-1,lower-alpha)")"; }
+#exer-hd-balls-3-1-1 > li { counter-increment: exer-hd-balls-3-1-1; }
+#exer-hd-min-weight-2-1-1 { counter-set: exer-hd-min-weight-2-1-1 0; }
+#exer-hd-min-weight-2-1-1 > li::marker { content: "("counter(exer-hd-min-weight-2-1-1,lower-alpha)")"; }
+#exer-hd-min-weight-2-1-1 > li { counter-increment: exer-hd-min-weight-2-1-1; }
+#exer-hd-min-weight-3-1-1 { counter-set: exer-hd-min-weight-3-1-1 0; }
+#exer-hd-min-weight-3-1-1 > li::marker { content: "("counter(exer-hd-min-weight-3-1-1,lower-alpha)")"; }
+#exer-hd-min-weight-3-1-1 > li { counter-increment: exer-hd-min-weight-3-1-1; }
+#exer-hd-check-matrix-basics-2-1-1 { counter-set: exer-hd-check-matrix-basics-2-1-1 0; }
+#exer-hd-check-matrix-basics-2-1-1 > li::marker { content: "("counter(exer-hd-check-matrix-basics-2-1-1,lower-alpha)")"; }
+#exer-hd-check-matrix-basics-2-1-1 > li { counter-increment: exer-hd-check-matrix-basics-2-1-1; }
+#exer-hd-check-matrix-basics-3-1-1 { counter-set: exer-hd-check-matrix-basics-3-1-1 0; }
+#exer-hd-check-matrix-basics-3-1-1 > li::marker { content: "("counter(exer-hd-check-matrix-basics-3-1-1,lower-alpha)")"; }
+#exer-hd-check-matrix-basics-3-1-1 > li { counter-increment: exer-hd-check-matrix-basics-3-1-1; }
+#exer-hd-six-three-three-2-1-3 { counter-set: exer-hd-six-three-three-2-1-3 0; }
+#exer-hd-six-three-three-2-1-3 > li::marker { content: "("counter(exer-hd-six-three-three-2-1-3,lower-alpha)")"; }
+#exer-hd-six-three-three-2-1-3 > li { counter-increment: exer-hd-six-three-three-2-1-3; }
+#exer-hd-six-three-three-3-1-1 { counter-set: exer-hd-six-three-three-3-1-1 0; }
+#exer-hd-six-three-three-3-1-1 > li::marker { content: "("counter(exer-hd-six-three-three-3-1-1,lower-alpha)")"; }
+#exer-hd-six-three-three-3-1-1 > li { counter-increment: exer-hd-six-three-three-3-1-1; }
+#exer-hd-hamming-bound-use-2-1-1 { counter-set: exer-hd-hamming-bound-use-2-1-1 0; }
+#exer-hd-hamming-bound-use-2-1-1 > li::marker { content: "("counter(exer-hd-hamming-bound-use-2-1-1,lower-alpha)")"; }
+#exer-hd-hamming-bound-use-2-1-1 > li { counter-increment: exer-hd-hamming-bound-use-2-1-1; }
+#exer-hd-hamming-bound-use-3-1-1 { counter-set: exer-hd-hamming-bound-use-3-1-1 0; }
+#exer-hd-hamming-bound-use-3-1-1 > li::marker { content: "("counter(exer-hd-hamming-bound-use-3-1-1,lower-alpha)")"; }
+#exer-hd-hamming-bound-use-3-1-1 > li { counter-increment: exer-hd-hamming-bound-use-3-1-1; }
+#exer-hd-ball-intersection-2-1-1 { counter-set: exer-hd-ball-intersection-2-1-1 0; }
+#exer-hd-ball-intersection-2-1-1 > li::marker { content: "("counter(exer-hd-ball-intersection-2-1-1,lower-alpha)")"; }
+#exer-hd-ball-intersection-2-1-1 > li { counter-increment: exer-hd-ball-intersection-2-1-1; }
+#exer-hd-ball-intersection-3-1-1 { counter-set: exer-hd-ball-intersection-3-1-1 0; }
+#exer-hd-ball-intersection-3-1-1 > li::marker { content: "("counter(exer-hd-ball-intersection-3-1-1,lower-alpha)")"; }
+#exer-hd-ball-intersection-3-1-1 > li { counter-increment: exer-hd-ball-intersection-3-1-1; }
+#exer-hd-even-weights-2-1-1 { counter-set: exer-hd-even-weights-2-1-1 0; }
+#exer-hd-even-weights-2-1-1 > li::marker { content: "("counter(exer-hd-even-weights-2-1-1,lower-alpha)")"; }
+#exer-hd-even-weights-2-1-1 > li { counter-increment: exer-hd-even-weights-2-1-1; }
+#exer-hd-even-weights-3-1-1 { counter-set: exer-hd-even-weights-3-1-1 0; }
+#exer-hd-even-weights-3-1-1 > li::marker { content: "("counter(exer-hd-even-weights-3-1-1,lower-alpha)")"; }
+#exer-hd-even-weights-3-1-1 > li { counter-increment: exer-hd-even-weights-3-1-1; }
+#exer-hd-hamming-bound-equality-2-1-2 { counter-set: exer-hd-hamming-bound-equality-2-1-2 0; }
+#exer-hd-hamming-bound-equality-2-1-2 > li::marker { content: "("counter(exer-hd-hamming-bound-equality-2-1-2,lower-alpha)")"; }
+#exer-hd-hamming-bound-equality-2-1-2 > li { counter-increment: exer-hd-hamming-bound-equality-2-1-2; }
+#exer-hd-hamming-bound-equality-3-1-1 { counter-set: exer-hd-hamming-bound-equality-3-1-1 0; }
+#exer-hd-hamming-bound-equality-3-1-1 > li::marker { content: "("counter(exer-hd-hamming-bound-equality-3-1-1,lower-alpha)")"; }
+#exer-hd-hamming-bound-equality-3-1-1 > li { counter-increment: exer-hd-hamming-bound-equality-3-1-1; }
+#exer-hd-singleton-2-1-1 { counter-set: exer-hd-singleton-2-1-1 0; }
+#exer-hd-singleton-2-1-1 > li::marker { content: "("counter(exer-hd-singleton-2-1-1,lower-alpha)")"; }
+#exer-hd-singleton-2-1-1 > li { counter-increment: exer-hd-singleton-2-1-1; }
+#exer-hd-singleton-4-1-1 { counter-set: exer-hd-singleton-4-1-1 0; }
+#exer-hd-singleton-4-1-1 > li::marker { content: "("counter(exer-hd-singleton-4-1-1,lower-alpha)")"; }
+#exer-hd-singleton-4-1-1 > li { counter-increment: exer-hd-singleton-4-1-1; }
+#exer-hd-check-matrix-exists-2-1-1 { counter-set: exer-hd-check-matrix-exists-2-1-1 0; }
+#exer-hd-check-matrix-exists-2-1-1 > li::marker { content: "("counter(exer-hd-check-matrix-exists-2-1-1,lower-alpha)")"; }
+#exer-hd-check-matrix-exists-2-1-1 > li { counter-increment: exer-hd-check-matrix-exists-2-1-1; }
+#exer-hd-check-matrix-exists-4-1-1 { counter-set: exer-hd-check-matrix-exists-4-1-1 0; }
+#exer-hd-check-matrix-exists-4-1-1 > li::marker { content: "("counter(exer-hd-check-matrix-exists-4-1-1,lower-alpha)")"; }
+#exer-hd-check-matrix-exists-4-1-1 > li { counter-increment: exer-hd-check-matrix-exists-4-1-1; }
+#exer-hd-plotkin-2-1-3 { counter-set: exer-hd-plotkin-2-1-3 0; }
+#exer-hd-plotkin-2-1-3 > li::marker { content: "("counter(exer-hd-plotkin-2-1-3,lower-alpha)")"; }
+#exer-hd-plotkin-2-1-3 > li { counter-increment: exer-hd-plotkin-2-1-3; }
+#exer-hd-plotkin-4-1-1 { counter-set: exer-hd-plotkin-4-1-1 0; }
+#exer-hd-plotkin-4-1-1 > li::marker { content: "("counter(exer-hd-plotkin-4-1-1,lower-alpha)")"; }
+#exer-hd-plotkin-4-1-1 > li { counter-increment: exer-hd-plotkin-4-1-1; }
+#exer-hd-isometries-2-1-8 { counter-set: exer-hd-isometries-2-1-8 0; }
+#exer-hd-isometries-2-1-8 > li::marker { content: "("counter(exer-hd-isometries-2-1-8,lower-alpha)")"; }
+#exer-hd-isometries-2-1-8 > li { counter-increment: exer-hd-isometries-2-1-8; }
+#exer-hd-isometries-4-1-1 { counter-set: exer-hd-isometries-4-1-1 0; }
+#exer-hd-isometries-4-1-1 > li::marker { content: "("counter(exer-hd-isometries-4-1-1,lower-alpha)")"; }
+#exer-hd-isometries-4-1-1 > li { counter-increment: exer-hd-isometries-4-1-1; }
+#exer-standard-encoding-2-1-6 { counter-set: exer-standard-encoding-2-1-6 0; }
+#exer-standard-encoding-2-1-6 > li::marker { content: "("counter(exer-standard-encoding-2-1-6,lower-alpha)")"; }
+#exer-standard-encoding-2-1-6 > li { counter-increment: exer-standard-encoding-2-1-6; }
+#exer-standard-encoding-3-1-4 { counter-set: exer-standard-encoding-3-1-4 0; }
+#exer-standard-encoding-3-1-4 > li::marker { content: "("counter(exer-standard-encoding-3-1-4,lower-alpha)")"; }
+#exer-standard-encoding-3-1-4 > li { counter-increment: exer-standard-encoding-3-1-4; }
+#exer-codeword-membership-2-1-1 { counter-set: exer-codeword-membership-2-1-1 0; }
+#exer-codeword-membership-2-1-1 > li::marker { content: "("counter(exer-codeword-membership-2-1-1,lower-alpha)")"; }
+#exer-codeword-membership-2-1-1 > li { counter-increment: exer-codeword-membership-2-1-1; }
+#exer-codeword-membership-3-1-1 { counter-set: exer-codeword-membership-3-1-1 0; }
+#exer-codeword-membership-3-1-1 > li::marker { content: "("counter(exer-codeword-membership-3-1-1,lower-alpha)")"; }
+#exer-codeword-membership-3-1-1 > li { counter-increment: exer-codeword-membership-3-1-1; }
+#exer-injectivity-rank-2-1-3 { counter-set: exer-injectivity-rank-2-1-3 0; }
+#exer-injectivity-rank-2-1-3 > li::marker { content: "("counter(exer-injectivity-rank-2-1-3,lower-alpha)")"; }
+#exer-injectivity-rank-2-1-3 > li { counter-increment: exer-injectivity-rank-2-1-3; }
+#exer-injectivity-rank-3-1-1 { counter-set: exer-injectivity-rank-3-1-1 0; }
+#exer-injectivity-rank-3-1-1 > li::marker { content: "("counter(exer-injectivity-rank-3-1-1,lower-alpha)")"; }
+#exer-injectivity-rank-3-1-1 > li { counter-increment: exer-injectivity-rank-3-1-1; }
+#exer-distance-weight-2-1-7 { counter-set: exer-distance-weight-2-1-7 0; }
+#exer-distance-weight-2-1-7 > li::marker { content: "("counter(exer-distance-weight-2-1-7,lower-alpha)")"; }
+#exer-distance-weight-2-1-7 > li { counter-increment: exer-distance-weight-2-1-7; }
+#exer-distance-weight-3-1-1 { counter-set: exer-distance-weight-3-1-1 0; }
+#exer-distance-weight-3-1-1 > li::marker { content: "("counter(exer-distance-weight-3-1-1,lower-alpha)")"; }
+#exer-distance-weight-3-1-1 > li { counter-increment: exer-distance-weight-3-1-1; }
+#exer-single-parity-detection-2-1-3 { counter-set: exer-single-parity-detection-2-1-3 0; }
+#exer-single-parity-detection-2-1-3 > li::marker { content: "("counter(exer-single-parity-detection-2-1-3,lower-alpha)")"; }
+#exer-single-parity-detection-2-1-3 > li { counter-increment: exer-single-parity-detection-2-1-3; }
+#exer-single-parity-detection-3-1-1 { counter-set: exer-single-parity-detection-3-1-1 0; }
+#exer-single-parity-detection-3-1-1 > li::marker { content: "("counter(exer-single-parity-detection-3-1-1,lower-alpha)")"; }
+#exer-single-parity-detection-3-1-1 > li { counter-increment: exer-single-parity-detection-3-1-1; }
+#exer-check-matrix-standard-form-2-1-4 { counter-set: exer-check-matrix-standard-form-2-1-4 0; }
+#exer-check-matrix-standard-form-2-1-4 > li::marker { content: "("counter(exer-check-matrix-standard-form-2-1-4,lower-alpha)")"; }
+#exer-check-matrix-standard-form-2-1-4 > li { counter-increment: exer-check-matrix-standard-form-2-1-4; }
+#exer-check-matrix-standard-form-3-1-1 { counter-set: exer-check-matrix-standard-form-3-1-1 0; }
+#exer-check-matrix-standard-form-3-1-1 > li::marker { content: "("counter(exer-check-matrix-standard-form-3-1-1,lower-alpha)")"; }
+#exer-check-matrix-standard-form-3-1-1 > li { counter-increment: exer-check-matrix-standard-form-3-1-1; }
+#exer-syndrome-table-2-1-3 { counter-set: exer-syndrome-table-2-1-3 0; }
+#exer-syndrome-table-2-1-3 > li::marker { content: "("counter(exer-syndrome-table-2-1-3,lower-alpha)")"; }
+#exer-syndrome-table-2-1-3 > li { counter-increment: exer-syndrome-table-2-1-3; }
+#exer-syndrome-table-3-1-7 { counter-set: exer-syndrome-table-3-1-7 0; }
+#exer-syndrome-table-3-1-7 > li::marker { content: "("counter(exer-syndrome-table-3-1-7,lower-alpha)")"; }
+#exer-syndrome-table-3-1-7 > li { counter-increment: exer-syndrome-table-3-1-7; }
+#exer-syndrome-cosets-2-1-7 { counter-set: exer-syndrome-cosets-2-1-7 0; }
+#exer-syndrome-cosets-2-1-7 > li::marker { content: "("counter(exer-syndrome-cosets-2-1-7,lower-alpha)")"; }
+#exer-syndrome-cosets-2-1-7 > li { counter-increment: exer-syndrome-cosets-2-1-7; }
+#exer-syndrome-cosets-3-1-1 { counter-set: exer-syndrome-cosets-3-1-1 0; }
+#exer-syndrome-cosets-3-1-1 > li::marker { content: "("counter(exer-syndrome-cosets-3-1-1,lower-alpha)")"; }
+#exer-syndrome-cosets-3-1-1 > li { counter-increment: exer-syndrome-cosets-3-1-1; }
+#exer-correctable-patterns-2-1-2 { counter-set: exer-correctable-patterns-2-1-2 0; }
+#exer-correctable-patterns-2-1-2 > li::marker { content: "("counter(exer-correctable-patterns-2-1-2,lower-alpha)")"; }
+#exer-correctable-patterns-2-1-2 > li { counter-increment: exer-correctable-patterns-2-1-2; }
+#exer-correctable-patterns-3-1-1 { counter-set: exer-correctable-patterns-3-1-1 0; }
+#exer-correctable-patterns-3-1-1 > li::marker { content: "("counter(exer-correctable-patterns-3-1-1,lower-alpha)")"; }
+#exer-correctable-patterns-3-1-1 > li { counter-increment: exer-correctable-patterns-3-1-1; }
+#exer-check-matrix-change-2-1-6 { counter-set: exer-check-matrix-change-2-1-6 0; }
+#exer-check-matrix-change-2-1-6 > li::marker { content: "("counter(exer-check-matrix-change-2-1-6,lower-alpha)")"; }
+#exer-check-matrix-change-2-1-6 > li { counter-increment: exer-check-matrix-change-2-1-6; }
+#exer-check-matrix-change-4-1-1 { counter-set: exer-check-matrix-change-4-1-1 0; }
+#exer-check-matrix-change-4-1-1 > li::marker { content: "("counter(exer-check-matrix-change-4-1-1,lower-alpha)")"; }
+#exer-check-matrix-change-4-1-1 > li { counter-increment: exer-check-matrix-change-4-1-1; }
+#exer-repetition-majority-2-1-3 { counter-set: exer-repetition-majority-2-1-3 0; }
+#exer-repetition-majority-2-1-3 > li::marker { content: "("counter(exer-repetition-majority-2-1-3,lower-alpha)")"; }
+#exer-repetition-majority-2-1-3 > li { counter-increment: exer-repetition-majority-2-1-3; }
+#exer-repetition-majority-3-1-1 { counter-set: exer-repetition-majority-3-1-1 0; }
+#exer-repetition-majority-3-1-1 > li::marker { content: "("counter(exer-repetition-majority-3-1-1,lower-alpha)")"; }
+#exer-repetition-majority-3-1-1 > li { counter-increment: exer-repetition-majority-3-1-1; }
+#exer-distance-from-columns-2-1-4 { counter-set: exer-distance-from-columns-2-1-4 0; }
+#exer-distance-from-columns-2-1-4 > li::marker { content: "("counter(exer-distance-from-columns-2-1-4,lower-alpha)")"; }
+#exer-distance-from-columns-2-1-4 > li { counter-increment: exer-distance-from-columns-2-1-4; }
+#exer-distance-from-columns-4-1-1 { counter-set: exer-distance-from-columns-4-1-1 0; }
+#exer-distance-from-columns-4-1-1 > li::marker { content: "("counter(exer-distance-from-columns-4-1-1,lower-alpha)")"; }
+#exer-distance-from-columns-4-1-1 > li { counter-increment: exer-distance-from-columns-4-1-1; }
+#exer-hamming-code-2-1-5 { counter-set: exer-hamming-code-2-1-5 0; }
+#exer-hamming-code-2-1-5 > li::marker { content: "("counter(exer-hamming-code-2-1-5,lower-alpha)")"; }
+#exer-hamming-code-2-1-5 > li { counter-increment: exer-hamming-code-2-1-5; }
+#exer-hamming-code-3-1-1 { counter-set: exer-hamming-code-3-1-1 0; }
+#exer-hamming-code-3-1-1 > li::marker { content: "("counter(exer-hamming-code-3-1-1,lower-alpha)")"; }
+#exer-hamming-code-3-1-1 > li { counter-increment: exer-hamming-code-3-1-1; }
+#exer-hamming-bound-2-1-6 { counter-set: exer-hamming-bound-2-1-6 0; }
+#exer-hamming-bound-2-1-6 > li::marker { content: "("counter(exer-hamming-bound-2-1-6,lower-alpha)")"; }
+#exer-hamming-bound-2-1-6 > li { counter-increment: exer-hamming-bound-2-1-6; }
+#exer-hamming-bound-4-1-1 { counter-set: exer-hamming-bound-4-1-1 0; }
+#exer-hamming-bound-4-1-1 > li::marker { content: "("counter(exer-hamming-bound-4-1-1,lower-alpha)")"; }
+#exer-hamming-bound-4-1-1 > li { counter-increment: exer-hamming-bound-4-1-1; }
+#exer-hamming-membership-2-1-1 { counter-set: exer-hamming-membership-2-1-1 0; }
+#exer-hamming-membership-2-1-1 > li::marker { content: "("counter(exer-hamming-membership-2-1-1,lower-alpha)")"; }
+#exer-hamming-membership-2-1-1 > li { counter-increment: exer-hamming-membership-2-1-1; }
+#exer-hamming-membership-3-1-4 { counter-set: exer-hamming-membership-3-1-4 0; }
+#exer-hamming-membership-3-1-4 > li::marker { content: "("counter(exer-hamming-membership-3-1-4,lower-alpha)")"; }
+#exer-hamming-membership-3-1-4 > li { counter-increment: exer-hamming-membership-3-1-4; }
+#exer-hamming-parameters-table-2-1-1 { counter-set: exer-hamming-parameters-table-2-1-1 0; }
+#exer-hamming-parameters-table-2-1-1 > li::marker { content: "("counter(exer-hamming-parameters-table-2-1-1,lower-alpha)")"; }
+#exer-hamming-parameters-table-2-1-1 > li { counter-increment: exer-hamming-parameters-table-2-1-1; }
+#exer-hamming-parameters-table-3-1-1 { counter-set: exer-hamming-parameters-table-3-1-1 0; }
+#exer-hamming-parameters-table-3-1-1 > li::marker { content: "("counter(exer-hamming-parameters-table-3-1-1,lower-alpha)")"; }
+#exer-hamming-parameters-table-3-1-1 > li { counter-increment: exer-hamming-parameters-table-3-1-1; }
+#exer-hamming-single-error-2-1-1 { counter-set: exer-hamming-single-error-2-1-1 0; }
+#exer-hamming-single-error-2-1-1 > li::marker { content: "("counter(exer-hamming-single-error-2-1-1,lower-alpha)")"; }
+#exer-hamming-single-error-2-1-1 > li { counter-increment: exer-hamming-single-error-2-1-1; }
+#exer-hamming-single-error-3-1-1 { counter-set: exer-hamming-single-error-3-1-1 0; }
+#exer-hamming-single-error-3-1-1 > li::marker { content: "("counter(exer-hamming-single-error-3-1-1,lower-alpha)")"; }
+#exer-hamming-single-error-3-1-1 > li { counter-increment: exer-hamming-single-error-3-1-1; }
+#exer-hamming-ball-size-2-1-1 { counter-set: exer-hamming-ball-size-2-1-1 0; }
+#exer-hamming-ball-size-2-1-1 > li::marker { content: "("counter(exer-hamming-ball-size-2-1-1,lower-alpha)")"; }
+#exer-hamming-ball-size-2-1-1 > li { counter-increment: exer-hamming-ball-size-2-1-1; }
+#exer-hamming-ball-size-3-1-1 { counter-set: exer-hamming-ball-size-3-1-1 0; }
+#exer-hamming-ball-size-3-1-1 > li::marker { content: "("counter(exer-hamming-ball-size-3-1-1,lower-alpha)")"; }
+#exer-hamming-ball-size-3-1-1 > li { counter-increment: exer-hamming-ball-size-3-1-1; }
+#exer-hamming-column-order-2-1-2 { counter-set: exer-hamming-column-order-2-1-2 0; }
+#exer-hamming-column-order-2-1-2 > li::marker { content: "("counter(exer-hamming-column-order-2-1-2,lower-alpha)")"; }
+#exer-hamming-column-order-2-1-2 > li { counter-increment: exer-hamming-column-order-2-1-2; }
+#exer-hamming-column-order-3-1-1 { counter-set: exer-hamming-column-order-3-1-1 0; }
+#exer-hamming-column-order-3-1-1 > li::marker { content: "("counter(exer-hamming-column-order-3-1-1,lower-alpha)")"; }
+#exer-hamming-column-order-3-1-1 > li { counter-increment: exer-hamming-column-order-3-1-1; }
+#exer-repetition-perfect-2-1-3 { counter-set: exer-repetition-perfect-2-1-3 0; }
+#exer-repetition-perfect-2-1-3 > li::marker { content: "("counter(exer-repetition-perfect-2-1-3,lower-alpha)")"; }
+#exer-repetition-perfect-2-1-3 > li { counter-increment: exer-repetition-perfect-2-1-3; }
+#exer-repetition-perfect-3-1-1 { counter-set: exer-repetition-perfect-3-1-1 0; }
+#exer-repetition-perfect-3-1-1 > li::marker { content: "("counter(exer-repetition-perfect-3-1-1,lower-alpha)")"; }
+#exer-repetition-perfect-3-1-1 > li { counter-increment: exer-repetition-perfect-3-1-1; }
+#exer-columns-and-distance-2-1-4 { counter-set: exer-columns-and-distance-2-1-4 0; }
+#exer-columns-and-distance-2-1-4 > li::marker { content: "("counter(exer-columns-and-distance-2-1-4,lower-alpha)")"; }
+#exer-columns-and-distance-2-1-4 > li { counter-increment: exer-columns-and-distance-2-1-4; }
+#exer-columns-and-distance-3-1-1 { counter-set: exer-columns-and-distance-3-1-1 0; }
+#exer-columns-and-distance-3-1-1 > li::marker { content: "("counter(exer-columns-and-distance-3-1-1,lower-alpha)")"; }
+#exer-columns-and-distance-3-1-1 > li { counter-increment: exer-columns-and-distance-3-1-1; }
+#exer-perfect-nearest-codeword-2-1-1 { counter-set: exer-perfect-nearest-codeword-2-1-1 0; }
+#exer-perfect-nearest-codeword-2-1-1 > li::marker { content: "("counter(exer-perfect-nearest-codeword-2-1-1,lower-alpha)")"; }
+#exer-perfect-nearest-codeword-2-1-1 > li { counter-increment: exer-perfect-nearest-codeword-2-1-1; }
+#exer-perfect-nearest-codeword-3-1-1 { counter-set: exer-perfect-nearest-codeword-3-1-1 0; }
+#exer-perfect-nearest-codeword-3-1-1 > li::marker { content: "("counter(exer-perfect-nearest-codeword-3-1-1,lower-alpha)")"; }
+#exer-perfect-nearest-codeword-3-1-1 > li { counter-increment: exer-perfect-nearest-codeword-3-1-1; }
+#exer-sphere-packing-bound-2-1-5 { counter-set: exer-sphere-packing-bound-2-1-5 0; }
+#exer-sphere-packing-bound-2-1-5 > li::marker { content: "("counter(exer-sphere-packing-bound-2-1-5,lower-alpha)")"; }
+#exer-sphere-packing-bound-2-1-5 > li { counter-increment: exer-sphere-packing-bound-2-1-5; }
+#exer-sphere-packing-bound-3-1-1 { counter-set: exer-sphere-packing-bound-3-1-1 0; }
+#exer-sphere-packing-bound-3-1-1 > li::marker { content: "("counter(exer-sphere-packing-bound-3-1-1,lower-alpha)")"; }
+#exer-sphere-packing-bound-3-1-1 > li { counter-increment: exer-sphere-packing-bound-3-1-1; }
+#exer-extended-hamming-2-1-5 { counter-set: exer-extended-hamming-2-1-5 0; }
+#exer-extended-hamming-2-1-5 > li::marker { content: "("counter(exer-extended-hamming-2-1-5,lower-alpha)")"; }
+#exer-extended-hamming-2-1-5 > li { counter-increment: exer-extended-hamming-2-1-5; }
+#exer-extended-hamming-3-1-1 { counter-set: exer-extended-hamming-3-1-1 0; }
+#exer-extended-hamming-3-1-1 > li::marker { content: "("counter(exer-extended-hamming-3-1-1,lower-alpha)")"; }
+#exer-extended-hamming-3-1-1 > li { counter-increment: exer-extended-hamming-3-1-1; }
+#exer-weight-three-codewords-2-1-5 { counter-set: exer-weight-three-codewords-2-1-5 0; }
+#exer-weight-three-codewords-2-1-5 > li::marker { content: "("counter(exer-weight-three-codewords-2-1-5,lower-alpha)")"; }
+#exer-weight-three-codewords-2-1-5 > li { counter-increment: exer-weight-three-codewords-2-1-5; }
+#exer-weight-three-codewords-3-1-1 { counter-set: exer-weight-three-codewords-3-1-1 0; }
+#exer-weight-three-codewords-3-1-1 > li::marker { content: "("counter(exer-weight-three-codewords-3-1-1,lower-alpha)")"; }
+#exer-weight-three-codewords-3-1-1 > li { counter-increment: exer-weight-three-codewords-3-1-1; }
+#exer-perfect-single-error-length-2-1-4 { counter-set: exer-perfect-single-error-length-2-1-4 0; }
+#exer-perfect-single-error-length-2-1-4 > li::marker { content: "("counter(exer-perfect-single-error-length-2-1-4,lower-alpha)")"; }
+#exer-perfect-single-error-length-2-1-4 > li { counter-increment: exer-perfect-single-error-length-2-1-4; }
+#exer-perfect-single-error-length-3-1-1 { counter-set: exer-perfect-single-error-length-3-1-1 0; }
+#exer-perfect-single-error-length-3-1-1 > li::marker { content: "("counter(exer-perfect-single-error-length-3-1-1,lower-alpha)")"; }
+#exer-perfect-single-error-length-3-1-1 > li { counter-increment: exer-perfect-single-error-length-3-1-1; }
+#exer-hamming-uniqueness-2-1-1 { counter-set: exer-hamming-uniqueness-2-1-1 0; }
+#exer-hamming-uniqueness-2-1-1 > li::marker { content: "("counter(exer-hamming-uniqueness-2-1-1,lower-alpha)")"; }
+#exer-hamming-uniqueness-2-1-1 > li { counter-increment: exer-hamming-uniqueness-2-1-1; }
+#exer-hamming-uniqueness-4-1-1 { counter-set: exer-hamming-uniqueness-4-1-1 0; }
+#exer-hamming-uniqueness-4-1-1 > li::marker { content: "("counter(exer-hamming-uniqueness-4-1-1,lower-alpha)")"; }
+#exer-hamming-uniqueness-4-1-1 > li { counter-increment: exer-hamming-uniqueness-4-1-1; }
+#exer-weight-four-codewords-2-1-5 { counter-set: exer-weight-four-codewords-2-1-5 0; }
+#exer-weight-four-codewords-2-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-2-1-5,lower-alpha)")"; }
+#exer-weight-four-codewords-2-1-5 > li { counter-increment: exer-weight-four-codewords-2-1-5; }
+#exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
+#exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
+#exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+</style>
+</head>
+<body id="changeme" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">[skip-to-content]</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""></a><div class="title-container">
+<h1 class="heading"><a href="linear-algebra-practice.html"><span class="title">선형대수학:</span> <span class="subtitle">문제와 해결</span></a></h1>
+<p class="byline">김도형</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="목차"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">목차</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">[search-results-heading]: </h2>
+<div id="searchempty" class="searchempty"><span>[no-search-results].</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-gelfand-matrix-norm.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-Perron-Frobenius.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">머릿말</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="front-colophon.html" class="internal"><span class="title">판권</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-introduction.html" class="internal"><span class="codenumber">1</span> <span class="title">소개</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html#exercises-symmetric-bilinear-forms" class="internal"><span class="codenumber">1.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-orthogonalization.html" class="internal"><span class="codenumber">1.2</span> <span class="title">직교화</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-orthogonalization.html#exercises-orthogonalization" class="internal"><span class="codenumber">1.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.3</span> <span class="title">스펙트럴 정리: 실수체의 경우</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem.html#exercises-spectral-theorem-real" class="internal"><span class="codenumber">1.3</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리: 복소체의 경우</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-spectral-theorem-complex.html#exercises-spectral-theorem-complex-merged" class="internal"><span class="codenumber">1.4</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해: 내적 공간</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-singular-value-decomposition.html#exercises-singular-value-decomposition" class="internal"><span class="codenumber">1.5</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html" class="internal"><span class="codenumber">1.6</span> <span class="title">특이값 분해: 에르미트 공간</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-singular-value-decomposition-complex.html#exercises-singular-value-decomposition-hermitian" class="internal"><span class="codenumber">1.6</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-image-compression.html#exercises-image-compression" class="internal"><span class="codenumber">1.7</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-principal-component-analysis.html" class="internal"><span class="codenumber">1.8</span> <span class="title">주성분 분석</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-principal-component-analysis.html#exercises-pca" class="internal"><span class="codenumber">1.8</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-rigid-motion.html" class="internal"><span class="codenumber">2</span> <span class="title">강체운동</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-2d-rigid-motion.html" class="internal"><span class="codenumber">2.1</span> <span class="title">2차원 강체운동</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-2d-rigid-motion.html#exercises-2d-rigid-motion" class="internal"><span class="codenumber">2.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-3d-rigid-motion.html" class="internal"><span class="codenumber">2.2</span> <span class="title">3차원 강체운동</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-3d-rigid-motion.html#exercises-3d-rigid-motion" class="internal"><span class="codenumber">2.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-linear-codes.html" class="internal"><span class="codenumber">3</span> <span class="title">선형부호</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-hamming-distance.html" class="internal"><span class="codenumber">3.1</span> <span class="title">해밍 거리와 선형부호</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-hamming-distance.html#exercises-hamming-distance" class="internal"><span class="codenumber">3.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-information-and-redundancy.html" class="internal"><span class="codenumber">3.2</span> <span class="title">정보와 중복</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-information-and-redundancy.html#exercises-information-and-redundancy" class="internal"><span class="codenumber">3.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-hamming-code.html" class="internal"><span class="codenumber">3.3</span> <span class="title">해밍 부호</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-hamming-code.html#exercises-hamming-code" class="internal"><span class="codenumber">3.3</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-matrix-tree-theorem.html" class="internal"><span class="codenumber">5</span> <span class="title">행렬-트리 정리</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-graphs-and-incidence.html" class="internal"><span class="codenumber">5.1</span> <span class="title">그래프와 인접 행렬</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="app-minmax-compact.html" class="internal"><span class="codenumber">1</span> <span class="title">최대-최소 정리의 일반화와 콤팩트 집합</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="exercises-minmax.html" class="internal"><span class="codenumber">1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">판권</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-perron-frobenius"><h2 class="heading hide-type">
+<span class="type">절</span><span class="space"> </span><span class="codenumber">4.3</span><span class="space"> </span><span class="title">페론-프로베니우스 정리</span>
+</h2>
+<div class="para" id="sec-perron-frobenius-2">양의 행렬을 반복해서 곱하면 장기적인 거동은 하나의 양의 고유벡터가 지배합니다. 이를 정확히 설명하는 페론(-프로베니우스) 정리는 비음수 행렬 이론의 출발점이며, 확률론, 경제학, 동역학계 등에서 널리 사용됩니다. 이 절에서는 겔판트 공식을 이용하여 이 정리를 증명합니다.<details class="ptx-footnote" aria-live="polite" id="sec-perron-frobenius-2-1"><summary class="ptx-footnote__number" title="[fn] 4.3.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-perron-frobenius-2-1">이 절의 전개는 H. Cairns, Perron’s theorem in an hour, <em class="emphasis">Amer. Math. Monthly</em> 128 (2021), no. 8, 748--752를 참고하였습니다.</div></details>
+</div>
+<article class="definition definition-like" id="def-positive-vector-matrix"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">4.3.1</span><span class="period">.</span><span class="space"> </span><span class="title">비음수 벡터와 양의 행렬.</span>
+</h3>
+<div class="para logical" id="def-positive-vector-matrix-2-1">
+<div class="para">실수 벡터 또는 실수 행렬의 모든 성분이 <span class="process-math">\(0\)</span> 이상이면 <dfn class="terminology">비음수</dfn>라고 하고, 모든 성분이 <span class="process-math">\(0\)</span>보다 크면 <dfn class="terminology">양</dfn>라고 한다. 벡터 <span class="process-math">\(x,y\)</span>에 대하여 <span class="process-math">\(x-y\)</span>가 비음수이면 <span class="process-math">\(x\ge y\)</span>로 쓰고, <span class="process-math">\(x-y\)</span>가 양의 벡터이면 <span class="process-math">\(x&gt;y\)</span>로 쓴다. 또한 <span class="process-math">\(z=(z_1,\ldots,z_d)^{\mathsf T}\in\mathbb C^d\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+|z|=(|z_1|,\ldots,|z_d|)^{\mathsf T}
+\end{equation*}
+</div>
+<div class="para">로 정의한다.</div>
+</div></article><aside class="aside aside-like" id="sec-perron-frobenius-4"><div class="para" id="sec-perron-frobenius-4-1">비음수:nonnegative</div>
+<div class="para" id="sec-perron-frobenius-4-2">양의:positive</div></aside><article class="lemma theorem-like" id="lem-positive-matrix-strict-order"><h3 class="heading">
+<span class="type">보조정리</span><span class="space"> </span><span class="codenumber">4.3.2</span><span class="period">.</span><span class="space"> </span><span class="title">양의 행렬의 순서 보존.</span>
+</h3>
+<div class="para" id="lem-positive-matrix-strict-order-2-1">
+<span class="process-math">\(A\)</span>가 양의 행렬이고 <span class="process-math">\(x\)</span>가 영벡터가 아닌 비음수 벡터이면 <span class="process-math">\(Ax\)</span>는 양의 벡터이다. 특히 <span class="process-math">\(x\ge y\)</span>이고 <span class="process-math">\(x\ne y\)</span>이면 <span class="process-math">\(Ax&gt;Ay\)</span>이다.</div></article><details id="lem-positive-matrix-strict-order-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-positive-matrix-strict-order-3-1">어떤 <span class="process-math">\(j\)</span>에 대하여 <span class="process-math">\(x_j&gt;0\)</span>입니다. 따라서 모든 <span class="process-math">\(i\)</span>에 대하여 <span class="process-math">\((Ax)_i=\sum_j a_{ij}x_j\ge a_{ij}x_j&gt;0\)</span>이므로 <span class="process-math">\(Ax\)</span>는 양의 벡터입니다. 두 번째 주장은 영벡터가 아닌 비음수 벡터 <span class="process-math">\(x-y\)</span>에 첫 번째 주장을 적용하면 얻습니다.</div></article></details><article class="lemma theorem-like" id="lem-perron-boundary-eigenvector-absolute-value"><h3 class="heading">
+<span class="type">보조정리</span><span class="space"> </span><span class="codenumber">4.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 원 위 고유벡터의 절댓값.</span>
+</h3>
+<div class="para logical" id="lem-perron-boundary-eigenvector-absolute-value-2-1">
+<div class="para">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(|\lambda|=\rho\)</span>인 고윳값이고 <span class="process-math">\(z\in\mathbb C^d\)</span>가 이에 대응하는 고유벡터이면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A|z|=\rho|z|
+\end{equation*}
+</div>
+<div class="para">이다.</div>
+</div></article><details id="lem-perron-boundary-eigenvector-absolute-value-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-perron-boundary-eigenvector-absolute-value-3-1">
+<div class="para">성분별 삼각부등식에 의하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-positive-matrix-strict-order.html">
+\begin{equation*}
+A|z|\ge |Az|=|\lambda z|=\rho|z|
+\end{equation*}
+</div>
+<div class="para">입니다. 이 부등식이 등식이 아니라고 가정합시다. <a href="sec-perron-frobenius.html#lem-positive-matrix-strict-order" class="xref" data-knowl="./knowl/xref/lem-positive-matrix-strict-order.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.2: 양의 행렬의 순서 보존">보조정리 4.3.2</a>에 따라 <span class="process-math">\(A^2|z|&gt;\rho A|z|\)</span>입니다. 두 벡터 <span class="process-math">\(A^2|z|\)</span>와 <span class="process-math">\(A|z|\)</span>의 모든 성분이 양수이므로, 어떤 실수 <span class="process-math">\(r&gt;\rho\)</span>에 대하여 <span class="process-math">\(A^2|z|\ge rA|z|\)</span>입니다.</div>
+</div>
+<div class="para logical" id="lem-perron-boundary-eigenvector-absolute-value-3-2">
+<div class="para">이 부등식에 <span class="process-math">\(A\)</span>를 거듭 적용하면 모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(A^{k+1}|z|\ge r^kA|z|\)</span>입니다. 따라서 연산자 1-노름에 대하여</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-gelfand-formula.html">
+\begin{equation*}
+\|A^{k+1}\|_1\ge r^k\frac{\|A|z|\|_1}{\||z|\|_1}
+\end{equation*}
+</div>
+<div class="para">입니다. 양변에 <span class="process-math">\(1/(k+1)\)</span>제곱을 취하고 <span class="process-math">\(k\to\infty\)</span>로 보내면 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\rho\ge r\)</span>를 얻습니다. 이는 <span class="process-math">\(r&gt;\rho\)</span>와 모순이므로 처음의 부등식은 등식입니다.</div>
+</div></article></details><article class="corollary theorem-like" id="cor-perron-positive-eigenvector"><h3 class="heading">
+<span class="type">따름정리</span><span class="space"> </span><span class="codenumber">4.3.4</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 반지름의 양의 고유벡터.</span>
+</h3>
+<div class="para" id="cor-perron-positive-eigenvector-2-1">양의 행렬 <span class="process-math">\(A\)</span>에 대하여 <span class="process-math">\(\rho(A)&gt;0\)</span>이고, <span class="process-math">\(\rho(A)\)</span>에는 양의 고유벡터가 존재한다.</div></article><details id="cor-perron-positive-eigenvector-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="cor-perron-positive-eigenvector-3-1">스펙트럼 원 위의 고윳값 <span class="process-math">\(\lambda\)</span>와 그 고유벡터 <span class="process-math">\(z\)</span>를 택합시다. <a href="sec-perron-frobenius.html#lem-perron-boundary-eigenvector-absolute-value" class="xref" data-knowl="./knowl/xref/lem-perron-boundary-eigenvector-absolute-value.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.3: 스펙트럼 원 위 고유벡터의 절댓값">보조정리 4.3.3</a>에 의해 <span class="process-math">\(A|z|=\rho(A)|z|\)</span>입니다. 한편 <a href="sec-perron-frobenius.html#lem-positive-matrix-strict-order" class="xref" data-knowl="./knowl/xref/lem-positive-matrix-strict-order.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.2: 양의 행렬의 순서 보존">보조정리 4.3.2</a>에 의해 <span class="process-math">\(A|z|\)</span>는 양의 벡터입니다. 따라서 <span class="process-math">\(\rho(A)&gt;0\)</span>이고 <span class="process-math">\(|z|\)</span>도 양의 벡터입니다.</div></article></details><article class="lemma theorem-like" id="lem-perron-phase-rigidity"><h3 class="heading">
+<span class="type">보조정리</span><span class="space"> </span><span class="codenumber">4.3.5</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 원 위 고유벡터의 위상.</span>
+</h3>
+<div class="para" id="lem-perron-phase-rigidity-2-1">위 보조정리의 조건에서 어떤 실수 <span class="process-math">\(\theta\)</span>에 대하여 <span class="process-math">\(z=e^{i\theta}|z|\)</span>이다. 따라서 <span class="process-math">\(\lambda=\rho(A)\)</span>이다.</div></article><details id="lem-perron-phase-rigidity-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-perron-phase-rigidity-3-1">
+<div class="para">
+<a href="sec-perron-frobenius.html#lem-perron-boundary-eigenvector-absolute-value" class="xref" data-knowl="./knowl/xref/lem-perron-boundary-eigenvector-absolute-value.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.3: 스펙트럼 원 위 고유벡터의 절댓값">보조정리 4.3.3</a>에 의해 <span class="process-math">\(A|z|=|Az|\)</span>입니다. 따라서 각 행에서 삼각부등식의 등호가 성립합니다. <span class="process-math">\(A\)</span>의 모든 성분이 양수이고 <span class="process-math">\(|z|\)</span>의 모든 성분도 양수이므로, 삼각부등식의 등호 조건에 따라 모든 <span class="process-math">\(z_j\)</span>는 같은 복소수 위상을 가집니다. 즉, 어떤 실수 <span class="process-math">\(\theta\)</span>에 대하여 <span class="process-math">\(z=e^{i\theta}|z|\)</span>입니다. 이제</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-perron-boundary-eigenvector-absolute-value.html">
+\begin{equation*}
+Az=\lambda z,\qquad A|z|=\rho(A)|z|
+\end{equation*}
+</div>
+<div class="para">이고 <span class="process-math">\(z\)</span>는 <span class="process-math">\(|z|\)</span>의 영이 아닌 스칼라배이므로 <span class="process-math">\(\lambda=\rho(A)\)</span>입니다.</div>
+</div></article></details><article class="lemma theorem-like" id="lem-perron-geometric-multiplicity-one"><h3 class="heading">
+<span class="type">보조정리</span><span class="space"> </span><span class="codenumber">4.3.6</span><span class="period">.</span><span class="space"> </span><span class="title">페론 고유공간의 차원.</span>
+</h3>
+<div class="para" id="lem-perron-geometric-multiplicity-one-2-1">양의 행렬 <span class="process-math">\(A\)</span>에 대한 <span class="process-math">\(\rho(A)\)</span>의 고유공간은 일차원이다.</div></article><details id="lem-perron-geometric-multiplicity-one-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-perron-geometric-multiplicity-one-3-1">
+<span class="process-math">\(\rho(A)\)</span>에 선형독립인 두 고유벡터 <span class="process-math">\(z,w\)</span>가 있다고 가정합시다. <a href="sec-perron-frobenius.html#lem-perron-phase-rigidity" class="xref" data-knowl="./knowl/xref/lem-perron-phase-rigidity.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.5: 스펙트럼 원 위 고유벡터의 위상">보조정리 4.3.5</a>에 의해 두 벡터의 모든 성분은 영이 아닙니다. 따라서 적절한 스칼라 <span class="process-math">\(c\)</span>를 택하면 <span class="process-math">\(u=z-cw\)</span>가 영벡터가 아니면서 첫 번째 성분은 <span class="process-math">\(0\)</span>인 <span class="process-math">\(\rho(A)\)</span>의 고유벡터가 됩니다. 그러나 <a href="sec-perron-frobenius.html#cor-perron-positive-eigenvector" class="xref" data-knowl="./knowl/xref/cor-perron-positive-eigenvector.html" data-reveal-label="Reveal" data-close-label="Close" title="따름정리 4.3.4: 스펙트럼 반지름의 양의 고유벡터">따름정리 4.3.4</a>를 <span class="process-math">\(u\)</span>에 적용하면 <span class="process-math">\(|u|\)</span>의 모든 성분이 양수여야 하므로 모순입니다.</div></article></details><article class="theorem theorem-like" id="thm-perron-positive-matrix"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">4.3.7</span><span class="period">.</span><span class="space"> </span><span class="title">페론 정리.</span>
+</h3>
+<div class="para" id="thm-perron-positive-matrix-2-1">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. 그러면 <span class="process-math">\(\rho\)</span>는 양의 고유벡터를 갖는 대수적 중복도 <span class="process-math">\(1\)</span>의 고윳값이다. 또한 <span class="process-math">\(\rho\)</span>가 아닌 모든 고윳값 <span class="process-math">\(\lambda\)</span>에 대하여 <span class="process-math">\(|\lambda|&lt;\rho\)</span>이다.</div></article><details id="thm-perron-positive-matrix-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-perron-positive-matrix-3-1">
+<a href="sec-perron-frobenius.html#cor-perron-positive-eigenvector" class="xref" data-knowl="./knowl/xref/cor-perron-positive-eigenvector.html" data-reveal-label="Reveal" data-close-label="Close" title="따름정리 4.3.4: 스펙트럼 반지름의 양의 고유벡터">따름정리 4.3.4</a>에 의해 <span class="process-math">\(\rho&gt;0\)</span>는 양의 고유벡터 <span class="process-math">\(v\)</span>를 갖는 고윳값입니다. <a href="sec-perron-frobenius.html#lem-perron-phase-rigidity" class="xref" data-knowl="./knowl/xref/lem-perron-phase-rigidity.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.5: 스펙트럼 원 위 고유벡터의 위상">보조정리 4.3.5</a>에 의해 스펙트럼 원 <span class="process-math">\(|\lambda|=\rho\)</span> 위에는 <span class="process-math">\(\rho\)</span> 이외의 고윳값이 없습니다. 또한 <a href="sec-perron-frobenius.html#lem-perron-geometric-multiplicity-one" class="xref" data-knowl="./knowl/xref/lem-perron-geometric-multiplicity-one.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.6: 페론 고유공간의 차원">보조정리 4.3.6</a>에 의해 <span class="process-math">\(\rho\)</span>의 기하적 중복도는 <span class="process-math">\(1\)</span>입니다.</div>
+<div class="para logical" id="thm-perron-positive-matrix-3-2">
+<div class="para">대수적 중복도도 <span class="process-math">\(1\)</span>임을 보이겠습니다. 전치행렬 <span class="process-math">\(A^{\mathsf T}\)</span>도 양의 행렬이고 <span class="process-math">\(A\)</span>와 같은 특성다항식을 가지므로, 양의 벡터 <span class="process-math">\(w\)</span>에 대하여 <span class="process-math">\(A^{\mathsf T}w=\rho w\)</span>입니다. 초평면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+H=\{x\in\mathbb C^d:w^{\mathsf T}x=0\}
+\end{equation*}
+</div>
+<div class="para">을 생각합시다. <span class="process-math">\(x\in H\)</span>이면 <span class="process-math">\(w^{\mathsf T}Ax=(A^{\mathsf T}w)^{\mathsf T}x=\rho w^{\mathsf T}x=0\)</span>이므로 <span class="process-math">\(H\)</span>는 <span class="process-math">\(A\)</span>-불변입니다. 또한 <span class="process-math">\(w^{\mathsf T}v&gt;0\)</span>이므로 <span class="process-math">\(v\notin H\)</span>입니다.</div>
+</div>
+<div class="para logical" id="thm-perron-positive-matrix-3-3">
+<div class="para">따라서 <span class="process-math">\(v\)</span>와 <span class="process-math">\(H\)</span>의 한 기저를 이어 붙인 기저에서 <span class="process-math">\(A\)</span>의 행렬은</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-perron-geometric-multiplicity-one.html">
+\begin{equation*}
+\begin{pmatrix}\rho&amp;0\\0&amp;B\end{pmatrix}
+\end{equation*}
+</div>
+<div class="para">꼴입니다. 만약 <span class="process-math">\(\rho\)</span>의 대수적 중복도가 <span class="process-math">\(1\)</span>보다 크다면 <span class="process-math">\(\rho\)</span>는 <span class="process-math">\(B\)</span>의 고윳값입니다. 그러면 <span class="process-math">\(H\)</span> 안에 <span class="process-math">\(\rho\)</span>의 고유벡터가 존재하여 <span class="process-math">\(v\)</span>와 선형독립이 되므로 <a href="sec-perron-frobenius.html#lem-perron-geometric-multiplicity-one" class="xref" data-knowl="./knowl/xref/lem-perron-geometric-multiplicity-one.html" data-reveal-label="Reveal" data-close-label="Close" title="보조정리 4.3.6: 페론 고유공간의 차원">보조정리 4.3.6</a>에 모순입니다. 따라서 <span class="process-math">\(\rho\)</span>의 대수적 중복도는 <span class="process-math">\(1\)</span>입니다.</div>
+</div></article></details><div class="para" id="sec-perron-frobenius-11">페론 정리는 행렬 자체가 양수인 경우뿐 아니라, 어떤 양의 정수 거듭제곱이 양수인 비음수 행렬에도 그대로 적용됩니다. 이 조건은 반복 작용을 충분히 많이 한 뒤 모든 좌표가 서로 영향을 준다는 뜻입니다.</div>
+<article class="theorem theorem-like" id="thm-perron-frobenius-eventually-positive"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">4.3.8</span><span class="period">.</span><span class="space"> </span><span class="title">양의 거듭제곱을 갖는 비음수 행렬.</span>
+</h3>
+<div class="para" id="thm-perron-frobenius-eventually-positive-2-1">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 비음수 행렬이고 어떤 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(A^k\)</span>가 양의 행렬이라고 하자. 그러면 <span class="process-math">\(\rho(A)\)</span>는 양의 고유벡터를 갖는 대수적 중복도 <span class="process-math">\(1\)</span>의 고윳값이고, 다른 모든 고윳값 <span class="process-math">\(\lambda\)</span>에 대하여 <span class="process-math">\(|\lambda|&lt;\rho(A)\)</span>이다.</div></article><details id="thm-perron-frobenius-eventually-positive-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-perron-frobenius-eventually-positive-3-1">
+<span class="process-math">\(A\)</span>의 고윳값들을 대수적 중복도를 포함하여 <span class="process-math">\(\lambda_1,\ldots,\lambda_d\)</span>라 합시다. 그러면 <span class="process-math">\(A^k\)</span>의 고윳값들은 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_d^k\)</span>이고 <span class="process-math">\(\rho(A^k)=\rho(A)^k\)</span>입니다. <a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론 정리">정리 4.3.7</a>를 양의 행렬 <span class="process-math">\(A^k\)</span>에 적용하면 <span class="process-math">\(\rho(A)^k\)</span>는 단순 고윳값이고 다른 고윳값들의 절댓값은 이보다 작습니다. 따라서 <span class="process-math">\(\rho(A)\)</span>와 절댓값이 같은 <span class="process-math">\(A\)</span>의 고윳값은 하나뿐이며 그 대수적 중복도도 <span class="process-math">\(1\)</span>입니다.</div>
+<div class="para" id="thm-perron-frobenius-eventually-positive-3-2">
+<span class="process-math">\(A^kv=\rho(A)^kv\)</span>인 양의 벡터 <span class="process-math">\(v\)</span>를 택합시다. <span class="process-math">\(A\)</span>와 <span class="process-math">\(A^k\)</span>가 가환하므로 <span class="process-math">\(Av\)</span>도 <span class="process-math">\(A^k\)</span>의 고윳값 <span class="process-math">\(\rho(A)^k\)</span>에 대응하는 고유벡터입니다. 이 고유공간은 일차원이므로 <span class="process-math">\(Av=cv\)</span>인 스칼라 <span class="process-math">\(c\)</span>가 존재합니다. <span class="process-math">\(A\)</span>가 비음수이고 <span class="process-math">\(A^k\)</span>가 양수이므로 <span class="process-math">\(Av\)</span>는 영벡터가 아닌 비음수 벡터이고, 따라서 <span class="process-math">\(c&gt;0\)</span>입니다. 또한 <span class="process-math">\(c^k=\rho(A)^k\)</span>이므로 <span class="process-math">\(c=\rho(A)\)</span>입니다. 따라서 <span class="process-math">\(v\)</span>는 <span class="process-math">\(A\)</span>의 고윳값 <span class="process-math">\(\rho(A)\)</span>에 대응하는 양의 고유벡터입니다.</div></article></details></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-gelfand-matrix-norm.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">거리와 무게.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(u,v\in\mathbb F_2^n\)</span>에 대하여 <span class="process-math">\(u\)</span>와 <span class="process-math">\(v\)</span>의 성분이 다른 좌표의 개수를 <span class="process-math">\(\operatorname{dist}(u,v)\)</span>로 쓰고, 선형부호 <span class="process-math">\(C\ne\{0\}\)</span>의 최소 거리를 <span class="process-math">\(d=\min\{\operatorname{dist}(c,c'):c,c'\in C,\ c\ne c'\}\)</span>로 정의합니다.</div>
+<ol class="lower-alpha" id="exer-distance-weight-2-1-7">
+<li><div class="para">
+<span class="process-math">\(\operatorname{dist}(u,v)=\operatorname{wt}(u+v)\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\operatorname{wt}(u+v)\le\operatorname{wt}(u)+\operatorname{wt}(v)\)</span>를 보이고, 이로부터 <span class="process-math">\(\operatorname{dist}\)</span>가 삼각부등식을 만족함을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(d=\min\{\operatorname{wt}(c):c\in C,\ c\ne 0\}\)</span>임을 보이십시오.</div></li>
+<li><div class="para">다음 부호의 최소 거리를 구하십시오: <a href="sec-information-and-redundancy.html#exer-standard-encoding" class="xref" data-knowl="./knowl/xref/exer-standard-encoding.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.1: 표준형 생성행렬로 부호화하기">연습문제 3.2.1</a>의 <span class="process-math">\(D\text{,}\)</span> 길이 <span class="process-math">\(n\)</span>인 반복부호 <span class="process-math">\(R_n=\{0,\mathbf 1\}\text{,}\)</span> 본문의 단일 패리티 부호, <a href="sec-information-and-redundancy.html#exer-injectivity-rank" class="xref" data-knowl="./knowl/xref/exer-injectivity-rank.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.3: 단사성과 행의 선형독립">연습문제 3.2.3</a>(b)의 이미지.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-distance-weight-3-1-1">
+<li><div class="para">
+<span class="process-math">\(\mathbb F_2\)</span>에서 <span class="process-math">\(u_i+v_i=1\)</span>일 필요충분조건은 <span class="process-math">\(u_i\ne v_i\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(u_i+v_i\ne 0\)</span>이면 <span class="process-math">\(u_i\ne0\)</span> 또는 <span class="process-math">\(v_i\ne0\)</span>이므로 <span class="process-math">\(\operatorname{supp}(u+v)\subseteq\operatorname{supp}(u)\cup\operatorname{supp}(v)\)</span>이고 부등식이 따라 나옵니다. 따라서 <span class="process-math">\(\operatorname{dist}(u,w)=\operatorname{wt}\bigl((u+v)+(v+w)\bigr)\le\operatorname{dist}(u,v)+\operatorname{dist}(v,w)\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(c\ne c'\)</span>이 부호어이면 선형성에 의해 <span class="process-math">\(c+c'\)</span>은 영이 아닌 부호어이고 <span class="process-math">\(\operatorname{dist}(c,c')=\operatorname{wt}(c+c')\)</span>이므로 <span class="process-math">\(d\ge\min\operatorname{wt}\)</span>입니다. 반대로 영이 아닌 부호어 <span class="process-math">\(c\)</span>에 대해 <span class="process-math">\(0\in C\)</span>이므로 <span class="process-math">\(\operatorname{wt}(c)=\operatorname{dist}(c,0)\ge d\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(D\)</span>의 영이 아닌 부호어의 무게는 <span class="process-math">\(3,2,2,3,3,4,3\)</span>이므로 <span class="process-math">\(d=2\)</span>입니다. <span class="process-math">\(R_n\)</span>의 영이 아닌 부호어는 <span class="process-math">\(\mathbf 1\)</span>뿐이므로 <span class="process-math">\(d=n\)</span>입니다. 단일 패리티 부호의 부호어 <span class="process-math">\((a,b,c,a+b+c)\)</span>는 성분의 합이 <span class="process-math">\(0\)</span>이므로 무게가 짝수이고, <span class="process-math">\(1100\)</span>이 부호어이므로 <span class="process-math">\(d=2\)</span>입니다. <span class="process-math">\(\{000,110,011,101\}\)</span>의 경우도 <span class="process-math">\(d=2\)</span>입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-distance-weight">[incontext]</a></span>
+</body>
+</html>

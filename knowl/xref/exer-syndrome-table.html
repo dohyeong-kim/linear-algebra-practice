@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">신드롬 표 만들기.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<a href="sec-information-and-redundancy.html#exer-check-matrix-standard-form" class="xref" data-knowl="./knowl/xref/exer-check-matrix-standard-form.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.6: 표준형에서 얻는 검사 행렬">연습문제 3.2.6</a>의 검사 행렬 <span class="process-math">\(H_D\)</span>를 사용합니다.</div>
+<ol class="lower-alpha" id="exer-syndrome-table-2-1-3">
+<li><div class="para">각 신드롬 <span class="process-math">\(s\in\mathbb F_2^2\)</span>에 대해, 신드롬이 <span class="process-math">\(s\)</span>인 최소 무게 벡터를 모두 구하십시오.</div></li>
+<li><div class="para">코셋 대표원소를 <span class="process-math">\(e_{(1,0)}=01000\text{,}\)</span> <span class="process-math">\(e_{(0,1)}=00100\)</span>으로 선택하고 수신 벡터 <span class="process-math">\(11111\)</span>과 <span class="process-math">\(01000\)</span>을 신드롬 복호하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(e_{(1,0)}=00010\)</span>으로 바꾸면 <span class="process-math">\(01000\)</span>의 복호 결과가 어떻게 달라지는지 확인하고, 이것이 <a href="sec-information-and-redundancy.html#thm-syndrome-decoding-correction-radius" class="xref" data-knowl="./knowl/xref/thm-syndrome-decoding-correction-radius.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 3.2.13: 신드롬 복호의 오류 정정 반경">정리 3.2.13</a>와 모순되지 않는 이유를 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(H_D\)</span>의 열은 <span class="process-math">\(h_1=(1,1)^{\mathsf T}\text{,}\)</span> <span class="process-math">\(h_2=h_4=(1,0)^{\mathsf T}\text{,}\)</span> <span class="process-math">\(h_3=h_5=(0,1)^{\mathsf T}\)</span>이고, <span class="process-math">\(i\)</span>번째 표준기저벡터의 신드롬은 <span class="process-math">\(h_i\)</span>입니다.</div>
+<ol class="lower-alpha" id="exer-syndrome-table-3-1-7">
+<li><div class="para">신드롬 <span class="process-math">\(0\text{:}\)</span> <span class="process-math">\(00000\text{.}\)</span> 신드롬 <span class="process-math">\((1,1)\text{:}\)</span> <span class="process-math">\(10000\)</span>뿐입니다. 신드롬 <span class="process-math">\((1,0)\text{:}\)</span> <span class="process-math">\(01000\text{,}\)</span> <span class="process-math">\(00010\text{.}\)</span> 신드롬 <span class="process-math">\((0,1)\text{:}\)</span> <span class="process-math">\(00100\text{,}\)</span> <span class="process-math">\(00001\text{.}\)</span> 영이 아닌 신드롬은 무게 <span class="process-math">\(1\)</span>인 벡터로 실현되므로 이것이 최소 무게입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(H_D(11111)^{\mathsf T}=h_1+h_2+h_3+h_4+h_5=(1,1)^{\mathsf T}\)</span>이므로 출력은 <span class="process-math">\(11111+10000=01111\)</span>이며, 이는 <a href="sec-information-and-redundancy.html#exer-standard-encoding" class="xref" data-knowl="./knowl/xref/exer-standard-encoding.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.1: 표준형 생성행렬로 부호화하기">연습문제 3.2.1</a>의 목록에 있는 부호어입니다. <span class="process-math">\(01000\)</span>의 신드롬은 <span class="process-math">\((1,0)^{\mathsf T}\)</span>이므로 출력은 <span class="process-math">\(00000\)</span>입니다.</div></li>
+<li><div class="para">이 경우 출력은 <span class="process-math">\(01000+00010=01010\)</span>이며, 이 역시 <span class="process-math">\(01000\)</span>과 거리가 <span class="process-math">\(1\)</span>인 부호어입니다. 부호어 <span class="process-math">\(01010\)</span>을 보냈는데 오류 <span class="process-math">\(00010\)</span>이 생겼다면 첫 번째 선택은 틀리고, <span class="process-math">\(00000\)</span>을 보냈는데 오류 <span class="process-math">\(01000\)</span>이 생겼다면 두 번째 선택이 틀립니다. <span class="process-math">\(d=2\)</span>이므로 <span class="process-math">\(t=0\)</span>이고, 정리는 무게 <span class="process-math">\(1\)</span>인 오류에 대해 아무것도 보장하지 않습니다.</div></li>
+</ol>
+</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-syndrome-table">[incontext]</a></span>
+</body>
+</html>

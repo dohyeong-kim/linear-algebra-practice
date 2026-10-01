@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">3.2.12</span><span class="period">.</span><span class="space"> </span><span class="title">코셋 대표원소의 선택과 신드롬 복호.</span>
+</h3>
+<div class="para logical">
+<div class="para">길이 <span class="process-math">\(3\)</span>인 반복부호 <span class="process-math">\(C=\{000,111\}\)</span>의 검사 행렬을</div>
+<div class="displaymath process-math">
+\begin{align*}
+H=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 1\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">로 둡니다. 신드롬에 따른 코셋 대표원소의 대응을</div>
+<div class="displaymath process-math">
+\begin{gather*}
+0\longmapsto 000, \qquad \begin{pmatrix}1\\0\end{pmatrix}\longmapsto 100, \qquad \begin{pmatrix}1\\1\end{pmatrix}\longmapsto 010, \qquad \begin{pmatrix}0\\1\end{pmatrix}\longmapsto 001
+\end{gather*}
+</div>
+<div class="para">로 선택합시다. 수신 벡터가 <span class="process-math">\(r=101\)</span>이면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+Hr=\begin{pmatrix}1\\1\end{pmatrix}
+\end{gather*}
+</div>
+<div class="para">이므로 선택한 대응에 따라 <span class="process-math">\(e_s=010\)</span>입니다. 따라서 신드롬 복호의 출력은</div>
+<div class="displaymath process-math">
+\begin{gather*}
+r-e_s=101-010=111
+\end{gather*}
+</div>
+<div class="para">입니다. 실제로 전송한 부호어가 <span class="process-math">\(111\)</span>이고 두 번째 성분에 오류가 발생했다면, 수신 벡터 <span class="process-math">\(101\)</span>에서 오류 패턴 <span class="process-math">\(010\)</span>을 제거하여 올바른 부호어를 복원한 것입니다.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#ex-syndrome-decoding-choice">[incontext]</a></span>
+</body>
+</html>

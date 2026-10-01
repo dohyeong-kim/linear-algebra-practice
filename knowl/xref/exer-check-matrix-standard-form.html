@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">표준형에서 얻는 검사 행렬.</span>
+</h4>
+<div class="para logical">
+<div class="para">부호 <span class="process-math">\(C\)</span>가 표준형 생성행렬 <span class="process-math">\(G=\begin{pmatrix}I_k &amp; A\end{pmatrix}\)</span>를 가진다고 합시다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-standard-encoding.html">
+\begin{align*}
+H=\begin{pmatrix}A^{\mathsf T} &amp; I_{n-k}\end{pmatrix}\in\mathbb F_2^{(n-k)\times n}
+\end{align*}
+</div>
+<div class="para">로 둡니다.</div>
+<ol class="lower-alpha" id="exer-check-matrix-standard-form-2-1-4">
+<li><div class="para">모든 부호어 <span class="process-math">\(c\)</span>에 대해 <span class="process-math">\(Hc^{\mathsf T}=0\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(C=\{v:Hv=0\}\text{,}\)</span> 즉 <span class="process-math">\(H\)</span>가 <span class="process-math">\(C\)</span>의 검사 행렬임을 보이십시오.</div></li>
+<li><div class="para">수신 벡터를 <span class="process-math">\(r=(r',r'')\text{,}\)</span> <span class="process-math">\(r'\in\mathbb F_2^k\text{,}\)</span> <span class="process-math">\(r''\in\mathbb F_2^{n-k}\)</span>로 나누면 <span class="process-math">\(Hr^{\mathsf T}=(r'A+r'')^{\mathsf T}\)</span>임을 보이고, 이를 본문의 부호어 판별법과 연결하여 해석하십시오.</div></li>
+<li><div class="para">
+<a href="sec-information-and-redundancy.html#exer-standard-encoding" class="xref" data-knowl="./knowl/xref/exer-standard-encoding.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 3.2.1: 표준형 생성행렬로 부호화하기">연습문제 3.2.1</a>의 부호 <span class="process-math">\(D\)</span>와 본문의 단일 패리티 부호에 대해 <span class="process-math">\(H\)</span>를 구하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-check-matrix-standard-form-3-1-1">
+<li><div class="para">
+<span class="process-math">\(c=xG=(x,xA)\)</span>이므로 <span class="process-math">\(Hc^{\mathsf T}=A^{\mathsf T}x^{\mathsf T}+(xA)^{\mathsf T}=2A^{\mathsf T}x^{\mathsf T}=0\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(H\)</span>의 마지막 <span class="process-math">\(n-k\)</span>개의 열이 <span class="process-math">\(I_{n-k}\)</span>이므로 계수는 <span class="process-math">\(n-k\)</span>이고, 계수-퇴화차수 정리에 의해 <span class="process-math">\(\dim\ker H=k\)</span>입니다. (a)에서 <span class="process-math">\(C\subseteq\ker H\)</span>이고 <span class="process-math">\(\dim C=k\)</span>이므로 <span class="process-math">\(C=\ker H\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(Hr^{\mathsf T}=A^{\mathsf T}r'^{\mathsf T}+r''^{\mathsf T}=(r'A+r'')^{\mathsf T}\)</span>입니다. <span class="process-math">\(r'A\)</span>는 수신한 정보 부분으로부터 다시 계산한 중복 부분이므로, 신드롬은 수신한 중복 부분 <span class="process-math">\(r''\)</span>과 다시 계산한 중복 부분의 차이입니다. 신드롬이 <span class="process-math">\(0\)</span>일 조건 <span class="process-math">\(r''=r'A\)</span>은 본문의 판별법과 정확히 같습니다.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(D\)</span>에 대해서는 <span class="process-math">\(A^{\mathsf T}=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 1 &amp; 0 &amp; 1\end{pmatrix}\)</span>이므로</div>
+<div class="displaymath process-math">
+\begin{align*}
+H_D=\begin{pmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. 단일 패리티 부호는 <span class="process-math">\(A=(1,1,1)^{\mathsf T}\)</span>이므로 <span class="process-math">\(H=\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\end{pmatrix}\)</span>이고, 이는 본문의 검사 행렬과 같습니다.</div>
+</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#exer-check-matrix-standard-form">[incontext]</a></span>
+</body>
+</html>

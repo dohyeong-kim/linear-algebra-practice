@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">3.2.13</span><span class="period">.</span><span class="space"> </span><span class="title">신드롬 복호의 오류 정정 반경.</span>
+</h3>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(C\)</span>가 최소 거리 <span class="process-math">\(d\)</span>인 이진 선형부호이고, 각 신드롬의 코셋 대표원소를 최소 무게 오류 패턴으로 선택했다고 하자. 부호어 <span class="process-math">\(c\)</span>를 전송하여 <span class="process-math">\(r=c+e\)</span>를 수신했을 때</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{wt}(e)\le t=\left\lfloor\frac{d-1}{2}\right\rfloor
+\end{gather*}
+</div>
+<div class="para">이면 신드롬 복호는 <span class="process-math">\(c\)</span>를 출력한다. 따라서 <span class="process-math">\(c\)</span>를 생성한 메시지도 정확히 복원된다.</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">수신 벡터의 신드롬을 <span class="process-math">\(s=Hr\)</span>라 합시다. <span class="process-math">\(Hc=0\)</span>이므로 <span class="process-math">\(s=He\)</span>입니다. 따라서 실제 오류 패턴 <span class="process-math">\(e\)</span>와 선택한 코셋 대표원소 <span class="process-math">\(e_s\)</span>는 같은 신드롬을 가지며, <span class="process-math">\(e-e_s\in C\)</span>입니다. <span class="process-math">\(e_s\)</span>는 이 신드롬을 갖는 오류 패턴 중 무게가 가장 작으므로</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{wt}(e_s)\le\operatorname{wt}(e)\le t
+\end{gather*}
+</div>
+<div class="para">입니다. 만약 <span class="process-math">\(e_s\ne e\)</span>라면 <span class="process-math">\(e-e_s\)</span>는 영이 아닌 부호어이고,</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{wt}(e-e_s)\le\operatorname{wt}(e)+\operatorname{wt}(e_s)\le 2t&lt;d
+\end{gather*}
+</div>
+<div class="para">입니다. 이는 <span class="process-math">\(C\)</span>의 최소 거리가 <span class="process-math">\(d\)</span>라는 것과 모순입니다. 따라서 <span class="process-math">\(e_s=e\)</span>이고, 신드롬 복호의 출력은 <span class="process-math">\(r-e_s=c\)</span>입니다. 메시지에서 부호어로 가는 부호화 사상은 단사이므로, 부호어 <span class="process-math">\(c\)</span>가 복원되면 이를 생성한 메시지도 유일하게 복원됩니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-information-and-redundancy.html#thm-syndrome-decoding-correction-radius">[incontext]</a></span>
+</body>
+</html>
