@@ -2,7 +2,20 @@
 
 <chapter xml:id="ch-Perron-Frobenius" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>페론-프로베니우스</title>
+  <introduction>
+    <p>
+      동역학계란 시간에 따라 변하는 시스템을 수학적으로 연구하는 학문 분야입니다. 시간을 연속적으로 다루는 경우와 이산적으로 다루는 경우로 나눌 수 있습니다. 가령, 시간에 따른 열의 분포를 분석할 때에는 시간을 연속적으로 다루는 것이 자연스럽고, 계절성을 갖는 국내총생산과 같은 경제 지표는 시간을 이산적으로 다루는 것이 자연스럽습니다.
+    </p>
+    <p>
+      벡터 공간 <m>V</m>와 작용소 <m>T \colon V \to V</m>에 대하여, <m>T</m>의 반복 작용은 동역학계로 볼 수 있습니다. 주어진 <m>v \in V</m>에 대하여 <m>v, T(v), T^2(v), \dots</m>의 궤적은 어떤 성질을 가질까요? 이 절에서는 페론-프로베니우스 정리를 통해 이러한 궤적의 점근적 성질을 이해하는 방법을 살펴봅니다.
 
-  
+    </p>  
+  </introduction>  
+
+  <xi:include href="sec-powers-of-a-matrix.ptx" />
+  <xi:include href="sec-gelfand-matrix-norm.ptx" />
+  <xi:include href="sec-perron-frobenius.ptx" />
+
+
 
 </chapter>

@@ -1,11 +1,527 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <section xml:id="sec-hamming-code" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>해밍 부호</title>
   <p>
-    이 절에서는..
+    부호 건설의 대표적 예로 해밍 부호가 있습니다.
   </p>
 
-  
+  <definition xml:id="def-hamming-code">
+    <title>해밍 부호</title>
+    <statement>
+      <p>
+        <term>해밍 부호</term><aside><p>용어:Hamming code</p></aside>는 양의 정수 <m>r</m>에 대하여, <m>\mathbb F_2^r</m>의 영벡터가 아닌 모든 벡터를 열로 갖는 <m>r\times(2^r-1)</m> 행렬 <m>H</m>의 커널로 정의되는 이진 선형 부호입니다.
+      </p>
+      <md><mrow>C=\operatorname{ker}(H)=\{x\in\mathbb F_2^{2^r-1}:Hx=0\}.</mrow></md>
+    </statement>
+  </definition>
 
+  <example xml:id="ex-hamming-code-r2">
+    <title><m>r=2</m>인 해밍 부호</title>
+    <statement>
+      <p>
+        <m>r=2</m>일 때 열이 <m>(1,0)^T</m>, <m>(0,1)^T</m>, <m>(1,1)^T</m>인 행렬은
+      </p>
+      <md><mrow>H=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{pmatrix}</mrow></md>
+      <p>
+        입니다. 이때 <m>Hx=0</m>의 해는 <m>(0,0,0)</m>과 <m>(1,1,1)</m>이므로, 해밍 부호는 길이 <m>3</m>, 차원 <m>1</m>입니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-hamming-code-r3">
+    <title><m>r=3</m>인 해밍 부호</title>
+    <statement>
+      <p>
+        <m>r=3</m>일 때 <m>H</m>의 열은 <m>\mathbb F_2^3</m>의 영벡터가 아닌 일곱 벡터입니다. 한 가지 선택은 다음과 같습니다.
+      </p>
+      <md><mrow>H=\begin{pmatrix}1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;1\\0&amp;1&amp;0&amp;1&amp;0&amp;1&amp;1\\0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;1\end{pmatrix}</mrow></md>
+      <p>
+        이 행렬의 커널은 길이 <m>7</m>, 차원 <m>4</m>인 이진 선형 부호입니다. <m>(1,1,0,1,0,0,0)</m>은 <m>H</m>에 곱하면 영벡터가 되는 부호어의 예입니다.
+      </p>
+    </statement>
+  </example>
+
+  <theorem xml:id="thm-hamming-code-parameters">
+    <title>해밍 부호의 매개변수</title>
+    <statement>
+      <p>
+        <m>r\ge 2</m>일 때, <m>r\times(2^r-1)</m> 검사 행렬로 정의되는 이진 해밍 부호의 매개변수는
+        <md><mrow>[2^r-1,2^r-r-1,3]</mrow></md>
+        이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        검사 행렬 <m>H</m>는 <m>2^r-1</m>개의 열을 가지므로 부호의 길이는 <m>2^r-1</m>입니다. 또한 <m>H</m>의 열에는 <m>\mathbb F_2^r</m>의 표준기저가 모두 포함되어 있으므로 <m>\operatorname{rank}(H)=r</m>입니다. 따라서 계수-차원 정리에 의해
+        <md><mrow>\dim\operatorname{ker}(H)=(2^r-1)-r=2^r-r-1</mrow></md>
+        입니다.
+      </p>
+      <p>
+        이제 최소 거리를 구합시다. <m>H</m>에는 영벡터인 열이 없으므로 무게가 <m>1</m>인 벡터는 <m>\operatorname{ker}(H)</m>에 속하지 않습니다. 또한 <m>H</m>의 열들은 모두 서로 다르므로 두 열의 합은 영벡터가 아니며, 따라서 무게가 <m>2</m>인 벡터도 <m>\operatorname{ker}(H)</m>에 속하지 않습니다. 한편 서로 다른 두 열 <m>u</m>와 <m>v</m>를 택하면 <m>u+v</m>는 영벡터가 아니고 <m>u</m>, <m>v</m>와도 다르므로 <m>H</m>의 또 다른 열입니다. 이 세 열의 합은
+        <md><mrow>u+v+(u+v)=0</mrow></md>
+        이므로 이 세 열의 위치에서만 성분이 <m>1</m>인 무게 <m>3</m>의 부호어가 존재합니다. 따라서 최소 거리는 <m>3</m>입니다.
+      </p>
+    </proof>
+  </theorem>
+
+  <example xml:id="ex-hamming-code-r3-parameters">
+    <title><m>r=3</m>인 해밍 부호의 매개변수</title>
+    <statement>
+      <p>
+        <m>r=3</m>이면 검사 행렬 <m>H</m>는 영벡터가 아닌 <m>2^3-1=7</m>개의 열을 가지므로 부호의 길이는 <m>7</m>입니다. 앞의 행렬에서 처음 세 열은 <m>\mathbb F_2^3</m>의 표준기저이므로 <m>\operatorname{rank}(H)=3</m>이고,
+        <md><mrow>\dim\operatorname{ker}(H)=7-3=4</mrow></md>
+        입니다. 모든 열이 영벡터가 아니고 서로 다르므로 무게가 <m>1</m> 또는 <m>2</m>인 부호어는 없습니다. 한편 첫째, 둘째, 넷째 열의 합은 영벡터이므로
+        <md><mrow>(1,1,0,1,0,0,0)\in\operatorname{ker}(H)</mrow></md>
+        이고 이 부호어의 무게는 <m>3</m>입니다. 따라서 최소 거리는 <m>3</m>이며, 이 해밍 부호의 매개변수는 <m>[7,4,3]</m>입니다.
+      </p>
+    </statement>
+  </example>
+  <definition xml:id="def-perfect-code">
+    <title>완전 부호</title>
+    <statement>
+      <p>
+        길이 <m>n</m>인 <m>q</m>진 부호 <m>C</m>의 최소 거리가 <m>d</m>라고 하자. <m>t=\lfloor (d-1)/2 \rfloor</m>로 놓을 때, <m>C</m>의 각 부호어를 중심으로 하는 반지름 <m>t</m>의 해밍 구들이 <m>\mathbb F_q^n</m>을 분할하면 <term>완전 부호</term><aside><p>완전 부호:perfect code</p></aside>라고 합니다.
+      </p>
+    </statement>
+  </definition>
+
+  <example xml:id="ex-perfect-code-hamming-r2">
+    <title>완전 부호의 예</title>
+    <statement>
+      <p>
+        <m>r=2</m>인 해밍 부호 <m>C=\{000,111\}</m>은 완전 부호입니다. 최소 거리는 <m>3</m>이므로 <m>t=1</m>입니다. 각 부호어로부터 거리가 최대 <m>1</m>인 길이 <m>3</m>의 이진 벡터는 네 개이며, 두 집합은 서로소입니다. 두 집합의 총 원소 수가 <m>8=2^3</m>이므로 이 구들이 <m>\mathbb F_2^3</m>을 분할합니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-not-perfect-code">
+    <title>완전 부호가 아닌 부호</title>
+    <statement>
+      <p>
+        부호 <m>C=\{000,011\}</m>을 길이 <m>3</m>인 이진 부호로 보면 최소 거리는 <m>2</m>이고 <m>t=0</m>입니다. 그러나 <m>001</m>은 <m>000</m>으로부터 해밍 거리가 <m>1</m>이고 <m>011</m>으로부터는 <m>2</m>이므로 반지름 <m>0</m>인 어느 구에도 속하지 않습니다. 따라서 이 부호는 완전 부호가 아닙니다.
+      </p>
+    </statement>
+  </example>
+
+  <theorem xml:id="thm-hamming-codes-perfect">
+    <title>해밍 부호의 완전성</title>
+    <statement>
+      <p>
+        모든 이진 해밍 부호는 완전 부호이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        양의 정수 <m>r\ge 2</m>에 대한 해밍 부호 <m>C</m>의 길이를 <m>n=2^r-1</m>이라고 합시다. 이 부호의 최소 거리는 <m>3</m>이므로 오류 정정 반지름은 <m>t=1</m>입니다. 각 부호어를 중심으로 하는 반지름 <m>1</m>의 해밍 구에는 중심과 정확히 한 성분만 다른 벡터들이 들어 있으므로 그 원소 수는
+        <md><mrow>1+n=2^r</mrow></md>
+        입니다.
+      </p>
+      <p>
+        서로 다른 두 부호어를 중심으로 하는 반지름 <m>1</m>의 구가 한 벡터를 공유한다면 삼각부등식에 의해 두 부호어 사이의 거리는 <m>2</m> 이하가 됩니다. 이는 최소 거리가 <m>3</m>이라는 사실에 모순이므로 이 구들은 서로소입니다. 또한 <m>\dim C=n-r</m>이므로 부호어의 수는 <m>|C|=2^{n-r}</m>이고, 모든 구에 포함된 벡터의 총수는
+        <md><mrow>|C|2^r=2^{n-r}2^r=2^n=|\mathbb F_2^n|</mrow></md>
+        입니다. 따라서 이 구들은 <m>\mathbb F_2^n</m>을 분할하므로 <m>C</m>는 완전 부호입니다.
+      </p>
+    </proof>
+  </theorem>
+
+  <remark xml:id="rem-existence-classification-perfect-codes">
+    <title>완전 이진 부호의 존재와 분류</title>
+    <p>
+      완전 이진 부호는 매우 드뭅니다. 선형 완전 이진 부호의 비자명한 예로는 오류 정정 반지름이 <m>1</m>인 해밍 부호와 오류 정정 반지름이 <m>3</m>인 이진 골레이 부호 <m>[23,12,7]</m>가 있으며, 선형 부호의 경우에는 자명한 경우를 제외하고 이 두 종류만 존재합니다. 골레이 부호의 건설 및 완전 이진 부호의 존재에 대해서는 관련 문헌을 참고하십시오.
+      <aside>
+        <p>
+          골레이:Golay
+        </p>
+      </aside>
+    </p>
+    <p>
+      비선형 완전 부호까지 포함하면 분류는 더 복잡해집니다. 따라서 여기서 보인 해밍 부호의 완전성은 모든 완전 이진 부호가 해밍 부호라는 뜻이 아니라, 해밍 부호가 가장 대표적인 완전 부호의 예라는 점을 뜻합니다.
+    </p>
+  </remark>
+  
+  <exercises xml:id="exercises-hamming-code">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        문제는 쉬운 것부터 어려운 것 순으로 배열되어 있습니다. 벡터 <m>x,y\in\mathbb F_2^n</m>에 대하여 해밍 거리 <m>\operatorname{dist}(x,y)</m>는 성분이 다른 좌표의 개수이고, 무게 <m>\operatorname{wt}(x)=\operatorname{dist}(x,0)</m>는 성분이 <m>1</m>인 좌표의 개수입니다. 중심 <m>x</m>, 반지름 <m>t</m>인 해밍 구는
+        <md><mrow>B(x,t)=\{y\in\mathbb F_2^n:\operatorname{dist}(x,y)\le t\}</mrow></md>
+        입니다. 예를 들어 본문 <xref ref="ex-perfect-code-hamming-r2"/>에서 <m>B(000,1)=\{000,100,010,001\}</m>, <m>B(111,1)=\{111,011,101,110\}</m>입니다. 부호의 최소 거리는 서로 다른 두 부호어 사이 거리의 최솟값이므로 부호어가 둘 이상일 때만 정의됩니다. 선형부호에서는 <m>\operatorname{dist}(c,c')=\operatorname{wt}(c-c')</m>이므로, 본문의 증명에서처럼 최소 거리는 영이 아닌 부호어의 최소 무게와 같습니다. 검사 행렬 <m>H</m>의 <m>j</m>번째 열을 <m>h_j</m>로, <m>j</m>번째 표준기저벡터를 <m>e_j</m>로 쓰며, 벡터를 <m>1101000</m>처럼 성분을 이어 써서 나타내기도 합니다. 특별한 언급이 없으면 <m>H</m>는 본문 <xref ref="ex-hamming-code-r3"/>의 행렬이며, 그 열은
+        <md><mrow>h_1=100,\ h_2=010,\ h_3=001,\ h_4=110,\ h_5=101,\ h_6=011,\ h_7=111</mrow></md>
+        입니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-hamming-membership">
+      <title>부호어 판별</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>1010100</m>, <m>0111000</m>, <m>1111111</m>이 <m>r=3</m>인 해밍 부호 <m>\ker(H)</m>에 속하는지 판정하십시오.</p></li>
+            <li><p>처음 네 성분이 <m>1,0,0,0</m>인 부호어가 정확히 하나 있음을 보이고, 그 부호어를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>Hx</m>는 <m>x_j=1</m>인 위치의 열 <m>h_j</m>들의 합입니다.
+          <ol marker="(a)">
+            <li><p><m>h_1+h_3+h_5=100+001+101=000</m>이므로 <m>1010100</m>은 부호어입니다. <m>h_2+h_3+h_4=010+001+110=101\ne 0</m>이므로 <m>0111000</m>은 부호어가 아닙니다. <m>\mathbb F_2^3</m>의 영이 아닌 일곱 벡터 중 각 좌표가 <m>1</m>인 것은 네 개이므로 일곱 열의 합은 <m>000</m>이고, <m>1111111</m>은 부호어입니다.</p></li>
+            <li><p><m>x=(1,0,0,0,a,b,c)</m>에 대해 <m>Hx=h_1+ah_5+bh_6+ch_7=0</m>은
+            <md><mrow>1+a+c=0,\qquad b+c=0,\qquad a+b+c=0</mrow></md>
+            입니다. 둘째, 셋째 식에서 <m>a=0</m>, 첫째 식에서 <m>c=1</m>, 둘째 식에서 <m>b=1</m>이므로 해는 유일하고 부호어는 <m>1000011</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-hamming-parameters-table">
+      <title>매개변수 계산</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>r=2,3,4,5</m>에 대해 해밍 부호의 길이 <m>n</m>, 차원 <m>k</m>, 부호어의 수 <m>|C|</m>를 구하고, <m>|C|(1+n)=2^n</m>임을 확인하십시오.</p></li>
+            <li><p>정의에서 <m>r=1</m>로 두면 어떤 부호를 얻는지 구하고, <xref ref="thm-hamming-code-parameters"/>와 <xref ref="thm-hamming-codes-perfect"/>가 <m>r\ge 2</m>를 가정하는 이유를 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>n=2^r-1</m>, <m>k=2^r-r-1</m>, <m>|C|=2^k</m>이므로 <m>r=2,3,4,5</m>에 대해 차례로 <m>[3,1,3]</m>, <m>[7,4,3]</m>, <m>[15,11,3]</m>, <m>[31,26,3]</m>이고 <m>|C|=2,\ 16,\ 2048,\ 2^{26}</m>입니다. 일반적으로 <m>|C|(1+n)=2^{n-r}\cdot 2^r=2^n</m>이며, 예를 들어 <m>r=4</m>이면 <m>2048\cdot 16=32768=2^{15}</m>입니다.</p></li>
+            <li><p><m>r=1</m>이면 <m>H=\begin{pmatrix}1\end{pmatrix}</m>이고 <m>C=\ker(H)=\{0\}\subseteq\mathbb F_2^1</m>입니다. 차원 공식 <m>2^1-1-1=0</m>은 여전히 맞지만 부호어가 하나뿐이므로 최소 거리가 정의되지 않습니다. 따라서 매개변수 <m>[1,0,3]</m>은 의미가 없고, 완전 부호의 정의도 적용할 수 없습니다. 증명에서도 서로 다른 두 열 <m>u,v</m>를 택하는 단계가 <m>r=1</m>에서는 불가능합니다. 본문의 정의가 “양의 정수 <m>r</m>”로 되어 있으므로, 두 정리는 <m>r\ge 2</m>인 해밍 부호에 대한 것으로 읽어야 합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-hamming-single-error">
+      <title>한 성분 오류의 위치 찾기</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>부호어 <m>c</m>에 대하여 <m>H(c+e_j)=h_j</m>임을 보이십시오.</p></li>
+            <li><p><m>v=1111000</m>과 <m>u=0011111</m> 각각에 대해, 거리가 <m>1</m> 이하인 부호어를 구하십시오.</p></li>
+            <li><p>(b)에서 구한 부호어가 유일함을 <xref ref="thm-hamming-code-parameters"/>를 사용하여 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>H(c+e_j)=Hc+He_j=0+h_j</m>입니다.</p></li>
+            <li><p><m>Hv=h_1+h_2+h_3+h_4=001=h_3</m>이므로 <m>v+e_3=1101000</m>은 부호어이며, 이는 본문의 예제에 나온 부호어입니다. <m>Hu=h_3+h_4+h_5+h_6+h_7=110=h_4</m>이므로 <m>u+e_4=0010111</m>이 부호어입니다. 실제로 <m>h_3+h_5+h_6+h_7=001+101+011+111=000</m>입니다.</p></li>
+            <li><p>서로 다른 두 부호어 <m>c,c'</m>가 모두 <m>v</m>와 거리 <m>1</m> 이하이면 삼각부등식에 의해 <m>\operatorname{dist}(c,c')\le 2</m>인데, 이는 최소 거리가 <m>3</m>이라는 것과 모순입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-hamming-ball-size">
+      <title>해밍 구의 크기</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>0\le t\le n</m>일 때 임의의 <m>x\in\mathbb F_2^n</m>에 대하여
+            <md><mrow>|B(x,t)|=V(n,t):=\sum_{i=0}^{t}\binom{n}{i}</mrow></md>
+            임을 보이십시오. 특히 구의 크기는 중심에 의존하지 않습니다.</p></li>
+            <li><p><m>V(7,1)</m>, <m>V(15,1)</m>, <m>V(5,2)</m>, <m>V(7,2)</m>를 계산하십시오.</p></li>
+            <li><p><m>r=3</m>인 해밍 부호에서 <m>B(1101000,1)</m>의 원소를 모두 나열하고, 중심 외에는 부호어가 없음을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>x</m>와 거리가 정확히 <m>i</m>인 벡터는 성분이 다를 <m>i</m>개의 위치를 고르고 그 위치의 성분을 모두 바꾸면 정확히 한 번씩 얻어지므로 <m>\binom ni</m>개입니다. 이를 <m>i=0,\dots,t</m>에 대해 더하면 됩니다.</p></li>
+            <li><p><m>V(7,1)=8</m>, <m>V(15,1)=16</m>, <m>V(5,2)=1+5+10=16</m>, <m>V(7,2)=1+7+21=29</m>입니다.</p></li>
+            <li><p>원소는 <m>1101000</m>과 한 성분을 바꾼 <m>0101000,\ 1001000,\ 1111000,\ 1100000,\ 1101100,\ 1101010,\ 1101001</m>의 여덟 개입니다. <xref ref="exer-hamming-single-error"/>(a)에 의해 <m>1101000+e_j</m>의 신드롬은 <m>h_j\ne 0</m>이므로 중심 외에는 부호어가 없습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-hamming-column-order">
+      <title>열의 순서</title>
+      <statement>
+        <p>
+          본문의 정의는 <m>H</m>의 열의 순서를 정하지 않습니다.
+          <ol marker="(a)">
+            <li><p><m>\sigma</m>를 <m>\{1,\dots,n\}</m>의 치환이라 하고, <m>j</m>번째 열이 <m>h_{\sigma(j)}</m>인 행렬을 <m>H'</m>라 합시다. <m>x\in\mathbb F_2^n</m>에 대해 <m>(x^\sigma)_{\sigma(j)}=x_j</m>로 정의하면 <m>H'x=Hx^\sigma</m>임을 보이고, <m>\ker(H')</m>와 <m>\ker(H)</m>의 매개변수가 같음을 보이십시오.</p></li>
+            <li><p><m>j=j_0+2j_1+4j_2</m>일 때 <m>j</m>번째 열이 <m>(j_0,j_1,j_2)^{\mathsf T}</m>인 행렬을 <m>H_{\mathrm{bin}}</m>이라 합시다. 본문의 <m>H</m>가 <m>H_{\mathrm{bin}}</m>의 열을 어떻게 재배열한 것인지 구하고, 부호어 <m>1101000\in\ker(H)</m>에 대응하는 <m>\ker(H_{\mathrm{bin}})</m>의 부호어를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>H'x=\sum_j x_jh_{\sigma(j)}=\sum_i (x^\sigma)_ih_i=Hx^\sigma</m>입니다. 따라서 <m>x\in\ker(H')</m>일 필요충분조건은 <m>x^\sigma\in\ker(H)</m>입니다. <m>x\mapsto x^\sigma</m>는 좌표를 재배열하는 선형 전단사이고 무게를 보존하므로, 두 커널은 길이, 차원, 최소 거리가 모두 같습니다.</p></li>
+            <li><p><m>H_{\mathrm{bin}}</m>의 열은 차례로 <m>100,010,110,001,101,011,111</m>입니다. 본문의 <m>H</m>는 셋째와 넷째 열을 바꾼 것이므로 <m>\sigma</m>는 <m>3</m>과 <m>4</m>를 바꾸는 호환입니다. <m>1101000</m>의 셋째와 넷째 성분을 바꾸면 <m>1110000</m>이고, 실제로 <m>100+010+110=000</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-repetition-perfect">
+      <title>반복부호와 자명한 완전 부호</title>
+      <statement>
+        <p>
+          길이 <m>n</m>인 이진 반복부호 <m>R_n=\{0\cdots0,\ 1\cdots1\}</m>를 생각합시다.
+          <ol marker="(a)">
+            <li><p><m>n=2m+1</m>이면 <m>R_n</m>이 완전 부호임을 보이십시오.</p></li>
+            <li><p><m>n=2m</m>, <m>m\ge 1</m>이면 <m>R_n</m>이 완전 부호가 아님을 보이십시오.</p></li>
+            <li><p><m>n\ge 1</m>일 때 <m>\mathbb F_2^n</m> 전체가 완전 부호임을 보이십시오.</p></li>
+            <li><p><m>r=2</m>인 해밍 부호가 <m>R_3</m>임을 확인하고, (a)가 본문 <xref ref="ex-perfect-code-hamming-r2"/>를 일반화함을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>d=n</m>이므로 <m>t=m</m>입니다. <m>B(0\cdots0,m)</m>은 무게가 <m>m</m> 이하인 벡터, <m>B(1\cdots1,m)</m>은 무게가 <m>n-m=m+1</m> 이상인 벡터의 집합이므로 두 구는 <m>\mathbb F_2^n</m>을 분할합니다.</p></li>
+            <li><p><m>d=2m</m>이므로 <m>t=m-1</m>입니다. 무게가 <m>m</m>인 벡터는 두 부호어와의 거리가 모두 <m>m&gt;t</m>이므로 어느 구에도 속하지 않습니다.</p></li>
+            <li><p>서로 다른 벡터 사이의 거리는 <m>1</m> 이상이고 <m>e_1</m>과 <m>0</m>의 거리가 <m>1</m>이므로 <m>d=1</m>, <m>t=0</m>입니다. 반지름 <m>0</m>인 구는 한원소 집합이므로 공간을 분할합니다.</p></li>
+            <li><p><xref ref="ex-hamming-code-r2"/>에서 <m>\ker(H)=\{000,111\}=R_3</m>이고, 본문의 예제는 (a)에서 <m>m=1</m>인 경우입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-columns-and-distance">
+      <title>검사 행렬의 열과 무게 <m>1</m>, <m>2</m>인 부호어</title>
+      <statement>
+        <p>
+          <m>H</m>를 임의의 <m>m\times n</m> 이진 행렬이라 하고 <m>C=\ker(H)</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>C</m>가 무게 <m>1</m> 또는 <m>2</m>인 부호어를 갖지 않을 필요충분조건은 <m>H</m>의 열이 모두 영이 아니고 서로 다른 것임을 보이십시오.</p></li>
+            <li><p>(a)의 조건이 성립하면 <m>n\le 2^m-1</m>이고, 등호는 <m>H</m>의 열이 <m>\mathbb F_2^m</m>의 영이 아닌 벡터 전체일 때, 즉 <m>C</m>가 <m>r=m</m>인 해밍 부호일 때만 성립함을 보이십시오.</p></li>
+            <li><p><m>r\ge 2</m>인 해밍 부호의 검사 행렬에 <m>\mathbb F_2^r</m>의 벡터를 하나의 열로 덧붙이면, 새로운 커널은 무게가 <m>2</m> 이하인 영이 아닌 부호어를 가짐을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>He_i=h_i</m>, <m>H(e_i+e_j)=h_i+h_j</m>입니다. 따라서 무게 <m>1</m>인 부호어가 없다는 것은 영열이 없다는 것이고, 무게 <m>2</m>인 부호어가 없다는 것은 <m>i\ne j</m>에 대해 <m>h_i\ne h_j</m>라는 것입니다.</p></li>
+            <li><p>서로 다른 영이 아닌 열은 <m>\mathbb F_2^m\setminus\{0\}</m>의 서로 다른 원소이므로 <m>n\le 2^m-1</m>입니다. 등호이면 열의 집합이 <m>\mathbb F_2^m\setminus\{0\}</m> 전체와 같고, 이는 정의에 의해 <m>C</m>가 해밍 부호라는 뜻입니다.</p></li>
+            <li><p>새 행렬은 <m>2^r</m>개의 열을 가지므로 (b)에 의해 (a)의 조건이 성립하지 않습니다. 즉 영열이 있거나 같은 두 열이 있으며, 이에 대응하는 무게 <m>1</m> 또는 <m>2</m>인 부호어가 존재합니다. 이런 의미에서 해밍 부호는 주어진 <m>r</m>에 대해 최소 거리 <m>3</m>을 유지하는 가장 긴 부호입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-perfect-nearest-codeword">
+      <title>완전 부호와 최근접 부호어</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>C</m>가 반지름 <m>t</m>의 완전 부호이면, 모든 <m>v\in\mathbb F_2^n</m>에 대해 <m>\operatorname{dist}(v,c)\le t</m>인 부호어 <m>c</m>가 유일하게 존재하고, 다른 모든 부호어 <m>c'</m>에 대해 <m>\operatorname{dist}(v,c')\ge t+1</m>임을 보이십시오. 따라서 <m>c</m>는 <m>v</m>에 가장 가까운 유일한 부호어입니다.</p></li>
+            <li><p>해밍 부호에서 <m>v</m>에 가장 가까운 부호어는 <m>Hv=0</m>이면 <m>v</m>이고, <m>Hv=h_j</m>이면 <m>v+e_j</m>임을 보이십시오.</p></li>
+            <li><p>해밍 부호의 부호어 <m>c</m>에서 정확히 두 성분이 바뀐 벡터에 가장 가까운 부호어는 <m>c</m>가 아님을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>구들이 공간을 덮으므로 <m>c</m>가 존재하고, 서로소이므로 유일합니다. <m>c'\ne c</m>이면 삼각부등식에 의해 <m>\operatorname{dist}(v,c')\ge\operatorname{dist}(c,c')-\operatorname{dist}(c,v)\ge d-t\ge t+1</m>입니다. 마지막 부등식은 <m>2t\le d-1</m>에서 나옵니다.</p></li>
+            <li><p><m>Hv=0</m>이면 <m>v</m> 자신이 부호어입니다. 그렇지 않으면 <m>Hv</m>는 영이 아닌 벡터이므로 정확히 한 열 <m>h_j</m>와 같고, <m>H(v+e_j)=0</m>이므로 <m>v+e_j</m>는 <m>v</m>와 거리 <m>1</m>인 부호어입니다. <xref ref="thm-hamming-codes-perfect"/>와 (a)에 의해 이것이 가장 가까운 부호어입니다.</p></li>
+            <li><p><m>v=c+e_i+e_j</m>, <m>i\ne j</m>라 하면 <m>Hv=h_i+h_j</m>는 영이 아니고 <m>h_i,h_j</m>와 다르므로 <m>l\notin\{i,j\}</m>인 열 <m>h_l</m>입니다. (b)에 의해 가장 가까운 부호어는 <m>c+e_i+e_j+e_l\ne c</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-sphere-packing-bound">
+      <title>구 채우기 한계</title>
+      <statement>
+        <p>
+          <m>C\subseteq\mathbb F_2^n</m>를 부호어가 둘 이상이고 최소 거리가 <m>d</m>인 부호라 하고, <m>t=\lfloor (d-1)/2\rfloor</m>라 합시다. <m>C</m>가 선형일 필요는 없습니다.
+          <ol marker="(a)">
+            <li><p>부호어를 중심으로 하는 반지름 <m>t</m>의 구들이 서로소임을 보이십시오.</p></li>
+            <li><p><m>|C|\cdot V(n,t)\le 2^n</m>이고, 등호가 성립할 필요충분조건은 <m>C</m>가 완전 부호인 것임을 보이십시오.</p></li>
+            <li><p>길이 <m>7</m>, 최소 거리 <m>5</m> 이상인 이진 부호는 부호어를 다섯 개 이상 가질 수 없고, 길이 <m>6</m>, 최소 거리 <m>3</m>인 이진 부호는 부호어를 열 개 이상 가질 수 없음을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>v\in B(c,t)\cap B(c',t)</m>이면 <m>\operatorname{dist}(c,c')\le 2t\le d-1</m>이므로 <m>c=c'</m>입니다. 이는 <xref ref="thm-hamming-codes-perfect"/>의 증명과 같은 논법입니다.</p></li>
+            <li><p>(a)와 <xref ref="exer-hamming-ball-size"/>에 의해 구들의 합집합의 크기는 <m>|C|V(n,t)</m>이고, 이는 <m>2^n</m> 이하입니다. 등호는 합집합이 <m>\mathbb F_2^n</m> 전체라는 것, 즉 서로소인 구들이 공간을 분할한다는 것과 동치입니다.</p></li>
+            <li><p>첫째 경우 <m>t\ge 2</m>이므로 <m>V(7,t)\ge 1+7+21=29</m>이고 <m>5\cdot 29=145&gt;128</m>입니다. 둘째 경우 <m>t=1</m>, <m>V(6,1)=7</m>이고 <m>10\cdot 7=70&gt;64</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 10 -->
+    <exercise xml:id="exer-even-distance-not-perfect">
+      <title>최소 거리가 짝수인 부호</title>
+      <statement>
+        <p>
+          부호어가 둘 이상인 부호 <m>C\subseteq\mathbb F_2^n</m>의 최소 거리 <m>d</m>가 짝수이면 <m>C</m>는 완전 부호가 아님을 보이십시오. 이 결과를 본문 <xref ref="ex-not-perfect-code"/>와 비교하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          거리가 <m>d</m>인 두 부호어의 “중간점”을 만드십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <m>d=2t+2</m>이므로 <m>t=\lfloor (d-1)/2\rfloor</m>입니다. <m>\operatorname{dist}(c,c')=d</m>인 부호어 <m>c,c'</m>를 택하고, 두 부호어의 성분이 다른 <m>2t+2</m>개의 위치 중 <m>t+1</m>개를 골라 <m>T</m>라 합시다. <m>i\in T</m>이면 <m>v_i=c'_i</m>, 아니면 <m>v_i=c_i</m>로 정하면 <m>\operatorname{dist}(v,c)=\operatorname{dist}(v,c')=t+1</m>입니다. <m>v\in B(c'',t)</m>인 부호어 <m>c''</m>가 있다면 <m>\operatorname{dist}(c,c'')\le (t+1)+t=d-1</m>이므로 <m>c''=c</m>인데, <m>\operatorname{dist}(v,c)=t+1&gt;t</m>이므로 모순입니다. 따라서 <m>v</m>는 어느 구에도 속하지 않습니다.
+        </p>
+        <p>
+          본문의 예제는 <m>d=2</m>, <m>t=0</m>인 경우입니다. 이 구성으로 <m>c=000</m>, <m>c'=011</m>에서 <m>T=\{2\}</m>를 택하면 <m>v=010</m>을 얻고, 본문의 <m>001</m>은 <m>T=\{3\}</m>을 택한 경우입니다.
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 11 -->
+    <exercise xml:id="exer-extended-hamming">
+      <title>확장 해밍 부호</title>
+      <statement>
+        <p>
+          <m>r\ge 2</m>인 해밍 부호 <m>C</m>의 길이를 <m>n=2^r-1</m>이라 하고
+          <md><mrow>\widehat C=\{(x_1,\dots,x_n,\ x_1+\cdots+x_n):x\in C\}\subseteq\mathbb F_2^{n+1}</mrow></md>
+          로 둡시다.
+          <ol marker="(a)">
+            <li><p><m>\widehat C</m>가 차원 <m>2^r-r-1</m>인 선형부호임을 보이십시오.</p></li>
+            <li><p><m>\widehat H=\begin{pmatrix}H &amp; 0\\ 1\cdots 1 &amp; 1\end{pmatrix}</m>에 대해 <m>\widehat C=\ker(\widehat H)</m>임을 보이십시오.</p></li>
+            <li><p><m>\widehat C</m>의 모든 부호어의 무게는 짝수이고, 매개변수는 <m>[2^r,\,2^r-r-1,\,4]</m>임을 보이십시오.</p></li>
+            <li><p><m>\widehat C</m>는 완전 부호가 아님을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>x\mapsto(x,\sum_ix_i)</m>는 단사 선형사상이므로 <m>\widehat C</m>는 <m>C</m>와 차원이 같은 부분공간입니다.</p></li>
+            <li><p><m>(x,p)\in\ker(\widehat H)</m>일 필요충분조건은 <m>Hx=0</m>이고 <m>\sum_ix_i+p=0</m>인 것, 즉 <m>x\in C</m>이고 <m>p=\sum_ix_i</m>인 것입니다.</p></li>
+            <li><p><m>\widehat H</m>의 마지막 행에 의해 모든 부호어의 성분의 합은 <m>0</m>이므로 무게는 짝수입니다. <m>x\ne 0</m>이면 <m>\operatorname{wt}(x,p)\ge\operatorname{wt}(x)\ge 3</m>이고 짝수이므로 <m>4</m> 이상입니다. <xref ref="thm-hamming-code-parameters"/>의 무게 <m>3</m>인 부호어 <m>x</m>는 <m>p=1</m>이므로 무게 <m>4</m>인 부호어를 줍니다. 따라서 <m>d=4</m>입니다.</p></li>
+            <li><p><m>d=4</m>가 짝수이므로 <xref ref="exer-even-distance-not-perfect"/>에 의해 완전 부호가 아닙니다. 구 채우기 한계로 보면 <m>t=1</m>이고 <m>2^{2^r-r-1}(1+2^r)&lt;2^{2^r}</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 12 -->
+    <exercise xml:id="exer-weight-three-codewords">
+      <title>무게 <m>3</m>인 부호어</title>
+      <statement>
+        <p>
+          <m>r\ge 2</m>인 해밍 부호의 길이를 <m>n=2^r-1</m>이라 하고, 무게가 <m>w</m>인 부호어의 개수를 <m>A_w</m>라 합시다.
+          <ol marker="(a)">
+            <li><p>서로 다른 두 위치 <m>i,j</m>에 대하여, 두 위치에서 모두 성분이 <m>1</m>인 무게 <m>3</m>의 부호어가 정확히 하나 있음을 보이십시오.</p></li>
+            <li><p><m>A_3=n(n-1)/6</m>임을 보이십시오.</p></li>
+            <li><p><m>r=3</m>일 때 무게 <m>3</m>인 부호어를 모두 나열하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>지지집합이 <m>\{i,j,l\}</m>인 벡터가 부호어일 필요충분조건은 <m>h_l=h_i+h_j</m>입니다. <xref ref="thm-hamming-code-parameters"/>의 증명에서처럼 <m>h_i+h_j</m>는 영이 아니고 <m>h_i,h_j</m>와 다르므로 어떤 <m>l\notin\{i,j\}</m>에 대한 열 <m>h_l</m>이며, 열들이 서로 다르므로 <m>l</m>은 유일합니다.</p></li>
+            <li><p>위치의 쌍과 그 쌍을 포함하는 무게 <m>3</m>인 부호어의 순서쌍을 셉니다. (a)에 의해 그 개수는 <m>\binom n2</m>이고, 각 무게 <m>3</m>인 부호어는 쌍을 세 개 포함하므로 <m>3A_3=\binom n2</m>입니다.</p></li>
+            <li><p><m>h_1+h_2=h_4</m>, <m>h_1+h_3=h_5</m>, <m>h_1+h_6=h_7</m>, <m>h_2+h_3=h_6</m>, <m>h_2+h_5=h_7</m>, <m>h_3+h_4=h_7</m>, <m>h_4+h_5=h_6</m>이므로
+            <md><mrow>1101000,\ 1010100,\ 1000011,\ 0110010,\ 0100101,\ 0011001,\ 0001110</mrow></md>
+            의 일곱 개이고, <m>7\cdot 6/6=7</m>과 일치합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 13 -->
+    <exercise xml:id="exer-perfect-single-error-length">
+      <title>한 오류를 정정하는 완전 부호의 길이</title>
+      <statement>
+        <p>
+          <m>C\subseteq\mathbb F_2^n</m>를 부호어가 둘 이상이고 <m>t=1</m>인 완전 부호라 합시다. <m>C</m>가 선형일 필요는 없습니다.
+          <ol marker="(a)">
+            <li><p>어떤 <m>r\ge 2</m>에 대해 <m>n=2^r-1</m>이고 <m>|C|=2^{n-r}</m>임을 보이십시오.</p></li>
+            <li><p><m>d=3</m>임을 보이십시오.</p></li>
+            <li><p><m>C</m>가 선형이면 매개변수가 <m>[2^r-1,\,2^r-r-1,\,3]</m>, 즉 해밍 부호의 매개변수와 같음을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><xref ref="exer-sphere-packing-bound"/>에 의해 <m>|C|(1+n)=2^n</m>이므로 <m>1+n</m>은 <m>2^n</m>의 약수이고, 따라서 <m>1+n=2^r</m>입니다. 그러면 <m>|C|=2^{n-r}</m>입니다. <m>|C|\ge 2</m>이므로 <m>2^r-1=n&gt;r</m>이고, 이는 <m>r\ge 2</m>를 뜻합니다.</p></li>
+            <li><p><m>t=1</m>이므로 <m>d\in\{3,4\}</m>이고, <xref ref="exer-even-distance-not-perfect"/>에 의해 <m>d\ne 4</m>입니다.</p></li>
+            <li><p>선형이면 <m>|C|=2^k</m>이므로 (a)에서 <m>k=n-r=2^r-r-1</m>이고, (b)에서 <m>d=3</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 14 -->
+    <exercise xml:id="exer-hamming-uniqueness">
+      <title>매개변수로 결정되는 해밍 부호</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\mathbb F_2^n</m>의 <m>k</m>차원 부분공간 <m>C</m>는 어떤 <m>(n-k)\times n</m> 행렬의 커널임을 보이십시오.</p></li>
+            <li><p><m>r\ge 2</m>일 때 매개변수가 <m>[2^r-1,\,2^r-r-1,\,3]</m>인 이진 선형부호는 해밍 부호임을 보이십시오.</p></li>
+            <li><p><m>t=1</m>인 이진 선형 완전 부호는 모두 해밍 부호임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>C</m>의 기저를 <m>\mathbb F_2^n</m>의 기저로 확장하십시오. (b) <xref ref="exer-columns-and-distance"/>를 사용하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>C</m>의 기저 <m>c_1,\dots,c_k</m>를 <m>\mathbb F_2^n</m>의 기저 <m>c_1,\dots,c_n</m>으로 확장하고, <m>i\le k</m>이면 <m>\varphi(c_i)=0</m>, <m>\varphi(c_{k+j})=e_j\in\mathbb F_2^{n-k}</m>인 선형사상 <m>\varphi</m>를 정의합니다. <m>\varphi(\sum_i a_ic_i)=\sum_j a_{k+j}e_j</m>이 <m>0</m>일 필요충분조건은 <m>a_{k+1}=\cdots=a_n=0</m>이므로 <m>\ker\varphi=C</m>이고, <m>\varphi</m>의 표현행렬이 원하는 행렬입니다.</p></li>
+            <li><p><m>n-k=r</m>이므로 (a)에 의해 <m>C=\ker(H')</m>인 <m>r\times(2^r-1)</m> 행렬 <m>H'</m>가 있습니다. <m>d=3</m>이므로 무게 <m>1</m>, <m>2</m>인 부호어가 없고, <xref ref="exer-columns-and-distance"/>(a)에 의해 <m>H'</m>의 열은 영이 아니며 서로 다릅니다. 열의 개수가 <m>2^r-1</m>이므로 <xref ref="exer-columns-and-distance"/>(b)의 등호가 성립하여 <m>H'</m>의 열은 <m>\mathbb F_2^r</m>의 영이 아닌 벡터 전체입니다. 따라서 정의에 의해 <m>C</m>는 해밍 부호입니다.</p></li>
+            <li><p><xref ref="exer-perfect-single-error-length"/>(c)와 (b)를 결합하면 됩니다. 따라서 <xref ref="thm-hamming-codes-perfect"/>의 역도 성립합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 15 -->
+    <exercise xml:id="exer-weight-four-codewords">
+      <title>완전성으로 무게 세기</title>
+      <statement>
+        <p>
+          <xref ref="exer-weight-three-codewords"/>의 기호를 사용합니다. <m>r\ge 2</m>인 해밍 부호에서 부호어를 중심으로 하는 반지름 <m>1</m>의 구들이 <m>\mathbb F_2^n</m>을 분할한다는 사실을 이용하여 다음을 보이십시오.
+          <ol marker="(a)">
+            <li><p><m>\binom n2=3A_3</m>. 이는 <xref ref="exer-weight-three-codewords"/>(b)의 또 다른 증명입니다.</p></li>
+            <li><p><m>\binom n3=A_3+4A_4</m>.</p></li>
+            <li><p><m>A_4=\dfrac{n(n-1)(n-3)}{24}</m>. <m>r=3</m>과 <m>r=4</m>에 대해 값을 구하십시오.</p></li>
+            <li><p><m>1\cdots1\in C</m>이고 모든 <m>w</m>에 대해 <m>A_w=A_{n-w}</m>임을 보이고, <m>r=3</m>일 때 <m>\sum_wA_w=16</m>임을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\operatorname{dist}(v,c)\ge|\operatorname{wt}(v)-\operatorname{wt}(c)|</m>이고 <m>\operatorname{dist}(v,c)\equiv\operatorname{wt}(v)+\operatorname{wt}(c)\pmod 2</m>입니다. 무게 <m>2</m>와 <m>3</m>인 벡터가 각각 어느 구에 속하는지 분류하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          힌트의 두 사실은 각각 <m>\operatorname{supp}(v)</m>와 <m>\operatorname{supp}(c)</m>의 대칭차의 크기에 대한 부등식과 <m>\operatorname{wt}(v+c)=\operatorname{wt}(v)+\operatorname{wt}(c)-2|\operatorname{supp}(v)\cap\operatorname{supp}(c)|</m>에서 나옵니다. 또한 <m>A_1=A_2=0</m>입니다.
+          <ol marker="(a)">
+            <li><p>무게 <m>2</m>인 벡터 <m>v</m>가 속하는 유일한 구의 중심 <m>c</m>는 무게가 <m>1,2,3</m> 중 하나인데, 무게 <m>1,2</m>인 부호어는 없으므로 <m>\operatorname{wt}(c)=3</m>이고 <m>\operatorname{supp}(v)\subset\operatorname{supp}(c)</m>입니다. 반대로 무게 <m>3</m>인 부호어의 구는 무게 <m>2</m>인 벡터를 정확히 세 개 포함합니다. 구들이 분할을 이루므로 <m>\binom n2=3A_3</m>입니다.</p></li>
+            <li><p>무게 <m>3</m>인 벡터 <m>v</m>가 속하는 구의 중심 <m>c</m>는 무게가 <m>2,3,4</m> 중 하나이고, 무게 <m>2</m>는 불가능합니다. <m>\operatorname{wt}(c)=3</m>이면 거리가 짝수이므로 <m>c=v</m>이고, <m>\operatorname{wt}(c)=4</m>이면 <m>\operatorname{supp}(v)\subset\operatorname{supp}(c)</m>입니다. 무게 <m>3</m>인 부호어의 구는 무게 <m>3</m>인 벡터를 하나(자기 자신), 무게 <m>4</m>인 부호어의 구는 네 개 포함하므로 <m>\binom n3=A_3+4A_4</m>입니다.</p></li>
+            <li><p><m>A_4=\frac14\left(\frac{n(n-1)(n-2)}{6}-\frac{n(n-1)}{6}\right)=\frac{n(n-1)(n-3)}{24}</m>입니다. <m>r=3</m>이면 <m>A_4=7</m>, <m>r=4</m>이면 <m>A_4=105</m>입니다.</p></li>
+            <li><p><m>H</m>의 <m>i</m>번째 행에서 <m>1</m>인 성분의 개수는 <m>i</m>번째 좌표가 <m>1</m>인 영이 아닌 벡터의 개수 <m>2^{r-1}</m>이며, <m>r\ge 2</m>이므로 짝수입니다. 따라서 <m>H(1\cdots1)=0</m>입니다. <m>c\mapsto c+1\cdots1</m>은 무게 <m>w</m>인 부호어를 무게 <m>n-w</m>인 부호어로 보내는 전단사이므로 <m>A_w=A_{n-w}</m>입니다. <m>r=3</m>이면 <m>A_0=A_7=1</m>, <m>A_3=A_4=7</m>이고 나머지는 <m>0</m>이므로 합은 <m>16=2^4</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
 </section>

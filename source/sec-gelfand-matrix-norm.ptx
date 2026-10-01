@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-gelfand-matrix-norm" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>겔판트 공식</title>
+  <aside>
+    <p>
+      겔판트:Gelfand
+    </p>
+  </aside>
+  <definition xml:id="def-spectral-radius">
+    <title>스펙트럼 반지름</title>
+    <statement>
+      <p>
+        복소 정사각 행렬 <m>A\in\mathbb C^{n\times n}</m>의 <term>스펙트럼 반지름</term><aside><p>스펙트럼 반지름:spectral radius</p></aside>은 다음과 같이 정의합니다.
+      </p>
+      <me>\rho(A)=\max\{\lvert\lambda\rvert:\det(\lambda I-A)=0\}.</me>
+    </statement>
+  </definition>
+
+  
+
+  
+  <proposition xml:id="prop-spectral-radius-largest-eigenvalue">
+    <title>스펙트럼 반지름과 고윳값</title>
+    <statement>
+      <p>
+        복소 정사각 행렬 <m>A\in\mathbb C^{n\times n}</m>의 고윳값을 중복도를 포함하여 <m>\lambda_1,\ldots,\lambda_n</m>이라 하면,
+        <m>\rho(A)=\max_{1\leq i\leq n}\lvert\lambda_i\rvert</m>이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        <m>\lambda</m>가 <m>A</m>의 고윳값일 필요충분조건은 <m>\det(\lambda I-A)=0</m>입니다.
+        따라서 정의에 등장하는 방정식의 해는 정확히 <m>A</m>의 고윳값이며, 정의에 따라 그 절댓값들의 최댓값이 <m>\rho(A)</m>입니다.
+      </p>
+    </proof>
+  </proposition>
+
+
+  <example xml:id="ex-spectral-radius-diagonal-matrix">
+    <title>대각 행렬의 스펙트럼 반지름</title>
+    <statement>
+      <p>
+        대각 행렬
+        <me>D=\begin{pmatrix}2&amp;0&amp;0\\0&amp;-3&amp;0\\0&amp;0&amp;i\end{pmatrix}.</me>
+        이 행렬의 스펙트럼 반지름은 <m>\rho(D)=\max\{2,3,1\}=3</m>입니다.
+      </p>
+    </statement>
+  </example>
+  
+  
+  <example xml:id="ex-spectral-radius-nilpotent-matrix">
+    <title>멱영 행렬의 스펙트럼 반지름</title>
+    <statement>
+      <p>
+        다음 행렬 <m>N</m>은 <m>N^3=0</m>을 만족하므로 멱영입니다.
+      </p>
+      <me>N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.</me>
+      <p>
+        <m>\lambda</m>가 <m>N</m>의 고윳값이면 <m>N^3</m>의 고윳값은 <m>\lambda^3</m>이므로 <m>\lambda^3=0</m>이고, 따라서 <m>\lambda=0</m>입니다. 그러므로 <m>\rho(N)=0</m>입니다.
+      </p>
+    </statement>
+  </example>
+  
+
+  <p>
+    겔판트 공식은 행렬의 스펙트럼 반지름과 행렬 노름 사이의 관계를 나타내는 중요한 결과입니다.
+  </p>
+
+  <definition xml:id="def-matrix-norm">
+    <title>행렬 노름</title>
+    <statement>
+      <p>
+        <m>\mathbb C^{n\times n}</m> 위의 함수 <m>\|\cdot\|</m>이 모든 행렬 <m>A,B</m>과 스칼라 <m>\alpha</m>에 대하여 다음 조건을 만족하면 <term>행렬 노름</term><aside><p>행렬 노름:matrix norm</p></aside>이라고 합니다.
+      </p>
+      <ul>
+        <li><p><m>\|A\|\geq 0</m>이고, <m>\|A\|=0</m>일 필요충분조건은 <m>A=0</m>입니다.</p></li>
+        <li><p><m>\|\alpha A\|=|\alpha|\,\|A\|</m>입니다.</p></li>
+        <li><p><m>\|A+B\|\leq\|A\|+\|B\|</m>입니다.</p></li>
+      </ul>
+    </statement>
+  </definition>
+  
+  <definition xml:id="def-submultiplicative-matrix-norm">
+    <title>곱셈적 행렬 노름</title>
+    <statement>
+      <p>
+        <m>\mathbb C^{n\times n}</m> 위의 행렬 노름 <m>\|\cdot\|</m>이 모든 <m>A,B\in\mathbb C^{n\times n}</m>에 대하여
+        <me>\|AB\|\leq \|A\|\,\|B\|</me>
+        를 만족하면, <term>곱셈적 행렬 노름</term><aside><p>곱셈적 행렬 노름:submultiplicative matrix norm</p></aside>이라고 합니다.
+      </p>
+    </statement>
+  </definition>
+
+  <example xml:id="ex-submultiplicative-operator-norm">
+    <title>스펙트럴 노름의 곱셈성</title>
+    <statement>
+      <p>
+        <xref ref="def-spectral-norm"/>에서 정의한 스펙트럴 노름
+        은 곱셈적 행렬 노름입니다.
+      </p>
+      <p>
+        이유를 살펴봅시다. 임의의 <m>x\in\mathbb C^n</m>에 대해
+        <m>\|ABx\|_2\leq\|A\|_2\|Bx\|_2\leq\|A\|_2\|B\|_2\|x\|_2</m>입니다.
+        따라서 연산자 노름의 정의에 따라 <m>\|AB\|_2\leq\|A\|_2\|B\|_2</m>입니다.
+      </p>
+    </statement>
+  </example>
+
+  <definition xml:id="def-vector-one-norm">
+    <title>벡터의 1-노름</title>
+    <statement>
+      <p>
+        벡터 <m>x=(x_1,\ldots,x_n)	ext{T}	ext{T}	ext{ in }	ext{C}^n</m>의 <term>1-노름</term><aside><p>1-노름:1-norm</p></aside>은
+        <me>\|x\|_1=\sum_{j=1}^n|x_j|</me>
+        로 정의합니다.
+      </p>
+    </statement>
+  </definition>
+
+  <proposition xml:id="prop-vector-one-norm-triangle-inequality">
+    <title>벡터 1-노름의 삼각부등식</title>
+    <statement>
+      <p>
+        모든 <m>x,y\,\in\mathbb C^n</m>에 대하여
+        <me>\|x+y\|_1\leq\|x\|_1+\|y\|_1</me>
+        이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        <m>x=(x_1,\ldots,x_n)</m>, <m>y=(y_1,\ldots,y_n)</m>이라 하겠습니다.
+        복소수의 삼각부등식 <m>|x_j+y_j|\leq|x_j|+|y_j|</m>를 각 <m>j</m>에 대하여 적용하면
+        <me>\|x+y\|_1=
+        \sum_{j=1}^n|x_j+y_j|
+        \leq\sum_{j=1}^n\bigl(|x_j|+|y_j|\bigr)
+        =\|x\|_1+\|y\|_1</me>
+        입니다.
+      </p>
+    </proof>
+  </proposition>
+
+  
+
+  <definition xml:id="def-operator-one-norm">
+    <title>연산자 1-노름</title>
+    <statement>
+      <p>
+        벡터의 1-노름이 유도하는 행렬 <m>A\in\mathbb C^{n\times n}</m>의 <term>연산자 1-노름</term><aside><p>operator 1-norm</p></aside>은
+        <me>\|A\|_1=\max_{x\neq 0}\frac{\|Ax\|_1}{\|x\|_1}</me>
+        로 정의합니다.
+      </p>
+    </statement>
+  </definition>
+  <proposition xml:id="prop-operator-one-norm-is-matrix-norm">
+    <title>연산자 1-노름은 행렬 노름이다</title>
+    <statement>
+      <p>
+        연산자 1-노름 <m>\|A\|_1</m>은 행렬 노름의 공리를 만족한다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        정의에 의해 연산자 1-노름은 다음과 같이 주어집니다.
+        <md><mrow>\|A\|_1=\max_{x\neq 0}\frac{\|Ax\|_1}{\|x\|_1}</mrow></md>
+        따라서 <m>\|A\|_1\geq 0</m>입니다. 특히 <m>A=0</m>이면 <m>\|A\|_1=0</m>입니다.
+        반대로 <m>\|A\|_1=0</m>이면 모든 영이 아닌 <m>x</m>에 대하여 <m>\|Ax\|_1=0</m>이므로 <m>Ax=0</m>입니다.
+        따라서 <m>A=0</m>입니다.
+      </p>
+      <p>
+        임의의 스칼라 <m>\alpha</m>와 영이 아닌 벡터 <m>x</m>에 대하여
+        <m>\|\alpha Ax\|_1=|\alpha|\,\|Ax\|_1</m>이므로, 최댓값을 취하면
+        <m>\|\alpha A\|_1=|\alpha|\,\|A\|_1</m>입니다.
+      </p>
+      <p>
+        또한 임의의 영이 아닌 <m>x</m>에 대하여 벡터 1-노름의 삼각부등식으로부터
+        <m>\|(A+B)x\|_1\leq\|Ax\|_1+\|Bx\|_1\leq(\|A\|_1+\|B\|_1)\|x\|_1</m>입니다.
+        양변을 <m>\|x\|_1</m>로 나누고 영이 아닌 모든 <m>x</m>에 대하여 최댓값을 취하면
+        <m>\|A+B\|_1\leq\|A\|_1+\|B\|_1</m>입니다.
+      </p>
+    </proof>
+  </proposition>
+
+  <proposition xml:id="prop-operator-one-norm-submultiplicative">
+    <title>연산자 1-노름의 곱셈성</title>
+    <statement>
+      <p>
+        연산자 1-노름은 곱셈적입니다. 즉, 모든 <m>A,B\in\mathbb C^{n	imes n}</m>에 대하여
+        <me>\|AB\|_1\leq\|A\|_1\|B\|_1</me>
+        입니다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        임의의 영이 아닌 <m>x\in\mathbb C^n</m>에 대하여 연산자 1-노름의 정의로부터
+        <m>\|ABx\|_1\leq\|A\|_1\|Bx\|_1\leq\|A\|_1\|B\|_1\|x\|_1</m>입니다.
+        양변을 <m>\|x\|_1</m>로 나누고 영이 아닌 모든 <m>x</m>에 대하여 최댓값을 취하면
+        <m>\|AB\|_1\leq\|A\|_1\|B\|_1</m>을 얻습니다.
+      </p>
+    </proof>
+
+
+  </proposition>
+  
+  <theorem xml:id="thm-gelfand-formula">
+    <title>겔판트 공식</title>
+    <statement>
+      <p>
+        <m>\mathbb C^{n\times n}</m> 위의 곱셈적 행렬 노름 <m>\|\cdot\|</m>과 행렬 <m>A\in\mathbb C^{n\times n}</m>에 대하여
+        다음이 성립한다.
+      </p>
+      <md><mrow>\rho(A)=\lim_{k\to\infty}\|A^k\|^{1/k}</mrow></md>
+    </statement>
+    <proof>
+      <p>
+        <m>\|\cdot\|_2</m>를 유클리드 노름이 유도하는 연산자 노름이라 하고, 유한 차원 노름의 동치성에 따라 어떤 상수 <m>c,C&gt;0</m>에 대하여 모든 행렬 <m>B</m>에 대해
+        <m>c\|B\|\leq\|B\|_2\leq C\|B\|</m>임을 이용합니다.
+        먼저 <m>\|A^k\|_2\geq\rho(A^k)=\rho(A)^k</m>이므로
+        <m>\|A^k\|^{1/k}\geq C^{-1/k}\rho(A)</m>입니다.
+      </p>
+      <p>
+        이제 <m>\rho(A)&gt;0</m>이라고 하고, <m>A</m>의 조르당 표준형을 사용합니다.
+        각 조르당 블록의 <m>k</m>제곱은 고윳값의 거듭제곱과 그보다 낮은 차수의 <m>k</m>에 대한 다항식 항들의 합이므로, 어떤 상수 <m>K&gt;0</m>가 존재하여 모든 충분히 큰 <m>k</m>에 대해
+        <m>\|A^k\|_2\leq K k^{n-1}\rho(A)^k</m>입니다.
+        따라서 <m>\|A^k\|^{1/k}\leq c^{-1/k}K^{1/k}k^{(n-1)/k}\rho(A)</m>입니다.
+        양쪽 부등식에서 <m>k\to\infty</m>로 보내면 원하는 극한을 얻습니다.
+      </p>
+      <p>
+        마지막으로 <m>\rho(A)=0</m>이면 모든 고윳값이 0이므로 케일리–해밀턴 정리에 따라 <m>A^n=0</m>입니다.
+        따라서 충분히 큰 <m>k</m>에 대해 <m>\|A^k\|^{1/k}=0</m>이고, 공식은 이 경우에도 성립합니다.
+      </p>
+    </proof>
+  </theorem>
+
+</section>

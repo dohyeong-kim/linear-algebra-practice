@@ -17,7 +17,7 @@
     <xi:include href="./ch-rigid-motion.ptx" />
     <xi:include href="./ch-linear-codes.ptx" />
     <xi:include href="./ch-Perron-Frobenius.ptx" />
-    <xi:include href="./ch-graph-laplacian.ptx" />
+    <xi:include href="./ch-matrix-tree-theorem.ptx" />
     <xi:include href="./ch-attention.ptx" />
     <xi:include href="./ch-fast-fourier-transform.ptx" />
     <xi:include href="./ch-fast-matrix-multiplication.ptx" />

@@ -200,8 +200,393 @@
       </p>
     </proof>
   </theorem>
-  <p>
-    
-  </p>
+ 
 
+<exercises xml:id="exercises-hamming-distance">
+  <title>연습문제</title>
+  <introduction>
+    <p>
+      본문과 같이 벡터 <m>(0,1,0,1)</m>을 <m>0101</m>로 쓰고, <m>e_j</m>는 <m>j</m>번째 성분만 <m>1</m>인 벡터, <m>\operatorname{supp}(x)=\{i:x_i=1\}</m>은 <m>x</m>의 지지집합을 나타냅니다. 예를 들어 <m>\operatorname{supp}(0101)=\{2,4\}</m>입니다. 매개변수 <m>[n,k,d]</m>를 쓸 때는 최소 거리가 정의되도록 <m>k\ge 1</m>, 즉 부호어가 둘 이상이라고 가정합니다.
+    </p>
+    <p>
+      정수 <m>a,b</m>에 대하여 <m>a\equiv b\pmod{2}</m>라는 것은 <m>a-b</m>가 2로 나누어떨어진다는 뜻입니다. 즉, 어떤 정수 <m>q</m>가 존재하여 <m>a-b=2q</m>로 쓸 수 있음을 의미합니다.
+    </p>
+  </introduction>
+
+  <!-- 1 -->
+  <exercise xml:id="exer-hd-compute">
+    <title>거리와 무게 계산</title>
+    <statement>
+      <p>
+        <m>x=101101</m>, <m>y=011100</m>, <m>z=110000</m>이라 합시다.
+        <ol marker="(a)">
+          <li><p><m>d_H(x,y)</m>, <m>d_H(x,z)</m>, <m>d_H(y,z)</m>와 <m>\operatorname{wt}(x)</m>, <m>\operatorname{wt}(y)</m>, <m>\operatorname{wt}(x+y)</m>를 구하십시오.</p></li>
+          <li><p>세 점 <m>x,y,z</m>에 대해 삼각부등식 <m>d_H(x,z)\le d_H(x,y)+d_H(y,z)</m>를 확인하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>x,y</m>는 첫째, 둘째, 여섯째 좌표에서 다르므로 <m>d_H(x,y)=3</m>입니다. 같은 방법으로 <m>d_H(x,z)=4</m>, <m>d_H(y,z)=3</m>입니다. <m>\operatorname{wt}(x)=4</m>, <m>\operatorname{wt}(y)=3</m>이고 <m>x+y=110001</m>이므로 <m>\operatorname{wt}(x+y)=3=d_H(x,y)</m>입니다.</p></li>
+          <li><p><m>4\le 3+3</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 2 -->
+  <exercise xml:id="exer-hd-weight-identities">
+    <title>거리와 무게의 관계</title>
+    <statement>
+      <p>
+        <m>x,y,z\in\mathbb F_2^n</m>에 대하여 다음을 보이십시오.
+        <ol marker="(a)">
+          <li><p><m>d_H(x,y)=\operatorname{wt}(x+y)</m>.</p></li>
+          <li><p><m>d_H(x+z,y+z)=d_H(x,y)</m>. 즉, 평행이동은 해밍 거리를 보존합니다.</p></li>
+          <li><p><m>\operatorname{wt}(x+y)=\operatorname{wt}(x)+\operatorname{wt}(y)-2\,|\operatorname{supp}(x)\cap\operatorname{supp}(y)|</m>.</p></li>
+          <li><p><m>d_H(x,e_j)</m>는 <m>j\in\operatorname{supp}(x)</m>이면 <m>\operatorname{wt}(x)-1</m>, 아니면 <m>\operatorname{wt}(x)+1</m>입니다.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\mathbb F_2</m>에서 <m>x_i\ne y_i</m>일 필요충분조건은 <m>x_i+y_i=1</m>입니다.</p></li>
+          <li><p>(a)에 의해 <m>d_H(x+z,y+z)=\operatorname{wt}(x+y+2z)=\operatorname{wt}(x+y)=d_H(x,y)</m>입니다.</p></li>
+          <li><p><m>x_i+y_i=1</m>인 좌표는 <m>S=\operatorname{supp}(x)</m>, <m>T=\operatorname{supp}(y)</m> 중 정확히 하나에 속하는 좌표이므로 그 개수는 <m>|S\cup T|-|S\cap T|=|S|+|T|-2|S\cap T|</m>입니다.</p></li>
+          <li><p>(a), (c)에서 <m>y=e_j</m>로 두면 됩니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 3 -->
+  <exercise xml:id="exer-hd-which-linear">
+    <title>선형부호 판별</title>
+    <statement>
+      <p>
+        다음 부호 중 선형부호를 찾고, 선형부호이면 매개변수를 구하십시오. 선형부호가 아닌 것도 최소 거리를 구하십시오.
+        <md><mrow>A=\{000,110,011,101\},\quad B=\{000,111,110\},\quad D=\{001,010,100,111\},\quad E=\{0000,1100,0011,1111\}</mrow></md>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <m>A=P_3</m>는 선형이고 <m>[3,2,2]</m>입니다. <m>B</m>는 <m>111+110=001\notin B</m>이므로 선형이 아니며, <m>d_H(111,110)=1</m>이므로 최소 거리는 <m>1</m>입니다. <m>D</m>는 영벡터를 포함하지 않으므로 부분공간이 아닙니다. <m>D=001+P_3</m>이므로 <xref ref="exer-hd-weight-identities"/>(b)에 의해 거리가 <m>P_3</m>와 같고, 최소 거리는 <m>2</m>입니다. <m>E</m>는 <m>1100</m>과 <m>0011</m>로 생성되는 부분공간이므로 선형이고, 영이 아닌 부호어의 무게가 <m>2,2,4</m>이므로 <m>[4,2,2]</m>입니다.
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 4 -->
+  <exercise xml:id="exer-hd-balls">
+    <title>해밍 공</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\mathbb F_2^4</m>에서 <m>B_H(0000,1)</m>과 <m>B_H(1010,1)</m>의 원소를 나열하십시오.</p></li>
+          <li><p><m>B_H(x,r)=\{x+e:\operatorname{wt}(e)\le r\}</m>임을 보이십시오.</p></li>
+          <li><p><m>B_H(x,0)=\{x\}</m>이고, <m>r\ge n</m>이면 <m>B_H(x,r)=\mathbb F_2^n</m>임을 보이십시오.</p></li>
+          <li><p><m>\mathbb F_2^5</m>에서 <m>|B_H(x,2)|</m>를 구하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>B_H(0000,1)=\{0000,1000,0100,0010,0001\}</m>, <m>B_H(1010,1)=\{1010,0010,1110,1000,1011\}</m>입니다.</p></li>
+          <li><p><m>y=x+e</m>로 두면 <xref ref="exer-hd-weight-identities"/>(a)에 의해 <m>d_H(x,y)=\operatorname{wt}(e)</m>입니다.</p></li>
+          <li><p><m>d_H(x,y)=0</m>이면 <m>x=y</m>이고, 모든 거리는 <m>n</m> 이하입니다.</p></li>
+          <li><p><m>1+5+10=16</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 5 -->
+  <exercise xml:id="exer-hd-min-weight">
+    <title>최소 거리와 최소 무게</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p>선형부호 <m>C</m>의 최소 거리는 영이 아닌 부호어의 최소 무게와 같음을 보이십시오. 본문의 <xref ref="ex-repetition-code"/>와 <xref ref="ex-single-parity-check-code"/>는 이 사실을 사용합니다.</p></li>
+          <li><p>선형이 아닌 부호 <m>\{000,011,111\}</m>에서는 (a)가 성립하지 않음을 보이십시오.</p></li>
+          <li><p>선형부호 <m>C</m>와 부호어 <m>c\in C</m>에 대하여, 각 <m>w</m>에 대해 <m>d_H(c,c')=w</m>인 부호어 <m>c'</m>의 개수는 무게가 <m>w</m>인 부호어의 개수와 같음을 보이십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>x\ne y</m>가 부호어이면 <m>x+y</m>는 영이 아닌 부호어이고 <m>d_H(x,y)=\operatorname{wt}(x+y)</m>입니다. 반대로 영이 아닌 부호어 <m>c</m>에 대해 <m>0\in C</m>이므로 <m>\operatorname{wt}(c)=d_H(c,0)</m>입니다. 따라서 두 최솟값은 같은 집합의 최솟값입니다.</p></li>
+          <li><p>최소 거리는 <m>d_H(011,111)=1</m>이지만 영이 아닌 부호어의 최소 무게는 <m>2</m>입니다.</p></li>
+          <li><p><m>c'\mapsto c+c'</m>는 <m>C</m>에서 <m>C</m>로 가는 전단사이고 <m>d_H(c,c')=\operatorname{wt}(c+c')</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 6 -->
+  <exercise xml:id="exer-hd-check-matrix-basics">
+    <title>검사 행렬의 기본 성질</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>(1\,\cdots\,1)</m>이 <m>P_n</m>의 검사 행렬임을 확인하십시오.</p></li>
+          <li><p><xref ref="ex-repetition-code-check-matrix"/>의 <m>H</m>에 대해 <m>Hx=0</m>일 필요충분조건이 <m>x_1=x_2=\cdots=x_n</m>임을 보이고, <m>\operatorname{rank}(H)=n-1</m>임을 보이십시오.</p></li>
+          <li><p><m>H'=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{pmatrix}</m>도 <m>R_3</m>의 검사 행렬임을 보이십시오. 따라서 검사 행렬은 유일하지 않습니다.</p></li>
+          <li><p>차원이 <m>k</m>인 선형부호의 임의의 검사 행렬 <m>H\in\mathbb F_2^{(n-k)\times n}</m>는 계수가 <m>n-k</m>이며, 따라서 행들이 선형독립임을 보이십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\dim P_n=n-1</m>이므로 <m>1\times n</m> 행렬이 필요하고, <m>(1\,\cdots\,1)x=x_1+\cdots+x_n</m>입니다.</p></li>
+          <li><p><m>i</m>번째 행의 조건은 <m>x_i+x_{i+1}=0</m>, 즉 <m>x_i=x_{i+1}</m>입니다. 커널이 <m>R_n</m>으로 <m>1</m>차원이므로 계수-차원 정리에 의해 계수는 <m>n-1</m>입니다.</p></li>
+          <li><p><m>H'x=0</m>은 <m>x_1=x_3</m>, <m>x_2=x_3</m>이므로 커널은 <m>R_3</m>이고, <m>H'</m>의 크기는 <m>(3-1)\times 3</m>입니다.</p></li>
+          <li><p><m>\ker H=C</m>의 차원이 <m>k</m>이므로 <m>\operatorname{rank}(H)=n-k</m>이고, 이는 행의 개수와 같습니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 7 -->
+  <exercise xml:id="exer-hd-six-three-three">
+    <title>검사 행렬로 주어진 부호의 매개변수</title>
+    <statement>
+      <p>
+        <md><mrow>H=\begin{pmatrix}1&amp;1&amp;0&amp;1&amp;0&amp;0\\1&amp;0&amp;1&amp;0&amp;1&amp;0\\0&amp;1&amp;1&amp;0&amp;0&amp;1\end{pmatrix}</mrow></md>
+        를 검사 행렬로 갖는 선형부호 <m>C=\{x\in\mathbb F_2^6:Hx=0\}</m>을 생각합시다.
+        <ol marker="(a)">
+          <li><p><m>C</m>의 부호어를 모두 나열하고 <m>\dim C=3</m>임을 보이십시오.</p></li>
+          <li><p><m>C</m>의 매개변수를 구하십시오.</p></li>
+          <li><p><xref ref="thm-hamming-bound"/>의 부등식을 확인하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p>세 행의 조건은 <m>x_4=x_1+x_2</m>, <m>x_5=x_1+x_3</m>, <m>x_6=x_2+x_3</m>이므로 <m>(x_1,x_2,x_3)</m>를 자유롭게 정하면 나머지가 결정됩니다. 부호어는
+          <md><mrow>000000,\ 100110,\ 010101,\ 001011,\ 110011,\ 101101,\ 011110,\ 111000</mrow></md>
+          의 여덟 개이고 <m>\dim C=3</m>입니다.</p></li>
+          <li><p>영이 아닌 부호어의 무게는 <m>3,3,3,4,4,4,3</m>이므로 <xref ref="exer-hd-min-weight"/>에 의해 <m>[6,3,3]</m>입니다.</p></li>
+          <li><p><m>\lfloor(3-1)/2\rfloor=1</m>이므로 <m>2^3(1+6)=56\le 64</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 8 -->
+  <exercise xml:id="exer-hd-hamming-bound-use">
+    <title>해밍 상한의 사용</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>[6,4,3]</m> 선형부호가 존재하지 않음을 보이십시오. 이와 <xref ref="exer-hd-six-three-three"/>로부터, 길이 <m>6</m>이고 최소 거리가 <m>3</m>인 선형부호의 최대 차원은 <m>3</m>입니다.</p></li>
+          <li><p>길이 <m>7</m>, 최소 거리 <m>3</m>인 선형부호와 길이 <m>10</m>, 최소 거리 <m>5</m>인 선형부호의 차원이 모두 <m>4</m> 이하임을 보이십시오.</p></li>
+          <li><p><m>d\le 2</m>이면 해밍 상한이 아무 정보도 주지 않음을 설명하십시오.</p></li>
+          <li><p><xref ref="thm-hamming-bound"/>의 증명을 고쳐, 선형이 아닌 부호 <m>C</m>에 대해서도 <m>|C|\sum_{j=0}^{\lfloor(d-1)/2\rfloor}\binom nj\le 2^n</m>이 성립함을 보이십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>2^4\cdot 7=112&gt;64</m>입니다.</p></li>
+          <li><p><m>2^k\cdot 8\le 2^7</m>에서 <m>k\le 4</m>입니다. <m>2^k(1+10+45)\le 2^{10}</m>에서 <m>2^k\le 1024/56&lt;32</m>이므로 <m>k\le 4</m>입니다.</p></li>
+          <li><p><m>d\le 2</m>이면 합은 <m>\binom n0=1</m>뿐이므로 부등식은 <m>2^k\le 2^n</m>, 즉 <m>k\le n</m>이 되어 자명합니다.</p></li>
+          <li><p>증명에서 선형성은 부호어의 수가 <m>2^k</m>라는 데에만 쓰였습니다. 공들이 서로소라는 논법은 임의의 부호에 대해 성립하므로 <m>2^k</m>를 <m>|C|</m>로 바꾸면 됩니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 9 -->
+  <exercise xml:id="exer-hd-ball-intersection">
+    <title>두 해밍 공이 만날 조건</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p>음이 아닌 정수 <m>r,s</m>에 대하여 <m>B_H(x,r)\cap B_H(y,s)\ne\varnothing</m>일 필요충분조건은 <m>d_H(x,y)\le r+s</m>임을 보이십시오.</p></li>
+          <li><p>최소 거리가 <m>d</m>인 부호에서 부호어를 중심으로 하는 반지름 <m>r</m>의 해밍 공들이 서로소일 필요충분조건은 <m>r\le\lfloor (d-1)/2\rfloor</m>임을 보이십시오. 따라서 <xref ref="thm-hamming-bound"/>의 증명에서 택한 반지름은 이 논법이 성립하는 가장 큰 반지름입니다.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>z</m>가 공통 원소이면 삼각부등식에 의해 <m>d_H(x,y)\le r+s</m>입니다. 반대로 <m>x,y</m>가 다른 좌표의 집합을 <m>D</m>라 하고 <m>m=|D|\le r+s</m>라 합시다. <m>D</m>의 부분집합 <m>T</m>로 <m>|T|=\min(r,m)</m>인 것을 택하고, <m>x</m>의 <m>T</m> 위의 성분을 바꾼 벡터를 <m>z</m>라 하면 <m>d_H(x,z)=|T|\le r</m>이고 <m>d_H(z,y)=m-|T|\le s</m>입니다.</p></li>
+          <li><p>(a)에 의해 공들이 서로소일 필요충분조건은 서로 다른 모든 부호어 쌍에 대해 <m>d_H(c,c')&gt;2r</m>, 즉 <m>d&gt;2r</m>이며, 이는 <m>r\le\lfloor(d-1)/2\rfloor</m>와 동치입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 10 -->
+  <exercise xml:id="exer-hd-even-weights">
+    <title>짝수 무게의 부호어</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>\operatorname{wt}(x)\equiv x_1+\cdots+x_n\pmod 2</m>임을 보이고, 선형부호 <m>C</m>의 무게가 짝수인 부호어의 집합 <m>C\cap P_n</m>이 <m>C</m>의 부분공간임을 보이십시오.</p></li>
+          <li><p>선형부호의 부호어는 모두 무게가 짝수이거나, 정확히 절반이 무게가 짝수임을 보이십시오.</p></li>
+          <li><p><m>R_n</m>, <m>P_n</m>, <xref ref="exer-hd-six-three-three"/>의 부호가 각각 어느 경우인지 확인하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>x_1+\cdots+x_n</m>은 <m>1</m>인 성분의 개수를 <m>2</m>로 나눈 나머지입니다. 따라서 <m>C\cap P_n</m>은 선형사상 <m>C\to\mathbb F_2</m>, <m>c\mapsto\sum_ic_i</m>의 커널입니다.</p></li>
+          <li><p>이 선형사상이 영이면 모든 부호어가 짝수 무게이고, 영이 아니면 전사이므로 커널의 차원은 <m>k-1</m>, 즉 <m>2^{k-1}</m>개로 절반입니다.</p></li>
+          <li><p><m>R_n</m>은 <m>n</m>이 짝수이면 모두 짝수, 홀수이면 절반입니다. <m>P_n</m>은 모두 짝수입니다. <xref ref="exer-hd-six-three-three"/>의 부호는 무게가 <m>0,4,4,4</m>인 네 부호어와 <m>3</m>인 네 부호어가 있으므로 절반입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 11 -->
+  <exercise xml:id="exer-hd-hamming-bound-equality">
+    <title>해밍 상한의 등호</title>
+    <statement>
+      <p>
+        <m>t=\lfloor(d-1)/2\rfloor</m>라 합시다.
+        <ol marker="(a)">
+          <li><p><xref ref="thm-hamming-bound"/>에서 등호가 성립할 필요충분조건은 부호어를 중심으로 하는 반지름 <m>t</m>의 해밍 공들이 <m>\mathbb F_2^n</m>을 덮는 것임을 보이십시오.</p></li>
+          <li><p><m>R_n</m>은 <m>n</m>이 홀수이면 등호를 만족하고, <m>n</m>이 짝수이면 만족하지 않음을 보이십시오.</p></li>
+          <li><p><m>P_n</m>은 등호를 만족하지 않고, <m>\mathbb F_2^n</m> 전체는 <m>[n,n,1]</m> 부호로서 등호를 만족함을 보이십시오.</p></li>
+          <li><p><xref ref="exer-hd-six-three-three"/>의 부호에서 어느 공에도 속하지 않는 벡터를 하나 찾으십시오. 또한 <m>v</m>가 어떤 공 <m>B_H(c,1)</m>에 속할 필요충분조건은 <m>Hv</m>가 <m>0</m>이거나 <m>H</m>의 한 열과 같은 것임을 보이고, 이를 이용하여 공에 속하지 않는 벡터가 정확히 <m>8</m>개임을 확인하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p>증명에서 공들은 서로소이고 그 합집합의 크기가 좌변입니다. 따라서 등호는 합집합이 <m>\mathbb F_2^n</m> 전체라는 것과 동치입니다.</p></li>
+          <li><p><m>n=2m+1</m>이면 <m>t=m</m>이고 <m>B_H(0,m)</m>은 무게 <m>m</m> 이하, <m>B_H(1\cdots1,m)</m>은 무게 <m>m+1</m> 이상인 벡터 전체이므로 공간을 덮습니다. <m>n=2m</m>이면 <m>t=m-1</m>이고 무게가 <m>m</m>인 벡터는 어느 공에도 속하지 않습니다.</p></li>
+          <li><p><m>P_n</m>은 <m>t=0</m>이고 <m>2^{n-1}&lt;2^n</m>입니다. <m>\mathbb F_2^n</m>은 <m>d=1</m>, <m>t=0</m>이고 <m>2^n\cdot 1=2^n</m>입니다.</p></li>
+          <li><p><m>100001</m>은 여덟 부호어와의 거리가 <m>2,3,3,3,2,2,6,3</m>이므로 어느 공에도 속하지 않습니다. <m>v\in B_H(c,1)</m>이면 <m>v=c</m> 또는 <m>v=c+e_j</m>이므로 <m>Hv=0</m> 또는 <m>Hv=He_j</m>입니다. 반대로 <m>Hv=He_j</m>이면 <m>c=v+e_j\in C</m>입니다. <m>H</m>의 열은 <m>111</m>을 제외한 영이 아닌 벡터 여섯 개이므로, 공에 속하지 않는 벡터는 <m>Hv=111</m>인 벡터이고 이는 <m>C</m>의 한 평행이동이므로 <m>8</m>개입니다. 실제로 <m>64-56=8</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 12 -->
+  <exercise xml:id="exer-hd-singleton">
+    <title>또 하나의 상한</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>[n,k,d]</m> 선형부호에 대하여 <m>d\le n-k+1</m>임을 보이십시오.</p></li>
+          <li><p><m>R_n</m>, <m>P_n</m>, <m>\mathbb F_2^n</m>이 (a)의 등호를 만족함을 확인하십시오.</p></li>
+          <li><p><m>n=7</m>, <m>d=3</m>일 때 (a)와 해밍 상한이 주는 차원의 상한을 비교하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        처음 <m>n-d+1</m>개의 좌표만 남기는 사상을 <m>C</m>에 제한하십시오.
+      </p>
+    </hint>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>d\le n</m>이므로 <m>m=n-d+1\ge 1</m>입니다. <m>\pi:C\to\mathbb F_2^{m}</m>를 처음 <m>m</m>개의 좌표를 남기는 선형사상이라 합시다. <m>\pi(c)=\pi(c')</m>이면 <m>c,c'</m>는 마지막 <m>d-1</m>개의 좌표에서만 다를 수 있으므로 <m>d_H(c,c')\le d-1</m>이고, 따라서 <m>c=c'</m>입니다. 단사이므로 <m>k\le n-d+1</m>입니다.</p></li>
+          <li><p><m>R_n</m>은 <m>n\le n-1+1</m>, <m>P_n</m>은 <m>2\le n-(n-1)+1</m>, <m>\mathbb F_2^n</m>은 <m>1\le n-n+1</m>로 모두 등호입니다.</p></li>
+          <li><p>(a)는 <m>k\le 5</m>, 해밍 상한은 <xref ref="exer-hd-hamming-bound-use"/>에서처럼 <m>k\le 4</m>를 줍니다. 따라서 이 경우 해밍 상한이 더 강합니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 13 -->
+  <exercise xml:id="exer-hd-check-matrix-exists">
+    <title>검사 행렬의 존재</title>
+    <statement>
+      <p>
+        <ol marker="(a)">
+          <li><p>차원이 <m>k</m>인 모든 선형부호 <m>C\subset\mathbb F_2^n</m>는 검사 행렬 <m>H\in\mathbb F_2^{(n-k)\times n}</m>를 가짐을 보이십시오.</p></li>
+          <li><p><xref ref="exer-hd-which-linear"/>의 부호 <m>E</m>의 검사 행렬을 구하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        <m>C</m>의 기저를 <m>\mathbb F_2^n</m>의 기저로 확장하고, <m>C</m>의 기저를 <m>0</m>으로 보내는 선형사상을 만드십시오.
+      </p>
+    </hint>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>C</m>의 기저 <m>c_1,\dots,c_k</m>를 <m>\mathbb F_2^n</m>의 기저 <m>c_1,\dots,c_n</m>으로 확장합니다. <m>i\le k</m>이면 <m>\varphi(c_i)=0</m>, <m>\varphi(c_{k+j})=e_j\in\mathbb F_2^{n-k}</m>인 선형사상 <m>\varphi</m>를 정의하면 <m>\varphi(\sum_ia_ic_i)=\sum_ja_{k+j}e_j</m>이므로 <m>\ker\varphi=C</m>입니다. <m>\varphi</m>의 표현행렬이 원하는 <m>H</m>입니다.</p></li>
+          <li><p><m>E=\{x:x_1=x_2,\ x_3=x_4\}</m>이므로 <m>H=\begin{pmatrix}1&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;1\end{pmatrix}</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 14 -->
+  <exercise xml:id="exer-hd-plotkin">
+    <title>무게의 평균으로 얻는 상한</title>
+    <statement>
+      <p>
+        <m>C</m>를 <m>[n,k,d]</m> 선형부호라 합시다.
+        <ol marker="(a)">
+          <li><p>각 좌표 <m>i</m>에 대하여, 모든 부호어의 <m>i</m>번째 성분이 <m>0</m>이거나, 정확히 <m>2^{k-1}</m>개의 부호어의 <m>i</m>번째 성분이 <m>1</m>임을 보이십시오.</p></li>
+          <li><p><m>\sum_{c\in C}\operatorname{wt}(c)\le n\,2^{k-1}</m>임을 보이십시오.</p></li>
+          <li><p><m>d(2^k-1)\le n\,2^{k-1}</m>임을 보이십시오.</p></li>
+          <li><p><m>[9,3,6]</m> 선형부호는 해밍 상한을 만족하지만 존재하지 않음을 보이십시오. 또한 <m>R_n</m>은 (c)의 등호를 만족함을 확인하십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        <m>C\to\mathbb F_2</m>, <m>c\mapsto c_i</m>는 선형사상입니다.
+      </p>
+    </hint>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><m>c\mapsto c_i</m>가 영사상이 아니면 전사이므로 커널의 크기는 <m>2^{k-1}</m>이고, 나머지 <m>2^{k-1}</m>개의 부호어에서 <m>c_i=1</m>입니다.</p></li>
+          <li><p><m>\sum_c\operatorname{wt}(c)=\sum_i|\{c:c_i=1\}|</m>이고 (a)에 의해 각 항은 <m>2^{k-1}</m> 이하입니다.</p></li>
+          <li><p><xref ref="exer-hd-min-weight"/>에 의해 영이 아닌 <m>2^k-1</m>개의 부호어는 모두 무게가 <m>d</m> 이상이므로 (b)와 결합하면 됩니다.</p></li>
+          <li><p>해밍 상한: <m>2^3(1+9+36)=368\le 512</m>입니다. (c): <m>6\cdot 7=42&gt;9\cdot 4=36</m>이므로 존재하지 않습니다. <m>R_n</m>은 <m>k=1</m>이고 <m>n\cdot 1=n\cdot 1</m>입니다. <xref ref="exer-hd-six-three-three"/>의 부호는 <m>3\cdot 7=21\le 24</m>입니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <!-- 15 -->
+  <exercise xml:id="exer-hd-isometries">
+    <title>해밍 거리공간의 등거리사상</title>
+    <statement>
+      <p>
+        사상 <m>f:\mathbb F_2^n\to\mathbb F_2^n</m>가 모든 <m>x,y</m>에 대해 <m>d_H(f(x),f(y))=d_H(x,y)</m>를 만족한다고 합시다. <m>\{1,\dots,n\}</m>의 치환 <m>\sigma</m>에 대하여 <m>x^\sigma</m>를 <m>(x^\sigma)_{\sigma(i)}=x_i</m>로 정의합니다.
+        <ol marker="(a)">
+          <li><p><m>g(x)=f(x)+f(0)</m>도 거리를 보존하고 <m>g(0)=0</m>이며, <m>g</m>는 무게를 보존함을 보이십시오.</p></li>
+          <li><p><m>g(e_i)=e_{\sigma(i)}</m>인 치환 <m>\sigma</m>가 존재함을 보이십시오.</p></li>
+          <li><p>모든 <m>x</m>에 대해 <m>g(x)=x^\sigma</m>임을 보이십시오. 따라서 <m>f(x)=x^\sigma+f(0)</m>입니다.</p></li>
+          <li><p>거리를 보존하고 <m>0</m>을 <m>0</m>으로 보내는 사상은 선형이며, 선형부호를 같은 매개변수의 선형부호로 보냄을 보이십시오.</p></li>
+        </ol>
+      </p>
+    </statement>
+    <hint>
+      <p>
+        (c)에서는 <xref ref="exer-hd-weight-identities"/>(d)를 사용하십시오.
+      </p>
+    </hint>
+    <solution>
+      <p>
+        <ol marker="(a)">
+          <li><p><xref ref="exer-hd-weight-identities"/>(b)에 의해 <m>g</m>는 거리를 보존하고, <m>\operatorname{wt}(g(x))=d_H(g(x),g(0))=d_H(x,0)=\operatorname{wt}(x)</m>입니다.</p></li>
+          <li><p>거리를 보존하는 사상은 단사입니다. <m>g</m>는 무게 <m>1</m>인 <m>n</m>개의 벡터를 무게 <m>1</m>인 벡터로 단사적으로 보내므로 그 위에서 전단사이고, 이것이 <m>\sigma</m>를 정의합니다.</p></li>
+          <li><p><m>w=\operatorname{wt}(x)</m>라 하면 <m>\operatorname{wt}(g(x))=w</m>이고 <m>d_H(g(x),e_{\sigma(i)})=d_H(x,e_i)</m>입니다. <xref ref="exer-hd-weight-identities"/>(d)에 의해 이 값이 <m>w-1</m>인 것은 <m>\sigma(i)\in\operatorname{supp}(g(x))</m>와 <m>i\in\operatorname{supp}(x)</m> 각각과 동치입니다. 따라서 <m>\operatorname{supp}(g(x))=\sigma(\operatorname{supp}(x))=\operatorname{supp}(x^\sigma)</m>이고 <m>g(x)=x^\sigma</m>입니다.</p></li>
+          <li><p>(c)에서 <m>f(0)=0</m>이면 <m>f(x)=x^\sigma</m>이고, 이는 좌표를 재배열하는 선형 전단사입니다. 선형부호의 상은 같은 차원의 부분공간이며, 거리를 보존하므로 최소 거리도 같습니다.</p></li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>
 </section>

@@ -26,7 +26,6 @@ You are the dedicated editor for this PreTeXt textbook.
 - Use `<m>\mathbb F</m>` for the generic base field.
 - Write finite fields as `<m>\mathbb F_{q}</m>` where q is the caridinality of the field.
 - Write vectors as lowercase italic letters, not in boldface.
-- Write a single-line displayed equation as `<md>` without `<mrow>`.
 - For a multi-line displayed equation, wrap each line in `<mrow>` and use `&amp;` for alignment.
 
 ## Approach

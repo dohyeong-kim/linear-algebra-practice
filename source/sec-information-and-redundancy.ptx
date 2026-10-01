@@ -9,7 +9,7 @@
     </md>
     으로 표현됩니다. 왜냐하면, 그 이미지를 <m>C</m>라 하면 <m>C</m>가 <m>k</m>차원 부분공간이기 때문입니다.
   </p>
-  <definition xml:id="def-">
+  <definition xml:id="def-message-and-code">
     <title>메시지와 부호</title>
     <statement>
       <p>
@@ -62,9 +62,612 @@
     표준형 생성행렬 <m>G=\begin{pmatrix} I_k &amp; A \end{pmatrix}</m>에서 처음 <m>k</m>개의 열은 메시지의 각 성분이 그대로 전달되는 정보 부분을 나타냅니다. 즉, <m>I_k</m>는 원래 메시지의 정보를 그대로 보존하는 역할을 하고, 나머지 <m>n-k</m>개의 열에 들어있는 <m>A</m>는 오류 검출과 수정을 가능하게 하는 중복 정보, 즉 여분의 정보를 나타냅니다. 따라서 <m>I_k</m>는 정보, <m>A</m>는 중복이라고 생각할 수 있습니다.
   </p>
 
+  <example xml:id="ex-repetition-code-generator-matrix">
+    <title>반복부호의 생성행렬</title>
+    <statement>
+      <p>
+        <term>반복부호</term><aside><p>반복부호:repetition code</p></aside>는 하나의 메시지 비트를 여러 번 반복하여 보내는 부호입니다. 길이 <m>3</m>, 차원 <m>1</m>인 이진 반복부호의 생성행렬은
+        <md>
+          <mrow>G=\begin{pmatrix}1 &amp; 1 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        입니다. 메시지 <m>x\in\mathbb F_2</m>를 이 행렬에 곱하면
+        <md>
+          <mrow>xG=\begin{pmatrix}x &amp; x &amp; x\end{pmatrix}</mrow>
+        </md>
+        이므로, 메시지 <m>0</m>은 부호어 <m>000</m>으로, 메시지 <m>1</m>은 부호어 <m>111</m>로 보내집니다. 이때 첫 번째 열은 정보이고, 뒤의 두 열은 같은 정보를 반복하여 기록한 중복입니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-repetition-code-length-two-message">
+    <title>두 비트 메시지를 사용하는 반복부호의 생성행렬</title>
+    <statement>
+      <p>
+        두 비트 메시지의 각 비트를 세 번씩 반복하는 부호를 생각합시다. 이 부호는 길이 <m>6</m>, 차원 <m>2</m>이며 생성행렬은
+        <md>
+          <mrow>G=\begin{pmatrix}1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        입니다. 메시지 <m>(a,b)\in\mathbb F_2^2</m>는
+        <md>
+          <mrow>(a,b)G=(a,b,a,a,b,b)</mrow>
+        </md>
+        로 보내집니다. 따라서 메시지 <m>(1,0)</m>은 부호어 <m>101100</m>으로, 메시지 <m>(0,1)</m>은 부호어 <m>010011</m>으로 보내집니다. 처음 두 열은 메시지를 그대로 담고, 나머지 네 열은 각 비트를 반복하여 기록합니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-single-parity-generator-matrix">
+    <title>단일 패리티 비트를 사용하는 생성행렬</title>
+    <statement>
+      <p>
+        세 비트 메시지에 각 성분의 합을 패리티 비트로 덧붙이는 부호를 생각합시다. 이 부호는 길이 <m>4</m>, 차원 <m>3</m>이며 생성행렬은
+        <md>
+          <mrow>G=\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        입니다. 메시지 <m>(a,b,c)\in\mathbb F_2^3</m>는
+        <md>
+          <mrow>(a,b,c)G=(a,b,c,a+b+c)</mrow>
+        </md>
+        로 보내집니다. 따라서 마지막 성분은 세 메시지 비트의 패리티이며, 처음 세 열은 정보를 그대로 전달하고 마지막 열은 단일 중복 비트를 제공합니다.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    생성행렬 <m>G</m>로 주어진 부호에서 벡터 <m>v\in\mathbb F_2^n</m>이 부호어인지 확인하려면, 방정식 <m>xG=v</m>를 만족하는 메시지 <m>x\in\mathbb F_2^k</m>가 존재하는지 확인하면 됩니다. 해가 존재하면 <m>v</m>는 부호어이고, 해가 존재하지 않으면 부호어가 아닙니다. 특히 <m>G=\begin{pmatrix}I_k &amp; A\end{pmatrix}</m>가 표준형이면 <m>v</m>의 처음 <m>k</m>개 성분을 메시지 <m>x</m>로 정한 뒤, 나머지 성분이 <m>xA</m>와 같은지 확인하면 됩니다.
+  </p>
+
+  <p>
+    이제 검사 행렬 <m>H\in\mathbb F_2^{(n-k)\times n}</m>를 사용하여 수신한 벡터를 복호하는 방법을 알아봅시다. 이때 벡터는 열벡터로 쓰며, 부호 <m>C</m>는 <m>C=\{v\in\mathbb F_2^n:Hv=0\}</m>을 만족한다고 합시다. 전송한 부호어를 <m>c</m>, 수신한 벡터를 <m>r</m>라 하면, <m>e=r-c</m>를 <term>오류 패턴</term><aside><p>오류 패턴:error pattern</p></aside>이라고 합니다. 이진 부호에서는 뺄셈과 덧셈이 같으므로 <m>r=c+e</m>로 쓸 수 있습니다.
+  </p>
+
+  <definition xml:id="def-syndrome">
+    <title>신드롬</title>
+    <p>
+      수신 벡터 <m>r\in\mathbb F_2^n</m>에 대하여
+      <md><mrow>Hr</mrow></md>
+      를 <term>신드롬</term><aside><p>신드롬:syndrome</p></aside>이라고 합니다. 신드롬이 영벡터이면 <m>r</m>는 부호어이고, 영벡터가 아니면 <m>r</m>는 부호어가 아닙니다. 또한 <m>Hc=0</m>이므로, <m>r=c+e</m>일 때 신드롬은 <m>Hr=He</m>입니다. 따라서 신드롬은 전송한 부호어가 아니라 오류 패턴에만 의존합니다.
+    </p>
+  </definition>
+
+  <example xml:id="ex-syndrome-single-parity">
+    <title>단일 패리티 부호의 신드롬</title>
+    <statement>
+      <p>
+        앞의 단일 패리티 부호의 검사 행렬을
+        <md>
+          <mrow>H=\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        로 둘 수 있습니다. 부호어 <m>c=(1,0,1,0)^{\mathsf T}</m>를 전송했는데 두 번째 성분에 오류가 발생하면 오류 패턴은 <m>e=(0,1,0,0)^{\mathsf T}</m>이고 수신 벡터는 <m>r=c+e=(1,1,1,0)^{\mathsf T}</m>입니다. 이때
+        <md>
+          <mrow>Hc=0, \qquad He=1, \qquad Hr=1</mrow>
+        </md>
+        입니다. 실제로 <m>Hr=He</m>이므로 신드롬 <m>1</m>은 전송한 부호어가 아니라 두 번째 성분에 발생한 오류를 반영합니다. 오류가 없었다면 신드롬은 <m>0</m>이었을 것입니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-syndrome-check-matrix-choice">
+    <title>검사 행렬의 선택과 신드롬</title>
+    <statement>
+      <p>
+        부호 <m>C=\{(a,b,a,b):a,b\in\mathbb F_2\}</m>를 생각합시다. 이 부호의 검사 행렬을
+        <md>
+          <mrow>H_1=\begin{pmatrix}1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        로 둘 수 있습니다. 검사 행렬의 두 행의 순서를 바꾼
+        <md>
+          <mrow>H_2=\begin{pmatrix}0 &amp; 1 &amp; 0 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 0\end{pmatrix}</mrow>
+        </md>
+        도 같은 부호를 검사합니다. 실제로 <m>H_2v=0</m>일 조건은 <m>H_1v=0</m>일 조건과 같습니다. 오류 패턴 <m>e=(1,0,0,0)^{\mathsf T}</m>에 대해서는
+        <md>
+          <mrow>H_1e=\begin{pmatrix}1\\0\end{pmatrix}, \qquad H_2e=\begin{pmatrix}0\\1\end{pmatrix}</mrow>
+        </md>
+        입니다. 따라서 검사 행렬의 선택에 따라 신드롬의 좌표 표현은 달라질 수 있지만, 두 신드롬 모두 같은 오류 패턴을 나타내며 영신드롬인지 여부도 같습니다.
+      </p>
+    </statement>
+  </example>
   
   
 
-  
+  <p>
+    같은 신드롬을 갖는 오류 패턴들의 집합은 하나의 코셋을 이룹니다. 각 코셋에서 무게가 가장 작은 오류 패턴 하나를 <term>코셋 대표원소</term><aside><p>코셋 대표원소:coset leader</p></aside>로 택합니다. 최소 무게 오류 패턴이 둘 이상이면 그중 하나를 미리 정해 둡니다.
+  </p>
 
+  <p>
+    각 신드롬 <m>s</m>에 대해 선택한 코셋 대표원소를 <m>e_s</m>로 쓰면, 이 선택은 신드롬 공간에서 오류 패턴으로 가는 대응 <m>s\longmapsto e_s</m>를 정합니다. 수신 벡터 <m>r</m>의 신드롬이 <m>s=Hr</m>이면, <m>e_s</m>를 수신 벡터에서 빼서 <m>r-e_s</m>를 출력합니다. 즉, 이 대응은 각 신드롬에 대해 가장 가능성이 큰 오류 패턴을 선택하고 이를 제거하는 복호 규칙입니다.
+  </p>
+
+
+  <definition xml:id="def-syndrome-decoding">
+    <title>신드롬 복호</title>
+    <p>
+      수신 벡터 <m>r</m>의 신드롬을 <m>s=Hr</m>라 하고, 신드롬이 <m>s</m>인 코셋 대표원소를 <m>e_s</m>라 합시다. 이때 <m>r-e_s</m>를 출력하는 복호 방법을 <term>신드롬 복호</term><aside><p>신드롬 복호:syndrome decoding</p></aside>라고 합니다. 이 방법은 수신 벡터에 발생했을 가능성이 가장 큰, 즉 무게가 가장 작은 오류 패턴을 제거합니다.
+    </p>
+  </definition>
+
+  <example xml:id="ex-syndrome-decoding-choice">
+    <title>코셋 대표원소의 선택과 신드롬 복호</title>
+    <statement>
+      <p>
+        길이 <m>3</m>인 반복부호 <m>C=\{000,111\}</m>의 검사 행렬을
+        <md>
+          <mrow>H=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 1\end{pmatrix}</mrow>
+        </md>
+        로 둡니다. 신드롬에 따른 코셋 대표원소의 대응을
+        <md>
+          <mrow>0\longmapsto 000, \qquad \begin{pmatrix}1\\0\end{pmatrix}\longmapsto 100, \qquad \begin{pmatrix}1\\1\end{pmatrix}\longmapsto 010, \qquad \begin{pmatrix}0\\1\end{pmatrix}\longmapsto 001</mrow>
+        </md>
+        로 선택합시다. 수신 벡터가 <m>r=101</m>이면
+        <md>
+          <mrow>Hr=\begin{pmatrix}1\\1\end{pmatrix}</mrow>
+        </md>
+        이므로 선택한 대응에 따라 <m>e_s=010</m>입니다. 따라서 신드롬 복호의 출력은
+        <md>
+          <mrow>r-e_s=101-010=111</mrow>
+        </md>
+        입니다. 실제로 전송한 부호어가 <m>111</m>이고 두 번째 성분에 오류가 발생했다면, 수신 벡터 <m>101</m>에서 오류 패턴 <m>010</m>을 제거하여 올바른 부호어를 복원한 것입니다.
+      </p>
+    </statement>
+  </example>
+
+  <theorem xml:id="thm-syndrome-decoding-correction-radius">
+    <title>신드롬 복호의 오류 정정 반경</title>
+    <statement>
+      <p>
+        <m>C</m>가 최소 거리 <m>d</m>인 이진 선형부호이고, 각 신드롬의 코셋 대표원소를 최소 무게 오류 패턴으로 선택했다고 하자. 부호어 <m>c</m>를 전송하여 <m>r=c+e</m>를 수신했을 때
+        <md><mrow>\operatorname{wt}(e)\le t=\left\lfloor\frac{d-1}{2}\right\rfloor</mrow></md>
+        이면 신드롬 복호는 <m>c</m>를 출력한다. 따라서 <m>c</m>를 생성한 메시지도 정확히 복원된다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        수신 벡터의 신드롬을 <m>s=Hr</m>라 합시다. <m>Hc=0</m>이므로 <m>s=He</m>입니다. 따라서 실제 오류 패턴 <m>e</m>와 선택한 코셋 대표원소 <m>e_s</m>는 같은 신드롬을 가지며, <m>e-e_s\in C</m>입니다. <m>e_s</m>는 이 신드롬을 갖는 오류 패턴 중 무게가 가장 작으므로
+        <md><mrow>\operatorname{wt}(e_s)\le\operatorname{wt}(e)\le t</mrow></md>
+        입니다. 만약 <m>e_s\ne e</m>라면 <m>e-e_s</m>는 영이 아닌 부호어이고,
+        <md><mrow>\operatorname{wt}(e-e_s)\le\operatorname{wt}(e)+\operatorname{wt}(e_s)\le 2t&lt;d</mrow></md>
+        입니다. 이는 <m>C</m>의 최소 거리가 <m>d</m>라는 것과 모순입니다. 따라서 <m>e_s=e</m>이고, 신드롬 복호의 출력은 <m>r-e_s=c</m>입니다. 메시지에서 부호어로 가는 부호화 사상은 단사이므로, 부호어 <m>c</m>가 복원되면 이를 생성한 메시지도 유일하게 복원됩니다.
+      </p>
+    </proof>
+  </theorem>
+
+  <example xml:id="ex-syndrome-decoding-two-errors">
+    <title>두 오류의 정확한 복구</title>
+    <statement>
+      <p>
+        반복부호 <m>R_5=\{00000,11111\}</m>는 <m>[5,1,5]</m> 부호이므로 정정 반경은 <m>t=2</m>입니다. 부호어 <m>c=11111</m>를 전송하고 오류 패턴 <m>e=01001</m>이 발생하면 <m>r=10110</m>을 수신합니다. 검사 행렬을
+        <md>
+        <mrow>H=\begin{pmatrix}1 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1\end{pmatrix}</mrow></md>
+        로 두면
+        <md><mrow>Hr=He=\begin{pmatrix}1\\1\\0\\1\end{pmatrix}</mrow></md>
+        입니다. 이 신드롬을 갖는 두 오류 패턴은 <m>01001</m>과 <m>10110</m>이고 무게는 각각 <m>2</m>와 <m>3</m>이므로, 코셋 대표원소는 <m>e_s=01001</m>입니다. 따라서 신드롬 복호는
+        <md><mrow>r-e_s=10110-01001=11111</mrow></md>
+        을 출력하여 원래 부호어와 메시지 <m>1</m>을 정확히 복원합니다.
+      </p>
+    </statement>
+  </example>
+
+  <example xml:id="ex-syndrome-decoding-beyond-radius">
+    <title>정정 반경을 넘는 오류</title>
+    <statement>
+      <p>
+        반복부호 <m>R_3=\{000,111\}</m>는 <m>[3,1,3]</m> 부호이므로 정정 반경은 <m>t=1</m>입니다. 부호어 <m>c=111</m>을 전송했는데 오류 패턴 <m>e=110</m>이 발생하면 수신 벡터는 <m>r=001</m>입니다. 앞에서 사용한 검사 행렬에 대하여
+        <md><mrow>Hr=He=\begin{pmatrix}0\\1\end{pmatrix}</mrow></md>
+        이고, 이 신드롬의 코셋 대표원소는 무게가 <m>1</m>인 <m>e_s=001</m>입니다. 따라서 신드롬 복호는
+        <md><mrow>r-e_s=001-001=000</mrow></md>
+        을 출력합니다. 실제 오류의 무게 <m>2</m>가 정정 반경 <m>1</m>을 넘었으므로 정리의 가정이 성립하지 않으며, 실제로 원래 부호어 <m>111</m>과 메시지 <m>1</m>을 복원하지 못합니다.
+      </p>
+    </statement>
+  </example>
+
+  <exercises xml:id="exercises-information-and-redundancy">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        본문과 같이 생성행렬을 사용할 때는 행벡터를, 검사 행렬을 사용할 때는 열벡터를 쓰며, 필요하면 전치를 통해 둘을 동일시합니다. 벡터를 <m>10110</m>처럼 성분을 이어 써서 나타내기도 합니다. 벡터 <m>v</m>의 무게 <m>\operatorname{wt}(v)</m>는 <m>v</m>의 영이 아닌 성분의 개수입니다. 예를 들어 <m>\operatorname{wt}(10110)=3</m>, <m>\operatorname{wt}(00000)=0</m>입니다. 길이 <m>n</m>, 차원 <m>k</m>인 부호 <m>C</m>의 검사 행렬은 본문과 같이 <m>C=\{v\in\mathbb F_2^n:Hv=0\}</m>을 만족하는 행렬 <m>H\in\mathbb F_2^{(n-k)\times n}</m>를 뜻하며, <m>\mathbf 1</m>은 모든 성분이 <m>1</m>인 벡터를 나타냅니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-standard-encoding">
+      <title>표준형 생성행렬로 부호화하기</title>
+      <statement>
+        <p>
+          생성행렬
+          <md><mrow>G=\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}</mrow></md>
+          로 주어진 길이 <m>5</m>, 차원 <m>3</m>인 부호를 <m>D</m>라 합시다. 부호 <m>D</m>는 이후의 문제에서도 사용합니다.
+          <ol marker="(a)">
+            <li><p>메시지 <m>(1,1,0)</m>의 부호어를 구하십시오.</p></li>
+            <li><p><m>D</m>의 부호어 여덟 개를 모두 나열하십시오.</p></li>
+            <li><p>부호어 <m>01111</m>을 생성한 메시지를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>G=\begin{pmatrix}I_3 &amp; A\end{pmatrix}</m>, <m>A=\begin{pmatrix}1 &amp; 1\\ 1 &amp; 0\\ 0 &amp; 1\end{pmatrix}</m>인 표준형이므로
+          <md><mrow>(a,b,c)G=(a,b,c,\,a+b,\,a+c)</mrow></md>
+          입니다.
+          <ol marker="(a)">
+            <li><p><m>(1,1,0)G=(1,1,0,0,1)=11001</m>입니다.</p></li>
+            <li><p>메시지 <m>000,100,010,001,110,101,011,111</m>의 부호어는 차례로 <m>00000,\ 10011,\ 01010,\ 00101,\ 11001,\ 10110,\ 01111,\ 11100</m>입니다.</p></li>
+            <li><p>표준형이므로 처음 세 성분이 메시지입니다. 따라서 메시지는 <m>(0,1,1)</m>이고, 실제로 <m>(0,1,1)G=01111</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-codeword-membership">
+      <title>부호어 판별</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><xref ref="exer-standard-encoding"/>의 부호 <m>D</m>에 대하여, <m>v=10110</m>과 <m>w=01101</m>이 부호어인지 본문의 표준형 판별법으로 판정하고, 부호어라면 대응하는 메시지를 구하십시오.</p></li>
+            <li><p>표준형이 아닌 생성행렬 <m>G'=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 1\end{pmatrix}</m>로 주어진 부호에 대하여, 방정식 <m>xG'=v</m>를 풀어 <m>101</m>과 <m>100</m>이 부호어인지 판정하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>v</m>의 처음 세 성분 <m>x=(1,0,1)</m>에 대해 <m>xA=(1+0,\,1+1)=(1,0)</m>이고, 이는 <m>v</m>의 나머지 성분 <m>(1,0)</m>과 같습니다. 따라서 <m>v</m>는 메시지 <m>(1,0,1)</m>의 부호어입니다. <m>w</m>에 대해서는 <m>x=(0,1,1)</m>, <m>xA=(1,1)</m>인데 <m>w</m>의 나머지 성분은 <m>(0,1)</m>이므로 <m>w</m>는 부호어가 아닙니다.</p></li>
+            <li><p><m>(a,b)G'=(a,\,a+b,\,b)</m>입니다. <m>(a,a+b,b)=(1,0,1)</m>은 <m>a=b=1</m>로 풀리므로 <m>101</m>은 메시지 <m>(1,1)</m>의 부호어입니다. <m>(a,a+b,b)=(1,0,0)</m>이면 <m>a=1</m>, <m>b=0</m>이어야 하지만 그러면 <m>a+b=1\ne 0</m>이므로 해가 없고, <m>100</m>은 부호어가 아닙니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-injectivity-rank">
+      <title>단사성과 행의 선형독립</title>
+      <statement>
+        <p>
+          <m>G</m>를 <m>k\times n</m> 행렬이라 합시다.
+          <ol marker="(a)">
+            <li><p>사상 <m>x\mapsto xG</m>가 단사일 필요충분조건은 <m>G</m>의 행들이 선형독립인 것임을 보이십시오.</p></li>
+            <li><p><m>G=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 1\\ 1 &amp; 0 &amp; 1\end{pmatrix}</m>에 대하여 같은 벡터로 보내지는 서로 다른 두 메시지를 찾고, 이미지와 그 차원을 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>G</m>의 행을 <m>g_1,\dots,g_k</m>라 하면 <m>xG=\sum_i x_ig_i</m>입니다. 선형사상은 핵이 <m>\{0\}</m>일 때만 단사이고, 핵이 <m>\{0\}</m>이라는 것은 <m>\sum_i x_ig_i=0</m>인 <m>x</m>가 <m>0</m>뿐이라는 것, 즉 행들이 선형독립이라는 것입니다.</p></li>
+            <li><p>행들의 합이 <m>(1,1,0)+(0,1,1)+(1,0,1)=0</m>이므로 <m>(1,1,1)G=0=(0,0,0)G</m>입니다. 이미지는 <m>g_1,g_2</m>로 생성되며 <m>g_1+g_2=g_3</m>이므로 <m>\{000,110,011,101\}</m>이고 차원은 <m>2</m>입니다. 핵이 <m>\{000,111\}</m>이므로 각 부호어는 정확히 두 메시지의 상입니다. 즉, 행이 종속이면 행의 개수가 부호의 차원과 일치하지 않습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-distance-weight">
+      <title>거리와 무게</title>
+      <statement>
+        <p>
+          <m>u,v\in\mathbb F_2^n</m>에 대하여 <m>u</m>와 <m>v</m>의 성분이 다른 좌표의 개수를 <m>\operatorname{dist}(u,v)</m>로 쓰고, 선형부호 <m>C\ne\{0\}</m>의 최소 거리를 <m>d=\min\{\operatorname{dist}(c,c'):c,c'\in C,\ c\ne c'\}</m>로 정의합니다.
+          <ol marker="(a)">
+            <li><p><m>\operatorname{dist}(u,v)=\operatorname{wt}(u+v)</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{wt}(u+v)\le\operatorname{wt}(u)+\operatorname{wt}(v)</m>를 보이고, 이로부터 <m>\operatorname{dist}</m>가 삼각부등식을 만족함을 보이십시오.</p></li>
+            <li><p><m>d=\min\{\operatorname{wt}(c):c\in C,\ c\ne 0\}</m>임을 보이십시오.</p></li>
+            <li><p>다음 부호의 최소 거리를 구하십시오: <xref ref="exer-standard-encoding"/>의 <m>D</m>, 길이 <m>n</m>인 반복부호 <m>R_n=\{0,\mathbf 1\}</m>, 본문의 단일 패리티 부호, <xref ref="exer-injectivity-rank"/>(b)의 이미지.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\mathbb F_2</m>에서 <m>u_i+v_i=1</m>일 필요충분조건은 <m>u_i\ne v_i</m>입니다.</p></li>
+            <li><p><m>u_i+v_i\ne 0</m>이면 <m>u_i\ne0</m> 또는 <m>v_i\ne0</m>이므로 <m>\operatorname{supp}(u+v)\subseteq\operatorname{supp}(u)\cup\operatorname{supp}(v)</m>이고 부등식이 따라 나옵니다. 따라서 <m>\operatorname{dist}(u,w)=\operatorname{wt}\bigl((u+v)+(v+w)\bigr)\le\operatorname{dist}(u,v)+\operatorname{dist}(v,w)</m>입니다.</p></li>
+            <li><p><m>c\ne c'</m>이 부호어이면 선형성에 의해 <m>c+c'</m>은 영이 아닌 부호어이고 <m>\operatorname{dist}(c,c')=\operatorname{wt}(c+c')</m>이므로 <m>d\ge\min\operatorname{wt}</m>입니다. 반대로 영이 아닌 부호어 <m>c</m>에 대해 <m>0\in C</m>이므로 <m>\operatorname{wt}(c)=\operatorname{dist}(c,0)\ge d</m>입니다.</p></li>
+            <li><p><m>D</m>의 영이 아닌 부호어의 무게는 <m>3,2,2,3,3,4,3</m>이므로 <m>d=2</m>입니다. <m>R_n</m>의 영이 아닌 부호어는 <m>\mathbf 1</m>뿐이므로 <m>d=n</m>입니다. 단일 패리티 부호의 부호어 <m>(a,b,c,a+b+c)</m>는 성분의 합이 <m>0</m>이므로 무게가 짝수이고, <m>1100</m>이 부호어이므로 <m>d=2</m>입니다. <m>\{000,110,011,101\}</m>의 경우도 <m>d=2</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-single-parity-detection">
+      <title>단일 패리티 부호: 검출과 정정</title>
+      <statement>
+        <p>
+          본문 <xref ref="ex-syndrome-single-parity"/>의 단일 패리티 부호와 검사 행렬 <m>H=\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\end{pmatrix}</m>를 생각합시다.
+          <ol marker="(a)">
+            <li><p>모든 오류 패턴 <m>e</m>에 대해 <m>He\equiv\operatorname{wt}(e)\pmod 2</m>임을 보이십시오.</p></li>
+            <li><p>무게가 홀수인 오류는 항상 검출되고, 무게가 짝수인 오류는 결코 검출되지 않음을 보이십시오. 부호어 <m>1010</m>에 오류 <m>1100</m>이 발생하는 경우를 예로 드십시오.</p></li>
+            <li><p>신드롬 <m>1</m>의 코셋 대표원소로 가능한 것을 모두 구하십시오. 본문 예제의 수신 벡터 <m>r=1110</m>을 각 선택에 대해 신드롬 복호하고, <xref ref="thm-syndrome-decoding-correction-radius"/>와 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>He=e_1+e_2+e_3+e_4</m>이며 이는 <m>1</m>인 성분의 개수를 <m>2</m>로 나눈 나머지입니다.</p></li>
+            <li><p>신드롬은 <m>He</m>에만 의존하므로, 영이 아닌 신드롬이 나타날 필요충분조건은 <m>\operatorname{wt}(e)</m>가 홀수인 것입니다. 예를 들어 <m>1010+1100=0110</m>은 신드롬이 <m>0</m>인 부호어이므로 오류가 검출되지 않습니다.</p></li>
+            <li><p>신드롬이 <m>1</m>인 벡터 중 최소 무게는 <m>1</m>이고, <m>1000,0100,0010,0001</m>이 모두 가능합니다. <m>r=1110</m>에서 <m>0100</m>을 택하면 출력은 <m>1010</m>으로 전송한 부호어와 같지만, <m>1000</m>을 택하면 <m>0110</m>, <m>0010</m>을 택하면 <m>1100</m>, <m>0001</m>을 택하면 <m>1111</m>을 출력합니다. <xref ref="exer-distance-weight"/>에서 <m>d=2</m>이므로 <m>t=0</m>이고, 정리는 오류가 없는 경우만 보장하므로 모순이 없습니다. 이 부호는 단일 오류를 검출하지만 정정하지는 못합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-check-matrix-standard-form">
+      <title>표준형에서 얻는 검사 행렬</title>
+      <statement>
+        <p>
+          부호 <m>C</m>가 표준형 생성행렬 <m>G=\begin{pmatrix}I_k &amp; A\end{pmatrix}</m>를 가진다고 합시다.
+          <md><mrow>H=\begin{pmatrix}A^{\mathsf T} &amp; I_{n-k}\end{pmatrix}\in\mathbb F_2^{(n-k)\times n}</mrow></md>
+          로 둡니다.
+          <ol marker="(a)">
+            <li><p>모든 부호어 <m>c</m>에 대해 <m>Hc^{\mathsf T}=0</m>임을 보이십시오.</p></li>
+            <li><p><m>C=\{v:Hv=0\}</m>, 즉 <m>H</m>가 <m>C</m>의 검사 행렬임을 보이십시오.</p></li>
+            <li><p>수신 벡터를 <m>r=(r',r'')</m>, <m>r'\in\mathbb F_2^k</m>, <m>r''\in\mathbb F_2^{n-k}</m>로 나누면 <m>Hr^{\mathsf T}=(r'A+r'')^{\mathsf T}</m>임을 보이고, 이를 본문의 부호어 판별법과 연결하여 해석하십시오.</p></li>
+            <li><p><xref ref="exer-standard-encoding"/>의 부호 <m>D</m>와 본문의 단일 패리티 부호에 대해 <m>H</m>를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>c=xG=(x,xA)</m>이므로 <m>Hc^{\mathsf T}=A^{\mathsf T}x^{\mathsf T}+(xA)^{\mathsf T}=2A^{\mathsf T}x^{\mathsf T}=0</m>입니다.</p></li>
+            <li><p><m>H</m>의 마지막 <m>n-k</m>개의 열이 <m>I_{n-k}</m>이므로 계수는 <m>n-k</m>이고, 계수-퇴화차수 정리에 의해 <m>\dim\ker H=k</m>입니다. (a)에서 <m>C\subseteq\ker H</m>이고 <m>\dim C=k</m>이므로 <m>C=\ker H</m>입니다.</p></li>
+            <li><p><m>Hr^{\mathsf T}=A^{\mathsf T}r'^{\mathsf T}+r''^{\mathsf T}=(r'A+r'')^{\mathsf T}</m>입니다. <m>r'A</m>는 수신한 정보 부분으로부터 다시 계산한 중복 부분이므로, 신드롬은 수신한 중복 부분 <m>r''</m>과 다시 계산한 중복 부분의 차이입니다. 신드롬이 <m>0</m>일 조건 <m>r''=r'A</m>은 본문의 판별법과 정확히 같습니다.</p></li>
+            <li><p><m>D</m>에 대해서는 <m>A^{\mathsf T}=\begin{pmatrix}1 &amp; 1 &amp; 0\\ 1 &amp; 0 &amp; 1\end{pmatrix}</m>이므로
+            <md><mrow>H_D=\begin{pmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}</mrow></md>
+            입니다. 단일 패리티 부호는 <m>A=(1,1,1)^{\mathsf T}</m>이므로 <m>H=\begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\end{pmatrix}</m>이고, 이는 본문의 검사 행렬과 같습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-syndrome-table">
+      <title>신드롬 표 만들기</title>
+      <statement>
+        <p>
+          <xref ref="exer-check-matrix-standard-form"/>의 검사 행렬 <m>H_D</m>를 사용합니다.
+          <ol marker="(a)">
+            <li><p>각 신드롬 <m>s\in\mathbb F_2^2</m>에 대해, 신드롬이 <m>s</m>인 최소 무게 벡터를 모두 구하십시오.</p></li>
+            <li><p>코셋 대표원소를 <m>e_{(1,0)}=01000</m>, <m>e_{(0,1)}=00100</m>으로 선택하고 수신 벡터 <m>11111</m>과 <m>01000</m>을 신드롬 복호하십시오.</p></li>
+            <li><p><m>e_{(1,0)}=00010</m>으로 바꾸면 <m>01000</m>의 복호 결과가 어떻게 달라지는지 확인하고, 이것이 <xref ref="thm-syndrome-decoding-correction-radius"/>와 모순되지 않는 이유를 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>H_D</m>의 열은 <m>h_1=(1,1)^{\mathsf T}</m>, <m>h_2=h_4=(1,0)^{\mathsf T}</m>, <m>h_3=h_5=(0,1)^{\mathsf T}</m>이고, <m>i</m>번째 표준기저벡터의 신드롬은 <m>h_i</m>입니다.
+          <ol marker="(a)">
+            <li><p>신드롬 <m>0</m>: <m>00000</m>. 신드롬 <m>(1,1)</m>: <m>10000</m>뿐입니다. 신드롬 <m>(1,0)</m>: <m>01000</m>, <m>00010</m>. 신드롬 <m>(0,1)</m>: <m>00100</m>, <m>00001</m>. 영이 아닌 신드롬은 무게 <m>1</m>인 벡터로 실현되므로 이것이 최소 무게입니다.</p></li>
+            <li><p><m>H_D(11111)^{\mathsf T}=h_1+h_2+h_3+h_4+h_5=(1,1)^{\mathsf T}</m>이므로 출력은 <m>11111+10000=01111</m>이며, 이는 <xref ref="exer-standard-encoding"/>의 목록에 있는 부호어입니다. <m>01000</m>의 신드롬은 <m>(1,0)^{\mathsf T}</m>이므로 출력은 <m>00000</m>입니다.</p></li>
+            <li><p>이 경우 출력은 <m>01000+00010=01010</m>이며, 이 역시 <m>01000</m>과 거리가 <m>1</m>인 부호어입니다. 부호어 <m>01010</m>을 보냈는데 오류 <m>00010</m>이 생겼다면 첫 번째 선택은 틀리고, <m>00000</m>을 보냈는데 오류 <m>01000</m>이 생겼다면 두 번째 선택이 틀립니다. <m>d=2</m>이므로 <m>t=0</m>이고, 정리는 무게 <m>1</m>인 오류에 대해 아무것도 보장하지 않습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-syndrome-cosets">
+      <title>신드롬과 코셋</title>
+      <statement>
+        <p>
+          <m>C</m>를 길이 <m>n</m>, 차원 <m>k</m>인 부호, <m>H</m>를 그 검사 행렬이라 하고 신드롬 사상 <m>\sigma:\mathbb F_2^n\to\mathbb F_2^{n-k}</m>, <m>\sigma(v)=Hv</m>를 생각합시다.
+          <ol marker="(a)">
+            <li><p><m>\sigma</m>가 전사임을 보이십시오.</p></li>
+            <li><p>각 <m>s</m>에 대해 <m>\sigma^{-1}(s)=v_0+C</m>임을 보이십시오. 여기서 <m>v_0</m>는 <m>\sigma(v_0)=s</m>인 임의의 벡터입니다.</p></li>
+            <li><p>코셋이 정확히 <m>2^{n-k}</m>개이고 각각 <m>2^k</m>개의 원소를 가지며 <m>\mathbb F_2^n</m>을 분할함을 보이십시오. 따라서 모든 신드롬에 대해 코셋 대표원소가 존재합니다. <xref ref="exer-syndrome-table"/>의 경우로 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\sigma</m>는 선형이고 핵이 <m>C</m>이므로 <m>\dim\operatorname{im}\sigma=n-k=\dim\mathbb F_2^{n-k}</m>입니다.</p></li>
+            <li><p><m>Hv=s=Hv_0</m>이면 <m>H(v-v_0)=0</m>이므로 <m>v\in v_0+C</m>입니다. 반대로 <m>c\in C</m>이면 <m>H(v_0+c)=s</m>입니다.</p></li>
+            <li><p>(a)에서 각 신드롬의 역상은 공집합이 아니고, (b)에서 각 역상은 크기 <m>|C|=2^k</m>인 코셋입니다. 서로 다른 신드롬의 역상은 서로소이고 합집합은 <m>\mathbb F_2^n</m>입니다. 공집합이 아닌 유한집합에는 최소 무게 원소가 있으므로 코셋 대표원소가 존재합니다. <m>D</m>의 경우 <m>n-k=2</m>이므로 네 개의 코셋이 각각 여덟 개의 원소를 가지며, <m>4\cdot 8=32=2^5</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-correctable-patterns">
+      <title>정정되는 오류 패턴은 정확히 코셋 대표원소</title>
+      <statement>
+        <p>
+          코셋 대표원소의 선택 <m>s\mapsto e_s</m>를 고정합시다.
+          <ol marker="(a)">
+            <li><p>임의의 부호어 <m>c</m>와 오류 패턴 <m>e</m>에 대해, <m>r=c+e</m>의 신드롬 복호 출력이 <m>c</m>일 필요충분조건은 <m>e=e_{He}</m>임을 보이십시오.</p></li>
+            <li><p>정정되는 오류 패턴의 집합 <m>L=\{e_s:s\in\mathbb F_2^{n-k}\}</m>는 전송한 부호어에 의존하지 않으며 정확히 <m>2^{n-k}</m>개의 원소를 가짐을 보이십시오.</p></li>
+            <li><p>본문 <xref ref="ex-syndrome-decoding-choice"/>의 선택에서 <m>L</m>을 구하고, <xref ref="ex-syndrome-decoding-beyond-radius"/>의 결과를 이 관점에서 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>s=Hr=He</m>이므로 출력은 <m>r-e_s=c+(e-e_{He})</m>이고, 이것이 <m>c</m>일 필요충분조건은 <m>e=e_{He}</m>입니다.</p></li>
+            <li><p>(a)의 조건에 <m>c</m>가 나타나지 않습니다. 서로 다른 신드롬의 대표원소는 신드롬이 다르므로 서로 다르고, <xref ref="exer-syndrome-cosets"/>에서 신드롬이 <m>2^{n-k}</m>개이므로 <m>|L|=2^{n-k}</m>입니다.</p></li>
+            <li><p><m>L=\{000,100,010,001\}</m>입니다. <m>110\notin L</m>이므로 어떤 부호어를 보내더라도 오류 <m>110</m>은 정정되지 않습니다. 실제로 <m>110</m>과 같은 코셋에 있는 <m>001</m>이 대표원소로 선택되어 있습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 10 -->
+    <exercise xml:id="exer-check-matrix-change">
+      <title>검사 행렬의 변경</title>
+      <statement>
+        <p>
+          <m>H</m>를 <m>C</m>의 검사 행렬, <m>P</m>를 <m>(n-k)\times(n-k)</m> 가역행렬이라 하고 <m>H'=PH</m>로 둡시다.
+          <ol marker="(a)">
+            <li><p><m>H'</m>도 <m>C</m>의 검사 행렬임을 보이십시오.</p></li>
+            <li><p><m>H</m>에 대한 신드롬이 <m>s</m>이면 <m>H'</m>에 대한 신드롬은 <m>Ps</m>이고, 두 신드롬이 결정하는 코셋이 같음을 보이십시오.</p></li>
+            <li><p><m>H</m>에 대한 대표원소 <m>e_s</m>로부터 <m>e'_{Ps}=e_s</m>로 정하면 두 신드롬 복호의 출력이 모든 수신 벡터에 대해 일치함을 보이십시오. 본문 <xref ref="ex-syndrome-check-matrix-choice"/>의 <m>H_1,H_2</m>에 대해 <m>P</m>를 구하십시오.</p></li>
+            <li><p>역으로, <m>C</m>의 임의의 두 검사 행렬 <m>H,H'</m>에 대해 <m>H'=PH</m>인 가역행렬 <m>P</m>가 존재함을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (d) <m>C^\perp=\{u\in\mathbb F_2^n:u\cdot c=0\text{ for all }c\in C\}</m>를 생각하고, 생성행렬을 사용하여 그 차원을 계산하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>P</m>가 가역이므로 <m>PHv=0\iff Hv=0</m>입니다.</p></li>
+            <li><p><m>H'r=P(Hr)=Ps</m>입니다. (a)와 <xref ref="exer-syndrome-cosets"/>에 의해 두 신드롬 모두 <m>r+C</m>를 결정합니다.</p></li>
+            <li><p>(b)에 의해 <m>e_s</m>는 <m>H'</m>에 대해서도 신드롬 <m>Ps</m>인 코셋의 최소 무게 원소이므로 올바른 선택이고, 두 출력은 모두 <m>r-e_s</m>입니다. <m>s\mapsto Ps</m>가 전단사이므로 이 방법으로 <m>H'</m>의 대표원소가 모두 정해집니다. 본문 예제에서는 <m>H_2=PH_1</m>, <m>P=\begin{pmatrix}0 &amp; 1\\ 1 &amp; 0\end{pmatrix}</m>입니다.</p></li>
+            <li><p><m>C</m>의 생성행렬 <m>G</m>는 계수가 <m>k</m>이고 <m>C^\perp=\{u:Gu^{\mathsf T}=0\}</m>이므로 <m>\dim C^\perp=n-k</m>입니다. <m>Hv=0</m>은 <m>H</m>의 각 행과 <m>v</m>의 내적이 <m>0</m>이라는 뜻이므로 <m>H</m>의 행들은 <m>C^\perp</m>에 속하고, <m>\ker H=C</m>이므로 <m>H</m>의 계수는 <m>n-k</m>입니다. 따라서 <m>H</m>의 행들은 <m>C^\perp</m>의 기저이며, <m>H'</m>도 마찬가지입니다. 그러므로 <m>H'=PH</m>, <m>H=QH'</m>인 정사각행렬 <m>P,Q</m>가 있고, <m>(QP-I)H=0</m>입니다. <m>H</m>의 행들이 선형독립이므로 <m>QP=I</m>이고 <m>P</m>는 가역입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 11 -->
+    <exercise xml:id="exer-repetition-majority">
+      <title>반복부호의 신드롬 복호는 다수결</title>
+      <statement>
+        <p>
+          <m>n=2t+1</m>이라 하고, 반복부호 <m>R_n=\{0,\mathbf 1\}</m>을 생각합시다.
+          <ol marker="(a)">
+            <li><p>수신 벡터 <m>r</m>이 속한 코셋은 <m>\{r,\ r+\mathbf 1\}</m>이며, 각 코셋에 최소 무게 원소가 유일하게 존재함을 보이십시오. 따라서 신드롬 복호는 검사 행렬과 대표원소 선택에 의존하지 않습니다.</p></li>
+            <li><p>신드롬 복호는 <m>\operatorname{wt}(r)\le t</m>이면 <m>0</m>을, <m>\operatorname{wt}(r)\ge t+1</m>이면 <m>\mathbf 1</m>을 출력함을 보이십시오. 즉, 다수결 복호입니다. 본문 <xref ref="ex-syndrome-decoding-two-errors"/>와 <xref ref="ex-syndrome-decoding-beyond-radius"/>로 확인하십시오.</p></li>
+            <li><p><m>n=4</m>일 때 최소 무게 원소가 유일하지 않은 코셋을 찾고, 대표원소의 선택에 따라 출력이 달라짐을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><xref ref="exer-syndrome-cosets"/>에 의해 <m>r</m>과 같은 신드롬을 갖는 벡터의 집합은 <m>r+R_n=\{r,r+\mathbf 1\}</m>입니다. <m>\operatorname{wt}(r+\mathbf 1)=n-\operatorname{wt}(r)</m>이고 <m>n</m>이 홀수이므로 두 무게는 다르며, 가벼운 쪽이 유일한 대표원소입니다.</p></li>
+            <li><p><m>\operatorname{wt}(r)\le t</m>이면 <m>n-\operatorname{wt}(r)\ge t+1</m>이므로 대표원소는 <m>r</m>이고 출력은 <m>0</m>입니다. <m>\operatorname{wt}(r)\ge t+1</m>이면 대표원소는 <m>r+\mathbf 1</m>이고 출력은 <m>r-(r+\mathbf 1)=\mathbf 1</m>입니다. 본문에서 <m>\operatorname{wt}(10110)=3\ge 3</m>이므로 <m>11111</m>이, <m>\operatorname{wt}(001)=1\le 1</m>이므로 <m>000</m>이 출력됩니다.</p></li>
+            <li><p><m>r=1100</m>의 코셋 <m>\{1100,0011\}</m>은 두 원소의 무게가 모두 <m>2</m>입니다. <m>1100</m>을 택하면 <m>0000</m>을, <m>0011</m>을 택하면 <m>1111</m>을 출력합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 12 -->
+    <exercise xml:id="exer-distance-from-columns">
+      <title>검사 행렬의 열로 읽는 최소 거리</title>
+      <statement>
+        <p>
+          <m>C\ne\{0\}</m>의 검사 행렬 <m>H</m>의 열을 <m>h_1,\dots,h_n\in\mathbb F_2^{n-k}</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>Hv=\sum_{i:\,v_i=1}h_i</m>임을 보이십시오.</p></li>
+            <li><p>최소 거리 <m>d</m>는 합이 <m>0</m>인 공집합이 아닌 열들의 모임의 최소 크기, 즉 선형종속인 열들의 최소 개수와 같음을 보이십시오.</p></li>
+            <li><p><m>d\ge 2</m>일 필요충분조건은 <m>H</m>에 영열이 없는 것이고, <m>d\ge 3</m>일 필요충분조건은 영열이 없고 모든 열이 서로 다른 것임을 보이십시오.</p></li>
+            <li><p><xref ref="exer-check-matrix-standard-form"/>의 <m>H_D</m>와 본문 <xref ref="ex-syndrome-decoding-two-errors"/>의 검사 행렬에 적용하여 <m>d</m>를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          영이 아닌 부호어와 그 지지집합 사이의 대응을 생각하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>Hv=\sum_i v_ih_i</m>이고 <m>v_i\in\{0,1\}</m>입니다.</p></li>
+            <li><p>(a)에 의해 <m>v\mapsto\operatorname{supp}(v)</m>는 <m>C\setminus\{0\}</m>에서 열의 합이 <m>0</m>인 공집합이 아닌 첨자집합 <m>S</m>로 가는 전단사이고, <m>\operatorname{wt}(v)=|S|</m>입니다. <xref ref="exer-distance-weight"/>에 의해 <m>d</m>는 이러한 <m>|S|</m>의 최솟값입니다. 또한 <m>\mathbb F_2</m>에서 계수는 <m>0</m> 또는 <m>1</m>이므로, 열들의 모임이 선형종속일 필요충분조건은 합이 <m>0</m>인 공집합이 아닌 부분모임을 갖는 것입니다. 따라서 선형종속인 모임의 최소 크기도 같은 값입니다.</p></li>
+            <li><p><m>d=1</m>일 필요충분조건은 <m>h_i=0</m>인 <m>i</m>가 있는 것이고, <m>d=2</m>일 필요충분조건은 영열이 없으면서 <m>h_i+h_j=0</m>, 즉 <m>h_i=h_j</m>인 <m>i\ne j</m>가 있는 것입니다.</p></li>
+            <li><p><m>H_D</m>에는 영열이 없고 <m>h_2=h_4</m>이므로 <m>d=2</m>이며, 이는 <xref ref="exer-distance-weight"/>와 일치합니다. 본문의 <m>R_5</m>의 검사 행렬에서 <m>S</m>의 열의 합이 <m>0</m>이라 하면, <m>i</m>번째 행이 <m>i</m>, <m>i+1</m>번째 성분만 <m>1</m>이므로 <m>i\in S\iff i+1\in S</m>입니다. 따라서 공집합이 아닌 <m>S</m>는 <m>\{1,\dots,5\}</m>뿐이고 <m>d=5</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 13 -->
+    <exercise xml:id="exer-hamming-code">
+      <title>길이 7인 해밍 부호</title>
+      <statement>
+        <p>
+          <m>j</m>번째 열이 <m>j</m>의 이진 표현인 행렬
+          <md><mrow>H=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{pmatrix}</mrow></md>
+          에 대하여 <m>C=\{v\in\mathbb F_2^7:Hv=0\}</m>이라 합시다.
+          <ol marker="(a)">
+            <li><p><m>\dim C=4</m>임을 보이십시오.</p></li>
+            <li><p><xref ref="exer-distance-from-columns"/>을 사용하여 <m>d=3</m>임을 보이십시오.</p></li>
+            <li><p>영이 아닌 모든 신드롬은 코셋 대표원소가 유일하고 그 무게가 <m>1</m>임을 보이십시오. 또한 신드롬을 이진수로 읽으면 오류의 위치가 됨을 설명하십시오.</p></li>
+            <li><p>수신 벡터 <m>r=1011011</m>을 신드롬 복호하십시오.</p></li>
+            <li><p>무게가 <m>2</m>인 오류가 발생하면 신드롬 복호는 항상 전송한 부호어가 아닌 부호어를 출력함을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>네 번째, 두 번째, 첫 번째 열이 <m>\mathbb F_2^3</m>의 표준기저이므로 <m>H</m>의 계수는 <m>3</m>이고, <m>\dim C=7-3=4</m>입니다.</p></li>
+            <li><p>영열이 없고 모든 열이 서로 다르므로 <m>d\ge 3</m>입니다. <m>h_1+h_2+h_3=(0,0,1)^{\mathsf T}+(0,1,0)^{\mathsf T}+(0,1,1)^{\mathsf T}=0</m>이므로 <m>d=3</m>입니다.</p></li>
+            <li><p><m>H</m>의 열은 <m>\mathbb F_2^3</m>의 영이 아닌 벡터 일곱 개와 정확히 한 번씩 일치합니다. 따라서 <m>s\ne 0</m>이면 <m>s=h_j</m>인 <m>j</m>가 유일하고, 신드롬이 <m>s</m>인 무게 <m>1</m>인 벡터는 <m>j</m>번째 표준기저벡터뿐입니다. 무게 <m>0</m>인 벡터의 신드롬은 <m>0</m>이므로 이것이 유일한 대표원소입니다. <m>h_j</m>가 <m>j</m>의 이진 표현이므로 신드롬은 오류 위치의 이진 표현입니다.</p></li>
+            <li><p><m>Hr=h_1+h_3+h_4+h_6+h_7</m>이며, 이진수로 <m>001\oplus011\oplus100\oplus110\oplus111=111</m>입니다. 따라서 오류는 일곱 번째 위치에 있고 출력은 <m>1011010</m>입니다. 실제로 <m>h_1+h_3+h_4+h_6=0</m>이므로 이는 부호어입니다.</p></li>
+            <li><p><m>e</m>의 지지집합을 <m>\{i,j\}</m>라 하면 <m>h_i\ne h_j</m>이므로 <m>s=h_i+h_j\ne 0</m>이고, <m>s=h_l</m>인 <m>l</m>이 유일합니다. <m>l=i</m>이면 <m>h_j=0</m>이 되어 모순이므로 <m>l\notin\{i,j\}</m>입니다. 출력 <m>c+e+e_l</m>에서 <m>e+e_l</m>은 무게가 <m>3</m>인 부호어이므로, 출력은 <m>c</m>와 다른 부호어입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 14 -->
+    <exercise xml:id="exer-radius-sharpness">
+      <title>정정 반경의 최적성</title>
+      <statement>
+        <p>
+          <m>C\ne\{0\}</m>를 최소 거리 <m>d</m>인 이진 선형부호라 하고 <m>t=\lfloor (d-1)/2\rfloor</m>라 합시다. 코셋 대표원소를 최소 무게 오류 패턴으로 어떻게 선택하더라도, 무게가 <m>t+1</m>인 오류 패턴 <m>e</m>와 부호어 <m>c</m>가 존재하여 <m>c+e</m>의 신드롬 복호가 <m>c</m>를 출력하지 않음을 보이십시오. 따라서 <xref ref="thm-syndrome-decoding-correction-radius"/>의 <m>t</m>는 더 이상 늘릴 수 없습니다. <m>d</m>가 홀수이면 더 강한 결론이 성립함도 설명하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          무게가 <m>d</m>인 부호어의 지지집합을 두 부분으로 나누고, <xref ref="exer-correctable-patterns"/>를 사용하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <xref ref="exer-distance-weight"/>에 의해 무게가 <m>d</m>인 부호어 <m>c_0</m>가 있습니다. <m>t+1\le (d+1)/2\le d</m>이므로 <m>\operatorname{supp}(c_0)</m>의 부분집합 <m>T</m>로 <m>|T|=t+1</m>인 것을 택할 수 있습니다. <m>e</m>를 <m>T</m> 위에서만 <m>1</m>인 벡터라 하고 <m>e'=c_0+e</m>로 둡니다. 그러면 <m>e\ne e'</m>은 같은 코셋에 있고
+          <md><mrow>\operatorname{wt}(e')=d-(t+1)\le t+1=\operatorname{wt}(e)</mrow></md>
+          입니다. 여기서 부등식은 <m>2t\ge d-2</m>에서 나옵니다.
+        </p>
+        <p>
+          <xref ref="exer-correctable-patterns"/>에 의해 오류가 정정될 필요충분조건은 그 오류가 자신의 코셋에서 선택된 대표원소인 것이며, 이는 전송한 부호어와 무관합니다. 한 코셋의 대표원소는 하나뿐이므로 <m>e</m>와 <m>e'</m> 중 적어도 하나는 정정되지 않습니다. <m>e</m>가 대표원소가 아니면 <m>e</m>가 원하는 오류입니다. <m>e</m>가 대표원소이면 <m>\operatorname{wt}(e')\ge\operatorname{wt}(e)</m>이므로 <m>\operatorname{wt}(e')=t+1</m>이고, <m>e'</m>이 원하는 오류입니다. 두 경우 모두 예를 들어 <m>c=0</m>으로 둘 수 있습니다.
+        </p>
+        <p>
+          <m>d=2t+1</m>이면 <m>\operatorname{wt}(e')=t&lt;\operatorname{wt}(e)</m>이므로 <m>e</m>는 결코 대표원소가 될 수 없습니다. 따라서 대표원소의 선택과 무관하게 이렇게 만든 <m>e</m>는 항상 잘못 복호됩니다. <xref ref="ex-syndrome-decoding-beyond-radius"/>는 <m>d=3</m>, <m>c_0=111</m>, <m>e=110</m>인 경우입니다.
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 15 -->
+    <exercise xml:id="exer-hamming-bound">
+      <title>해밍 한계와 완전부호</title>
+      <statement>
+        <p>
+          <m>C</m>를 길이 <m>n</m>, 차원 <m>k</m>, 최소 거리 <m>d</m>인 이진 선형부호라 하고 <m>t=\lfloor (d-1)/2\rfloor</m>라 합시다.
+          <ol marker="(a)">
+            <li><p>무게가 <m>t</m> 이하인 서로 다른 두 벡터는 신드롬이 다름을 보이십시오.</p></li>
+            <li><p>다음 부등식을 보이십시오.
+            <md><mrow>\sum_{i=0}^{t}\binom{n}{i}\le 2^{n-k}</mrow></md></p></li>
+            <li><p>등호가 성립할 필요충분조건은 모든 코셋 대표원소의 무게가 <m>t</m> 이하인 것임을 보이십시오. 또한 이 경우 대표원소의 선택이 유일하며, 신드롬 복호가 정정하는 오류 패턴은 정확히 무게가 <m>t</m> 이하인 것들임을 보이십시오.</p></li>
+            <li><p><m>R_{2t+1}</m>과 <xref ref="exer-hamming-code"/>의 해밍 부호에서는 등호가 성립하고, <m>D</m>와 단일 패리티 부호에서는 성립하지 않음을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a)는 <xref ref="thm-syndrome-decoding-correction-radius"/>의 증명과 같은 논법입니다. (b)와 (c)에서는 <xref ref="exer-syndrome-cosets"/>와 <xref ref="exer-correctable-patterns"/>를 사용하십시오.
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>u\ne v</m>의 신드롬이 같으면 <m>u+v</m>는 영이 아닌 부호어이고 <m>\operatorname{wt}(u+v)\le 2t\le d-1</m>이므로 모순입니다.</p></li>
+            <li><p>좌변은 무게가 <m>t</m> 이하인 벡터의 개수입니다. (a)에 의해 이 벡터들은 서로 다른 코셋에 속하고, <xref ref="exer-syndrome-cosets"/>에 의해 코셋은 <m>2^{n-k}</m>개입니다.</p></li>
+            <li><p>(a)에 의해 좌변은 무게가 <m>t</m> 이하인 벡터를 포함하는 코셋의 개수와 같습니다. 따라서 등호는 모든 코셋이 그러한 벡터를 포함한다는 것, 즉 모든 대표원소의 무게가 <m>t</m> 이하라는 것과 동치입니다. 코셋이 <m>\operatorname{wt}(u)\le t</m>인 <m>u</m>를 포함하면, 같은 코셋의 다른 원소 <m>w=u+c</m>, <m>c\in C\setminus\{0\}</m>에 대해 <m>\operatorname{wt}(w)\ge\operatorname{wt}(c)-\operatorname{wt}(u)\ge d-t\ge t+1</m>이므로 <m>u</m>가 유일한 대표원소입니다. 따라서 등호가 성립하면 대표원소의 집합은 무게가 <m>t</m> 이하인 벡터 전체와 같고, <xref ref="exer-correctable-patterns"/>에 의해 이 집합이 정확히 정정되는 오류 패턴의 집합입니다.</p></li>
+            <li><p><m>R_{2t+1}</m>: <m>\binom{n}{i}=\binom{n}{n-i}</m>이고 <m>n</m>이 홀수이므로 <m>\sum_{i=0}^{t}\binom{2t+1}{i}=\tfrac12\cdot 2^{2t+1}=2^{2t}=2^{n-k}</m>입니다. 해밍 부호: <m>t=1</m>이고 <m>1+7=8=2^3</m>입니다. <m>D</m>: <m>t=0</m>이고 <m>1&lt;2^2</m>입니다. 단일 패리티 부호: <m>t=0</m>이고 <m>1&lt;2^1</m>입니다. 등호가 성립하지 않으므로 이 두 부호에서는 <xref ref="exer-syndrome-table"/>와 <xref ref="exer-single-parity-detection"/>에서처럼 무게가 <m>t</m>보다 큰 대표원소가 필요합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+  </exercises>
 </section> 
