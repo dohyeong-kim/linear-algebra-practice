@@ -612,7 +612,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-fast-fourier-transform.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="sec-deep-neural-network.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -711,9 +711,15 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter active"><div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div></li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">7</span> <span class="title">고속푸리에변환</span></a></div></li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">8</span> <span class="title">고속행렬곱</span></a></div></li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-deep-neural-network.html" class="internal"><span class="codenumber">6.1</span> <span class="title">심층 신경망</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-multi-head-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">멀티 헤드 어텐션</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div></li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
 <li class="toc-item toc-backmatter">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
@@ -728,9 +734,15 @@ eBookConfig.enable_chatcodes =  false;
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-attention"><h2 class="heading">
 <span class="type">Ch.</span><span class="space"> </span><span class="codenumber">6</span><span class="space"> </span><span class="title">어텐션</span>
-</h2></section></div>
+</h2>
+<section class="introduction" id="ch-attention-2"><div class="para" id="ch-attention-2-1">기계학습에서 <dfn class="terminology">어텐션</dfn><aside class="aside aside-like" id="ch-attention-2-1-2"><div class="para" id="ch-attention-2-1-2-1">어텐션:attention</div></aside>은 입력의 여러 부분 중 현재 계산에 중요한 정보를 골라 그 중요도에 따라 결합하는 방법입니다. 언어모형으로 문장을 처리할 때 주어진 단어와 다른 단어들을 함께 살펴보면, 단어 사이의 관계와 문맥을 반영할 수 있습니다.</div>
+<div class="para" id="ch-attention-2-2">어텐션의 기본 모형은 질의(query), 키(key), 값(value), 즉 Q, K, V로 이루어집니다. 질의는 찾고자 하는 정보를, 키는 각 입력 부분의 특징을, 값은 실제로 모을 정보를 나타냅니다. 다양한 어텐션 모형 중 하나인 <dfn class="terminology">스케일 조정 내적 어텐션</dfn> <aside class="aside aside-like" id="ch-attention-2-2-2"><div class="para" id="ch-attention-2-2-2-1">스케일 조정 내적 어텐션:scaled dot-product attention</div></aside>은 선형대수에 기반합니다.      이 장에서는 스케일 조정 내적 어텐션과 이를 병렬 배치한 <dfn class="terminology">멀티 헤드 어텐션</dfn><aside class="aside aside-like" id="ch-attention-2-2-4"><div class="para" id="ch-attention-2-2-4-1">멀티 헤드 어텐션:multi-head attention</div></aside>의 구조를 알아봅니다. <details class="ptx-footnote" aria-live="polite" id="ch-attention-2-2-5"><summary class="ptx-footnote__number" title="[fn] 6.0.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="ch-attention-2-2-5">2017년 논문 “attention is all you need”에서 처음 제안되었습니다.</div></details>
+</div></section><nav class="summary-links"><ul>
+<li><a href="sec-deep-neural-network.html" class="internal"><span class="codenumber">6.1</span> <span class="title">심층 신경망</span></a></li>
+<li><a href="sec-multi-head-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">멀티 헤드 어텐션</span></a></li>
+</ul></nav></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-fast-fourier-transform.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-deep-neural-network.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
