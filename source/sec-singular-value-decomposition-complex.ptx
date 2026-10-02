@@ -517,7 +517,7 @@
         <m>\langle Tx,x\rangle\in\mathbb R</m>가 모든 <m>x</m>에 대해 성립할
         필요충분조건이 <m>T=T^*</m>임을 보여라. 이를 이용하여 복소 에르미트 공간에서는
         조건 <m>\langle Tx,x\rangle\ge0</m>만으로도 <m>T</m>가 자기수반임을
-        증명하여라. 왜 같은 주장이 실수 내적공간에서는 성립하지 않는지도 앞의 행렬
+        증명하여라. 왜 같은 주장이 실수 내적공간에서는 성립하지 않는지도 <xref ref="exer-svd-real-complex-quadratic-contrast"/>의 행렬
         <m>J</m>를 이용하여 설명하여라.
       </p>
     </statement>
@@ -525,7 +525,7 @@
       <p>
         <m>S=T-T^*</m>로 두고
         <m>\langle Sx,x\rangle=\langle Tx,x\rangle-
-        \overline{\langle Tx,x\rangle}</m>에 복소 편극 공식을 적용하여라.
+        \overline{\langle Tx,x\rangle}</m>에 <xref ref="exer-svd-complex-polarization"/>의 복소 편극 공식을 적용하여라.
       </p>
     </hint>
   </exercise>
@@ -536,7 +536,7 @@
       <p>
         복소 에르미트 공간 위의 선형연산자 <m>T</m>의 수치반경을
         <m>w(T)=\max_{\lVert x\rVert=1}|\langle Tx,x\rangle|</m>로 정의한다.
-        복소 편극 공식을 이용하여
+        <xref ref="exer-svd-complex-polarization"/>의 복소 편극 공식을 이용하여
         <m>\frac12\sigma_1(T)\le w(T)\le\sigma_1(T)</m>임을 증명하여라.
         이어서 <m>N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</m>에 대하여
         <m>w(N)=1/2</m>와 <m>\sigma_1(N)=1</m>을 계산함으로써 아래쪽 상수
@@ -587,7 +587,7 @@
         <m>Tv_i=|\lambda_i|u_i</m>가 특이값 분해를 준다는 것을 보여라. 역으로 어떤
         특이값 분해에서 모든 왼쪽 특이벡터가 대응하는 오른쪽 특이벡터의 위상배라면
         <m>T</m>가 정규임을 증명하여라. 영 특이값에 해당하는 벡터들은 같은
-        정규직교기저로 완성하여라.
+        정규직교기저로 완성하여라. 여기서 위상배란 절댓값이 1인 복소수를 곱한 벡터를 의미한다.
       </p>
     </statement>
   </exercise>

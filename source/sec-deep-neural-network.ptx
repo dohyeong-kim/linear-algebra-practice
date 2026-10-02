@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-deep-neural-network" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>심층 신경망</title>
+  <p>
+    수학적 관점에서 심층 신경망은 함수 근사 방법입니다. 유클리드 공간의 부분집합 <m>X,Y \subset \mathbb R^n</m>과 함수 <m>f:X \to Y</m>를 생각할 수 있습니다. 심층 신경망은 입력 <m>x \in X</m>에 대해 출력 <m>f(x) \in Y</m>를 근사하는 함수 <m>\hat{f}(x;\theta)</m>를 구성하며, 여기서 <m>\theta</m>는 학습 가능한 매개변수입니다. 가령 <m>X=Y=[0,1]\mathbb R</m>이라면
+    <md>
+      <mrow> \hat{f}(x;\theta)= \theta_0 + \theta_1 x + \theta_2 x^2 + \cdots + \theta_d x^d </mrow>
+    </md>
+    이라 놓을 때 다항식으로의 근사이고
+    <md>
+      <mrow> \hat{f}(x;\theta)=\theta_0 + \sum_{k=1}^{d} \left(\theta_{2k-1}\cos(2\pi kx) + \theta_{2k}\sin(2\pi kx)\right) </mrow>
+    </md>
+    이면 푸리에 급수로의 근사입니다.
+  </p>
+  <p>
+    위에서 살펴본 함수 근사는 다항식이든 삼각함수이든 선형결합을 이용합니다. 반면, 합성을 이용한 근사
+    <md>
+      <mrow> \hat{f}(x;\theta)= f_1(g_1(x;\theta_1)+g_2(x;\theta_2);\theta_3)+ f_2(g_3(x;\theta_4)+g_4(x;\theta_5);\theta_6) </mrow>
+    </md>
+    도 생각해 볼 수 있습니다. 복잡한 합성은 식으로 표기하기 번거로워 신경망 구조를 이용하여 효율적으로 표현할 수 있습니다.     신경망은 이러한 합성 구조를 층(layer) 단위로 쌓아 올린 형태로 표현됩니다.
+  </p>
+  <p>
+    <term>콜모고로프의 정리</term><aside><p>콜모고로프:Kolmogorov</p></aside>에 따르면, 임의의 연속함수 <m>f:[0,1]^n\to\mathbb R</m>는 연속인 일변수 함수 <m>\phi_{q,p}:[0,1]\to\mathbb R</m>와 <m>g_q:\mathbb R\to\mathbb R</m>를 적절히 선택하여 다음과 같이 나타낼 수 있습니다.
+    <md>
+      <mrow>f(x_1,\ldots,x_n)=\sum_{q=0}^{2n}g_q\left(\sum_{p=1}^{n}\phi_{q,p}(x_p)\right)</mrow>
+    </md>
+    내부 함수 <m>\phi_{q,p}</m>들은 <m>f</m>와 무관하게 정할 수 있으며, 외부 함수 <m>g_q</m>들은 <m>f</m>에 따라 달라집니다.
+    <fn>A. N. Kolmogorov, “On the representation of continuous functions of many variables by superposition of continuous functions of one variable and addition,” Doklady Akademii Nauk SSSR 114 no. 5 (1957), 953–956.</fn>
+  </p>
+  <p>
+    콜모고로프의 정리를 받아들인다면, 주어진 일변수 연속함수를 <q>간단한</q> 함수로 근사하는 문제가 남습니다. 신경망에서 사용하는 간단한 함수를 활성화 함수(activation function)라고 합니다. ReLU(rectified linear unit), 시그모이드 함수(sigmoid function), 쌍곡 탄젠트 함수(hyperbolic tangent)는 각각 다음과 같이 정의됩니다.
+    <md>
+      <mrow>\operatorname{ReLU}(x) \amp = \max\{0,x\}</mrow>
+      <mrow>\sigma(x) \amp = \frac{1}{1+e^{-x}}</mrow>
+      <mrow>\tanh(x) \amp = \frac{e^x-e^{-x}}{e^x+e^{-x}}</mrow>
+    </md>
+    ReLU는 음수 입력을 0으로, 양수 입력을 그대로 출력하며, 시그모이드 함수의 값은 0과 1 사이에 있습니다. 이처럼 간단한 비선형 함수들을 합성하여 복잡한 함수를 근사할 수 있습니다. 가령, 어떤 연속함수도 조각 선형 함수로 근사할 수 있고 따라서 ReLU함수에 가중치를 곱하는 것만으로 근사할 수 있습니다. 
+  </p>
+
+
+  <p>
+    신경망의 연결 구조와 활성화 함수가 고정되어 있으면, 각 선분의 가중치는 이전 층의 출력들을 어떤 비율로 결합할지를 결정합니다. 예를 들어 <m>\ell</m>층의 <m>j</m>번째 노드의 출력은 <m>h_j^{(\ell)}=\sigma\left(\sum_i w_{ji}^{(\ell)}h_i^{(\ell-1)}\right)</m>로 주어집니다. 입력층에서 시작해 이 규칙을 차례로 적용하면 각 노드의 출력이 모두 결정되고, 마지막 층의 출력도 결정됩니다. 따라서 층별 함수의 합성, 즉 신경망이 나타내는 함수는 고정된 활성화 함수와 구조에 대하여 가중치들로 결정됩니다.
+  </p>
+
+
+  <p>
+    깊이가 1인 완전연결 신경망에서는 입력의 모든 성분이 출력의 모든 성분에 연결됩니다. 입력을 <m>x\in\mathbb R^n</m>, 가중치 행렬을 <m>W=(w_{ji})\in\mathbb R^{m\times n}</m>라 하면, <m>j</m>번째 출력 성분은 <m>y_j=\sum_{i=1}^{n}w_{ji}x_i</m>입니다. 항등 활성화 함수는 이 값을 바꾸지 않으므로 출력은 <m>y=Wx</m>가 됩니다. 따라서 이 신경망은 행렬 곱으로 주어지는 선형변환입니다. 
+  </p>
+
+  <p>
+    깊이가 더 깊은 완전연결 신경망에서도 모든 층의 활성화 함수가 항등 함수라면, 각 층은 가중치 행렬을 곱하는 연산만 수행합니다. 따라서 여러 층의 연산을 합성한 결과는 가중치 행렬들의 곱 <m>W_LW_{L-1}\cdots W_1x</m>이며, 여전히 하나의 선형변환입니다. 즉, 항등 활성화 함수만 사용하는 경우 네트워크의 깊이를 늘려도 표현할 수 있는 함수의 종류는 더 풍부해지지 않습니다. 신경망이 복잡한 함수를 근사하려면 층 사이에 비선형 활성화 함수를 적용하는 것이 중요합니다.
+  </p>
+
+
+
+
+</section>

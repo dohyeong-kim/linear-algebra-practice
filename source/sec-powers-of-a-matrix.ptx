@@ -21,6 +21,47 @@
       </p>
     </proof>
   </proposition>
+
+  <example xml:id="ex-powers-eigenvector-decomposition">
+    <title>대각 연산자의 거듭제곱</title>
+    <p>
+      <m>V=\mathbb{R}^2</m>에서 표준기저를 <m>e_1,e_2</m>라 하고, 연산자 <m>T</m>를 <m>Te_1=2e_1</m>, <m>Te_2=-3e_2</m>로 정의합니다. 벡터 <m>v=3e_1-2e_2</m>를 생각합니다.
+    </p>
+    <p>
+      <m>e_1,e_2</m>는 각각 고유값 <m>2,-3</m>에 대응하는 <m>T</m>의 고유벡터입니다. 따라서 명제 <xref ref="prop-powers-eigenvector-decomposition"/>에 의해 모든 음이 아닌 정수 <m>n</m>에 대하여
+      <md>
+        <mrow>T^n v=3(2^n)e_1-2((-3)^n)e_2</mrow>
+      </md>
+      입니다. 특히 <m>n=3</m>일 때 <m>T^3e_1=(14,13)</m>입니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-powers-nondiagonal-matrix-diagonalization">
+    <title>대각화로 계산하는 비대각 행렬의 거듭제곱</title>
+    <p>
+      <m>V=\mathbb{R}^2</m>의 표준기저에 관하여 연산자 <m>T</m>의 행렬이
+      <md>
+        <mrow>A=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}</mrow>
+      </md>
+      라고 하겠습니다. 이 행렬은 대각행렬이 아닙니다. 그러나 <m>v_1=e_1+e_2</m>, <m>v_2=e_1-e_2</m>에 대하여
+      <md>
+        <mrow>Tv_1=3v_1,\quad Tv_2=v_2</mrow>
+      </md>
+      이므로 <m>v_1,v_2</m>는 <m>T</m>의 고유벡터입니다. 특히
+      <md>
+        <mrow>A=PDP^{-1},\quad P=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\quad D=\begin{pmatrix}3&amp;0\\0&amp;1\end{pmatrix}</mrow>
+      </md>
+      로 대각화됩니다.
+      </p>
+      <p>
+      표준기저의 첫 번째 벡터 <m>e_1</m>은 <m>e_1=\frac{1}{2}v_1+\frac{1}{2}v_2</m>로 쓸 수 있습니다. 그러므로 명제 <xref ref="prop-powers-eigenvector-decomposition"/>에 의해 모든 음이 아닌 정수 <m>n</m>에 대하여
+      <md>
+        <mrow>T^n e_1=\frac{3^n}{2}v_1+\frac{1}{2}v_2=\frac{3^n+1}{2}e_1+\frac{3^n-1}{2}e_2</mrow>
+      </md>
+      입니다. 예를 들어 <m>n=3</m>이면 <m>T^3e_1=14e_1+13e_2</m>입니다.
+    </p>
+  </example>
+  
   <p>
     항상 <m>v</m>가 고유벡터의 선형결합으로 표현 가능한 것은 아닙니다. 그러나 <m>V</m>가 유한차원이고 <m>T</m>의 특성다항식이 <m>\mathbb F</m> 위에서 분해된다면, <m>V</m>의 적절한 기저 <m>\mathcal B</m>를 선택하여 <m>T</m>를 조르당 표준형으로 나타낼 수 있습니다. 즉, 대각화 가능한 <m>T_s</m>와 멱명작용소 <m>T_n</m>에 대하여
     <md>
