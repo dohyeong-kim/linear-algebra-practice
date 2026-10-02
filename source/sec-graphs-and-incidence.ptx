@@ -1,4 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section xml:id="sec-graphs-and-incidence" xmlns:xi="http://www.w3.org/2001/XInclude">
 <title>그래프와 인접 행렬</title>
+<p>
+  그래프란 점과 점을 연결하는 선들의 집합입니다. 연결하는 선들의 방향성 유무에 따라 무향 그래프와 유향 그래프로 나뉩니다. 이 절에서는 유향그래프를 주로 다루며, 별도의 언급 없이 그래프는 유향그래프를 의미합니다.
+</p>
+
+<definition xml:id="def-directed-graph">
+  <title>유향 그래프</title>
+  <p>
+    <term>유향 그래프</term><aside><p>유향 그래프:directed graph</p></aside>는 유한한 꼭짓점 집합 <m>V</m>와 변의 집합 <m>E \subseteq V \times V</m>로 이루어진 순서쌍 <m>(V,E)</m>입니다. <m>V</m>의 원소를 꼭짓점이라 하고, <m>E</m>의 원소 <m>(u,v)</m>를 <m>u</m>에서 <m>v</m>로 향하는 변이라 합니다. 여기서는 같은 꼭짓점에서 시작하고 끝나는 변도 허용합니다.
+  </p>
+</definition>
+
+<example xml:id="ex-directed-graphs">
+  <title>유향 그래프의 예</title>
+  <p>
+    <m>V = \{a,b,c\}</m>, <m>E = \{(a,b),(b,c)\}</m>인 그래프에는 <m>a</m>에서 <m>b</m>로 향하는 변과 <m>b</m>에서 <m>c</m>로 향하는 변이 있습니다. 또한 <m>V = \{1,2\}</m>, <m>E = \{(1,1),(1,2),(2,1)\}</m>인 그래프에는 꼭짓점 <m>1</m>에서 시작하고 끝나는 변과 두 꼭짓점 사이를 서로 반대 방향으로 잇는 변이 있습니다.
+  </p>
+</example>
+
+<definition xml:id="def-cycle">
+  <title>순환</title>
+  <p>
+    유향 그래프에서 <term>순환</term><aside><p>순환:cycle</p></aside>이란 양의 정수 <m>k</m>와 꼭짓점열 <m>v_0,v_1,\ldots,v_k</m>로 이루어지며, <m>v_k=v_0</m>이고 <m>(v_{i-1},v_i) \in E</m> for <m>i=1,\ldots,k</m>인 것입니다. 단, <m>v_0,\ldots,v_{k-1}</m>은 서로 달라야 합니다.
+  </p>
+</definition>
+
+<example xml:id="ex-cycles">
+  <title>순환의 예</title>
+  <p>
+    <m>V=\{1,2\}</m>, <m>E=\{(1,1),(1,2),(2,1)\}</m>인 그래프에는 변 <m>(1,1)</m>로 이루어진 길이 <m>1</m>의 순환과 <m>(1,2),(2,1)</m>로 이루어진 길이 <m>2</m>의 순환이 있습니다. 반면 <m>E=\{(a,b),(b,c)\}</m>인 그래프에는 순환이 없습니다.
+  </p>
+</example>
+
+<definition xml:id="def-arborescence">
+  <title>유향 수목</title>
+  <statement>
+    <p>
+      <term>유향 수목</term><aside><p>유향 수목:arborescence</p></aside>란 하나의 꼭짓점을 뿌리로 지정한 유향 그래프로, 뿌리에서 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재하는 그래프입니다.
+    </p>
+  </statement>
+</definition>
+
+<example xml:id="ex-arborescences">
+  <title>유향 수목의 예</title>
+  <p>
+    꼭짓점이 <m>r,a,b</m>이고 변이 <m>(r,a),(r,b)</m>인 그래프는 뿌리 <m>r</m>을 가진 유향 수목입니다. 변이 <m>(r,a),(a,b)</m>인 그래프도 뿌리 <m>r</m>을 가진 유향 수목입니다. 반면 변이 <m>(r,a),(a,b),(b,a)</m>인 그래프는 순환을 포함하므로 유향 수목이 아닙니다.
+  </p>
+</example>
+
+<definition xml:id="def-spanning-tree">
+  <title>신장 트리</title>
+  <statement>
+    <p>
+      유향 그래프의 <term>신장 트리</term><aside><p>신장 트리:spanning tree</p></aside>란 그래프의 모든 꼭짓점을 포함하는 유향 수목입니다. 즉, 뿌리를 정했을 때 뿌리에서 그래프의 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재해야 합니다.
+    </p>
+  </statement>
+</definition>
+
+<example xml:id="ex-spanning-tree">
+  <title>신장 트리의 예</title>
+  <p>
+    앞의 그래프 <m>V=\{a,b,c\}</m>, <m>E=\{(a,b),(b,c)\}</m>는 뿌리 <m>a</m>를 가진 유향 수목이므로 신장 트리입니다. 또 <m>V=\{a,b,c,d\}</m>이고 <m>E=\{(a,b),(b,c),(c,d),(d,a)\}</m>인 그래프에서 변 <m>(d,a)</m>를 제거하면 남은 그래프는 뿌리 <m>a</m>를 가진 유향 수목이자 신장 트리입니다.
+  </p>
+</example>
+
+
 </section>
