@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">5.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">완전 그래프의 신장 트리의 개수.</span>
+</h3>
+<div class="para">
+<span class="process-math">\(n\ge 2\)</span>개의 꼭짓점 사이에 가능한 모든 변이 있는 경우, 뿌리를 고정한 신장 트리는 <span class="process-math">\(n^{n-2}\)</span>개이다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">꼭짓점 집합을 <span class="process-math">\(V=\{1,\dots,n\}\)</span>이라 하고 뿌리를 <span class="process-math">\(r\)</span>이라 하겠습니다. 뿌리를 고정한 신장 트리는 뿌리에서 뻗어나가는 방향의 트리이므로, 뿌리가 아닌 각 꼭짓점 <span class="process-math">\(v\)</span>는 들어오는 변을 정확히 하나 가지며 그 변의 시작점을 부모라 부릅니다. 따라서 신장 트리는 부모 함수 <span class="process-math">\(p:V\setminus\{r\}\to V\)</span>로 결정됩니다. 이 함수 중 어떤 <span class="process-math">\(v\)</span>에서 <span class="process-math">\(p\)</span>를 반복 적용해도 <span class="process-math">\(r\)</span>에 도달하지 못하는 것, 즉 순환을 포함하는 것을 제외해야 합니다.</div>
+<div class="para">이 개수를 직접 세는 대신 프뤼퍼 부호를 이용하겠습니다. 꼭짓점에 번호가 붙은 트리에서 번호가 가장 작은 잎을 반복해서 제거하고, 제거할 때마다 그 잎의 이웃을 기록합니다. 꼭짓점이 두 개 남을 때까지 이 과정을 계속하면 길이 <span class="process-math">\(n-2\)</span>인 수열 <span class="process-math">\((a_1,\dots,a_{n-2})\in V^{n-2}\)</span>가 얻어집니다.</div>
+<div class="para">이 과정에서 각 꼭짓점 <span class="process-math">\(v\)</span>는 수열에 정확히 <span class="process-math">\(\deg v-1\)</span>번 나타납니다. 이는 <span class="process-math">\(v\)</span>의 이웃이 하나씩 제거될 때마다 기록되고, <span class="process-math">\(v\)</span> 자신이 잎으로 제거되거나 마지막 두 꼭짓점에 남을 때 나머지 하나의 변이 기록되지 않기 때문입니다. 특히 각 단계에서 현재 트리의 잎은 아직 남은 수열에 나타나지 않는 꼭짓점과 정확히 일치합니다.</div>
+<div class="para">역으로 임의의 수열 <span class="process-math">\((a_1,\dots,a_{n-2})\in V^{n-2}\)</span>가 주어지면 다음과 같이 트리를 복원합니다. <span class="process-math">\(i=1,\dots,n-2\)</span>에 대하여, 아직 제거되지 않았고 <span class="process-math">\((a_i,\dots,a_{n-2})\)</span>에 나타나지 않는 가장 작은 꼭짓점 <span class="process-math">\(\ell_i\)</span>를 골라 변 <span class="process-math">\(\ell_i a_i\)</span>를 추가하고 <span class="process-math">\(\ell_i\)</span>를 제거합니다. 남은 꼭짓점이 <span class="process-math">\(n-i\)</span>개이고 남은 수열에 나타나는 서로 다른 값은 많아야 <span class="process-math">\(n-i-1\)</span>개이므로 <span class="process-math">\(\ell_i\)</span>는 항상 존재합니다. 마지막으로 남은 두 꼭짓점을 변으로 연결합니다. 이렇게 얻은 그래프는 변이 <span class="process-math">\(n-1\)</span>개이고, 각 변이 추가될 때 <span class="process-math">\(\ell_i\)</span>가 이후에 다시 등장하지 않으므로 순환이 생기지 않습니다. 따라서 이 그래프는 트리입니다.</div>
+<div class="para">앞 문단의 관찰에 의해 부호화 과정의 <span class="process-math">\(i\)</span>번째 단계에서 제거되는 잎은 정확히 복원 과정의 <span class="process-math">\(\ell_i\)</span>와 같고, 그 이웃은 <span class="process-math">\(a_i\)</span>입니다. 따라서 트리를 부호화한 뒤 복원하면 원래 트리가 나오고, 수열을 복원한 뒤 부호화하면 원래 수열이 나옵니다. 즉 두 대응은 서로의 역이며, 번호가 붙은 트리와 길이 <span class="process-math">\(n-2\)</span>인 수열 사이에 일대일대응이 있습니다. 따라서 트리의 개수는 <span class="process-math">\(n^{n-2}\)</span>입니다. (<span class="process-math">\(n=2\)</span>이면 수열은 빈 수열 하나이고 트리도 하나이므로 성립합니다.)</div>
+<div class="para">뿌리를 고정하면 각 번호 붙은 트리의 변의 방향은 뿌리로부터 유일하게 정해지므로, 뿌리를 고정한 신장 트리의 개수도 <span class="process-math">\(n^{n-2}\)</span>입니다.</div></article></details><span class="incontext"><a class="internal" href="sec-matrix-tree-theorem.html#prop-complete-graph-spanning-tree-count">[incontext]</a></span>
+</body>
+</html>

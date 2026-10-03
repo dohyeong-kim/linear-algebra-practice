@@ -734,7 +734,109 @@ eBookConfig.enable_chatcodes =  false;
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-graphs-and-incidence"><h2 class="heading hide-type">
 <span class="type">절</span><span class="space"> </span><span class="codenumber">5.1</span><span class="space"> </span><span class="title">그래프와 인접 행렬</span>
-</h2></section></div>
+</h2>
+<div class="para" id="sec-graphs-and-incidence-2">그래프란 점과 점을 연결하는 선들의 집합입니다. 연결하는 선들의 방향성 유무에 따라 무향 그래프와 유향 그래프로 나뉩니다.</div>
+<article class="definition definition-like" id="def-directed-graph"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">유향 그래프.</span>
+</h3>
+<div class="para" id="def-directed-graph-2">
+<dfn class="terminology">유향 그래프</dfn><aside class="aside aside-like" id="def-directed-graph-2-2"><div class="para" id="def-directed-graph-2-2-1">유향 그래프:directed graph</div></aside>는 유한한 꼭짓점 집합 <span class="process-math">\(V\)</span>와 변의 집합 <span class="process-math">\(E \subseteq V \times V\)</span>로 이루어진 순서쌍 <span class="process-math">\((V,E)\)</span>입니다. <span class="process-math">\(V\)</span>의 원소를 꼭짓점이라 하고, <span class="process-math">\(E\)</span>의 원소 <span class="process-math">\((u,v)\)</span>를 <span class="process-math">\(u\)</span>에서 <span class="process-math">\(v\)</span>로 향하는 변이라 합니다. 여기서는 같은 꼭짓점에서 시작하고 끝나는 변도 허용합니다.</div></article><details id="ex-directed-graphs" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">유향 그래프의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-directed-graphs-2">
+<span class="process-math">\(V = \{a,b,c\}\text{,}\)</span> <span class="process-math">\(E = \{(a,b),(b,c)\}\)</span>인 그래프에는 <span class="process-math">\(a\)</span>에서 <span class="process-math">\(b\)</span>로 향하는 변과 <span class="process-math">\(b\)</span>에서 <span class="process-math">\(c\)</span>로 향하는 변이 있습니다. 또한 <span class="process-math">\(V = \{1,2\}\text{,}\)</span> <span class="process-math">\(E = \{(1,1),(1,2),(2,1)\}\)</span>인 그래프에는 꼭짓점 <span class="process-math">\(1\)</span>에서 시작하고 끝나는 변과 두 꼭짓점 사이를 서로 반대 방향으로 잇는 변이 있습니다.</div></article></details><div class="para" id="sec-graphs-and-incidence-5">
+<a href="sec-graphs-and-incidence.html#def-directed-graph" class="xref" data-knowl="./knowl/xref/def-directed-graph.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 5.1.1: 유향 그래프">정의 5.1.1</a>에 따르면 두 꼭짓점 <span class="process-math">\(u,v\)</span> 사이에 변 <span class="process-math">\((u,v)\)</span>은 존재하거나 존재하지 않거나 두 경우만 가능합니다. 두 개 이상의 변이 존재할 수는 없습니다. 복수의 변을 허용하는 경우를 고려하여, 이러한 그래프를 <dfn class="terminology">단순 유향 그래프</dfn><aside class="aside aside-like" id="sec-graphs-and-incidence-5-5"><div class="para" id="sec-graphs-and-incidence-5-5-1">단순 유향 그래프:simple directed graph</div></aside>라 부르기도 합니다. 우리는 용어를 간결하게 유지하기 위해 단순 유향 그래프 대신 그래프라고 부르겠습니다.</div>
+<article class="definition definition-like" id="def-cycle"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">순환.</span>
+</h3>
+<div class="para" id="def-cycle-2">그래프에서 <dfn class="terminology">순환</dfn><aside class="aside aside-like" id="def-cycle-2-2"><div class="para" id="def-cycle-2-2-1">순환:cycle</div></aside>이란 양의 정수 <span class="process-math">\(k\)</span>와 꼭짓점열 <span class="process-math">\(v_0,v_1,\ldots,v_k\)</span>로 이루어지며, <span class="process-math">\(v_k=v_0\)</span>이고 <span class="process-math">\((v_{i-1},v_i) \in E\)</span> for <span class="process-math">\(i=1,\ldots,k\)</span>인 것입니다. 단, <span class="process-math">\(v_0,\ldots,v_{k-1}\)</span>은 서로 달라야 합니다.</div></article><details id="ex-cycles" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">순환의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-cycles-2">
+<span class="process-math">\(V=\{1,2\}\text{,}\)</span> <span class="process-math">\(E=\{(1,1),(1,2),(2,1)\}\)</span>인 그래프에는 변 <span class="process-math">\((1,1)\)</span>로 이루어진 길이 <span class="process-math">\(1\)</span>의 순환과 <span class="process-math">\((1,2),(2,1)\)</span>로 이루어진 길이 <span class="process-math">\(2\)</span>의 순환이 있습니다. 반면 <span class="process-math">\(E=\{(a,b),(b,c)\}\)</span>인 그래프에는 순환이 없습니다.</div></article></details><article class="definition definition-like" id="def-arborescence"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">유향 수목.</span>
+</h3>
+<div class="para" id="def-arborescence-2-1">
+<dfn class="terminology">유향 수목</dfn><aside class="aside aside-like" id="def-arborescence-2-1-2"><div class="para" id="def-arborescence-2-1-2-1">유향 수목:arborescence</div></aside>란 하나의 꼭짓점을 뿌리로 지정한 그래프로, 뿌리에서 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재하는 그래프입니다.</div></article><details id="ex-arborescences" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">유향 수목의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-arborescences-2">꼭짓점이 <span class="process-math">\(r,a,b\)</span>이고 변이 <span class="process-math">\((r,a),(r,b)\)</span>인 그래프는 뿌리 <span class="process-math">\(r\)</span>을 가진 유향 수목입니다. 변이 <span class="process-math">\((r,a),(a,b)\)</span>인 그래프도 뿌리 <span class="process-math">\(r\)</span>을 가진 유향 수목입니다. 반면 변이 <span class="process-math">\((r,a),(a,b),(b,a)\)</span>인 그래프는 순환을 포함하므로 유향 수목이 아닙니다.</div></article></details><article class="definition definition-like" id="def-spanning-tree"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">신장 트리.</span>
+</h3>
+<div class="para" id="def-spanning-tree-2-1">유향 그래프의 <dfn class="terminology">신장 트리</dfn><aside class="aside aside-like" id="def-spanning-tree-2-1-2"><div class="para" id="def-spanning-tree-2-1-2-1">신장 트리:spanning tree</div></aside>란 그래프의 모든 꼭짓점을 포함하는 유향 수목입니다. 즉, 뿌리를 정했을 때 뿌리에서 그래프의 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재해야 합니다.</div></article><details id="ex-spanning-tree" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">신장 트리의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-spanning-tree-2">앞의 그래프 <span class="process-math">\(V=\{a,b,c\}\text{,}\)</span> <span class="process-math">\(E=\{(a,b),(b,c)\}\)</span>는 뿌리 <span class="process-math">\(a\)</span>를 가진 유향 수목이므로 신장 트리입니다. 또 <span class="process-math">\(V=\{a,b,c,d\}\)</span>이고 <span class="process-math">\(E=\{(a,b),(b,c),(c,d),(d,a)\}\)</span>인 그래프에서 변 <span class="process-math">\((d,a)\)</span>를 제거하면 남은 그래프는 뿌리 <span class="process-math">\(a\)</span>를 가진 유향 수목이자 신장 트리입니다.</div></article></details><article class="definition definition-like" id="def-adjacency-matrix"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬.</span>
+</h3>
+<div class="para logical" id="def-adjacency-matrix-2">
+<div class="para">그래프 <span class="process-math">\(G=(V,E)\)</span>의 꼭짓점에 순서를 주어 <span class="process-math">\(v_1,\cdots,v_n\)</span>이라 할 때, 그래프 <span class="process-math">\(G\)</span>의 인접 행렬 <span class="process-math">\(A\)</span>는 그 성분이</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A_{i,j}=\begin{cases}
+1, &amp; (v_i,v_j)\in E, \\
+0, &amp; (v_i,v_j)\notin E
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">로 정의된 <span class="process-math">\(n\times n\)</span> 행렬입니다. 즉, <span class="process-math">\(i\)</span>번째 행과 <span class="process-math">\(j\)</span>번째 열의 원소는 <span class="process-math">\(v_i\)</span>에서 <span class="process-math">\(v_j\)</span>로 향하는 변이 있는지 여부를 나타냅니다. 모든 변이 방향을 가지므로 일반적으로 인접 행렬은 대칭 행렬이 아닙니다. 자기 자신으로 향하는 변이 있으면 대각 성분이 <span class="process-math">\(1\)</span>이 됩니다.</div>
+</div></article><details id="ex-adjacency-matrix" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-adjacency-matrix-2">
+<div class="para">꼭짓점의 순서를 <span class="process-math">\(v_1=a\text{,}\)</span> <span class="process-math">\(v_2=b\text{,}\)</span> <span class="process-math">\(v_3=c\)</span>로 정하고, 변의 집합이 <span class="process-math">\(E=\{(a,b),(b,c),(c,a),(c,c)\}\)</span>인 유향 그래프를 생각합시다. 이 그래프의 인접 행렬은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{pmatrix}
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 1
+\end{pmatrix}
+\end{equation*}
+</div>
+<div class="para">입니다. 예를 들어 <span class="process-math">\(a\)</span>에서 <span class="process-math">\(b\)</span>로 향하는 변이 있으므로 <span class="process-math">\(a_{12}=1\)</span>이고, <span class="process-math">\(b\)</span>에서 <span class="process-math">\(a\)</span>로 향하는 변이 없으므로 <span class="process-math">\(a_{21}=0\)</span>입니다. 또한 <span class="process-math">\(c\)</span>에서 <span class="process-math">\(c\)</span>로 향하는 변이 있으므로 대각 성분 <span class="process-math">\(a_{33}=1\)</span>입니다.</div>
+</div></article></details><article class="proposition theorem-like" id="prop-adjacency-squared"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">5.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬의 제곱과 양방향 변.</span>
+</h3>
+<div class="para" id="prop-adjacency-squared-2-1">그래프의 인접 행렬 <span class="process-math">\(A\)</span>에 대해 <span class="process-math">\((A^2)_{i,j}\)</span>는 <span class="process-math">\(v_i\)</span>에서 <span class="process-math">\(v_j\)</span>로 가는 길이 <span class="process-math">\(2\)</span>인 경로, 즉 <span class="process-math">\((v_i,v_k),(v_k,v_j)\in E\)</span>인 꼭짓점 <span class="process-math">\(v_k\)</span>의 개수입니다. 특히 <span class="process-math">\((A^2)_{i,i}\)</span>는 <span class="process-math">\((v_i,v_k)\)</span>와 <span class="process-math">\((v_k,v_i)\)</span>가 모두 변인 <span class="process-math">\(v_k\)</span>의 개수, 즉 <span class="process-math">\(v_i\)</span>와 양방향으로 연결된 꼭짓점의 수입니다. 여기에는 <span class="process-math">\(v_i\)</span>에 자기 자신으로 향하는 변이 있는 경우 <span class="process-math">\(k=i\)</span>도 포함됩니다.</div></article><details id="prop-adjacency-squared-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-adjacency-squared-3-1">행렬 곱의 정의에 의해 <span class="process-math">\((A^2)_{i,j}=\sum_{k=1}^n A_{i,k}A_{k,j}\)</span>입니다. 각 항 <span class="process-math">\(A_{i,k}A_{k,j}\)</span>는 <span class="process-math">\((v_i,v_k)\in E\)</span>이고 <span class="process-math">\((v_k,v_j)\in E\)</span>일 때만 <span class="process-math">\(1\)</span>이고, 그렇지 않으면 <span class="process-math">\(0\)</span>입니다. 따라서 합은 조건을 만족하는 <span class="process-math">\(k\)</span>의 개수입니다. <span class="process-math">\(j=i\)</span>이면 조건은 <span class="process-math">\((v_i,v_k),(v_k,v_i)\in E\)</span>가 됩니다.</div></article></details><details id="ex-adjacency-squared" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬의 제곱의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-adjacency-squared-2">
+<div class="para">
+<a href="sec-graphs-and-incidence.html#ex-adjacency-matrix" class="xref" data-knowl="./knowl/xref/ex-adjacency-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.1.10: 인접 행렬의 예">예시 5.1.10</a>의 그래프 <span class="process-math">\(E=\{(a,b),(b,c),(c,a),(c,c)\}\)</span>의 인접 행렬 <span class="process-math">\(A\)</span>를 제곱하면</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-adjacency-matrix.html">
+\begin{equation*}
+A^2=\begin{pmatrix}
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 1
+\end{pmatrix}
+\end{equation*}
+</div>
+<div class="para">입니다. 예를 들어 <span class="process-math">\((A^2)_{1,3}=1\)</span>은 <span class="process-math">\(a\to b\to c\)</span>가 <span class="process-math">\(a\)</span>에서 <span class="process-math">\(c\)</span>로 가는 길이 <span class="process-math">\(2\)</span>인 유일한 경로이기 때문입니다. 또 <span class="process-math">\((A^2)_{3,3}=1\)</span>인데, <span class="process-math">\(c\)</span>와 양방향으로 연결된 꼭짓점은 자기 자신 <span class="process-math">\(c\)</span>뿐이기 때문입니다. <span class="process-math">\((c,a)\in E\)</span>이지만 <span class="process-math">\((a,c)\notin E\)</span>이므로 <span class="process-math">\(a\)</span>는 해당하지 않습니다. 한편 <span class="process-math">\((A^2)_{3,1}=1\)</span>은 <span class="process-math">\(c\to c\to a\)</span>에 대응하고, <span class="process-math">\((A^2)_{3,2}=1\)</span>은 <span class="process-math">\(c\to a\to b\)</span>에 대응합니다.</div>
+</div></article></details><article class="proposition theorem-like" id="prop-adjacency-cubed"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">5.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬의 세제곱과 길이 3의 순환.</span>
+</h3>
+<div class="para" id="prop-adjacency-cubed-2-1">자기 자신으로 향하는 변이 없는 그래프의 인접 행렬 <span class="process-math">\(A\)</span>에 대해 <span class="process-math">\((A^3)_{i,i}\)</span>는 <span class="process-math">\(v_i\)</span>를 지나는 길이 <span class="process-math">\(3\)</span>의 순환의 개수입니다. 따라서 <span class="process-math">\(A^3\)</span>의 대각 성분의 합 <span class="process-math">\(\operatorname{tr}(A^3)\)</span>은 길이 <span class="process-math">\(3\)</span>인 순환의 개수의 <span class="process-math">\(3\)</span>배입니다.</div></article><details id="prop-adjacency-cubed-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-adjacency-cubed-3-1">
+<span class="process-math">\((A^3)_{i,i}=\sum_{j,k}A_{i,j}A_{j,k}A_{k,i}\)</span>이며, 각 항은 <span class="process-math">\((v_i,v_j),(v_j,v_k),(v_k,v_i)\in E\)</span>일 때만 <span class="process-math">\(1\)</span>입니다. 자기 자신으로 향하는 변이 없으므로 <span class="process-math">\(v_i\ne v_j\text{,}\)</span> <span class="process-math">\(v_j\ne v_k\text{,}\)</span> <span class="process-math">\(v_k\ne v_i\)</span>이고, 따라서 <span class="process-math">\(v_i,v_j,v_k\)</span>는 서로 다릅니다. 즉 이러한 <span class="process-math">\((j,k)\)</span>는 <span class="process-math">\(v_i\)</span>에서 시작하는 길이 <span class="process-math">\(3\)</span>의 순환과 일대일로 대응합니다. 하나의 순환은 세 꼭짓점 각각을 시작점으로 하여 정확히 세 번 세어지므로 <span class="process-math">\(\operatorname{tr}(A^3)\)</span>은 순환 개수의 <span class="process-math">\(3\)</span>배입니다.</div></article></details><details id="ex-adjacency-cubed" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">인접 행렬의 세제곱의 예.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-adjacency-cubed-2">
+<div class="para">꼭짓점의 순서를 <span class="process-math">\(v_1=a\text{,}\)</span> <span class="process-math">\(v_2=b\text{,}\)</span> <span class="process-math">\(v_3=c\)</span>로 정하고, 변의 집합이 <span class="process-math">\(E=\{(a,b),(b,a),(b,c),(c,a)\}\)</span>인 그래프를 생각합시다. 자기 자신으로 향하는 변은 없습니다. 인접 행렬과 그 제곱, 세제곱은</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{pmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0
+\end{pmatrix},\quad
+A^2=\begin{pmatrix}
+1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0
+\end{pmatrix},\quad
+A^3=\begin{pmatrix}
+1 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 1
+\end{pmatrix}
+\end{equation*}
+</div>
+<div class="para">입니다. 길이 <span class="process-math">\(3\)</span>인 순환은 <span class="process-math">\(a\to b\to c\to a\)</span>뿐이며, 이 순환은 <span class="process-math">\(a,b,c\)</span>를 모두 지나므로 <span class="process-math">\((A^3)_{1,1}=(A^3)_{2,2}=(A^3)_{3,3}=1\)</span>입니다. 따라서 <span class="process-math">\(\operatorname{tr}(A^3)=3\)</span>이고, 이는 순환 개수 <span class="process-math">\(1\)</span>의 <span class="process-math">\(3\)</span>배입니다.</div>
+</div></article></details><div class="para" id="sec-graphs-and-incidence-18">앞에서 살펴본 것처럼, 주어진 그래프에 대한 조합적 성질은 인접 행렬로 표현되기도 합니다. 예를 들어 양방향 변의 수나 길이 <span class="process-math">\(3\)</span>인 순환의 수는 각각 <span class="process-math">\(A^2\)</span>와 <span class="process-math">\(A^3\)</span>의 대각 성분의 합으로 구할 수 있습니다.</div></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="ch-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
