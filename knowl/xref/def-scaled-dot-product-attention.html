@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="definition definition-like"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">스케일 조정 내적 어텐션.</span>
+</h3>
+<div class="para logical">
+<div class="para">양의 정수 <span class="process-math">\(n,d_x,d_y,d_k,d_v\)</span>와 행렬 <span class="process-math">\(W_Q\in\mathbb R^{d_k\times d_x}\text{,}\)</span> <span class="process-math">\(W_K\in\mathbb R^{d_k\times d_y}\text{,}\)</span> <span class="process-math">\(W_V\in\mathbb R^{d_v\times d_y}\)</span>를 고정합니다. 이 행렬들에 대한 <dfn class="terminology">어텐션</dfn><aside class="aside aside-like"><div class="para">어텐션:attention</div></aside>은 행렬 곱과 소프트맥스 함수로 구성되는 함수</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{Attention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_v}
+\end{gather*}
+</div>
+<div class="para">로서, <span class="process-math">\(x\in\mathbb R^{d_x}\)</span>와 <span class="process-math">\(y_1,\ldots,y_n\in\mathbb R^{d_y}\)</span>에 대해 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+s=(s_1,\ldots,s_n),\qquad s_j=\frac{(W_Qx)^{\mathsf T}(W_Ky_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,\\
+\operatorname{Attention}(x;y_1,\ldots,y_n)=\sum_{j=1}^{n}\operatorname{softmax}(s)_j\,W_Vy_j.
+\end{gather*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-attention.html#def-scaled-dot-product-attention">[incontext]</a></span>
+</body>
+</html>

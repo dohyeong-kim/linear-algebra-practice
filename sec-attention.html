@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>스펙트럴 정리</title>
+<title>어텐션</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -612,7 +612,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-introduction.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="sec-symmetric-bilinear-forms.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-deep-neural-network.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-attention.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-fast-matrix-multiplication.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -629,9 +629,9 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-introduction.html" class="internal"><span class="codenumber">1</span> <span class="title">소개</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter contains-active">
+<li class="toc-item toc-chapter">
 <div class="toc-title-box"><a href="ch-spectral-theorem.html" class="internal"><span class="codenumber">1</span> <span class="title">스펙트럴 정리</span></a></div>
-<ul class="structural toc-item-list active">
+<ul class="structural toc-item-list">
 <li class="toc-item toc-section">
 <div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-symmetric-bilinear-forms.html#exercises-symmetric-bilinear-forms" class="internal"><span class="codenumber">1.1</span> <span class="title">연습문제</span></a></div></li></ul>
@@ -712,11 +712,11 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter">
+<li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-attention.html" class="internal"><span class="codenumber">6</span> <span class="title">어텐션</span></a></div>
-<ul class="structural toc-item-list">
+<ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-deep-neural-network.html" class="internal"><span class="codenumber">6.1</span> <span class="title">심층 신경망</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">어텐션</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">어텐션</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div></li>
@@ -733,21 +733,112 @@ eBookConfig.enable_chatcodes =  false;
 </ul>
 </li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-spectral-theorem"><h2 class="heading">
-<span class="type">Ch.</span><span class="space"> </span><span class="codenumber">1</span><span class="space"> </span><span class="title">스펙트럴 정리</span>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-attention"><h2 class="heading hide-type">
+<span class="type">절</span><span class="space"> </span><span class="codenumber">6.2</span><span class="space"> </span><span class="title">어텐션</span>
 </h2>
-<section class="introduction" id="ch-spectral-theorem-2"><div class="para" id="ch-spectral-theorem-2-1">스펙트럴 정리는 심오하면서도 아름답습니다. 동시에, 수학 내외를 불문하고 다양한 선형대수 응용의 기반이 됩니다. 이 장에서는 스펙트럴 정리를 이론적인 관점에서 소개하고, 그 다양한 응용 중 몇 가지를 살펴보겠습니다.</div></section><nav class="summary-links"><ul>
-<li><a href="sec-symmetric-bilinear-forms.html" class="internal"><span class="codenumber">1.1</span> <span class="title">대칭쌍선형형식과 내적공간</span></a></li>
-<li><a href="sec-orthogonalization.html" class="internal"><span class="codenumber">1.2</span> <span class="title">직교화</span></a></li>
-<li><a href="sec-spectral-theorem.html" class="internal"><span class="codenumber">1.3</span> <span class="title">스펙트럴 정리: 실수체의 경우</span></a></li>
-<li><a href="sec-spectral-theorem-complex.html" class="internal"><span class="codenumber">1.4</span> <span class="title">스펙트럴 정리: 복소체의 경우</span></a></li>
-<li><a href="sec-singular-value-decomposition.html" class="internal"><span class="codenumber">1.5</span> <span class="title">특이값 분해: 내적 공간</span></a></li>
-<li><a href="sec-singular-value-decomposition-complex.html" class="internal"><span class="codenumber">1.6</span> <span class="title">특이값 분해: 에르미트 공간</span></a></li>
-<li><a href="sec-image-compression.html" class="internal"><span class="codenumber">1.7</span> <span class="title">이미지압축</span></a></li>
-<li><a href="sec-principal-component-analysis.html" class="internal"><span class="codenumber">1.8</span> <span class="title">주성분 분석</span></a></li>
-</ul></nav></section></div>
+<div class="para" id="sec-attention-2">이 절에서는 어텐션 개념에 대해 알아봅니다. 이는 <a href="sec-deep-neural-network.html" class="internal" title="절 6.1: 심층 신경망">절 6.1</a>에서 알아본 심층신경망의 특수한 경우입니다. 즉, 간단한 비선형함수로부터 가중치를 고려한 선형결합과 합성을 통하여 원하는 함수를 구성하는 방법입니다. 이때 필요한 소프트맥스 함수를 먼저 알아봅시다.</div>
+<article class="definition definition-like" id="def-softmax"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">소프트맥스 함수.</span>
+</h3>
+<div class="para" id="def-softmax-2">
+<dfn class="terminology">소프트맥스 함수</dfn><aside class="aside aside-like" id="def-softmax-2-2"><div class="para" id="def-softmax-2-2-1">용어:softmax function</div></aside>는 실수 벡터를 양의 성분들의 합이 1인 벡터로 보내는 함수입니다. <span class="process-math">\(x=(x_1,\ldots,x_n)\in\mathbb R^n\)</span>에 대해 그 <span class="process-math">\(i\)</span>번째 성분을 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math" id="def-softmax-3">
+\begin{gather*}
+\operatorname{softmax}(x)_i=\frac{\exp(x_i)}{\sum_{j=1}^{n}\exp(x_j)},\qquad i=1,\ldots,n.
+\end{gather*}
+</div></article><details id="ex-softmax-numerical" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">6.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">소프트맥스의 계산.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-softmax-numerical-2">벡터 <span class="process-math">\(x=(0,\ln 2,\ln 3) \approx (0,0.693,1.099)\)</span>의 소프트맥스를 계산해 봅시다. 각 성분에 지수 함수를 적용하면 <span class="process-math">\((1,2,3)\)</span>이고, 그 합은 <span class="process-math">\(6\)</span>이므로 다음과 같습니다.</div>
+<div class="displaymath process-math" id="ex-softmax-numerical-3">
+\begin{gather*}
+\operatorname{softmax}(x)=\left(\frac{1}{6},\frac{2}{6},\frac{3}{6}\right)\approx (0.167,0.333,0.500).
+\end{gather*}
+</div></article></details><article class="remark remark-like" id="rem-softmax-hardmax"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">6.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">소프트맥스와 하드맥스.</span>
+</h3>
+<div class="para logical" id="rem-softmax-hardmax-2">
+<div class="para">
+<dfn class="terminology">하드맥스</dfn><aside class="aside aside-like" id="rem-softmax-hardmax-2-2"><div class="para" id="rem-softmax-hardmax-2-2-1">하드맥스:hardmax</div></aside>는 벡터 <span class="process-math">\(x=(x_1,\ldots,x_n)\)</span>에서 가장 큰 성분의 위치만 1로 만들고 나머지는 0으로 보내는 함수입니다. 즉,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{hardmax}(x)_i=
+\begin{cases}
+1, &amp; i=\arg\max_j x_j,\\
+0, &amp; \text{그 외의 경우.}
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">이 함수는 가장 큰 값만 선택하고 나머지는 무시합니다. 하드맥스 함수는 동률이 발생한 경우 여러 성분이 동시에 1이 될 수 있습니다. 반면 소프트맥스는 각 성분을 지수 함수로 변환한 뒤 합으로 나누어, 모든 성분이 양수이고 합이 1인 벡터를 만듭니다. 큰 값은 상대적으로 큰 값을 가지며 작은 값도 0이 되지 않으므로, 단 하나만 고르는 하드맥스보다 연속적이고 부드러운 선택을 합니다. 이처럼 소프트맥스는 하드맥스의 완화된 형태이며, 그래서 <dfn class="terminology">소프트맥스</dfn><aside class="aside aside-like" id="rem-softmax-hardmax-2-6"><div class="para" id="rem-softmax-hardmax-2-6-1">소프트맥스:softmax</div></aside>라고 부릅니다.</div>
+</div></article><article class="definition definition-like" id="def-scaled-dot-product-attention"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">스케일 조정 내적 어텐션.</span>
+</h3>
+<div class="para logical" id="def-scaled-dot-product-attention-2">
+<div class="para">양의 정수 <span class="process-math">\(n,d_x,d_y,d_k,d_v\)</span>와 행렬 <span class="process-math">\(W_Q\in\mathbb R^{d_k\times d_x}\text{,}\)</span> <span class="process-math">\(W_K\in\mathbb R^{d_k\times d_y}\text{,}\)</span> <span class="process-math">\(W_V\in\mathbb R^{d_v\times d_y}\)</span>를 고정합니다. 이 행렬들에 대한 <dfn class="terminology">어텐션</dfn><aside class="aside aside-like" id="def-scaled-dot-product-attention-2-6"><div class="para" id="def-scaled-dot-product-attention-2-6-1">어텐션:attention</div></aside>은 행렬 곱과 소프트맥스 함수로 구성되는 함수</div>
+<div class="displaymath process-math" id="def-scaled-dot-product-attention-2-7">
+\begin{gather*}
+\operatorname{Attention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_v}
+\end{gather*}
+</div>
+<div class="para">로서, <span class="process-math">\(x\in\mathbb R^{d_x}\)</span>와 <span class="process-math">\(y_1,\ldots,y_n\in\mathbb R^{d_y}\)</span>에 대해 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math" id="def-scaled-dot-product-attention-2-10">
+\begin{gather*}
+s=(s_1,\ldots,s_n),\qquad s_j=\frac{(W_Qx)^{\mathsf T}(W_Ky_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,\\
+\operatorname{Attention}(x;y_1,\ldots,y_n)=\sum_{j=1}^{n}\operatorname{softmax}(s)_j\,W_Vy_j.
+\end{gather*}
+</div>
+</div></article><div class="para" id="sec-attention-7">
+<a href="sec-attention.html#def-scaled-dot-product-attention" class="xref" data-knowl="./knowl/xref/def-scaled-dot-product-attention.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 6.2.4: 스케일 조정 내적 어텐션">정의 6.2.4</a>에서 <span class="process-math">\(q=W_Qx\)</span>는 <dfn class="terminology">질의</dfn><aside class="aside aside-like" id="sec-attention-7-4"><div class="para" id="sec-attention-7-4-1">질의:query</div>
+<div class="para" id="sec-attention-7-4-2">키:key</div>
+<div class="para" id="sec-attention-7-4-3">값:value</div></aside>, <span class="process-math">\(k_j=W_Ky_j\)</span>는 <dfn class="terminology">키</dfn>, <span class="process-math">\(v_j=W_Vy_j\)</span>는 <dfn class="terminology">값</dfn>입니다. 질의는 입력 <span class="process-math">\(x\)</span>가 찾으려는 정보를 나타내고, 키는 각 참조 입력 <span class="process-math">\(y_j\)</span>가 질의와 얼마나 관련되는지 비교하는 데 사용됩니다. 값은 해당 참조 입력에서 실제로 가져올 정보를 나타냅니다. 행렬 <span class="process-math">\(W_Q,W_K,W_V\)</span>는 각각 입력을 질의, 키, 값으로 변환합니다.</div>
+<div class="para" id="sec-attention-8">점수 <span class="process-math">\(s_j=q^{\mathsf T}k_j/\sqrt{d_k}\)</span>는 질의와 키의 내적으로 관련성을 측정하고, 키 공간의 차원에 따른 크기를 조정합니다. 소프트맥스로 얻은 <span class="process-math">\(\alpha_j=\operatorname{softmax}(s)_j\)</span>를 <dfn class="terminology">어텐션 가중치</dfn><aside class="aside aside-like" id="sec-attention-8-4"><div class="para" id="sec-attention-8-4-1">어텐션 가중치:attention weight</div></aside>라고 합니다. 각 가중치는 양수이고 전체 합은 1이므로, 출력 <span class="process-math">\(\sum_{j=1}^{n}\alpha_jv_j\)</span>는 값 벡터들의 가중평균입니다. 점수가 큰 참조 입력일수록 그 값이 출력에 더 큰 비중으로 반영됩니다.</div>
+<article class="definition definition-like" id="def-cross-attention"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">교차 어텐션.</span>
+</h3>
+<div class="para" id="def-cross-attention-2">
+<dfn class="terminology">교차 어텐션</dfn><aside class="aside aside-like" id="def-cross-attention-2-2"><div class="para" id="def-cross-attention-2-2-1">용어:cross-attention</div></aside>은 질의 벡터들과 키 및 값 벡터들이 서로 다른 입력에서 오는 어텐션입니다. 질의 입력 <span class="process-math">\(x_1,\ldots,x_r\)</span>과 참조 입력 <span class="process-math">\(y_1,\ldots,y_n\)</span>에 대해 각 결과를 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math" id="def-cross-attention-3">
+\begin{gather*}
+\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldots,y_n),\qquad i=1,\ldots,r.
+\end{gather*}
+</div>
+<div class="para" id="def-cross-attention-4">이때 질의에는 <span class="process-math">\(x_i\)</span>를, 키와 값에는 <span class="process-math">\(y_1,\ldots,y_n\)</span>을 사용합니다.</div></article><article class="definition definition-like" id="def-self-attention"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">자기 어텐션.</span>
+</h3>
+<div class="para" id="def-self-attention-2">
+<dfn class="terminology">자기 어텐션</dfn><aside class="aside aside-like" id="def-self-attention-2-2"><div class="para" id="def-self-attention-2-2-1">용어:self-attention</div></aside>은 질의, 키, 값이 모두 같은 입력 벡터들에서 만들어지는 어텐션입니다. 즉, <span class="process-math">\(d_x=d_y\)</span>입니다. 입력 <span class="process-math">\(x_1,\ldots,x_n\)</span>에 대해 각 벡터를 차례로 질의로 사용하여 다음을 정의합니다.</div>
+<div class="displaymath process-math" id="def-self-attention-3">
+\begin{gather*}
+\operatorname{SelfAttention}(x_i;x_1,\ldots,x_n)=\operatorname{Attention}(x_i;x_1,\ldots,x_n),\qquad i=1,\ldots,n.
+\end{gather*}
+</div></article><div class="para" id="sec-attention-11">어텐션 함수는 어떤 행렬들 <span class="process-math">\(W_Q, W_K, W_V\)</span>에 따라 결정됩니다. 입력 벡터는 각각의 변환 행렬 <span class="process-math">\(W_Q,W_K,W_V\)</span>를 통하여 질의, 키, 값으로 변환되고, 질의와 키의 내적으로 점수가 계산되며, 마지막으로 소프트맥스 함수를 적용하여 가중치가 정해집니다. 따라서 어텐션의 실행은 행렬 곱셈과 소프트맥스에 의해 지배되며, 이 과정이 최종 출력 벡터를 결정합니다.</div>
+<div class="para" id="sec-attention-12">실제 트랜스포머 기반 거대언어모형에서는 어텐션 함수를 디코더라고 부르는 영역에 각각 병렬 배치하여 사용합니다. 이를 멀티-헤드-어텐션이라 합니다. <details class="ptx-footnote" aria-live="polite" id="sec-attention-12-1"><summary class="ptx-footnote__number" title="[fn] 6.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-1">초기 모형에는 인코더와 디코더가 둘 다 있었으나 디코더만 사용하는 모형이 주류가 되었습니다.</div></details>디코더 내부에 쌓아올린 어텐션 함수 사이에는 비선형 피드포워드 층과 정규화 층이 위치합니다. 이러한 거대언어모형이 효과적이기 위해서는 어텐션을 효율적으로 계산하는 것이 중요합니다. <aside class="aside aside-like" id="sec-attention-12-2"><div class="para" id="sec-attention-12-2-1">참고: <a class="external" href="https://jalammar.github.io/illustrated-transformer/" target="_blank">Illustrated Transformer</a><details class="ptx-footnote" aria-live="polite" id="sec-attention-12-2-1-2"><summary class="ptx-footnote__number" title="[fn] 6.2.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-2-1-2"><code class="code-inline tex2jax_ignore">jalammar.github.io/illustrated-transformer/</code></div></details>
+</div></aside>
+</div>
+<div class="para" id="sec-attention-13">멀티-헤드-어텐션의 구조를 간략히 살펴보겠습니다. 수학적으로 표현하자면, 새로운 행렬 <span class="process-math">\(W_O\)</span>가 도입됩니다. 다음 정의에서 헤드의 개수는 <span class="process-math">\(h\)</span>입니다.</div>
+<article class="definition definition-like" id="def-multi-head-attention"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.7</span><span class="period">.</span><span class="space"> </span><span class="title">멀티-헤드-어텐션.</span>
+</h3>
+<div class="para" id="def-multi-head-attention-2">양의 정수 <span class="process-math">\(h,n,d_x,d_y,d_k,d_v,d_o\)</span>를 고정합니다. 각 <span class="process-math">\(a=1,\ldots,h\)</span>에 대해 행렬 <span class="process-math">\(W_Q^{(a)}\in\mathbb R^{d_k\times d_x}\text{,}\)</span> <span class="process-math">\(W_K^{(a)}\in\mathbb R^{d_k\times d_y}\text{,}\)</span> <span class="process-math">\(W_V^{(a)}\in\mathbb R^{d_v\times d_y}\)</span>를 고정하고, 행렬 <span class="process-math">\(W_O\in\mathbb R^{d_o\times hd_v}\)</span>를 고정합니다. 이 행렬들에 대한 <dfn class="terminology">멀티-헤드-어텐션</dfn><aside class="aside aside-like" id="def-multi-head-attention-2-8"><div class="para" id="def-multi-head-attention-2-8-1">멀티-헤드-어텐션:multi-head attention</div></aside>은 다음 함수입니다.</div>
+<div class="displaymath process-math" id="def-multi-head-attention-3">
+\begin{gather*}
+\operatorname{MultiHeadAttention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_o}.
+\end{gather*}
+</div>
+<div class="para" id="def-multi-head-attention-4">입력 <span class="process-math">\(x\in\mathbb R^{d_x}\)</span>와 <span class="process-math">\(y_1,\ldots,y_n\in\mathbb R^{d_y}\)</span>에 대해, 각 <span class="process-math">\(a=1,\ldots,h\)</span>의 벡터 <span class="process-math">\(s^{(a)}\in\mathbb R^n\)</span>와 <span class="process-math">\(z^{(a)}\in\mathbb R^{d_v}\)</span>를 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math" id="def-multi-head-attention-5">
+\begin{gather*}
+s_j^{(a)}=\frac{(W_Q^{(a)}x)^{\mathsf T}(W_K^{(a)}y_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,\\
+z^{(a)}=\sum_{j=1}^{n}\operatorname{softmax}(s^{(a)})_j\,W_V^{(a)}y_j.
+\end{gather*}
+</div>
+<div class="para" id="def-multi-head-attention-6">이때 함수의 값은 다음과 같이 정의합니다. 괄호 안의 벡터는 <span class="process-math">\(z^{(1)},\ldots,z^{(h)}\)</span>를 순서대로 이어 붙인 <span class="process-math">\(\mathbb R^{hd_v}\)</span>의 열벡터입니다.</div>
+<div class="displaymath process-math" id="def-multi-head-attention-7">
+\begin{gather*}
+\operatorname{MultiHeadAttention}(x;y_1,\ldots,y_n)=W_O\begin{pmatrix}z^{(1)}\\ \vdots\\ z^{(h)}\end{pmatrix}.
+\end{gather*}
+</div></article><div class="para" id="sec-attention-15">종합하면, 멀티-헤드-어텐션은 <span class="process-math">\(3h+1\)</span>개의 행렬 <span class="process-math">\(W_Q^{(a)}, W_K^{(a)}, W_V^{(a)}, W_O\)</span>에 의해 정의됩니다.</div></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-introduction.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-symmetric-bilinear-forms.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-deep-neural-network.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-fast-matrix-multiplication.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
