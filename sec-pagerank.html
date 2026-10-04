@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>행렬-트리 정리</title>
+<title>페이지랭크</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -612,7 +612,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-graphs-and-incidence.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-matrix-tree-theorem.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-attention.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-perron-frobenius.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-Perron-Frobenius.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -696,20 +696,20 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 </ul>
 </li>
-<li class="toc-item toc-chapter">
+<li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div>
-<ul class="structural toc-item-list">
+<ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter contains-active">
+<li class="toc-item toc-chapter">
 <div class="toc-title-box"><a href="ch-matrix-tree-theorem.html" class="internal"><span class="codenumber">5</span> <span class="title">행렬-트리 정리</span></a></div>
-<ul class="structural toc-item-list contains-active">
+<ul class="structural toc-item-list">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-graphs-and-incidence.html" class="internal"><span class="codenumber">5.1</span> <span class="title">그래프와 인접 행렬</span></a></div></li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
@@ -733,106 +733,122 @@ eBookConfig.enable_chatcodes =  false;
 </ul>
 </li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-matrix-tree-theorem"><h2 class="heading hide-type">
-<span class="type">절</span><span class="space"> </span><span class="codenumber">5.2</span><span class="space"> </span><span class="title">행렬-트리 정리</span>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-pagerank"><h2 class="heading hide-type">
+<span class="type">절</span><span class="space"> </span><span class="codenumber">4.4</span><span class="space"> </span><span class="title">페이지랭크</span>
 </h2>
-<div class="para" id="sec-matrix-tree-theorem-2">
-<a href="sec-graphs-and-incidence.html" class="internal" title="절 5.1: 그래프와 인접 행렬">절 5.1</a>에서는 그래프의 성질을 그 인접 행렬을 이용해 표현해 보았습니다. 그렇다면 신장 트리의 개수도 인접 행렬로부터 구할 수 있을까요? 신장 트리는 <a href="sec-graphs-and-incidence.html#def-spanning-tree" class="xref" data-knowl="./knowl/xref/def-spanning-tree.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 5.1.7: 신장 트리">정의 5.1.7</a>에서 보듯이 뿌리의 선택과 모든 꼭짓점에 대한 경로의 유일성이라는 전역적인 조건으로 정의됩니다. 순환이나 양방향 변과 달리 몇 개의 꼭짓점만 보고 판단할 수 없습니다.</div>
-<div class="para" id="sec-matrix-tree-theorem-3">신장 트리를 직접 세는 일이 조합적으로 어려운 이유는 다음과 같습니다. 첫째, 후보의 수가 매우 많습니다. 꼭짓점이 <span class="process-math">\(n\)</span>개인 그래프에서 뿌리를 제외한 각 꼭짓점은 자신으로 들어오는 변을 하나씩 고르므로, 변이 많은 그래프에서는 후보가 <span class="process-math">\(n\)</span>에 대해 지수적으로 늘어납니다.  둘째, 각 꼭짓점에서 들어오는 변을 독립적으로 고르면 순환이 생길 수 있어 선택들이 서로 의존합니다. 따라서 단순한 곱셈 원리를 쓸 수 없고, 순환을 만드는 선택을 제외해야 합니다. 셋째, 순환을 제외하는 포함-배제 방식은 그래프의 모든 순환 구조를 추적해야 하므로 빠르게 복잡해집니다.</div>
-<article class="proposition theorem-like" id="prop-complete-graph-spanning-tree-count"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">5.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">완전 그래프의 신장 트리의 개수.</span>
+<div class="para" id="sec-pagerank-2">웹페이지의 중요도를 링크 구조만으로 평가하려면 어떻게 해야 할까요? 많은 페이지가 가리키는 페이지, 특히 중요한 페이지가 가리키는 페이지에 높은 점수를 주는 것이 자연스럽습니다. 페이지랭크는 이 생각을 확률적 이동 모형과 고유벡터를 이용하여 구현합니다. 먼저 이러한 이동을 기술하는 마르코프 연쇄를 정의합니다.</div>
+<article class="definition definition-like" id="def-pagerank-markov-chain"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">4.4.1</span><span class="period">.</span><span class="space"> </span><span class="title">유한 상태 마르코프 연쇄.</span>
 </h3>
-<div class="para" id="prop-complete-graph-spanning-tree-count-2-1">
-<span class="process-math">\(n\ge 2\)</span>개의 꼭짓점 사이에 가능한 모든 변이 있는 경우, 뿌리를 고정한 신장 트리는 <span class="process-math">\(n^{n-2}\)</span>개이다.</div></article><details id="prop-complete-graph-spanning-tree-count-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-complete-graph-spanning-tree-count-3-1">꼭짓점 집합을 <span class="process-math">\(V=\{1,\dots,n\}\)</span>이라 하고 뿌리를 <span class="process-math">\(r\)</span>이라 하겠습니다. 뿌리를 고정한 신장 트리는 뿌리에서 뻗어나가는 방향의 트리이므로, 뿌리가 아닌 각 꼭짓점 <span class="process-math">\(v\)</span>는 들어오는 변을 정확히 하나 가지며 그 변의 시작점을 부모라 부릅니다. 따라서 신장 트리는 부모 함수 <span class="process-math">\(p:V\setminus\{r\}\to V\)</span>로 결정됩니다. 이 함수 중 어떤 <span class="process-math">\(v\)</span>에서 <span class="process-math">\(p\)</span>를 반복 적용해도 <span class="process-math">\(r\)</span>에 도달하지 못하는 것, 즉 순환을 포함하는 것을 제외해야 합니다.</div>
-<div class="para" id="prop-complete-graph-spanning-tree-count-3-2">이 개수를 직접 세는 대신 프뤼퍼 부호를 이용하겠습니다. 꼭짓점에 번호가 붙은 트리에서 번호가 가장 작은 잎을 반복해서 제거하고, 제거할 때마다 그 잎의 이웃을 기록합니다. 꼭짓점이 두 개 남을 때까지 이 과정을 계속하면 길이 <span class="process-math">\(n-2\)</span>인 수열 <span class="process-math">\((a_1,\dots,a_{n-2})\in V^{n-2}\)</span>가 얻어집니다.</div>
-<div class="para" id="prop-complete-graph-spanning-tree-count-3-3">이 과정에서 각 꼭짓점 <span class="process-math">\(v\)</span>는 수열에 정확히 <span class="process-math">\(\deg v-1\)</span>번 나타납니다. 이는 <span class="process-math">\(v\)</span>의 이웃이 하나씩 제거될 때마다 기록되고, <span class="process-math">\(v\)</span> 자신이 잎으로 제거되거나 마지막 두 꼭짓점에 남을 때 나머지 하나의 변이 기록되지 않기 때문입니다. 특히 각 단계에서 현재 트리의 잎은 아직 남은 수열에 나타나지 않는 꼭짓점과 정확히 일치합니다.</div>
-<div class="para" id="prop-complete-graph-spanning-tree-count-3-4">역으로 임의의 수열 <span class="process-math">\((a_1,\dots,a_{n-2})\in V^{n-2}\)</span>가 주어지면 다음과 같이 트리를 복원합니다. <span class="process-math">\(i=1,\dots,n-2\)</span>에 대하여, 아직 제거되지 않았고 <span class="process-math">\((a_i,\dots,a_{n-2})\)</span>에 나타나지 않는 가장 작은 꼭짓점 <span class="process-math">\(\ell_i\)</span>를 골라 변 <span class="process-math">\(\ell_i a_i\)</span>를 추가하고 <span class="process-math">\(\ell_i\)</span>를 제거합니다. 남은 꼭짓점이 <span class="process-math">\(n-i\)</span>개이고 남은 수열에 나타나는 서로 다른 값은 많아야 <span class="process-math">\(n-i-1\)</span>개이므로 <span class="process-math">\(\ell_i\)</span>는 항상 존재합니다. 마지막으로 남은 두 꼭짓점을 변으로 연결합니다. 이렇게 얻은 그래프는 변이 <span class="process-math">\(n-1\)</span>개이고, 각 변이 추가될 때 <span class="process-math">\(\ell_i\)</span>가 이후에 다시 등장하지 않으므로 순환이 생기지 않습니다. 따라서 이 그래프는 트리입니다.</div>
-<div class="para" id="prop-complete-graph-spanning-tree-count-3-5">앞 문단의 관찰에 의해 부호화 과정의 <span class="process-math">\(i\)</span>번째 단계에서 제거되는 잎은 정확히 복원 과정의 <span class="process-math">\(\ell_i\)</span>와 같고, 그 이웃은 <span class="process-math">\(a_i\)</span>입니다. 따라서 트리를 부호화한 뒤 복원하면 원래 트리가 나오고, 수열을 복원한 뒤 부호화하면 원래 수열이 나옵니다. 즉 두 대응은 서로의 역이며, 번호가 붙은 트리와 길이 <span class="process-math">\(n-2\)</span>인 수열 사이에 일대일대응이 있습니다. 따라서 트리의 개수는 <span class="process-math">\(n^{n-2}\)</span>입니다. (<span class="process-math">\(n=2\)</span>이면 수열은 빈 수열 하나이고 트리도 하나이므로 성립합니다.)</div>
-<div class="para" id="prop-complete-graph-spanning-tree-count-3-6">뿌리를 고정하면 각 번호 붙은 트리의 변의 방향은 뿌리로부터 유일하게 정해지므로, 뿌리를 고정한 신장 트리의 개수도 <span class="process-math">\(n^{n-2}\)</span>입니다.</div></article></details><div class="para" id="sec-matrix-tree-theorem-5">신장 트리를 하나하나 나열하지 않고 개수를 구하는 방법이 있을까요? 라플라시안 행렬의 행렬식을 이용하면 이 개수를 다항 시간에 계산할 수 있음을 살펴보겠습니다.</div>
-<div class="para" id="sec-matrix-tree-theorem-6">이 절에서 그래프 <span class="process-math">\(G\)</span>는 꼭짓점 집합 <span class="process-math">\(V=\{1,\dots,n\}\)</span> 위의 단순 유향 그래프입니다. 즉 고리(자기 자신으로 가는 변)가 없고, 같은 방향의 중복된 변도 없습니다. 인접 행렬 <span class="process-math">\(A\)</span>는 <span class="process-math">\(u\to v\)</span>가 변이면 <span class="process-math">\(A_{uv}=1\text{,}\)</span> 아니면 <span class="process-math">\(A_{uv}=0\)</span>이며, 특히 <span class="process-math">\(A_{vv}=0\)</span>입니다.</div>
-<article class="definition definition-like" id="def-directed-laplacian"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">5.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">라플라시안 행렬.</span>
+<div class="para" id="def-pagerank-markov-chain-2-1">상태 집합이 <span class="process-math">\(\{1,\ldots,n\}\)</span>인 확률변수의 열 <span class="process-math">\(X_0,X_1,\ldots\)</span>이 <dfn class="terminology">마르코프 연쇄</dfn> (Markov chain)라는 것은, 확률이 양수인 모든 과거 이력에 대하여 다음 조건을 만족한다는 뜻이다.</div>
+<div class="displaymath process-math" id="def-pagerank-markov-chain-2-2">
+\begin{gather*}
+\Pr(X_{k+1}=i\mid X_k=j,X_{k-1}=j_{k-1},\ldots,X_0=j_0)=\Pr(X_{k+1}=i\mid X_k=j).
+\end{gather*}
+</div>
+<div class="para" id="def-pagerank-markov-chain-2-3">오른쪽의 조건부 확률이 시각 <span class="process-math">\(k\)</span>에 의존하지 않으면 시간 동질적이라고 한다. 이 경우 <span class="process-math">\(P_{ij}=\Pr(X_{k+1}=i\mid X_k=j)\)</span>로 정의되는 행렬 <span class="process-math">\(P\)</span>를 <dfn class="terminology">전이 행렬</dfn> (transition matrix)이라고 한다. 이 절에서는 확률분포를 열벡터로 나타내므로 <span class="process-math">\(P\)</span>의 각 열의 합은 <span class="process-math">\(1\)</span>이다.</div>
+<div class="displaymath process-math" id="def-pagerank-markov-chain-2-4">
+\begin{gather*}
+P_{ij}\geq 0,\qquad \sum_{i=1}^{n}P_{ij}=1.
+\end{gather*}
+</div></article><details id="ex-pagerank-markov-chain-two-state" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">4.4.2</span><span class="period">.</span><span class="space"> </span><span class="title">두 상태 마르코프 연쇄.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-pagerank-markov-chain-two-state-2">날씨가 맑음(상태 <span class="process-math">\(1\)</span>) 또는 흐림(상태 <span class="process-math">\(2\)</span>)이라고 합시다. 오늘의 날씨만 알면 내일의 날씨 분포를 정할 수 있고, 오늘 이전의 날씨는 추가 정보를 주지 않는다고 가정합니다. 맑은 날 다음 날이 맑을 확률은 <span class="process-math">\(0.8\text{,}\)</span> 흐릴 확률은 <span class="process-math">\(0.2\)</span>이며, 흐린 날 다음 날이 맑을 확률은 <span class="process-math">\(0.3\text{,}\)</span> 흐릴 확률은 <span class="process-math">\(0.7\)</span>이라고 하면 전이 행렬은</div>
+<div class="displaymath process-math" id="ex-pagerank-markov-chain-two-state-3">
+\begin{align*}
+P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
+\end{align*}
+</div>
+<div class="para" id="ex-pagerank-markov-chain-two-state-4">입니다. 열은 오늘의 상태를 나타내므로 각 열의 합은 <span class="process-math">\(1\)</span>입니다. 오늘 맑고 어제도 맑았을 때 내일 흐릴 조건부 확률은 오늘 맑다는 사실만으로 정해지므로 <span class="process-math">\(\Pr(X_{k+1}=2\mid X_k=1,X_{k-1}=1)=\Pr(X_{k+1}=2\mid X_k=1)=0.2\)</span>입니다. 이것이 마르코프 조건의 한 예입니다.</div></article></details><div class="para" id="sec-pagerank-5">마르코프 조건은 다음 이동의 확률을 결정할 때 현재 상태만 필요하다는 뜻입니다. <span class="process-math">\(p_i^{(k)}=\Pr(X_k=i)\)</span>로 두면 전체확률법칙에 따라 분포의 변화는 행렬 곱으로 표현됩니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+\begin{equation*}
+p^{(k+1)}=Pp^{(k)},\qquad p^{(k)}=P^k p^{(0)}.
+\end{equation*}
+</div>
+<article class="definition definition-like" id="def-pagerank-stationary-distribution"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">4.4.3</span><span class="period">.</span><span class="space"> </span><span class="title">정상분포.</span>
 </h3>
-<div class="para" id="def-directed-laplacian-2-1">꼭짓점 <span class="process-math">\(v\)</span>의 <dfn class="terminology">내차수</dfn><aside class="aside aside-like" id="def-directed-laplacian-2-1-3"><div class="para" id="def-directed-laplacian-2-1-3-1">내차수:in-degree</div></aside>를 <span class="process-math">\(d^-(v)=\sum_{u}A_{uv}\)</span>로 정의하고, <span class="process-math">\(D=\operatorname{diag}(d^-(1),\dots,d^-(n))\)</span>이라 할 때 행렬 <span class="process-math">\(L=D-A\)</span>를 <span class="process-math">\(G\)</span>의 <dfn class="terminology">라플라시안 행렬</dfn><aside class="aside aside-like" id="def-directed-laplacian-2-1-9"><div class="para" id="def-directed-laplacian-2-1-9-1">라플라시안 행렬:Laplacian matrix</div></aside>이라 합니다. 또한 <span class="process-math">\(L\)</span>에서 <span class="process-math">\(r\)</span>번째 행과 <span class="process-math">\(r\)</span>번째 열을 지운 <span class="process-math">\((n-1)\times(n-1)\)</span> 행렬을 <span class="process-math">\(L_r\)</span>로 씁니다.</div></article><div class="para" id="sec-matrix-tree-theorem-8">
-<span class="process-math">\(L\)</span>의 각 열의 합은 <span class="process-math">\(0\)</span>입니다. 실제로 <span class="process-math">\(v\)</span>번째 열의 합은 <span class="process-math">\(d^-(v)-\sum_u A_{uv}=0\)</span>입니다. 따라서 <span class="process-math">\(\det L=0\)</span>이고, 의미 있는 정보는 한 행과 열을 지운 소행렬식에 담겨 있습니다.</div>
-<details id="ex-laplacian-small" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">꼭짓점이 세 개인 그래프의 라플라시안.</span>
-</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-laplacian-small-2">
-<div class="para">변이 <span class="process-math">\(1\to2\text{,}\)</span> <span class="process-math">\(1\to3\text{,}\)</span> <span class="process-math">\(2\to3\text{,}\)</span> <span class="process-math">\(3\to2\)</span>인 그래프를 생각합니다. 내차수는 <span class="process-math">\(d^-(1)=0\text{,}\)</span> <span class="process-math">\(d^-(2)=d^-(3)=2\)</span>이므로</div>
+<div class="para" id="def-pagerank-stationary-distribution-2-1">전이 행렬 <span class="process-math">\(P\)</span>에 대하여 다음 조건을 만족하는 벡터 <span class="process-math">\(\pi\)</span>를 <dfn class="terminology">정상분포</dfn> (stationary distribution)라고 한다.</div>
+<div class="displaymath process-math" id="def-pagerank-stationary-distribution-2-2">
+\begin{gather*}
+P\pi=\pi,\qquad \pi_i\geq 0,\qquad \sum_{i=1}^{n}\pi_i=1.
+\end{gather*}
+</div>
+<div class="para" id="def-pagerank-stationary-distribution-2-3">즉, 정상분포는 고유값 <span class="process-math">\(1\)</span>에 대응하는 고유벡터 중 확률분포로 정규화된 벡터이다.</div></article><details id="ex-pagerank-two-state-stationary-distribution" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">4.4.4</span><span class="period">.</span><span class="space"> </span><span class="title">두 상태 연쇄의 정상분포.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-pagerank-two-state-stationary-distribution-2">앞의 날씨 모형의 전이 행렬은</div>
+<div class="displaymath process-math" id="ex-pagerank-two-state-stationary-distribution-3">
+\begin{align*}
+P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
+\end{align*}
+</div>
+<div class="para" id="ex-pagerank-two-state-stationary-distribution-4">입니다. 정상분포 <span class="process-math">\(\pi=(\pi_1,\pi_2)^{\mathsf T}\)</span>는 <span class="process-math">\(P\pi=\pi\)</span>를 만족하므로 <span class="process-math">\(0.2\pi_1=0.3\pi_2\)</span>입니다. 여기에 <span class="process-math">\(\pi_1+\pi_2=1\)</span>을 적용하면</div>
+<div class="displaymath process-math" id="ex-pagerank-two-state-stationary-distribution-5">
+\begin{gather*}
+\pi=\begin{pmatrix}3/5\\2/5\end{pmatrix}
+\end{gather*}
+</div>
+<div class="para" id="ex-pagerank-two-state-stationary-distribution-6">를 얻습니다. 실제로 <span class="process-math">\(P\pi=(3/5,2/5)^{\mathsf T}=\pi\)</span>이므로, 이 분포에서는 하루가 지나도 맑음과 흐림의 확률이 변하지 않습니다.</div></article></details><div class="para" id="sec-pagerank-9">이제 웹페이지를 상태로 생각합니다. 페이지 <span class="process-math">\(j\)</span>에서 나가는 링크가 <span class="process-math">\(d_j&gt;0\)</span>개이면 사용자는 그중 하나를 같은 확률로 선택한다고 가정합니다. 중복 링크를 제외할 때 링크에 따른 전이 확률은 다음과 같습니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+\begin{equation*}
+P_{ij}=\begin{cases}
+1/d_j, &amp; \text{페이지 }j\text{에서 }i\text{로 가는 링크가 있을 때},\\
+0, &amp; \text{그 밖의 경우}.
+\end{cases}
+\end{equation*}
+</div>
+<div class="para" id="sec-pagerank-11">나가는 링크가 없는 페이지에서는 이 규칙을 그대로 사용할 수 없습니다. 이러한 페이지의 열은 미리 선택한 확률벡터 <span class="process-math">\(v\)</span>로 대체합니다. 여기서는 모든 <span class="process-math">\(i\)</span>에 대해 <span class="process-math">\(v_i&gt;0\)</span>이고 <span class="process-math">\(\sum_i v_i=1\)</span>이라고 가정합니다. 예를 들어 <span class="process-math">\(v_i=1/n\)</span>이면 모든 페이지를 같은 확률로 선택합니다. 이 보정을 거친 <span class="process-math">\(P\)</span>는 각 열의 합이 <span class="process-math">\(1\)</span>인 비음수 행렬입니다.</div>
+<div class="para" id="sec-pagerank-12">정상분포를 중요도 점수로 사용하면 <span class="process-math">\(\pi_i=\sum_j P_{ij}\pi_j\)</span>가 됩니다. 따라서 페이지 <span class="process-math">\(i\)</span>의 점수는 자신을 가리키는 페이지들의 점수를 링크 수에 따라 나눈 값의 합입니다. 다만 이 링크 행렬만으로는 정상분포의 유일성이나 반복 계산의 수렴을 보장할 수 없습니다.</div>
+<details id="ex-pagerank-link-obstructions" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">4.4.5</span><span class="period">.</span><span class="space"> </span><span class="title">링크만으로 계산할 때의 문제.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para" id="ex-pagerank-link-obstructions-2">서로 연결되지 않은 두 페이지가 각각 자기 자신으로만 연결되면 <span class="process-math">\(P=I_2\)</span>입니다. 이때 모든 확률벡터가 정상분포이므로 중요도 점수가 유일하지 않습니다. 한편 두 페이지가 서로에게만 연결되면</div>
 <div class="displaymath process-math">
 \begin{equation*}
-L=\begin{pmatrix}0&amp;-1&amp;-1\\0&amp;2&amp;-1\\0&amp;-1&amp;2\end{pmatrix},\qquad
-L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
+P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
 \end{equation*}
 </div>
-<div class="para">입니다. 따라서 <span class="process-math">\(\det L_1=3\)</span>입니다. 한편 뿌리 <span class="process-math">\(1\)</span>의 신장 트리는 부모 함수 <span class="process-math">\((p(2),p(3))\)</span>가 <span class="process-math">\((1,1)\text{,}\)</span> <span class="process-math">\((1,2)\text{,}\)</span> <span class="process-math">\((3,1)\)</span>인 세 개이고, <span class="process-math">\((3,2)\)</span>는 순환 <span class="process-math">\(2\to3\to2\)</span>를 만들므로 제외됩니다. 두 값이 일치합니다.</div>
-</div></article></details><article class="theorem theorem-like" id="thm-matrix-tree"><h3 class="heading">
-<span class="type">정리</span><span class="space"> </span><span class="codenumber">5.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">행렬-트리 정리.</span>
+<div class="para" id="ex-pagerank-link-obstructions-4">이며 정상분포는 <span class="process-math">\((1/2,1/2)^{\mathsf T}\)</span>로 유일합니다. 그러나 초기분포가 <span class="process-math">\((1,0)^{\mathsf T}\)</span>이면 반복은 두 상태 사이를 번갈아 오가며 수렴하지 않습니다.</div></article></details><div class="para" id="sec-pagerank-14">이 문제를 해결하기 위해 사용자가 가끔 링크를 따르지 않고 새로운 페이지로 이동하도록 모형을 바꿉니다.</div>
+<article class="definition definition-like" id="def-pagerank-google-matrix"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">4.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">순간이동을 포함한 페이지랭크.</span>
 </h3>
-<div class="para" id="thm-matrix-tree-2-1">유향 그래프 <span class="process-math">\(G\)</span>와 꼭짓점 <span class="process-math">\(r\)</span>에 대하여, 뿌리가 <span class="process-math">\(r\)</span>인 <span class="process-math">\(G\)</span>의 신장 트리의 개수는 <span class="process-math">\(\det L_r\)</span>이다.</div></article><details id="thm-matrix-tree-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-matrix-tree-3-1">증명은 세 단계로 이루어집니다. 표준 기저 <span class="process-math">\(e_1,\dots,e_n\)</span>에서 <span class="process-math">\(e_r\)</span>을 지운 공간 <span class="process-math">\(\mathbb F^{V\setminus\{r\}}\)</span>을 생각하고, 이 공간에서 <span class="process-math">\(e_r=0\)</span>으로 약속합니다.</div>
-<section class="paragraphs" id="thm-matrix-tree-3-2"><h4 class="heading"><span class="title">1단계: 열을 변들의 합으로 분해하기.</span></h4>
-<div class="para logical" id="thm-matrix-tree-3-2-2">
-<div class="para">
-<span class="process-math">\(v\ne r\)</span>에 대하여 <span class="process-math">\(L_r\)</span>의 <span class="process-math">\(v\)</span>번째 열은 대각성분 <span class="process-math">\(d^-(v)\)</span>와 비대각성분 <span class="process-math">\(-A_{uv}\)</span>로 이루어지므로</div>
+<div class="para" id="def-pagerank-google-matrix-2-1">
+<span class="process-math">\(0&lt;\alpha&lt;1\)</span>일 때, 매 단계에서 확률 <span class="process-math">\(\alpha\)</span>로 분포 <span class="process-math">\(v\)</span>에 따라 페이지를 새로 선택하고 확률 <span class="process-math">\(1-\alpha\)</span>로 링크 행렬 <span class="process-math">\(P\)</span>를 따른다고 하자. 이때 <span class="process-math">\(\alpha\)</span>를 <dfn class="terminology">순간이동률</dfn><aside class="aside aside-like" id="def-pagerank-google-matrix-2-1-8"><div class="para" id="def-pagerank-google-matrix-2-1-8-1">순간이동률:teleportation rate</div></aside>이라고 하며, 전이 행렬</div>
 <div class="displaymath process-math">
 \begin{equation*}
-(L_r)_{\ast v}=\sum_{e=(u\to v)}(e_v-e_u)
+G=(1-\alpha)P+\alpha v\mathbf{1}^{\mathsf T}
 \end{equation*}
 </div>
-<div class="para">입니다. 여기서 합은 <span class="process-math">\(v\)</span>로 들어오는 모든 변에 대한 것이며, <span class="process-math">\(u=r\)</span>인 항은 <span class="process-math">\(e_v\)</span>가 됩니다. 행렬식은 각 열에 대해 다중선형이므로, 각 <span class="process-math">\(v\ne r\)</span>마다 들어오는 변 하나를 고르는 모든 선택에 대해 전개하면</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\det L_r=\sum_{p}\det M_p,\qquad M_p\text{의 } v\text{번째 열}=e_v-e_{p(v)}
-\end{equation*}
-</div>
-<div class="para">를 얻습니다. 여기서 합은 들어오는 변의 선택, 곧 각 <span class="process-math">\(v\)</span>에 대해 <span class="process-math">\(p(v)\to v\)</span>가 변인 부모 함수 <span class="process-math">\(p:V\setminus\{r\}\to V\)</span> 전체에 대한 것입니다.</div>
-</div></section><section class="paragraphs" id="thm-matrix-tree-3-3"><h4 class="heading"><span class="title">2단계: 순환이 있으면 기여가 0.</span></h4>
-<div class="para logical" id="thm-matrix-tree-3-3-2">
-<div class="para">
-<span class="process-math">\(p\)</span>를 반복 적용했을 때 <span class="process-math">\(r\)</span>에 도달하지 못하는 꼭짓점이 있으면, 유한성에 의해 <span class="process-math">\(p\)</span>는 <span class="process-math">\(r\)</span>을 포함하지 않는 순환 <span class="process-math">\(C=\{v_1,\dots,v_k\}\text{,}\)</span> <span class="process-math">\(p(v_i)=v_{i+1}\)</span>(<span class="process-math">\(v_{k+1}=v_1\)</span>)을 가집니다. 그러면</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\sum_{i=1}^{k}(e_{v_i}-e_{p(v_i)})=\sum_{i=1}^k e_{v_i}-\sum_{i=1}^k e_{v_{i+1}}=0
-\end{equation*}
-</div>
-<div class="para">이므로 <span class="process-math">\(M_p\)</span>의 열들이 일차종속이고 <span class="process-math">\(\det M_p=0\)</span>입니다.</div>
-</div></section><section class="paragraphs" id="thm-matrix-tree-3-4"><h4 class="heading"><span class="title">3단계: 트리이면 기여가 1.</span></h4>
-<div class="para" id="thm-matrix-tree-3-4-2">
-<span class="process-math">\(p\)</span>에 순환이 없으면 모든 꼭짓점이 <span class="process-math">\(r\)</span>에 도달하므로 <span class="process-math">\(p\)</span>는 뿌리가 <span class="process-math">\(r\)</span>인 신장 트리를 정합니다. 뿌리로부터의 거리가 감소하지 않는 순서로 <span class="process-math">\(V\setminus\{r\}\)</span>을 나열하면 부모는 항상 자식보다 앞에 옵니다. 행과 열을 같은 순열로 재배열해도 행렬식은 변하지 않으며, 이 순서에서 <span class="process-math">\(M_p=I-P\)</span>이고 <span class="process-math">\(P\)</span>는 <span class="process-math">\(p(v)\ne r\)</span>일 때 <span class="process-math">\((p(v),v)\)</span> 성분만 <span class="process-math">\(1\)</span>인 순상삼각행렬입니다. 따라서 <span class="process-math">\(M_p\)</span>는 대각성분이 모두 <span class="process-math">\(1\)</span>인 상삼각행렬이고 <span class="process-math">\(\det M_p=1\)</span>입니다.</div></section><div class="para" id="thm-matrix-tree-3-5">세 단계를 종합하면 <span class="process-math">\(\det L_r\)</span>은 뿌리가 <span class="process-math">\(r\)</span>인 신장 트리마다 <span class="process-math">\(1\)</span>씩 더한 값, 곧 그 개수와 같습니다.</div></article></details><details id="ex-matrix-tree-expansion" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">전개 과정의 예.</span>
-</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-matrix-tree-expansion-2">
-<div class="para">
-<a href="sec-matrix-tree-theorem.html#ex-laplacian-small" class="xref" data-knowl="./knowl/xref/ex-laplacian-small.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.2.3: 꼭짓점이 세 개인 그래프의 라플라시안">예시 5.2.3</a>의 그래프에서 <span class="process-math">\(L_1\)</span>의 두 열은</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-laplacian-small.html">
-\begin{equation*}
-\begin{pmatrix}2\\-1\end{pmatrix}=\underbrace{\begin{pmatrix}1\\0\end{pmatrix}}_{1\to2}+\underbrace{\begin{pmatrix}1\\-1\end{pmatrix}}_{3\to2},\qquad
-\begin{pmatrix}-1\\2\end{pmatrix}=\underbrace{\begin{pmatrix}0\\1\end{pmatrix}}_{1\to3}+\underbrace{\begin{pmatrix}-1\\1\end{pmatrix}}_{2\to3}
-\end{equation*}
-</div>
-<div class="para">로 분해됩니다. 다중선형성으로 전개하면 네 개의 행렬식</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-laplacian-small.html">
-\begin{equation*}
-\det\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}+\det\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}+\det\begin{pmatrix}1&amp;0\\-1&amp;1\end{pmatrix}+\det\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}=1+1+1+0
-\end{equation*}
-</div>
-<div class="para">이 나오며, 각각 부모 함수 <span class="process-math">\((1,1)\text{,}\)</span> <span class="process-math">\((1,2)\text{,}\)</span> <span class="process-math">\((3,1)\text{,}\)</span> <span class="process-math">\((3,2)\)</span>에 대응합니다. 마지막 항은 순환 <span class="process-math">\(2\to3\to2\)</span>에 해당하여 두 열의 합이 <span class="process-math">\(0\)</span>이 되므로 사라집니다.</div>
-</div></article></details><details id="ex-matrix-tree-complete" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">5.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">완전 그래프의 경우.</span>
-</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-matrix-tree-complete-2">
-<div class="para">서로 다른 두 꼭짓점 사이에 양방향 변이 모두 있는 그래프에서는 <span class="process-math">\(d^-(v)=n-1\)</span>이므로 <span class="process-math">\(L=nI-J\)</span>입니다. 여기서 <span class="process-math">\(J\)</span>는 모든 성분이 <span class="process-math">\(1\)</span>인 행렬입니다. 따라서 <span class="process-math">\(L_r=nI_{n-1}-J_{n-1}\)</span>입니다. <span class="process-math">\(J_{n-1}\)</span>의 고윳값은 <span class="process-math">\(n-1\)</span>(중복도 <span class="process-math">\(1\)</span>)과 <span class="process-math">\(0\)</span>(중복도 <span class="process-math">\(n-2\)</span>)이므로 <span class="process-math">\(L_r\)</span>의 고윳값은 <span class="process-math">\(1\)</span>과 <span class="process-math">\(n\)</span>(중복도 <span class="process-math">\(n-2\)</span>)이고</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-complete-graph-spanning-tree-count.html">
-\begin{equation*}
-\det L_r=n^{n-2}
-\end{equation*}
-</div>
-<div class="para">입니다. 이는 <a href="sec-matrix-tree-theorem.html#prop-complete-graph-spanning-tree-count" class="xref" data-knowl="./knowl/xref/prop-complete-graph-spanning-tree-count.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 5.2.1: 완전 그래프의 신장 트리의 개수">명제 5.2.1</a>를 프뤼퍼 부호 없이 다시 얻은 것입니다.</div>
-</div></article></details><article class="remark remark-like" id="rem-matrix-tree-complexity"><h3 class="heading">
-<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">5.2.7</span><span class="period">.</span><span class="space"> </span><span class="title">계산 복잡도.</span>
+<div class="para" id="def-pagerank-google-matrix-2-3">를 <dfn class="terminology">구글 행렬</dfn><aside class="aside aside-like" id="def-pagerank-google-matrix-2-3-2"><div class="para" id="def-pagerank-google-matrix-2-3-2-1">구글 행렬:Google matrix</div></aside>이라고 한다. 여기서 <span class="process-math">\(\mathbf{1}\)</span>은 모든 성분이 <span class="process-math">\(1\)</span>인 열벡터이다. <span class="process-math">\(G\)</span>의 정상분포 <span class="process-math">\(\pi\)</span>의 각 성분을 해당 페이지의 <dfn class="terminology">페이지랭크</dfn><aside class="aside aside-like" id="def-pagerank-google-matrix-2-3-8"><div class="para" id="def-pagerank-google-matrix-2-3-8-1">페이지랭크:PageRank</div></aside>라고 한다.</div></article><div class="para" id="sec-pagerank-16">행렬 <span class="process-math">\(v\mathbf{1}^{\mathsf T}\)</span>의 모든 열은 <span class="process-math">\(v\)</span>입니다. 따라서 <span class="process-math">\(G\)</span>의 각 열의 합은 <span class="process-math">\(1\)</span>이고, <span class="process-math">\(G_{ij}\geq\alpha v_i&gt;0\)</span>입니다. 순간이동은 원래 링크가 없는 페이지 사이에도 양의 이동 확률을 부여합니다.</div>
+<article class="theorem theorem-like" id="thm-pagerank-perron-frobenius"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">4.4.7</span><span class="period">.</span><span class="space"> </span><span class="title">양의 행렬에 대한 페론–프로베니우스 정리.</span>
 </h3>
-<div class="para" id="rem-matrix-tree-complexity-2">
-<span class="process-math">\(\det L_r\)</span>은 가우스 소거법으로 <span class="process-math">\(O(n^3)\)</span>번의 산술 연산으로 계산할 수 있습니다. 따라서 지수적으로 많은 신장 트리를 나열하지 않고도 그 개수를 다항 시간에 구할 수 있습니다.</div></article></section></div>
+<div class="para" id="thm-pagerank-perron-frobenius-2-1">모든 성분이 양수인 실수 정사각행렬 <span class="process-math">\(A\)</span>의 스펙트럼 반지름 <span class="process-math">\(r=\max\{|\lambda|:\lambda\text{는 }A\text{의 고유값}\}\)</span>은 양의 고유값이다. 이 고유값은 대수적 중복도가 <span class="process-math">\(1\)</span>이며 모든 성분이 양수인 고유벡터를 갖는다. 다른 모든 고유값 <span class="process-math">\(\lambda\)</span>는 <span class="process-math">\(|\lambda|&lt;r\)</span>를 만족한다.</div></article><article class="proposition theorem-like" id="prop-pagerank-unique-limit"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">4.4.8</span><span class="period">.</span><span class="space"> </span><span class="title">페이지랭크의 유일성과 수렴.</span>
+</h3>
+<div class="para" id="prop-pagerank-unique-limit-2-1">
+<span class="process-math">\(0&lt;\alpha&lt;1\)</span>이고 <span class="process-math">\(v_i&gt;0\)</span>이면 구글 행렬 <span class="process-math">\(G\)</span>는 유일한 정상분포 <span class="process-math">\(\pi\)</span>를 갖는다. 모든 <span class="process-math">\(\pi_i\)</span>는 양수이며, 임의의 초기 확률벡터 <span class="process-math">\(p^{(0)}\)</span>에 대해 <span class="process-math">\(G^k p^{(0)}\to\pi\)</span>이다.</div></article><details id="prop-pagerank-unique-limit-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-pagerank-unique-limit-3-1">
+<span class="process-math">\(G\)</span>의 열의 합이 <span class="process-math">\(1\)</span>이므로 <span class="process-math">\(\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}\)</span>이며 <span class="process-math">\(1\)</span>은 <span class="process-math">\(G\)</span>의 고유값입니다. 또한 유도된 <span class="process-math">\(1\)</span>-노름이 <span class="process-math">\(\|G\|_1=1\)</span>이므로 모든 고유값의 절댓값은 <span class="process-math">\(1\)</span> 이하입니다. 따라서 스펙트럼 반지름은 <span class="process-math">\(1\)</span>입니다.</div>
+<div class="para" id="prop-pagerank-unique-limit-3-2">
+<span class="process-math">\(G\)</span>의 모든 성분이 양수이므로 페론–프로베니우스 정리를 적용할 수 있습니다. 고유값 <span class="process-math">\(1\)</span>에 대응하는 양의 고유벡터를 성분의 합이 <span class="process-math">\(1\)</span>이 되도록 정규화하면 유일한 정상분포 <span class="process-math">\(\pi\)</span>를 얻습니다.</div>
+<div class="para" id="prop-pagerank-unique-limit-3-3">수렴을 직접 확인하려면 <span class="process-math">\(\mathbf{1}^{\mathsf T}(p-\pi)=0\)</span>을 이용합니다. 순간이동 항은 두 확률분포의 차이에 작용할 때 사라지므로</div>
+<div class="displaymath process-math" id="prop-pagerank-unique-limit-3-4">
+\begin{align*}
+G(p-\pi)&amp;=(1-\alpha)P(p-\pi),\\
+\|G^k p^{(0)}-\pi\|_1&amp;\leq(1-\alpha)^k\|p^{(0)}-\pi\|_1.
+\end{align*}
+</div>
+<div class="para" id="prop-pagerank-unique-limit-3-5">여기서 <span class="process-math">\(\|x\|_1=\sum_i|x_i|\)</span>이며 <span class="process-math">\(\|P\|_1=1\)</span>을 사용했습니다. <span class="process-math">\(1-\alpha&lt;1\)</span>이므로 오른쪽은 <span class="process-math">\(0\)</span>으로 수렴합니다.</div></article></details><div class="para" id="sec-pagerank-19">순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <span class="process-math">\(\alpha\)</span>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 위의 수렴 상한은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <span class="process-math">\(\alpha\)</span>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <span class="process-math">\(v\)</span>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+\begin{equation*}
+\pi=(1-\alpha)P\pi+\alpha v.
+\end{equation*}
+</div>
+<div class="para" id="sec-pagerank-21">
+<span class="process-math">\(\alpha\)</span>가 <span class="process-math">\(1\)</span>에 가까워지면 <span class="process-math">\(\pi\)</span>는 <span class="process-math">\(v\)</span>에 가까워집니다. 반대로 <span class="process-math">\(\alpha=0\)</span>에서는 링크 행렬의 비유일성이나 주기성 문제가 다시 나타날 수 있습니다. 흔히 사용하는 선택은 순간이동률 <span class="process-math">\(\alpha=0.15\text{,}\)</span> 즉 링크를 따를 확률 <span class="process-math">\(0.85\)</span>입니다.</div>
+<div class="para" id="sec-pagerank-22">균등분포 <span class="process-math">\(v\)</span>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <span class="process-math">\(v\)</span>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. 일부 성분이 <span class="process-math">\(0\)</span>이면 양의 행렬이라는 가정이 깨지므로 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.</div>
+<div class="para" id="sec-pagerank-23">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <span class="process-math">\(0\)</span>인 희소 행렬입니다. 따라서 <span class="process-math">\(G\)</span>를 만들지 않고 정상 분포 <span class="process-math">\(\pi\)</span>를 구하는 방법이 필요합니다. <a href="sec-pagerank.html#prop-pagerank-unique-limit" class="xref" data-knowl="./knowl/xref/prop-pagerank-unique-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.4.8: 페이지랭크의 유일성과 수렴">명제 4.4.8</a>은 <span class="process-math">\(G\)</span>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다. 희소행렬에 대해서는 <a href="ch-sparse-matrices.html" class="internal" title="Ch. 9: 희소행렬">Ch. 9</a>에서 다룹니다.</div></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-graphs-and-incidence.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-attention.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-perron-frobenius.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
