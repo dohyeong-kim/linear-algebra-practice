@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-pagerank" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>페이지랭크</title>
+
+  <p>웹페이지의 중요도를 링크 구조만으로 평가하려면 어떻게 해야 할까요? 많은 페이지가 가리키는 페이지, 특히 중요한 페이지가 가리키는 페이지에 높은 점수를 주는 것이 자연스럽습니다. 페이지랭크는 이 생각을 확률적 이동 모형과 고유벡터를 이용하여 구현합니다. 먼저 이러한 이동을 기술하는 마르코프 연쇄를 정의합니다.</p>
+
+
+    <definition xml:id="def-pagerank-markov-chain">
+      <title>유한 상태 마르코프 연쇄</title>
+      <statement>
+        <p>상태 집합이 <m>\{1,\ldots,n\}</m>인 확률변수의 열 <m>X_0,X_1,\ldots</m>이 <term>마르코프 연쇄</term> (Markov chain)라는 것은, 확률이 양수인 모든 과거 이력에 대하여 다음 조건을 만족한다는 뜻이다.</p>
+        <md><mrow>\Pr(X_{k+1}=i\mid X_k=j,X_{k-1}=j_{k-1},\ldots,X_0=j_0)=\Pr(X_{k+1}=i\mid X_k=j).</mrow></md>
+        <p>오른쪽의 조건부 확률이 시각 <m>k</m>에 의존하지 않으면 시간 동질적이라고 한다. 이 경우 <m>P_{ij}=\Pr(X_{k+1}=i\mid X_k=j)</m>로 정의되는 행렬 <m>P</m>를 <term>전이 행렬</term> (transition matrix)이라고 한다. 이 절에서는 확률분포를 열벡터로 나타내므로 <m>P</m>의 각 열의 합은 <m>1</m>이다.</p>
+        <md><mrow>P_{ij}\geq 0,\qquad \sum_{i=1}^{n}P_{ij}=1.</mrow></md>
+      </statement>
+    </definition>
+
+    <example xml:id="ex-pagerank-markov-chain-two-state">
+      <title>두 상태 마르코프 연쇄</title>
+      <p>날씨가 맑음(상태 <m>1</m>) 또는 흐림(상태 <m>2</m>)이라고 합시다. 오늘의 날씨만 알면 내일의 날씨 분포를 정할 수 있고, 오늘 이전의 날씨는 추가 정보를 주지 않는다고 가정합니다. 맑은 날 다음 날이 맑을 확률은 <m>0.8</m>, 흐릴 확률은 <m>0.2</m>이며, 흐린 날 다음 날이 맑을 확률은 <m>0.3</m>, 흐릴 확률은 <m>0.7</m>이라고 하면 전이 행렬은</p>
+      <md><mrow>P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}</mrow></md>
+      <p>입니다. 열은 오늘의 상태를 나타내므로 각 열의 합은 <m>1</m>입니다. 오늘 맑고 어제도 맑았을 때 내일 흐릴 조건부 확률은 오늘 맑다는 사실만으로 정해지므로 <m>\Pr(X_{k+1}=2\mid X_k=1,X_{k-1}=1)=\Pr(X_{k+1}=2\mid X_k=1)=0.2</m>입니다. 이것이 마르코프 조건의 한 예입니다.</p>
+    </example>
+
+    <p>마르코프 조건은 다음 이동의 확률을 결정할 때 현재 상태만 필요하다는 뜻입니다. <m>p_i^{(k)}=\Pr(X_k=i)</m>로 두면 전체확률법칙에 따라 분포의 변화는 행렬 곱으로 표현됩니다.</p>
+    <me>p^{(k+1)}=Pp^{(k)},\qquad p^{(k)}=P^k p^{(0)}.</me>
+
+    <definition xml:id="def-pagerank-stationary-distribution">
+      <title>정상분포</title>
+      <statement>
+        <p>전이 행렬 <m>P</m>에 대하여 다음 조건을 만족하는 벡터 <m>\pi</m>를 <term>정상분포</term> (stationary distribution)라고 한다.</p>
+        <md><mrow>P\pi=\pi,\qquad \pi_i\geq 0,\qquad \sum_{i=1}^{n}\pi_i=1.</mrow></md>
+        <p>즉, 정상분포는 고유값 <m>1</m>에 대응하는 고유벡터 중 확률분포로 정규화된 벡터이다.</p>
+      </statement>
+    </definition>
+
+    <example xml:id="ex-pagerank-two-state-stationary-distribution">
+      <title>두 상태 연쇄의 정상분포</title>
+      <p>앞의 날씨 모형의 전이 행렬은</p>
+      <md><mrow>P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}</mrow></md>
+      <p>입니다. 정상분포 <m>\pi=(\pi_1,\pi_2)^{\mathsf T}</m>는 <m>P\pi=\pi</m>를 만족하므로 <m>0.2\pi_1=0.3\pi_2</m>입니다. 여기에 <m>\pi_1+\pi_2=1</m>을 적용하면</p>
+      <md><mrow>\pi=\begin{pmatrix}3/5\\2/5\end{pmatrix}</mrow></md>
+      <p>를 얻습니다. 실제로 <m>P\pi=(3/5,2/5)^{\mathsf T}=\pi</m>이므로, 이 분포에서는 하루가 지나도 맑음과 흐림의 확률이 변하지 않습니다.</p>
+    </example>
+
+    <p>이제 웹페이지를 상태로 생각합니다. 페이지 <m>j</m>에서 나가는 링크가 <m>d_j&gt;0</m>개이면 사용자는 그중 하나를 같은 확률로 선택한다고 가정합니다. 중복 링크를 제외할 때 링크에 따른 전이 확률은 다음과 같습니다.</p>
+    <me>
+      P_{ij}=\begin{cases}
+        1/d_j, &amp; \text{페이지 }j\text{에서 }i\text{로 가는 링크가 있을 때},\\
+        0, &amp; \text{그 밖의 경우}.
+      \end{cases}
+    </me>
+    <p>나가는 링크가 없는 페이지에서는 이 규칙을 그대로 사용할 수 없습니다. 이러한 페이지의 열은 미리 선택한 확률벡터 <m>v</m>로 대체합니다. 여기서는 모든 <m>i</m>에 대해 <m>v_i&gt;0</m>이고 <m>\sum_i v_i=1</m>이라고 가정합니다. 예를 들어 <m>v_i=1/n</m>이면 모든 페이지를 같은 확률로 선택합니다. 이 보정을 거친 <m>P</m>는 각 열의 합이 <m>1</m>인 비음수 행렬입니다.</p>
+
+    <p>정상분포를 중요도 점수로 사용하면 <m>\pi_i=\sum_j P_{ij}\pi_j</m>가 됩니다. 따라서 페이지 <m>i</m>의 점수는 자신을 가리키는 페이지들의 점수를 링크 수에 따라 나눈 값의 합입니다. 다만 이 링크 행렬만으로는 정상분포의 유일성이나 반복 계산의 수렴을 보장할 수 없습니다.</p>
+    <example xml:id="ex-pagerank-link-obstructions">
+      <title>링크만으로 계산할 때의 문제</title>
+      <p>서로 연결되지 않은 두 페이지가 각각 자기 자신으로만 연결되면 <m>P=I_2</m>입니다. 이때 모든 확률벡터가 정상분포이므로 중요도 점수가 유일하지 않습니다. 한편 두 페이지가 서로에게만 연결되면</p>
+      <me>P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}</me>
+      <p>이며 정상분포는 <m>(1/2,1/2)^{\mathsf T}</m>로 유일합니다. 그러나 초기분포가 <m>(1,0)^{\mathsf T}</m>이면 반복은 두 상태 사이를 번갈아 오가며 수렴하지 않습니다.</p>
+    </example>
+
+
+    <p>이 문제를 해결하기 위해 사용자가 가끔 링크를 따르지 않고 새로운 페이지로 이동하도록 모형을 바꿉니다.</p>
+    <definition xml:id="def-pagerank-google-matrix">
+      <title>순간이동을 포함한 페이지랭크</title>
+      <statement>
+        <p><m>0&lt;\alpha&lt;1</m>일 때, 매 단계에서 확률 <m>\alpha</m>로 분포 <m>v</m>에 따라 페이지를 새로 선택하고 확률 <m>1-\alpha</m>로 링크 행렬 <m>P</m>를 따른다고 하자. 이때 <m>\alpha</m>를 <term>순간이동률</term><aside><p>순간이동률:teleportation rate</p></aside>이라고 하며, 전이 행렬</p>
+        <me>G=(1-\alpha)P+\alpha v\mathbf{1}^{\mathsf T}</me>
+        <p>를 <term>구글 행렬</term><aside><p>구글 행렬:Google matrix</p></aside>이라고 한다. 여기서 <m>\mathbf{1}</m>은 모든 성분이 <m>1</m>인 열벡터이다. <m>G</m>의 정상분포 <m>\pi</m>의 각 성분을 해당 페이지의 <term>페이지랭크</term><aside><p>페이지랭크:PageRank</p></aside>라고 한다.</p>
+      </statement>
+    </definition>
+
+    <p>행렬 <m>v\mathbf{1}^{\mathsf T}</m>의 모든 열은 <m>v</m>입니다. 따라서 <m>G</m>의 각 열의 합은 <m>1</m>이고, <m>G_{ij}\geq\alpha v_i&gt;0</m>입니다. 순간이동은 원래 링크가 없는 페이지 사이에도 양의 이동 확률을 부여합니다.</p>
+
+    <theorem xml:id="thm-pagerank-perron-frobenius">
+      <title>양의 행렬에 대한 페론–프로베니우스 정리</title>
+      <statement>
+        <p>모든 성분이 양수인 실수 정사각행렬 <m>A</m>의 스펙트럼 반지름 <m>r=\max\{|\lambda|:\lambda\text{는 }A\text{의 고유값}\}</m>은 양의 고유값이다. 이 고유값은 대수적 중복도가 <m>1</m>이며 모든 성분이 양수인 고유벡터를 갖는다. 다른 모든 고유값 <m>\lambda</m>는 <m>|\lambda|&lt;r</m>를 만족한다.</p>
+      </statement>
+    </theorem>
+
+    <proposition xml:id="prop-pagerank-unique-limit">
+      <title>페이지랭크의 유일성과 수렴</title>
+      <statement>
+        <p><m>0&lt;\alpha&lt;1</m>이고 <m>v_i&gt;0</m>이면 구글 행렬 <m>G</m>는 유일한 정상분포 <m>\pi</m>를 갖는다. 모든 <m>\pi_i</m>는 양수이며, 임의의 초기 확률벡터 <m>p^{(0)}</m>에 대해 <m>G^k p^{(0)}\to\pi</m>이다.</p>
+      </statement>
+      <proof>
+        <p><m>G</m>의 열의 합이 <m>1</m>이므로 <m>\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}</m>이며 <m>1</m>은 <m>G</m>의 고유값입니다. 또한 유도된 <m>1</m>-노름이 <m>\|G\|_1=1</m>이므로 모든 고유값의 절댓값은 <m>1</m> 이하입니다. 따라서 스펙트럼 반지름은 <m>1</m>입니다.</p>
+        <p><m>G</m>의 모든 성분이 양수이므로 페론–프로베니우스 정리를 적용할 수 있습니다. 고유값 <m>1</m>에 대응하는 양의 고유벡터를 성분의 합이 <m>1</m>이 되도록 정규화하면 유일한 정상분포 <m>\pi</m>를 얻습니다.</p>
+        <p>수렴을 직접 확인하려면 <m>\mathbf{1}^{\mathsf T}(p-\pi)=0</m>을 이용합니다. 순간이동 항은 두 확률분포의 차이에 작용할 때 사라지므로</p>
+        <md>
+          <mrow>G(p-\pi)&amp;=(1-\alpha)P(p-\pi),</mrow>
+          <mrow>\|G^k p^{(0)}-\pi\|_1&amp;\leq(1-\alpha)^k\|p^{(0)}-\pi\|_1.</mrow>
+        </md>
+        <p>여기서 <m>\|x\|_1=\sum_i|x_i|</m>이며 <m>\|P\|_1=1</m>을 사용했습니다. <m>1-\alpha&lt;1</m>이므로 오른쪽은 <m>0</m>으로 수렴합니다.</p>
+      </proof>
+    </proposition>
+
+    <p>순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <m>\alpha</m>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 위의 수렴 상한은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <m>\alpha</m>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <m>v</m>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.</p>
+    <me>\pi=(1-\alpha)P\pi+\alpha v.</me>
+    <p><m>\alpha</m>가 <m>1</m>에 가까워지면 <m>\pi</m>는 <m>v</m>에 가까워집니다. 반대로 <m>\alpha=0</m>에서는 링크 행렬의 비유일성이나 주기성 문제가 다시 나타날 수 있습니다. 흔히 사용하는 선택은 순간이동률 <m>\alpha=0.15</m>, 즉 링크를 따를 확률 <m>0.85</m>입니다.</p>
+
+    <p>균등분포 <m>v</m>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <m>v</m>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. 일부 성분이 <m>0</m>이면 양의 행렬이라는 가정이 깨지므로 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.</p>
+
+    <p>대규모 웹에서는 <m>G</m>를 직접 저장하지 않습니다. 순간이동 항 때문에 <m>G</m>는 모든 성분이 양수인 조밀 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <m>0</m>인 희소 행렬입니다. 따라서 <m>G</m>를 만들지 않고 정상 분포 <m>\pi</m>를 구하는 방법이 필요합니다. <xref ref="prop-pagerank-unique-limit"/>은 <m>G</m>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다. 희소행렬에 대해서는 <xref ref="ch-sparse-matrices"/>에서 다룹니다. 
+    </p>
+    
+</section>
