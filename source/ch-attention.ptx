@@ -12,6 +12,6 @@
     </p>
   </introduction>
   <xi:include href="sec-deep-neural-network.ptx" />
-  <xi:include href="sec-multi-head-attention.ptx" />  
+  <xi:include href="sec-attention.ptx" />  
 
 </chapter>

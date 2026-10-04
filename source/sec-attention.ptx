@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-attention" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>어텐션</title>
+  <p>
+    이 절에서는 어텐션 개념에 대해 알아봅니다. 이는 <xref ref="sec-deep-neural-network"/>에서 알아본 심층신경망의 특수한 경우입니다. 즉, 간단한 비선형함수로부터 가중치를 고려한 선형결합과 합성을 통하여 원하는 함수를 구성하는 방법입니다. 이때 필요한 소프트맥스 함수를 먼저 알아봅시다.
+  </p>
+
+  <definition xml:id="def-softmax">
+    <title>소프트맥스 함수</title>
+    <p><term>소프트맥스 함수</term><aside><p>용어:softmax function</p></aside>는 실수 벡터를 양의 성분들의 합이 1인 벡터로 보내는 함수입니다. <m>x=(x_1,\ldots,x_n)\in\mathbb R^n</m>에 대해 그 <m>i</m>번째 성분을 다음과 같이 정의합니다.</p>
+    <md>
+      <mrow>\operatorname{softmax}(x)_i=\frac{\exp(x_i)}{\sum_{j=1}^{n}\exp(x_j)},\qquad i=1,\ldots,n.</mrow>
+    </md>
+  </definition>
+  
+  
+  <example xml:id="ex-softmax-numerical">
+    <title>소프트맥스의 계산</title>
+    <p>벡터 <m>x=(0,\ln 2,\ln 3) \approx (0,0.693,1.099)</m>의 소프트맥스를 계산해 봅시다. 각 성분에 지수 함수를 적용하면 <m>(1,2,3)</m>이고, 그 합은 <m>6</m>이므로 다음과 같습니다.</p>
+    <md>
+      <mrow>\operatorname{softmax}(x)=\left(\frac{1}{6},\frac{2}{6},\frac{3}{6}\right)\approx (0.167,0.333,0.500).</mrow>
+    </md>
+  </example>
+
+  
+
+  <remark xml:id="rem-softmax-hardmax">
+    <title>소프트맥스와 하드맥스</title>
+    <p>
+      <term>하드맥스</term><aside><p>하드맥스:hardmax</p></aside>는 벡터 <m>x=(x_1,\ldots,x_n)</m>에서 가장 큰 성분의 위치만 1로 만들고 나머지는 0으로 보내는 함수입니다. 즉,
+      <me>
+        \operatorname{hardmax}(x)_i=
+        \begin{cases}
+          1, &amp; i=\arg\max_j x_j,\\
+          0, &amp; \text{그 외의 경우.}
+        \end{cases}
+      </me>
+      이 함수는 가장 큰 값만 선택하고 나머지는 무시합니다. 하드맥스 함수는 동률이 발생한 경우 여러 성분이 동시에 1이 될 수 있습니다. 반면 소프트맥스는 각 성분을 지수 함수로 변환한 뒤 합으로 나누어, 모든 성분이 양수이고 합이 1인 벡터를 만듭니다. 큰 값은 상대적으로 큰 값을 가지며 작은 값도 0이 되지 않으므로, 단 하나만 고르는 하드맥스보다 연속적이고 부드러운 선택을 합니다. 이처럼 소프트맥스는 하드맥스의 완화된 형태이며, 그래서 <term>소프트맥스</term><aside><p>소프트맥스:softmax</p></aside>라고 부릅니다.
+    </p>
+  </remark>
+
+  <definition xml:id="def-scaled-dot-product-attention">
+    <title>스케일 조정 내적 어텐션</title>
+    <p>
+      양의 정수 <m>n,d_x,d_y,d_k,d_v</m>와 행렬 <m>W_Q\in\mathbb R^{d_k\times d_x}</m>, <m>W_K\in\mathbb R^{d_k\times d_y}</m>, <m>W_V\in\mathbb R^{d_v\times d_y}</m>를 고정합니다. 이 행렬들에 대한 <term>어텐션</term><aside><p>어텐션:attention</p></aside>은 행렬 곱과 소프트맥스 함수로 구성되는 함수
+      <md>
+        <mrow>\operatorname{Attention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_v}</mrow>
+      </md>
+      로서, <m>x\in\mathbb R^{d_x}</m>와 <m>y_1,\ldots,y_n\in\mathbb R^{d_y}</m>에 대해 다음과 같이 정의합니다.
+      <md>
+        <mrow>s=(s_1,\ldots,s_n),\qquad s_j=\frac{(W_Qx)^{\mathsf T}(W_Ky_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,</mrow>
+        <mrow>\operatorname{Attention}(x;y_1,\ldots,y_n)=\sum_{j=1}^{n}\operatorname{softmax}(s)_j\,W_Vy_j.</mrow>
+      </md>
+    </p>
+  </definition>
+
+  
+
+  <p>
+    <xref ref="def-scaled-dot-product-attention"/>에서 <m>q=W_Qx</m>는 <term>질의</term><aside><p>질의:query</p><p>키:key</p><p>값:value</p></aside>, <m>k_j=W_Ky_j</m>는 <term>키</term>, <m>v_j=W_Vy_j</m>는 <term>값</term>입니다. 질의는 입력 <m>x</m>가 찾으려는 정보를 나타내고, 키는 각 참조 입력 <m>y_j</m>가 질의와 얼마나 관련되는지 비교하는 데 사용됩니다. 값은 해당 참조 입력에서 실제로 가져올 정보를 나타냅니다. 행렬 <m>W_Q,W_K,W_V</m>는 각각 입력을 질의, 키, 값으로 변환합니다.
+  </p>
+  <p>
+    점수 <m>s_j=q^{\mathsf T}k_j/\sqrt{d_k}</m>는 질의와 키의 내적으로 관련성을 측정하고, 키 공간의 차원에 따른 크기를 조정합니다. 소프트맥스로 얻은 <m>\alpha_j=\operatorname{softmax}(s)_j</m>를 <term>어텐션 가중치</term><aside><p>어텐션 가중치:attention weight</p></aside>라고 합니다. 각 가중치는 양수이고 전체 합은 1이므로, 출력 <m>\sum_{j=1}^{n}\alpha_jv_j</m>는 값 벡터들의 가중평균입니다. 점수가 큰 참조 입력일수록 그 값이 출력에 더 큰 비중으로 반영됩니다.
+  </p>
+
+  <definition xml:id="def-cross-attention">
+    <title>교차 어텐션</title>
+    <p>
+      <term>교차 어텐션</term><aside><p>용어:cross-attention</p></aside>은 질의 벡터들과 키 및 값 벡터들이 서로 다른 입력에서 오는 어텐션입니다. 질의 입력 <m>x_1,\ldots,x_r</m>과 참조 입력 <m>y_1,\ldots,y_n</m>에 대해 각 결과를 다음과 같이 정의합니다.
+    </p>
+    <md>
+      <mrow>\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldots,y_n),\qquad i=1,\ldots,r.</mrow>
+    </md>
+    <p>이때 질의에는 <m>x_i</m>를, 키와 값에는 <m>y_1,\ldots,y_n</m>을 사용합니다.</p>
+  </definition>
+
+  <definition xml:id="def-self-attention">
+    <title>자기 어텐션</title>
+    <p>
+      <term>자기 어텐션</term><aside><p>용어:self-attention</p></aside>은 질의, 키, 값이 모두 같은 입력 벡터들에서 만들어지는 어텐션입니다. 즉, <m>d_x=d_y</m>입니다. 입력 <m>x_1,\ldots,x_n</m>에 대해 각 벡터를 차례로 질의로 사용하여 다음을 정의합니다.
+    </p>
+    <md>
+      <mrow>\operatorname{SelfAttention}(x_i;x_1,\ldots,x_n)=\operatorname{Attention}(x_i;x_1,\ldots,x_n),\qquad i=1,\ldots,n.</mrow>
+    </md>
+  </definition>
+  <p>
+    어텐션 함수는 어떤 행렬들 <m>W_Q, W_K, W_V</m>에 따라 결정됩니다. 입력 벡터는 각각의 변환 행렬 <m>W_Q,W_K,W_V</m>를 통하여 질의, 키, 값으로 변환되고, 질의와 키의 내적으로 점수가 계산되며, 마지막으로 소프트맥스 함수를 적용하여 가중치가 정해집니다. 따라서 어텐션의 실행은 행렬 곱셈과 소프트맥스에 의해 지배되며, 이 과정이 최종 출력 벡터를 결정합니다.
+  </p>
+
+  <p>
+    실제 트랜스포머 기반 거대언어모형에서는 어텐션 함수를 디코더라고 부르는 영역에 각각 병렬 배치하여 사용합니다. 이를 멀티-헤드-어텐션이라 합니다. <fn>초기 모형에는 인코더와 디코더가 둘 다 있었으나 디코더만 사용하는 모형이 주류가 되었습니다.</fn>디코더 내부에 쌓아올린 어텐션 함수 사이에는 비선형 피드포워드 층과 정규화 층이 위치합니다. 이러한 거대언어모형이 효과적이기 위해서는 어텐션을 효율적으로 계산하는 것이 중요합니다.
+    <aside><p>참고: <url href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</url></p></aside>
+  </p>
+
+  <p>
+    멀티-헤드-어텐션의 구조를 간략히 살펴보겠습니다. 수학적으로 표현하자면, 새로운 행렬 <m>W_O</m>가 도입됩니다. 다음 정의에서 헤드의 개수는 <m>h</m>입니다.
+  </p>
+
+  <definition xml:id="def-multi-head-attention">
+    <title>멀티-헤드-어텐션</title>
+    <p>
+      양의 정수 <m>h,n,d_x,d_y,d_k,d_v,d_o</m>를 고정합니다. 각 <m>a=1,\ldots,h</m>에 대해 행렬 <m>W_Q^{(a)}\in\mathbb R^{d_k\times d_x}</m>, <m>W_K^{(a)}\in\mathbb R^{d_k\times d_y}</m>, <m>W_V^{(a)}\in\mathbb R^{d_v\times d_y}</m>를 고정하고, 행렬 <m>W_O\in\mathbb R^{d_o\times hd_v}</m>를 고정합니다. 이 행렬들에 대한 <term>멀티-헤드-어텐션</term><aside><p>멀티-헤드-어텐션:multi-head attention</p></aside>은 다음 함수입니다.
+    </p>
+    <md>
+      <mrow>\operatorname{MultiHeadAttention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_o}.</mrow>
+    </md>
+    <p>
+      입력 <m>x\in\mathbb R^{d_x}</m>와 <m>y_1,\ldots,y_n\in\mathbb R^{d_y}</m>에 대해, 각 <m>a=1,\ldots,h</m>의 벡터 <m>s^{(a)}\in\mathbb R^n</m>와 <m>z^{(a)}\in\mathbb R^{d_v}</m>를 다음과 같이 정의합니다.
+    </p>
+    <md>
+      <mrow>s_j^{(a)}=\frac{(W_Q^{(a)}x)^{\mathsf T}(W_K^{(a)}y_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,</mrow>
+      <mrow>z^{(a)}=\sum_{j=1}^{n}\operatorname{softmax}(s^{(a)})_j\,W_V^{(a)}y_j.</mrow>
+    </md>
+    <p>
+      이때 함수의 값은 다음과 같이 정의합니다. 괄호 안의 벡터는 <m>z^{(1)},\ldots,z^{(h)}</m>를 순서대로 이어 붙인 <m>\mathbb R^{hd_v}</m>의 열벡터입니다.
+    </p>
+    <md>
+      <mrow>\operatorname{MultiHeadAttention}(x;y_1,\ldots,y_n)=W_O\begin{pmatrix}z^{(1)}\\ \vdots\\ z^{(h)}\end{pmatrix}.</mrow>
+    </md>
+  </definition>
+  <p>
+    종합하면, 멀티-헤드-어텐션은 <m>3h+1</m>개의 행렬 <m>W_Q^{(a)}, W_K^{(a)}, W_V^{(a)}, W_O</m>에 의해 정의됩니다.
+  </p>
+
+</section> 
