@@ -2,6 +2,15 @@
 
 <chapter xml:id="ch-fast-matrix-multiplication" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>고속행렬곱</title>
+  <introduction>
+    <p>
+      이 장에서는 행렬곱을 가속하는 알고리즘을 소개합니다. 표준적인 <m>n \times n</m>행렬 두 개를 곱할 때, 무작정 계산하는 경우 소요되는 덧셈 또는 곱셈의 수는 <m>O(n^3)</m>이지만, 다양한 기법을 통해 이를 개선할 수 있습니다. 논의를 간단히 하기 위하여 체의 덧셈 또는 곱셈 연산에 드는 비용은 상수로 보겠습니다. 따라서 필요한 연산 회수가 알고리즘의 시간 복잡도에 필요한 척도가 됩니다.
+    </p>
+  </introduction>
+  <xi:include href="sec-multiplication-tensor.ptx"/>
+  <xi:include href="sec-strassen.ptx"/>
+  <xi:include href="sec-karatsuba.ptx"/>
+
 
   
 

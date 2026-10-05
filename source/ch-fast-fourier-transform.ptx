@@ -2,6 +2,13 @@
 
 <chapter xml:id="ch-fast-fourier-transform" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>고속푸리에변환</title>
+  <introduction>
+    <p>
+      이 장에서는 (이산) 푸리에변환을 다룹니다. 푸리에변환은 주어진 함수를 주기함수로 나타내는 방법으로, 이를 수행하는 것은 신호처리, 통신, 이미지 처리 등 다양한 분야에서 등장합니다. 고속푸리에변환은 이러한 푸리에변환을 효율적으로 계산하는 알고리즘입니다.
+    </p>
+  </introduction>
+  <xi:include href="sec-fast-fourier-transform.ptx"/>
+  <xi:include href="sec-fast-multipoint-evaluation.ptx"/>
 
   
 

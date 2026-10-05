@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-strassen" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>스트라센 알고리즘</title>
+  <p>스트라센 알고리즘의 핵심은 두 행렬을 각각 네 개의 블록으로 나눈 뒤, 보통 여덟 번 필요한 블록 곱셈을 일곱 번으로 줄이는 항등식입니다. 같은 크기의 정사각행렬 블록 <m>A_{ij},B_{ij}</m>를 사용하여</p>
+  <md>
+    <mrow>A=\begin{pmatrix}A_{11}&amp;A_{12}\\A_{21}&amp;A_{22}\end{pmatrix},\qquad B=\begin{pmatrix}B_{11}&amp;B_{12}\\B_{21}&amp;B_{22}\end{pmatrix},\qquad AB=\begin{pmatrix}C_{11}&amp;C_{12}\\C_{21}&amp;C_{22}\end{pmatrix}</mrow>
+  </md>
+  <p>로 놓습니다. 일반적인 블록 행렬 곱셈 공식은 다음과 같습니다.</p>
+  <md>
+    <mrow>C_{11}&amp;=A_{11}B_{11}+A_{12}B_{21},</mrow>
+    <mrow>C_{12}&amp;=A_{11}B_{12}+A_{12}B_{22},</mrow>
+    <mrow>C_{21}&amp;=A_{21}B_{11}+A_{22}B_{21},</mrow>
+    <mrow>C_{22}&amp;=A_{21}B_{12}+A_{22}B_{22}.</mrow>
+  </md>
+
+  <proposition xml:id="prop-strassen-block-identities">
+    <title>스트라센의 일곱 곱셈 항등식</title>
+    <statement>
+      <p>블록 <m>A_{ij},B_{ij}</m>가 모두 <m>\mathbb F</m> 위의 같은 크기의 정사각행렬일 때, 다음 일곱 곱을 정의하자.</p>
+      <md>
+        <mrow>M_1&amp;=(A_{11}+A_{22})(B_{11}+B_{22}),</mrow>
+        <mrow>M_2&amp;=(A_{21}+A_{22})B_{11},</mrow>
+        <mrow>M_3&amp;=A_{11}(B_{12}-B_{22}),</mrow>
+        <mrow>M_4&amp;=A_{22}(B_{21}-B_{11}),</mrow>
+        <mrow>M_5&amp;=(A_{11}+A_{12})B_{22},</mrow>
+        <mrow>M_6&amp;=(A_{21}-A_{11})(B_{11}+B_{12}),</mrow>
+        <mrow>M_7&amp;=(A_{12}-A_{22})(B_{21}+B_{22}).</mrow>
+      </md>
+      <p>그러면 곱행렬 <m>AB</m>의 네 블록은 다음과 같다.</p>
+      <md>
+        <mrow>C_{11}&amp;=M_1+M_4-M_5+M_7,</mrow>
+        <mrow>C_{12}&amp;=M_3+M_5,</mrow>
+        <mrow>C_{21}&amp;=M_2+M_4,</mrow>
+        <mrow>C_{22}&amp;=M_1-M_2+M_3+M_6.</mrow>
+      </md>
+    </statement>
+    <proof>
+      <p>분배법칙으로 각 곱을 전개하고 같은 항을 소거하면 다음 등식을 얻습니다.</p>
+      <md>
+        <mrow>M_1+M_4-M_5+M_7&amp;=A_{11}B_{11}+A_{12}B_{21},</mrow>
+        <mrow>M_3+M_5&amp;=A_{11}B_{12}+A_{12}B_{22},</mrow>
+        <mrow>M_2+M_4&amp;=A_{21}B_{11}+A_{22}B_{21},</mrow>
+        <mrow>M_1-M_2+M_3+M_6&amp;=A_{21}B_{12}+A_{22}B_{22}.</mrow>
+      </md>
+      <p>각 우변은 일반적인 블록 곱셈 공식의 해당 블록과 일치합니다. 이 계산에서는 인수의 순서를 바꾸지 않으므로 블록 행렬의 곱셈이 가환일 필요는 없습니다.</p>
+    </proof>
+  </proposition>
+
+  <p>따라서 일곱 번의 블록 곱셈과 블록의 덧셈 및 뺄셈만으로 <m>AB</m>를 계산할 수 있습니다. 곱셈은 한 번 줄였으나 블록의 덧셈과 뺄셈 수가 기존 4에서 18로 증가했으므로 별도의 최적화 과정 없이도 덧셈 또는 뺄셈을 14번 더 수행하면 충분합니다.</p>
+
+  <p>
+    덧셈과 뺄셈의 비용은 블록의 성분 수에 비례합니다. 따라서 곱셈보다 상대적으로 저렴합니다. <xref ref="def-matrix-multiplication-exponent"/>의 <m>C_{\mathbb F}(n)</m> 함수를 이용해 표현하면
+    <md number="yes">
+      <mrow>C_{\mathbb F}(2^k) \amp  \le 7 \times C_{\mathbb F}(2^{k-1})+\beta \times 4^{k-1}</mrow>
+    </md>
+    입니다. (단, <m>\beta=18</m>로 택할 수 있음.)
+    이를 재귀적으로 적용하면
+    <md number="yes">
+      <mrow>C_{\mathbb F}(2^k) \amp  \le 7^k C_{\mathbb F}(1)+\beta \sum_{i=0}^{k-1}7^i 4^{k-1-i}</mrow>
+    </md>
+    를 얻습니다. 이에 <m>2^k=n</m>을 대입하여 어림하면
+    <md number="yes">
+      <mrow>C_{\mathbb F}(n) \amp  \le 7^{\log_2 n} C_{\mathbb F}(1)+\beta \sum_{i=0}^{\log_2 n-1}7^i 4^{\log_2 n-1-i}</mrow>
+      <mrow> \amp \le n^{\log_2 7} C_{\mathbb F}(1) +  \frac{\beta}{4}  n^2  \log_2 n </mrow>
+      <mrow> \amp O(n^{\log_2^7})</mrow>
+    </md>
+    입니다. 여기서 <m>\log_27 \approx 2.807</m>입니다. 
+  </p>
+
+
+</section>
