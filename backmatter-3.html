@@ -592,6 +592,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
 #exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
 #exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+#sec-multiplication-tensor-17 { counter-set: sec-multiplication-tensor-17 0; }
+#sec-multiplication-tensor-17 > li::marker { content: ""counter(sec-multiplication-tensor-17,decimal)"."; }
+#sec-multiplication-tensor-17 > li { counter-increment: sec-multiplication-tensor-17; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -719,8 +722,21 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">어텐션</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div></li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-multiplication-tensor.html" class="internal"><span class="codenumber">7.1</span> <span class="title">행렬곱 텐서</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-strassen.html" class="internal"><span class="codenumber">7.2</span> <span class="title">스트라센 알고리즘</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-karatsuba.html" class="internal"><span class="codenumber">7.3</span> <span class="title">카라추바 알고리즘</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
 <li class="toc-item toc-backmatter contains-active">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>

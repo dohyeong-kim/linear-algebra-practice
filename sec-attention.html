@@ -592,6 +592,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
 #exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
 #exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+#sec-multiplication-tensor-17 { counter-set: sec-multiplication-tensor-17 0; }
+#sec-multiplication-tensor-17 > li::marker { content: ""counter(sec-multiplication-tensor-17,decimal)"."; }
+#sec-multiplication-tensor-17 > li { counter-increment: sec-multiplication-tensor-17; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -719,8 +722,21 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">어텐션</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div></li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-multiplication-tensor.html" class="internal"><span class="codenumber">7.1</span> <span class="title">행렬곱 텐서</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-strassen.html" class="internal"><span class="codenumber">7.2</span> <span class="title">스트라센 알고리즘</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-karatsuba.html" class="internal"><span class="codenumber">7.3</span> <span class="title">카라추바 알고리즘</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
 <li class="toc-item toc-backmatter">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
@@ -753,23 +769,12 @@ eBookConfig.enable_chatcodes =  false;
 \begin{gather*}
 \operatorname{softmax}(x)=\left(\frac{1}{6},\frac{2}{6},\frac{3}{6}\right)\approx (0.167,0.333,0.500).
 \end{gather*}
-</div></article></details><article class="remark remark-like" id="rem-softmax-hardmax"><h3 class="heading">
-<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">6.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">소프트맥스와 하드맥스.</span>
+</div></article></details><article class="remark remark-like" id="rem-softmax-argmax"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">6.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">소프트맥스와 argmax 함수.</span>
 </h3>
-<div class="para logical" id="rem-softmax-hardmax-2">
-<div class="para">
-<dfn class="terminology">하드맥스</dfn><aside class="aside aside-like" id="rem-softmax-hardmax-2-2"><div class="para" id="rem-softmax-hardmax-2-2-1">하드맥스:hardmax</div></aside>는 벡터 <span class="process-math">\(x=(x_1,\ldots,x_n)\)</span>에서 가장 큰 성분의 위치만 1로 만들고 나머지는 0으로 보내는 함수입니다. 즉,</div>
-<div class="displaymath process-math">
-\begin{equation*}
-\operatorname{hardmax}(x)_i=
-\begin{cases}
-1, &amp; i=\arg\max_j x_j,\\
-0, &amp; \text{그 외의 경우.}
-\end{cases}
-\end{equation*}
-</div>
-<div class="para">이 함수는 가장 큰 값만 선택하고 나머지는 무시합니다. 하드맥스 함수는 동률이 발생한 경우 여러 성분이 동시에 1이 될 수 있습니다. 반면 소프트맥스는 각 성분을 지수 함수로 변환한 뒤 합으로 나누어, 모든 성분이 양수이고 합이 1인 벡터를 만듭니다. 큰 값은 상대적으로 큰 값을 가지며 작은 값도 0이 되지 않으므로, 단 하나만 고르는 하드맥스보다 연속적이고 부드러운 선택을 합니다. 이처럼 소프트맥스는 하드맥스의 완화된 형태이며, 그래서 <dfn class="terminology">소프트맥스</dfn><aside class="aside aside-like" id="rem-softmax-hardmax-2-6"><div class="para" id="rem-softmax-hardmax-2-6-1">소프트맥스:softmax</div></aside>라고 부릅니다.</div>
-</div></article><article class="definition definition-like" id="def-scaled-dot-product-attention"><h3 class="heading">
+<div class="para" id="rem-softmax-argmax-2">
+<dfn class="terminology">argmax 함수</dfn>는 벡터 <span class="process-math">\(x=(x_1,\ldots,x_n)\)</span>에서 가장 큰 성분의 위치를 선택하는 함수입니다. 즉, <span class="process-math">\(\operatorname{argmax}(x)=\operatorname*{arg\,max}_{1\le j\le n}x_j\)</span>로 나타낼 수 있으며, 가장 큰 값의 위치만 하나 고르고 나머지 정보는 무시합니다. 이 연산은 선택이 단 하나만 이루어지므로 비연속적이며, 동률이 있을 때는 여러 후보가 동시에 가능한 경우도 생깁니다.</div>
+<div class="para" id="rem-softmax-argmax-3">반면 <dfn class="terminology">소프트맥스</dfn>는 각 성분을 지수 함수로 변환한 뒤 합으로 나누어 <span class="process-math">\(\operatorname{softmax}(x)_i=\frac{\exp(x_i)}{\sum_{j=1}^{n}\exp(x_j)}\)</span> 를 만듭니다. 여기서 각 성분은 모두 양수이고 합이 1이기 때문에, 결과는 “가장 큰 값일 가능성”을 연속적으로 표현하는 확률적 선택으로 해석할 수 있습니다. 큰 값은 상대적으로 큰 비중을 가지며 작은 값도 0이 되지 않습니다. 따라서 소프트맥스는 argmax를 연속적인 근사한 것으로 볼 수 있습니다. argmax함수 자체는 값이 유일하게 정의되지 않고 연속성을 갖지 않습니다.</div></article><article class="definition definition-like" id="def-scaled-dot-product-attention"><h3 class="heading">
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">스케일 조정 내적 어텐션.</span>
 </h3>
 <div class="para logical" id="def-scaled-dot-product-attention-2">
@@ -811,7 +816,7 @@ s=(s_1,\ldots,s_n),\qquad s_j=\frac{(W_Qx)^{\mathsf T}(W_Ky_j)}{\sqrt{d_k}},\qqu
 \operatorname{SelfAttention}(x_i;x_1,\ldots,x_n)=\operatorname{Attention}(x_i;x_1,\ldots,x_n),\qquad i=1,\ldots,n.
 \end{gather*}
 </div></article><div class="para" id="sec-attention-11">어텐션 함수는 어떤 행렬들 <span class="process-math">\(W_Q, W_K, W_V\)</span>에 따라 결정됩니다. 입력 벡터는 각각의 변환 행렬 <span class="process-math">\(W_Q,W_K,W_V\)</span>를 통하여 질의, 키, 값으로 변환되고, 질의와 키의 내적으로 점수가 계산되며, 마지막으로 소프트맥스 함수를 적용하여 가중치가 정해집니다. 따라서 어텐션의 실행은 행렬 곱셈과 소프트맥스에 의해 지배되며, 이 과정이 최종 출력 벡터를 결정합니다.</div>
-<div class="para" id="sec-attention-12">실제 트랜스포머 기반 거대언어모형에서는 어텐션 함수를 디코더라고 부르는 영역에 각각 병렬 배치하여 사용합니다. 이를 멀티-헤드-어텐션이라 합니다. <details class="ptx-footnote" aria-live="polite" id="sec-attention-12-1"><summary class="ptx-footnote__number" title="[fn] 6.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-1">초기 모형에는 인코더와 디코더가 둘 다 있었으나 디코더만 사용하는 모형이 주류가 되었습니다.</div></details>디코더 내부에 쌓아올린 어텐션 함수 사이에는 비선형 피드포워드 층과 정규화 층이 위치합니다. 이러한 거대언어모형이 효과적이기 위해서는 어텐션을 효율적으로 계산하는 것이 중요합니다. <aside class="aside aside-like" id="sec-attention-12-2"><div class="para" id="sec-attention-12-2-1">참고: <a class="external" href="https://jalammar.github.io/illustrated-transformer/" target="_blank">Illustrated Transformer</a><details class="ptx-footnote" aria-live="polite" id="sec-attention-12-2-1-2"><summary class="ptx-footnote__number" title="[fn] 6.2.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-2-1-2"><code class="code-inline tex2jax_ignore">jalammar.github.io/illustrated-transformer/</code></div></details>
+<div class="para" id="sec-attention-12">실제 트랜스포머 기반 거대언어모형에서는 어텐션 함수를 디코더라고 부르는 영역에 각각 병렬 배치하여 사용합니다. 이를 멀티-헤드-어텐션이라 합니다. <details class="ptx-footnote" aria-live="polite" id="sec-attention-12-1"><summary class="ptx-footnote__number" title="[fn] 6.2.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-1">초기 모형에는 인코더와 디코더가 둘 다 있었으나 디코더만 사용하는 모형이 주류가 되었습니다. 마스킹 여부에 따라 어텐션의 계산 방식이 달라질 수 있습니다.</div></details>디코더 내부에 배열한 어텐션 함수 사이에는 비선형 피드포워드 함수나 정규화 같은 다른 요소도 있습니다. 이러한 거대언어모형이 효과적이기 위한 필요조건은 어텐션을 효율적으로 계산할 수 있는 것입니다. <aside class="aside aside-like" id="sec-attention-12-2"><div class="para" id="sec-attention-12-2-1">참고: <a class="external" href="https://jalammar.github.io/illustrated-transformer/" target="_blank">Illustrated Transformer</a><details class="ptx-footnote" aria-live="polite" id="sec-attention-12-2-1-2"><summary class="ptx-footnote__number" title="[fn] 6.2.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="sec-attention-12-2-1-2"><code class="code-inline tex2jax_ignore">jalammar.github.io/illustrated-transformer/</code></div></details>
 </div></aside>
 </div>
 <div class="para" id="sec-attention-13">멀티-헤드-어텐션의 구조를 간략히 살펴보겠습니다. 수학적으로 표현하자면, 새로운 행렬 <span class="process-math">\(W_O\)</span>가 도입됩니다. 다음 정의에서 헤드의 개수는 <span class="process-math">\(h\)</span>입니다.</div>

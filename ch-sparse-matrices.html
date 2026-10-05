@@ -592,6 +592,9 @@ eBookConfig.enable_chatcodes =  false;
 #exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
 #exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
 #exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+#sec-multiplication-tensor-17 { counter-set: sec-multiplication-tensor-17 0; }
+#sec-multiplication-tensor-17 > li::marker { content: ""counter(sec-multiplication-tensor-17,decimal)"."; }
+#sec-multiplication-tensor-17 > li { counter-increment: sec-multiplication-tensor-17; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -612,7 +615,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="ch-fast-fourier-transform.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="backmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-fast-multipoint-evaluation.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="linear-algebra-practice.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="backmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -719,8 +722,21 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-attention.html" class="internal"><span class="codenumber">6.2</span> <span class="title">어텐션</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div></li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-matrix-multiplication.html" class="internal"><span class="codenumber">7</span> <span class="title">고속행렬곱</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-multiplication-tensor.html" class="internal"><span class="codenumber">7.1</span> <span class="title">행렬곱 텐서</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-strassen.html" class="internal"><span class="codenumber">7.2</span> <span class="title">스트라센 알고리즘</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-karatsuba.html" class="internal"><span class="codenumber">7.3</span> <span class="title">카라추바 알고리즘</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-chapter active"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
 <li class="toc-item toc-backmatter">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
@@ -737,7 +753,7 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">Ch.</span><span class="space"> </span><span class="codenumber">9</span><span class="space"> </span><span class="title">희소행렬</span>
 </h2></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="ch-fast-fourier-transform.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-fast-multipoint-evaluation.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
