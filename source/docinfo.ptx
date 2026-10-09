@@ -62,6 +62,7 @@
   <rename element="next-short">다음</rename> <!--잘 작동함-->
   <rename element="up-short">상위항목</rename> <!--잘 작동함-->
   <rename element="section">절</rename> <!--잘 작동함-->
+  <rename element="me">식</rename> <!--잘 작동함-->
   <!-- 미사용
     <rename element="inlineexercise">문
     제</rename> 잘 작동함

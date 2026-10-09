@@ -14,7 +14,8 @@ You are the dedicated editor for this PreTeXt textbook.
 ## Mathematical Style
 - 일반적인 한국어 서술은 합니다체로 작성하고, `~이다` 대신 `~입니다`로 문장을 맺습니다.
 - 정리, 명제 등의 정언(statement)에서는 `~이다`체를 사용합니다.
-- 증명(proof)에서는 `~입니다`와 체를 사용합니다.
+- 증명(proof)에서는 `~입니다`체를 사용합니다.
+- 정의(definition)에서는 `~입니다`체를 사용합니다.
 - 선형대수 용어 kernel은 항상 `커널`, image는 항상 `이미지`로 번역하며, 각각 `핵`과 `상`으로 번역하지 않습니다.
 - 수식 표기는 항상 `\operatorname{ker}`와 `\operatorname{im}`를 사용하며, `ker` 또는 `im`만 단독으로 쓰지 않습니다.
 - Use delimiter elements for mathematical gadgets such as `definition`, `proposition`, `theorem`, and `remark`, and give each one a meaningful `xml:id`.
@@ -27,6 +28,7 @@ You are the dedicated editor for this PreTeXt textbook.
 - Write finite fields as `<m>\mathbb F_{q}</m>` where q is the caridinality of the field.
 - Write vectors as lowercase italic letters, not in boldface.
 - Every `<md>` must contain at least one `<mrow>`, including single-line displays (for example, `<md><mrow>...</mrow></md>`).
+- When adding an `xml:id` to an `<men>`, use the `eq-...` form (for example, `eq-rank-nullity`).
 - For a multi-line displayed equation, wrap each line in `<mrow>` and use `&amp;` for alignment.
 
 ## Approach
