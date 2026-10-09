@@ -8,7 +8,7 @@
 <html lang="ko-KO" dir="">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>고속푸리에변환</title>
+<title>푸리에변환과 그 가속</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.3';
+eBookConfig.runestone_version = '8.3.4';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.dd07797f77620576.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.11d27cdc38930c2c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/prefix-runtime.7e4cb14f24eb489b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.54371ed119fe41be.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.40d828091d93b733.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -733,7 +733,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">푸리에변환과 그 가속</span></a></div></li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
 </ul>
 </li>
@@ -750,7 +750,7 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-fast-fourier-transform"><h2 class="heading hide-type">
-<span class="type">절</span><span class="space"> </span><span class="codenumber">8.1</span><span class="space"> </span><span class="title">고속푸리에변환</span>
+<span class="type">절</span><span class="space"> </span><span class="codenumber">8.1</span><span class="space"> </span><span class="title">푸리에변환과 그 가속</span>
 </h2>
 <div class="para logical" id="sec-fast-fourier-transform-2">
 <div class="para">푸리에변환은 <span class="process-math">\(\mathbb C^{2^k}\)</span>의 기저변환의 한 예입니다. <span class="process-math">\(k=2\)</span>인 예를 먼저 살펴보겠습니다. 즉, <span class="process-math">\(\mathbb C^4\)</span>를 생각합니다. 익숙한 방법으로 <span class="process-math">\(\mathbb C^4\)</span>의 원소를 벡터 <span class="process-math">\(z=(z_0,z_1,z_2,z_3)\)</span>로 나타낼수 있습니다. 한편, 주어진 벡터를 함수</div>
@@ -774,46 +774,120 @@ f_3(t) &amp;= (-\mathrm i)^t, &amp; f_3 &amp;= (1,-\mathrm i,-1,\mathrm i).
 <article class="definition definition-like" id="def-roots-of-unity"><h3 class="heading">
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">단위근.</span>
 </h3>
-<div class="para logical" id="def-roots-of-unity-2">
-<div class="para">양의 정수 <span class="process-math">\(n\)</span>에 대하여 방정식 <span class="process-math">\(w^n=1\)</span>을 만족하는 복소수 <span class="process-math">\(w\)</span>를 <dfn class="terminology"><span class="process-math">\(n\)</span>차 단위근</dfn><aside class="aside aside-like" id="def-roots-of-unity-2-5"><div class="para" id="def-roots-of-unity-2-5-1">
+<div class="para logical" id="def-roots-of-unity-2-1">
+<div class="para">양의 정수 <span class="process-math">\(n\)</span>에 대하여 방정식 <span class="process-math">\(w^n=1\)</span>을 만족하는 복소수 <span class="process-math">\(w\)</span>를 <dfn class="terminology"><span class="process-math">\(n\)</span>차 단위근</dfn><aside class="aside aside-like" id="def-roots-of-unity-2-1-5"><div class="para" id="def-roots-of-unity-2-1-5-1">
 <span class="process-math">\(n\)</span>차 단위근:<span class="process-math">\(n\)</span>th root of unity</div></aside>이라고 합니다. 복소평면에서 이들은 단위원을 <span class="process-math">\(1\)</span>부터 시작하여 반시계 방향으로 <span class="process-math">\(n\)</span>등분하는 점들입니다. 다음과 같이 표기합니다.</div>
-<div class="displaymath process-math" id="def-roots-of-unity-2-8">
+<div class="displaymath process-math" id="def-roots-of-unity-2-1-8">
 \begin{align*}
 \omega_n &amp;= e^{2\pi\mathrm i/n},\\
 \omega_n^j &amp;= e^{2\pi\mathrm i j/n}=\cos\frac{2\pi j}{n}+\mathrm i\sin\frac{2\pi j}{n},\qquad j=0,1,\ldots,n-1.
 \end{align*}
 </div>
 <div class="para">이 <span class="process-math">\(n\)</span>개의 점이 모든 <span class="process-math">\(n\)</span>차 단위근입니다. 특히 <span class="process-math">\(\omega_4=\mathrm i\)</span>이므로 앞의 네 함수는 <span class="process-math">\(f_j(t)=\omega_4^{jt}\)</span>로 나타낼 수 있습니다.</div>
-</div></article><div class="para logical" id="sec-fast-fourier-transform-4">
+</div></article><details id="ex-fourth-roots-of-unity" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">사차 단위근.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-fourth-roots-of-unity-2">
+<div class="para">
+<span class="process-math">\(n=4\)</span>일 때 사차 단위근은 <span class="process-math">\(1,\mathrm i,-1,-\mathrm i\)</span>입니다. 실제로 각각의 네제곱은 <span class="process-math">\(1\)</span>이며, 이들은 복소평면의 단위원 위에서 같은 간격으로 놓입니다.</div>
+<div class="displaymath process-math" id="ex-fourth-roots-of-unity-2-4">
+\begin{align*}
+\omega_4^j &amp;= e^{2\pi\mathrm i j/4},\qquad j=0,1,2,3,\\
+(\omega_4^0,\omega_4^1,\omega_4^2,\omega_4^3) &amp;= (1,\mathrm i,-1,-\mathrm i).
+\end{align*}
+</div>
+<div class="para">예를 들어 <span class="process-math">\(\omega_4^2=e^{\pi\mathrm i}=-1\)</span>이고, <span class="process-math">\((\omega_4^2)^4=1\)</span>입니다.</div>
+</div></article></details><details id="ex-fifth-roots-of-unity" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">오차 단위근.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-fifth-roots-of-unity-2">
+<div class="para">
+<span class="process-math">\(n=5\)</span>일 때 오차 단위근은 <span class="process-math">\(1,\omega_5,\omega_5^2,\omega_5^3,\omega_5^4\)</span>입니다. 이들은 모두 다섯제곱이 <span class="process-math">\(1\)</span>이고, 복소평면의 단위원 위에서 같은 간격으로 놓입니다.</div>
+<div class="displaymath process-math" id="ex-fifth-roots-of-unity-2-4">
+\begin{align*}
+\omega_5^j &amp;= e^{2\pi\mathrm i j/5},\qquad j=0,1,2,3,4,\\
+(\omega_5^0,\omega_5^1,\omega_5^2,\omega_5^3,\omega_5^4) &amp;= (1,\omega_5,\omega_5^2,\omega_5^3,\omega_5^4).\\
+\omega_5 &amp;\approx 0.309+0.951\mathrm i \\
+\omega_5^2 &amp;\approx -0.809+0.588\mathrm i.
+\end{align*}
+</div>
+</div></article></details><div class="para logical" id="sec-fast-fourier-transform-6">
 <div class="para">이제 <span class="process-math">\(n=2^k\)</span>로 놓습니다. 여기서 <span class="process-math">\(k\)</span>는 음이 아닌 정수입니다. 벡터 <span class="process-math">\(z=(z_0,\ldots,z_{n-1})\in\mathbb C^n\)</span>를 집합 <span class="process-math">\(\{0,\ldots,n-1\}\)</span> 위의 함수로 보고, 다음 함수들을 생각합니다.</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-4-5">
+<div class="displaymath process-math" id="sec-fast-fourier-transform-6-5">
 \begin{align*}
 f_j(t) &amp;= \omega_n^{jt},\qquad j,t\in\{0,\ldots,n-1\}.
 \end{align*}
 </div>
 <div class="para">이 함수들을 정수 전체에 확장하면 <span class="process-math">\(f_j(t+n)=f_j(t)\)</span>를 만족합니다. 기하급수의 합을 이용하면 다음 직교관계를 얻습니다.</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-4-7">
-\begin{align*}
-\sum_{t=0}^{n-1}f_j(t)\overline{f_\ell(t)} &amp;= \sum_{t=0}^{n-1}\omega_n^{(j-\ell)t}=\begin{cases}n &amp; j=\ell,\\0 &amp; j\ne\ell.\end{cases}
-\end{align*}
+<div class="displaymath process-math" id="eq-fourier-basis-orthogonality">
+\begin{equation}
+\sum_{t=0}^{n-1}f_j(t)\overline{f_\ell(t)} = \sum_{t=0}^{n-1}\omega_n^{(j-\ell)t}=\begin{cases}n  j=\ell,\\0 &amp; j\ne\ell.\end{cases}\tag{8.1.1}
+\end{equation}
 </div>
 <div class="para">따라서 <span class="process-math">\(f_0,\ldots,f_{n-1}\)</span>은 <span class="process-math">\(\mathbb C^n\)</span>의 직교기저입니다.</div>
 </div>
 <article class="definition definition-like" id="def-discrete-fourier-transform"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">이산 푸리에변환.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">이산 푸리에변환.</span>
 </h3>
-<div class="para logical" id="def-discrete-fourier-transform-2">
+<div class="para logical" id="def-discrete-fourier-transform-2-1">
 <div class="para">
-<span class="process-math">\(n=2^k\)</span>에 대하여 <dfn class="terminology">이산 푸리에변환</dfn><aside class="aside aside-like" id="def-discrete-fourier-transform-2-3"><div class="para" id="def-discrete-fourier-transform-2-3-1">이산 푸리에변환:discrete Fourier transform</div></aside>은 다음과 같이 정의되는 선형사상 <span class="process-math">\(\mathcal F_n:\mathbb C^n\to\mathbb C^n\)</span>입니다.</div>
-<div class="displaymath process-math" id="def-discrete-fourier-transform-2-5">
+<span class="process-math">\(n=2^k\)</span>에 대하여 <dfn class="terminology">이산 푸리에변환</dfn><aside class="aside aside-like" id="def-discrete-fourier-transform-2-1-3"><div class="para" id="def-discrete-fourier-transform-2-1-3-1">이산 푸리에변환:discrete Fourier transform</div></aside>은 다음과 같이 정의되는 선형사상 <span class="process-math">\(\mathcal F_n:\mathbb C^n\to\mathbb C^n\)</span>입니다.</div>
+<div class="displaymath process-math" id="def-discrete-fourier-transform-2-1-5">
 \begin{align*}
 \widehat z=\mathcal F_n(z),\qquad \widehat z_j &amp;= \sum_{t=0}^{n-1}z_t\omega_n^{-jt},\qquad j=0,\ldots,n-1.
 \end{align*}
 </div>
 <div class="para">즉, 표준기저에 대해 <span class="process-math">\(\mathcal F_n\)</span>을 나타내는 행렬은 <span class="process-math">\((\omega_n^{-jt})_{0\le j,t&lt;n}\)</span>입니다.</div>
-</div></article><div class="para logical" id="sec-fast-fourier-transform-6">
-<div class="para">위의 직교관계에 의하여 <span class="process-math">\(z\)</span>의 주기함수 기저에 대한 전개는 다음과 같습니다.</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-6-2">
+</div></article><details id="ex-dft-k1" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.1.5</span><span class="period">.</span><span class="space"> </span><span class="title"><span class="process-math">\(k=1\)</span>인 이산 푸리에변환.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-dft-k1-2">
+<div class="para">
+<span class="process-math">\(n=2\)</span>이고 <span class="process-math">\(z=(a,b)\)</span>이면 <span class="process-math">\(\omega_2=-1\)</span>이므로</div>
+<div class="displaymath process-math" id="ex-dft-k1-2-4">
+\begin{align*}
+\mathcal F_2(a,b) &amp;= (a+b,a-b),\\
+\mathcal F_2(1,2) &amp;= (3,-1)
+\end{align*}
+</div>
+<div class="para">입니다. 이를 행렬 곱으로 표현하면</div>
+<div class="displaymath process-math" id="ex-dft-k1-2-5">
+\begin{align*}
+\mathcal F_2(a,b) &amp;= \begin{pmatrix}1 &amp; 1\\ 1 &amp; -1\end{pmatrix}\begin{pmatrix}a\\ b\end{pmatrix} = (a+b,a-b).
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></article></details><details id="ex-dft-k2" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.1.6</span><span class="period">.</span><span class="space"> </span><span class="title"><span class="process-math">\(k=2\)</span>인 이산 푸리에변환.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-dft-k2-2">
+<div class="para">
+<span class="process-math">\(n=4\)</span>이고 <span class="process-math">\(z=(a,b,c,d)\)</span>이면 <span class="process-math">\(\omega_4=\mathrm i\)</span>이므로</div>
+<div class="displaymath process-math" id="ex-dft-k2-2-4">
+\begin{align*}
+\mathcal F_4(z) &amp;= (a+b+c+d,\ a-\mathrm i b-c+\mathrm i d,\ a-b+c-d,\ a+\mathrm i b-c-\mathrm i d),\\
+\mathcal F_4(1,2,3,4) &amp;= (10,-2+2\mathrm i,-2,-2-2\mathrm i)
+\end{align*}
+</div>
+<div class="para">입니다. 이를 행렬 곱으로 표현하면</div>
+<div class="displaymath process-math" id="ex-dft-k2-2-5">
+\begin{align*}
+\mathcal F_4(z) &amp;= \begin{pmatrix}1 &amp; 1 &amp; 1 &amp; 1\\ 1 &amp; -\mathrm i &amp; -1 &amp; \mathrm i\\ 1 &amp; -1 &amp; 1 &amp; -1\\ 1 &amp; \mathrm i &amp; -1 &amp; -\mathrm i\end{pmatrix}\begin{pmatrix}a\\ b\\ c\\ d\end{pmatrix} \\
+&amp; = (a+b+c+d,\ a-\mathrm i b-c+\mathrm i d,\ a-b+c-d,\ a+\mathrm i b-c-\mathrm i d)
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></article></details><details id="ex-dft-k3" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.1.7</span><span class="period">.</span><span class="space"> </span><span class="title"><span class="process-math">\(k=3\)</span>인 이산 푸리에변환.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-dft-k3-2">
+<div class="para">
+<span class="process-math">\(n=8\)</span>이고 <span class="process-math">\(z=(1,1,1,1,1,1,1,1)\)</span>이면 기하급수의 합에 따라</div>
+<div class="displaymath process-math" id="ex-dft-k3-2-3">
+\begin{align*}
+\widehat z_0 &amp;= 8,\qquad \widehat z_j=\sum_{t=0}^{7}\omega_8^{-jt}=0,\quad j=1,\ldots,7,\\
+\mathcal F_8(z) &amp;= (8,0,0,0,0,0,0,0)
+\end{align*}
+</div>
+<div class="para">입니다. 이 또한 <span class="process-math">\(8 \times 8\)</span>행렬 곱으로 표현됩니다. 행렬은 생략합니다.</div>
+</div></article></details><div class="para logical" id="sec-fast-fourier-transform-11">
+<div class="para">직교관계 <a href="sec-fast-fourier-transform.html#eq-fourier-basis-orthogonality" class="xref" data-knowl="./knowl/xref/eq-fourier-basis-orthogonality.html" data-reveal-label="Reveal" data-close-label="Close" title="[men] 8.1.1">(8.1.1)</a>에 의하여 <span class="process-math">\(z\)</span>의 주기함수 기저에 대한 전개는 다음과 같습니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq-fourier-basis-orthogonality.html" id="sec-fast-fourier-transform-11-3">
 \begin{align*}
 z &amp;= \frac1n\sum_{j=0}^{n-1}\widehat z_j f_j,\\
 z_t &amp;= \frac1n\sum_{j=0}^{n-1}\widehat z_j\omega_n^{jt},\qquad t=0,\ldots,n-1.
@@ -821,9 +895,9 @@ z_t &amp;= \frac1n\sum_{j=0}^{n-1}\widehat z_j\omega_n^{jt},\qquad t=0,\ldots,n-
 </div>
 <div class="para">따라서 푸리에변환은 주기함수 기저에 대한 좌표를 <span class="process-math">\(n\)</span>배 한 값을 구하며, 두 번째 식은 그 역변환을 줍니다. 특히 <span class="process-math">\(\mathcal F_n\)</span>은 가역입니다. <span class="process-math">\(n=2^k\)</span>일 때 이 합을 효율적으로 계산하는 방법이 고속푸리에변환입니다.</div>
 </div>
-<div class="para" id="sec-fast-fourier-transform-7">이산 푸리에변환은 행렬을 곱하는 것입니다. 표준적인 방법은 <span class="process-math">\((\omega_n^{-jt})_{0\le j,t&lt;n}\)</span>와 벡터 <span class="process-math">\(z\)</span>를 곱하는 것입니다. 이 경우 계산량은 <span class="process-math">\(O(n^2)\)</span>입니다. 고속푸리에변환은 이 계산량을 <span class="process-math">\(O(n\log n)\)</span>으로 줄여줍니다.</div>
+<div class="para" id="sec-fast-fourier-transform-12">이산 푸리에변환은 행렬을 곱하는 것입니다. 표준적인 방법은 <span class="process-math">\((\omega_n^{-jt})_{0\le j,t&lt;n}\)</span>와 벡터 <span class="process-math">\(z\)</span>를 곱하는 것입니다. 이 경우 계산량은 <span class="process-math">\(O(n^2)\)</span>입니다. 고속푸리에변환은 이 계산량을 <span class="process-math">\(O(n\log n)\)</span>으로 줄여줍니다.</div>
 <article class="definition definition-like" id="def-bit-reversal-permutation"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">비트 반전 순열.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">비트 반전 순열.</span>
 </h3>
 <div class="para logical" id="def-bit-reversal-permutation-2">
 <div class="para">
@@ -842,7 +916,7 @@ t &amp;= \sum_{r=0}^{k-1}b_r2^r=(b_{k-1}\cdots b_1b_0)_2,\qquad b_r\in\{0,1\}.
 </div>
 <div class="para">대응하는 순열행렬 <span class="process-math">\(R_n\)</span>은 <span class="process-math">\((R_nz)_j=z_{\rho_k(j)}\)</span>로 정의합니다. <span class="process-math">\(k=0\)</span>일 때에는 <span class="process-math">\(\rho_0(0)=0\text{,}\)</span> <span class="process-math">\(R_1=I_1\)</span>로 정합니다.</div>
 </div></article><article class="definition definition-like" id="def-reverse-lexicographic-order"><h3 class="heading">
-<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">역사전식 순서.</span>
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">역사전식 순서.</span>
 </h3>
 <div class="para" id="def-reverse-lexicographic-order-2">길이가 같은 이진 문자열의 <dfn class="terminology">역사전식 순서</dfn><aside class="aside aside-like" id="def-reverse-lexicographic-order-2-2"><div class="para" id="def-reverse-lexicographic-order-2-2-1">역사전식 순서:reverse-lexicographic order</div></aside>는 오른쪽 끝자리부터 왼쪽으로 비교하여, 처음으로 다른 자리에서 <span class="process-math">\(0\)</span>을 가진 문자열을 <span class="process-math">\(1\)</span>을 가진 문자열보다 앞에 놓는 순서입니다. 이는 사전식 순서를 단순히 내림차순으로 바꾸는 것이 아니라, 비교를 시작하는 방향을 바꾸는 것입니다.</div>
 <div class="para logical" id="def-reverse-lexicographic-order-3">
@@ -853,9 +927,9 @@ t &amp;= \sum_{r=0}^{k-1}b_r2^r=(b_{k-1}\cdots b_1b_0)_2,\qquad b_r\in\{0,1\}.
 \end{gather*}
 </div>
 <div class="para">의 순서이며, 이에 대응하는 정수의 순서는 <span class="process-math">\(0,4,2,6,1,5,3,7\)</span>입니다. 따라서 <span class="process-math">\(R_nz\)</span>는 입력 좌표를 역사전식 순서로 재배열한 벡터입니다.</div>
-</div></article><div class="para logical" id="sec-fast-fourier-transform-10">
+</div></article><div class="para logical" id="sec-fast-fourier-transform-15">
 <div class="para">고속푸리에변환에서는 입력을 짝수 첨자와 홀수 첨자로 나누는 순열도 중요합니다. <span class="process-math">\(n=2m\)</span>일 때 다음 순열행렬을 사용합니다.</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-10-2">
+<div class="displaymath process-math" id="sec-fast-fourier-transform-15-2">
 \begin{align*}
 S_nz &amp;= (z_0,z_2,\ldots,z_{n-2},z_1,z_3,\ldots,z_{n-1}).
 \end{align*}
@@ -863,7 +937,7 @@ S_nz &amp;= (z_0,z_2,\ldots,z_{n-2},z_1,z_3,\ldots,z_{n-1}).
 <div class="para">이 순열은 이진 첨자의 마지막 비트가 <span class="process-math">\(0\)</span>인 좌표들을 먼저, <span class="process-math">\(1\)</span>인 좌표들을 나중에 모으고, 각 묶음 안에서는 원래의 순서를 유지합니다.</div>
 </div>
 <article class="proposition theorem-like" id="prop-bit-reversal-factorization"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">비트 반전 순열의 분해.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">비트 반전 순열의 분해.</span>
 </h3>
 <div class="para logical" id="prop-bit-reversal-factorization-2-1">
 <div class="para">
@@ -885,7 +959,7 @@ R_n &amp;= \begin{pmatrix}R_m&amp;0\\0&amp;R_m\end{pmatrix}S_n.
 </div>
 <div class="para">그러므로 먼저 <span class="process-math">\(S_n\)</span>으로 짝수·홀수 좌표를 분리하고, 두 묶음에 각각 <span class="process-math">\(R_m\)</span>을 적용하면 <span class="process-math">\(R_n\)</span>을 얻습니다. 행렬의 곱에서는 오른쪽 인자부터 적용한다는 점에 유의합니다.</div>
 </div></article></details><article class="proposition theorem-like" id="prop-fft-matrix-factorization"><h3 class="heading">
-<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">고속푸리에변환의 행렬 분해.</span>
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">고속푸리에변환의 행렬 분해.</span>
 </h3>
 <div class="para logical" id="prop-fft-matrix-factorization-2-1">
 <div class="para">
@@ -913,21 +987,21 @@ F_n &amp;= B_n\begin{pmatrix}F_m&amp;0\\0&amp;F_m\end{pmatrix}S_n\\
 \end{align*}
 </div>
 <div class="para">두 번째 식에서는 <span class="process-math">\(\omega_n^{-m}=-1\)</span>을 이용했습니다. 이 두 식을 블록행렬로 쓰면 첫 번째 분해를 얻으며, <span class="process-math">\(B_n\)</span>을 두 행렬의 곱으로 나누면 두 번째 분해를 얻습니다.</div>
-</div></article></details><div class="para logical" id="sec-fast-fourier-transform-13">
+</div></article></details><div class="para logical" id="sec-fast-fourier-transform-18">
 <div class="para">위 분해와 비트 반전 순열의 분해를 결합하면, 입력을 한 번 재배열한 뒤 순열 없이 계산하는 형태도 얻습니다. <span class="process-math">\(A_n=F_nR_n\)</span>으로 놓으면 <span class="process-math">\(S_nR_n=\operatorname{diag}(R_m,R_m)\)</span>이므로</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-13-3">
+<div class="displaymath process-math" id="sec-fast-fourier-transform-18-3">
 \begin{align*}
 A_n &amp;= B_n\begin{pmatrix}A_m&amp;0\\0&amp;A_m\end{pmatrix},\qquad A_1=(1),\\
 F_nz &amp;= A_n(R_nz).
 \end{align*}
 </div>
 <div class="para">따라서 역사전식 순서로 재배열한 입력에 대하여 크기 <span class="process-math">\(2,4,\ldots,n\)</span>의 블록을 차례로 결합하면, 출력은 원래의 첨자 순서로 얻습니다. 각 결합에서 사용하는</div>
-<div class="displaymath process-math" id="sec-fast-fourier-transform-13-5">
+<div class="displaymath process-math" id="sec-fast-fourier-transform-18-5">
 \begin{align*}
 (u_j,v_j) &amp;\longmapsto (u_j+\omega_n^{-j}v_j,\ u_j-\omega_n^{-j}v_j)
 \end{align*}
 </div>
-<div class="para">연산을 <dfn class="terminology">나비 연산</dfn><aside class="aside aside-like" id="sec-fast-fourier-transform-13-7"><div class="para" id="sec-fast-fourier-transform-13-7-1">나비 연산:butterfly operation</div></aside>이라고 합니다. 각 단계의 계산량은 <span class="process-math">\(O(n)\)</span>이고 단계의 수는 <span class="process-math">\(k=\log_2n\)</span>이므로 전체 계산량은 <span class="process-math">\(O(n\log n)\)</span>입니다. 비트 반전 순열 자체는 위의 서로 겹치지 않는 교환들을 이용하여 <span class="process-math">\(O(n)\)</span>번의 좌표 이동으로 수행할 수 있습니다.</div>
+<div class="para">연산을 <dfn class="terminology">나비 연산</dfn><aside class="aside aside-like" id="sec-fast-fourier-transform-18-7"><div class="para" id="sec-fast-fourier-transform-18-7-1">나비 연산:butterfly operation</div></aside>이라고 합니다. 각 단계의 계산량은 <span class="process-math">\(O(n)\)</span>이고 단계의 수는 <span class="process-math">\(k=\log_2n\)</span>이므로 전체 계산량은 <span class="process-math">\(O(n\log n)\)</span>입니다. 비트 반전 순열 자체는 위의 서로 겹치지 않는 교환들을 이용하여 <span class="process-math">\(O(n)\)</span>번의 좌표 이동으로 수행할 수 있습니다.</div>
 </div></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="ch-fast-fourier-transform.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-fast-multipoint-evaluation.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>

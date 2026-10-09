@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.3';
+eBookConfig.runestone_version = '8.3.4';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.dd07797f77620576.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.11d27cdc38930c2c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/prefix-runtime.7e4cb14f24eb489b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.54371ed119fe41be.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.40d828091d93b733.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -733,7 +733,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">고속푸리에변환</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">푸리에변환과 그 가속</span></a></div></li>
 <li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
 </ul>
 </li>
@@ -751,7 +751,141 @@ eBookConfig.enable_chatcodes =  false;
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-fast-multipoint-evaluation"><h2 class="heading hide-type">
 <span class="type">절</span><span class="space"> </span><span class="codenumber">8.2</span><span class="space"> </span><span class="title">고속 다중점 평가</span>
-</h2></section></div>
+</h2>
+<div class="para" id="sec-fast-multipoint-evaluation-2">
+<a href="sec-fast-fourier-transform.html" class="internal" title="절 8.1: 푸리에변환과 그 가속">절 8.1</a>에서는 단위근에서 다항식을 평가하는 문제를 FFT로 빠르게 해결했습니다. 평가점들이 단위근의 거듭제곱으로 주어지면 짝수 차수 항과 홀수 차수 항을 분리하는 재귀 구조를 이용할 수 있습니다. 그러나 임의로 주어진 평가점에는 이러한 구조가 없을 수 있습니다. 이 절에서는 평가점들을 근으로 갖는 다항식을 만들고 나머지 연산을 반복하여, 임의의 점에서도 빠르게 평가하는 방법을 설명합니다.</div>
+<div class="para" id="sec-fast-multipoint-evaluation-3">계수와 평가점은 모두 체 <span class="process-math">\(\mathbb F\)</span>에 속한다고 가정합니다. 차수가 <span class="process-math">\(d\)</span> 이하인 다항식을 <span class="process-math">\(n\)</span>개의 점에서 각각 호너 방법으로 평가하면 <span class="process-math">\(O(n(d+1))\)</span>번의 체 연산이 필요합니다. 특히 <span class="process-math">\(d&lt;n\)</span>일 때 이 비용은 <span class="process-math">\(O(n^2)\)</span>입니다. 고속 다중점 평가의 핵심은 서로 다른 평가에서 필요한 계산을 공유하는 것입니다.</div>
+<article class="definition definition-like" id="def-multipoint-evaluation"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">다중점 평가.</span>
+</h3>
+<div class="para logical" id="def-multipoint-evaluation-2">
+<div class="para">다항식 <span class="process-math">\(f\in\mathbb F[x]\)</span>와 평가점 <span class="process-math">\(a_0,\ldots,a_{n-1}\in\mathbb F\)</span>에 대하여, 순서 있는 값들의 목록</div>
+<div class="displaymath process-math" id="def-multipoint-evaluation-2-3">
+\begin{gather*}
+(f(a_0),\ldots,f(a_{n-1}))
+\end{gather*}
+</div>
+<div class="para">을 구하는 문제를 <dfn class="terminology">다중점 평가</dfn><aside class="aside aside-like" id="def-multipoint-evaluation-2-5"><div class="para" id="def-multipoint-evaluation-2-5-1">다중점 평가:multipoint evaluation</div></aside>라고 합니다. 여기서 <span class="process-math">\(n\geq 1\)</span>이며, 평가점들이 서로 다를 필요는 없습니다.</div>
+</div></article><details id="ex-multipoint-evaluation" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">네 점에서의 평가.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-multipoint-evaluation-2">
+<div class="para">
+<span class="process-math">\(\mathbb F=\mathbb Q\)</span>에서 <span class="process-math">\(f(x)=x^3-2x+1\)</span>을 생각합니다. 평가점 <span class="process-math">\(0,1,2,3\)</span>에 대한 다중점 평가의 결과는</div>
+<div class="displaymath process-math" id="ex-multipoint-evaluation-2-4">
+\begin{gather*}
+(f(0),f(1),f(2),f(3))=(1,0,5,22)
+\end{gather*}
+</div>
+<div class="para">입니다. 다음 예들에서는 이 값들을 나머지 연산으로 구합니다.</div>
+</div></article></details><article class="proposition theorem-like" id="prop-evaluation-by-remainders"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">나머지를 통한 평가.</span>
+</h3>
+<div class="para logical" id="prop-evaluation-by-remainders-2-1">
+<div class="para">영이 아닌 다항식 <span class="process-math">\(g\in\mathbb F[x]\)</span>에 대하여 <span class="process-math">\(r=f\bmod g\)</span>라 하자. <span class="process-math">\(g(a)=0\)</span>이면 <span class="process-math">\(f(a)=r(a)\)</span>이다. 특히 <span class="process-math">\(f\bmod(x-a)\)</span>는 상수 다항식 <span class="process-math">\(f(a)\)</span>이다. 또한 영이 아닌 다항식 <span class="process-math">\(h\)</span>가 <span class="process-math">\(g\)</span>를 나누면</div>
+<div class="displaymath process-math" id="prop-evaluation-by-remainders-2-1-9">
+\begin{gather*}
+(f\bmod g)\bmod h=f\bmod h
+\end{gather*}
+</div>
+<div class="para">이다.</div>
+</div></article><details id="prop-evaluation-by-remainders-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-evaluation-by-remainders-3-1">나눗셈 알고리즘에 따라 <span class="process-math">\(f=qg+r\)</span>이며 <span class="process-math">\(\deg r&lt;\deg g\)</span>입니다. <span class="process-math">\(g(a)=0\)</span>을 대입하면 <span class="process-math">\(f(a)=r(a)\)</span>를 얻습니다. <span class="process-math">\(g=x-a\)</span>인 경우 나머지는 상수이므로 바로 <span class="process-math">\(f(a)\)</span>입니다. 한편 <span class="process-math">\(h\)</span>가 <span class="process-math">\(g\)</span>를 나누면 <span class="process-math">\(f-r=qg\)</span>는 <span class="process-math">\(h\)</span>의 배수입니다. 따라서 <span class="process-math">\(f\)</span>와 <span class="process-math">\(r\)</span>을 <span class="process-math">\(h\)</span>로 나눈 나머지는 같습니다.</div></article></details><details id="ex-evaluation-by-remainders" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">두 평가를 하나의 나눗셈으로 준비하기.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-evaluation-by-remainders-2">
+<div class="para">
+<span class="process-math">\(f=x^3-2x+1\)</span>과 <span class="process-math">\(g=x(x-1)\)</span>에 대하여</div>
+<div class="displaymath process-math" id="ex-evaluation-by-remainders-2-3">
+\begin{gather*}
+f=(x+1)g+(1-x)
+\end{gather*}
+</div>
+<div class="para">입니다. 따라서 <span class="process-math">\(f(0)=(1-x)|_{x=0}=1\)</span>이고 <span class="process-math">\(f(1)=(1-x)|_{x=1}=0\)</span>입니다. 나머지 <span class="process-math">\(1-x\)</span>를 다시 <span class="process-math">\(x\)</span>와 <span class="process-math">\(x-1\)</span>로 나누면 각각 상수 <span class="process-math">\(1\)</span>과 <span class="process-math">\(0\)</span>이 됩니다.</div>
+</div></article></details><article class="definition definition-like" id="def-subproduct-tree"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">부분곱 트리.</span>
+</h3>
+<div class="para logical" id="def-subproduct-tree-2">
+<div class="para">평가점의 지표 집합 <span class="process-math">\(\{0,\ldots,n-1\}\)</span>을 크기가 가능한 한 비슷한 두 부분으로 반복해서 나누어 이진 트리를 만듭니다. 각 노드 <span class="process-math">\(v\)</span>에 해당하는 지표 집합을 <span class="process-math">\(I_v\)</span>라 하고, 그 노드에</div>
+<div class="displaymath process-math" id="def-subproduct-tree-2-4">
+\begin{gather*}
+G_v(x)=\prod_{j\in I_v}(x-a_j)
+\end{gather*}
+</div>
+<div class="para">를 저장합니다. 이 트리를 <dfn class="terminology">부분곱 트리</dfn><aside class="aside aside-like" id="def-subproduct-tree-2-6"><div class="para" id="def-subproduct-tree-2-6-1">부분곱 트리:subproduct tree</div></aside>라고 합니다. 잎에는 <span class="process-math">\(x-a_j\)</span>가 저장되며, 두 자식 <span class="process-math">\(u,w\)</span>를 갖는 노드에서는 <span class="process-math">\(G_v=G_uG_w\)</span>입니다. 따라서 잎에서 뿌리 방향으로 다항식들을 계산합니다.</div>
+</div></article><details id="ex-subproduct-tree" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">네 평가점의 부분곱 트리.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-subproduct-tree-2">
+<div class="para">평가점 <span class="process-math">\(0,1,2,3\)</span>을 순서대로 두 점씩 묶으면 각 층의 다항식들은 다음과 같습니다.</div>
+<div class="displaymath process-math" id="ex-subproduct-tree-2-2">
+\begin{align*}
+\text{잎: }&amp; x,\quad x-1,\quad x-2,\quad x-3,\\
+\text{중간층: }&amp; G_L=x^2-x,\quad G_R=x^2-5x+6,\\
+\text{뿌리: }&amp; G=G_LG_R=x^4-6x^3+11x^2-6x.
+\end{align*}
+</div>
+<div class="para">뿌리의 다항식은 모든 평가점을 근으로 갖습니다.</div>
+</div></article></details><article class="definition definition-like" id="def-remainder-tree"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">8.2.7</span><span class="period">.</span><span class="space"> </span><span class="title">나머지 트리.</span>
+</h3>
+<div class="para logical" id="def-remainder-tree-2">
+<div class="para">부분곱 트리의 뿌리를 <span class="process-math">\(\rho\)</span>라 하고 <span class="process-math">\(R_\rho=f\bmod G_\rho\)</span>로 둡니다. 노드 <span class="process-math">\(v\)</span>의 각 자식 <span class="process-math">\(u\)</span>에 대하여</div>
+<div class="displaymath process-math" id="def-remainder-tree-2-5">
+\begin{gather*}
+R_u=R_v\bmod G_u
+\end{gather*}
+</div>
+<div class="para">를 저장하며 뿌리에서 잎 방향으로 계산합니다. 이 트리를 <dfn class="terminology">나머지 트리</dfn><aside class="aside aside-like" id="def-remainder-tree-2-7"><div class="para" id="def-remainder-tree-2-7-1">나머지 트리:remainder tree</div></aside>라고 합니다. 각 나머지는 영다항식이거나 해당 부분곱 다항식보다 차수가 작습니다.</div>
+</div></article><details id="ex-remainder-tree" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.8</span><span class="period">.</span><span class="space"> </span><span class="title">나머지 트리로 네 값을 구하기.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-remainder-tree-2">
+<div class="para">앞의 부분곱 트리에서 <span class="process-math">\(f=x^3-2x+1\)</span>의 차수는 뿌리 다항식의 차수보다 작으므로 <span class="process-math">\(R_\rho=f\)</span>입니다. 중간층과 잎의 나머지는 다음과 같습니다.</div>
+<div class="displaymath process-math" id="ex-remainder-tree-2-3">
+\begin{align*}
+R_L=f\bmod(x^2-x)&amp;=1-x,\\
+R_R=f\bmod(x^2-5x+6)&amp;=17x-29,\\
+R_L\bmod x=1,\qquad &amp;R_L\bmod(x-1)=0,\\
+R_R\bmod(x-2)=5,\qquad &amp;R_R\bmod(x-3)=22.
+\end{align*}
+</div>
+<div class="para">따라서 잎의 상수들을 원래 순서대로 읽으면 <span class="process-math">\((1,0,5,22)\)</span>를 얻습니다.</div>
+</div></article></details><article class="theorem theorem-like" id="thm-fast-multipoint-evaluation"><h3 class="heading">
+<span class="type">정리</span><span class="space"> </span><span class="codenumber">8.2.9</span><span class="period">.</span><span class="space"> </span><span class="title">고속 다중점 평가의 정확성과 복잡도.</span>
+</h3>
+<div class="para" id="thm-fast-multipoint-evaluation-2-1">
+<span class="process-math">\(n\geq 1\)</span>개의 평가점에 대한 부분곱 트리와 나머지 트리를 구성하면, 지표 <span class="process-math">\(j\)</span>에 해당하는 잎의 나머지는 <span class="process-math">\(f(a_j)\)</span>이다. 이 결론은 평가점이 중복되는 경우에도 성립한다.</div> <div class="para logical" id="thm-fast-multipoint-evaluation-2-2">
+<div class="para">차수가 <span class="process-math">\(s\)</span> 미만인 두 다항식의 곱셈 비용을 <span class="process-math">\(M(s)\)</span>라 하자. <span class="process-math">\(M(s)/s\)</span>가 비감소하고 <span class="process-math">\(M(2s)=O(M(s))\)</span>이며, 차수가 <span class="process-math">\(s\)</span> 미만인 다항식을 모닉 다항식으로 나눈 나머지를 <span class="process-math">\(O(M(s))\)</span>번의 체 연산으로 계산할 수 있다고 가정하자. <span class="process-math">\(\deg f&lt;n\)</span>이면 이 평가 알고리즘의 비용은 <span class="process-math">\(O(M(n)\log(2n))\)</span>이다. 일반적으로 <span class="process-math">\(\deg f\leq d\)</span>이면, <span class="process-math">\(N=\max\{d+1,n\}\)</span>에 대하여 비용은</div>
+<div class="displaymath process-math" id="thm-fast-multipoint-evaluation-2-2-11">
+\begin{gather*}
+O\bigl(M(N)+M(n)\log(2n)\bigr)
+\end{gather*}
+</div>
+<div class="para">이다.</div>
+</div></article><details id="thm-fast-multipoint-evaluation-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-fast-multipoint-evaluation-3-1">모든 노드에서 <span class="process-math">\(R_v=f\bmod G_v\)</span>임을 보이면 됩니다. 뿌리에서는 정의에 의해 성립합니다. 자식의 다항식은 부모의 다항식을 나누므로, <a href="sec-fast-multipoint-evaluation.html#prop-evaluation-by-remainders" class="xref" data-knowl="./knowl/xref/prop-evaluation-by-remainders.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 8.2.3: 나머지를 통한 평가">명제 8.2.3</a>에 따라 이 성질이 자식에게도 이어집니다. 잎에서는 <span class="process-math">\(G_v=x-a_j\)</span>이므로 나머지가 <span class="process-math">\(f(a_j)\)</span>입니다. 이 논증은 서로 다른 잎의 다항식들이 서로소라는 가정을 사용하지 않습니다.</div>
+<div class="para" id="thm-fast-multipoint-evaluation-3-2">균형 잡힌 트리의 높이는 <span class="process-math">\(O(\log(2n))\)</span>입니다. 한 층의 노드들에 해당하는 지표 집합은 전체 지표 집합을 분할하므로 그 크기의 합은 <span class="process-math">\(n\)</span>입니다. 크기 <span class="process-math">\(s\)</span>인 노드에서 두 자식의 곱을 만들거나 두 자식으로 나머지를 보내는 비용은 <span class="process-math">\(O(M(s))\)</span>입니다. <span class="process-math">\(M(s)/s\)</span>의 비감소성을 이용하면 한 층의 총비용은 <span class="process-math">\(O(M(n))\)</span>입니다. 이를 모든 층에 합하면 원하는 트리 계산 비용을 얻습니다. <span class="process-math">\(\deg f&lt;n\)</span>이면 처음 나머지는 <span class="process-math">\(f\)</span> 자체입니다. 그렇지 않으면 처음에 <span class="process-math">\(f\bmod G_\rho\)</span>를 구하는 데 <span class="process-math">\(O(M(N))\)</span>의 비용을 추가합니다.</div></article></details><details id="ex-large-degree-multipoint-evaluation" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.10</span><span class="period">.</span><span class="space"> </span><span class="title">평가점 수보다 차수가 큰 경우.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-large-degree-multipoint-evaluation-2">
+<div class="para">같은 네 점에서 <span class="process-math">\(h=x^5+1\)</span>을 평가할 때에는 먼저 뿌리에서 차수를 줄입니다.</div>
+<div class="displaymath process-math" id="ex-large-degree-multipoint-evaluation-2-2">
+\begin{gather*}
+h\bmod G=25x^3-60x^2+36x+1
+\end{gather*}
+</div>
+<div class="para">입니다. 이 나머지에 앞의 나머지 트리 절차를 적용하면 <span class="process-math">\((1,2,33,244)\)</span>를 얻습니다. 처음 차수를 줄인 뒤에는 원래 다항식의 차수와 관계없이 동일한 크기의 트리를 사용합니다.</div>
+</div></article></details><article class="remark remark-like" id="rem-fft-multipoint-complexity"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">8.2.11</span><span class="period">.</span><span class="space"> </span><span class="title">FFT와 다중점 평가의 관계.</span>
+</h3>
+<div class="para" id="rem-fft-multipoint-complexity-2">필요한 길이의 FFT를 체 <span class="process-math">\(\mathbb F\)</span>에서 <span class="process-math">\(O(s\log(2s))\)</span>번의 체 연산으로 수행할 수 있다면, 다항식 곱셈에 <span class="process-math">\(M(s)=O(s\log(2s))\)</span>를 사용할 수 있습니다. 빠른 나눗셈은 다항식의 계수 순서를 뒤집고 상수항이 <span class="process-math">\(1\)</span>인 다항식의 역수를 절단하여 구하는 방법으로 곱셈과 같은 점근적 비용에 수행할 수 있습니다. 따라서 <span class="process-math">\(\deg f&lt;n\)</span>일 때 임의의 평가점에서의 평가 비용은 <span class="process-math">\(O(n\log^2(2n))\)</span>입니다. 임의의 체에서 필요한 단위근과 FFT가 항상 존재하는 것은 아니므로, 이 비용을 적용할 때에는 곱셈 알고리즘의 가정을 확인해야 합니다.</div>
+<div class="para" id="rem-fft-multipoint-complexity-3">반면 평가점 자체가 FFT에 적합한 단위근들이면 트리를 거치지 않고 FFT를 직접 적용하여 <span class="process-math">\(O(n\log(2n))\)</span>번의 체 연산으로 평가할 수 있습니다. 즉, 일반적인 평가점에서는 FFT를 평가에 직접 쓰는 대신 트리 안의 다항식 곱셈에 사용합니다.</div></article><details id="ex-fft-versus-multipoint-evaluation" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.12</span><span class="period">.</span><span class="space"> </span><span class="title">단위근에서의 직접 평가와 일반 평가점.</span>
+</h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-fft-versus-multipoint-evaluation-2">
+<div class="para">
+<span class="process-math">\(\mathbb F=\mathbb C\)</span>에서 <span class="process-math">\(f=x^3-2x+1\)</span>을 네 번째 단위근 <span class="process-math">\(1,i,-1,-i\)</span>에 평가하면</div>
+<div class="displaymath process-math" id="ex-fft-versus-multipoint-evaluation-2-4">
+\begin{gather*}
+(f(1),f(i),f(-1),f(-i))=(0,1-3i,2,1+3i)
+\end{gather*}
+</div>
+<div class="para">입니다. 이 목록은 해당 단위근 순서를 사용하는 길이 <span class="process-math">\(4\)</span>의 FFT로 직접 구할 수 있습니다. 평가점이 <span class="process-math">\(0,1,2,3\)</span>이면 같은 FFT를 직접 적용할 수 없지만, 앞서 구성한 두 트리로 평가할 수 있습니다.</div>
+</div>
+<div class="para" id="ex-fft-versus-multipoint-evaluation-3">더 일반적으로 <span class="process-math">\(n=2^k\text{,}\)</span> <span class="process-math">\(k\geq 1\)</span>이고 <span class="process-math">\(\deg f&lt;n\)</span>이면, 개별 호너 평가의 비용은 <span class="process-math">\(O(4^k)\)</span>입니다. FFT 기반 곱셈을 사용할 수 있는 경우 트리 알고리즘의 비용은 <span class="process-math">\(O(2^k k^2)\)</span>이며, FFT에 적합한 단위근에서 직접 평가하는 비용은 <span class="process-math">\(O(2^k k)\)</span>입니다.</div></article></details></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-fast-fourier-transform.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-sparse-matrices.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
