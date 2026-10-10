@@ -242,4 +242,84 @@
     연산을 <term>나비 연산</term><aside><p>나비 연산:butterfly operation</p></aside>이라고 합니다. 각 단계의 계산량은 <m>O(n)</m>이고 단계의 수는 <m>k=\log_2n</m>이므로 전체 계산량은 <m>O(n\log n)</m>입니다. 비트 반전 순열 자체는 위의 서로 겹치지 않는 교환들을 이용하여 <m>O(n)</m>번의 좌표 이동으로 수행할 수 있습니다.
   </p>
 
+
+  <p>
+    푸리에 역변환에 대해 알아봅시다. 앞에서 얻은 역변환 공식은 푸리에변환의 공식에서 지수의 부호를 바꾸고 전체를 <m>n</m>으로 나눈 것입니다. 따라서 이미 살펴본 고속푸리에변환의 분해를 그대로 활용할 수 있습니다.
+  </p>
+
+  <proposition xml:id="prop-fast-inverse-fourier-transform">
+    <title>고속 푸리에 역변환</title>
+    <statement>
+      <p>
+        <m>n=2^k</m>이고 <m>F_n=(\omega_n^{-jt})_{0\le j,t&lt;n}</m>일 때, 행렬의 각 성분을 켤레복소수로 바꾼 행렬을 <m>\overline{F_n}</m>으로 표기하면
+        <md>
+          <mrow>F_n^{-1} &amp;= \frac1n\overline{F_n},</mrow>
+          <mrow>\mathcal F_n^{-1}(y) &amp;= \frac1n\overline{\mathcal F_n(\overline y)}</mrow>
+        </md>
+        이다. 따라서 푸리에 역변환도 <m>O(n\log n)</m>의 계산량으로 수행할 수 있다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        직교관계 <xref ref="eq-fourier-basis-orthogonality"/>에 의하여
+        <md>
+          <mrow>(\overline{F_n}F_n)_{t,s} &amp;= \sum_{j=0}^{n-1}\omega_n^{jt}\omega_n^{-js}=\begin{cases}n &amp; t=s,\\0 &amp; t\ne s.\end{cases}</mrow>
+        </md>
+        이므로 <m>\overline{F_n}F_n=nI_n</m>입니다. 또한
+        <md>
+          <mrow>\overline{F_n\overline y} &amp;= \overline{F_n}y</mrow>
+        </md>
+        이므로 두 번째 공식도 성립합니다. 입력과 출력의 켤레복소수를 구하고 <m>n</m>으로 나누는 데에는 <m>O(n)</m>의 계산량이 필요합니다. 따라서 고속푸리에변환을 한 번 사용하는 이 방법의 전체 계산량은 <m>O(n\log n)</m>입니다.
+      </p>
+    </proof>
+  </proposition>
+
+  <p>
+    켤레복소수를 따로 구하지 않고 나비 연산의 지수 부호를 바꾸어도 됩니다. <xref ref="prop-fft-matrix-factorization"/>의 분해에서 켤레복소수를 취하면, <m>n=2m</m>일 때
+    <md>
+      <mrow>\overline{F_n} &amp;= \overline{B_n}\begin{pmatrix}\overline{F_m}&amp;0\\0&amp;\overline{F_m}\end{pmatrix}S_n,</mrow>
+      <mrow>\overline{B_n} &amp;= \begin{pmatrix}I_m&amp;\overline{D_n}\\I_m&amp;-\overline{D_n}\end{pmatrix},\qquad \overline{D_n}=\operatorname{diag}(1,\omega_n,\ldots,\omega_n^{m-1})</mrow>
+    </md>
+    을 얻습니다. 순열행렬 <m>S_n</m>과 <m>R_n</m>의 성분은 실수이므로 입력의 재배열은 바뀌지 않습니다. 구체적으로 <m>y=\widehat z</m>에서 원래 벡터 <m>z</m>를 복원하려면 다음 순서로 계산합니다.
+  </p>
+  <ol>
+    <li><p>입력을 비트 반전 순열로 재배열하여 <m>x=R_ny</m>로 놓습니다.</p></li>
+    <li>
+      <p>
+        블록의 크기 <m>q=2,4,\ldots,n</m>에 대하여 각 블록의 앞쪽 절반과 뒤쪽 절반을 결합합니다. 블록의 시작 첨자를 <m>a</m>라 하면, <m>0\le j&lt;q/2</m>에 대하여 현재 값 <m>u=x_{a+j}</m>, <m>v=x_{a+j+q/2}</m>를 사용하여 두 좌표를 동시에
+        <md>
+          <mrow>(x_{a+j},x_{a+j+q/2}) &amp;\longleftarrow (u+\omega_q^jv,\ u-\omega_q^jv)</mrow>
+        </md>
+        로 바꿉니다. 이는 앞의 나비 연산에서 <m>\omega_q^{-j}</m>를 <m>\omega_q^j</m>로 바꾼 것입니다.
+      </p>
+    </li>
+    <li><p>모든 단계가 끝나면 각 좌표를 <m>n</m>으로 나눕니다. 이렇게 얻은 <m>z=x/n</m>은 원래 첨자 순서의 벡터입니다.</p></li>
+  </ol>
+  <p>
+    이 과정을 <term>고속 푸리에 역변환</term><aside><p>고속 푸리에 역변환:inverse fast Fourier transform</p></aside>이라고 합니다. 각 단계의 계산량과 단계의 수는 정방향 변환과 같습니다. <m>n=1</m>일 때에는 결합 단계가 없으며 역변환도 항등사상입니다.
+  </p>
+
+  <example xml:id="ex-inverse-fft-k2">
+    <title>네 좌표의 고속 푸리에 역변환</title>
+    <p>
+      <xref ref="ex-dft-k2"/>에서 얻은 <m>y=(10,-2+2\mathrm i,-2,-2-2\mathrm i)</m>에 역변환을 적용합니다. 먼저 비트 반전 순열로 재배열하면
+      <md>
+        <mrow>R_4y &amp;= (10,-2,-2+2\mathrm i,-2-2\mathrm i)</mrow>
+      </md>
+      입니다. 크기 <m>2</m>인 두 블록에 나비 연산을 적용하면
+      <md>
+        <mrow>x &amp;= (8,12,-4,4\mathrm i)</mrow>
+      </md>
+      을 얻습니다. 이제 크기 <m>4</m>인 블록을 결합합니다. <m>\omega_4=\mathrm i</m>이므로
+      <md>
+        <mrow>(x_0,x_2) &amp;= (8+(-4),8-(-4))=(4,12),</mrow>
+        <mrow>(x_1,x_3) &amp;= (12+\mathrm i(4\mathrm i),12-\mathrm i(4\mathrm i))=(8,16)</mrow>
+      </md>
+      입니다. 마지막으로 <m>4</m>로 나누면
+      <md>
+        <mrow>\mathcal F_4^{-1}(y) &amp;= \frac14(4,8,12,16)=(1,2,3,4)</mrow>
+      </md>
+      를 얻어 원래 벡터를 복원합니다.
+    </p>
+  </example>
 </section>

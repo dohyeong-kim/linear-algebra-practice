@@ -21,9 +21,9 @@
     <title>평행이동은 강체운동</title>
     <statement>
       <p>
-        벡터 <m>v \,	\in\, \mathbb R^2</m>에 의한 평행이동 <m>T_v \,	\in\, \mathbb R^2</m>를 <m>T_v(x)=x+v</m>로 정의합니다. 임의의 점 <m>x,y \,	\in\, \mathbb R^2</m>에 대하여
+        벡터 <m>v \,	\in\, \mathbb R^2</m>에 의한 평행이동 <m>T_v  \colon \mathbb R^2 \to \mathbb R^2</m>를 <m>T_v(x)=x+v</m>로 정의합니다. 임의의 점 <m>x,y \,	\in\, \mathbb R^2</m>에 대하여
         <m>T_v(x)-T_v(y)=(x+v)-(y+v)=x-y</m>이므로
-        <m>|\!|T_v(x)-T_v(y)|\!|=|\!|x-y|\!|</m>입니다. 따라서 평행이동은 강체운동입니다. 그러나 <m>v \not 0</m>에 대하여 평행이동은 선형변환은 아닙니다.
+        <m>|\!|T_v(x)-T_v(y)|\!|=|\!|x-y|\!|</m>입니다. 따라서 평행이동은 강체운동입니다. 그러나 <m>v \not= 0</m>에 대하여 평행이동은 선형변환은 아닙니다.
       </p>
     </statement>
   </example>

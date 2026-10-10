@@ -147,4 +147,704 @@
     </proof>
   </theorem>
 
+  <exercises xml:id="exercises-perron-frobenius">
+    <title>연습문제</title>
+
+    <exercise xml:id="exer-perron-two-by-two">
+      <title><m>2\times2</m> 양의 행렬의 페론 데이터</title>
+      <introduction>
+        <p>
+          양의 행렬 <m>A=\begin{pmatrix}1&amp;2\\3&amp;2\end{pmatrix}</m>를 생각하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>의 고윳값과 <m>\rho(A)</m>를 구하고, <m>\rho(A)</m>에 대응하는 양의 고유벡터를 구하여 <xref ref="thm-perron-positive-matrix"/>의 결론을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\det(\lambda I-A)=\lambda^2-3\lambda-4=(\lambda-4)(\lambda+1)</m>이므로 고윳값은 <m>4,-1</m>이고 <m>\rho(A)=4</m>입니다.
+            <m>A-4I=\begin{pmatrix}-3&amp;2\\3&amp;-2\end{pmatrix}</m>이므로 <m>v=(2,3)^{\mathsf T}</m>는 양의 고유벡터입니다.
+            <m>4</m>는 단순근이고 다른 고윳값은 <m>\lvert-1\rvert&lt;4</m>를 만족합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A^{\mathsf T}w=4w</m>인 양의 벡터 <m>w</m>를 구하고, 페론 정리의 증명에 나오는 초평면 <m>H=\{x:w^{\mathsf T}x=0\}</m>가 <m>A</m>-불변임을 직접 확인하여라. 기저 <m>v</m>와 <m>H</m>의 기저를 이어 붙였을 때 <m>A</m>의 행렬을 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A^{\mathsf T}-4I=\begin{pmatrix}-3&amp;3\\2&amp;-2\end{pmatrix}</m>이므로 <m>w=(1,1)^{\mathsf T}</m>입니다.
+            <m>H</m>는 <m>u=(1,-1)^{\mathsf T}</m>로 생성되고 <m>Au=(-1,1)^{\mathsf T}=-u\in H</m>이므로 <m>H</m>는 <m>A</m>-불변입니다.
+            <m>w^{\mathsf T}v=5&gt;0</m>이므로 <m>v\notin H</m>이고, 기저 <m>(v,u)</m>에서 <m>A</m>의 행렬은 <m>\begin{pmatrix}4&amp;0\\0&amp;-1\end{pmatrix}</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-aI-plus-bJ">
+      <title>상수 비대각 성분을 갖는 양의 행렬</title>
+      <introduction>
+        <p>
+          <m>d\geq2</m>이고 <m>J</m>를 모든 성분이 <m>1</m>인 <m>d\times d</m> 행렬, <m>\mathbf 1</m>을 모든 성분이 <m>1</m>인 벡터라 하자. 실수 <m>a,b</m>가 <m>b&gt;0</m>, <m>a+b&gt;0</m>을 만족하면 <m>A=aI+bJ</m>는 양의 행렬이다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>A</m>의 고윳값을 대수적 중복도와 함께 모두 구하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>J\mathbf 1=d\mathbf 1</m>이고, 성분의 합이 <m>0</m>인 벡터 <m>x</m>에 대해서는 <m>Jx=0</m>입니다. 후자는 <m>d-1</m>차원 부분공간입니다.
+            따라서 <m>A</m>의 고윳값은 <m>a+db</m>(중복도 <m>1</m>, 고유벡터 <m>\mathbf 1</m>)와 <m>a</m>(중복도 <m>d-1</m>)이고, 특성다항식은 <m>(\lambda-a-db)(\lambda-a)^{d-1}</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\rho(A)</m>와 양의 고유벡터를 구하고, <m>a&lt;0</m>인 경우에도 <m>\rho(A)</m>가 아닌 고윳값의 절댓값이 <m>\rho(A)</m>보다 작음을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>a\geq0</m>이면 <m>a+db&gt;a=\lvert a\rvert</m>입니다. <m>a&lt;0</m>이면 <m>a+db=(a+b)+(d-1)b&gt;(d-1)b\geq b&gt;-a=\lvert a\rvert</m>입니다.
+            따라서 <m>\rho(A)=a+db</m>이고 양의 고유벡터는 <m>\mathbf 1</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>이 예가 <m>\rho(A)</m> 이외의 고윳값의 중복도에 대하여 무엇을 보여 주는지 설명하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            고윳값 <m>a</m>는 대수적, 기하적 중복도가 모두 <m>d-1</m>입니다. 페론 정리는 <m>\rho(A)</m>의 단순성만을 보장하며 나머지 고윳값은 얼마든지 중복될 수 있습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-hypotheses-necessary">
+      <title>가정을 뺄 수 없는 예</title>
+      <introduction>
+        <p>
+          다음 비음수 행렬들은 어떤 거듭제곱도 양의 행렬이 아니다. 각각에 대하여 이 사실을 확인하고, <xref ref="thm-perron-frobenius-eventually-positive"/>의 결론 중 어느 것이 성립하고 어느 것이 실패하는지 판정하여라.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}</m>.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>S^2=I</m>이므로 <m>S^k\in\{I,S\}</m>이고 어느 것도 양이 아닙니다.
+            고윳값은 <m>\pm1</m>이므로 <m>\rho(S)=1</m>은 양의 고유벡터 <m>(1,1)^{\mathsf T}</m>를 갖는 단순 고윳값이지만, <m>-1</m>도 스펙트럼 원 위에 있어 <m>\lvert\lambda\rvert&lt;\rho</m>가 실패합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>N=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</m>.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>N^k=\begin{pmatrix}1&amp;k\\0&amp;1\end{pmatrix}</m>는 <m>(2,1)</m> 성분이 <m>0</m>입니다.
+            <m>\rho(N)=1</m>의 대수적 중복도는 <m>2</m>이고 고유공간은 <m>e_1</m>으로 생성되므로 양의 고유벡터도 없습니다. 스펙트럼 원 위에 다른 고윳값이 없다는 것만 성립합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>d\geq2</m>일 때 <m>Ce_j=e_{j+1}</m>(첨자는 <m>d</m>를 법으로 함)로 정의되는 <m>d\times d</m> 순환 치환행렬 <m>C</m>.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>C^k</m>은 치환행렬이므로 각 행에 영이 아닌 성분이 하나뿐이고 양의 행렬이 될 수 없습니다.
+            <m>\omega^d=1</m>인 각 <m>\omega</m>에 대하여 <m>x_\omega=(1,\omega,\ldots,\omega^{d-1})^{\mathsf T}</m>는 <m>Cx_\omega=\omega^{-1}x_\omega</m>를 만족하므로, <m>C</m>의 고윳값은 <m>1</m>의 서로 다른 <m>d</m>제곱근 <m>d</m>개 전체이고 모두 단순합니다.
+            따라서 <m>\rho(C)=1</m>은 양의 고유벡터 <m>\mathbf 1</m>을 갖는 단순 고윳값이지만, <m>d</m>개의 고윳값이 모두 스펙트럼 원 위에 있어 우세성이 실패합니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-eventually-positive-examples">
+      <title>어떤 거듭제곱이 양인 행렬의 예</title>
+      <task>
+        <statement>
+          <p>
+            <m>F=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}</m>에 대하여 <m>F^2</m>이 양의 행렬임을 확인하고, <m>\rho(F)</m>와 양의 고유벡터, 나머지 고윳값을 구하여 <xref ref="thm-perron-frobenius-eventually-positive"/>의 결론을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>F^2=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}</m>은 양입니다. 특성다항식은 <m>\lambda^2-\lambda-1</m>이므로 고윳값은 <m>\varphi=\frac{1+\sqrt5}2</m>, <m>\psi=\frac{1-\sqrt5}2</m>이고 <m>\rho(F)=\varphi</m>입니다.
+            <m>\varphi^2=\varphi+1</m>이므로 <m>F(\varphi,1)^{\mathsf T}=(\varphi+1,\varphi)^{\mathsf T}=\varphi(\varphi,1)^{\mathsf T}</m>이고, <m>\lvert\psi\rvert=\varphi-1\approx0.618&lt;\varphi</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>W=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;1&amp;0\end{pmatrix}</m>에 대하여 <m>W^k</m>이 양의 행렬이 되는 가장 작은 <m>k</m>를 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            직접 계산하면
+            <md>
+              <mrow>W^3=\begin{pmatrix}1&amp;1&amp;0\\0&amp;1&amp;1\\1&amp;1&amp;1\end{pmatrix},\quad W^4=\begin{pmatrix}0&amp;1&amp;1\\1&amp;1&amp;1\\1&amp;2&amp;1\end{pmatrix},\quad W^5=\begin{pmatrix}1&amp;1&amp;1\\1&amp;2&amp;1\\1&amp;2&amp;2\end{pmatrix}</mrow>
+            </md>
+            이고, <m>W,W^2</m>도 영 성분을 가지므로 가장 작은 <m>k</m>는 <m>5</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            앞 문항의 <m>W</m>에 대하여 <m>\rho(W)</m>가 방정식 <m>\lambda^3=\lambda+1</m>의 유일한 실근임을 보이고, 양의 고유벡터를 구하며, 나머지 두 고윳값의 절댓값이 <m>\rho(W)^{-1/2}</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            특성다항식은 <m>p(\lambda)=\lambda^3-\lambda-1</m>입니다. <m>p'(\lambda)=3\lambda^2-1</m>이므로 <m>p</m>의 극댓값은 <m>p(-1/\sqrt3)=\frac{2}{3\sqrt3}-1&lt;0</m>이고, 따라서 <m>p</m>의 실근은 하나뿐이며 <m>p(1)=-1&lt;0&lt;5=p(2)</m>에서 그 실근 <m>r</m>은 <m>(1,2)</m>에 있습니다.
+            <xref ref="thm-perron-frobenius-eventually-positive"/>에 의해 <m>\rho(W)</m>는 실수 고윳값이므로 <m>\rho(W)=r</m>입니다.
+            <m>v=(1,r,r^2)^{\mathsf T}</m>는 <m>Wv=(r,r^2,1+r)^{\mathsf T}=(r,r^2,r^3)^{\mathsf T}=rv</m>를 만족하는 양의 고유벡터입니다.
+            나머지 두 고윳값은 켤레 복소수 <m>\mu,\bar\mu</m>이고 근과 계수의 관계에서 <m>r\lvert\mu\rvert^2=1</m>이므로 <m>\lvert\mu\rvert=r^{-1/2}&lt;1&lt;r</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-eventually-positive-persistence">
+      <title>양의 거듭제곱의 지속성</title>
+      <introduction>
+        <p>
+          <m>A</m>가 비음수 행렬이고 어떤 양의 정수 <m>k</m>에 대하여 <m>A^k</m>가 양의 행렬이라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>A</m>에는 영인 행과 영인 열이 없음을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>A</m>의 <m>i</m>번째 행이 영이면 <m>A^k=A\cdot A^{k-1}</m>의 <m>i</m>번째 행도 영입니다. <m>A</m>의 <m>j</m>번째 열이 영이면 <m>A^k=A^{k-1}A</m>의 <m>j</m>번째 열도 영입니다. 어느 경우든 <m>A^k</m>가 양이라는 데 모순입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>모든 <m>m\geq k</m>에 대하여 <m>A^m</m>이 양의 행렬임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>(A^{k+1})_{ij}=\sum_l(A^k)_{il}a_{lj}</m>에서 모든 항은 비음수이고, <m>(A^k)_{il}&gt;0</m>이며 <m>A</m>의 <m>j</m>번째 열에 <m>a_{lj}&gt;0</m>인 <m>l</m>이 있으므로 <m>(A^{k+1})_{ij}&gt;0</m>입니다. 귀납법으로 결론을 얻습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>d\geq2</m>이면 비음수 상삼각 행렬의 어떤 거듭제곱도 양의 행렬이 아님을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            상삼각 행렬의 곱은 상삼각 행렬이므로 모든 거듭제곱의 <m>(2,1)</m> 성분이 <m>0</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-row-sum-bounds">
+      <title>행합에 의한 스펙트럼 반지름의 평가</title>
+      <introduction>
+        <p>
+          <m>A</m>가 양의 행렬이고 <m>r_i=\sum_ja_{ij}</m>를 <m>i</m>번째 행합, <m>R=\max_ir_i</m>, <m>r=\min_ir_i</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <xref ref="thm-perron-positive-matrix"/>의 양의 고유벡터를 이용하여 <m>r\leq\rho(A)\leq R</m>임을 보여라. 열합에 대해서도 같은 부등식이 성립함을 설명하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>Av=\rho v</m>, <m>v&gt;0</m>이라 하고 <m>v_i=\max_jv_j</m>, <m>v_p=\min_jv_j</m>라 합시다. 그러면
+            <md>
+              <mrow>\rho v_i=\sum_ja_{ij}v_j\leq r_iv_i\leq Rv_i,\qquad \rho v_p=\sum_ja_{pj}v_j\geq r_pv_p\geq rv_p</mrow>
+            </md>
+            이고 <m>v_i,v_p&gt;0</m>으로 나누면 됩니다. <m>A^{\mathsf T}</m>도 양의 행렬이고 <m>\rho(A^{\mathsf T})=\rho(A)</m>이므로 열합에 대해서도 같은 부등식이 성립합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\rho(A)=R</m>일 필요충분조건은 모든 행합이 같은 것임을 보여라. (<m>\rho(A)=r</m>에 대해서도 마찬가지이다.)
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A^{\mathsf T}w=\rho w</m>인 양의 벡터 <m>w</m>를 택하면 <m>\rho\sum_iw_i=w^{\mathsf T}A\mathbf 1=\sum_iw_ir_i</m>입니다.
+            모든 <m>r_i</m>가 <m>s</m>로 같으면 <m>\rho=s=R=r</m>입니다.
+            그렇지 않으면 <m>w&gt;0</m>이므로 <m>r\sum_iw_i&lt;\sum_iw_ir_i&lt;R\sum_iw_i</m>이고, 따라서 <m>r&lt;\rho&lt;R</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A=\begin{pmatrix}2&amp;1&amp;1\\1&amp;3&amp;2\\1&amp;1&amp;4\end{pmatrix}</m>에 대하여 행합과 열합으로부터 얻을 수 있는 가장 좋은 <m>\rho(A)</m>의 범위를 구하고, 실제 값과 비교하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            행합은 <m>4,6,6</m>, 열합은 <m>4,5,7</m>이고 행합이 모두 같지는 않으므로 <m>4&lt;\rho(A)&lt;6</m>입니다.
+            <m>A-2I</m>의 둘째, 셋째 행이 같으므로 <m>2</m>는 고윳값이고, <m>\operatorname{tr}A=9</m>, <m>\det A=16</m>에서 나머지 두 고윳값은 <m>\lambda^2-7\lambda+8=0</m>의 근입니다.
+            따라서 <m>\rho(A)=\frac{7+\sqrt{17}}2\approx5.56</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-nonnegative-eigenvector-unique">
+      <title>비음수 고유벡터는 페론 벡터뿐이다</title>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>가 양의 행렬이고 영벡터가 아닌 비음수 벡터 <m>x</m>가 <m>Ax=\mu x</m>를 만족하면 <m>\mu=\rho(A)</m>이고, <m>x</m>는 <m>\rho(A)</m>의 양의 고유벡터의 양수배임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A^{\mathsf T}w=\rho(A)w</m>인 양의 벡터 <m>w</m>를 택합니다. <m>x\geq0</m>, <m>x\neq0</m>이므로 <m>w^{\mathsf T}x&gt;0</m>이고,
+            <m>\mu w^{\mathsf T}x=w^{\mathsf T}Ax=(A^{\mathsf T}w)^{\mathsf T}x=\rho(A)w^{\mathsf T}x</m>에서 <m>\mu=\rho(A)</m>입니다.
+            <xref ref="lem-perron-geometric-multiplicity-one"/>에 의해 <m>x=cv</m>이고, <m>x</m>가 비음수이며 영이 아니고 <m>v&gt;0</m>이므로 <m>c&gt;0</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            같은 결론이 어떤 거듭제곱이 양인 비음수 행렬에서도 성립함을 보이고, <m>\operatorname{diag}(1,2)</m>를 예로 들어 이 가정 없이는 성립하지 않음을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A^k&gt;0</m>이면 <m>(A^{\mathsf T})^k=(A^k)^{\mathsf T}&gt;0</m>이므로 <xref ref="thm-perron-frobenius-eventually-positive"/>를 <m>A</m>와 <m>A^{\mathsf T}</m>에 적용하여 양의 벡터 <m>v,w</m>를 얻고, 위 논증이 그대로 적용됩니다.
+            반면 <m>\operatorname{diag}(1,2)</m>의 비음수 고유벡터 <m>e_1</m>은 고윳값 <m>1&lt;2=\rho</m>에 대응합니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-monotonicity">
+      <title>스펙트럼 반지름의 단조성</title>
+      <task>
+        <statement>
+          <p>
+            <m>0\leq A\leq B</m>(성분별)이면 <m>\rho(A)\leq\rho(B)</m>임을 <xref ref="thm-gelfand-formula"/>를 이용하여 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            귀납적으로 <m>A^{k+1}=A^kA\leq B^kA\leq B^kB=B^{k+1}</m>이므로(비음수 행렬을 곱하면 성분별 부등식이 보존됨) <m>0\leq A^k\leq B^k</m>입니다.
+            비음수 행렬의 연산자 1-노름은 최대 열합이므로(<xref ref="exer-gelfand-operator-one-norm-column-sum"/>) <m>\|A^k\|_1\leq\|B^k\|_1</m>이고, <m>k</m>제곱근을 취해 극한을 보내면 <m>\rho(A)\leq\rho(B)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A,B</m>가 양의 행렬이고 <m>A\leq B</m>, <m>A\neq B</m>이면 <m>\rho(A)&lt;\rho(B)</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>Av=\rho(A)v</m>, <m>B^{\mathsf T}w=\rho(B)w</m>인 양의 벡터 <m>v,w</m>를 택하면
+            <md>
+              <mrow>\rho(B)w^{\mathsf T}v=w^{\mathsf T}Bv=\rho(A)w^{\mathsf T}v+w^{\mathsf T}(B-A)v</mrow>
+            </md>
+            입니다. <m>B-A</m>는 영이 아닌 비음수 행렬이고 <m>v&gt;0</m>이므로 <m>(B-A)v</m>는 영이 아닌 비음수 벡터이며, <m>w&gt;0</m>이므로 <m>w^{\mathsf T}(B-A)v&gt;0</m>입니다. <m>w^{\mathsf T}v&gt;0</m>으로 나누면 결론을 얻습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>d\geq2</m>이고 <m>A</m>가 양의 행렬일 때, <m>A</m>의 임의의 진 주부분행렬 <m>A'</m>(첨자 집합 <m>S\subsetneq\{1,\ldots,d\}</m>, <m>S\neq\varnothing</m>에 해당하는 행과 열만 남긴 행렬)에 대하여 <m>\rho(A')&lt;\rho(A)</m>임을 보여라. 특히 <m>\rho(A)&gt;\max_ia_{ii}</m>이다.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A'</m>도 양의 행렬이므로 <m>A'v'=\rho(A')v'</m>인 양의 벡터 <m>v'</m>가 있습니다. <m>v'</m>를 <m>S</m> 밖의 좌표에 <m>0</m>을 채워 <m>x\in\mathbb R^d</m>로 확장합니다.
+            <m>i\in S</m>이면 <m>(Ax)_i=(A'v')_i=\rho(A')x_i</m>이고, <m>i\notin S</m>이면 <m>(Ax)_i&gt;0=\rho(A')x_i</m>입니다.
+            따라서 <m>Ax-\rho(A')x</m>는 영이 아닌 비음수 벡터이고, <m>A^{\mathsf T}w=\rho(A)w</m>인 <m>w&gt;0</m>에 대하여
+            <m>(\rho(A)-\rho(A'))w^{\mathsf T}x=w^{\mathsf T}(Ax-\rho(A')x)&gt;0</m>입니다. <m>w^{\mathsf T}x&gt;0</m>이므로 <m>\rho(A')&lt;\rho(A)</m>입니다.
+            <m>S=\{i\}</m>로 두면 <m>a_{ii}&lt;\rho(A)</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-complex-domination">
+      <title>복소 행렬과 절댓값 행렬</title>
+      <introduction>
+        <p>
+          복소 행렬 <m>A=(a_{ij})</m>에 대하여 <m>\lvert A\rvert=(\lvert a_{ij}\rvert)</m>를 성분별 절댓값 행렬이라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            성분별로 <m>\lvert A^k\rvert\leq\lvert A\rvert^k</m>임을 보이고, 이로부터 <m>\rho(A)\leq\rho(\lvert A\rvert)</m>임을 유도하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\lvert(AB)_{ij}\rvert\leq\sum_l\lvert a_{il}\rvert\lvert b_{lj}\rvert=(\lvert A\rvert\lvert B\rvert)_{ij}</m>이므로 <m>\lvert AB\rvert\leq\lvert A\rvert\lvert B\rvert</m>이고, 귀납적으로 <m>\lvert A^{k+1}\rvert\leq\lvert A^k\rvert\lvert A\rvert\leq\lvert A\rvert^{k+1}</m>입니다.
+            연산자 1-노름은 성분의 절댓값으로 정해지는 최대 열합이므로 <m>\|A^k\|_1=\|\lvert A^k\rvert\|_1\leq\|\lvert A\rvert^k\|_1</m>이고, <xref ref="thm-gelfand-formula"/>에 의해 <m>\rho(A)\leq\rho(\lvert A\rvert)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A=\begin{pmatrix}1&amp;1\\-1&amp;1\end{pmatrix}</m>에 대하여 부등식이 엄격함을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A</m>의 고윳값은 <m>1\pm i</m>이므로 <m>\rho(A)=\sqrt2</m>이고, <m>\lvert A\rvert=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}</m>의 스펙트럼 반지름은 <m>2</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            대각성분이 <m>\lvert\theta_j\rvert=1</m>인 대각행렬 <m>D=\operatorname{diag}(\theta_1,\ldots,\theta_d)</m>와 비음수 행렬 <m>P</m>에 대해 <m>A=DPD^{-1}</m>이면 <m>\rho(A)=\rho(\lvert A\rvert)</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A=DPD^{-1}</m>이면 <m>a_{ij}=\theta_ip_{ij}\theta_j^{-1}</m>이므로 <m>\lvert A\rvert=P</m>이고, <m>A</m>와 <m>P</m>는 닮음이므로 <m>\rho(A)=\rho(P)=\rho(\lvert A\rvert)</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-collatz-wielandt">
+      <title>콜라츠–빌란트 공식</title>
+      <introduction>
+        <p>
+          <m>A</m>가 양의 행렬이라 하자. 영벡터가 아닌 비음수 벡터 <m>x</m>에 대하여
+          <md>
+            <mrow>m(x)=\min_{i:\,x_i&gt;0}\frac{(Ax)_i}{x_i}</mrow>
+          </md>
+          로 두고, 양의 벡터 <m>x</m>에 대하여 <m>M(x)=\max_i(Ax)_i/x_i</m>로 둔다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            영벡터가 아닌 모든 비음수 벡터 <m>x</m>에 대하여 <m>m(x)\leq\rho(A)</m>이고, 모든 양의 벡터 <m>x</m>에 대하여 <m>\rho(A)\leq M(x)</m>임을 보여라. 이로부터
+            <md>
+              <mrow>\rho(A)=\max_{x\geq0,\,x\neq0}m(x)=\min_{x&gt;0}M(x)</mrow>
+            </md>
+            임을 유도하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A^{\mathsf T}w=\rho(A)w</m>인 <m>w&gt;0</m>를 택합니다. <m>x_i=0</m>인 좌표에서는 <m>(Ax)_i\geq0</m>이므로 성분별로 <m>Ax\geq m(x)x</m>입니다.
+            따라서 <m>\rho(A)w^{\mathsf T}x=w^{\mathsf T}Ax\geq m(x)w^{\mathsf T}x</m>이고, <m>w^{\mathsf T}x&gt;0</m>으로 나누면 <m>m(x)\leq\rho(A)</m>입니다.
+            마찬가지로 <m>x&gt;0</m>이면 <m>Ax\leq M(x)x</m>에서 <m>\rho(A)\leq M(x)</m>입니다.
+            페론 벡터 <m>v</m>에 대해서는 <m>m(v)=M(v)=\rho(A)</m>이므로 최댓값과 최솟값이 실제로 달성됩니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <xref ref="exer-perron-row-sum-bounds"/>의 <m>3\times3</m> 행렬 <m>A</m>와 <m>x=(1,2,2)^{\mathsf T}</m>에 대하여 <m>m(x)</m>와 <m>M(x)</m>를 계산하고, 행합으로 얻은 범위와 비교하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>Ax=(6,11,11)^{\mathsf T}</m>이므로 비율은 <m>6,5.5,5.5</m>이고 <m>5.5\leq\rho(A)\leq6</m>입니다. 이는 행합에서 얻은 <m>4&lt;\rho(A)&lt;6</m>보다 훨씬 좋으며, 실제 값 <m>\frac{7+\sqrt{17}}2\approx5.56</m>과도 부합합니다.
+            <m>x=\mathbf 1</m>로 두면 <m>m(\mathbf 1),M(\mathbf 1)</m>이 최소, 최대 행합이 되므로, 이 공식은 행합 평가의 일반화입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-growth-rate">
+      <title>성분 합의 증가율</title>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>가 <m>d\times d</m> 비음수 행렬이면 <m>\lim_{k\to\infty}\bigl(\mathbf 1^{\mathsf T}A^k\mathbf 1\bigr)^{1/k}=\rho(A)</m>임을 보여라. 여기서 <m>\mathbf 1^{\mathsf T}A^k\mathbf 1</m>은 <m>A^k</m>의 모든 성분의 합이다.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            비음수 행렬 <m>B</m>에 대하여 최대 열합은 전체 성분 합 이하이고, 전체 성분 합은 <m>d</m>개의 열합의 합이므로
+            <m>\|B\|_1\leq\mathbf 1^{\mathsf T}B\mathbf 1\leq d\|B\|_1</m>입니다. <m>B=A^k</m>로 두고 <m>k</m>제곱근을 취하면 <m>d^{1/k}\to1</m>이므로 <xref ref="thm-gelfand-formula"/>와 조임 정리에 의해 결론을 얻습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>a_k</m>를 <m>1</m>이 연속으로 두 번 나타나지 않는 길이 <m>k</m>의 <m>0</m>-<m>1</m> 문자열의 개수라 하자. <m>T=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}</m>(행과 열의 첨자를 문자 <m>0,1</m>로 봄)에 대하여 <m>a_k=\mathbf 1^{\mathsf T}T^{k-1}\mathbf 1</m>임을 보이고, <m>\lim_{k\to\infty}a_k^{1/k}</m>를 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>T_{xy}=1</m>은 문자 <m>x</m> 다음에 <m>y</m>가 올 수 있다는 뜻입니다. 행렬곱의 정의에 의해 <m>(T^{k-1})_{xy}=\sum T_{xs_2}T_{s_2s_3}\cdots T_{s_{k-1}y}</m>는 <m>x</m>로 시작하고 <m>y</m>로 끝나는 허용된 길이 <m>k</m> 문자열의 개수이므로, 모든 <m>x,y</m>에 대해 더하면 <m>a_k=\mathbf 1^{\mathsf T}T^{k-1}\mathbf 1</m>입니다.
+            앞 문항에 의해 <m>(\mathbf 1^{\mathsf T}T^{k-1}\mathbf 1)^{1/(k-1)}\to\rho(T)=\varphi</m>이고, <m>a_k^{1/k}=\bigl(a_k^{1/(k-1)}\bigr)^{(k-1)/k}\to\varphi=\frac{1+\sqrt5}2</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-positive-diagonal-criterion">
+      <title>양의 대각성분과 연결성</title>
+      <introduction>
+        <p>
+          <m>A</m>가 <m>d\times d</m> 비음수 행렬이고 <m>d\geq2</m>라 하자. 첨자열 <m>i=i_0,i_1,\ldots,i_m=j</m>가 모든 <m>t</m>에 대하여 <m>a_{i_{t-1}i_t}&gt;0</m>을 만족하면 이를 <m>i</m>에서 <m>j</m>로 가는 길이 <m>m</m>의 <term>경로</term><aside><p>경로:path</p></aside>라 부르자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>(A^m)_{ij}&gt;0</m>일 필요충분조건은 <m>i</m>에서 <m>j</m>로 가는 길이 <m>m</m>의 경로가 존재하는 것임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>(A^m)_{ij}=\sum_{i_1,\ldots,i_{m-1}}a_{ii_1}a_{i_1i_2}\cdots a_{i_{m-1}j}</m>의 각 항은 비음수이므로, 합이 양수일 필요충분조건은 어떤 항이 양수인 것, 즉 경로가 존재하는 것입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 대각성분이 양수이고, 서로 다른 모든 <m>i,j</m>에 대하여 <m>i</m>에서 <m>j</m>로 가는 경로가 (길이에 관계없이) 존재하면 <m>A^{d-1}</m>이 양의 행렬임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>i\neq j</m>이면 <m>i</m>에서 <m>j</m>로 가는 가장 짧은 경로를 택합니다. 이 경로에 같은 첨자가 두 번 나타나면 그 사이를 잘라내어 더 짧은 경로를 얻으므로, 첨자는 모두 다르고 길이는 <m>d-1</m> 이하입니다.
+            <m>a_{ii}&gt;0</m>이므로 경로의 시작점에서 <m>i\to i</m>를 필요한 만큼 반복하여 길이를 정확히 <m>d-1</m>로 늘릴 수 있습니다. <m>i=j</m>이면 <m>i\to i</m>를 <m>d-1</m>번 반복합니다.
+            앞 문항에 의해 <m>A^{d-1}</m>의 모든 성분이 양수입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <xref ref="exer-perron-hypotheses-necessary"/>의 순환 치환행렬 <m>C</m>를 이용하여 대각성분에 대한 가정을 뺄 수 없음을 보이고, <m>I+C</m>에 대해서는 <xref ref="thm-perron-frobenius-eventually-positive"/>가 적용됨을 고윳값을 직접 계산하여 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>C</m>에서는 <m>j\to j+1</m>이 경로이므로 연결 조건은 성립하지만, 어떤 거듭제곱도 양이 아님을 이미 보였습니다.
+            <m>I+C</m>는 대각성분이 <m>1</m>이고 같은 연결 조건을 만족하므로 <m>(I+C)^{d-1}&gt;0</m>입니다.
+            고윳값은 <m>1+\omega</m>(<m>\omega^d=1</m>)이고 <m>\rho(I+C)=2</m>는 <m>\omega=1</m>에서만 달성됩니다. <m>\omega\neq1</m>이면 <m>\lvert1+\omega\rvert&lt;2</m>이므로 정리의 결론과 일치합니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-power-limit">
+      <title>거듭제곱의 극한</title>
+      <introduction>
+        <p>
+          <m>A</m>가 양의 행렬이고 <m>\rho=\rho(A)</m>라 하자. <m>Av=\rho v</m>, <m>A^{\mathsf T}w=\rho w</m>인 양의 벡터 <m>v,w</m>를 <m>w^{\mathsf T}v=1</m>이 되도록 택하고 <m>P=vw^{\mathsf T}</m>로 둔다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>B=A-\rho P</m>라 할 때 <m>P^2=P</m>, <m>BP=PB=0</m>이고 모든 <m>k\geq1</m>에 대하여 <m>A^k=B^k+\rho^kP</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>P^2=v(w^{\mathsf T}v)w^{\mathsf T}=P</m>이고 <m>AP=(Av)w^{\mathsf T}=\rho P</m>, <m>PA=v(A^{\mathsf T}w)^{\mathsf T}=\rho P</m>입니다.
+            따라서 <m>BP=AP-\rho P^2=0</m>, <m>PB=PA-\rho P^2=0</m>입니다.
+            <m>k=1</m>일 때는 정의 그대로이고, <m>A^{k+1}=(B^k+\rho^kP)(B+\rho P)=B^{k+1}+\rho^{k+1}P</m>입니다(교차항은 <m>BP=PB=0</m>으로 사라짐).
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\rho(B)&lt;\rho</m>임을 보이고, <m>\lim_{k\to\infty}A^k/\rho^k=vw^{\mathsf T}</m>임을 유도하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>H=\{x:w^{\mathsf T}x=0\}</m>라 하면 <m>x\in H</m>에 대하여 <m>Px=0</m>이므로 <m>Bx=Ax\in H</m>이고, <m>Bv=\rho v-\rho v=0</m>입니다.
+            따라서 <m>v</m>와 <m>H</m>의 기저를 이어 붙인 기저에서 <m>A=\begin{pmatrix}\rho&amp;0\\0&amp;C\end{pmatrix}</m>, <m>B=\begin{pmatrix}0&amp;0\\0&amp;C\end{pmatrix}</m>입니다.
+            <m>\rho</m>의 대수적 중복도가 <m>1</m>이므로 <m>C</m>의 고윳값은 <m>\rho</m>가 아닌 <m>A</m>의 고윳값들이고, <xref ref="thm-perron-positive-matrix"/>에 의해 모두 절댓값이 <m>\rho</m>보다 작습니다. 그러므로 <m>\rho(B)=\max(0,\rho(C))&lt;\rho</m>입니다.
+          </p>
+          <p>
+            <m>\rho(B/\rho)&lt;1</m>이므로 <xref ref="exer-gelfand-power-convergence"/>에 의해 <m>(B/\rho)^k\to0</m>이고, 앞 문항에서 <m>A^k/\rho^k=(B/\rho)^k+P\to P</m>입니다.
+            이 논증은 <m>\rho&gt;0</m>이 대수적 중복도 <m>1</m>이고 다른 고윳값보다 절댓값이 엄격히 크며, <m>A</m>와 <m>A^{\mathsf T}</m>가 <m>\rho</m>에 대한 양의 고유벡터를 갖는다는 사실만을 사용합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            영벡터가 아닌 모든 비음수 벡터 <m>x</m>에 대하여 <m>A^kx/\|A^kx\|_1\to v/\|v\|_1</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            앞 문항에 의해 <m>A^kx/\rho^k\to Px=(w^{\mathsf T}x)v</m>이고, <m>w&gt;0</m>, <m>x\geq0</m>, <m>x\neq0</m>이므로 <m>w^{\mathsf T}x&gt;0</m>입니다.
+            따라서 <m>\|A^kx\|_1/\rho^k\to(w^{\mathsf T}x)\|v\|_1&gt;0</m>이고, 두 극한의 비를 취하면 <m>A^kx/\|A^kx\|_1\to v/\|v\|_1</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            같은 결론이 어떤 거듭제곱이 양인 비음수 행렬에서도 성립함을 설명하고, <xref ref="exer-perron-eventually-positive-examples"/>의 <m>F</m>에 적용하여 피보나치 수열에 대하여 <m>F_{n+1}/F_n\to\varphi</m>임을 보여라. 여기서 <m>F^n=\begin{pmatrix}F_{n+1}&amp;F_n\\F_n&amp;F_{n-1}\end{pmatrix}</m>임을 사용해도 좋다.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <xref ref="thm-perron-frobenius-eventually-positive"/>를 <m>A</m>와 <m>A^{\mathsf T}</m>에 적용하면 두 번째 문항의 풀이 끝에서 언급한 사실들이 모두 성립하므로 논증이 그대로 적용됩니다.
+            <m>F</m>는 대칭이므로 <m>v=w</m>로 택할 수 있고, <m>(\varphi,1)^{\mathsf T}</m>를 정규화하면
+            <m>P=\frac1{\varphi^2+1}\begin{pmatrix}\varphi^2&amp;\varphi\\\varphi&amp;1\end{pmatrix}</m>입니다.
+            따라서 <m>F^n/\varphi^n\to P</m>이고 <m>F_{n+1}/F_n=(F^n)_{11}/(F^n)_{12}\to\varphi^2/\varphi=\varphi</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-weak-nonnegative">
+      <title>일반 비음수 행렬로의 확장</title>
+      <introduction>
+        <p>
+          이 문제에서는 섭동과 극한을 이용하여 다음을 증명한다: <em>임의의 비음수 행렬 <m>A</m>에 대하여 <m>\rho(A)</m>는 <m>A</m>의 고윳값이고, 이에 대응하는 영벡터가 아닌 비음수 고유벡터가 존재한다.</em>
+          <xref ref="exer-perron-hypotheses-necessary"/>에서 보았듯이 고유벡터가 양이라거나 <m>\rho(A)</m>가 단순하다는 결론은 기대할 수 없다.
+          <m>J</m>를 모든 성분이 <m>1</m>인 행렬이라 하고, <m>\varepsilon&gt;0</m>에 대하여 <m>A_\varepsilon=A+\varepsilon J</m>로 둔다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>r=\lim_{\varepsilon\to0^+}\rho(A_\varepsilon)</m>가 존재하고 <m>r\geq\rho(A)</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>0&lt;\varepsilon&lt;\varepsilon'</m>이면 <m>A\leq A_\varepsilon\leq A_{\varepsilon'}</m>이고 <m>A_\varepsilon\neq A_{\varepsilon'}</m>이며 둘 다 양의 행렬이므로, <xref ref="exer-perron-monotonicity"/>에 의해
+            <m>\rho(A)\leq\rho(A_\varepsilon)&lt;\rho(A_{\varepsilon'})</m>입니다.
+            따라서 <m>\varepsilon\mapsto\rho(A_\varepsilon)</m>은 증가함수이고 아래로 <m>\rho(A)</m>에 의해 유계이므로, <m>\varepsilon\to0^+</m>일 때 극한 <m>r\geq\rho(A)</m>가 존재합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>r</m>이 <m>A</m>의 고윳값이고 영벡터가 아닌 비음수 고유벡터를 가짐을 보이고, 이로부터 <m>r=\rho(A)</m>임을 결론지어라.
+          </p>
+        </statement>
+        <hint>
+          <p>
+            <m>A_\varepsilon</m>의 양의 고유벡터를 <m>\|\cdot\|_1</m>로 정규화하면 콤팩트 집합 <m>\{x\geq0:\|x\|_1=1\}</m>에 놓인다.
+          </p>
+        </hint>
+        <solution>
+          <p>
+            각 <m>m\geq1</m>에 대하여 <m>\varepsilon_m=1/m</m>으로 두고, <m>A_{\varepsilon_m}v_m=\rho(A_{\varepsilon_m})v_m</m>, <m>v_m&gt;0</m>, <m>\|v_m\|_1=1</m>인 벡터를 택합니다.
+            <m>v_m</m>은 유계 닫힌 집합 <m>\Delta=\{x\in\mathbb R^d:x\geq0,\ \|x\|_1=1\}</m>에 속하므로, 볼차노–바이어슈트라스 정리에 의해 어떤 부분수열이 <m>v\in\Delta</m>로 수렴합니다.
+            그 부분수열을 따라 <m>A_{\varepsilon_m}\to A</m>, <m>\rho(A_{\varepsilon_m})\to r</m>이므로 등식의 양변에서 극한을 취하면 <m>Av=rv</m>입니다.
+            <m>v\geq0</m>이고 <m>\|v\|_1=1</m>이므로 <m>v</m>는 영벡터가 아닌 비음수 고유벡터입니다.
+          </p>
+          <p>
+            <m>r</m>은 <m>A</m>의 고윳값이므로 정의에 의해 <m>r\leq\rho(A)</m>이고, 앞 문항과 합치면 <m>r=\rho(A)</m>입니다.
+            따라서 <m>\rho(A)</m>는 비음수 고유벡터 <m>v</m>를 갖는 고윳값입니다.
+            부수적으로 <m>\lim_{\varepsilon\to0^+}\rho(A+\varepsilon J)=\rho(A)</m>도 얻는데, 이는 고윳값의 연속성을 따로 사용하지 않고 얻은 결과입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-perron-eventually-positive-characterization">
+      <title>부호가 있는 행렬의 궁극적 양성</title>
+      <introduction>
+        <p>
+          이 문제의 <m>A\in\mathbb R^{d\times d}</m>는 음수 성분을 가질 수도 있다. 다음 두 조건이 동치임을 보이고자 한다.
+        </p>
+        <p>
+          (i) 어떤 <m>k_0</m>이 존재하여 모든 <m>k\geq k_0</m>에 대하여 <m>A^k</m>가 양의 행렬이다.
+        </p>
+        <p>
+          (ii) <m>\rho(A)&gt;0</m>은 <m>A</m>의 대수적 중복도 <m>1</m>인 고윳값이고, 다른 모든 고윳값 <m>\lambda</m>는 <m>\lvert\lambda\rvert&lt;\rho(A)</m>를 만족하며, <m>A</m>와 <m>A^{\mathsf T}</m>는 모두 <m>\rho(A)</m>에 대응하는 양의 고유벡터를 갖는다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>(i)이면 (ii)임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>k\geq k_0</m>을 고정하면 <m>A^k</m>와 <m>A^{k+1}</m>은 양의 행렬입니다. <m>A</m>의 고윳값을 중복도를 포함하여 <m>\lambda_1,\ldots,\lambda_d</m>라 하면 <m>A^k</m>의 고윳값은 <m>\lambda_1^k,\ldots,\lambda_d^k</m>이고 <m>\rho(A^k)=\rho(A)^k</m>입니다(<xref ref="exer-gelfand-spectral-radius-basic-properties"/>).
+            <xref ref="thm-perron-positive-matrix"/>를 <m>A^k</m>에 적용하면 <m>\rho(A)^k&gt;0</m>은 <m>A^k</m>의 단순 고윳값이고 절댓값이 <m>\rho(A)^k</m>인 유일한 고윳값입니다.
+            <m>\lvert\lambda_i\rvert=\rho(A)</m>인 <m>i</m>마다 <m>\lambda_i^k</m>는 절댓값이 <m>\rho(A)^k</m>이므로 <m>\lambda_i^k=\rho(A)^k</m>이고, 단순성에 의해 그러한 <m>i</m>는 정확히 하나입니다. 그 고윳값을 <m>\lambda</m>라 하면 나머지 고윳값은 절댓값이 <m>\rho(A)</m>보다 작습니다.
+            같은 논리를 <m>A^{k+1}</m>에 적용하면 <m>\lambda^{k+1}=\rho(A)^{k+1}</m>이므로 <m>\lambda=\lambda^{k+1}/\lambda^k=\rho(A)</m>입니다.
+          </p>
+          <p>
+            <m>v&gt;0</m>을 <m>A^k</m>의 페론 벡터라 하고 <m>u</m>를 <m>A</m>의 <m>\rho(A)</m>에 대한 고유벡터라 합시다. <m>A^ku=\rho(A)^ku</m>이고 <m>A^k</m>의 이 고유공간은 일차원이므로 <m>u</m>는 <m>v</m>의 스칼라배이며, 따라서 <m>v</m> 자체가 <m>A</m>의 <m>\rho(A)</m>에 대한 양의 고유벡터입니다.
+            <m>(A^{\mathsf T})^k=(A^k)^{\mathsf T}&gt;0</m>이므로 <m>A^{\mathsf T}</m>에 대해서도 같습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>(ii)이면 (i)임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <xref ref="exer-perron-power-limit"/>의 논증은 조건 (ii)만을 사용합니다. <m>A</m>와 <m>A^{\mathsf T}</m>의 양의 고유벡터 <m>v,w</m>에 대하여 <m>w^{\mathsf T}v&gt;0</m>이므로 <m>w^{\mathsf T}v=1</m>로 정규화할 수 있고, 같은 방법으로 <m>A^k/\rho(A)^k\to vw^{\mathsf T}</m>를 얻습니다.
+            <m>vw^{\mathsf T}</m>의 모든 성분 <m>v_iw_j</m>는 양수이므로, 유한개의 성분이 각각 양의 극한으로 수렴한다는 사실로부터 어떤 <m>k_0</m> 이후의 모든 <m>A^k</m>는 양의 행렬입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A=\begin{pmatrix}2&amp;2\\2&amp;-1\end{pmatrix}</m>에 대하여 <m>A^k</m>가 양의 행렬이 되는 <m>k</m>를 모두 구하고, 이 결과가 <xref ref="exer-perron-eventually-positive-persistence"/>의 결론과 어떻게 대비되는지 설명하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>v=(2,1)^{\mathsf T}</m>, <m>u=(1,-2)^{\mathsf T}</m>는 <m>Av=3v</m>, <m>Au=-2u</m>를 만족하는 직교 고유벡터이고 <m>\|v\|^2=\|u\|^2=5</m>이므로
+            <md>
+              <mrow>A^k=\frac{3^k}5vv^{\mathsf T}+\frac{(-2)^k}5uu^{\mathsf T}=\frac15\begin{pmatrix}4\cdot3^k+(-2)^k&amp;2\cdot3^k-2(-2)^k\\2\cdot3^k-2(-2)^k&amp;3^k+4(-2)^k\end{pmatrix}</mrow>
+            </md>
+            입니다. 비대각 성분과 <m>(1,1)</m> 성분은 항상 양수입니다. <m>(2,2)</m> 성분은 <m>k</m>가 짝수이면 양수이고, <m>k</m>가 홀수이면 <m>(3/2)^k&gt;4</m>일 때, 즉 <m>k\geq5</m>일 때만 양수입니다.
+            따라서 <m>A^k&gt;0</m>일 필요충분조건은 <m>k=2</m> 또는 <m>k\geq4</m>입니다. 실제로 <m>A^2=\begin{pmatrix}8&amp;2\\2&amp;5\end{pmatrix}</m>, <m>A^3=\begin{pmatrix}20&amp;14\\14&amp;-1\end{pmatrix}</m>입니다.
+          </p>
+          <p>
+            이 행렬은 (ii)를 만족하므로 결국 양이 되지만, <m>A^2&gt;0</m>임에도 <m>A^3</m>은 양이 아닙니다. 비음수 행렬에서는 한 번 양이 된 거듭제곱이 계속 양으로 남지만(<xref ref="exer-perron-eventually-positive-persistence"/>), 그 증명은 <m>A\geq0</m>을 본질적으로 사용합니다. 부호가 있는 행렬에서는 조건 (i)의 <q>모든 <m>k\geq k_0</m></q>을 <q>어떤 <m>k</m></q>로 약화할 수 없습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+  </exercises>
+
 </section>

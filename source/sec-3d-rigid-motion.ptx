@@ -42,7 +42,7 @@
 
     <statement>
       <p>
-        모든 3차원 강체운동은 가역 아핀변환이다.
+        모든 3차원 강체운동은 가역 아핀변환이며, 선형부분은 직교행렬이다.
       </p>
     </statement>
 
@@ -67,7 +67,7 @@
         의 <m>u_i</m> 방향 성분은 <m>x</m> 의 <m>e_i</m> 좌표와 같습니다.
         <m>A</m> 를 열벡터가 <m>u_1,u_2,u_3</m> 인 행렬로 두면 <m>f(x)=Ax</m> 입니다.
         이 행렬은 정규직교 열벡터를 가지므로 가역입니다.
-        따라서 <m>T(x)=Ax+T(0)</m> 이며, <m>T</m> 는 가역 아핀변환입니다.
+        따라서 <m>T(x)=Ax+T(0)</m> 이며, <m>T</m> 는 가역 아핀변환입니다. 또한, <m>A</m>는 열벡터는 정규직교하므로 직교행렬입니다.
       </p>
     </proof>
   </theorem>
@@ -113,7 +113,7 @@
       <p>
         <m>n\times n</m> 실수행렬 <m>A</m> 가 <m>A^{\operatorname{T}}A=I</m> 이고
         <m>\det A=1</m> 이면, <term>특수직교행렬</term>
-        <aside><p>용어:special orthogonal matrix</p></aside> 이라고 합니다.
+        <aside><p>특수직교행렬:special orthogonal matrix</p></aside> 이라고 합니다.
         모든 <m>n\times n</m> 특수직교행렬의 집합을
         <md>
           <mrow>\operatorname{SO}(n)=\{A\in M_n(\mathbb R):A^{\operatorname{T}}A=I,\ \det A=1\}</mrow>
@@ -237,7 +237,7 @@
           <mrow>J=R'(0)=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}</mrow>
         </md>
         를 <m>\operatorname{SO}(2)</m> 의 <term>무한소 생성자</term>
-        <aside><p>용어:infinitesimal generator</p></aside> 라고 합니다.
+        <aside><p>무한소 생성자:infinitesimal generator</p></aside> 라고 합니다.
         이 행렬은 <m>R(\theta)=e^{\theta J}</m> 을 만족합니다.
       </p>
     </statement>

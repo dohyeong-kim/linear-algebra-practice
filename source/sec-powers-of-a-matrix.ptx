@@ -63,7 +63,7 @@
   </example>
   
   <p>
-    항상 <m>v</m>가 고유벡터의 선형결합으로 표현 가능한 것은 아닙니다. 그러나 <m>V</m>가 유한차원이고 <m>T</m>의 특성다항식이 <m>\mathbb F</m> 위에서 분해된다면, <m>V</m>의 적절한 기저 <m>\mathcal B</m>를 선택하여 <m>T</m>를 조르당 표준형으로 나타낼 수 있습니다. 즉, 대각화 가능한 <m>T_s</m>와 멱명작용소 <m>T_n</m>에 대하여
+    항상 <m>v</m>가 고유벡터의 선형결합으로 표현 가능한 것은 아닙니다. 그러나 <m>V</m>가 유한차원이고 <m>T</m>의 특성다항식이 <m>\mathbb F</m> 위에서 분해된다면, <m>V</m>의 적절한 기저 <m>\mathcal B</m>를 선택하여 <m>T</m>를 조르당 표준형으로 나타낼 수 있습니다. 즉, 대각화 가능한 <m>T_s</m>와 멱영작용소 <m>T_n</m>에 대하여
     <md>
       <mrow>
       T = T_s +T_n, \quad T_sT_n=T_nT_s
@@ -75,7 +75,7 @@
     <title>가법 조르당 분해의 유일성</title>
     <statement>
       <p>
-        <m>V</m>가 유한차원이고 <m>T</m>의 특성다항식이 <m>\mathbb F</m> 위에서 분해된다고 하자. 그러면 <m>T</m>는 서로 가환하는 대각화 가능한 연산자 <m>T_s</m>와 멱명작용소 <m>T_n</m>의 합 <m>T=T_s+T_n</m>으로 유일하게 표현된다. 즉, <m>T=S+N</m>이고 <m>S</m>가 대각화 가능하며 <m>N</m>이 멱명이고 <m>SN=NS</m>이면 <m>S=T_s</m> 및 <m>N=T_n</m>이다.
+        <m>V</m>가 유한차원이고 <m>T</m>의 특성다항식이 <m>\mathbb F</m> 위에서 분해된다고 하자. 그러면 <m>T</m>는 서로 가환하는 대각화 가능한 연산자 <m>T_s</m>와 멱영작용소 <m>T_n</m>의 합 <m>T=T_s+T_n</m>으로 유일하게 표현된다. 즉, <m>T=S+N</m>이고 <m>S</m>가 대각화 가능하며 <m>N</m>이 멱영이고 <m>SN=NS</m>이면 <m>S=T_s</m> 및 <m>N=T_n</m>이다.
       </p>
     </statement>
     <proof>
@@ -127,7 +127,536 @@
       </p>
     </proof>
   </proposition>
-  
+
+  <exercises xml:id="exercises-powers-of-a-matrix">
+    <title>연습문제</title>
+
+    <!-- ===================================================== -->
+    <!--  기본 문제 (5)                                          -->
+    <!-- ===================================================== -->
+    <exercise xml:id="exer-powers-diagonal-operator">
+      <title>대각 연산자의 거듭제곱</title>
+      <introduction>
+        <p>
+          <xref ref="ex-powers-eigenvector-decomposition"/>의 연산자 <m>T</m>, 즉 <m>Te_1=2e_1</m>, <m>Te_2=-3e_2</m>와 벡터 <m>v=3e_1-2e_2</m>를 생각하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>T^3v</m>와 <m>T^4v</m>를 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            명제 <xref ref="prop-powers-eigenvector-decomposition"/>에 의해 <m>T^nv=3\cdot 2^ne_1-2(-3)^ne_2</m>입니다. 따라서 <m>T^3v=24e_1+54e_2</m>, <m>T^4v=48e_1-162e_2</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>T^nv</m>의 <m>e_2</m>-좌표가 양수가 되는 음이 아닌 정수 <m>n</m>을 모두 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>-2(-3)^n>0 \iff (-3)^n\lt 0 \iff n</m>이 홀수.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>T^nv</m>가 <m>v</m>의 스칼라배가 되는 음이 아닌 정수 <m>n</m>을 모두 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>T^nv=cv</m>이면 계수를 비교하여 <m>2^n=c=(-3)^n</m>이므로 <m>n=0</m>뿐입니다. 서로 다른 고유값에 대응하는 성분이 모두 <m>0</m>이 아니면 <m>v</m>는 어떤 <m>T^n</m> (<m>n\geq 1</m>)의 고유벡터도 아님을 보여 줍니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-powers-2x2-distinct-eigenvalues">
+      <title>서로 다른 고유값을 갖는 <m>2\times 2</m> 행렬</title>
+      <statement>
+        <p>
+          <m>A=\begin{pmatrix}4&amp;1\\2&amp;3\end{pmatrix}</m>의 고유값과 고유벡터를 구하고, <m>e_2</m>를 고유벡터의 선형결합으로 나타내어 모든 음이 아닌 정수 <m>n</m>에 대하여 <m>A^ne_2</m>를 구하여라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          특성다항식은 <m>x^2-7x+10=(x-5)(x-2)</m>이고, <m>v_1=(1,1)^T</m>, <m>v_2=(1,-2)^T</m>가 각각 고유값 <m>5,2</m>의 고유벡터입니다. <m>e_2=\frac13v_1-\frac13v_2</m>이므로 명제 <xref ref="prop-powers-eigenvector-decomposition"/>에 의해
+          <md>
+            <mrow>A^ne_2=\frac{5^n}{3}v_1-\frac{2^n}{3}v_2=\begin{pmatrix}\dfrac{5^n-2^n}{3}\\[4pt] \dfrac{5^n+2^{n+1}}{3}\end{pmatrix}</mrow>
+          </md>
+          입니다. <m>n=1</m>이면 <m>(1,3)^T</m>로 <m>A</m>의 둘째 열과 일치합니다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-powers-single-eigenvalue">
+      <title>고유값이 하나뿐인 <m>2\times 2</m> 행렬</title>
+      <introduction>
+        <p>
+          <m>A=\begin{pmatrix}3&amp;1\\-1&amp;1\end{pmatrix}</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>의 특성다항식을 구하고 <m>(A-2I)^2=0</m>임을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\det(xI-A)=x^2-4x+4=(x-2)^2</m>. <m>N=A-2I=\begin{pmatrix}1&amp;1\\-1&amp;-1\end{pmatrix}</m>이고 직접 계산하면 <m>N^2=0</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>의 가법 조르당 분해를 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A=2I+N</m>에서 <m>2I</m>는 대각화 가능하고 모든 행렬과 가환하며 <m>N</m>은 멱영입니다. 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>에 의해 <m>A_s=2I</m>, <m>A_n=N</m>입니다. (<m>A\neq 2I</m>이므로 <m>A</m>는 대각화 가능하지 않습니다.)
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 음이 아닌 정수 <m>n</m>에 대하여 <m>A^n</m>을 구하고, <m>A^{10}</m>을 계산하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            명제 <xref ref="prop-powers-additive-jordan-decomposition"/>(<m>d=2</m>)에 의해
+            <md>
+              <mrow>A^n=2^nI+n2^{n-1}N=2^{n-1}\begin{pmatrix}2+n&amp;n\\-n&amp;2-n\end{pmatrix}</mrow>
+            </md>
+            입니다. 따라서 <m>A^{10}=\begin{pmatrix}6144&amp;5120\\-5120&amp;-4096\end{pmatrix}</m>. 검산: <m>\det A^{10}=-6144\cdot4096+5120^2=1048576=4^{10}=(\det A)^{10}</m>.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-powers-invertibility-semisimple-part">
+      <title>반단순 부분의 가역성</title>
+      <statement>
+        <p>
+          <m>T=T_s+T_n</m>이 가법 조르당 분해일 때 다음을 보여라.
+          <ol>
+            <li><m>T</m>가 가역일 필요충분조건은 <m>T_s</m>가 가역인 것이다.</li>
+            <li><m>T_s</m>가 가역이면 <m>U=T_s^{-1}T_n</m>은 <m>T_s</m>와 가환하는 멱영작용소이고, <m>T=T_s(I+U)</m>이다.</li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          서로 가환하는 멱영작용소 <m>M</m>에 대하여 <m>(I+M)^{-1}=\sum_{q\geq 0}(-M)^q</m>(유한합).
+        </p>
+      </hint>
+      <solution>
+        <p>
+          <m>T_sT_n=T_nT_s</m>의 양변에 좌우로 <m>T_s^{-1}</m>을 곱하면 <m>T_s^{-1}T_n=T_nT_s^{-1}</m>이므로 <m>U</m>는 <m>T_s</m>와 가환하고, <m>U^d=T_s^{-d}T_n^d=0</m>입니다. <m>T=T_s+T_n=T_s(I+U)</m>이고 <m>I+U</m>는 가역이므로 <m>T</m>는 가역입니다.
+        </p>
+        <p>
+          역으로 <m>T</m>가 가역이라 합시다. <m>TT_n=(T_s+T_n)T_n=T_n(T_s+T_n)=T_nT</m>이므로 <m>T^{-1}</m>도 <m>T_n</m>과 가환하고, 따라서 <m>(T^{-1}T_n)^d=T^{-d}T_n^d=0</m>입니다. 그러므로 <m>T_s=T-T_n=T(I-T^{-1}T_n)</m>은 가역입니다.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="exer-powers-multiplicative-3x3">
+      <title>승법 조르당 분해로 계산하기</title>
+      <statement>
+        <p>
+          <m>A=\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;-1\end{pmatrix}</m>의 가법 조르당 분해와 승법 조르당 분해 <m>A=A_sA_u</m>를 구하고, 명제 <xref ref="prop-powers-multiplicative-jordan-decomposition"/>를 이용하여 모든 음이 아닌 정수 <m>m</m>에 대하여 <m>A^m</m>을 구하여라.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>E_{12}</m>를 <m>(1,2)</m> 성분만 <m>1</m>인 행렬이라 합시다. <m>A_s=\operatorname{diag}(2,2,-1)</m>, <m>A_n=E_{12}</m>로 두면 <m>A_sE_{12}=2E_{12}=E_{12}A_s</m>이고 <m>E_{12}^2=0</m>이므로, 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>에 의해 이것이 가법 조르당 분해입니다. <m>A_s</m>가 가역이므로 <m>U=A_s^{-1}E_{12}=\frac12E_{12}</m>, <m>A_u=I+\frac12E_{12}</m>이고 <m>U^2=0</m>입니다. 따라서
+          <md>
+            <mrow>A^m=A_s^m\left(I+\tfrac m2E_{12}\right)=\begin{pmatrix}2^m&amp;m2^{m-1}&amp;0\\0&amp;2^m&amp;0\\0&amp;0&amp;(-1)^m\end{pmatrix}</mrow>
+          </md>
+          입니다.
+        </p>
+      </solution>
+    </exercise>
+
+
+  <!-- ===================================================== -->
+  <!--  응용 문제 (4)                                          -->
+  <!-- ===================================================== -->
+
+    <exercise xml:id="exer-powers-fibonacci">
+      <title>피보나치 수열과 비네 공식</title>
+      <introduction>
+        <p>
+          <m>F_0=0</m>, <m>F_1=1</m>, <m>F_{n+2}=F_{n+1}+F_n</m>으로 정의된 피보나치 수열과 <m>A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}</m>를 생각하자. <m>\varphi=\frac{1+\sqrt5}2</m>, <m>\psi=\frac{1-\sqrt5}2</m>라 둔다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            모든 <m>n\geq 0</m>에 대하여 <m>A^ne_1=(F_{n+1},F_n)^T</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            귀납법. <m>n=0</m>이면 <m>e_1=(F_1,F_0)^T</m>. <m>A(F_{n+1},F_n)^T=(F_{n+1}+F_n,F_{n+1})^T=(F_{n+2},F_{n+1})^T</m>.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>(\varphi,1)^T</m>, <m>(\psi,1)^T</m>가 <m>A</m>의 고유벡터임을 보이고, 명제 <xref ref="prop-powers-eigenvector-decomposition"/>를 이용하여 <m>F_n=\dfrac{\varphi^n-\psi^n}{\sqrt5}</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\lambda\in\{\varphi,\psi\}</m>는 <m>\lambda^2=\lambda+1</m>을 만족하므로 <m>A(\lambda,1)^T=(\lambda+1,\lambda)^T=\lambda(\lambda,1)^T</m>입니다. <m>\varphi-\psi=\sqrt5</m>이므로 <m>e_1=\frac{1}{\sqrt5}\bigl((\varphi,1)^T-(\psi,1)^T\bigr)</m>이고, 따라서 <m>A^ne_1=\frac1{\sqrt5}\bigl(\varphi^n(\varphi,1)^T-\psi^n(\psi,1)^T\bigr)</m>입니다. 둘째 좌표를 (a)와 비교하면 결론을 얻습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 <m>n\geq0</m>에 대하여 <m>F_n</m>은 <m>\varphi^n/\sqrt5</m>에 가장 가까운 정수임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>|\psi|\lt 1</m>이므로 <m>\left|F_n-\varphi^n/\sqrt5\right|=|\psi|^n/\sqrt5\leq 1/\sqrt5\lt 1/2</m>.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-powers-noncommuting-decomposition">
+      <title>가환성 조건의 필요성</title>
+      <introduction>
+        <p>
+          <m>A=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}</m>, <m>S=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}</m>, <m>N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>A=S+N</m>이고 <m>S</m>는 대각화 가능, <m>N</m>은 멱영이지만 <m>SN\neq NS</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>SN=N</m>, <m>NS=2N</m>.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>의 가법 조르당 분해를 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A</m>는 서로 다른 두 고유값 <m>1,2</m>를 가지므로 대각화 가능합니다. <m>A=A+0</m>은 조건을 만족하므로 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>에 의해 <m>A_s=A</m>, <m>A_n=0</m>입니다. 특히 대각화 가능한 부분이 반드시 대각행렬인 것은 아닙니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A^n</m>을 구하고, 명제 <xref ref="prop-powers-additive-jordan-decomposition"/>의 공식을 <m>S,N</m>에 잘못 적용한 <m>S^n+nS^{n-1}N</m>과 <m>A^n</m>이 일치하는 <m>n</m>을 모두 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            고유벡터 <m>e_1</m>(고유값 <m>1</m>), <m>e_1+e_2</m>(고유값 <m>2</m>)와 <m>e_2=(e_1+e_2)-e_1</m>로부터 <m>A^ne_2=(2^n-1)e_1+2^ne_2</m>이므로
+            <md>
+              <mrow>A^n=\begin{pmatrix}1&amp;2^n-1\\0&amp;2^n\end{pmatrix},\qquad S^n+nS^{n-1}N=\begin{pmatrix}1&amp;n\\0&amp;2^n\end{pmatrix}</mrow>
+            </md>
+            입니다. <m>2^n-1=n</m>은 <m>n\in\{0,1\}</m>에서만 성립하므로, <m>n\geq 2</m>이면 두 값이 다릅니다. 이항정리는 <m>SN=NS</m>일 때만 쓸 수 있습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-powers-3x3-jordan-decomposition">
+      <title>대각성분만으로는 보이지 않는 반단순 부분</title>
+      <introduction>
+        <p>
+          <m>A=\begin{pmatrix}2&amp;1&amp;1\\0&amp;2&amp;1\\0&amp;0&amp;3\end{pmatrix}</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            일반화된 고유공간 <m>K_2</m>, <m>K_3</m>을 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>(A-2I)^2=\begin{pmatrix}0&amp;0&amp;2\\0&amp;0&amp;1\\0&amp;0&amp;1\end{pmatrix}</m>이므로 <m>K_2=\ker(A-2I)^2=\operatorname{span}\{e_1,e_2\}</m>. 고유값 <m>3</m>의 대수적 중복도가 <m>1</m>이므로 <m>K_3=\ker(A-3I)=\operatorname{span}\{w\}</m>, <m>w=(2,1,1)^T</m>.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>A</m>의 가법 조르당 분해 <m>A=A_s+A_n</m>을 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A_s</m>는 <m>K_2</m> 위에서 <m>2</m>배, <m>K_3</m> 위에서 <m>3</m>배로 작용합니다. <m>P=(e_1\ e_2\ w)</m>로 두면
+            <md>
+              <mrow>A_s=P\operatorname{diag}(2,2,3)P^{-1}=\begin{pmatrix}2&amp;0&amp;2\\0&amp;2&amp;1\\0&amp;0&amp;3\end{pmatrix},\qquad A_n=A-A_s=\begin{pmatrix}0&amp;1&amp;-1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}</mrow>
+            </md>
+            입니다. <m>A_n^2=0</m>이고 <m>A_sA_n=A_nA_s=\begin{pmatrix}0&amp;2&amp;-2\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}</m>임을 직접 확인할 수 있으므로, 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>에 의해 이것이 유일한 분해입니다. <m>A_s\neq\operatorname{diag}(2,2,3)</m>임에 주의합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 음이 아닌 정수 <m>m</m>에 대하여 <m>A^m</m>을 구하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A_s^m=2^mI+(3^m-2^m)\begin{pmatrix}0&amp;0&amp;2\\0&amp;0&amp;1\\0&amp;0&amp;1\end{pmatrix}</m>이고, <m>A_n</m>의 상은 <m>\operatorname{span}\{e_1\}\subset K_2</m>이므로 <m>A_s^{m-1}A_n=2^{m-1}A_n</m>입니다. 명제 <xref ref="prop-powers-additive-jordan-decomposition"/>에 의해
+            <md>
+              <mrow>A^m=A_s^m+mA_s^{m-1}A_n=\begin{pmatrix}2^m&amp;m2^{m-1}&amp;2(3^m-2^m)-m2^{m-1}\\0&amp;2^m&amp;3^m-2^m\\0&amp;0&amp;3^m\end{pmatrix}</mrow>
+            </md>
+            입니다. <m>m=1,2</m>에서 직접 계산과 일치합니다(<m>m=2</m>의 첫 행: <m>(4,4,6)</m>).
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-powers-uniqueness-proof-details">
+      <title>유일성 증명의 세부 사항</title>
+      <introduction>
+        <p>
+          <m>V</m>는 유한차원이고 <m>\lambda\in\mathbb F</m>에 대하여 <m>K_\lambda=\bigcup_{r\geq1}\ker(T-\lambda I)^r</m>라 하자. 또 <m>T=S+N</m>, <m>S</m>는 대각화 가능, <m>N</m>은 멱영, <m>SN=NS</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>K_\lambda</m>는 부분공간이며 <m>K_\lambda=\ker(T-\lambda I)^r</m>인 <m>r</m>이 존재함을 보여라. 또 <m>\bigcap_{r\geq1}\ker(T-\lambda I)^r=\ker(T-\lambda I)</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\ker(T-\lambda I)^r\subseteq\ker(T-\lambda I)^{r+1}</m>이므로 증가하는 부분공간의 사슬이고, 유한차원이므로 어떤 <m>r</m>에서 멈춥니다. 증가하는 사슬의 합집합은 마지막 항과 같습니다. 같은 포함관계에 의해 교집합은 첫 항 <m>\ker(T-\lambda I)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>S</m>와 <m>N</m>은 <m>T</m>와 가환하고, 따라서 <m>K_\lambda</m>는 <m>S</m>-불변이며 <m>N</m>-불변임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>TS=S^2+NS=S^2+SN=ST</m>, 마찬가지로 <m>TN=NT</m>. <m>v\in K_\lambda</m>이면 <m>(T-\lambda I)^rSv=S(T-\lambda I)^rv=0</m>.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>S|_{K_\lambda}=\lambda I_{K_\lambda}</m>임을 보여라. 대각화 가능한 연산자를 불변부분공간에 제한하면 대각화 가능하다는 사실은 사용해도 좋다.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>K_\lambda</m> 위에서 <m>S-\lambda I=(T-\lambda I)-N</m>입니다. <m>X=(T-\lambda I)|_{K_\lambda}</m>, <m>Y=N|_{K_\lambda}</m>는 가환하고 <m>X^r=0</m>, <m>Y^d=0</m>이므로 이항정리에서 <m>(X-Y)^{r+d-1}</m>의 각 항은 <m>X^i</m> (<m>i\geq r</m>) 또는 <m>Y^j</m> (<m>j\geq d</m>)를 포함하여 <m>0</m>입니다. 따라서 <m>S|_{K_\lambda}-\lambda I</m>는 멱영이면서 대각화 가능합니다. 고유기저에서 이는 대각성분이 모두 <m>0</m>인 대각행렬이므로 <m>0</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>T</m>의 특성다항식이 분해될 때 <m>V=\bigoplus_\mu K_\mu</m>임을 이용하여 <m>\ker(S-\lambda I)=K_\lambda</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            (c)에 의해 <m>K_\lambda\subseteq\ker(S-\lambda I)</m>. 역으로 <m>v=\sum_\mu v_\mu</m> (<m>v_\mu\in K_\mu</m>)가 <m>Sv=\lambda v</m>를 만족하면 <m>\sum_\mu(\mu-\lambda)v_\mu=0</m>이고, 직합이므로 <m>\mu\neq\lambda</m>인 <m>v_\mu=0</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+
+  <!-- ===================================================== -->
+  <!--  심화 문제 (3)                                          -->
+  <!-- ===================================================== -->
+
+    <subexercises>
+
+      <title>조르당 분해의 구조적 성질</title>
+      <introduction>
+        <p>
+          아래 문제들은 조르당 분해의 구조적 성질을 다룹니다. 이 문제들에서 <m>V</m>는 유한차원이고 <m>T</m>의 특성다항식은 <m>\mathbb F</m> 위에서 분해된다고 가정합니다.
+        </p>
+      </introduction>
+    
+
+      <exercise xml:id="exer-powers-jordan-parts-are-polynomials">
+        <title>조르당 성분은 <m>T</m>의 다항식이다</title>
+        <introduction>
+          <p>
+            <m>T</m>의 특성다항식을 <m>\chi_T(x)=\prod_{i=1}^k(x-\lambda_i)^{m_i}</m> (<m>\lambda_i</m>는 서로 다름)라 하자.
+          </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              각 <m>i</m>에 대하여 <m>K_{\lambda_i}</m> 위에서 <m>(T-\lambda_iI)^{m_i}=0</m>임을 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>T|_{K_{\lambda_i}}</m>의 고유값 <m>\mu</m>와 고유벡터 <m>v</m>에 대하여 <m>0=(T-\lambda_iI)^rv=(\mu-\lambda_i)^rv</m>이므로 <m>\mu=\lambda_i</m>입니다. <m>T|_{K_{\lambda_i}}</m>의 특성다항식은 <m>\chi_T</m>를 나누므로 <m>(x-\lambda_i)^{e}</m> (<m>e=\dim K_{\lambda_i}\leq m_i</m>) 꼴이고, 케일리–해밀턴 정리에 의해 <m>(T-\lambda_iI)^{e}=0</m>이 <m>K_{\lambda_i}</m> 위에서 성립합니다.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              모든 <m>i</m>에 대하여 <m>p(x)\equiv\lambda_i \pmod{(x-\lambda_i)^{m_i}}</m>인 <m>p\in\mathbb F[x]</m>가 존재함을 보이고, <m>T_s=p(T)</m>, <m>T_n=T-p(T)</m>임을 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              법 <m>(x-\lambda_i)^{m_i}</m>들은 쌍마다 서로소이므로 중국인의 나머지 정리에 의해 <m>p</m>가 존재합니다. <m>p(x)-\lambda_i=q_i(x)(x-\lambda_i)^{m_i}</m>이므로 (a)에 의해 <m>p(T)|_{K_{\lambda_i}}=\lambda_iI</m>입니다. 연습문제 <xref ref="exer-powers-uniqueness-proof-details"/>(c)에 의해 <m>T_s</m>도 각 <m>K_{\lambda_i}</m> 위에서 <m>\lambda_iI</m>이고 <m>V=\bigoplus_iK_{\lambda_i}</m>이므로 <m>T_s=p(T)</m>입니다.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              연산자 <m>R</m>이 <m>T</m>와 가환하면 <m>R</m>은 <m>T_s</m>, <m>T_n</m>과도 가환함을 보여라. 이를 이용하여 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>의 유일성을 다시 증명하여라. 서로 가환하는 대각화 가능한 연산자들은 동시에 대각화 가능하다는 사실은 사용해도 좋다.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>R</m>은 <m>T</m>의 모든 다항식과 가환하므로 (b)에서 첫 주장이 나옵니다. <m>T=S+N</m>이 또 다른 분해라 하면 연습문제 <xref ref="exer-powers-uniqueness-proof-details"/>(b)에 의해 <m>S,N</m>은 <m>T</m>와 가환하고, 따라서 <m>T_s,T_n</m>과도 가환합니다. 그러면 <m>S-T_s</m>는 동시대각화에 의해 대각화 가능하고, <m>T_n-N</m>은 가환하는 멱영작용소의 차이므로 멱영입니다. <m>S-T_s=T_n-N</m>이 대각화 가능하면서 멱영이므로 <m>0</m>입니다.
+            </p>
+          </solution>
+        </task>
+      </exercise>
+
+      <exercise xml:id="exer-powers-boundedness-convergence">
+        <title>거듭제곱의 수렴과 유계성</title>
+        <introduction>
+          <p>
+            <m>\mathbb F=\mathbb C</m>이고 <m>V=\mathbb C^n</m>에 표준 유클리드 노름을 준다. <m>\operatorname{End}(V)</m> 위에는 <xref ref="def-spectral-norm"/>에서 정의한 스펙트럼 노름을 사용하자.
+          </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              <m>\|T^m\|\to0</m> (<m>m\to\infty</m>)일 필요충분조건은 <m>T</m>의 모든 고유값 <m>\lambda</m>가 <m>|\lambda|\lt 1</m>을 만족하는 것임을 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>V</m> 위의 노름에서 유도된 연산자 노름을 쓰겠습니다. <m>|\lambda|\geq1</m>인 고유벡터 <m>v</m>가 있으면 <m>\|T^mv\|=|\lambda|^m\|v\|\geq\|v\|</m>이므로 수렴하지 않습니다.
+            </p>
+            <p>
+              역으로 모든 고유값이 <m>|\lambda|\lt1</m>이라 합시다. <m>K_\lambda</m> 위에서 <m>T_s=\lambda I</m>이므로 명제 <xref ref="prop-powers-additive-jordan-decomposition"/>에 의해
+              <md>
+                <mrow>T^m|_{K_\lambda}=\sum_{q=0}^{\min\{m,d-1\}}\binom mq\lambda^{m-q}T_n^q|_{K_\lambda}</mrow>
+              </md>
+              이고, <m>\lambda\neq0</m>이면 <m>\binom mq|\lambda|^{m-q}\leq m^q|\lambda|^{m-q}\to0</m>, <m>\lambda=0</m>이면 <m>m\geq d</m>에서 <m>0</m>입니다. <m>V=\bigoplus_\lambda K_\lambda</m>의 사영을 <m>P_\lambda</m>라 하면 <m>T^m=\sum_\lambda T^m|_{K_\lambda}P_\lambda\to0</m>입니다.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              <m>\sup_{m\geq0}\|T^m\|\lt\infty</m>일 필요충분조건은 모든 고유값이 <m>|\lambda|\leq1</m>이고 <m>|\lambda|=1</m>인 각 <m>\lambda</m>에 대하여 <m>T_n|_{K_\lambda}=0</m>인 것임을 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              충분성: <m>|\lambda|\lt1</m>인 성분은 (a)에서 <m>0</m>으로 수렴하므로 유계이고, <m>|\lambda|=1</m>인 성분은 <m>T^m|_{K_\lambda}=\lambda^mI</m>이므로 유계입니다.
+            </p>
+            <p>
+              필요성: <m>|\lambda|>1</m>이면 (a)와 같이 고유벡터에서 발산합니다. <m>|\lambda|=1</m>이고 <m>M=T_n|_{K_\lambda}\neq0</m>이라 합시다. <m>M^rv\neq0</m>, <m>M^{r+1}v=0</m>인 <m>v\in K_\lambda</m>, <m>r\geq1</m>을 택합니다. <m>v,Mv,\dots,M^rv</m>는 일차독립입니다(관계식 <m>\sum a_qM^qv=0</m>에 <m>M^r, M^{r-1},\dots</m>을 차례로 작용). 그러면
+              <md>
+                <mrow>T^mv=\sum_{q=0}^r\binom mq\lambda^{m-q}M^qv</mrow>
+              </md>
+              에서 <m>M^rv</m> 좌표의 절댓값은 <m>\binom mr\geq m</m>이고, 유한차원에서 좌표함수는 연속이므로 <m>\|T^mv\|</m>는 유계가 아닙니다.
+            </p>
+          </solution>
+        </task>
+      </exercise>
+
+      <exercise xml:id="exer-powers-jordan-decomposition-of-powers">
+        <title>거듭제곱의 조르당 분해와 대각화 가능성</title>
+        <introduction>
+          <p>
+            <m>m</m>은 양의 정수이다.
+          </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              <m>T^m=T_s^m+(T^m-T_s^m)</m>이 <m>T^m</m>의 가법 조르당 분해임을 보여라. 즉 <m>(T^m)_s=(T_s)^m</m>이다.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>T_s</m>의 고유기저는 <m>T_s^m</m>의 고유기저이므로 <m>T_s^m</m>은 대각화 가능합니다. 명제 <xref ref="prop-powers-additive-jordan-decomposition"/>에 의해 <m>T^m-T_s^m=T_nX</m>, <m>X=\sum_{q\geq1}\binom mqT_s^{m-q}T_n^{q-1}</m>이고 <m>X</m>는 <m>T_n</m>과 가환하므로 <m>(T_nX)^d=T_n^dX^d=0</m>입니다. 두 성분 모두 <m>T_s,T_n</m>의 다항식이므로 가환합니다. 정리 <xref ref="thm-additive-jordan-decomposition-uniqueness"/>에서 결론이 나옵니다.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              <m>\mathbb F</m>의 표수가 <m>0</m>이고 <m>T</m>가 가역이라 하자. <m>T^m</m>이 대각화 가능하면 <m>T</m>도 대각화 가능함을 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              연습문제 <xref ref="exer-powers-invertibility-semisimple-part"/>에 의해 <m>T_s</m>는 가역이고 <m>T=T_s(I+U)</m>, <m>U=T_s^{-1}T_n</m>입니다. <m>T^m</m>이 대각화 가능하면 <m>T^m=T^m+0</m>이 그 조르당 분해이므로 (a)에 의해 <m>T^m=T_s^m</m>, 즉 <m>T_s^m\bigl((I+U)^m-I\bigr)=0</m>이고 <m>(I+U)^m=I</m>입니다. 따라서
+              <md>
+                <mrow>0=(I+U)^m-I=U\Bigl(mI+\sum_{q\geq2}\binom mqU^{q-1}\Bigr)</mrow>
+              </md>
+              입니다. 표수가 <m>0</m>이므로 <m>m\neq0</m>이고, 괄호 안은 <m>mI</m>에 가환하는 멱영작용소를 더한 것이므로 가역입니다. 따라서 <m>U=0</m>, <m>T_n=0</m>, <m>T=T_s</m>입니다.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              (b)에서 가역성 가정과 표수 가정을 각각 제거할 수 없음을 반례로 보여라.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              가역성: <m>N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</m>은 대각화 가능하지 않지만 <m>N^2=0</m>은 대각화 가능합니다. 표수: 표수 <m>p>0</m>인 체에서 <m>J=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</m>은 가역이고 대각화 가능하지 않지만 <m>J^p=\begin{pmatrix}1&amp;p\\0&amp;1\end{pmatrix}=I</m>입니다.
+            </p>
+          </solution>
+        </task>
+      </exercise>
+    </subexercises>
+  </exercises>
+
   
 
 </section>

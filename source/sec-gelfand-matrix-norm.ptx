@@ -111,7 +111,7 @@
     <title>벡터의 1-노름</title>
     <statement>
       <p>
-        벡터 <m>x=(x_1,\ldots,x_n)	ext{T}	ext{T}	ext{ in }	ext{C}^n</m>의 <term>1-노름</term><aside><p>1-노름:1-norm</p></aside>은
+        벡터 <m>x=(x_1,\ldots,x_n)	\text{ in }	{\mathbb C^n}</m>의 <term>1-노름</term><aside><p>1-노름:1-norm</p></aside>은
         <me>\|x\|_1=\sum_{j=1}^n|x_j|</me>
         로 정의합니다.
       </p>
@@ -146,7 +146,7 @@
     <title>연산자 1-노름</title>
     <statement>
       <p>
-        벡터의 1-노름이 유도하는 행렬 <m>A\in\mathbb C^{n\times n}</m>의 <term>연산자 1-노름</term><aside><p>operator 1-norm</p></aside>은
+        벡터의 1-노름이 유도하는 행렬 <m>A\in\mathbb C^{n\times n}</m>의 <term>연산자 1-노름</term><aside><p>연산자 1-노름:operator 1-norm</p></aside>은
         <me>\|A\|_1=\max_{x\neq 0}\frac{\|Ax\|_1}{\|x\|_1}</me>
         로 정의합니다.
       </p>
@@ -185,7 +185,7 @@
     <title>연산자 1-노름의 곱셈성</title>
     <statement>
       <p>
-        연산자 1-노름은 곱셈적입니다. 즉, 모든 <m>A,B\in\mathbb C^{n	imes n}</m>에 대하여
+        연산자 1-노름은 곱셈적입니다. 즉, 모든 <m>A,B\in\mathbb C^{n	\times n}</m>에 대하여
         <me>\|AB\|_1\leq\|A\|_1\|B\|_1</me>
         입니다.
       </p>
@@ -231,5 +231,591 @@
       </p>
     </proof>
   </theorem>
+
+  <exercises xml:id="exercises-gelfand-matrix-norm">
+    <title>연습문제</title>
+
+    <exercise xml:id="exer-gelfand-compute-spectral-radius">
+      <title>스펙트럼 반지름의 계산</title>
+      <introduction>
+        <p>
+          다음 두 행렬을 생각하자.
+          <md>
+            <mrow>A=\begin{pmatrix}1&amp;-2\\1&amp;3\end{pmatrix},\qquad B=\begin{pmatrix}1&amp;100\\0&amp;-2\end{pmatrix}</mrow>
+          </md>
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\rho(A)</m>를 구하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\det(\lambda I-A)=\lambda^2-4\lambda+5</m>이므로 <m>A</m>의 고윳값은 <m>2\pm i</m>이고, <m>\rho(A)=\lvert 2\pm i\rvert=\sqrt5</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>\rho(B)</m>를 구하고, <m>B</m>의 성분 중 절댓값이 가장 큰 것과 비교하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>B</m>는 상삼각 행렬이므로 고윳값은 대각성분 <m>1,-2</m>이고, <m>\rho(B)=2</m>입니다.
+            <m>B</m>의 성분 중 절댓값이 가장 큰 것은 <m>100</m>이지만 <m>\rho(B)=2</m>입니다.
+            즉 스펙트럼 반지름은 비대각 성분의 크기를 전혀 반영하지 않습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-spectral-radius-basic-properties">
+      <title>스펙트럼 반지름의 기본 성질</title>
+      <introduction>
+        <p>
+          <m>A\in\mathbb C^{n\times n}</m>의 고윳값을 중복도를 포함하여 <m>\lambda_1,\ldots,\lambda_n</m>이라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>모든 스칼라 <m>\alpha\in\mathbb C</m>에 대하여 <m>\rho(\alpha A)=\lvert\alpha\rvert\rho(A)</m>임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\alpha=0</m>이면 양변이 모두 <m>0</m>입니다. <m>\alpha\neq0</m>이면 <m>\det(\lambda I-\alpha A)=\alpha^n\det(\alpha^{-1}\lambda I-A)</m>이므로 <m>\alpha A</m>의 고윳값은 정확히 <m>\alpha\lambda_1,\ldots,\alpha\lambda_n</m>이고, 따라서 <m>\rho(\alpha A)=\lvert\alpha\rvert\rho(A)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>모든 가역행렬 <m>S\in\mathbb C^{n\times n}</m>에 대하여 <m>\rho(A^{\mathsf T})=\rho(A)</m>이고 <m>\rho(SAS^{-1})=\rho(A)</m>임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\det(\lambda I-A^{\mathsf T})=\det\bigl((\lambda I-A)^{\mathsf T}\bigr)=\det(\lambda I-A)</m>이고
+            <m>\det(\lambda I-SAS^{-1})=\det\bigl(S(\lambda I-A)S^{-1}\bigr)=\det(\lambda I-A)</m>이므로, <m>A^{\mathsf T}</m>와 <m>SAS^{-1}</m>은 <m>A</m>와 특성다항식이 같고 스펙트럼 반지름도 같습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 양의 정수 <m>k</m>에 대하여 <m>A^k</m>의 고윳값이 중복도를 포함하여 정확히 <m>\lambda_1^k,\ldots,\lambda_n^k</m>임을 보이고, <m>\rho(A^k)=\rho(A)^k</m>임을 유도하여라.
+          </p>
+        </statement>
+        <hint>
+          <p>
+            <m>A</m>를 상삼각 행렬과 닮음으로 만들어라.
+          </p>
+        </hint>
+        <solution>
+          <p>
+            대수적으로 닫힌 체 <m>\mathbb C</m> 위에서는 가역행렬 <m>P</m>와 대각성분이 <m>\lambda_1,\ldots,\lambda_n</m>인 상삼각 행렬 <m>T</m>가 존재하여 <m>A=PTP^{-1}</m>입니다.
+            그러면 <m>A^k=PT^kP^{-1}</m>이고, <m>T^k</m>는 대각성분이 <m>\lambda_1^k,\ldots,\lambda_n^k</m>인 상삼각 행렬입니다.
+            따라서 <m>A^k</m>의 고윳값은 중복도를 포함하여 정확히 <m>\lambda_1^k,\ldots,\lambda_n^k</m>이고,
+            <m>\rho(A^k)=\max_i\lvert\lambda_i\rvert^k=\rho(A)^k</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-spectral-radius-not-norm">
+      <title>스펙트럼 반지름은 노름이 아니다</title>
+      <introduction>
+        <p>
+          <m>n\geq2</m>이고 <m>E_{ij}</m>를 <m>(i,j)</m> 성분만 <m>1</m>이고 나머지 성분은 <m>0</m>인 <m>n\times n</m> 행렬이라 하자.
+          <m>E_{12}</m>와 <m>E_{21}</m>을 이용하여 <m>\rho</m>가 <m>\mathbb C^{n\times n}</m> 위의 행렬 노름이 아님을 보이고자 한다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\rho(E_{12})=\rho(E_{21})=0</m>임을 보이고, <m>\rho</m>가 양의 정부호성을 만족하지 않음을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>E_{12}^2=0</m>이므로 <m>E_{12}</m>는 멱영이고, <xref ref="ex-spectral-radius-nilpotent-matrix"/>와 같은 논리로 <m>\rho(E_{12})=0</m>입니다. 마찬가지로 <m>\rho(E_{21})=0</m>입니다.
+            <m>E_{12}\neq0</m>이므로 양의 정부호성이 깨집니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>\rho</m>가 삼각부등식을 만족하지 않음을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>E_{12}+E_{21}</m>은 왼쪽 위 <m>2\times2</m> 블록이 <m>\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}</m>이고 나머지가 <m>0</m>인 행렬이므로 고윳값 <m>\pm1</m>을 가집니다.
+            따라서 <m>\rho(E_{12}+E_{21})=1&gt;0=\rho(E_{12})+\rho(E_{21})</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>\rho</m>가 곱셈 부등식 <m>\rho(AB)\leq\rho(A)\rho(B)</m>를 만족하지 않음을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>E_{12}E_{21}=E_{11}</m>은 고윳값 <m>1</m>을 가지므로 <m>\rho(E_{12}E_{21})=1&gt;0=\rho(E_{12})\rho(E_{21})</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-operator-one-norm-column-sum">
+      <title>연산자 1-노름의 열합 공식</title>
+      <task>
+        <statement>
+          <p>
+            <m>A=(a_{ij})\in\mathbb C^{n\times n}</m>에 대하여
+            <md>
+              <mrow>\|A\|_1=\max_{1\leq j\leq n}\sum_{i=1}^n\lvert a_{ij}\rvert</mrow>
+            </md>
+            임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            우변을 <m>M</m>이라 하고, 최댓값이 <m>j=j_0</m>에서 얻어진다고 합시다.
+            임의의 <m>x\in\mathbb C^n</m>에 대하여
+            <md>
+              <mrow>\|Ax\|_1=\sum_{i=1}^n\Bigl\lvert\sum_{j=1}^na_{ij}x_j\Bigr\rvert\leq\sum_{j=1}^n\lvert x_j\rvert\sum_{i=1}^n\lvert a_{ij}\rvert\leq M\|x\|_1</mrow>
+            </md>
+            이므로 <m>\|A\|_1\leq M</m>입니다.
+            반대로 표준기저벡터 <m>e_{j_0}</m>에 대하여 <m>\|e_{j_0}\|_1=1</m>이고 <m>\|Ae_{j_0}\|_1=\sum_i\lvert a_{ij_0}\rvert=M</m>이므로 <m>\|A\|_1\geq M</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <xref ref="exer-gelfand-compute-spectral-radius"/>의 행렬 <m>A</m>에 대하여 <m>\|A\|_1</m>과 <m>\|A^2\|_1^{1/2}</m>를 계산하고 <m>\rho(A)</m>와 비교하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>A=\begin{pmatrix}1&amp;-2\\1&amp;3\end{pmatrix}</m>의 열합은 <m>2,5</m>이므로 <m>\|A\|_1=5</m>입니다.
+            케일리–해밀턴 정리에 따라 <m>A^2=4A-5I=\begin{pmatrix}-1&amp;-8\\4&amp;7\end{pmatrix}</m>이고, 열합은 <m>5,15</m>이므로 <m>\|A^2\|_1^{1/2}=\sqrt{15}\approx3.87</m>입니다.
+            <m>\rho(A)=\sqrt5\approx2.24</m>이므로 <m>\rho(A)&lt;\|A^2\|_1^{1/2}&lt;\|A\|_1</m>이고, 겔판트 공식이 말하는 수렴의 시작을 볼 수 있습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-spectral-radius-lower-bound">
+      <title>곱셈적 노름은 스펙트럼 반지름보다 작지 않다</title>
+      <introduction>
+        <p>
+          <m>\|\cdot\|</m>이 <m>\mathbb C^{n\times n}</m> 위의 곱셈적 행렬 노름이고 <m>A\in\mathbb C^{n\times n}</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\rho(A)\leq\|A\|</m>임을 보여라.</p>
+        </statement>
+        <hint>
+          <p>
+            <m>\|\cdot\|</m>은 벡터가 아니라 행렬에 대한 노름입니다. 고유벡터 <m>x</m>로부터 영이 아닌 행렬 <m>X=x\,e_1^{\mathsf T}</m>를 만들어 보아라.
+          </p>
+        </hint>
+        <solution>
+          <p>
+            <m>\lambda</m>를 <m>\lvert\lambda\rvert=\rho(A)</m>인 고윳값, <m>x\neq0</m>을 대응하는 고유벡터라 하고 <m>X=x\,e_1^{\mathsf T}</m>로 둡니다.
+            <m>X</m>의 첫 열이 <m>x</m>이므로 <m>X\neq0</m>이고, <m>AX=(Ax)e_1^{\mathsf T}=\lambda X</m>입니다.
+            따라서
+            <md>
+              <mrow>\rho(A)\|X\|=\|\lambda X\|=\|AX\|\leq\|A\|\,\|X\|</mrow>
+            </md>
+            이고, <m>\|X\|&gt;0</m>으로 나누면 <m>\rho(A)\leq\|A\|</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            모든 양의 정수 <m>k</m>에 대하여 <m>\rho(A)\leq\|A^k\|^{1/k}</m>임을 보이고, <m>\rho(A)=\inf_{k\geq1}\|A^k\|^{1/k}</m>임을 유도하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            앞 문항을 <m>A^k</m>에 적용하고 <xref ref="exer-gelfand-spectral-radius-basic-properties"/>의 <m>\rho(A^k)=\rho(A)^k</m>를 쓰면 <m>\rho(A)^k\leq\|A^k\|</m>, 즉 <m>\rho(A)\leq\|A^k\|^{1/k}</m>입니다.
+            그러므로 <m>\rho(A)\leq\inf_k\|A^k\|^{1/k}</m>입니다.
+            한편 <xref ref="thm-gelfand-formula"/>에 의해 <m>\|A^k\|^{1/k}\to\rho(A)</m>이므로 하한은 <m>\rho(A)</m>보다 클 수 없고, 등호가 성립합니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-frobenius-submultiplicative">
+      <title>프로베니우스 노름의 곱셈성</title>
+      <introduction>
+        <p>
+          <xref ref="def-frobenius-norm"/>의 프로베니우스 노름 <m>\|A\|_F=\bigl(\sum_{i,j}\lvert a_{ij}\rvert^2\bigr)^{1/2}</m>을 생각하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\|\cdot\|_F</m>가 <m>\mathbb C^{n\times n}</m> 위의 곱셈적 행렬 노름임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\|A\|_F</m>는 <m>A</m>의 성분을 <m>\mathbb C^{n^2}</m>의 벡터로 보았을 때의 유클리드 노름이므로 행렬 노름의 세 조건을 만족합니다.
+            곱셈성은 코시–슈바르츠 부등식으로부터
+            <md>
+              <mrow>\|AB\|_F^2&amp;=\sum_{i,j}\Bigl\lvert\sum_ka_{ik}b_{kj}\Bigr\rvert^2\leq\sum_{i,j}\Bigl(\sum_k\lvert a_{ik}\rvert^2\Bigr)\Bigl(\sum_k\lvert b_{kj}\rvert^2\Bigr)</mrow>
+              <mrow>&amp;=\Bigl(\sum_{i,k}\lvert a_{ik}\rvert^2\Bigr)\Bigl(\sum_{k,j}\lvert b_{kj}\rvert^2\Bigr)=\|A\|_F^2\|B\|_F^2</mrow>
+            </md>
+            입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            임의의 곱셈적 행렬 노름은 <m>\|I\|\geq1</m>을 만족하고, 벡터 노름이 유도하는 연산자 노름은 <m>\|I\|=1</m>을 만족함을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            곱셈적 행렬 노름에서는 <m>\|I\|=\|I\cdot I\|\leq\|I\|^2</m>이고 <m>\|I\|&gt;0</m>이므로 <m>\|I\|\geq1</m>입니다.
+            벡터 노름이 유도하는 연산자 노름에서는 <m>\|I\|=\max_{x\neq0}\|x\|/\|x\|=1</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>n\geq2</m>이면 <m>\|\cdot\|_F</m>는 어떤 벡터 노름이 유도하는 연산자 노름도 아님을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\|I\|_F=\sqrt n&gt;1</m>이므로 앞 문항에 의해 <m>\|\cdot\|_F</m>는 연산자 노름이 될 수 없습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-max-entry-norm">
+      <title>최대 성분 노름</title>
+      <introduction>
+        <p>
+          <m>A=(a_{ij})\in\mathbb C^{n\times n}</m>에 대하여 <m>\|A\|_{\max}=\max_{i,j}\lvert a_{ij}\rvert</m>로 두고, <m>J</m>를 모든 성분이 <m>1</m>인 <m>n\times n</m> 행렬이라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\|\cdot\|_{\max}</m>가 행렬 노름임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\|A\|_{\max}</m>는 성분을 <m>\mathbb C^{n^2}</m>의 벡터로 보았을 때의 최대 절댓값이므로, 각 성분에 복소수의 절댓값 성질과 삼각부등식을 적용하면 행렬 노름의 세 조건이 바로 확인됩니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>n\geq2</m>일 때 <m>J</m>를 이용하여 <m>\|\cdot\|_{\max}</m>가 곱셈적이 아님을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>J^2</m>의 모든 성분은 <m>\sum_{k=1}^n1=n</m>이므로 <m>J^2=nJ</m>이고
+            <m>\|J^2\|_{\max}=n&gt;1=\|J\|_{\max}^2</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>N(A)=n\|A\|_{\max}</m>은 곱셈적 행렬 노름임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>N</m>은 행렬 노름의 양수배이므로 행렬 노름입니다. 임의의 <m>i,j</m>에 대하여
+            <m>\lvert(AB)_{ij}\rvert\leq\sum_{k=1}^n\lvert a_{ik}\rvert\lvert b_{kj}\rvert\leq n\|A\|_{\max}\|B\|_{\max}</m>이므로
+            <md>
+              <mrow>N(AB)=n\|AB\|_{\max}\leq n^2\|A\|_{\max}\|B\|_{\max}=N(A)N(B)</mrow>
+            </md>
+            입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-jordan-block-direct">
+      <title>조르당 블록에서 겔판트 공식 확인하기</title>
+      <introduction>
+        <p>
+          <m>\lambda\neq0</m>인 복소수에 대하여 <m>J=\begin{pmatrix}\lambda&amp;1\\0&amp;\lambda\end{pmatrix}</m>라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>모든 양의 정수 <m>k</m>에 대하여 <m>\|J^k\|_1</m>을 구하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>J=\lambda I+E_{12}</m>이고 <m>\lambda I</m>와 <m>E_{12}</m>는 가환하며 <m>E_{12}^2=0</m>이므로, 이항정리에 따라
+            <md>
+              <mrow>J^k=\lambda^kI+k\lambda^{k-1}E_{12}=\begin{pmatrix}\lambda^k&amp;k\lambda^{k-1}\\0&amp;\lambda^k\end{pmatrix}</mrow>
+            </md>
+            입니다. <xref ref="exer-gelfand-operator-one-norm-column-sum"/>의 열합 공식에 의해 열합은 <m>\lvert\lambda\rvert^k</m>과 <m>\lvert\lambda\rvert^k+k\lvert\lambda\rvert^{k-1}</m>이므로
+            <m>\|J^k\|_1=\lvert\lambda\rvert^{k-1}(\lvert\lambda\rvert+k)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\lim_{k\to\infty}\|J^k\|_1^{1/k}</m>을 직접 계산하여 <xref ref="thm-gelfand-formula"/>와 일치함을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\|J^k\|_1^{1/k}=\lvert\lambda\rvert^{1-1/k}(\lvert\lambda\rvert+k)^{1/k}</m>입니다.
+            <m>k\to\infty</m>일 때 <m>\lvert\lambda\rvert^{1-1/k}\to\lvert\lambda\rvert</m>이고,
+            <m>1\leq(\lvert\lambda\rvert+k)^{1/k}\leq\bigl((\lvert\lambda\rvert+1)k\bigr)^{1/k}\to1</m>이므로 극한은 <m>\lvert\lambda\rvert=\rho(J)</m>이고 겔판트 공식과 일치합니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            어떤 상수 <m>C</m>에 대해서도 모든 <m>k</m>에서 <m>\|J^k\|_1\leq C\rho(J)^k</m>가 성립할 수는 없음을 보이고, 겔판트 공식의 증명에서 다항식 인자 <m>k^{n-1}</m>이 필요한 이유를 설명하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\|J^k\|_1/\rho(J)^k=1+k/\lvert\lambda\rvert\to\infty</m>이므로 그러한 상수 <m>C</m>는 존재하지 않습니다.
+            즉 대각화 가능하지 않은 행렬에서는 <m>\|A^k\|</m>이 <m>\rho(A)^k</m>보다 다항식 배만큼 빠르게 자랄 수 있으며, 이 때문에 증명에서 <m>Kk^{n-1}\rho(A)^k</m> 형태의 상계를 사용합니다.
+            이 다항식 인자는 <m>k</m>제곱근을 취하면 <m>1</m>로 수렴하므로 극한에는 영향을 주지 않습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-non-submultiplicative">
+      <title>곱셈적이지 않은 노름에서의 겔판트 공식</title>
+      <introduction>
+        <p>
+          <xref ref="exer-gelfand-max-entry-norm"/>의 최대 성분 노름 <m>\|\cdot\|_{\max}</m>와 모든 성분이 <m>1</m>인 <m>n\times n</m> 행렬 <m>J</m>(<m>n\geq2</m>)를 생각하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>\rho(J)&gt;\|J\|_{\max}</m>임을 보여, <xref ref="exer-gelfand-spectral-radius-lower-bound"/>의 부등식 <m>\rho(A)\leq\|A\|</m>에서 곱셈성 가정을 뺄 수 없음을 확인하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            모든 성분이 <m>1</m>인 벡터 <m>u</m>에 대하여 <m>Ju=nu</m>이고, <m>J</m>의 계수가 <m>1</m>이므로 나머지 고윳값은 모두 <m>0</m>입니다.
+            따라서 <m>\rho(J)=n&gt;1=\|J\|_{\max}</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\mathbb C^{n\times n}</m> 위의 <em>임의의</em> 행렬 노름 <m>\|\cdot\|</m>과 <m>A\in\mathbb C^{n\times n}</m>에 대하여 <m>\lim_{k\to\infty}\|A^k\|^{1/k}=\rho(A)</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            유한 차원 공간 <m>\mathbb C^{n\times n}</m> 위의 모든 노름은 동치이므로, 상수 <m>c,C&gt;0</m>가 존재하여 모든 <m>B</m>에 대하여 <m>c\|B\|\leq\|B\|_1\leq C\|B\|</m>입니다.
+            따라서
+            <md>
+              <mrow>C^{-1/k}\|A^k\|_1^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_1^{1/k}</mrow>
+            </md>
+            입니다. <m>\|\cdot\|_1</m>은 곱셈적이므로 <xref ref="thm-gelfand-formula"/>에 의해 <m>\|A^k\|_1^{1/k}\to\rho(A)</m>이고, <m>c^{-1/k},C^{-1/k}\to1</m>이므로 조임 정리에 의해 <m>\|A^k\|^{1/k}\to\rho(A)</m>입니다.
+            즉 겔판트 공식의 극한 자체는 노름의 선택에 의존하지 않으며, 곱셈성은 모든 <m>k</m>에서의 부등식 <m>\rho(A)\leq\|A^k\|^{1/k}</m>을 보장하는 데에만 쓰입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p><m>\|J^k\|_{\max}^{1/k}</m>를 직접 계산하여 앞 문항의 결론을 확인하고, 수열이 극한에 접근하는 방향을 곱셈적인 경우와 비교하여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>J^2=nJ</m>로부터 귀납적으로 <m>J^k=n^{k-1}J</m>이므로 <m>\|J^k\|_{\max}^{1/k}=n^{(k-1)/k}\to n=\rho(J)</m>입니다.
+            이때 모든 <m>k</m>에서 <m>\|J^k\|_{\max}^{1/k}&lt;\rho(J)</m>이므로 수열이 아래에서 극한에 접근합니다. 곱셈적 노름에서는 <xref ref="exer-gelfand-spectral-radius-lower-bound"/>에 의해 항상 <m>\|A^k\|^{1/k}\geq\rho(A)</m>이므로 이런 일이 일어날 수 없습니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-power-convergence">
+      <title>거듭제곱의 수렴과 노이만 급수</title>
+      <introduction>
+        <p>
+          <m>A\in\mathbb C^{n\times n}</m>라 하자. 이 문제에서 행렬의 수렴은 성분별 수렴을 뜻한다.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><m>\lim_{k\to\infty}A^k=0</m>일 필요충분조건이 <m>\rho(A)&lt;1</m>임을 보여라.</p>
+        </statement>
+        <hint>
+          <p>
+            유한 차원에서 성분별 수렴은 임의의 노름에 대한 수렴과 같습니다. <m>\rho(A)&lt;r&lt;1</m>인 <m>r</m>을 골라 겔판트 공식을 적용하여라.
+          </p>
+        </hint>
+        <solution>
+          <p>
+            <m>A^k\to0</m>이라 하고 <m>Ax=\lambda x</m>, <m>x\neq0</m>이라 합시다. 그러면 <m>A^kx=\lambda^kx\to0</m>이므로 <m>\lambda^k\to0</m>이고, 따라서 <m>\lvert\lambda\rvert&lt;1</m>입니다. 모든 고윳값에 대해 이것이 성립하므로 <m>\rho(A)&lt;1</m>입니다.
+          </p>
+          <p>
+            역으로 <m>\rho(A)&lt;1</m>이라 하고 <m>\rho(A)&lt;r&lt;1</m>인 <m>r</m>을 고릅니다.
+            <xref ref="thm-gelfand-formula"/>를 <m>\|\cdot\|_1</m>에 적용하면 어떤 <m>m</m>이 존재하여 <m>k\geq m</m>일 때 <m>\|A^k\|_1^{1/k}\leq r</m>, 즉 <m>\|A^k\|_1\leq r^k</m>입니다.
+            따라서 <m>\|A^k\|_1\to0</m>이고, 각 성분의 절댓값은 <m>\|A^k\|_1</m> 이하이므로 <m>A^k\to0</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\rho(A)&lt;1</m>이면 <m>I-A</m>가 가역이고 급수 <m>\sum_{k=0}^\infty A^k</m>가 수렴하며 그 합이 <m>(I-A)^{-1}</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>\rho(A)&lt;1</m>이면 <m>1</m>은 <m>A</m>의 고윳값이 아니므로 <m>I-A</m>는 가역입니다.
+            앞 문항의 풀이에서처럼 <m>\rho(A)&lt;r&lt;1</m>과 <m>m</m>을 택하면 <m>\sum_{k\geq m}\|A^k\|_1\leq\sum_{k\geq m}r^k&lt;\infty</m>이므로 급수는 절대수렴하고, 부분합 <m>S_N=\sum_{k=0}^NA^k</m>은 수렴합니다.
+            망원합에 의해 <m>(I-A)S_N=I-A^{N+1}</m>이므로 <m>S_N=(I-A)^{-1}(I-A^{N+1})\to(I-A)^{-1}</m>입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-norm-close-to-spectral-radius">
+      <title>스펙트럼 반지름에 임의로 가까운 연산자 노름</title>
+      <introduction>
+        <p>
+          <m>A\in\mathbb C^{n\times n}</m>와 <m>\varepsilon&gt;0</m>이 주어졌다고 하고 <m>r=\rho(A)+\varepsilon</m>으로 둔다.
+          이 문제에서는 조르당 표준형을 사용하지 말고 <xref ref="thm-gelfand-formula"/>만을 이용하여라.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            <m>x\in\mathbb C^n</m>에 대하여 <m>\|x\|_A=\sum_{k=0}^\infty r^{-k}\|A^kx\|_2</m>가 수렴하고, <m>\|\cdot\|_A</m>가 <m>\mathbb C^n</m> 위의 벡터 노름임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <xref ref="thm-gelfand-formula"/>에 의해 <m>\|A^k\|_2^{1/k}\to\rho(A)</m>이므로 어떤 <m>m</m>이 존재하여 <m>k\geq m</m>일 때
+            <m>\|A^k\|_2\leq(\rho(A)+\varepsilon/2)^k</m>입니다.
+            따라서 <m>\sum_{k\geq0}r^{-k}\|A^k\|_2</m>은 공비 <m>(\rho(A)+\varepsilon/2)/r&lt;1</m>인 등비급수에 의해 위로 유계이고 수렴합니다. 이 합을 <m>L</m>이라 하면
+            <md>
+              <mrow>\|x\|_A=\sum_{k=0}^\infty r^{-k}\|A^kx\|_2\leq L\|x\|_2</mrow>
+            </md>
+            이므로 <m>\|x\|_A</m>는 유한한 값입니다.
+          </p>
+          <p>
+            <m>k=0</m> 항이 <m>\|x\|_2</m>이므로 <m>\|x\|_A\geq\|x\|_2</m>이고, 따라서 <m>\|x\|_A=0</m>이면 <m>x=0</m>입니다.
+            동차성과 삼각부등식은 각 항 <m>\|A^k(\cdot)\|_2</m>가 이 성질을 가지므로 항별로 더하여 얻습니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <m>\|\cdot\|_A</m>가 유도하는 연산자 노름 <m>\|B\|_A=\max_{x\neq0}\|Bx\|_A/\|x\|_A</m>에 대하여 <m>\|A\|_A\leq\rho(A)+\varepsilon</m>임을 보여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            임의의 <m>x</m>에 대하여 첨자를 하나 옮기면
+            <md>
+              <mrow>\|Ax\|_A=\sum_{k=0}^\infty r^{-k}\|A^{k+1}x\|_2=r\sum_{k=1}^\infty r^{-k}\|A^kx\|_2\leq r\|x\|_A</mrow>
+            </md>
+            이므로 <m>\|A\|_A\leq r=\rho(A)+\varepsilon</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <xref ref="exer-gelfand-spectral-radius-lower-bound"/>와 결합하여, 모든 곱셈적 행렬 노름 <m>\|\cdot\|</m>에 걸친 하한 <m>\inf_{\|\cdot\|}\|A\|</m>가 <m>\rho(A)</m>와 같음을 유도하여라.
+            또한 모든 행렬에 대하여 동시에 <m>\|A\|=\rho(A)</m>를 만족하는 행렬 노름은 존재하지 않음을 설명하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            벡터 노름이 유도하는 연산자 노름은 행렬 노름이고, <xref ref="prop-operator-one-norm-submultiplicative"/>의 증명과 같은 논리로 곱셈적입니다.
+            따라서 곱셈적 행렬 노름 <m>\|\cdot\|_A</m>에 대하여 <m>\|A\|_A\leq\rho(A)+\varepsilon</m>이고, 반대로 모든 곱셈적 행렬 노름에서 <m>\rho(A)\leq\|A\|</m>임은 <xref ref="exer-gelfand-spectral-radius-lower-bound"/>에서 보였습니다.
+            <m>\varepsilon&gt;0</m>은 임의이므로 <m>\inf_{\|\cdot\|}\|A\|=\rho(A)</m>입니다.
+          </p>
+          <p>
+            이 노름은 <m>A</m>에 따라 달라집니다. 모든 행렬에 대해 <m>\|A\|=\rho(A)</m>인 노름이 있다면 <m>\rho</m> 자체가 행렬 노름이 되어 <xref ref="exer-gelfand-spectral-radius-not-norm"/>에 모순입니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+    <exercise xml:id="exer-gelfand-commuting-matrices">
+      <title>가환 행렬의 스펙트럼 반지름</title>
+      <introduction>
+        <p>
+          <m>A,B\in\mathbb C^{n\times n}</m>가 <m>AB=BA</m>를 만족하고, <m>\|\cdot\|</m>을 임의의 곱셈적 행렬 노름(예를 들어 <m>\|\cdot\|_1</m>)이라 하자.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p><xref ref="thm-gelfand-formula"/>를 이용하여 <m>\rho(AB)\leq\rho(A)\rho(B)</m>임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>AB=BA</m>이면 <m>(AB)^k=A^kB^k</m>이므로
+            <md>
+              <mrow>\|(AB)^k\|^{1/k}\leq\|A^k\|^{1/k}\,\|B^k\|^{1/k}</mrow>
+            </md>
+            이고, <m>k\to\infty</m>로 보내면 겔판트 공식에 의해 <m>\rho(AB)\leq\rho(A)\rho(B)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            각 <m>\varepsilon&gt;0</m>에 대하여 상수 <m>K\geq1</m>이 존재하여 모든 <m>j\geq0</m>에서 <m>\|A^j\|\leq K(\rho(A)+\varepsilon)^j</m>임을 보여라. (이 부분에는 가환성이 필요하지 않다.)
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <m>a=\rho(A)+\varepsilon</m>이라 합시다. <m>\|A^j\|^{1/j}\to\rho(A)&lt;a</m>이므로 어떤 <m>m</m>이 존재하여 <m>j\geq m</m>일 때 <m>\|A^j\|\leq a^j</m>입니다.
+            유한개의 <m>j&lt;m</m>을 흡수하도록 <m>K=\max\bigl(1,\max_{0\leq j&lt;m}\|A^j\|/a^j\bigr)</m>로 두면 모든 <m>j\geq0</m>에 대하여 <m>\|A^j\|\leq Ka^j</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>앞 문항을 이용하여 <m>\rho(A+B)\leq\rho(A)+\rho(B)</m>임을 보여라.</p>
+        </statement>
+        <solution>
+          <p>
+            <m>\varepsilon&gt;0</m>을 고정하고 <m>a=\rho(A)+\varepsilon</m>, <m>b=\rho(B)+\varepsilon</m>이라 합시다. 앞 문항을 <m>A</m>와 <m>B</m>에 각각 적용하고 큰 쪽의 상수를 택하면, 어떤 <m>K\geq1</m>에 대하여 모든 <m>j</m>에서 <m>\|A^j\|\leq Ka^j</m>, <m>\|B^j\|\leq Kb^j</m>입니다.
+            <m>A</m>와 <m>B</m>가 가환하므로 이항정리 <m>(A+B)^k=\sum_{j=0}^k\binom kjA^jB^{k-j}</m>가 성립하고,
+            <md>
+              <mrow>\|(A+B)^k\|&amp;\leq\sum_{j=0}^k\binom kj\|A^j\|\,\|B^{k-j}\|\leq K^2\sum_{j=0}^k\binom kja^jb^{k-j}=K^2(a+b)^k</mrow>
+            </md>
+            입니다. <m>k</m>제곱근을 취하고 <m>k\to\infty</m>로 보내면 <m>\rho(A+B)\leq a+b=\rho(A)+\rho(B)+2\varepsilon</m>이고, <m>\varepsilon</m>은 임의이므로 <m>\rho(A+B)\leq\rho(A)+\rho(B)</m>입니다.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            <xref ref="exer-gelfand-spectral-radius-not-norm"/>에 비추어 볼 때 가환성 가정이 증명의 어느 단계에서 본질적으로 쓰이는지 설명하여라.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            가환성은 <m>(AB)^k=A^kB^k</m>과 이항정리에서 본질적으로 쓰입니다.
+            일반적으로 <m>(AB)^k</m>와 <m>(A+B)^k</m>은 <m>A</m>와 <m>B</m>가 번갈아 나타나는 곱들로 전개되며, 이런 곱은 <m>A</m>의 거듭제곱과 <m>B</m>의 거듭제곱으로 분리되지 않습니다.
+            실제로 <xref ref="exer-gelfand-spectral-radius-not-norm"/>의 <m>E_{12},E_{21}</m>은 가환하지 않고(<m>E_{12}E_{21}=E_{11}\neq E_{22}=E_{21}E_{12}</m>),
+            <m>E_{12}^j=E_{21}^j=0</m>(<m>j\geq2</m>)임에도 <m>(E_{12}E_{21})^k=E_{11}</m>, <m>(E_{12}+E_{21})^{2k}</m>은 왼쪽 위 <m>2\times2</m> 블록이 항등행렬이 되어 두 부등식이 모두 깨집니다.
+          </p>
+        </solution>
+      </task>
+    </exercise>
+
+  </exercises>
 
 </section>

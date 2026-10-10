@@ -8,6 +8,7 @@
     </p>
   </introduction>
   <xi:include href="sec-fast-fourier-transform.ptx"/>
+  <xi:include href="sec-fast-polynomial-operations.ptx"/>
   <xi:include href="sec-fast-multipoint-evaluation.ptx"/>
 
   

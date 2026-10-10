@@ -52,9 +52,6 @@
       </md>
     </p>
   </definition>
-
-  
-
   <p>
     <xref ref="def-scaled-dot-product-attention"/>에서 <m>q=W_Qx</m>는 <term>질의</term><aside><p>질의:query</p><p>키:key</p><p>값:value</p></aside>, <m>k_j=W_Ky_j</m>는 <term>키</term>, <m>v_j=W_Vy_j</m>는 <term>값</term>입니다. 질의는 입력 <m>x</m>가 찾으려는 정보를 나타내고, 키는 각 참조 입력 <m>y_j</m>가 질의와 얼마나 관련되는지 비교하는 데 사용됩니다. 값은 해당 참조 입력에서 실제로 가져올 정보를 나타냅니다. 행렬 <m>W_Q,W_K,W_V</m>는 각각 입력을 질의, 키, 값으로 변환합니다.
   </p>

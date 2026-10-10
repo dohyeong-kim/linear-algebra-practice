@@ -143,7 +143,7 @@
     <title>연습문제</title>
     <introduction>
       <p>
-        문제는 쉬운 것부터 어려운 것 순으로 배열되어 있습니다. 벡터 <m>x,y\in\mathbb F_2^n</m>에 대하여 해밍 거리 <m>\operatorname{dist}(x,y)</m>는 성분이 다른 좌표의 개수이고, 무게 <m>\operatorname{wt}(x)=\operatorname{dist}(x,0)</m>는 성분이 <m>1</m>인 좌표의 개수입니다. 중심 <m>x</m>, 반지름 <m>t</m>인 해밍 구는
+        벡터 <m>x,y\in\mathbb F_2^n</m>에 대하여 해밍 거리 <m>\operatorname{dist}(x,y)</m>는 성분이 다른 좌표의 개수이고, 무게 <m>\operatorname{wt}(x)=\operatorname{dist}(x,0)</m>는 성분이 <m>1</m>인 좌표의 개수입니다. 중심 <m>x</m>, 반지름 <m>t</m>인 해밍 구는
         <md><mrow>B(x,t)=\{y\in\mathbb F_2^n:\operatorname{dist}(x,y)\le t\}</mrow></md>
         입니다. 예를 들어 본문 <xref ref="ex-perfect-code-hamming-r2"/>에서 <m>B(000,1)=\{000,100,010,001\}</m>, <m>B(111,1)=\{111,011,101,110\}</m>입니다. 부호의 최소 거리는 서로 다른 두 부호어 사이 거리의 최솟값이므로 부호어가 둘 이상일 때만 정의됩니다. 선형부호에서는 <m>\operatorname{dist}(c,c')=\operatorname{wt}(c-c')</m>이므로, 본문의 증명에서처럼 최소 거리는 영이 아닌 부호어의 최소 무게와 같습니다. 검사 행렬 <m>H</m>의 <m>j</m>번째 열을 <m>h_j</m>로, <m>j</m>번째 표준기저벡터를 <m>e_j</m>로 쓰며, 벡터를 <m>1101000</m>처럼 성분을 이어 써서 나타내기도 합니다. 특별한 언급이 없으면 <m>H</m>는 본문 <xref ref="ex-hamming-code-r3"/>의 행렬이며, 그 열은
         <md><mrow>h_1=100,\ h_2=010,\ h_3=001,\ h_4=110,\ h_5=101,\ h_6=011,\ h_7=111</mrow></md>
