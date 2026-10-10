@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름의 기본 성질.</span>
+</h4>
+<div class="introduction"><div class="para">
+<span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>의 고윳값을 중복도를 포함하여 <span class="process-math">\(\lambda_1,\ldots,\lambda_n\)</span>이라 하자.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">모든 스칼라 <span class="process-math">\(\alpha\in\mathbb C\)</span>에 대하여 <span class="process-math">\(\rho(\alpha A)=\lvert\alpha\rvert\rho(A)\)</span>임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(\alpha=0\)</span>이면 양변이 모두 <span class="process-math">\(0\)</span>입니다. <span class="process-math">\(\alpha\neq0\)</span>이면 <span class="process-math">\(\det(\lambda I-\alpha A)=\alpha^n\det(\alpha^{-1}\lambda I-A)\)</span>이므로 <span class="process-math">\(\alpha A\)</span>의 고윳값은 정확히 <span class="process-math">\(\alpha\lambda_1,\ldots,\alpha\lambda_n\)</span>이고, 따라서 <span class="process-math">\(\rho(\alpha A)=\lvert\alpha\rvert\rho(A)\)</span>입니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">모든 가역행렬 <span class="process-math">\(S\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(\rho(A^{\mathsf T})=\rho(A)\)</span>이고 <span class="process-math">\(\rho(SAS^{-1})=\rho(A)\)</span>임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(\det(\lambda I-A^{\mathsf T})=\det\bigl((\lambda I-A)^{\mathsf T}\bigr)=\det(\lambda I-A)\)</span>이고 <span class="process-math">\(\det(\lambda I-SAS^{-1})=\det\bigl(S(\lambda I-A)S^{-1}\bigr)=\det(\lambda I-A)\)</span>이므로, <span class="process-math">\(A^{\mathsf T}\)</span>와 <span class="process-math">\(SAS^{-1}\)</span>은 <span class="process-math">\(A\)</span>와 특성다항식이 같고 스펙트럼 반지름도 같습니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para">모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(A^k\)</span>의 고윳값이 중복도를 포함하여 정확히 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>임을 보이고, <span class="process-math">\(\rho(A^k)=\rho(A)^k\)</span>임을 유도하여라.</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">
+<span class="process-math">\(A\)</span>를 상삼각 행렬과 닮음으로 만들어라.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">대수적으로 닫힌 체 <span class="process-math">\(\mathbb C\)</span> 위에서는 가역행렬 <span class="process-math">\(P\)</span>와 대각성분이 <span class="process-math">\(\lambda_1,\ldots,\lambda_n\)</span>인 상삼각 행렬 <span class="process-math">\(T\)</span>가 존재하여 <span class="process-math">\(A=PTP^{-1}\)</span>입니다. 그러면 <span class="process-math">\(A^k=PT^kP^{-1}\)</span>이고, <span class="process-math">\(T^k\)</span>는 대각성분이 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>인 상삼각 행렬입니다. 따라서 <span class="process-math">\(A^k\)</span>의 고윳값은 중복도를 포함하여 정확히 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>이고, <span class="process-math">\(\rho(A^k)=\max_i\lvert\lambda_i\rvert^k=\rho(A)^k\)</span>입니다.</div></div></details>
+</div></article></article><span class="incontext"><a class="internal" href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-basic-properties">[incontext]</a></span>
+</body>
+</html>

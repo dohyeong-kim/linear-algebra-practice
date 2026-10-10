@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름의 단조성.</span>
+</h4>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">
+<span class="process-math">\(0\leq A\leq B\)</span>(성분별)이면 <span class="process-math">\(\rho(A)\leq\rho(B)\)</span>임을 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>를 이용하여 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">귀납적으로 <span class="process-math">\(A^{k+1}=A^kA\leq B^kA\leq B^kB=B^{k+1}\)</span>이므로(비음수 행렬을 곱하면 성분별 부등식이 보존됨) <span class="process-math">\(0\leq A^k\leq B^k\)</span>입니다. 비음수 행렬의 연산자 1-노름은 최대 열합이므로(<a href="sec-gelfand-matrix-norm.html#exer-gelfand-operator-one-norm-column-sum" class="xref" data-knowl="./knowl/xref/exer-gelfand-operator-one-norm-column-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.4: 연산자 1-노름의 열합 공식">연습문제 4.2.4</a>) <span class="process-math">\(\|A^k\|_1\leq\|B^k\|_1\)</span>이고, <span class="process-math">\(k\)</span>제곱근을 취해 극한을 보내면 <span class="process-math">\(\rho(A)\leq\rho(B)\)</span>입니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">
+<span class="process-math">\(A,B\)</span>가 양의 행렬이고 <span class="process-math">\(A\leq B\text{,}\)</span> <span class="process-math">\(A\neq B\)</span>이면 <span class="process-math">\(\rho(A)&lt;\rho(B)\)</span>임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(Av=\rho(A)v\text{,}\)</span> <span class="process-math">\(B^{\mathsf T}w=\rho(B)w\)</span>인 양의 벡터 <span class="process-math">\(v,w\)</span>를 택하면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\rho(B)w^{\mathsf T}v=w^{\mathsf T}Bv=\rho(A)w^{\mathsf T}v+w^{\mathsf T}(B-A)v
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(B-A\)</span>는 영이 아닌 비음수 행렬이고 <span class="process-math">\(v&gt;0\)</span>이므로 <span class="process-math">\((B-A)v\)</span>는 영이 아닌 비음수 벡터이며, <span class="process-math">\(w&gt;0\)</span>이므로 <span class="process-math">\(w^{\mathsf T}(B-A)v&gt;0\)</span>입니다. <span class="process-math">\(w^{\mathsf T}v&gt;0\)</span>으로 나누면 결론을 얻습니다.</div>
+</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para">
+<span class="process-math">\(d\geq2\)</span>이고 <span class="process-math">\(A\)</span>가 양의 행렬일 때, <span class="process-math">\(A\)</span>의 임의의 진 주부분행렬 <span class="process-math">\(A'\)</span>(첨자 집합 <span class="process-math">\(S\subsetneq\{1,\ldots,d\}\text{,}\)</span> <span class="process-math">\(S\neq\varnothing\)</span>에 해당하는 행과 열만 남긴 행렬)에 대하여 <span class="process-math">\(\rho(A')&lt;\rho(A)\)</span>임을 보여라. 특히 <span class="process-math">\(\rho(A)&gt;\max_ia_{ii}\)</span>이다.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(A'\)</span>도 양의 행렬이므로 <span class="process-math">\(A'v'=\rho(A')v'\)</span>인 양의 벡터 <span class="process-math">\(v'\)</span>가 있습니다. <span class="process-math">\(v'\)</span>를 <span class="process-math">\(S\)</span> 밖의 좌표에 <span class="process-math">\(0\)</span>을 채워 <span class="process-math">\(x\in\mathbb R^d\)</span>로 확장합니다. <span class="process-math">\(i\in S\)</span>이면 <span class="process-math">\((Ax)_i=(A'v')_i=\rho(A')x_i\)</span>이고, <span class="process-math">\(i\notin S\)</span>이면 <span class="process-math">\((Ax)_i&gt;0=\rho(A')x_i\)</span>입니다. 따라서 <span class="process-math">\(Ax-\rho(A')x\)</span>는 영이 아닌 비음수 벡터이고, <span class="process-math">\(A^{\mathsf T}w=\rho(A)w\)</span>인 <span class="process-math">\(w&gt;0\)</span>에 대하여 <span class="process-math">\((\rho(A)-\rho(A'))w^{\mathsf T}x=w^{\mathsf T}(Ax-\rho(A')x)&gt;0\)</span>입니다. <span class="process-math">\(w^{\mathsf T}x&gt;0\)</span>이므로 <span class="process-math">\(\rho(A')&lt;\rho(A)\)</span>입니다. <span class="process-math">\(S=\{i\}\)</span>로 두면 <span class="process-math">\(a_{ii}&lt;\rho(A)\)</span>입니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-perron-frobenius.html#exer-perron-monotonicity">[incontext]</a></span>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">가정을 뺄 수 없는 예.</span>
+</h4>
+<div class="introduction"><div class="para">다음 비음수 행렬들은 어떤 거듭제곱도 양의 행렬이 아니다. 각각에 대하여 이 사실을 확인하고, <a href="sec-perron-frobenius.html#thm-perron-frobenius-eventually-positive" class="xref" data-knowl="./knowl/xref/thm-perron-frobenius-eventually-positive.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.8: 양의 거듭제곱을 갖는 비음수 행렬">정리 4.3.8</a>의 결론 중 어느 것이 성립하고 어느 것이 실패하는지 판정하여라.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para"><span class="process-math">\(S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\text{.}\)</span></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(S^2=I\)</span>이므로 <span class="process-math">\(S^k\in\{I,S\}\)</span>이고 어느 것도 양이 아닙니다. 고윳값은 <span class="process-math">\(\pm1\)</span>이므로 <span class="process-math">\(\rho(S)=1\)</span>은 양의 고유벡터 <span class="process-math">\((1,1)^{\mathsf T}\)</span>를 갖는 단순 고윳값이지만, <span class="process-math">\(-1\)</span>도 스펙트럼 원 위에 있어 <span class="process-math">\(\lvert\lambda\rvert&lt;\rho\)</span>가 실패합니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para"><span class="process-math">\(N=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\text{.}\)</span></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(N^k=\begin{pmatrix}1&amp;k\\0&amp;1\end{pmatrix}\)</span>는 <span class="process-math">\((2,1)\)</span> 성분이 <span class="process-math">\(0\)</span>입니다. <span class="process-math">\(\rho(N)=1\)</span>의 대수적 중복도는 <span class="process-math">\(2\)</span>이고 고유공간은 <span class="process-math">\(e_1\)</span>으로 생성되므로 양의 고유벡터도 없습니다. 스펙트럼 원 위에 다른 고윳값이 없다는 것만 성립합니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para">
+<span class="process-math">\(d\geq2\)</span>일 때 <span class="process-math">\(Ce_j=e_{j+1}\)</span>(첨자는 <span class="process-math">\(d\)</span>를 법으로 함)로 정의되는 <span class="process-math">\(d\times d\)</span> 순환 치환행렬 <span class="process-math">\(C\text{.}\)</span>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(C^k\)</span>은 치환행렬이므로 각 행에 영이 아닌 성분이 하나뿐이고 양의 행렬이 될 수 없습니다. <span class="process-math">\(\omega^d=1\)</span>인 각 <span class="process-math">\(\omega\)</span>에 대하여 <span class="process-math">\(x_\omega=(1,\omega,\ldots,\omega^{d-1})^{\mathsf T}\)</span>는 <span class="process-math">\(Cx_\omega=\omega^{-1}x_\omega\)</span>를 만족하므로, <span class="process-math">\(C\)</span>의 고윳값은 <span class="process-math">\(1\)</span>의 서로 다른 <span class="process-math">\(d\)</span>제곱근 <span class="process-math">\(d\)</span>개 전체이고 모두 단순합니다. 따라서 <span class="process-math">\(\rho(C)=1\)</span>은 양의 고유벡터 <span class="process-math">\(\mathbf 1\)</span>을 갖는 단순 고윳값이지만, <span class="process-math">\(d\)</span>개의 고윳값이 모두 스펙트럼 원 위에 있어 우세성이 실패합니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-perron-frobenius.html#exer-perron-hypotheses-necessary">[incontext]</a></span>
+</body>
+</html>

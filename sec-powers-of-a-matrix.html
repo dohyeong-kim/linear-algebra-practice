@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.4';
+eBookConfig.runestone_version = '8.3.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.7e4cb14f24eb489b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.54371ed119fe41be.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.40d828091d93b733.css">
+<script src="_static/prefix-runtime.3adcbea95009347b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.7a45395f326e122c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.9963089870a016c8.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -592,9 +592,21 @@ eBookConfig.enable_chatcodes =  false;
 #exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
 #exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
 #exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+#exer-powers-invertibility-semisimple-part-2-1-2 { counter-set: exer-powers-invertibility-semisimple-part-2-1-2 0; }
+#exer-powers-invertibility-semisimple-part-2-1-2 > li::marker { content: "("counter(exer-powers-invertibility-semisimple-part-2-1-2,lower-alpha)")"; }
+#exer-powers-invertibility-semisimple-part-2-1-2 > li { counter-increment: exer-powers-invertibility-semisimple-part-2-1-2; }
 #sec-multiplication-tensor-17 { counter-set: sec-multiplication-tensor-17 0; }
 #sec-multiplication-tensor-17 > li::marker { content: ""counter(sec-multiplication-tensor-17,decimal)"."; }
 #sec-multiplication-tensor-17 > li { counter-increment: sec-multiplication-tensor-17; }
+#sec-fast-fourier-transform-22 { counter-set: sec-fast-fourier-transform-22 0; }
+#sec-fast-fourier-transform-22 > li::marker { content: ""counter(sec-fast-fourier-transform-22,decimal)"."; }
+#sec-fast-fourier-transform-22 > li { counter-increment: sec-fast-fourier-transform-22; }
+#sec-fast-polynomial-operations-7 { counter-set: sec-fast-polynomial-operations-7 0; }
+#sec-fast-polynomial-operations-7 > li::marker { content: ""counter(sec-fast-polynomial-operations-7,decimal)"."; }
+#sec-fast-polynomial-operations-7 > li { counter-increment: sec-fast-polynomial-operations-7; }
+#sec-fast-polynomial-operations-19 { counter-set: sec-fast-polynomial-operations-19 0; }
+#sec-fast-polynomial-operations-19 > li::marker { content: ""counter(sec-fast-polynomial-operations-19,decimal)"."; }
+#sec-fast-polynomial-operations-19 > li { counter-increment: sec-fast-polynomial-operations-19; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -702,9 +714,18 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div></li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html#exercises-powers-of-a-matrix" class="internal"><span class="codenumber">4.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html#exercises-gelfand-matrix-norm" class="internal"><span class="codenumber">4.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-perron-frobenius.html#exercises-perron-frobenius" class="internal"><span class="codenumber">4.3</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div></li>
 </ul>
 </li>
@@ -734,7 +755,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">푸리에변환과 그 가속</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-polynomial-operations.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다항식 연산</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.3</span> <span class="title">고속 다중점 평가</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
@@ -803,7 +825,7 @@ T^n e_1=\frac{3^n}{2}v_1+\frac{1}{2}v_2=\frac{3^n+1}{2}e_1+\frac{3^n-1}{2}e_2
 </div>
 <div class="para">입니다. 예를 들어 <span class="process-math">\(n=3\)</span>이면 <span class="process-math">\(T^3e_1=14e_1+13e_2\)</span>입니다.</div>
 </div></article></details><div class="para logical" id="sec-powers-of-a-matrix-6">
-<div class="para">항상 <span class="process-math">\(v\)</span>가 고유벡터의 선형결합으로 표현 가능한 것은 아닙니다. 그러나 <span class="process-math">\(V\)</span>가 유한차원이고 <span class="process-math">\(T\)</span>의 특성다항식이 <span class="process-math">\(\mathbb F\)</span> 위에서 분해된다면, <span class="process-math">\(V\)</span>의 적절한 기저 <span class="process-math">\(\mathcal B\)</span>를 선택하여 <span class="process-math">\(T\)</span>를 조르당 표준형으로 나타낼 수 있습니다. 즉, 대각화 가능한 <span class="process-math">\(T_s\)</span>와 멱명작용소 <span class="process-math">\(T_n\)</span>에 대하여</div>
+<div class="para">항상 <span class="process-math">\(v\)</span>가 고유벡터의 선형결합으로 표현 가능한 것은 아닙니다. 그러나 <span class="process-math">\(V\)</span>가 유한차원이고 <span class="process-math">\(T\)</span>의 특성다항식이 <span class="process-math">\(\mathbb F\)</span> 위에서 분해된다면, <span class="process-math">\(V\)</span>의 적절한 기저 <span class="process-math">\(\mathcal B\)</span>를 선택하여 <span class="process-math">\(T\)</span>를 조르당 표준형으로 나타낼 수 있습니다. 즉, 대각화 가능한 <span class="process-math">\(T_s\)</span>와 멱영작용소 <span class="process-math">\(T_n\)</span>에 대하여</div>
 <div class="displaymath process-math" id="sec-powers-of-a-matrix-6-10">
 \begin{gather*}
 T = T_s +T_n, \quad T_sT_n=T_nT_s
@@ -815,7 +837,7 @@ T = T_s +T_n, \quad T_sT_n=T_nT_s
 <span class="type">정리</span><span class="space"> </span><span class="codenumber">4.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">가법 조르당 분해의 유일성.</span>
 </h3>
 <div class="para" id="thm-additive-jordan-decomposition-uniqueness-2-1">
-<span class="process-math">\(V\)</span>가 유한차원이고 <span class="process-math">\(T\)</span>의 특성다항식이 <span class="process-math">\(\mathbb F\)</span> 위에서 분해된다고 하자. 그러면 <span class="process-math">\(T\)</span>는 서로 가환하는 대각화 가능한 연산자 <span class="process-math">\(T_s\)</span>와 멱명작용소 <span class="process-math">\(T_n\)</span>의 합 <span class="process-math">\(T=T_s+T_n\)</span>으로 유일하게 표현된다. 즉, <span class="process-math">\(T=S+N\)</span>이고 <span class="process-math">\(S\)</span>가 대각화 가능하며 <span class="process-math">\(N\)</span>이 멱명이고 <span class="process-math">\(SN=NS\)</span>이면 <span class="process-math">\(S=T_s\)</span> 및 <span class="process-math">\(N=T_n\)</span>이다.</div></article><details id="thm-additive-jordan-decomposition-uniqueness-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-additive-jordan-decomposition-uniqueness-3-1">앞에서 언급한 대로, <span class="process-math">\(T_s\)</span>와 <span class="process-math">\(T_n\)</span>이 존재함은 행렬의 조르당 표준형으로부터 알 수 있습니다. 또 다른 분해 <span class="process-math">\(T=S+N\)</span>를 생각해봅시다. 먼저 <span class="process-math">\(T\)</span>와 <span class="process-math">\(S\)</span>의 특성다항식이 같음을 알아봅시다. <span class="process-math">\(N\)</span>이 멱영작용소이므로 <span class="process-math">\(V \supset N(V) \supset \cdots N^k(V)=0\)</span>인 <span class="process-math">\(k\)</span>가 존재합니다. <span class="process-math">\(SN=NS\)</span>로부터 각 <span class="process-math">\(N^j(V)\)</span>가 <span class="process-math">\(T\)</span>-불변임을 압니다. 따라서 <span class="process-math">\(T\)</span>를 블록행렬로 쓰면 <span class="process-math">\(S\)</span>와 같은 특성다항식을 가짐을 알 수 있습니다. 같은 논리로, <span class="process-math">\(T\)</span>와 <span class="process-math">\(T_s\)</span>도 같은 특성다항식을 가집니다.</div>
+<span class="process-math">\(V\)</span>가 유한차원이고 <span class="process-math">\(T\)</span>의 특성다항식이 <span class="process-math">\(\mathbb F\)</span> 위에서 분해된다고 하자. 그러면 <span class="process-math">\(T\)</span>는 서로 가환하는 대각화 가능한 연산자 <span class="process-math">\(T_s\)</span>와 멱영작용소 <span class="process-math">\(T_n\)</span>의 합 <span class="process-math">\(T=T_s+T_n\)</span>으로 유일하게 표현된다. 즉, <span class="process-math">\(T=S+N\)</span>이고 <span class="process-math">\(S\)</span>가 대각화 가능하며 <span class="process-math">\(N\)</span>이 멱영이고 <span class="process-math">\(SN=NS\)</span>이면 <span class="process-math">\(S=T_s\)</span> 및 <span class="process-math">\(N=T_n\)</span>이다.</div></article><details id="thm-additive-jordan-decomposition-uniqueness-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-additive-jordan-decomposition-uniqueness-3-1">앞에서 언급한 대로, <span class="process-math">\(T_s\)</span>와 <span class="process-math">\(T_n\)</span>이 존재함은 행렬의 조르당 표준형으로부터 알 수 있습니다. 또 다른 분해 <span class="process-math">\(T=S+N\)</span>를 생각해봅시다. 먼저 <span class="process-math">\(T\)</span>와 <span class="process-math">\(S\)</span>의 특성다항식이 같음을 알아봅시다. <span class="process-math">\(N\)</span>이 멱영작용소이므로 <span class="process-math">\(V \supset N(V) \supset \cdots N^k(V)=0\)</span>인 <span class="process-math">\(k\)</span>가 존재합니다. <span class="process-math">\(SN=NS\)</span>로부터 각 <span class="process-math">\(N^j(V)\)</span>가 <span class="process-math">\(T\)</span>-불변임을 압니다. 따라서 <span class="process-math">\(T\)</span>를 블록행렬로 쓰면 <span class="process-math">\(S\)</span>와 같은 특성다항식을 가짐을 알 수 있습니다. 같은 논리로, <span class="process-math">\(T\)</span>와 <span class="process-math">\(T_s\)</span>도 같은 특성다항식을 가집니다.</div>
 <div class="para" id="thm-additive-jordan-decomposition-uniqueness-3-2">
 <span class="process-math">\(T\text{,}\)</span> <span class="process-math">\(T_s\text{,}\)</span> <span class="process-math">\(S\)</span>가 공유하는 고유값 <span class="process-math">\(\lambda\)</span>에 대하여 일반화된 고유공간 <span class="process-math">\(K_\lambda= \bigcap_{r=1}^\infty \operatorname{ker}(T-\lambda I)^r\)</span>를 택합시다. 이는 <span class="process-math">\(K_\lambda= \operatorname{ker}(T_s-\lambda I) = \operatorname{ker}(S-\lambda I)\)</span>를 만족합니다. <span class="process-math">\(V\)</span>는 <span class="process-math">\(K_\lambda\)</span>들의 직합이며, 각 <span class="process-math">\(K_\lambda\)</span>는, 네 작용소 <span class="process-math">\(S,N,T_s,T_n\)</span>에 대하여 불변입니다. 따라서, <span class="process-math">\(S=T_s\text{,}\)</span> <span class="process-math">\(N=T_n\)</span>을 보이기 위해서는<span class="process-math">\(K_\lambda\)</span>의 원소에 대해 확인하면 충분합니다.</div>
 <div class="para" id="thm-additive-jordan-decomposition-uniqueness-3-3">일반성을 잃지 않고 <span class="process-math">\(V=K_\lambda\)</span>라 합시다. <span class="process-math">\(S\)</span>와 <span class="process-math">\(T_s\)</span> 모두 <span class="process-math">\(v \mapsto v\lambda\)</span>으로 작용합니다. 따라서, <span class="process-math">\(N=T_n=T-\lambda I\)</span>이고 증명이 완료되었습니다.</div></article></details><div class="para" id="sec-powers-of-a-matrix-8">조르당 분해는 <span class="process-math">\(T_s\)</span>이 가역인 경우 곱셉으로 표현할 수도 있습니다. <span class="process-math">\(T=T_s+T_n\)</span> 대신 <span class="process-math">\(T=T_s(I+T_s^{-1}T_n)\)</span>로 쓸 수 있습니다. <span class="process-math">\(T_s^{-1}T_n\)</span>도 멱영작용소이므로 <span class="process-math">\(T=T_s(I+T_n')\)</span>인 셈입니다. (단, <span class="process-math">\(T_n'\)</span>은 멱영작용소이고 <span class="process-math">\(T_sT_n'=T_n'T_s\text{.}\)</span>)</div>
@@ -843,7 +865,261 @@ T^m=T_s^mT_u^m=T_s^m\sum_{q=0}^{\min\{m,d-1\}}\binom{m}{q}U^q
 \end{gather*}
 </div>
 <div class="para">가 성립한다.</div>
-</div></article><details id="prop-powers-multiplicative-jordan-decomposition-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-powers-multiplicative-jordan-decomposition-3-1">조르당 분해의 존재와 이항정리로부터 알 수 있습니다.</div></article></details></section></div>
+</div></article><details id="prop-powers-multiplicative-jordan-decomposition-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-powers-multiplicative-jordan-decomposition-3-1">조르당 분해의 존재와 이항정리로부터 알 수 있습니다.</div></article></details><section class="exercises" id="exercises-powers-of-a-matrix"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<article class="exercise exercise-like" id="exer-powers-diagonal-operator"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">대각 연산자의 거듭제곱.</span>
+</h4>
+<div class="introduction" id="exer-powers-diagonal-operator-2"><div class="para" id="exer-powers-diagonal-operator-2-1">
+<a href="sec-powers-of-a-matrix.html#ex-powers-eigenvector-decomposition" class="xref" data-knowl="./knowl/xref/ex-powers-eigenvector-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 4.1.2: 대각 연산자의 거듭제곱">예시 4.1.2</a>의 연산자 <span class="process-math">\(T\text{,}\)</span> 즉 <span class="process-math">\(Te_1=2e_1\text{,}\)</span> <span class="process-math">\(Te_2=-3e_2\)</span>와 벡터 <span class="process-math">\(v=3e_1-2e_2\)</span>를 생각하자.</div></div>
+<article class="task exercise-like" id="exer-powers-diagonal-operator-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-diagonal-operator-3-1-1">
+<span class="process-math">\(T^3v\)</span>와 <span class="process-math">\(T^4v\)</span>를 구하여라.</div>
+<div class="solutions"><details id="exer-powers-diagonal-operator-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-diagonal-operator-3-2-1">명제 <a href="sec-powers-of-a-matrix.html#prop-powers-eigenvector-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-eigenvector-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.1: 고유벡터 분해와 연산자의 거듭제곱">명제 4.1.1</a>에 의해 <span class="process-math">\(T^nv=3\cdot 2^ne_1-2(-3)^ne_2\)</span>입니다. 따라서 <span class="process-math">\(T^3v=24e_1+54e_2\text{,}\)</span> <span class="process-math">\(T^4v=48e_1-162e_2\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-diagonal-operator-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-diagonal-operator-4-1-1">
+<span class="process-math">\(T^nv\)</span>의 <span class="process-math">\(e_2\)</span>-좌표가 양수가 되는 음이 아닌 정수 <span class="process-math">\(n\)</span>을 모두 구하여라.</div>
+<div class="solutions"><details id="exer-powers-diagonal-operator-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-diagonal-operator-4-2-1">
+<span class="process-math">\(-2(-3)^n&gt;0 \iff (-3)^n\lt 0 \iff n\)</span>이 홀수.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-diagonal-operator-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-diagonal-operator-5-1-1">
+<span class="process-math">\(T^nv\)</span>가 <span class="process-math">\(v\)</span>의 스칼라배가 되는 음이 아닌 정수 <span class="process-math">\(n\)</span>을 모두 구하여라.</div>
+<div class="solutions"><details id="exer-powers-diagonal-operator-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-diagonal-operator-5-2-1">
+<span class="process-math">\(T^nv=cv\)</span>이면 계수를 비교하여 <span class="process-math">\(2^n=c=(-3)^n\)</span>이므로 <span class="process-math">\(n=0\)</span>뿐입니다. 서로 다른 고유값에 대응하는 성분이 모두 <span class="process-math">\(0\)</span>이 아니면 <span class="process-math">\(v\)</span>는 어떤 <span class="process-math">\(T^n\)</span> (<span class="process-math">\(n\geq 1\)</span>)의 고유벡터도 아님을 보여 줍니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-2x2-distinct-eigenvalues"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">서로 다른 고유값을 갖는 <span class="process-math">\(2\times 2\)</span> 행렬.</span>
+</h4>
+<div class="para" id="exer-powers-2x2-distinct-eigenvalues-2-1">
+<span class="process-math">\(A=\begin{pmatrix}4&amp;1\\2&amp;3\end{pmatrix}\)</span>의 고유값과 고유벡터를 구하고, <span class="process-math">\(e_2\)</span>를 고유벡터의 선형결합으로 나타내어 모든 음이 아닌 정수 <span class="process-math">\(n\)</span>에 대하여 <span class="process-math">\(A^ne_2\)</span>를 구하여라.</div>
+<div class="solutions"><details id="exer-powers-2x2-distinct-eigenvalues-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-2x2-distinct-eigenvalues-3-1">
+<div class="para">특성다항식은 <span class="process-math">\(x^2-7x+10=(x-5)(x-2)\)</span>이고, <span class="process-math">\(v_1=(1,1)^T\text{,}\)</span> <span class="process-math">\(v_2=(1,-2)^T\)</span>가 각각 고유값 <span class="process-math">\(5,2\)</span>의 고유벡터입니다. <span class="process-math">\(e_2=\frac13v_1-\frac13v_2\)</span>이므로 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-eigenvector-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-eigenvector-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.1: 고유벡터 분해와 연산자의 거듭제곱">명제 4.1.1</a>에 의해</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-eigenvector-decomposition.html" id="exer-powers-2x2-distinct-eigenvalues-3-1-7">
+\begin{gather*}
+A^ne_2=\frac{5^n}{3}v_1-\frac{2^n}{3}v_2=\begin{pmatrix}\dfrac{5^n-2^n}{3}\\[4pt] \dfrac{5^n+2^{n+1}}{3}\end{pmatrix}
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(n=1\)</span>이면 <span class="process-math">\((1,3)^T\)</span>로 <span class="process-math">\(A\)</span>의 둘째 열과 일치합니다.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-powers-single-eigenvalue"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">고유값이 하나뿐인 <span class="process-math">\(2\times 2\)</span> 행렬.</span>
+</h4>
+<div class="introduction" id="exer-powers-single-eigenvalue-2"><div class="para" id="exer-powers-single-eigenvalue-2-1">
+<span class="process-math">\(A=\begin{pmatrix}3&amp;1\\-1&amp;1\end{pmatrix}\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-powers-single-eigenvalue-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-single-eigenvalue-3-1-1">
+<span class="process-math">\(A\)</span>의 특성다항식을 구하고 <span class="process-math">\((A-2I)^2=0\)</span>임을 확인하여라.</div>
+<div class="solutions"><details id="exer-powers-single-eigenvalue-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-single-eigenvalue-3-2-1">
+<span class="process-math">\(\det(xI-A)=x^2-4x+4=(x-2)^2\text{.}\)</span> <span class="process-math">\(N=A-2I=\begin{pmatrix}1&amp;1\\-1&amp;-1\end{pmatrix}\)</span>이고 직접 계산하면 <span class="process-math">\(N^2=0\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-single-eigenvalue-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-single-eigenvalue-4-1-1">
+<span class="process-math">\(A\)</span>의 가법 조르당 분해를 구하여라.</div>
+<div class="solutions"><details id="exer-powers-single-eigenvalue-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-single-eigenvalue-4-2-1">
+<span class="process-math">\(A=2I+N\)</span>에서 <span class="process-math">\(2I\)</span>는 대각화 가능하고 모든 행렬과 가환하며 <span class="process-math">\(N\)</span>은 멱영입니다. 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>에 의해 <span class="process-math">\(A_s=2I\text{,}\)</span> <span class="process-math">\(A_n=N\)</span>입니다. (<span class="process-math">\(A\neq 2I\)</span>이므로 <span class="process-math">\(A\)</span>는 대각화 가능하지 않습니다.)</div></div></details></div></article><article class="task exercise-like" id="exer-powers-single-eigenvalue-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-single-eigenvalue-5-1-1">모든 음이 아닌 정수 <span class="process-math">\(n\)</span>에 대하여 <span class="process-math">\(A^n\)</span>을 구하고, <span class="process-math">\(A^{10}\)</span>을 계산하여라.</div>
+<div class="solutions"><details id="exer-powers-single-eigenvalue-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-single-eigenvalue-5-2-1">
+<div class="para">명제 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.5: 가법 조르당 분해에서의 거듭제곱">명제 4.1.5</a>(<span class="process-math">\(d=2\)</span>)에 의해</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html" id="exer-powers-single-eigenvalue-5-2-1-3">
+\begin{align*}
+A^n=2^nI+n2^{n-1}N=2^{n-1}\begin{pmatrix}2+n&amp;n\\-n&amp;2-n\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. 따라서 <span class="process-math">\(A^{10}=\begin{pmatrix}6144&amp;5120\\-5120&amp;-4096\end{pmatrix}\text{.}\)</span> 검산: <span class="process-math">\(\det A^{10}=-6144\cdot4096+5120^2=1048576=4^{10}=(\det A)^{10}\text{.}\)</span>
+</div>
+</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-invertibility-semisimple-part"><h4 class="heading">
+<span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">반단순 부분의 가역성.</span>
+</h4>
+<div class="para logical" id="exer-powers-invertibility-semisimple-part-2-1">
+<div class="para">
+<span class="process-math">\(T=T_s+T_n\)</span>이 가법 조르당 분해일 때 다음을 보여라.</div>
+<ol class="lower-alpha" id="exer-powers-invertibility-semisimple-part-2-1-2">
+<li id="exer-powers-invertibility-semisimple-part-2-1-2-1"><div class="para" id="p-derived-exer-powers-invertibility-semisimple-part-2-1-2-1">
+<span class="process-math">\(T\)</span>가 가역일 필요충분조건은 <span class="process-math">\(T_s\)</span>가 가역인 것이다.</div></li>
+<li id="exer-powers-invertibility-semisimple-part-2-1-2-2"><div class="para" id="p-derived-exer-powers-invertibility-semisimple-part-2-1-2-2">
+<span class="process-math">\(T_s\)</span>가 가역이면 <span class="process-math">\(U=T_s^{-1}T_n\)</span>은 <span class="process-math">\(T_s\)</span>와 가환하는 멱영작용소이고, <span class="process-math">\(T=T_s(I+U)\)</span>이다.</div></li>
+</ol>
+</div>
+<div class="solutions">
+<details id="exer-powers-invertibility-semisimple-part-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-powers-invertibility-semisimple-part-3-1">서로 가환하는 멱영작용소 <span class="process-math">\(M\)</span>에 대하여 <span class="process-math">\((I+M)^{-1}=\sum_{q\geq 0}(-M)^q\)</span>(유한합).</div></div></details><details id="exer-powers-invertibility-semisimple-part-4" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="exer-powers-invertibility-semisimple-part-4-1">
+<span class="process-math">\(T_sT_n=T_nT_s\)</span>의 양변에 좌우로 <span class="process-math">\(T_s^{-1}\)</span>을 곱하면 <span class="process-math">\(T_s^{-1}T_n=T_nT_s^{-1}\)</span>이므로 <span class="process-math">\(U\)</span>는 <span class="process-math">\(T_s\)</span>와 가환하고, <span class="process-math">\(U^d=T_s^{-d}T_n^d=0\)</span>입니다. <span class="process-math">\(T=T_s+T_n=T_s(I+U)\)</span>이고 <span class="process-math">\(I+U\)</span>는 가역이므로 <span class="process-math">\(T\)</span>는 가역입니다.</div>
+<div class="para" id="exer-powers-invertibility-semisimple-part-4-2">역으로 <span class="process-math">\(T\)</span>가 가역이라 합시다. <span class="process-math">\(TT_n=(T_s+T_n)T_n=T_n(T_s+T_n)=T_nT\)</span>이므로 <span class="process-math">\(T^{-1}\)</span>도 <span class="process-math">\(T_n\)</span>과 가환하고, 따라서 <span class="process-math">\((T^{-1}T_n)^d=T^{-d}T_n^d=0\)</span>입니다. 그러므로 <span class="process-math">\(T_s=T-T_n=T(I-T^{-1}T_n)\)</span>은 가역입니다.</div>
+</div></details>
+</div></article><article class="exercise exercise-like" id="exer-powers-multiplicative-3x3"><h4 class="heading">
+<span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">승법 조르당 분해로 계산하기.</span>
+</h4>
+<div class="para" id="exer-powers-multiplicative-3x3-2-1">
+<span class="process-math">\(A=\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;-1\end{pmatrix}\)</span>의 가법 조르당 분해와 승법 조르당 분해 <span class="process-math">\(A=A_sA_u\)</span>를 구하고, 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-multiplicative-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-multiplicative-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.6: 승법 조르당 분해에서의 거듭제곱">명제 4.1.6</a>를 이용하여 모든 음이 아닌 정수 <span class="process-math">\(m\)</span>에 대하여 <span class="process-math">\(A^m\)</span>을 구하여라.</div>
+<div class="solutions"><details id="exer-powers-multiplicative-3x3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-multiplicative-3x3-3-1">
+<div class="para">
+<span class="process-math">\(E_{12}\)</span>를 <span class="process-math">\((1,2)\)</span> 성분만 <span class="process-math">\(1\)</span>인 행렬이라 합시다. <span class="process-math">\(A_s=\operatorname{diag}(2,2,-1)\text{,}\)</span> <span class="process-math">\(A_n=E_{12}\)</span>로 두면 <span class="process-math">\(A_sE_{12}=2E_{12}=E_{12}A_s\)</span>이고 <span class="process-math">\(E_{12}^2=0\)</span>이므로, 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>에 의해 이것이 가법 조르당 분해입니다. <span class="process-math">\(A_s\)</span>가 가역이므로 <span class="process-math">\(U=A_s^{-1}E_{12}=\frac12E_{12}\text{,}\)</span> <span class="process-math">\(A_u=I+\frac12E_{12}\)</span>이고 <span class="process-math">\(U^2=0\)</span>입니다. 따라서</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" id="exer-powers-multiplicative-3x3-3-1-13">
+\begin{align*}
+A^m=A_s^m\left(I+\tfrac m2E_{12}\right)=\begin{pmatrix}2^m&amp;m2^{m-1}&amp;0\\0&amp;2^m&amp;0\\0&amp;0&amp;(-1)^m\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="exer-powers-fibonacci"><h4 class="heading">
+<span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">피보나치 수열과 비네 공식.</span>
+</h4>
+<div class="introduction" id="exer-powers-fibonacci-2"><div class="para" id="exer-powers-fibonacci-2-1">
+<span class="process-math">\(F_0=0\text{,}\)</span> <span class="process-math">\(F_1=1\text{,}\)</span> <span class="process-math">\(F_{n+2}=F_{n+1}+F_n\)</span>으로 정의된 피보나치 수열과 <span class="process-math">\(A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}\)</span>를 생각하자. <span class="process-math">\(\varphi=\frac{1+\sqrt5}2\text{,}\)</span> <span class="process-math">\(\psi=\frac{1-\sqrt5}2\)</span>라 둔다.</div></div>
+<article class="task exercise-like" id="exer-powers-fibonacci-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-fibonacci-3-1-1">모든 <span class="process-math">\(n\geq 0\)</span>에 대하여 <span class="process-math">\(A^ne_1=(F_{n+1},F_n)^T\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-fibonacci-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-fibonacci-3-2-1">귀납법. <span class="process-math">\(n=0\)</span>이면 <span class="process-math">\(e_1=(F_1,F_0)^T\text{.}\)</span> <span class="process-math">\(A(F_{n+1},F_n)^T=(F_{n+1}+F_n,F_{n+1})^T=(F_{n+2},F_{n+1})^T\text{.}\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-fibonacci-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-fibonacci-4-1-1">
+<span class="process-math">\((\varphi,1)^T\text{,}\)</span> <span class="process-math">\((\psi,1)^T\)</span>가 <span class="process-math">\(A\)</span>의 고유벡터임을 보이고, 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-eigenvector-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-eigenvector-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.1: 고유벡터 분해와 연산자의 거듭제곱">명제 4.1.1</a>를 이용하여 <span class="process-math">\(F_n=\dfrac{\varphi^n-\psi^n}{\sqrt5}\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-fibonacci-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-fibonacci-4-2-1">
+<span class="process-math">\(\lambda\in\{\varphi,\psi\}\)</span>는 <span class="process-math">\(\lambda^2=\lambda+1\)</span>을 만족하므로 <span class="process-math">\(A(\lambda,1)^T=(\lambda+1,\lambda)^T=\lambda(\lambda,1)^T\)</span>입니다. <span class="process-math">\(\varphi-\psi=\sqrt5\)</span>이므로 <span class="process-math">\(e_1=\frac{1}{\sqrt5}\bigl((\varphi,1)^T-(\psi,1)^T\bigr)\)</span>이고, 따라서 <span class="process-math">\(A^ne_1=\frac1{\sqrt5}\bigl(\varphi^n(\varphi,1)^T-\psi^n(\psi,1)^T\bigr)\)</span>입니다. 둘째 좌표를 (a)와 비교하면 결론을 얻습니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-fibonacci-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-fibonacci-5-1-1">모든 <span class="process-math">\(n\geq0\)</span>에 대하여 <span class="process-math">\(F_n\)</span>은 <span class="process-math">\(\varphi^n/\sqrt5\)</span>에 가장 가까운 정수임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-fibonacci-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-fibonacci-5-2-1">
+<span class="process-math">\(|\psi|\lt 1\)</span>이므로 <span class="process-math">\(\left|F_n-\varphi^n/\sqrt5\right|=|\psi|^n/\sqrt5\leq 1/\sqrt5\lt 1/2\text{.}\)</span>
+</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-noncommuting-decomposition"><h4 class="heading">
+<span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">가환성 조건의 필요성.</span>
+</h4>
+<div class="introduction" id="exer-powers-noncommuting-decomposition-2"><div class="para" id="exer-powers-noncommuting-decomposition-2-1">
+<span class="process-math">\(A=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\text{,}\)</span> <span class="process-math">\(S=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}\text{,}\)</span> <span class="process-math">\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-powers-noncommuting-decomposition-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-noncommuting-decomposition-3-1-1">
+<span class="process-math">\(A=S+N\)</span>이고 <span class="process-math">\(S\)</span>는 대각화 가능, <span class="process-math">\(N\)</span>은 멱영이지만 <span class="process-math">\(SN\neq NS\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-noncommuting-decomposition-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-noncommuting-decomposition-3-2-1">
+<span class="process-math">\(SN=N\text{,}\)</span> <span class="process-math">\(NS=2N\text{.}\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-noncommuting-decomposition-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-noncommuting-decomposition-4-1-1">
+<span class="process-math">\(A\)</span>의 가법 조르당 분해를 구하여라.</div>
+<div class="solutions"><details id="exer-powers-noncommuting-decomposition-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-noncommuting-decomposition-4-2-1">
+<span class="process-math">\(A\)</span>는 서로 다른 두 고유값 <span class="process-math">\(1,2\)</span>를 가지므로 대각화 가능합니다. <span class="process-math">\(A=A+0\)</span>은 조건을 만족하므로 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>에 의해 <span class="process-math">\(A_s=A\text{,}\)</span> <span class="process-math">\(A_n=0\)</span>입니다. 특히 대각화 가능한 부분이 반드시 대각행렬인 것은 아닙니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-noncommuting-decomposition-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-noncommuting-decomposition-5-1-1">
+<span class="process-math">\(A^n\)</span>을 구하고, 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.5: 가법 조르당 분해에서의 거듭제곱">명제 4.1.5</a>의 공식을 <span class="process-math">\(S,N\)</span>에 잘못 적용한 <span class="process-math">\(S^n+nS^{n-1}N\)</span>과 <span class="process-math">\(A^n\)</span>이 일치하는 <span class="process-math">\(n\)</span>을 모두 구하여라.</div>
+<div class="solutions"><details id="exer-powers-noncommuting-decomposition-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-noncommuting-decomposition-5-2-1">
+<div class="para">고유벡터 <span class="process-math">\(e_1\)</span>(고유값 <span class="process-math">\(1\)</span>), <span class="process-math">\(e_1+e_2\)</span>(고유값 <span class="process-math">\(2\)</span>)와 <span class="process-math">\(e_2=(e_1+e_2)-e_1\)</span>로부터 <span class="process-math">\(A^ne_2=(2^n-1)e_1+2^ne_2\)</span>이므로</div>
+<div class="displaymath process-math" id="exer-powers-noncommuting-decomposition-5-2-1-7">
+\begin{align*}
+A^n=\begin{pmatrix}1&amp;2^n-1\\0&amp;2^n\end{pmatrix},\qquad S^n+nS^{n-1}N=\begin{pmatrix}1&amp;n\\0&amp;2^n\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. <span class="process-math">\(2^n-1=n\)</span>은 <span class="process-math">\(n\in\{0,1\}\)</span>에서만 성립하므로, <span class="process-math">\(n\geq 2\)</span>이면 두 값이 다릅니다. 이항정리는 <span class="process-math">\(SN=NS\)</span>일 때만 쓸 수 있습니다.</div>
+</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-3x3-jordan-decomposition"><h4 class="heading">
+<span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">대각성분만으로는 보이지 않는 반단순 부분.</span>
+</h4>
+<div class="introduction" id="exer-powers-3x3-jordan-decomposition-2"><div class="para" id="exer-powers-3x3-jordan-decomposition-2-1">
+<span class="process-math">\(A=\begin{pmatrix}2&amp;1&amp;1\\0&amp;2&amp;1\\0&amp;0&amp;3\end{pmatrix}\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-powers-3x3-jordan-decomposition-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-3x3-jordan-decomposition-3-1-1">일반화된 고유공간 <span class="process-math">\(K_2\text{,}\)</span> <span class="process-math">\(K_3\)</span>을 구하여라.</div>
+<div class="solutions"><details id="exer-powers-3x3-jordan-decomposition-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-3x3-jordan-decomposition-3-2-1">
+<span class="process-math">\((A-2I)^2=\begin{pmatrix}0&amp;0&amp;2\\0&amp;0&amp;1\\0&amp;0&amp;1\end{pmatrix}\)</span>이므로 <span class="process-math">\(K_2=\ker(A-2I)^2=\operatorname{span}\{e_1,e_2\}\text{.}\)</span> 고유값 <span class="process-math">\(3\)</span>의 대수적 중복도가 <span class="process-math">\(1\)</span>이므로 <span class="process-math">\(K_3=\ker(A-3I)=\operatorname{span}\{w\}\text{,}\)</span> <span class="process-math">\(w=(2,1,1)^T\text{.}\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-3x3-jordan-decomposition-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-3x3-jordan-decomposition-4-1-1">
+<span class="process-math">\(A\)</span>의 가법 조르당 분해 <span class="process-math">\(A=A_s+A_n\)</span>을 구하여라.</div>
+<div class="solutions"><details id="exer-powers-3x3-jordan-decomposition-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-3x3-jordan-decomposition-4-2-1">
+<div class="para">
+<span class="process-math">\(A_s\)</span>는 <span class="process-math">\(K_2\)</span> 위에서 <span class="process-math">\(2\)</span>배, <span class="process-math">\(K_3\)</span> 위에서 <span class="process-math">\(3\)</span>배로 작용합니다. <span class="process-math">\(P=(e_1\ e_2\ w)\)</span>로 두면</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" id="exer-powers-3x3-jordan-decomposition-4-2-1-7">
+\begin{align*}
+A_s=P\operatorname{diag}(2,2,3)P^{-1}=\begin{pmatrix}2&amp;0&amp;2\\0&amp;2&amp;1\\0&amp;0&amp;3\end{pmatrix},\qquad A_n=A-A_s=\begin{pmatrix}0&amp;1&amp;-1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. <span class="process-math">\(A_n^2=0\)</span>이고 <span class="process-math">\(A_sA_n=A_nA_s=\begin{pmatrix}0&amp;2&amp;-2\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}\)</span>임을 직접 확인할 수 있으므로, 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>에 의해 이것이 유일한 분해입니다. <span class="process-math">\(A_s\neq\operatorname{diag}(2,2,3)\)</span>임에 주의합니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-3x3-jordan-decomposition-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-3x3-jordan-decomposition-5-1-1">모든 음이 아닌 정수 <span class="process-math">\(m\)</span>에 대하여 <span class="process-math">\(A^m\)</span>을 구하여라.</div>
+<div class="solutions"><details id="exer-powers-3x3-jordan-decomposition-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-3x3-jordan-decomposition-5-2-1">
+<div class="para">
+<span class="process-math">\(A_s^m=2^mI+(3^m-2^m)\begin{pmatrix}0&amp;0&amp;2\\0&amp;0&amp;1\\0&amp;0&amp;1\end{pmatrix}\)</span>이고, <span class="process-math">\(A_n\)</span>의 상은 <span class="process-math">\(\operatorname{span}\{e_1\}\subset K_2\)</span>이므로 <span class="process-math">\(A_s^{m-1}A_n=2^{m-1}A_n\)</span>입니다. 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.5: 가법 조르당 분해에서의 거듭제곱">명제 4.1.5</a>에 의해</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html" id="exer-powers-3x3-jordan-decomposition-5-2-1-6">
+\begin{align*}
+A^m=A_s^m+mA_s^{m-1}A_n=\begin{pmatrix}2^m&amp;m2^{m-1}&amp;2(3^m-2^m)-m2^{m-1}\\0&amp;2^m&amp;3^m-2^m\\0&amp;0&amp;3^m\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. <span class="process-math">\(m=1,2\)</span>에서 직접 계산과 일치합니다(<span class="process-math">\(m=2\)</span>의 첫 행: <span class="process-math">\((4,4,6)\)</span>).</div>
+</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-uniqueness-proof-details"><h4 class="heading">
+<span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">유일성 증명의 세부 사항.</span>
+</h4>
+<div class="introduction" id="exer-powers-uniqueness-proof-details-2"><div class="para" id="exer-powers-uniqueness-proof-details-2-1">
+<span class="process-math">\(V\)</span>는 유한차원이고 <span class="process-math">\(\lambda\in\mathbb F\)</span>에 대하여 <span class="process-math">\(K_\lambda=\bigcup_{r\geq1}\ker(T-\lambda I)^r\)</span>라 하자. 또 <span class="process-math">\(T=S+N\text{,}\)</span> <span class="process-math">\(S\)</span>는 대각화 가능, <span class="process-math">\(N\)</span>은 멱영, <span class="process-math">\(SN=NS\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-powers-uniqueness-proof-details-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-powers-uniqueness-proof-details-3-1-1">
+<span class="process-math">\(K_\lambda\)</span>는 부분공간이며 <span class="process-math">\(K_\lambda=\ker(T-\lambda I)^r\)</span>인 <span class="process-math">\(r\)</span>이 존재함을 보여라. 또 <span class="process-math">\(\bigcap_{r\geq1}\ker(T-\lambda I)^r=\ker(T-\lambda I)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-uniqueness-proof-details-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-uniqueness-proof-details-3-2-1">
+<span class="process-math">\(\ker(T-\lambda I)^r\subseteq\ker(T-\lambda I)^{r+1}\)</span>이므로 증가하는 부분공간의 사슬이고, 유한차원이므로 어떤 <span class="process-math">\(r\)</span>에서 멈춥니다. 증가하는 사슬의 합집합은 마지막 항과 같습니다. 같은 포함관계에 의해 교집합은 첫 항 <span class="process-math">\(\ker(T-\lambda I)\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-uniqueness-proof-details-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-powers-uniqueness-proof-details-4-1-1">
+<span class="process-math">\(S\)</span>와 <span class="process-math">\(N\)</span>은 <span class="process-math">\(T\)</span>와 가환하고, 따라서 <span class="process-math">\(K_\lambda\)</span>는 <span class="process-math">\(S\)</span>-불변이며 <span class="process-math">\(N\)</span>-불변임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-uniqueness-proof-details-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-uniqueness-proof-details-4-2-1">
+<span class="process-math">\(TS=S^2+NS=S^2+SN=ST\text{,}\)</span> 마찬가지로 <span class="process-math">\(TN=NT\text{.}\)</span> <span class="process-math">\(v\in K_\lambda\)</span>이면 <span class="process-math">\((T-\lambda I)^rSv=S(T-\lambda I)^rv=0\text{.}\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-uniqueness-proof-details-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-powers-uniqueness-proof-details-5-1-1">
+<span class="process-math">\(S|_{K_\lambda}=\lambda I_{K_\lambda}\)</span>임을 보여라. 대각화 가능한 연산자를 불변부분공간에 제한하면 대각화 가능하다는 사실은 사용해도 좋다.</div>
+<div class="solutions"><details id="exer-powers-uniqueness-proof-details-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-uniqueness-proof-details-5-2-1">
+<span class="process-math">\(K_\lambda\)</span> 위에서 <span class="process-math">\(S-\lambda I=(T-\lambda I)-N\)</span>입니다. <span class="process-math">\(X=(T-\lambda I)|_{K_\lambda}\text{,}\)</span> <span class="process-math">\(Y=N|_{K_\lambda}\)</span>는 가환하고 <span class="process-math">\(X^r=0\text{,}\)</span> <span class="process-math">\(Y^d=0\)</span>이므로 이항정리에서 <span class="process-math">\((X-Y)^{r+d-1}\)</span>의 각 항은 <span class="process-math">\(X^i\)</span> (<span class="process-math">\(i\geq r\)</span>) 또는 <span class="process-math">\(Y^j\)</span> (<span class="process-math">\(j\geq d\)</span>)를 포함하여 <span class="process-math">\(0\)</span>입니다. 따라서 <span class="process-math">\(S|_{K_\lambda}-\lambda I\)</span>는 멱영이면서 대각화 가능합니다. 고유기저에서 이는 대각성분이 모두 <span class="process-math">\(0\)</span>인 대각행렬이므로 <span class="process-math">\(0\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-uniqueness-proof-details-6"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="exer-powers-uniqueness-proof-details-6-1-1">
+<span class="process-math">\(T\)</span>의 특성다항식이 분해될 때 <span class="process-math">\(V=\bigoplus_\mu K_\mu\)</span>임을 이용하여 <span class="process-math">\(\ker(S-\lambda I)=K_\lambda\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-uniqueness-proof-details-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-uniqueness-proof-details-6-2-1">(c)에 의해 <span class="process-math">\(K_\lambda\subseteq\ker(S-\lambda I)\text{.}\)</span> 역으로 <span class="process-math">\(v=\sum_\mu v_\mu\)</span> (<span class="process-math">\(v_\mu\in K_\mu\)</span>)가 <span class="process-math">\(Sv=\lambda v\)</span>를 만족하면 <span class="process-math">\(\sum_\mu(\mu-\lambda)v_\mu=0\)</span>이고, 직합이므로 <span class="process-math">\(\mu\neq\lambda\)</span>인 <span class="process-math">\(v_\mu=0\)</span>입니다.</div></div></details></div></article></article><article class="subexercises" id="exercises-powers-of-a-matrix-11"><h4 class="heading"><span class="title">조르당 분해의 구조적 성질</span></h4>
+<div class="introduction" id="exercises-powers-of-a-matrix-11-2"><div class="para" id="exercises-powers-of-a-matrix-11-2-1">아래 문제들은 조르당 분해의 구조적 성질을 다룹니다. 이 문제들에서 <span class="process-math">\(V\)</span>는 유한차원이고 <span class="process-math">\(T\)</span>의 특성다항식은 <span class="process-math">\(\mathbb F\)</span> 위에서 분해된다고 가정합니다.</div></div>
+<article class="exercise exercise-like" id="exer-powers-jordan-parts-are-polynomials"><h5 class="heading">
+<span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">조르당 성분은 <span class="process-math">\(T\)</span>의 다항식이다.</span>
+</h5>
+<div class="introduction" id="exer-powers-jordan-parts-are-polynomials-2"><div class="para" id="exer-powers-jordan-parts-are-polynomials-2-1">
+<span class="process-math">\(T\)</span>의 특성다항식을 <span class="process-math">\(\chi_T(x)=\prod_{i=1}^k(x-\lambda_i)^{m_i}\)</span> (<span class="process-math">\(\lambda_i\)</span>는 서로 다름)라 하자.</div></div>
+<article class="task exercise-like" id="exer-powers-jordan-parts-are-polynomials-3"><h6 class="heading"><span class="codenumber">(a)</span></h6>
+<div class="para" id="exer-powers-jordan-parts-are-polynomials-3-1-1">각 <span class="process-math">\(i\)</span>에 대하여 <span class="process-math">\(K_{\lambda_i}\)</span> 위에서 <span class="process-math">\((T-\lambda_iI)^{m_i}=0\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-jordan-parts-are-polynomials-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-jordan-parts-are-polynomials-3-2-1">
+<span class="process-math">\(T|_{K_{\lambda_i}}\)</span>의 고유값 <span class="process-math">\(\mu\)</span>와 고유벡터 <span class="process-math">\(v\)</span>에 대하여 <span class="process-math">\(0=(T-\lambda_iI)^rv=(\mu-\lambda_i)^rv\)</span>이므로 <span class="process-math">\(\mu=\lambda_i\)</span>입니다. <span class="process-math">\(T|_{K_{\lambda_i}}\)</span>의 특성다항식은 <span class="process-math">\(\chi_T\)</span>를 나누므로 <span class="process-math">\((x-\lambda_i)^{e}\)</span> (<span class="process-math">\(e=\dim K_{\lambda_i}\leq m_i\)</span>) 꼴이고, 케일리–해밀턴 정리에 의해 <span class="process-math">\((T-\lambda_iI)^{e}=0\)</span>이 <span class="process-math">\(K_{\lambda_i}\)</span> 위에서 성립합니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-jordan-parts-are-polynomials-4"><h6 class="heading"><span class="codenumber">(b)</span></h6>
+<div class="para" id="exer-powers-jordan-parts-are-polynomials-4-1-1">모든 <span class="process-math">\(i\)</span>에 대하여 <span class="process-math">\(p(x)\equiv\lambda_i \pmod{(x-\lambda_i)^{m_i}}\)</span>인 <span class="process-math">\(p\in\mathbb F[x]\)</span>가 존재함을 보이고, <span class="process-math">\(T_s=p(T)\text{,}\)</span> <span class="process-math">\(T_n=T-p(T)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-jordan-parts-are-polynomials-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-jordan-parts-are-polynomials-4-2-1">법 <span class="process-math">\((x-\lambda_i)^{m_i}\)</span>들은 쌍마다 서로소이므로 중국인의 나머지 정리에 의해 <span class="process-math">\(p\)</span>가 존재합니다. <span class="process-math">\(p(x)-\lambda_i=q_i(x)(x-\lambda_i)^{m_i}\)</span>이므로 (a)에 의해 <span class="process-math">\(p(T)|_{K_{\lambda_i}}=\lambda_iI\)</span>입니다. 연습문제 <a href="sec-powers-of-a-matrix.html#exer-powers-uniqueness-proof-details" class="xref" data-knowl="./knowl/xref/exer-powers-uniqueness-proof-details.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.1.9: 유일성 증명의 세부 사항">연습문제 4.1.9</a>(c)에 의해 <span class="process-math">\(T_s\)</span>도 각 <span class="process-math">\(K_{\lambda_i}\)</span> 위에서 <span class="process-math">\(\lambda_iI\)</span>이고 <span class="process-math">\(V=\bigoplus_iK_{\lambda_i}\)</span>이므로 <span class="process-math">\(T_s=p(T)\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-jordan-parts-are-polynomials-5"><h6 class="heading"><span class="codenumber">(c)</span></h6>
+<div class="para" id="exer-powers-jordan-parts-are-polynomials-5-1-1">연산자 <span class="process-math">\(R\)</span>이 <span class="process-math">\(T\)</span>와 가환하면 <span class="process-math">\(R\)</span>은 <span class="process-math">\(T_s\text{,}\)</span> <span class="process-math">\(T_n\)</span>과도 가환함을 보여라. 이를 이용하여 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>의 유일성을 다시 증명하여라. 서로 가환하는 대각화 가능한 연산자들은 동시에 대각화 가능하다는 사실은 사용해도 좋다.</div>
+<div class="solutions"><details id="exer-powers-jordan-parts-are-polynomials-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-jordan-parts-are-polynomials-5-2-1">
+<span class="process-math">\(R\)</span>은 <span class="process-math">\(T\)</span>의 모든 다항식과 가환하므로 (b)에서 첫 주장이 나옵니다. <span class="process-math">\(T=S+N\)</span>이 또 다른 분해라 하면 연습문제 <a href="sec-powers-of-a-matrix.html#exer-powers-uniqueness-proof-details" class="xref" data-knowl="./knowl/xref/exer-powers-uniqueness-proof-details.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.1.9: 유일성 증명의 세부 사항">연습문제 4.1.9</a>(b)에 의해 <span class="process-math">\(S,N\)</span>은 <span class="process-math">\(T\)</span>와 가환하고, 따라서 <span class="process-math">\(T_s,T_n\)</span>과도 가환합니다. 그러면 <span class="process-math">\(S-T_s\)</span>는 동시대각화에 의해 대각화 가능하고, <span class="process-math">\(T_n-N\)</span>은 가환하는 멱영작용소의 차이므로 멱영입니다. <span class="process-math">\(S-T_s=T_n-N\)</span>이 대각화 가능하면서 멱영이므로 <span class="process-math">\(0\)</span>입니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-boundedness-convergence"><h5 class="heading">
+<span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">거듭제곱의 수렴과 유계성.</span>
+</h5>
+<div class="introduction" id="exer-powers-boundedness-convergence-2"><div class="para" id="exer-powers-boundedness-convergence-2-1">
+<span class="process-math">\(\mathbb F=\mathbb C\)</span>이고 <span class="process-math">\(V=\mathbb C^n\)</span>에 표준 유클리드 노름을 준다. <span class="process-math">\(\operatorname{End}(V)\)</span> 위에는 <a href="sec-image-compression.html#def-spectral-norm" class="xref" data-knowl="./knowl/xref/def-spectral-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.7.12: 스펙트럼 노름">정의 1.7.12</a>에서 정의한 스펙트럼 노름을 사용하자.</div></div>
+<article class="task exercise-like" id="exer-powers-boundedness-convergence-3"><h6 class="heading"><span class="codenumber">(a)</span></h6>
+<div class="para" id="exer-powers-boundedness-convergence-3-1-1">
+<span class="process-math">\(\|T^m\|\to0\)</span> (<span class="process-math">\(m\to\infty\)</span>)일 필요충분조건은 <span class="process-math">\(T\)</span>의 모든 고유값 <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(|\lambda|\lt 1\)</span>을 만족하는 것임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-boundedness-convergence-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="exer-powers-boundedness-convergence-3-2-1">
+<span class="process-math">\(V\)</span> 위의 노름에서 유도된 연산자 노름을 쓰겠습니다. <span class="process-math">\(|\lambda|\geq1\)</span>인 고유벡터 <span class="process-math">\(v\)</span>가 있으면 <span class="process-math">\(\|T^mv\|=|\lambda|^m\|v\|\geq\|v\|\)</span>이므로 수렴하지 않습니다.</div>
+<div class="para logical" id="exer-powers-boundedness-convergence-3-2-2">
+<div class="para">역으로 모든 고유값이 <span class="process-math">\(|\lambda|\lt1\)</span>이라 합시다. <span class="process-math">\(K_\lambda\)</span> 위에서 <span class="process-math">\(T_s=\lambda I\)</span>이므로 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.5: 가법 조르당 분해에서의 거듭제곱">명제 4.1.5</a>에 의해</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html" id="exer-powers-boundedness-convergence-3-2-2-5">
+\begin{gather*}
+T^m|_{K_\lambda}=\sum_{q=0}^{\min\{m,d-1\}}\binom mq\lambda^{m-q}T_n^q|_{K_\lambda}
+\end{gather*}
+</div>
+<div class="para">이고, <span class="process-math">\(\lambda\neq0\)</span>이면 <span class="process-math">\(\binom mq|\lambda|^{m-q}\leq m^q|\lambda|^{m-q}\to0\text{,}\)</span> <span class="process-math">\(\lambda=0\)</span>이면 <span class="process-math">\(m\geq d\)</span>에서 <span class="process-math">\(0\)</span>입니다. <span class="process-math">\(V=\bigoplus_\lambda K_\lambda\)</span>의 사영을 <span class="process-math">\(P_\lambda\)</span>라 하면 <span class="process-math">\(T^m=\sum_\lambda T^m|_{K_\lambda}P_\lambda\to0\)</span>입니다.</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="exer-powers-boundedness-convergence-4"><h6 class="heading"><span class="codenumber">(b)</span></h6>
+<div class="para" id="exer-powers-boundedness-convergence-4-1-1">
+<span class="process-math">\(\sup_{m\geq0}\|T^m\|\lt\infty\)</span>일 필요충분조건은 모든 고유값이 <span class="process-math">\(|\lambda|\leq1\)</span>이고 <span class="process-math">\(|\lambda|=1\)</span>인 각 <span class="process-math">\(\lambda\)</span>에 대하여 <span class="process-math">\(T_n|_{K_\lambda}=0\)</span>인 것임을 보여라.</div>
+<div class="solutions"><details id="exer-powers-boundedness-convergence-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="exer-powers-boundedness-convergence-4-2-1">충분성: <span class="process-math">\(|\lambda|\lt1\)</span>인 성분은 (a)에서 <span class="process-math">\(0\)</span>으로 수렴하므로 유계이고, <span class="process-math">\(|\lambda|=1\)</span>인 성분은 <span class="process-math">\(T^m|_{K_\lambda}=\lambda^mI\)</span>이므로 유계입니다.</div>
+<div class="para logical" id="exer-powers-boundedness-convergence-4-2-2">
+<div class="para">필요성: <span class="process-math">\(|\lambda|&gt;1\)</span>이면 (a)와 같이 고유벡터에서 발산합니다. <span class="process-math">\(|\lambda|=1\)</span>이고 <span class="process-math">\(M=T_n|_{K_\lambda}\neq0\)</span>이라 합시다. <span class="process-math">\(M^rv\neq0\text{,}\)</span> <span class="process-math">\(M^{r+1}v=0\)</span>인 <span class="process-math">\(v\in K_\lambda\text{,}\)</span> <span class="process-math">\(r\geq1\)</span>을 택합니다. <span class="process-math">\(v,Mv,\dots,M^rv\)</span>는 일차독립입니다(관계식 <span class="process-math">\(\sum a_qM^qv=0\)</span>에 <span class="process-math">\(M^r, M^{r-1},\dots\)</span>을 차례로 작용). 그러면</div>
+<div class="displaymath process-math" id="exer-powers-boundedness-convergence-4-2-2-11">
+\begin{gather*}
+T^mv=\sum_{q=0}^r\binom mq\lambda^{m-q}M^qv
+\end{gather*}
+</div>
+<div class="para">에서 <span class="process-math">\(M^rv\)</span> 좌표의 절댓값은 <span class="process-math">\(\binom mr\geq m\)</span>이고, 유한차원에서 좌표함수는 연속이므로 <span class="process-math">\(\|T^mv\|\)</span>는 유계가 아닙니다.</div>
+</div>
+</div></details></div></article></article><article class="exercise exercise-like" id="exer-powers-jordan-decomposition-of-powers"><h5 class="heading">
+<span class="codenumber">12<span class="period">.</span></span><span class="space"> </span><span class="title">거듭제곱의 조르당 분해와 대각화 가능성.</span>
+</h5>
+<div class="introduction" id="exer-powers-jordan-decomposition-of-powers-2"><div class="para" id="exer-powers-jordan-decomposition-of-powers-2-1">
+<span class="process-math">\(m\)</span>은 양의 정수이다.</div></div>
+<article class="task exercise-like" id="exer-powers-jordan-decomposition-of-powers-3"><h6 class="heading"><span class="codenumber">(a)</span></h6>
+<div class="para" id="exer-powers-jordan-decomposition-of-powers-3-1-1">
+<span class="process-math">\(T^m=T_s^m+(T^m-T_s^m)\)</span>이 <span class="process-math">\(T^m\)</span>의 가법 조르당 분해임을 보여라. 즉 <span class="process-math">\((T^m)_s=(T_s)^m\)</span>이다.</div>
+<div class="solutions"><details id="exer-powers-jordan-decomposition-of-powers-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-jordan-decomposition-of-powers-3-2-1">
+<span class="process-math">\(T_s\)</span>의 고유기저는 <span class="process-math">\(T_s^m\)</span>의 고유기저이므로 <span class="process-math">\(T_s^m\)</span>은 대각화 가능합니다. 명제 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.5: 가법 조르당 분해에서의 거듭제곱">명제 4.1.5</a>에 의해 <span class="process-math">\(T^m-T_s^m=T_nX\text{,}\)</span> <span class="process-math">\(X=\sum_{q\geq1}\binom mqT_s^{m-q}T_n^{q-1}\)</span>이고 <span class="process-math">\(X\)</span>는 <span class="process-math">\(T_n\)</span>과 가환하므로 <span class="process-math">\((T_nX)^d=T_n^dX^d=0\)</span>입니다. 두 성분 모두 <span class="process-math">\(T_s,T_n\)</span>의 다항식이므로 가환합니다. 정리 <a href="sec-powers-of-a-matrix.html#thm-additive-jordan-decomposition-uniqueness" class="xref" data-knowl="./knowl/xref/thm-additive-jordan-decomposition-uniqueness.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.1.4: 가법 조르당 분해의 유일성">정리 4.1.4</a>에서 결론이 나옵니다.</div></div></details></div></article><article class="task exercise-like" id="exer-powers-jordan-decomposition-of-powers-4"><h6 class="heading"><span class="codenumber">(b)</span></h6>
+<div class="para" id="exer-powers-jordan-decomposition-of-powers-4-1-1">
+<span class="process-math">\(\mathbb F\)</span>의 표수가 <span class="process-math">\(0\)</span>이고 <span class="process-math">\(T\)</span>가 가역이라 하자. <span class="process-math">\(T^m\)</span>이 대각화 가능하면 <span class="process-math">\(T\)</span>도 대각화 가능함을 보여라.</div>
+<div class="solutions"><details id="exer-powers-jordan-decomposition-of-powers-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-powers-jordan-decomposition-of-powers-4-2-1">
+<div class="para">연습문제 <a href="sec-powers-of-a-matrix.html#exer-powers-invertibility-semisimple-part" class="xref" data-knowl="./knowl/xref/exer-powers-invertibility-semisimple-part.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.1.4: 반단순 부분의 가역성">연습문제 4.1.4</a>에 의해 <span class="process-math">\(T_s\)</span>는 가역이고 <span class="process-math">\(T=T_s(I+U)\text{,}\)</span> <span class="process-math">\(U=T_s^{-1}T_n\)</span>입니다. <span class="process-math">\(T^m\)</span>이 대각화 가능하면 <span class="process-math">\(T^m=T^m+0\)</span>이 그 조르당 분해이므로 (a)에 의해 <span class="process-math">\(T^m=T_s^m\text{,}\)</span> 즉 <span class="process-math">\(T_s^m\bigl((I+U)^m-I\bigr)=0\)</span>이고 <span class="process-math">\((I+U)^m=I\)</span>입니다. 따라서</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-powers-invertibility-semisimple-part.html" id="exer-powers-jordan-decomposition-of-powers-4-2-1-10">
+\begin{gather*}
+0=(I+U)^m-I=U\Bigl(mI+\sum_{q\geq2}\binom mqU^{q-1}\Bigr)
+\end{gather*}
+</div>
+<div class="para">입니다. 표수가 <span class="process-math">\(0\)</span>이므로 <span class="process-math">\(m\neq0\)</span>이고, 괄호 안은 <span class="process-math">\(mI\)</span>에 가환하는 멱영작용소를 더한 것이므로 가역입니다. 따라서 <span class="process-math">\(U=0\text{,}\)</span> <span class="process-math">\(T_n=0\text{,}\)</span> <span class="process-math">\(T=T_s\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-powers-jordan-decomposition-of-powers-5"><h6 class="heading"><span class="codenumber">(c)</span></h6>
+<div class="para" id="exer-powers-jordan-decomposition-of-powers-5-1-1">(b)에서 가역성 가정과 표수 가정을 각각 제거할 수 없음을 반례로 보여라.</div>
+<div class="solutions"><details id="exer-powers-jordan-decomposition-of-powers-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-powers-jordan-decomposition-of-powers-5-2-1">가역성: <span class="process-math">\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>은 대각화 가능하지 않지만 <span class="process-math">\(N^2=0\)</span>은 대각화 가능합니다. 표수: 표수 <span class="process-math">\(p&gt;0\)</span>인 체에서 <span class="process-math">\(J=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>은 가역이고 대각화 가능하지 않지만 <span class="process-math">\(J^p=\begin{pmatrix}1&amp;p\\0&amp;1\end{pmatrix}=I\)</span>입니다.</div></div></details></div></article></article></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="ch-Perron-Frobenius.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-gelfand-matrix-norm.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

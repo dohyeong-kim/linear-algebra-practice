@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">행합에 의한 스펙트럼 반지름의 평가.</span>
+</h4>
+<div class="introduction"><div class="para">
+<span class="process-math">\(A\)</span>가 양의 행렬이고 <span class="process-math">\(r_i=\sum_ja_{ij}\)</span>를 <span class="process-math">\(i\)</span>번째 행합, <span class="process-math">\(R=\max_ir_i\text{,}\)</span> <span class="process-math">\(r=\min_ir_i\)</span>라 하자.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">
+<a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론 정리">정리 4.3.7</a>의 양의 고유벡터를 이용하여 <span class="process-math">\(r\leq\rho(A)\leq R\)</span>임을 보여라. 열합에 대해서도 같은 부등식이 성립함을 설명하여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(Av=\rho v\text{,}\)</span> <span class="process-math">\(v&gt;0\)</span>이라 하고 <span class="process-math">\(v_i=\max_jv_j\text{,}\)</span> <span class="process-math">\(v_p=\min_jv_j\)</span>라 합시다. 그러면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\rho v_i=\sum_ja_{ij}v_j\leq r_iv_i\leq Rv_i,\qquad \rho v_p=\sum_ja_{pj}v_j\geq r_pv_p\geq rv_p
+\end{gather*}
+</div>
+<div class="para">이고 <span class="process-math">\(v_i,v_p&gt;0\)</span>으로 나누면 됩니다. <span class="process-math">\(A^{\mathsf T}\)</span>도 양의 행렬이고 <span class="process-math">\(\rho(A^{\mathsf T})=\rho(A)\)</span>이므로 열합에 대해서도 같은 부등식이 성립합니다.</div>
+</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">
+<span class="process-math">\(\rho(A)=R\)</span>일 필요충분조건은 모든 행합이 같은 것임을 보여라. (<span class="process-math">\(\rho(A)=r\)</span>에 대해서도 마찬가지이다.)</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(A^{\mathsf T}w=\rho w\)</span>인 양의 벡터 <span class="process-math">\(w\)</span>를 택하면 <span class="process-math">\(\rho\sum_iw_i=w^{\mathsf T}A\mathbf 1=\sum_iw_ir_i\)</span>입니다. 모든 <span class="process-math">\(r_i\)</span>가 <span class="process-math">\(s\)</span>로 같으면 <span class="process-math">\(\rho=s=R=r\)</span>입니다. 그렇지 않으면 <span class="process-math">\(w&gt;0\)</span>이므로 <span class="process-math">\(r\sum_iw_i&lt;\sum_iw_ir_i&lt;R\sum_iw_i\)</span>이고, 따라서 <span class="process-math">\(r&lt;\rho&lt;R\)</span>입니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para">
+<span class="process-math">\(A=\begin{pmatrix}2&amp;1&amp;1\\1&amp;3&amp;2\\1&amp;1&amp;4\end{pmatrix}\)</span>에 대하여 행합과 열합으로부터 얻을 수 있는 가장 좋은 <span class="process-math">\(\rho(A)\)</span>의 범위를 구하고, 실제 값과 비교하여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">행합은 <span class="process-math">\(4,6,6\text{,}\)</span> 열합은 <span class="process-math">\(4,5,7\)</span>이고 행합이 모두 같지는 않으므로 <span class="process-math">\(4&lt;\rho(A)&lt;6\)</span>입니다. <span class="process-math">\(A-2I\)</span>의 둘째, 셋째 행이 같으므로 <span class="process-math">\(2\)</span>는 고윳값이고, <span class="process-math">\(\operatorname{tr}A=9\text{,}\)</span> <span class="process-math">\(\det A=16\)</span>에서 나머지 두 고윳값은 <span class="process-math">\(\lambda^2-7\lambda+8=0\)</span>의 근입니다. 따라서 <span class="process-math">\(\rho(A)=\frac{7+\sqrt{17}}2\approx5.56\)</span>입니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-perron-frobenius.html#exer-perron-row-sum-bounds">[incontext]</a></span>
+</body>
+</html>

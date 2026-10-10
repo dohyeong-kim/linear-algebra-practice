@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">곱셈적 노름은 스펙트럼 반지름보다 작지 않다.</span>
+</h4>
+<div class="introduction"><div class="para">
+<span class="process-math">\(\|\cdot\|\)</span>이 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 곱셈적 행렬 노름이고 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>라 하자.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">
+<span class="process-math">\(\rho(A)\leq\|A\|\)</span>임을 보여라.</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">
+<span class="process-math">\(\|\cdot\|\)</span>은 벡터가 아니라 행렬에 대한 노름입니다. 고유벡터 <span class="process-math">\(x\)</span>로부터 영이 아닌 행렬 <span class="process-math">\(X=x\,e_1^{\mathsf T}\)</span>를 만들어 보아라.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(\lambda\)</span>를 <span class="process-math">\(\lvert\lambda\rvert=\rho(A)\)</span>인 고윳값, <span class="process-math">\(x\neq0\)</span>을 대응하는 고유벡터라 하고 <span class="process-math">\(X=x\,e_1^{\mathsf T}\)</span>로 둡니다. <span class="process-math">\(X\)</span>의 첫 열이 <span class="process-math">\(x\)</span>이므로 <span class="process-math">\(X\neq0\)</span>이고, <span class="process-math">\(AX=(Ax)e_1^{\mathsf T}=\lambda X\)</span>입니다. 따라서</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\rho(A)\|X\|=\|\lambda X\|=\|AX\|\leq\|A\|\,\|X\|
+\end{gather*}
+</div>
+<div class="para">이고, <span class="process-math">\(\|X\|&gt;0\)</span>으로 나누면 <span class="process-math">\(\rho(A)\leq\|A\|\)</span>입니다.</div>
+</div></div></details>
+</div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(\rho(A)\leq\|A^k\|^{1/k}\)</span>임을 보이고, <span class="process-math">\(\rho(A)=\inf_{k\geq1}\|A^k\|^{1/k}\)</span>임을 유도하여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">앞 문항을 <span class="process-math">\(A^k\)</span>에 적용하고 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-basic-properties" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-basic-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.2: 스펙트럼 반지름의 기본 성질">연습문제 4.2.2</a>의 <span class="process-math">\(\rho(A^k)=\rho(A)^k\)</span>를 쓰면 <span class="process-math">\(\rho(A)^k\leq\|A^k\|\text{,}\)</span> 즉 <span class="process-math">\(\rho(A)\leq\|A^k\|^{1/k}\)</span>입니다. 그러므로 <span class="process-math">\(\rho(A)\leq\inf_k\|A^k\|^{1/k}\)</span>입니다. 한편 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\|A^k\|^{1/k}\to\rho(A)\)</span>이므로 하한은 <span class="process-math">\(\rho(A)\)</span>보다 클 수 없고, 등호가 성립합니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-lower-bound">[incontext]</a></span>
+</body>
+</html>

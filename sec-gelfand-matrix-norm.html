@@ -96,15 +96,15 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.4';
+eBookConfig.runestone_version = '8.3.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.7e4cb14f24eb489b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.54371ed119fe41be.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.40d828091d93b733.css">
+<script src="_static/prefix-runtime.3adcbea95009347b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.7a45395f326e122c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.9963089870a016c8.css">
 <style>
 #exer-quadratic-form-to-bilinear-form-2-1-3 { counter-set: exer-quadratic-form-to-bilinear-form-2-1-3 0; }
 #exer-quadratic-form-to-bilinear-form-2-1-3 > li::marker { content: "("counter(exer-quadratic-form-to-bilinear-form-2-1-3,lower-alpha)")"; }
@@ -592,9 +592,21 @@ eBookConfig.enable_chatcodes =  false;
 #exer-weight-four-codewords-4-1-5 { counter-set: exer-weight-four-codewords-4-1-5 0; }
 #exer-weight-four-codewords-4-1-5 > li::marker { content: "("counter(exer-weight-four-codewords-4-1-5,lower-alpha)")"; }
 #exer-weight-four-codewords-4-1-5 > li { counter-increment: exer-weight-four-codewords-4-1-5; }
+#exer-powers-invertibility-semisimple-part-2-1-2 { counter-set: exer-powers-invertibility-semisimple-part-2-1-2 0; }
+#exer-powers-invertibility-semisimple-part-2-1-2 > li::marker { content: "("counter(exer-powers-invertibility-semisimple-part-2-1-2,lower-alpha)")"; }
+#exer-powers-invertibility-semisimple-part-2-1-2 > li { counter-increment: exer-powers-invertibility-semisimple-part-2-1-2; }
 #sec-multiplication-tensor-17 { counter-set: sec-multiplication-tensor-17 0; }
 #sec-multiplication-tensor-17 > li::marker { content: ""counter(sec-multiplication-tensor-17,decimal)"."; }
 #sec-multiplication-tensor-17 > li { counter-increment: sec-multiplication-tensor-17; }
+#sec-fast-fourier-transform-22 { counter-set: sec-fast-fourier-transform-22 0; }
+#sec-fast-fourier-transform-22 > li::marker { content: ""counter(sec-fast-fourier-transform-22,decimal)"."; }
+#sec-fast-fourier-transform-22 > li { counter-increment: sec-fast-fourier-transform-22; }
+#sec-fast-polynomial-operations-7 { counter-set: sec-fast-polynomial-operations-7 0; }
+#sec-fast-polynomial-operations-7 > li::marker { content: ""counter(sec-fast-polynomial-operations-7,decimal)"."; }
+#sec-fast-polynomial-operations-7 > li { counter-increment: sec-fast-polynomial-operations-7; }
+#sec-fast-polynomial-operations-19 { counter-set: sec-fast-polynomial-operations-19 0; }
+#sec-fast-polynomial-operations-19 > li::marker { content: ""counter(sec-fast-polynomial-operations-19,decimal)"."; }
+#sec-fast-polynomial-operations-19 > li { counter-increment: sec-fast-polynomial-operations-19; }
 </style>
 </head>
 <body id="changeme" class="pretext book ignore-math">
@@ -702,9 +714,18 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-Perron-Frobenius.html" class="internal"><span class="codenumber">4</span> <span class="title">페론-프로베니우스</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div></li>
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-powers-of-a-matrix.html" class="internal"><span class="codenumber">4.1</span> <span class="title">연산자의 거듭제곱</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-powers-of-a-matrix.html#exercises-powers-of-a-matrix" class="internal"><span class="codenumber">4.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html" class="internal"><span class="codenumber">4.2</span> <span class="title">겔판트 공식</span></a></div>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-gelfand-matrix-norm.html#exercises-gelfand-matrix-norm" class="internal"><span class="codenumber">4.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-perron-frobenius.html#exercises-perron-frobenius" class="internal"><span class="codenumber">4.3</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div></li>
 </ul>
 </li>
@@ -734,7 +755,8 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="ch-fast-fourier-transform.html" class="internal"><span class="codenumber">8</span> <span class="title">고속푸리에변환</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-fourier-transform.html" class="internal"><span class="codenumber">8.1</span> <span class="title">푸리에변환과 그 가속</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다중점 평가</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-polynomial-operations.html" class="internal"><span class="codenumber">8.2</span> <span class="title">고속 다항식 연산</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-fast-multipoint-evaluation.html" class="internal"><span class="codenumber">8.3</span> <span class="title">고속 다중점 평가</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
@@ -814,7 +836,7 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">4.2.8</span><span class="period">.</span><span class="space"> </span><span class="title">벡터의 1-노름.</span>
 </h3>
 <div class="para logical" id="def-vector-one-norm-2-1">
-<div class="para">벡터 <span class="process-math">\(x=(x_1,\ldots,x_n)	ext{T}	ext{T}	ext{ in }	ext{C}^n\)</span>의 <dfn class="terminology">1-노름</dfn><aside class="aside aside-like" id="def-vector-one-norm-2-1-3"><div class="para" id="def-vector-one-norm-2-1-3-1">1-노름:1-norm</div></aside>은</div>
+<div class="para">벡터 <span class="process-math">\(x=(x_1,\ldots,x_n)	\text{ in }	{\mathbb C^n}\)</span>의 <dfn class="terminology">1-노름</dfn><aside class="aside aside-like" id="def-vector-one-norm-2-1-3"><div class="para" id="def-vector-one-norm-2-1-3-1">1-노름:1-norm</div></aside>은</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \|x\|_1=\sum_{j=1}^n|x_j|
@@ -848,7 +870,7 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 <span class="type">정의</span><span class="space"> </span><span class="codenumber">4.2.10</span><span class="period">.</span><span class="space"> </span><span class="title">연산자 1-노름.</span>
 </h3>
 <div class="para logical" id="def-operator-one-norm-2-1">
-<div class="para">벡터의 1-노름이 유도하는 행렬 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>의 <dfn class="terminology">연산자 1-노름</dfn><aside class="aside aside-like" id="def-operator-one-norm-2-1-3"><div class="para" id="def-operator-one-norm-2-1-3-1">operator 1-norm</div></aside>은</div>
+<div class="para">벡터의 1-노름이 유도하는 행렬 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>의 <dfn class="terminology">연산자 1-노름</dfn><aside class="aside aside-like" id="def-operator-one-norm-2-1-3"><div class="para" id="def-operator-one-norm-2-1-3-1">연산자 1-노름:operator 1-norm</div></aside>은</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \|A\|_1=\max_{x\neq 0}\frac{\|Ax\|_1}{\|x\|_1}
@@ -872,7 +894,7 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 <span class="type">명제</span><span class="space"> </span><span class="codenumber">4.2.12</span><span class="period">.</span><span class="space"> </span><span class="title">연산자 1-노름의 곱셈성.</span>
 </h3>
 <div class="para logical" id="prop-operator-one-norm-submultiplicative-2-1">
-<div class="para">연산자 1-노름은 곱셈적입니다. 즉, 모든 <span class="process-math">\(A,B\in\mathbb C^{n	imes n}\)</span>에 대하여</div>
+<div class="para">연산자 1-노름은 곱셈적입니다. 즉, 모든 <span class="process-math">\(A,B\in\mathbb C^{n	\times n}\)</span>에 대하여</div>
 <div class="displaymath process-math">
 \begin{equation*}
 \|AB\|_1\leq\|A\|_1\|B\|_1
@@ -891,7 +913,295 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 </div></article><details id="thm-gelfand-formula-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-gelfand-formula-3-1">
 <span class="process-math">\(\|\cdot\|_2\)</span>를 유클리드 노름이 유도하는 연산자 노름이라 하고, 유한 차원 노름의 동치성에 따라 어떤 상수 <span class="process-math">\(c,C&gt;0\)</span>에 대하여 모든 행렬 <span class="process-math">\(B\)</span>에 대해 <span class="process-math">\(c\|B\|\leq\|B\|_2\leq C\|B\|\)</span>임을 이용합니다. 먼저 <span class="process-math">\(\|A^k\|_2\geq\rho(A^k)=\rho(A)^k\)</span>이므로 <span class="process-math">\(\|A^k\|^{1/k}\geq C^{-1/k}\rho(A)\)</span>입니다.</div>
 <div class="para" id="thm-gelfand-formula-3-2">이제 <span class="process-math">\(\rho(A)&gt;0\)</span>이라고 하고, <span class="process-math">\(A\)</span>의 조르당 표준형을 사용합니다. 각 조르당 블록의 <span class="process-math">\(k\)</span>제곱은 고윳값의 거듭제곱과 그보다 낮은 차수의 <span class="process-math">\(k\)</span>에 대한 다항식 항들의 합이므로, 어떤 상수 <span class="process-math">\(K&gt;0\)</span>가 존재하여 모든 충분히 큰 <span class="process-math">\(k\)</span>에 대해 <span class="process-math">\(\|A^k\|_2\leq K k^{n-1}\rho(A)^k\)</span>입니다. 따라서 <span class="process-math">\(\|A^k\|^{1/k}\leq c^{-1/k}K^{1/k}k^{(n-1)/k}\rho(A)\)</span>입니다. 양쪽 부등식에서 <span class="process-math">\(k\to\infty\)</span>로 보내면 원하는 극한을 얻습니다.</div>
-<div class="para" id="thm-gelfand-formula-3-3">마지막으로 <span class="process-math">\(\rho(A)=0\)</span>이면 모든 고윳값이 0이므로 케일리–해밀턴 정리에 따라 <span class="process-math">\(A^n=0\)</span>입니다. 따라서 충분히 큰 <span class="process-math">\(k\)</span>에 대해 <span class="process-math">\(\|A^k\|^{1/k}=0\)</span>이고, 공식은 이 경우에도 성립합니다.</div></article></details></section></div>
+<div class="para" id="thm-gelfand-formula-3-3">마지막으로 <span class="process-math">\(\rho(A)=0\)</span>이면 모든 고윳값이 0이므로 케일리–해밀턴 정리에 따라 <span class="process-math">\(A^n=0\)</span>입니다. 따라서 충분히 큰 <span class="process-math">\(k\)</span>에 대해 <span class="process-math">\(\|A^k\|^{1/k}=0\)</span>이고, 공식은 이 경우에도 성립합니다.</div></article></details><section class="exercises" id="exercises-gelfand-matrix-norm"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<article class="exercise exercise-like" id="exer-gelfand-compute-spectral-radius"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름의 계산.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-compute-spectral-radius-2"><div class="para logical" id="exer-gelfand-compute-spectral-radius-2-1">
+<div class="para">다음 두 행렬을 생각하자.</div>
+<div class="displaymath process-math" id="exer-gelfand-compute-spectral-radius-2-1-1">
+\begin{align*}
+A=\begin{pmatrix}1&amp;-2\\1&amp;3\end{pmatrix},\qquad B=\begin{pmatrix}1&amp;100\\0&amp;-2\end{pmatrix}
+\end{align*}
+</div>
+</div></div>
+<article class="task exercise-like" id="exer-gelfand-compute-spectral-radius-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-compute-spectral-radius-3-1-1">
+<span class="process-math">\(\rho(A)\)</span>를 구하여라.</div>
+<div class="solutions"><details id="exer-gelfand-compute-spectral-radius-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-compute-spectral-radius-3-2-1">
+<span class="process-math">\(\det(\lambda I-A)=\lambda^2-4\lambda+5\)</span>이므로 <span class="process-math">\(A\)</span>의 고윳값은 <span class="process-math">\(2\pm i\)</span>이고, <span class="process-math">\(\rho(A)=\lvert 2\pm i\rvert=\sqrt5\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-compute-spectral-radius-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-compute-spectral-radius-4-1-1">
+<span class="process-math">\(\rho(B)\)</span>를 구하고, <span class="process-math">\(B\)</span>의 성분 중 절댓값이 가장 큰 것과 비교하여라.</div>
+<div class="solutions"><details id="exer-gelfand-compute-spectral-radius-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-compute-spectral-radius-4-2-1">
+<span class="process-math">\(B\)</span>는 상삼각 행렬이므로 고윳값은 대각성분 <span class="process-math">\(1,-2\)</span>이고, <span class="process-math">\(\rho(B)=2\)</span>입니다. <span class="process-math">\(B\)</span>의 성분 중 절댓값이 가장 큰 것은 <span class="process-math">\(100\)</span>이지만 <span class="process-math">\(\rho(B)=2\)</span>입니다. 즉 스펙트럼 반지름은 비대각 성분의 크기를 전혀 반영하지 않습니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-spectral-radius-basic-properties"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름의 기본 성질.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-spectral-radius-basic-properties-2"><div class="para" id="exer-gelfand-spectral-radius-basic-properties-2-1">
+<span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>의 고윳값을 중복도를 포함하여 <span class="process-math">\(\lambda_1,\ldots,\lambda_n\)</span>이라 하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-spectral-radius-basic-properties-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-basic-properties-3-1-1">모든 스칼라 <span class="process-math">\(\alpha\in\mathbb C\)</span>에 대하여 <span class="process-math">\(\rho(\alpha A)=\lvert\alpha\rvert\rho(A)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-basic-properties-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-basic-properties-3-2-1">
+<span class="process-math">\(\alpha=0\)</span>이면 양변이 모두 <span class="process-math">\(0\)</span>입니다. <span class="process-math">\(\alpha\neq0\)</span>이면 <span class="process-math">\(\det(\lambda I-\alpha A)=\alpha^n\det(\alpha^{-1}\lambda I-A)\)</span>이므로 <span class="process-math">\(\alpha A\)</span>의 고윳값은 정확히 <span class="process-math">\(\alpha\lambda_1,\ldots,\alpha\lambda_n\)</span>이고, 따라서 <span class="process-math">\(\rho(\alpha A)=\lvert\alpha\rvert\rho(A)\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-spectral-radius-basic-properties-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-basic-properties-4-1-1">모든 가역행렬 <span class="process-math">\(S\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(\rho(A^{\mathsf T})=\rho(A)\)</span>이고 <span class="process-math">\(\rho(SAS^{-1})=\rho(A)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-basic-properties-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-basic-properties-4-2-1">
+<span class="process-math">\(\det(\lambda I-A^{\mathsf T})=\det\bigl((\lambda I-A)^{\mathsf T}\bigr)=\det(\lambda I-A)\)</span>이고 <span class="process-math">\(\det(\lambda I-SAS^{-1})=\det\bigl(S(\lambda I-A)S^{-1}\bigr)=\det(\lambda I-A)\)</span>이므로, <span class="process-math">\(A^{\mathsf T}\)</span>와 <span class="process-math">\(SAS^{-1}\)</span>은 <span class="process-math">\(A\)</span>와 특성다항식이 같고 스펙트럼 반지름도 같습니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-spectral-radius-basic-properties-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-basic-properties-5-1-1">모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(A^k\)</span>의 고윳값이 중복도를 포함하여 정확히 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>임을 보이고, <span class="process-math">\(\rho(A^k)=\rho(A)^k\)</span>임을 유도하여라.</div>
+<div class="solutions">
+<details id="exer-gelfand-spectral-radius-basic-properties-5-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-basic-properties-5-2-1">
+<span class="process-math">\(A\)</span>를 상삼각 행렬과 닮음으로 만들어라.</div></div></details><details id="exer-gelfand-spectral-radius-basic-properties-5-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-basic-properties-5-3-1">대수적으로 닫힌 체 <span class="process-math">\(\mathbb C\)</span> 위에서는 가역행렬 <span class="process-math">\(P\)</span>와 대각성분이 <span class="process-math">\(\lambda_1,\ldots,\lambda_n\)</span>인 상삼각 행렬 <span class="process-math">\(T\)</span>가 존재하여 <span class="process-math">\(A=PTP^{-1}\)</span>입니다. 그러면 <span class="process-math">\(A^k=PT^kP^{-1}\)</span>이고, <span class="process-math">\(T^k\)</span>는 대각성분이 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>인 상삼각 행렬입니다. 따라서 <span class="process-math">\(A^k\)</span>의 고윳값은 중복도를 포함하여 정확히 <span class="process-math">\(\lambda_1^k,\ldots,\lambda_n^k\)</span>이고, <span class="process-math">\(\rho(A^k)=\max_i\lvert\lambda_i\rvert^k=\rho(A)^k\)</span>입니다.</div></div></details>
+</div></article></article><article class="exercise exercise-like" id="exer-gelfand-spectral-radius-not-norm"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름은 노름이 아니다.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-spectral-radius-not-norm-2"><div class="para" id="exer-gelfand-spectral-radius-not-norm-2-1">
+<span class="process-math">\(n\geq2\)</span>이고 <span class="process-math">\(E_{ij}\)</span>를 <span class="process-math">\((i,j)\)</span> 성분만 <span class="process-math">\(1\)</span>이고 나머지 성분은 <span class="process-math">\(0\)</span>인 <span class="process-math">\(n\times n\)</span> 행렬이라 하자. <span class="process-math">\(E_{12}\)</span>와 <span class="process-math">\(E_{21}\)</span>을 이용하여 <span class="process-math">\(\rho\)</span>가 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 행렬 노름이 아님을 보이고자 한다.</div></div>
+<article class="task exercise-like" id="exer-gelfand-spectral-radius-not-norm-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-not-norm-3-1-1">
+<span class="process-math">\(\rho(E_{12})=\rho(E_{21})=0\)</span>임을 보이고, <span class="process-math">\(\rho\)</span>가 양의 정부호성을 만족하지 않음을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-not-norm-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-not-norm-3-2-1">
+<span class="process-math">\(E_{12}^2=0\)</span>이므로 <span class="process-math">\(E_{12}\)</span>는 멱영이고, <a href="sec-gelfand-matrix-norm.html#ex-spectral-radius-nilpotent-matrix" class="xref" data-knowl="./knowl/xref/ex-spectral-radius-nilpotent-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 4.2.4: 멱영 행렬의 스펙트럼 반지름">예시 4.2.4</a>와 같은 논리로 <span class="process-math">\(\rho(E_{12})=0\)</span>입니다. 마찬가지로 <span class="process-math">\(\rho(E_{21})=0\)</span>입니다. <span class="process-math">\(E_{12}\neq0\)</span>이므로 양의 정부호성이 깨집니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-spectral-radius-not-norm-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-not-norm-4-1-1">
+<span class="process-math">\(\rho\)</span>가 삼각부등식을 만족하지 않음을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-not-norm-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-not-norm-4-2-1">
+<span class="process-math">\(E_{12}+E_{21}\)</span>은 왼쪽 위 <span class="process-math">\(2\times2\)</span> 블록이 <span class="process-math">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>이고 나머지가 <span class="process-math">\(0\)</span>인 행렬이므로 고윳값 <span class="process-math">\(\pm1\)</span>을 가집니다. 따라서 <span class="process-math">\(\rho(E_{12}+E_{21})=1&gt;0=\rho(E_{12})+\rho(E_{21})\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-spectral-radius-not-norm-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-not-norm-5-1-1">
+<span class="process-math">\(\rho\)</span>가 곱셈 부등식 <span class="process-math">\(\rho(AB)\leq\rho(A)\rho(B)\)</span>를 만족하지 않음을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-not-norm-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-not-norm-5-2-1">
+<span class="process-math">\(E_{12}E_{21}=E_{11}\)</span>은 고윳값 <span class="process-math">\(1\)</span>을 가지므로 <span class="process-math">\(\rho(E_{12}E_{21})=1&gt;0=\rho(E_{12})\rho(E_{21})\)</span>입니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-operator-one-norm-column-sum"><h4 class="heading">
+<span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">연산자 1-노름의 열합 공식.</span>
+</h4>
+<article class="task exercise-like" id="exer-gelfand-operator-one-norm-column-sum-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para logical" id="exer-gelfand-operator-one-norm-column-sum-2-1-1">
+<div class="para">
+<span class="process-math">\(A=(a_{ij})\in\mathbb C^{n\times n}\)</span>에 대하여</div>
+<div class="displaymath process-math" id="exer-gelfand-operator-one-norm-column-sum-2-1-1-2">
+\begin{gather*}
+\|A\|_1=\max_{1\leq j\leq n}\sum_{i=1}^n\lvert a_{ij}\rvert
+\end{gather*}
+</div>
+<div class="para">임을 보여라.</div>
+</div>
+<div class="solutions"><details id="exer-gelfand-operator-one-norm-column-sum-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-operator-one-norm-column-sum-2-2-1">
+<div class="para">우변을 <span class="process-math">\(M\)</span>이라 하고, 최댓값이 <span class="process-math">\(j=j_0\)</span>에서 얻어진다고 합시다. 임의의 <span class="process-math">\(x\in\mathbb C^n\)</span>에 대하여</div>
+<div class="displaymath process-math" id="exer-gelfand-operator-one-norm-column-sum-2-2-1-4">
+\begin{gather*}
+\|Ax\|_1=\sum_{i=1}^n\Bigl\lvert\sum_{j=1}^na_{ij}x_j\Bigr\rvert\leq\sum_{j=1}^n\lvert x_j\rvert\sum_{i=1}^n\lvert a_{ij}\rvert\leq M\|x\|_1
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(\|A\|_1\leq M\)</span>입니다. 반대로 표준기저벡터 <span class="process-math">\(e_{j_0}\)</span>에 대하여 <span class="process-math">\(\|e_{j_0}\|_1=1\)</span>이고 <span class="process-math">\(\|Ae_{j_0}\|_1=\sum_i\lvert a_{ij_0}\rvert=M\)</span>이므로 <span class="process-math">\(\|A\|_1\geq M\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-operator-one-norm-column-sum-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-operator-one-norm-column-sum-3-1-1">
+<a href="sec-gelfand-matrix-norm.html#exer-gelfand-compute-spectral-radius" class="xref" data-knowl="./knowl/xref/exer-gelfand-compute-spectral-radius.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.1: 스펙트럼 반지름의 계산">연습문제 4.2.1</a>의 행렬 <span class="process-math">\(A\)</span>에 대하여 <span class="process-math">\(\|A\|_1\)</span>과 <span class="process-math">\(\|A^2\|_1^{1/2}\)</span>를 계산하고 <span class="process-math">\(\rho(A)\)</span>와 비교하여라.</div>
+<div class="solutions"><details id="exer-gelfand-operator-one-norm-column-sum-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-operator-one-norm-column-sum-3-2-1">
+<span class="process-math">\(A=\begin{pmatrix}1&amp;-2\\1&amp;3\end{pmatrix}\)</span>의 열합은 <span class="process-math">\(2,5\)</span>이므로 <span class="process-math">\(\|A\|_1=5\)</span>입니다. 케일리–해밀턴 정리에 따라 <span class="process-math">\(A^2=4A-5I=\begin{pmatrix}-1&amp;-8\\4&amp;7\end{pmatrix}\)</span>이고, 열합은 <span class="process-math">\(5,15\)</span>이므로 <span class="process-math">\(\|A^2\|_1^{1/2}=\sqrt{15}\approx3.87\)</span>입니다. <span class="process-math">\(\rho(A)=\sqrt5\approx2.24\)</span>이므로 <span class="process-math">\(\rho(A)&lt;\|A^2\|_1^{1/2}&lt;\|A\|_1\)</span>이고, 겔판트 공식이 말하는 수렴의 시작을 볼 수 있습니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-spectral-radius-lower-bound"><h4 class="heading">
+<span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">곱셈적 노름은 스펙트럼 반지름보다 작지 않다.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-spectral-radius-lower-bound-2"><div class="para" id="exer-gelfand-spectral-radius-lower-bound-2-1">
+<span class="process-math">\(\|\cdot\|\)</span>이 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 곱셈적 행렬 노름이고 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-spectral-radius-lower-bound-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-lower-bound-3-1-1">
+<span class="process-math">\(\rho(A)\leq\|A\|\)</span>임을 보여라.</div>
+<div class="solutions">
+<details id="exer-gelfand-spectral-radius-lower-bound-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-lower-bound-3-2-1">
+<span class="process-math">\(\|\cdot\|\)</span>은 벡터가 아니라 행렬에 대한 노름입니다. 고유벡터 <span class="process-math">\(x\)</span>로부터 영이 아닌 행렬 <span class="process-math">\(X=x\,e_1^{\mathsf T}\)</span>를 만들어 보아라.</div></div></details><details id="exer-gelfand-spectral-radius-lower-bound-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-spectral-radius-lower-bound-3-3-1">
+<div class="para">
+<span class="process-math">\(\lambda\)</span>를 <span class="process-math">\(\lvert\lambda\rvert=\rho(A)\)</span>인 고윳값, <span class="process-math">\(x\neq0\)</span>을 대응하는 고유벡터라 하고 <span class="process-math">\(X=x\,e_1^{\mathsf T}\)</span>로 둡니다. <span class="process-math">\(X\)</span>의 첫 열이 <span class="process-math">\(x\)</span>이므로 <span class="process-math">\(X\neq0\)</span>이고, <span class="process-math">\(AX=(Ax)e_1^{\mathsf T}=\lambda X\)</span>입니다. 따라서</div>
+<div class="displaymath process-math" id="exer-gelfand-spectral-radius-lower-bound-3-3-1-9">
+\begin{gather*}
+\rho(A)\|X\|=\|\lambda X\|=\|AX\|\leq\|A\|\,\|X\|
+\end{gather*}
+</div>
+<div class="para">이고, <span class="process-math">\(\|X\|&gt;0\)</span>으로 나누면 <span class="process-math">\(\rho(A)\leq\|A\|\)</span>입니다.</div>
+</div></div></details>
+</div></article><article class="task exercise-like" id="exer-gelfand-spectral-radius-lower-bound-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-spectral-radius-lower-bound-4-1-1">모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(\rho(A)\leq\|A^k\|^{1/k}\)</span>임을 보이고, <span class="process-math">\(\rho(A)=\inf_{k\geq1}\|A^k\|^{1/k}\)</span>임을 유도하여라.</div>
+<div class="solutions"><details id="exer-gelfand-spectral-radius-lower-bound-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-spectral-radius-lower-bound-4-2-1">앞 문항을 <span class="process-math">\(A^k\)</span>에 적용하고 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-basic-properties" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-basic-properties.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.2: 스펙트럼 반지름의 기본 성질">연습문제 4.2.2</a>의 <span class="process-math">\(\rho(A^k)=\rho(A)^k\)</span>를 쓰면 <span class="process-math">\(\rho(A)^k\leq\|A^k\|\text{,}\)</span> 즉 <span class="process-math">\(\rho(A)\leq\|A^k\|^{1/k}\)</span>입니다. 그러므로 <span class="process-math">\(\rho(A)\leq\inf_k\|A^k\|^{1/k}\)</span>입니다. 한편 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\|A^k\|^{1/k}\to\rho(A)\)</span>이므로 하한은 <span class="process-math">\(\rho(A)\)</span>보다 클 수 없고, 등호가 성립합니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-frobenius-submultiplicative"><h4 class="heading">
+<span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">프로베니우스 노름의 곱셈성.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-frobenius-submultiplicative-2"><div class="para" id="exer-gelfand-frobenius-submultiplicative-2-1">
+<a href="sec-image-compression.html#def-frobenius-norm" class="xref" data-knowl="./knowl/xref/def-frobenius-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.7.11: 프로베니우스 노름">정의 1.7.11</a>의 프로베니우스 노름 <span class="process-math">\(\|A\|_F=\bigl(\sum_{i,j}\lvert a_{ij}\rvert^2\bigr)^{1/2}\)</span>을 생각하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-frobenius-submultiplicative-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-frobenius-submultiplicative-3-1-1">
+<span class="process-math">\(\|\cdot\|_F\)</span>가 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 곱셈적 행렬 노름임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-frobenius-submultiplicative-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-frobenius-submultiplicative-3-2-1">
+<div class="para">
+<span class="process-math">\(\|A\|_F\)</span>는 <span class="process-math">\(A\)</span>의 성분을 <span class="process-math">\(\mathbb C^{n^2}\)</span>의 벡터로 보았을 때의 유클리드 노름이므로 행렬 노름의 세 조건을 만족합니다. 곱셈성은 코시–슈바르츠 부등식으로부터</div>
+<div class="displaymath process-math" id="exer-gelfand-frobenius-submultiplicative-3-2-1-4">
+\begin{align*}
+\|AB\|_F^2&amp;=\sum_{i,j}\Bigl\lvert\sum_ka_{ik}b_{kj}\Bigr\rvert^2\leq\sum_{i,j}\Bigl(\sum_k\lvert a_{ik}\rvert^2\Bigr)\Bigl(\sum_k\lvert b_{kj}\rvert^2\Bigr)\\
+&amp;=\Bigl(\sum_{i,k}\lvert a_{ik}\rvert^2\Bigr)\Bigl(\sum_{k,j}\lvert b_{kj}\rvert^2\Bigr)=\|A\|_F^2\|B\|_F^2
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-frobenius-submultiplicative-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-frobenius-submultiplicative-4-1-1">임의의 곱셈적 행렬 노름은 <span class="process-math">\(\|I\|\geq1\)</span>을 만족하고, 벡터 노름이 유도하는 연산자 노름은 <span class="process-math">\(\|I\|=1\)</span>을 만족함을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-frobenius-submultiplicative-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-frobenius-submultiplicative-4-2-1">곱셈적 행렬 노름에서는 <span class="process-math">\(\|I\|=\|I\cdot I\|\leq\|I\|^2\)</span>이고 <span class="process-math">\(\|I\|&gt;0\)</span>이므로 <span class="process-math">\(\|I\|\geq1\)</span>입니다. 벡터 노름이 유도하는 연산자 노름에서는 <span class="process-math">\(\|I\|=\max_{x\neq0}\|x\|/\|x\|=1\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-frobenius-submultiplicative-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-frobenius-submultiplicative-5-1-1">
+<span class="process-math">\(n\geq2\)</span>이면 <span class="process-math">\(\|\cdot\|_F\)</span>는 어떤 벡터 노름이 유도하는 연산자 노름도 아님을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-frobenius-submultiplicative-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-frobenius-submultiplicative-5-2-1">
+<span class="process-math">\(\|I\|_F=\sqrt n&gt;1\)</span>이므로 앞 문항에 의해 <span class="process-math">\(\|\cdot\|_F\)</span>는 연산자 노름이 될 수 없습니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-max-entry-norm"><h4 class="heading">
+<span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">최대 성분 노름.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-max-entry-norm-2"><div class="para" id="exer-gelfand-max-entry-norm-2-1">
+<span class="process-math">\(A=(a_{ij})\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(\|A\|_{\max}=\max_{i,j}\lvert a_{ij}\rvert\)</span>로 두고, <span class="process-math">\(J\)</span>를 모든 성분이 <span class="process-math">\(1\)</span>인 <span class="process-math">\(n\times n\)</span> 행렬이라 하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-max-entry-norm-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-max-entry-norm-3-1-1">
+<span class="process-math">\(\|\cdot\|_{\max}\)</span>가 행렬 노름임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-max-entry-norm-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-max-entry-norm-3-2-1">
+<span class="process-math">\(\|A\|_{\max}\)</span>는 성분을 <span class="process-math">\(\mathbb C^{n^2}\)</span>의 벡터로 보았을 때의 최대 절댓값이므로, 각 성분에 복소수의 절댓값 성질과 삼각부등식을 적용하면 행렬 노름의 세 조건이 바로 확인됩니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-max-entry-norm-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-max-entry-norm-4-1-1">
+<span class="process-math">\(n\geq2\)</span>일 때 <span class="process-math">\(J\)</span>를 이용하여 <span class="process-math">\(\|\cdot\|_{\max}\)</span>가 곱셈적이 아님을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-max-entry-norm-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-max-entry-norm-4-2-1">
+<span class="process-math">\(J^2\)</span>의 모든 성분은 <span class="process-math">\(\sum_{k=1}^n1=n\)</span>이므로 <span class="process-math">\(J^2=nJ\)</span>이고 <span class="process-math">\(\|J^2\|_{\max}=n&gt;1=\|J\|_{\max}^2\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-max-entry-norm-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-max-entry-norm-5-1-1">
+<span class="process-math">\(N(A)=n\|A\|_{\max}\)</span>은 곱셈적 행렬 노름임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-max-entry-norm-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-max-entry-norm-5-2-1">
+<div class="para">
+<span class="process-math">\(N\)</span>은 행렬 노름의 양수배이므로 행렬 노름입니다. 임의의 <span class="process-math">\(i,j\)</span>에 대하여 <span class="process-math">\(\lvert(AB)_{ij}\rvert\leq\sum_{k=1}^n\lvert a_{ik}\rvert\lvert b_{kj}\rvert\leq n\|A\|_{\max}\|B\|_{\max}\)</span>이므로</div>
+<div class="displaymath process-math" id="exer-gelfand-max-entry-norm-5-2-1-4">
+\begin{gather*}
+N(AB)=n\|AB\|_{\max}\leq n^2\|A\|_{\max}\|B\|_{\max}=N(A)N(B)
+\end{gather*}
+</div>
+<div class="para">입니다.</div>
+</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-jordan-block-direct"><h4 class="heading">
+<span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">조르당 블록에서 겔판트 공식 확인하기.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-jordan-block-direct-2"><div class="para" id="exer-gelfand-jordan-block-direct-2-1">
+<span class="process-math">\(\lambda\neq0\)</span>인 복소수에 대하여 <span class="process-math">\(J=\begin{pmatrix}\lambda&amp;1\\0&amp;\lambda\end{pmatrix}\)</span>라 하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-jordan-block-direct-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-jordan-block-direct-3-1-1">모든 양의 정수 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(\|J^k\|_1\)</span>을 구하여라.</div>
+<div class="solutions"><details id="exer-gelfand-jordan-block-direct-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-jordan-block-direct-3-2-1">
+<div class="para">
+<span class="process-math">\(J=\lambda I+E_{12}\)</span>이고 <span class="process-math">\(\lambda I\)</span>와 <span class="process-math">\(E_{12}\)</span>는 가환하며 <span class="process-math">\(E_{12}^2=0\)</span>이므로, 이항정리에 따라</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-gelfand-operator-one-norm-column-sum.html" id="exer-gelfand-jordan-block-direct-3-2-1-5">
+\begin{align*}
+J^k=\lambda^kI+k\lambda^{k-1}E_{12}=\begin{pmatrix}\lambda^k&amp;k\lambda^{k-1}\\0&amp;\lambda^k\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">입니다. <a href="sec-gelfand-matrix-norm.html#exer-gelfand-operator-one-norm-column-sum" class="xref" data-knowl="./knowl/xref/exer-gelfand-operator-one-norm-column-sum.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.4: 연산자 1-노름의 열합 공식">연습문제 4.2.4</a>의 열합 공식에 의해 열합은 <span class="process-math">\(\lvert\lambda\rvert^k\)</span>과 <span class="process-math">\(\lvert\lambda\rvert^k+k\lvert\lambda\rvert^{k-1}\)</span>이므로 <span class="process-math">\(\|J^k\|_1=\lvert\lambda\rvert^{k-1}(\lvert\lambda\rvert+k)\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-jordan-block-direct-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-jordan-block-direct-4-1-1">
+<span class="process-math">\(\lim_{k\to\infty}\|J^k\|_1^{1/k}\)</span>을 직접 계산하여 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>와 일치함을 확인하여라.</div>
+<div class="solutions"><details id="exer-gelfand-jordan-block-direct-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-jordan-block-direct-4-2-1">
+<span class="process-math">\(\|J^k\|_1^{1/k}=\lvert\lambda\rvert^{1-1/k}(\lvert\lambda\rvert+k)^{1/k}\)</span>입니다. <span class="process-math">\(k\to\infty\)</span>일 때 <span class="process-math">\(\lvert\lambda\rvert^{1-1/k}\to\lvert\lambda\rvert\)</span>이고, <span class="process-math">\(1\leq(\lvert\lambda\rvert+k)^{1/k}\leq\bigl((\lvert\lambda\rvert+1)k\bigr)^{1/k}\to1\)</span>이므로 극한은 <span class="process-math">\(\lvert\lambda\rvert=\rho(J)\)</span>이고 겔판트 공식과 일치합니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-jordan-block-direct-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-jordan-block-direct-5-1-1">어떤 상수 <span class="process-math">\(C\)</span>에 대해서도 모든 <span class="process-math">\(k\)</span>에서 <span class="process-math">\(\|J^k\|_1\leq C\rho(J)^k\)</span>가 성립할 수는 없음을 보이고, 겔판트 공식의 증명에서 다항식 인자 <span class="process-math">\(k^{n-1}\)</span>이 필요한 이유를 설명하여라.</div>
+<div class="solutions"><details id="exer-gelfand-jordan-block-direct-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-jordan-block-direct-5-2-1">
+<span class="process-math">\(\|J^k\|_1/\rho(J)^k=1+k/\lvert\lambda\rvert\to\infty\)</span>이므로 그러한 상수 <span class="process-math">\(C\)</span>는 존재하지 않습니다. 즉 대각화 가능하지 않은 행렬에서는 <span class="process-math">\(\|A^k\|\)</span>이 <span class="process-math">\(\rho(A)^k\)</span>보다 다항식 배만큼 빠르게 자랄 수 있으며, 이 때문에 증명에서 <span class="process-math">\(Kk^{n-1}\rho(A)^k\)</span> 형태의 상계를 사용합니다. 이 다항식 인자는 <span class="process-math">\(k\)</span>제곱근을 취하면 <span class="process-math">\(1\)</span>로 수렴하므로 극한에는 영향을 주지 않습니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-non-submultiplicative"><h4 class="heading">
+<span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">곱셈적이지 않은 노름에서의 겔판트 공식.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-non-submultiplicative-2"><div class="para" id="exer-gelfand-non-submultiplicative-2-1">
+<a href="sec-gelfand-matrix-norm.html#exer-gelfand-max-entry-norm" class="xref" data-knowl="./knowl/xref/exer-gelfand-max-entry-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.7: 최대 성분 노름">연습문제 4.2.7</a>의 최대 성분 노름 <span class="process-math">\(\|\cdot\|_{\max}\)</span>와 모든 성분이 <span class="process-math">\(1\)</span>인 <span class="process-math">\(n\times n\)</span> 행렬 <span class="process-math">\(J\)</span>(<span class="process-math">\(n\geq2\)</span>)를 생각하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-non-submultiplicative-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-non-submultiplicative-3-1-1">
+<span class="process-math">\(\rho(J)&gt;\|J\|_{\max}\)</span>임을 보여, <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-lower-bound" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.5: 곱셈적 노름은 스펙트럼 반지름보다 작지 않다">연습문제 4.2.5</a>의 부등식 <span class="process-math">\(\rho(A)\leq\|A\|\)</span>에서 곱셈성 가정을 뺄 수 없음을 확인하여라.</div>
+<div class="solutions"><details id="exer-gelfand-non-submultiplicative-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-non-submultiplicative-3-2-1">모든 성분이 <span class="process-math">\(1\)</span>인 벡터 <span class="process-math">\(u\)</span>에 대하여 <span class="process-math">\(Ju=nu\)</span>이고, <span class="process-math">\(J\)</span>의 계수가 <span class="process-math">\(1\)</span>이므로 나머지 고윳값은 모두 <span class="process-math">\(0\)</span>입니다. 따라서 <span class="process-math">\(\rho(J)=n&gt;1=\|J\|_{\max}\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-non-submultiplicative-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-non-submultiplicative-4-1-1">
+<span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 <em class="emphasis">임의의</em> 행렬 노름 <span class="process-math">\(\|\cdot\|\)</span>과 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(\lim_{k\to\infty}\|A^k\|^{1/k}=\rho(A)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-non-submultiplicative-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-non-submultiplicative-4-2-1">
+<div class="para">유한 차원 공간 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 모든 노름은 동치이므로, 상수 <span class="process-math">\(c,C&gt;0\)</span>가 존재하여 모든 <span class="process-math">\(B\)</span>에 대하여 <span class="process-math">\(c\|B\|\leq\|B\|_1\leq C\|B\|\)</span>입니다. 따라서</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-gelfand-formula.html" id="exer-gelfand-non-submultiplicative-4-2-1-5">
+\begin{gather*}
+C^{-1/k}\|A^k\|_1^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_1^{1/k}
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(\|\cdot\|_1\)</span>은 곱셈적이므로 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\|A^k\|_1^{1/k}\to\rho(A)\)</span>이고, <span class="process-math">\(c^{-1/k},C^{-1/k}\to1\)</span>이므로 조임 정리에 의해 <span class="process-math">\(\|A^k\|^{1/k}\to\rho(A)\)</span>입니다. 즉 겔판트 공식의 극한 자체는 노름의 선택에 의존하지 않으며, 곱셈성은 모든 <span class="process-math">\(k\)</span>에서의 부등식 <span class="process-math">\(\rho(A)\leq\|A^k\|^{1/k}\)</span>을 보장하는 데에만 쓰입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-non-submultiplicative-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-non-submultiplicative-5-1-1">
+<span class="process-math">\(\|J^k\|_{\max}^{1/k}\)</span>를 직접 계산하여 앞 문항의 결론을 확인하고, 수열이 극한에 접근하는 방향을 곱셈적인 경우와 비교하여라.</div>
+<div class="solutions"><details id="exer-gelfand-non-submultiplicative-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-non-submultiplicative-5-2-1">
+<span class="process-math">\(J^2=nJ\)</span>로부터 귀납적으로 <span class="process-math">\(J^k=n^{k-1}J\)</span>이므로 <span class="process-math">\(\|J^k\|_{\max}^{1/k}=n^{(k-1)/k}\to n=\rho(J)\)</span>입니다. 이때 모든 <span class="process-math">\(k\)</span>에서 <span class="process-math">\(\|J^k\|_{\max}^{1/k}&lt;\rho(J)\)</span>이므로 수열이 아래에서 극한에 접근합니다. 곱셈적 노름에서는 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-lower-bound" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.5: 곱셈적 노름은 스펙트럼 반지름보다 작지 않다">연습문제 4.2.5</a>에 의해 항상 <span class="process-math">\(\|A^k\|^{1/k}\geq\rho(A)\)</span>이므로 이런 일이 일어날 수 없습니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-power-convergence"><h4 class="heading">
+<span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">거듭제곱의 수렴과 노이만 급수.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-power-convergence-2"><div class="para" id="exer-gelfand-power-convergence-2-1">
+<span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>라 하자. 이 문제에서 행렬의 수렴은 성분별 수렴을 뜻한다.</div></div>
+<article class="task exercise-like" id="exer-gelfand-power-convergence-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-power-convergence-3-1-1">
+<span class="process-math">\(\lim_{k\to\infty}A^k=0\)</span>일 필요충분조건이 <span class="process-math">\(\rho(A)&lt;1\)</span>임을 보여라.</div>
+<div class="solutions">
+<details id="exer-gelfand-power-convergence-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-gelfand-power-convergence-3-2-1">유한 차원에서 성분별 수렴은 임의의 노름에 대한 수렴과 같습니다. <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>인 <span class="process-math">\(r\)</span>을 골라 겔판트 공식을 적용하여라.</div></div></details><details id="exer-gelfand-power-convergence-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="exer-gelfand-power-convergence-3-3-1">
+<span class="process-math">\(A^k\to0\)</span>이라 하고 <span class="process-math">\(Ax=\lambda x\text{,}\)</span> <span class="process-math">\(x\neq0\)</span>이라 합시다. 그러면 <span class="process-math">\(A^kx=\lambda^kx\to0\)</span>이므로 <span class="process-math">\(\lambda^k\to0\)</span>이고, 따라서 <span class="process-math">\(\lvert\lambda\rvert&lt;1\)</span>입니다. 모든 고윳값에 대해 이것이 성립하므로 <span class="process-math">\(\rho(A)&lt;1\)</span>입니다.</div>
+<div class="para" id="exer-gelfand-power-convergence-3-3-2">역으로 <span class="process-math">\(\rho(A)&lt;1\)</span>이라 하고 <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>인 <span class="process-math">\(r\)</span>을 고릅니다. <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>를 <span class="process-math">\(\|\cdot\|_1\)</span>에 적용하면 어떤 <span class="process-math">\(m\)</span>이 존재하여 <span class="process-math">\(k\geq m\)</span>일 때 <span class="process-math">\(\|A^k\|_1^{1/k}\leq r\text{,}\)</span> 즉 <span class="process-math">\(\|A^k\|_1\leq r^k\)</span>입니다. 따라서 <span class="process-math">\(\|A^k\|_1\to0\)</span>이고, 각 성분의 절댓값은 <span class="process-math">\(\|A^k\|_1\)</span> 이하이므로 <span class="process-math">\(A^k\to0\)</span>입니다.</div>
+</div></details>
+</div></article><article class="task exercise-like" id="exer-gelfand-power-convergence-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-power-convergence-4-1-1">
+<span class="process-math">\(\rho(A)&lt;1\)</span>이면 <span class="process-math">\(I-A\)</span>가 가역이고 급수 <span class="process-math">\(\sum_{k=0}^\infty A^k\)</span>가 수렴하며 그 합이 <span class="process-math">\((I-A)^{-1}\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-power-convergence-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-power-convergence-4-2-1">
+<span class="process-math">\(\rho(A)&lt;1\)</span>이면 <span class="process-math">\(1\)</span>은 <span class="process-math">\(A\)</span>의 고윳값이 아니므로 <span class="process-math">\(I-A\)</span>는 가역입니다. 앞 문항의 풀이에서처럼 <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>과 <span class="process-math">\(m\)</span>을 택하면 <span class="process-math">\(\sum_{k\geq m}\|A^k\|_1\leq\sum_{k\geq m}r^k&lt;\infty\)</span>이므로 급수는 절대수렴하고, 부분합 <span class="process-math">\(S_N=\sum_{k=0}^NA^k\)</span>은 수렴합니다. 망원합에 의해 <span class="process-math">\((I-A)S_N=I-A^{N+1}\)</span>이므로 <span class="process-math">\(S_N=(I-A)^{-1}(I-A^{N+1})\to(I-A)^{-1}\)</span>입니다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-norm-close-to-spectral-radius"><h4 class="heading">
+<span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">스펙트럼 반지름에 임의로 가까운 연산자 노름.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-norm-close-to-spectral-radius-2"><div class="para" id="exer-gelfand-norm-close-to-spectral-radius-2-1">
+<span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>와 <span class="process-math">\(\varepsilon&gt;0\)</span>이 주어졌다고 하고 <span class="process-math">\(r=\rho(A)+\varepsilon\)</span>으로 둔다. 이 문제에서는 조르당 표준형을 사용하지 말고 <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>만을 이용하여라.</div></div>
+<article class="task exercise-like" id="exer-gelfand-norm-close-to-spectral-radius-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-3-1-1">
+<span class="process-math">\(x\in\mathbb C^n\)</span>에 대하여 <span class="process-math">\(\|x\|_A=\sum_{k=0}^\infty r^{-k}\|A^kx\|_2\)</span>가 수렴하고, <span class="process-math">\(\|\cdot\|_A\)</span>가 <span class="process-math">\(\mathbb C^n\)</span> 위의 벡터 노름임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-norm-close-to-spectral-radius-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="exer-gelfand-norm-close-to-spectral-radius-3-2-1">
+<div class="para">
+<a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>에 의해 <span class="process-math">\(\|A^k\|_2^{1/k}\to\rho(A)\)</span>이므로 어떤 <span class="process-math">\(m\)</span>이 존재하여 <span class="process-math">\(k\geq m\)</span>일 때 <span class="process-math">\(\|A^k\|_2\leq(\rho(A)+\varepsilon/2)^k\)</span>입니다. 따라서 <span class="process-math">\(\sum_{k\geq0}r^{-k}\|A^k\|_2\)</span>은 공비 <span class="process-math">\((\rho(A)+\varepsilon/2)/r&lt;1\)</span>인 등비급수에 의해 위로 유계이고 수렴합니다. 이 합을 <span class="process-math">\(L\)</span>이라 하면</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-gelfand-formula.html" id="exer-gelfand-norm-close-to-spectral-radius-3-2-1-9">
+\begin{gather*}
+\|x\|_A=\sum_{k=0}^\infty r^{-k}\|A^kx\|_2\leq L\|x\|_2
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(\|x\|_A\)</span>는 유한한 값입니다.</div>
+</div>
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-3-2-2">
+<span class="process-math">\(k=0\)</span> 항이 <span class="process-math">\(\|x\|_2\)</span>이므로 <span class="process-math">\(\|x\|_A\geq\|x\|_2\)</span>이고, 따라서 <span class="process-math">\(\|x\|_A=0\)</span>이면 <span class="process-math">\(x=0\)</span>입니다. 동차성과 삼각부등식은 각 항 <span class="process-math">\(\|A^k(\cdot)\|_2\)</span>가 이 성질을 가지므로 항별로 더하여 얻습니다.</div>
+</div></details></div></article><article class="task exercise-like" id="exer-gelfand-norm-close-to-spectral-radius-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-4-1-1">
+<span class="process-math">\(\|\cdot\|_A\)</span>가 유도하는 연산자 노름 <span class="process-math">\(\|B\|_A=\max_{x\neq0}\|Bx\|_A/\|x\|_A\)</span>에 대하여 <span class="process-math">\(\|A\|_A\leq\rho(A)+\varepsilon\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-norm-close-to-spectral-radius-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-norm-close-to-spectral-radius-4-2-1">
+<div class="para">임의의 <span class="process-math">\(x\)</span>에 대하여 첨자를 하나 옮기면</div>
+<div class="displaymath process-math" id="exer-gelfand-norm-close-to-spectral-radius-4-2-1-2">
+\begin{gather*}
+\|Ax\|_A=\sum_{k=0}^\infty r^{-k}\|A^{k+1}x\|_2=r\sum_{k=1}^\infty r^{-k}\|A^kx\|_2\leq r\|x\|_A
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(\|A\|_A\leq r=\rho(A)+\varepsilon\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-norm-close-to-spectral-radius-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-5-1-1">
+<a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-lower-bound" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.5: 곱셈적 노름은 스펙트럼 반지름보다 작지 않다">연습문제 4.2.5</a>와 결합하여, 모든 곱셈적 행렬 노름 <span class="process-math">\(\|\cdot\|\)</span>에 걸친 하한 <span class="process-math">\(\inf_{\|\cdot\|}\|A\|\)</span>가 <span class="process-math">\(\rho(A)\)</span>와 같음을 유도하여라. 또한 모든 행렬에 대하여 동시에 <span class="process-math">\(\|A\|=\rho(A)\)</span>를 만족하는 행렬 노름은 존재하지 않음을 설명하여라.</div>
+<div class="solutions"><details id="exer-gelfand-norm-close-to-spectral-radius-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-5-2-1">벡터 노름이 유도하는 연산자 노름은 행렬 노름이고, <a href="sec-gelfand-matrix-norm.html#prop-operator-one-norm-submultiplicative" class="xref" data-knowl="./knowl/xref/prop-operator-one-norm-submultiplicative.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.2.12: 연산자 1-노름의 곱셈성">명제 4.2.12</a>의 증명과 같은 논리로 곱셈적입니다. 따라서 곱셈적 행렬 노름 <span class="process-math">\(\|\cdot\|_A\)</span>에 대하여 <span class="process-math">\(\|A\|_A\leq\rho(A)+\varepsilon\)</span>이고, 반대로 모든 곱셈적 행렬 노름에서 <span class="process-math">\(\rho(A)\leq\|A\|\)</span>임은 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-lower-bound" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.5: 곱셈적 노름은 스펙트럼 반지름보다 작지 않다">연습문제 4.2.5</a>에서 보였습니다. <span class="process-math">\(\varepsilon&gt;0\)</span>은 임의이므로 <span class="process-math">\(\inf_{\|\cdot\|}\|A\|=\rho(A)\)</span>입니다.</div>
+<div class="para" id="exer-gelfand-norm-close-to-spectral-radius-5-2-2">이 노름은 <span class="process-math">\(A\)</span>에 따라 달라집니다. 모든 행렬에 대해 <span class="process-math">\(\|A\|=\rho(A)\)</span>인 노름이 있다면 <span class="process-math">\(\rho\)</span> 자체가 행렬 노름이 되어 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-not-norm" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-not-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.3: 스펙트럼 반지름은 노름이 아니다">연습문제 4.2.3</a>에 모순입니다.</div>
+</div></details></div></article></article><article class="exercise exercise-like" id="exer-gelfand-commuting-matrices"><h4 class="heading">
+<span class="codenumber">12<span class="period">.</span></span><span class="space"> </span><span class="title">가환 행렬의 스펙트럼 반지름.</span>
+</h4>
+<div class="introduction" id="exer-gelfand-commuting-matrices-2"><div class="para" id="exer-gelfand-commuting-matrices-2-1">
+<span class="process-math">\(A,B\in\mathbb C^{n\times n}\)</span>가 <span class="process-math">\(AB=BA\)</span>를 만족하고, <span class="process-math">\(\|\cdot\|\)</span>을 임의의 곱셈적 행렬 노름(예를 들어 <span class="process-math">\(\|\cdot\|_1\)</span>)이라 하자.</div></div>
+<article class="task exercise-like" id="exer-gelfand-commuting-matrices-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-gelfand-commuting-matrices-3-1-1">
+<a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>를 이용하여 <span class="process-math">\(\rho(AB)\leq\rho(A)\rho(B)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-commuting-matrices-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-commuting-matrices-3-2-1">
+<div class="para">
+<span class="process-math">\(AB=BA\)</span>이면 <span class="process-math">\((AB)^k=A^kB^k\)</span>이므로</div>
+<div class="displaymath process-math" id="exer-gelfand-commuting-matrices-3-2-1-3">
+\begin{gather*}
+\|(AB)^k\|^{1/k}\leq\|A^k\|^{1/k}\,\|B^k\|^{1/k}
+\end{gather*}
+</div>
+<div class="para">이고, <span class="process-math">\(k\to\infty\)</span>로 보내면 겔판트 공식에 의해 <span class="process-math">\(\rho(AB)\leq\rho(A)\rho(B)\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-commuting-matrices-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-gelfand-commuting-matrices-4-1-1">각 <span class="process-math">\(\varepsilon&gt;0\)</span>에 대하여 상수 <span class="process-math">\(K\geq1\)</span>이 존재하여 모든 <span class="process-math">\(j\geq0\)</span>에서 <span class="process-math">\(\|A^j\|\leq K(\rho(A)+\varepsilon)^j\)</span>임을 보여라. (이 부분에는 가환성이 필요하지 않다.)</div>
+<div class="solutions"><details id="exer-gelfand-commuting-matrices-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-commuting-matrices-4-2-1">
+<span class="process-math">\(a=\rho(A)+\varepsilon\)</span>이라 합시다. <span class="process-math">\(\|A^j\|^{1/j}\to\rho(A)&lt;a\)</span>이므로 어떤 <span class="process-math">\(m\)</span>이 존재하여 <span class="process-math">\(j\geq m\)</span>일 때 <span class="process-math">\(\|A^j\|\leq a^j\)</span>입니다. 유한개의 <span class="process-math">\(j&lt;m\)</span>을 흡수하도록 <span class="process-math">\(K=\max\bigl(1,\max_{0\leq j&lt;m}\|A^j\|/a^j\bigr)\)</span>로 두면 모든 <span class="process-math">\(j\geq0\)</span>에 대하여 <span class="process-math">\(\|A^j\|\leq Ka^j\)</span>입니다.</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-commuting-matrices-5"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="exer-gelfand-commuting-matrices-5-1-1">앞 문항을 이용하여 <span class="process-math">\(\rho(A+B)\leq\rho(A)+\rho(B)\)</span>임을 보여라.</div>
+<div class="solutions"><details id="exer-gelfand-commuting-matrices-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="exer-gelfand-commuting-matrices-5-2-1">
+<div class="para">
+<span class="process-math">\(\varepsilon&gt;0\)</span>을 고정하고 <span class="process-math">\(a=\rho(A)+\varepsilon\text{,}\)</span> <span class="process-math">\(b=\rho(B)+\varepsilon\)</span>이라 합시다. 앞 문항을 <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>에 각각 적용하고 큰 쪽의 상수를 택하면, 어떤 <span class="process-math">\(K\geq1\)</span>에 대하여 모든 <span class="process-math">\(j\)</span>에서 <span class="process-math">\(\|A^j\|\leq Ka^j\text{,}\)</span> <span class="process-math">\(\|B^j\|\leq Kb^j\)</span>입니다. <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>가 가환하므로 이항정리 <span class="process-math">\((A+B)^k=\sum_{j=0}^k\binom kjA^jB^{k-j}\)</span>가 성립하고,</div>
+<div class="displaymath process-math" id="exer-gelfand-commuting-matrices-5-2-1-13">
+\begin{align*}
+\|(A+B)^k\|&amp;\leq\sum_{j=0}^k\binom kj\|A^j\|\,\|B^{k-j}\|\leq K^2\sum_{j=0}^k\binom kja^jb^{k-j}=K^2(a+b)^k
+\end{align*}
+</div>
+<div class="para">입니다. <span class="process-math">\(k\)</span>제곱근을 취하고 <span class="process-math">\(k\to\infty\)</span>로 보내면 <span class="process-math">\(\rho(A+B)\leq a+b=\rho(A)+\rho(B)+2\varepsilon\)</span>이고, <span class="process-math">\(\varepsilon\)</span>은 임의이므로 <span class="process-math">\(\rho(A+B)\leq\rho(A)+\rho(B)\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like" id="exer-gelfand-commuting-matrices-6"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="exer-gelfand-commuting-matrices-6-1-1">
+<a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-not-norm" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-not-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.3: 스펙트럼 반지름은 노름이 아니다">연습문제 4.2.3</a>에 비추어 볼 때 가환성 가정이 증명의 어느 단계에서 본질적으로 쓰이는지 설명하여라.</div>
+<div class="solutions"><details id="exer-gelfand-commuting-matrices-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="exer-gelfand-commuting-matrices-6-2-1">가환성은 <span class="process-math">\((AB)^k=A^kB^k\)</span>과 이항정리에서 본질적으로 쓰입니다. 일반적으로 <span class="process-math">\((AB)^k\)</span>와 <span class="process-math">\((A+B)^k\)</span>은 <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>가 번갈아 나타나는 곱들로 전개되며, 이런 곱은 <span class="process-math">\(A\)</span>의 거듭제곱과 <span class="process-math">\(B\)</span>의 거듭제곱으로 분리되지 않습니다. 실제로 <a href="sec-gelfand-matrix-norm.html#exer-gelfand-spectral-radius-not-norm" class="xref" data-knowl="./knowl/xref/exer-gelfand-spectral-radius-not-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.3: 스펙트럼 반지름은 노름이 아니다">연습문제 4.2.3</a>의 <span class="process-math">\(E_{12},E_{21}\)</span>은 가환하지 않고(<span class="process-math">\(E_{12}E_{21}=E_{11}\neq E_{22}=E_{21}E_{12}\)</span>), <span class="process-math">\(E_{12}^j=E_{21}^j=0\)</span>(<span class="process-math">\(j\geq2\)</span>)임에도 <span class="process-math">\((E_{12}E_{21})^k=E_{11}\text{,}\)</span> <span class="process-math">\((E_{12}+E_{21})^{2k}\)</span>은 왼쪽 위 <span class="process-math">\(2\times2\)</span> 블록이 항등행렬이 되어 두 부등식이 모두 깨집니다.</div></div></details></div></article></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="sec-powers-of-a-matrix.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-perron-frobenius.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

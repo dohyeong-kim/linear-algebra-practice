@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">최대 성분 노름.</span>
+</h4>
+<div class="introduction"><div class="para">
+<span class="process-math">\(A=(a_{ij})\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(\|A\|_{\max}=\max_{i,j}\lvert a_{ij}\rvert\)</span>로 두고, <span class="process-math">\(J\)</span>를 모든 성분이 <span class="process-math">\(1\)</span>인 <span class="process-math">\(n\times n\)</span> 행렬이라 하자.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">
+<span class="process-math">\(\|\cdot\|_{\max}\)</span>가 행렬 노름임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(\|A\|_{\max}\)</span>는 성분을 <span class="process-math">\(\mathbb C^{n^2}\)</span>의 벡터로 보았을 때의 최대 절댓값이므로, 각 성분에 복소수의 절댓값 성질과 삼각부등식을 적용하면 행렬 노름의 세 조건이 바로 확인됩니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">
+<span class="process-math">\(n\geq2\)</span>일 때 <span class="process-math">\(J\)</span>를 이용하여 <span class="process-math">\(\|\cdot\|_{\max}\)</span>가 곱셈적이 아님을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(J^2\)</span>의 모든 성분은 <span class="process-math">\(\sum_{k=1}^n1=n\)</span>이므로 <span class="process-math">\(J^2=nJ\)</span>이고 <span class="process-math">\(\|J^2\|_{\max}=n&gt;1=\|J\|_{\max}^2\)</span>입니다.</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para">
+<span class="process-math">\(N(A)=n\|A\|_{\max}\)</span>은 곱셈적 행렬 노름임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(N\)</span>은 행렬 노름의 양수배이므로 행렬 노름입니다. 임의의 <span class="process-math">\(i,j\)</span>에 대하여 <span class="process-math">\(\lvert(AB)_{ij}\rvert\leq\sum_{k=1}^n\lvert a_{ik}\rvert\lvert b_{kj}\rvert\leq n\|A\|_{\max}\|B\|_{\max}\)</span>이므로</div>
+<div class="displaymath process-math">
+\begin{gather*}
+N(AB)=n\|AB\|_{\max}\leq n^2\|A\|_{\max}\|B\|_{\max}=N(A)N(B)
+\end{gather*}
+</div>
+<div class="para">입니다.</div>
+</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-gelfand-matrix-norm.html#exer-gelfand-max-entry-norm">[incontext]</a></span>
+</body>
+</html>

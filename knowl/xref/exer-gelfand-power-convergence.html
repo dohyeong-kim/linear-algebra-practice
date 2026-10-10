@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">거듭제곱의 수렴과 노이만 급수.</span>
+</h4>
+<div class="introduction"><div class="para">
+<span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>라 하자. 이 문제에서 행렬의 수렴은 성분별 수렴을 뜻한다.</div></div>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para">
+<span class="process-math">\(\lim_{k\to\infty}A^k=0\)</span>일 필요충분조건이 <span class="process-math">\(\rho(A)&lt;1\)</span>임을 보여라.</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">유한 차원에서 성분별 수렴은 임의의 노름에 대한 수렴과 같습니다. <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>인 <span class="process-math">\(r\)</span>을 골라 겔판트 공식을 적용하여라.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para">
+<span class="process-math">\(A^k\to0\)</span>이라 하고 <span class="process-math">\(Ax=\lambda x\text{,}\)</span> <span class="process-math">\(x\neq0\)</span>이라 합시다. 그러면 <span class="process-math">\(A^kx=\lambda^kx\to0\)</span>이므로 <span class="process-math">\(\lambda^k\to0\)</span>이고, 따라서 <span class="process-math">\(\lvert\lambda\rvert&lt;1\)</span>입니다. 모든 고윳값에 대해 이것이 성립하므로 <span class="process-math">\(\rho(A)&lt;1\)</span>입니다.</div>
+<div class="para">역으로 <span class="process-math">\(\rho(A)&lt;1\)</span>이라 하고 <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>인 <span class="process-math">\(r\)</span>을 고릅니다. <a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.13: 겔판트 공식">정리 4.2.13</a>를 <span class="process-math">\(\|\cdot\|_1\)</span>에 적용하면 어떤 <span class="process-math">\(m\)</span>이 존재하여 <span class="process-math">\(k\geq m\)</span>일 때 <span class="process-math">\(\|A^k\|_1^{1/k}\leq r\text{,}\)</span> 즉 <span class="process-math">\(\|A^k\|_1\leq r^k\)</span>입니다. 따라서 <span class="process-math">\(\|A^k\|_1\to0\)</span>이고, 각 성분의 절댓값은 <span class="process-math">\(\|A^k\|_1\)</span> 이하이므로 <span class="process-math">\(A^k\to0\)</span>입니다.</div>
+</div></details>
+</div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">
+<span class="process-math">\(\rho(A)&lt;1\)</span>이면 <span class="process-math">\(I-A\)</span>가 가역이고 급수 <span class="process-math">\(\sum_{k=0}^\infty A^k\)</span>가 수렴하며 그 합이 <span class="process-math">\((I-A)^{-1}\)</span>임을 보여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(\rho(A)&lt;1\)</span>이면 <span class="process-math">\(1\)</span>은 <span class="process-math">\(A\)</span>의 고윳값이 아니므로 <span class="process-math">\(I-A\)</span>는 가역입니다. 앞 문항의 풀이에서처럼 <span class="process-math">\(\rho(A)&lt;r&lt;1\)</span>과 <span class="process-math">\(m\)</span>을 택하면 <span class="process-math">\(\sum_{k\geq m}\|A^k\|_1\leq\sum_{k\geq m}r^k&lt;\infty\)</span>이므로 급수는 절대수렴하고, 부분합 <span class="process-math">\(S_N=\sum_{k=0}^NA^k\)</span>은 수렴합니다. 망원합에 의해 <span class="process-math">\((I-A)S_N=I-A^{N+1}\)</span>이므로 <span class="process-math">\(S_N=(I-A)^{-1}(I-A^{N+1})\to(I-A)^{-1}\)</span>입니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-gelfand-matrix-norm.html#exer-gelfand-power-convergence">[incontext]</a></span>
+</body>
+</html>

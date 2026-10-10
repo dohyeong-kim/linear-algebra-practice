@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">연산자 1-노름의 열합 공식.</span>
+</h4>
+<article class="task exercise-like"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(A=(a_{ij})\in\mathbb C^{n\times n}\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\|A\|_1=\max_{1\leq j\leq n}\sum_{i=1}^n\lvert a_{ij}\rvert
+\end{gather*}
+</div>
+<div class="para">임을 보여라.</div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical">
+<div class="para">우변을 <span class="process-math">\(M\)</span>이라 하고, 최댓값이 <span class="process-math">\(j=j_0\)</span>에서 얻어진다고 합시다. 임의의 <span class="process-math">\(x\in\mathbb C^n\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\|Ax\|_1=\sum_{i=1}^n\Bigl\lvert\sum_{j=1}^na_{ij}x_j\Bigr\rvert\leq\sum_{j=1}^n\lvert x_j\rvert\sum_{i=1}^n\lvert a_{ij}\rvert\leq M\|x\|_1
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(\|A\|_1\leq M\)</span>입니다. 반대로 표준기저벡터 <span class="process-math">\(e_{j_0}\)</span>에 대하여 <span class="process-math">\(\|e_{j_0}\|_1=1\)</span>이고 <span class="process-math">\(\|Ae_{j_0}\|_1=\sum_i\lvert a_{ij_0}\rvert=M\)</span>이므로 <span class="process-math">\(\|A\|_1\geq M\)</span>입니다.</div>
+</div></div></details></div></article><article class="task exercise-like"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para">
+<a href="sec-gelfand-matrix-norm.html#exer-gelfand-compute-spectral-radius" class="xref" data-knowl="./knowl/xref/exer-gelfand-compute-spectral-radius.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 4.2.1: 스펙트럼 반지름의 계산">연습문제 4.2.1</a>의 행렬 <span class="process-math">\(A\)</span>에 대하여 <span class="process-math">\(\|A\|_1\)</span>과 <span class="process-math">\(\|A^2\|_1^{1/2}\)</span>를 계산하고 <span class="process-math">\(\rho(A)\)</span>와 비교하여라.</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para">
+<span class="process-math">\(A=\begin{pmatrix}1&amp;-2\\1&amp;3\end{pmatrix}\)</span>의 열합은 <span class="process-math">\(2,5\)</span>이므로 <span class="process-math">\(\|A\|_1=5\)</span>입니다. 케일리–해밀턴 정리에 따라 <span class="process-math">\(A^2=4A-5I=\begin{pmatrix}-1&amp;-8\\4&amp;7\end{pmatrix}\)</span>이고, 열합은 <span class="process-math">\(5,15\)</span>이므로 <span class="process-math">\(\|A^2\|_1^{1/2}=\sqrt{15}\approx3.87\)</span>입니다. <span class="process-math">\(\rho(A)=\sqrt5\approx2.24\)</span>이므로 <span class="process-math">\(\rho(A)&lt;\|A^2\|_1^{1/2}&lt;\|A\|_1\)</span>이고, 겔판트 공식이 말하는 수렴의 시작을 볼 수 있습니다.</div></div></details></div></article></article><span class="incontext"><a class="internal" href="sec-gelfand-matrix-norm.html#exer-gelfand-operator-one-norm-column-sum">[incontext]</a></span>
+</body>
+</html>

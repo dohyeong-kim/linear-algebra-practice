@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">8.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">고속푸리에변환의 행렬 분해.</span>
+</h3>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(F_n=(\omega_n^{-jt})_{0\le j,t&lt;n}\)</span>을 이산 푸리에변환의 행렬이라 하자. <span class="process-math">\(n=2m=2^k\text{,}\)</span> <span class="process-math">\(k\ge1\)</span>일 때</div>
+<div class="displaymath process-math">
+\begin{align*}
+D_n &amp;= \operatorname{diag}(1,\omega_n^{-1},\ldots,\omega_n^{-(m-1)}),\\
+B_n &amp;= \begin{pmatrix}I_m&amp;D_n\\I_m&amp;-D_n\end{pmatrix}
+\end{align*}
+</div>
+<div class="para">로 놓으면 다음 분해가 성립한다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+F_n &amp;= B_n\begin{pmatrix}F_m&amp;0\\0&amp;F_m\end{pmatrix}S_n\\
+&amp;= \begin{pmatrix}I_m&amp;I_m\\I_m&amp;-I_m\end{pmatrix}\begin{pmatrix}I_m&amp;0\\0&amp;D_n\end{pmatrix}\begin{pmatrix}F_m&amp;0\\0&amp;F_m\end{pmatrix}S_n.
+\end{align*}
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(e=(z_0,z_2,\ldots,z_{n-2})\text{,}\)</span> <span class="process-math">\(o=(z_1,z_3,\ldots,z_{n-1})\)</span>로 놓고 <span class="process-math">\(E=F_me\text{,}\)</span> <span class="process-math">\(O=F_mo\)</span>를 계산합니다. <span class="process-math">\(\omega_n^2=\omega_m\)</span>이므로 <span class="process-math">\(0\le j&lt;m\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{align*}
+\widehat z_j &amp;= \sum_{r=0}^{m-1}z_{2r}\omega_n^{-2jr}+\sum_{r=0}^{m-1}z_{2r+1}\omega_n^{-j(2r+1)}=E_j+\omega_n^{-j}O_j,\\
+\widehat z_{j+m} &amp;= E_j-\omega_n^{-j}O_j.
+\end{align*}
+</div>
+<div class="para">두 번째 식에서는 <span class="process-math">\(\omega_n^{-m}=-1\)</span>을 이용했습니다. 이 두 식을 블록행렬로 쓰면 첫 번째 분해를 얻으며, <span class="process-math">\(B_n\)</span>을 두 행렬의 곱으로 나누면 두 번째 분해를 얻습니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-fast-fourier-transform.html#prop-fft-matrix-factorization">[incontext]</a></span>
+</body>
+</html>
