@@ -726,14 +726,23 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="sec-perron-frobenius.html" class="internal"><span class="codenumber">4.3</span> <span class="title">페론-프로베니우스 정리</span></a></div>
 <ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-perron-frobenius.html#exercises-perron-frobenius" class="internal"><span class="codenumber">4.3</span> <span class="title">연습문제</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-pagerank.html" class="internal"><span class="codenumber">4.4</span> <span class="title">페이지랭크</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-pagerank.html#exercises-pagerank" class="internal"><span class="codenumber">4.4</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-chapter contains-active">
 <div class="toc-title-box"><a href="ch-matrix-tree-theorem.html" class="internal"><span class="codenumber">5</span> <span class="title">행렬-트리 정리</span></a></div>
 <ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-section active"><div class="toc-title-box"><a href="sec-graphs-and-incidence.html" class="internal"><span class="codenumber">5.1</span> <span class="title">그래프와 인접 행렬</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div></li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-graphs-and-incidence.html" class="internal"><span class="codenumber">5.1</span> <span class="title">그래프와 인접 행렬</span></a></div>
+<ul class="structural toc-item-list active"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-graphs-and-incidence.html#exercises-graphs-and-incidence" class="internal"><span class="codenumber">5.1</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-matrix-tree-theorem.html" class="internal"><span class="codenumber">5.2</span> <span class="title">행렬-트리 정리</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-matrix-tree-theorem.html#exercises-matrix-tree-theorem" class="internal"><span class="codenumber">5.2</span> <span class="title">연습문제</span></a></div></li></ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
@@ -875,7 +884,143 @@ A^3=\begin{pmatrix}
 \end{equation*}
 </div>
 <div class="para">입니다. 길이 <span class="process-math">\(3\)</span>인 순환은 <span class="process-math">\(a\to b\to c\to a\)</span>뿐이며, 이 순환은 <span class="process-math">\(a,b,c\)</span>를 모두 지나므로 <span class="process-math">\((A^3)_{1,1}=(A^3)_{2,2}=(A^3)_{3,3}=1\)</span>입니다. 따라서 <span class="process-math">\(\operatorname{tr}(A^3)=3\)</span>이고, 이는 순환 개수 <span class="process-math">\(1\)</span>의 <span class="process-math">\(3\)</span>배입니다.</div>
-</div></article></details><div class="para" id="sec-graphs-and-incidence-18">앞에서 살펴본 것처럼, 주어진 그래프에 대한 조합적 성질은 인접 행렬로 표현되기도 합니다. 예를 들어 양방향 변의 수나 길이 <span class="process-math">\(3\)</span>인 순환의 수는 각각 <span class="process-math">\(A^2\)</span>와 <span class="process-math">\(A^3\)</span>의 대각 성분의 합으로 구할 수 있습니다.</div></section></div>
+</div></article></details><div class="para" id="sec-graphs-and-incidence-18">앞에서 살펴본 것처럼, 주어진 그래프에 대한 조합적 성질은 인접 행렬로 표현되기도 합니다. 예를 들어 양방향 변의 수나 길이 <span class="process-math">\(3\)</span>인 순환의 수는 각각 <span class="process-math">\(A^2\)</span>와 <span class="process-math">\(A^3\)</span>의 대각 성분의 합으로 구할 수 있습니다.</div>
+<section class="exercises" id="exercises-graphs-and-incidence"><h3 class="heading hide-type">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
+</h3>
+<article class="exercise exercise-like" id="exer-graphs-adjacency-from-edges"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">변의 집합에서 인접 행렬로.</span>
+</h4>
+<div class="para" id="exer-graphs-adjacency-from-edges-2-1">꼭짓점 집합이 <span class="process-math">\(V=\{1,2,3,4\}\)</span>이고 변의 집합이 <span class="process-math">\(E=\{(1,2),(1,4),(2,3),(3,1),(3,3),(4,2)\}\)</span>인 그래프를 생각하자. 꼭짓점 순서 <span class="process-math">\(1,2,3,4\)</span>에 대한 인접 행렬 <span class="process-math">\(A\)</span>를 구하여라. 각 행의 합과 각 열의 합을 구하고, 이 합이 각각 무엇을 세는지 설명하여라.</div>
+<div class="solutions"><details id="exer-graphs-adjacency-from-edges-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-adjacency-from-edges-3-1">
+<span class="process-math">\((i,j)\in E\)</span>이면 <span class="process-math">\(A_{ij}=1\)</span>이다. 행은 출발 꼭짓점, 열은 도착 꼭짓점에 대응한다. 자기 자신으로 향하는 변도 해당 행과 열의 합에 한 번씩 포함하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-edges-from-adjacency"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">인접 행렬에서 그래프로.</span>
+</h4>
+<div class="para" id="exer-graphs-edges-from-adjacency-2-1">꼭짓점 순서 <span class="process-math">\(a,b,c\)</span>에 대한 인접 행렬이 다음과 같다.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{pmatrix}1&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;1&amp;0\end{pmatrix}.
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-edges-from-adjacency-2-3">변의 집합을 적고 그래프를 그려라. 길이 <span class="process-math">\(1,2,3\)</span>인 순환을 모두 찾아라. 시작 꼭짓점만 바꾸어 얻는 순환은 같은 순환으로 세어라.</div>
+<div class="solutions"><details id="exer-graphs-edges-from-adjacency-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-edges-from-adjacency-3-1">대각 성분에서 길이 <span class="process-math">\(1\)</span>인 순환을 찾고, <span class="process-math">\(A_{ij}=A_{ji}=1\)</span>인 서로 다른 두 꼭짓점에서 길이 <span class="process-math">\(2\)</span>인 순환을 찾아라. 길이 <span class="process-math">\(3\)</span>인 순환은 세 꼭짓점을 모두 지나야 한다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-square-computation"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">두 번의 이동.</span>
+</h4>
+<div class="para" id="exer-graphs-square-computation-2-1">꼭짓점 순서 <span class="process-math">\(1,2,3\)</span>에 대한 인접 행렬이 다음과 같다.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{pmatrix}0&amp;1&amp;1\\1&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}.
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-square-computation-2-3">
+<span class="process-math">\(A^2\)</span>를 계산하여라. 꼭짓점 <span class="process-math">\(1\)</span>에서 꼭짓점 <span class="process-math">\(3\)</span>으로 가는 길이 <span class="process-math">\(2\)</span>인 경로를 모두 적고 <span class="process-math">\((A^2)_{13}\)</span>과 비교하여라. <span class="process-math">\(A^2\)</span>의 각 대각 성분도 그래프에서 직접 해석하여라.</div>
+<div class="solutions"><details id="exer-graphs-square-computation-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-square-computation-3-1">
+<span class="process-math">\((A^2)_{ij}=\sum_k A_{ik}A_{kj}\)</span>에서 중간 꼭짓점 <span class="process-math">\(k\)</span>를 하나씩 확인하여라. 대각 성분은 출발 꼭짓점으로 곧바로 되돌아올 수 있는 두 번의 이동을 센다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-triangle-computation"><h4 class="heading">
+<span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">세제곱으로 순환 세기.</span>
+</h4>
+<div class="para" id="exer-graphs-triangle-computation-2-1">
+<span class="process-math">\(V=\{1,2,3,4\}\text{,}\)</span> <span class="process-math">\(E=\{(1,2),(2,3),(3,1),(2,4),(4,1)\}\)</span>인 그래프의 인접 행렬 <span class="process-math">\(A\)</span>를 구하여라. <span class="process-math">\(A^3\)</span>의 대각 성분과 <span class="process-math">\(\operatorname{tr}(A^3)\)</span>을 계산하여 길이 <span class="process-math">\(3\)</span>인 순환의 개수를 구하고, 순환을 직접 나열하여 검산하여라.</div>
+<div class="solutions"><details id="exer-graphs-triangle-computation-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-triangle-computation-3-1">세제곱 전체를 계산할 필요는 없다. <span class="process-math">\((A^3)_{ii}=\sum_j(A^2)_{ij}A_{ji}\)</span>를 사용하여라. 자기 자신으로 향하는 변이 없으므로 대각 성분의 합을 <span class="process-math">\(3\)</span>으로 나눌 수 있다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-arborescence-selection"><h4 class="heading">
+<span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">유향 수목과 신장 트리의 확인.</span>
+</h4>
+<div class="para" id="exer-graphs-arborescence-selection-2-1">
+<span class="process-math">\(V=\{r,a,b,c\}\)</span> 위의 변의 집합 <span class="process-math">\(E_1=\{(r,a),(r,b),(a,c)\}\)</span>과 <span class="process-math">\(E_2=\{(r,a),(r,b),(a,c),(b,c)\}\)</span>를 각각 생각하자. 각 그래프가 뿌리 <span class="process-math">\(r\)</span>인 유향 수목인지 판정하여라. <span class="process-math">\(E_2\)</span>에서 변 하나만 제거하여 뿌리 <span class="process-math">\(r\)</span>인 신장 트리를 얻는 방법을 모두 찾아라.</div>
+<div class="solutions"><details id="exer-graphs-arborescence-selection-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-arborescence-selection-3-1">뿌리에서 <span class="process-math">\(c\)</span>로 가는 방향 경로가 몇 개인지 비교하여라. 변을 제거한 뒤에도 네 꼭짓점 모두에 도달할 수 있어야 한다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-vertex-reordering"><h4 class="heading">
+<span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">꼭짓점 순서를 바꾸기.</span>
+</h4>
+<div class="para" id="exer-graphs-vertex-reordering-2-1">
+<span class="process-math">\(V=\{a,b,c\}\text{,}\)</span> <span class="process-math">\(E=\{(a,b),(b,c),(c,a),(c,c)\}\)</span>인 그래프의 인접 행렬을 순서 <span class="process-math">\(a,b,c\)</span>에 대해서는 <span class="process-math">\(A\text{,}\)</span> 순서 <span class="process-math">\(c,a,b\)</span>에 대해서는 <span class="process-math">\(B\)</span>라고 하자. <span class="process-math">\(A,B\)</span>를 구하여라. <span class="process-math">\(B\)</span>는 <span class="process-math">\(A\)</span>의 행과 열에 같은 순서 변경을 적용하여 얻는다는 것을 확인하고, <span class="process-math">\(A^2,B^2\)</span>에도 같은 관계가 성립함을 행렬 곱의 성분식으로 설명하여라. 한쪽의 행만 바꾸면 일반적으로 같은 그래프의 꼭짓점 순서 변경이 되지 않는 이유도 설명하여라.</div>
+<div class="solutions"><details id="exer-graphs-vertex-reordering-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-vertex-reordering-3-1">새 순서의 <span class="process-math">\(i\)</span>번째 꼭짓점이 원래 순서의 <span class="process-math">\(\sigma(i)\)</span>번째 꼭짓점이면 <span class="process-math">\(B_{ij}=A_{\sigma(i),\sigma(j)}\)</span>이다. <span class="process-math">\((B^2)_{ij}\)</span>를 전개한 뒤 중간 꼭짓점의 순서도 바꾸어라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-edge-reversal"><h4 class="heading">
+<span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">모든 변의 방향을 뒤집기.</span>
+</h4>
+<div class="para" id="exer-graphs-edge-reversal-2-1">인접 행렬이 <span class="process-math">\(A\)</span>인 그래프에서 모든 변의 방향을 뒤집어 얻는 그래프의 인접 행렬이 <span class="process-math">\(A^{\mathsf T}\)</span>임을 보여라. 두 그래프에서 길이 <span class="process-math">\(2\)</span>인 경로의 출발점과 도착점이 어떻게 대응하는지 설명하여라. 또한 자기 자신으로 향하는 변의 개수, 양방향으로 연결된 서로 다른 꼭짓점 쌍의 개수, 길이 <span class="process-math">\(3\)</span>인 순환의 개수가 각각 보존됨을 보여라.</div>
+<div class="solutions"><details id="exer-graphs-edge-reversal-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-edge-reversal-3-1">방향을 뒤집으면 <span class="process-math">\(i\to k\to j\)</span>는 <span class="process-math">\(j\to k\to i\)</span>가 된다. <span class="process-math">\((A^{\mathsf T})^k=(A^k)^{\mathsf T}\)</span>와 대각 성분의 합을 이용할 수도 있다. 자기 자신으로 향하는 변이 있는 경우에도 순환 자체를 뒤집는 대응은 성립한다.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-total-two-step-paths"><h4 class="heading">
+<span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">길이 2인 경로의 총개수.</span>
+</h4>
+<div class="para" id="exer-graphs-total-two-step-paths-2-1">꼭짓점 <span class="process-math">\(v_i\)</span>에서 나가는 변의 수를 <span class="process-math">\(r_i=\sum_j A_{ij}\text{,}\)</span> 들어오는 변의 수를 <span class="process-math">\(s_i=\sum_j A_{ji}\)</span>라고 하자. 자기 자신으로 향하는 변도 각각 한 번씩 센다. 출발점과 도착점을 제한하지 않은 길이 <span class="process-math">\(2\)</span>인 경로의 총개수가 다음과 같음을 두 가지 방법으로 증명하여라. 한 방법은 행렬 곱을, 다른 방법은 중간 꼭짓점에서의 선택을 이용하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sum_{i,j}(A^2)_{ij}=\sum_k s_k r_k.
+\end{equation*}
+</div>
+<div class="solutions"><details id="exer-graphs-total-two-step-paths-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-total-two-step-paths-3-1">중간 꼭짓점이 <span class="process-math">\(v_k\)</span>로 정해지면 첫 번째 변과 두 번째 변을 각각 몇 가지로 고를 수 있는지 생각하여라. 행렬식이 아니라 행렬 곱의 성분식을 전개하고 합의 순서를 바꾸어라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-trace-square-loops"><h4 class="heading">
+<span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">자기 자신으로 향하는 변과 양방향 변의 구별.</span>
+</h4>
+<div class="para" id="exer-graphs-trace-square-loops-2-1">인접 행렬이 <span class="process-math">\(A\)</span>인 그래프에서 자기 자신으로 향하는 변의 개수를 <span class="process-math">\(\ell\text{,}\)</span> 양방향으로 연결된 서로 다른 꼭짓점의 순서 없는 쌍의 개수를 <span class="process-math">\(t\)</span>라고 하자. 다음 식을 증명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ell=\operatorname{tr}(A),\qquad t=\frac{\operatorname{tr}(A^2)-\operatorname{tr}(A)}{2}.
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-trace-square-loops-2-3">
+<span class="process-math">\(\operatorname{tr}(A^2)=7\)</span>이라는 정보만으로 <span class="process-math">\(t\)</span>를 정할 수 없는 이유를 설명하고, 꼭짓점 <span class="process-math">\(5\)</span>개를 가진 두 그래프로 이를 보여라.</div>
+<div class="solutions"><details id="exer-graphs-trace-square-loops-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-trace-square-loops-3-1">
+<span class="process-math">\(\operatorname{tr}(A^2)=\sum_{i,j}A_{ij}A_{ji}\)</span>를 <span class="process-math">\(i=j\)</span>인 항과 <span class="process-math">\(i\ne j\)</span>인 항으로 나누어라. 같은 대각합 <span class="process-math">\(7\)</span>을 만드는 서로 다른 <span class="process-math">\((\ell,t)\)</span>를 고른 뒤 실제 변을 배치하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-trace-cube-loops"><h4 class="heading">
+<span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">자기 자신으로 향하는 변이 있을 때의 세제곱.</span>
+</h4>
+<div class="para" id="exer-graphs-trace-cube-loops-2-1">자기 자신으로 향하는 변을 허용하는 그래프의 인접 행렬을 <span class="process-math">\(A\)</span>라 하고 <span class="process-math">\(\ell_i=A_{ii}\)</span>로 두자. 길이 <span class="process-math">\(3\)</span>인 순환의 개수를 <span class="process-math">\(c_3\)</span>라고 할 때 다음 식을 증명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{tr}(A^3)=3c_3+\sum_i\ell_i+3\sum_{i&lt;j}A_{ij}A_{ji}(\ell_i+\ell_j).
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-trace-cube-loops-2-3">
+<span class="process-math">\(V=\{1,2\}\text{,}\)</span> <span class="process-math">\(E=\{(1,1),(1,2),(2,1)\}\)</span>인 그래프에서 <span class="process-math">\(A^3\)</span>를 계산하여 이 식을 확인하여라. 이 경우 <span class="process-math">\(\operatorname{tr}(A^3)/3\)</span>을 길이 <span class="process-math">\(3\)</span>인 순환의 개수로 해석할 수 없는 이유도 설명하여라.</div>
+<div class="solutions"><details id="exer-graphs-trace-cube-loops-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-trace-cube-loops-3-1">
+<span class="process-math">\(\sum_{i,j,k}A_{ij}A_{jk}A_{ki}\)</span>에서 사용한 꼭짓점이 세 개, 한 개, 정확히 두 개인 경우를 나누어라. 정확히 두 개인 경우에는 어느 꼭짓점에서 자기 자신으로 향하는 변을 사용하는지, 시작점의 위치가 몇 가지인지 확인하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-adding-edge-triangles"><h4 class="heading">
+<span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">변 하나가 만드는 새로운 순환.</span>
+</h4>
+<div class="para" id="exer-graphs-adding-edge-triangles-2-1">자기 자신으로 향하는 변이 없는 그래프의 인접 행렬을 <span class="process-math">\(A\)</span>라 하자. 서로 다른 꼭짓점 <span class="process-math">\(v_u,v_v\)</span>에 대해 <span class="process-math">\(A_{uv}=0\)</span>이라고 가정하고, 변 <span class="process-math">\((v_u,v_v)\)</span> 하나를 추가하여 인접 행렬 <span class="process-math">\(B\)</span>를 얻는다. 새로 생기는 길이 <span class="process-math">\(3\)</span>인 순환의 개수가 <span class="process-math">\((A^2)_{vu}\)</span>임을 증명하고, 다음 식을 설명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{tr}(B^3)-\operatorname{tr}(A^3)=3(A^2)_{vu}.
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-adding-edge-triangles-2-3">
+<span class="process-math">\(V=\{1,2,3,4\}\text{,}\)</span> <span class="process-math">\(E=\{(2,3),(3,1),(2,4),(4,1)\}\)</span>에 변 <span class="process-math">\((1,2)\)</span>를 추가하는 경우에 적용하여라.</div>
+<div class="solutions"><details id="exer-graphs-adding-edge-triangles-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-adding-edge-triangles-3-1">새 순환은 반드시 새 변을 사용한다. 새 변 <span class="process-math">\(v_u\to v_v\)</span>를 지난 뒤 원래 변 두 개로 <span class="process-math">\(v_u\)</span>에 돌아오는 방법을 세어라. 행렬 성분에서 출발점과 도착점의 순서를 주의하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-counts-do-not-determine-cycles"><h4 class="heading">
+<span class="codenumber">12<span class="period">.</span></span><span class="space"> </span><span class="title">같은 변 수와 다른 순환 수.</span>
+</h4>
+<div class="para" id="exer-graphs-counts-do-not-determine-cycles-2-1">꼭짓점 수, 변의 수, <span class="process-math">\(\operatorname{tr}(A)\text{,}\)</span> <span class="process-math">\(\operatorname{tr}(A^2)\)</span>가 모두 같아도 길이 <span class="process-math">\(3\)</span>인 순환의 개수는 다를 수 있음을 보여라. 구체적으로 꼭짓점 집합이 <span class="process-math">\(\{1,2,3,4\}\)</span>이고 자기 자신으로 향하는 변이 없으며 변이 정확히 네 개인 두 그래프를 만들어라. 두 그래프 모두 <span class="process-math">\(\operatorname{tr}(A^2)=0\)</span>이어야 하고, 길이 <span class="process-math">\(3\)</span>인 순환의 개수는 서로 달라야 한다. 변의 집합과 인접 행렬을 명시하고 필요한 대각합을 확인하여라.</div>
+<div class="solutions"><details id="exer-graphs-counts-do-not-determine-cycles-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-counts-do-not-determine-cycles-3-1">한 그래프는 길이 <span class="process-math">\(4\)</span>인 순환으로 만들어라. 다른 그래프는 길이 <span class="process-math">\(3\)</span>인 순환에서 시작하여 네 번째 꼭짓점과 연결하는 변 하나를 추가하여라. 양방향으로 연결된 쌍이 생기지 않도록 방향을 선택하여라.</div></div></details></div></article><article class="exercise exercise-like" id="exer-graphs-four-cycle-correction"><h4 class="heading">
+<span class="codenumber">13<span class="period">.</span></span><span class="space"> </span><span class="title">네 번의 이동과 길이 4인 순환.</span>
+</h4>
+<div class="introduction" id="exer-graphs-four-cycle-correction-2"><div class="para" id="exer-graphs-four-cycle-correction-2-1">자기 자신으로 향하는 변이 없는 그래프의 인접 행렬을 <span class="process-math">\(A\)</span>라 하자. <span class="process-math">\(b_i=(A^2)_{ii}\)</span>이고, 양방향으로 연결된 서로 다른 꼭짓점의 순서 없는 쌍의 개수를 <span class="process-math">\(t\text{,}\)</span> 길이 <span class="process-math">\(4\)</span>인 순환의 개수를 <span class="process-math">\(c_4\)</span>라고 하자. 시작점만 다른 순환은 같은 것으로 세되 방향이 반대인 순환은 서로 다른 것으로 센다.</div></div>
+<article class="task exercise-like" id="exer-graphs-four-cycle-correction-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-graphs-four-cycle-correction-3-1-1">
+<span class="process-math">\(\operatorname{tr}(A^4)\)</span>는 출발점이 지정된 네 번의 이동 <span class="process-math">\(v_i\to v_j\to v_k\to v_l\to v_i\)</span>의 개수임을 보여라. 네 꼭짓점이 서로 다른 경우와 꼭짓점이 반복되는 경우를 구별하여라.</div>
+<div class="solutions"><details id="exer-graphs-four-cycle-correction-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-four-cycle-correction-3-2-1">행렬 곱을 네 성분의 곱으로 전개하여라. 자기 자신으로 향하는 변이 없으므로 이웃한 두 꼭짓점은 다르지만, 서로 마주 보는 위치의 꼭짓점은 같을 수 있다.</div></div></details></div></article><article class="task exercise-like" id="exer-graphs-four-cycle-correction-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-graphs-four-cycle-correction-4-1-1">다음 식을 증명하여라. 특히 반복되는 꼭짓점 때문에 <span class="process-math">\(\operatorname{tr}(A^4)/4\)</span>을 그대로 순환의 개수로 사용할 수 없는 이유를 설명하여라.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_4=\frac{\operatorname{tr}(A^4)-2\sum_i b_i^2+2t}{4}.
+\end{equation*}
+</div>
+<div class="para" id="exer-graphs-four-cycle-correction-4-1-3">두 꼭짓점이 양방향으로 연결된 그래프와, 서로 다른 모든 꼭짓점 쌍이 양방향으로 연결된 네 꼭짓점 그래프에 각각 적용하여 검산하여라.</div>
+<div class="solutions"><details id="exer-graphs-four-cycle-correction-4-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-four-cycle-correction-4-2-1">반복이 있는 이동은 <span class="process-math">\(i=k\)</span> 또는 <span class="process-math">\(j=l\)</span>을 만족한다. 각 경우의 개수는 <span class="process-math">\(\sum_i b_i^2\)</span>이다. 두 조건을 동시에 만족하는 이동이 몇 개인지 구하여 중복을 빼라. 네 꼭짓점이 서로 다른 이동에서는 한 순환이 네 번 세어진다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-graphs-no-cycles-matrix-power"><h4 class="heading">
+<span class="codenumber">14<span class="period">.</span></span><span class="space"> </span><span class="title">순환이 없다는 것의 행렬 표현.</span>
+</h4>
+<div class="introduction" id="exer-graphs-no-cycles-matrix-power-2"><div class="para" id="exer-graphs-no-cycles-matrix-power-2-1">꼭짓점이 <span class="process-math">\(n\geq1\)</span>개인 그래프의 인접 행렬을 <span class="process-math">\(A\)</span>라 하자. 이 문제에서 길이 <span class="process-math">\(k\)</span>인 이동열은 각 연속한 꼭짓점 사이에 변이 있는 꼭짓점열 <span class="process-math">\(v_{i_0},\ldots,v_{i_k}\)</span>을 뜻하며, 꼭짓점의 반복을 허용한다.</div></div>
+<article class="task exercise-like" id="exer-graphs-no-cycles-matrix-power-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-graphs-no-cycles-matrix-power-3-1-1">모든 양의 정수 <span class="process-math">\(k\)</span>에 대해 <span class="process-math">\((A^k)_{ij}\)</span>는 <span class="process-math">\(v_i\)</span>에서 <span class="process-math">\(v_j\)</span>로 가는 길이 <span class="process-math">\(k\)</span>인 이동열의 개수임을 증명하여라.</div>
+<div class="solutions"><details id="exer-graphs-no-cycles-matrix-power-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-no-cycles-matrix-power-3-2-1">길이 <span class="process-math">\(k+1\)</span>인 이동열을 마지막 변 직전의 꼭짓점에 따라 나누고, <span class="process-math">\(A^{k+1}=A^kA\)</span>를 이용하여 귀납법을 적용하여라.</div></div></details></div></article><article class="task exercise-like" id="exer-graphs-no-cycles-matrix-power-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-graphs-no-cycles-matrix-power-4-1-1">다음 세 조건이 서로 동치임을 증명하여라. 그래프에 순환이 없다. <span class="process-math">\(A^n=0\)</span>이다. 모든 <span class="process-math">\(1\leq k\leq n\)</span>에 대해 <span class="process-math">\(\operatorname{tr}(A^k)=0\)</span>이다. 자기 자신으로 향하는 변이 있는 경우도 논증에 포함하여라.</div>
+<div class="solutions"><details id="exer-graphs-no-cycles-matrix-power-4-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-no-cycles-matrix-power-4-2-1">길이 <span class="process-math">\(n\)</span>인 이동열은 <span class="process-math">\(n+1\)</span>개의 꼭짓점 위치를 가지므로 어떤 꼭짓점을 반복한다. 반복되는 두 위치 사이의 길이가 가장 짧은 부분을 골라 순환을 찾아라. 반대로 순환이 있으면 그 변을 반복하여 길이 <span class="process-math">\(n\)</span>인 이동열을 만들 수 있다. 순환의 길이는 <span class="process-math">\(n\)</span> 이하이며 해당 길이의 거듭제곱에 양의 대각 성분을 만든다.</div></div></details></div></article></article><article class="exercise exercise-like" id="exer-graphs-one-direction-per-pair"><h4 class="heading">
+<span class="codenumber">15<span class="period">.</span></span><span class="space"> </span><span class="title">세 꼭짓점의 순환과 전체 꼭짓점의 순서.</span>
+</h4>
+<div class="introduction" id="exer-graphs-one-direction-per-pair-2"><div class="para" id="exer-graphs-one-direction-per-pair-2-1">꼭짓점이 <span class="process-math">\(n\geq3\)</span>개이고 자기 자신으로 향하는 변이 없는 그래프에서, 서로 다른 두 꼭짓점 사이에는 두 방향 중 정확히 한 방향의 변만 있다고 하자. 인접 행렬을 <span class="process-math">\(A\text{,}\)</span> 꼭짓점 <span class="process-math">\(v_i\)</span>에서 나가는 변의 수를 <span class="process-math">\(d_i=\sum_j A_{ij}\text{,}\)</span> 길이 <span class="process-math">\(3\)</span>인 순환의 개수를 <span class="process-math">\(c_3\)</span>라고 하자.</div></div>
+<article class="task exercise-like" id="exer-graphs-one-direction-per-pair-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="exer-graphs-one-direction-per-pair-3-1-1">세 꼭짓점으로 이루어진 부분 그래프는 순환을 이루거나, 그중 한 꼭짓점에서 나머지 두 꼭짓점으로 모두 변이 나가는 경우 중 하나임을 보여라. 이를 이용하여 다음 식을 증명하여라. 여기서 <span class="process-math">\(\binom{d}{2}=d(d-1)/2\)</span>이다.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_3=\binom{n}{3}-\sum_i\binom{d_i}{2},\qquad \operatorname{tr}(A^3)=3\left(\binom{n}{3}-\sum_i\binom{d_i}{2}\right).
+\end{equation*}
+</div>
+<div class="solutions"><details id="exer-graphs-one-direction-per-pair-3-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-one-direction-per-pair-3-2-1">순환이 아닌 세 꼭짓점 집합에서는 두 변을 내보내는 꼭짓점이 유일함을 확인하여라. 꼭짓점 <span class="process-math">\(v_i\)</span>에서 변이 향하는 <span class="process-math">\(d_i\)</span>개의 꼭짓점 중 두 개를 고르면 어떤 세 꼭짓점 집합을 얻는지 생각하여라.</div></div></details></div></article><article class="task exercise-like" id="exer-graphs-one-direction-per-pair-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="exer-graphs-one-direction-per-pair-4-1-1">
+<span class="process-math">\(c_3=0\)</span>일 필요충분조건이, 꼭짓점을 적절히 나열하여 인접 행렬을 대각선 위의 모든 성분이 <span class="process-math">\(1\)</span>이고 나머지 성분이 <span class="process-math">\(0\)</span>인 행렬로 만들 수 있다는 것임을 증명하여라. 그러한 꼭짓점 순서가 유일함도 보여라.</div>
+<div class="solutions"><details id="exer-graphs-one-direction-per-pair-4-2" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-graphs-one-direction-per-pair-4-2-1">
+<span class="process-math">\(u\to v\)</span>와 <span class="process-math">\(v\to w\)</span>가 있으면 <span class="process-math">\(w\to u\)</span>는 길이 <span class="process-math">\(3\)</span>인 순환을 만든다. 따라서 순환이 없을 때 <span class="process-math">\(u\to w\)</span>가 강제된다. 나가는 변의 수가 최대인 꼭짓점에 변을 보내는 다른 꼭짓점이 있다고 가정하여 모순을 얻고, 그 꼭짓점을 제거한 뒤 귀납법을 적용하여라. 어떤 두 꼭짓점의 앞뒤 관계도 변의 방향으로 정해진다.</div></div></details></div></article></article></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="ch-matrix-tree-theorem.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-matrix-tree-theorem.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
