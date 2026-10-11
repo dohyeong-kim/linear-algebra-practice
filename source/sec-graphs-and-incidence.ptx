@@ -174,4 +174,210 @@
 
 
 
+<exercises xml:id="exercises-graphs-and-incidence">
+  <title>연습문제</title>
+
+  <exercise xml:id="exer-graphs-adjacency-from-edges">
+    <title>변의 집합에서 인접 행렬로</title>
+    <statement>
+      <p>꼭짓점 집합이 <m>V=\{1,2,3,4\}</m>이고 변의 집합이 <m>E=\{(1,2),(1,4),(2,3),(3,1),(3,3),(4,2)\}</m>인 그래프를 생각하자. 꼭짓점 순서 <m>1,2,3,4</m>에 대한 인접 행렬 <m>A</m>를 구하여라. 각 행의 합과 각 열의 합을 구하고, 이 합이 각각 무엇을 세는지 설명하여라.</p>
+    </statement>
+    <hint>
+      <p><m>(i,j)\in E</m>이면 <m>A_{ij}=1</m>이다. 행은 출발 꼭짓점, 열은 도착 꼭짓점에 대응한다. 자기 자신으로 향하는 변도 해당 행과 열의 합에 한 번씩 포함하여라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-edges-from-adjacency">
+    <title>인접 행렬에서 그래프로</title>
+    <statement>
+      <p>꼭짓점 순서 <m>a,b,c</m>에 대한 인접 행렬이 다음과 같다.</p>
+      <me>A=\begin{pmatrix}1&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;1&amp;0\end{pmatrix}.</me>
+      <p>변의 집합을 적고 그래프를 그려라. 길이 <m>1,2,3</m>인 순환을 모두 찾아라. 시작 꼭짓점만 바꾸어 얻는 순환은 같은 순환으로 세어라.</p>
+    </statement>
+    <hint>
+      <p>대각 성분에서 길이 <m>1</m>인 순환을 찾고, <m>A_{ij}=A_{ji}=1</m>인 서로 다른 두 꼭짓점에서 길이 <m>2</m>인 순환을 찾아라. 길이 <m>3</m>인 순환은 세 꼭짓점을 모두 지나야 한다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-square-computation">
+    <title>두 번의 이동</title>
+    <statement>
+      <p>꼭짓점 순서 <m>1,2,3</m>에 대한 인접 행렬이 다음과 같다.</p>
+      <me>A=\begin{pmatrix}0&amp;1&amp;1\\1&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}.</me>
+      <p><m>A^2</m>를 계산하여라. 꼭짓점 <m>1</m>에서 꼭짓점 <m>3</m>으로 가는 길이 <m>2</m>인 경로를 모두 적고 <m>(A^2)_{13}</m>과 비교하여라. <m>A^2</m>의 각 대각 성분도 그래프에서 직접 해석하여라.</p>
+    </statement>
+    <hint>
+      <p><m>(A^2)_{ij}=\sum_k A_{ik}A_{kj}</m>에서 중간 꼭짓점 <m>k</m>를 하나씩 확인하여라. 대각 성분은 출발 꼭짓점으로 곧바로 되돌아올 수 있는 두 번의 이동을 센다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-triangle-computation">
+    <title>세제곱으로 순환 세기</title>
+    <statement>
+      <p><m>V=\{1,2,3,4\}</m>, <m>E=\{(1,2),(2,3),(3,1),(2,4),(4,1)\}</m>인 그래프의 인접 행렬 <m>A</m>를 구하여라. <m>A^3</m>의 대각 성분과 <m>\operatorname{tr}(A^3)</m>을 계산하여 길이 <m>3</m>인 순환의 개수를 구하고, 순환을 직접 나열하여 검산하여라.</p>
+    </statement>
+    <hint>
+      <p>세제곱 전체를 계산할 필요는 없다. <m>(A^3)_{ii}=\sum_j(A^2)_{ij}A_{ji}</m>를 사용하여라. 자기 자신으로 향하는 변이 없으므로 대각 성분의 합을 <m>3</m>으로 나눌 수 있다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-arborescence-selection">
+    <title>유향 수목과 신장 트리의 확인</title>
+    <statement>
+      <p><m>V=\{r,a,b,c\}</m> 위의 변의 집합 <m>E_1=\{(r,a),(r,b),(a,c)\}</m>과 <m>E_2=\{(r,a),(r,b),(a,c),(b,c)\}</m>를 각각 생각하자. 각 그래프가 뿌리 <m>r</m>인 유향 수목인지 판정하여라. <m>E_2</m>에서 변 하나만 제거하여 뿌리 <m>r</m>인 신장 트리를 얻는 방법을 모두 찾아라.</p>
+    </statement>
+    <hint>
+      <p>뿌리에서 <m>c</m>로 가는 방향 경로가 몇 개인지 비교하여라. 변을 제거한 뒤에도 네 꼭짓점 모두에 도달할 수 있어야 한다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-vertex-reordering">
+    <title>꼭짓점 순서를 바꾸기</title>
+    <statement>
+      <p><m>V=\{a,b,c\}</m>, <m>E=\{(a,b),(b,c),(c,a),(c,c)\}</m>인 그래프의 인접 행렬을 순서 <m>a,b,c</m>에 대해서는 <m>A</m>, 순서 <m>c,a,b</m>에 대해서는 <m>B</m>라고 하자. <m>A,B</m>를 구하여라. <m>B</m>는 <m>A</m>의 행과 열에 같은 순서 변경을 적용하여 얻는다는 것을 확인하고, <m>A^2,B^2</m>에도 같은 관계가 성립함을 행렬 곱의 성분식으로 설명하여라. 한쪽의 행만 바꾸면 일반적으로 같은 그래프의 꼭짓점 순서 변경이 되지 않는 이유도 설명하여라.</p>
+    </statement>
+    <hint>
+      <p>새 순서의 <m>i</m>번째 꼭짓점이 원래 순서의 <m>\sigma(i)</m>번째 꼭짓점이면 <m>B_{ij}=A_{\sigma(i),\sigma(j)}</m>이다. <m>(B^2)_{ij}</m>를 전개한 뒤 중간 꼭짓점의 순서도 바꾸어라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-edge-reversal">
+    <title>모든 변의 방향을 뒤집기</title>
+    <statement>
+      <p>인접 행렬이 <m>A</m>인 그래프에서 모든 변의 방향을 뒤집어 얻는 그래프의 인접 행렬이 <m>A^{\mathsf T}</m>임을 보여라. 두 그래프에서 길이 <m>2</m>인 경로의 출발점과 도착점이 어떻게 대응하는지 설명하여라. 또한 자기 자신으로 향하는 변의 개수, 양방향으로 연결된 서로 다른 꼭짓점 쌍의 개수, 길이 <m>3</m>인 순환의 개수가 각각 보존됨을 보여라.</p>
+    </statement>
+    <hint>
+      <p>방향을 뒤집으면 <m>i\to k\to j</m>는 <m>j\to k\to i</m>가 된다. <m>(A^{\mathsf T})^k=(A^k)^{\mathsf T}</m>와 대각 성분의 합을 이용할 수도 있다. 자기 자신으로 향하는 변이 있는 경우에도 순환 자체를 뒤집는 대응은 성립한다.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-total-two-step-paths">
+    <title>길이 2인 경로의 총개수</title>
+    <statement>
+      <p>꼭짓점 <m>v_i</m>에서 나가는 변의 수를 <m>r_i=\sum_j A_{ij}</m>, 들어오는 변의 수를 <m>s_i=\sum_j A_{ji}</m>라고 하자. 자기 자신으로 향하는 변도 각각 한 번씩 센다. 출발점과 도착점을 제한하지 않은 길이 <m>2</m>인 경로의 총개수가 다음과 같음을 두 가지 방법으로 증명하여라. 한 방법은 행렬 곱을, 다른 방법은 중간 꼭짓점에서의 선택을 이용하여라.</p>
+      <me>\sum_{i,j}(A^2)_{ij}=\sum_k s_k r_k.</me>
+    </statement>
+    <hint>
+      <p>중간 꼭짓점이 <m>v_k</m>로 정해지면 첫 번째 변과 두 번째 변을 각각 몇 가지로 고를 수 있는지 생각하여라. 행렬식이 아니라 행렬 곱의 성분식을 전개하고 합의 순서를 바꾸어라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-trace-square-loops">
+    <title>자기 자신으로 향하는 변과 양방향 변의 구별</title>
+    <statement>
+      <p>인접 행렬이 <m>A</m>인 그래프에서 자기 자신으로 향하는 변의 개수를 <m>\ell</m>, 양방향으로 연결된 서로 다른 꼭짓점의 순서 없는 쌍의 개수를 <m>t</m>라고 하자. 다음 식을 증명하여라.</p>
+      <me>\ell=\operatorname{tr}(A),\qquad t=\frac{\operatorname{tr}(A^2)-\operatorname{tr}(A)}{2}.</me>
+      <p><m>\operatorname{tr}(A^2)=7</m>이라는 정보만으로 <m>t</m>를 정할 수 없는 이유를 설명하고, 꼭짓점 <m>5</m>개를 가진 두 그래프로 이를 보여라.</p>
+    </statement>
+    <hint>
+      <p><m>\operatorname{tr}(A^2)=\sum_{i,j}A_{ij}A_{ji}</m>를 <m>i=j</m>인 항과 <m>i\ne j</m>인 항으로 나누어라. 같은 대각합 <m>7</m>을 만드는 서로 다른 <m>(\ell,t)</m>를 고른 뒤 실제 변을 배치하여라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-trace-cube-loops">
+    <title>자기 자신으로 향하는 변이 있을 때의 세제곱</title>
+    <statement>
+      <p>자기 자신으로 향하는 변을 허용하는 그래프의 인접 행렬을 <m>A</m>라 하고 <m>\ell_i=A_{ii}</m>로 두자. 길이 <m>3</m>인 순환의 개수를 <m>c_3</m>라고 할 때 다음 식을 증명하여라.</p>
+      <me>\operatorname{tr}(A^3)=3c_3+\sum_i\ell_i+3\sum_{i&lt;j}A_{ij}A_{ji}(\ell_i+\ell_j).</me>
+      <p><m>V=\{1,2\}</m>, <m>E=\{(1,1),(1,2),(2,1)\}</m>인 그래프에서 <m>A^3</m>를 계산하여 이 식을 확인하여라. 이 경우 <m>\operatorname{tr}(A^3)/3</m>을 길이 <m>3</m>인 순환의 개수로 해석할 수 없는 이유도 설명하여라.</p>
+    </statement>
+    <hint>
+      <p><m>\sum_{i,j,k}A_{ij}A_{jk}A_{ki}</m>에서 사용한 꼭짓점이 세 개, 한 개, 정확히 두 개인 경우를 나누어라. 정확히 두 개인 경우에는 어느 꼭짓점에서 자기 자신으로 향하는 변을 사용하는지, 시작점의 위치가 몇 가지인지 확인하여라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-adding-edge-triangles">
+    <title>변 하나가 만드는 새로운 순환</title>
+    <statement>
+      <p>자기 자신으로 향하는 변이 없는 그래프의 인접 행렬을 <m>A</m>라 하자. 서로 다른 꼭짓점 <m>v_u,v_v</m>에 대해 <m>A_{uv}=0</m>이라고 가정하고, 변 <m>(v_u,v_v)</m> 하나를 추가하여 인접 행렬 <m>B</m>를 얻는다. 새로 생기는 길이 <m>3</m>인 순환의 개수가 <m>(A^2)_{vu}</m>임을 증명하고, 다음 식을 설명하여라.</p>
+      <me>\operatorname{tr}(B^3)-\operatorname{tr}(A^3)=3(A^2)_{vu}.</me>
+      <p><m>V=\{1,2,3,4\}</m>, <m>E=\{(2,3),(3,1),(2,4),(4,1)\}</m>에 변 <m>(1,2)</m>를 추가하는 경우에 적용하여라.</p>
+    </statement>
+    <hint>
+      <p>새 순환은 반드시 새 변을 사용한다. 새 변 <m>v_u\to v_v</m>를 지난 뒤 원래 변 두 개로 <m>v_u</m>에 돌아오는 방법을 세어라. 행렬 성분에서 출발점과 도착점의 순서를 주의하여라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-counts-do-not-determine-cycles">
+    <title>같은 변 수와 다른 순환 수</title>
+    <statement>
+      <p>꼭짓점 수, 변의 수, <m>\operatorname{tr}(A)</m>, <m>\operatorname{tr}(A^2)</m>가 모두 같아도 길이 <m>3</m>인 순환의 개수는 다를 수 있음을 보여라. 구체적으로 꼭짓점 집합이 <m>\{1,2,3,4\}</m>이고 자기 자신으로 향하는 변이 없으며 변이 정확히 네 개인 두 그래프를 만들어라. 두 그래프 모두 <m>\operatorname{tr}(A^2)=0</m>이어야 하고, 길이 <m>3</m>인 순환의 개수는 서로 달라야 한다. 변의 집합과 인접 행렬을 명시하고 필요한 대각합을 확인하여라.</p>
+    </statement>
+    <hint>
+      <p>한 그래프는 길이 <m>4</m>인 순환으로 만들어라. 다른 그래프는 길이 <m>3</m>인 순환에서 시작하여 네 번째 꼭짓점과 연결하는 변 하나를 추가하여라. 양방향으로 연결된 쌍이 생기지 않도록 방향을 선택하여라.</p>
+    </hint>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-four-cycle-correction">
+    <title>네 번의 이동과 길이 4인 순환</title>
+    <introduction>
+      <p>자기 자신으로 향하는 변이 없는 그래프의 인접 행렬을 <m>A</m>라 하자. <m>b_i=(A^2)_{ii}</m>이고, 양방향으로 연결된 서로 다른 꼭짓점의 순서 없는 쌍의 개수를 <m>t</m>, 길이 <m>4</m>인 순환의 개수를 <m>c_4</m>라고 하자. 시작점만 다른 순환은 같은 것으로 세되 방향이 반대인 순환은 서로 다른 것으로 센다.</p>
+    </introduction>
+    <task>
+      <statement>
+        <p><m>\operatorname{tr}(A^4)</m>는 출발점이 지정된 네 번의 이동 <m>v_i\to v_j\to v_k\to v_l\to v_i</m>의 개수임을 보여라. 네 꼭짓점이 서로 다른 경우와 꼭짓점이 반복되는 경우를 구별하여라.</p>
+      </statement>
+      <hint>
+        <p>행렬 곱을 네 성분의 곱으로 전개하여라. 자기 자신으로 향하는 변이 없으므로 이웃한 두 꼭짓점은 다르지만, 서로 마주 보는 위치의 꼭짓점은 같을 수 있다.</p>
+      </hint>
+    </task>
+    <task>
+      <statement>
+        <p>다음 식을 증명하여라. 특히 반복되는 꼭짓점 때문에 <m>\operatorname{tr}(A^4)/4</m>을 그대로 순환의 개수로 사용할 수 없는 이유를 설명하여라.</p>
+        <me>c_4=\frac{\operatorname{tr}(A^4)-2\sum_i b_i^2+2t}{4}.</me>
+        <p>두 꼭짓점이 양방향으로 연결된 그래프와, 서로 다른 모든 꼭짓점 쌍이 양방향으로 연결된 네 꼭짓점 그래프에 각각 적용하여 검산하여라.</p>
+      </statement>
+      <hint>
+        <p>반복이 있는 이동은 <m>i=k</m> 또는 <m>j=l</m>을 만족한다. 각 경우의 개수는 <m>\sum_i b_i^2</m>이다. 두 조건을 동시에 만족하는 이동이 몇 개인지 구하여 중복을 빼라. 네 꼭짓점이 서로 다른 이동에서는 한 순환이 네 번 세어진다.</p>
+      </hint>
+    </task>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-no-cycles-matrix-power">
+    <title>순환이 없다는 것의 행렬 표현</title>
+    <introduction>
+      <p>꼭짓점이 <m>n\geq1</m>개인 그래프의 인접 행렬을 <m>A</m>라 하자. 이 문제에서 길이 <m>k</m>인 이동열은 각 연속한 꼭짓점 사이에 변이 있는 꼭짓점열 <m>v_{i_0},\ldots,v_{i_k}</m>을 뜻하며, 꼭짓점의 반복을 허용한다.</p>
+    </introduction>
+    <task>
+      <statement>
+        <p>모든 양의 정수 <m>k</m>에 대해 <m>(A^k)_{ij}</m>는 <m>v_i</m>에서 <m>v_j</m>로 가는 길이 <m>k</m>인 이동열의 개수임을 증명하여라.</p>
+      </statement>
+      <hint>
+        <p>길이 <m>k+1</m>인 이동열을 마지막 변 직전의 꼭짓점에 따라 나누고, <m>A^{k+1}=A^kA</m>를 이용하여 귀납법을 적용하여라.</p>
+      </hint>
+    </task>
+    <task>
+      <statement>
+        <p>다음 세 조건이 서로 동치임을 증명하여라. 그래프에 순환이 없다. <m>A^n=0</m>이다. 모든 <m>1\leq k\leq n</m>에 대해 <m>\operatorname{tr}(A^k)=0</m>이다. 자기 자신으로 향하는 변이 있는 경우도 논증에 포함하여라.</p>
+      </statement>
+      <hint>
+        <p>길이 <m>n</m>인 이동열은 <m>n+1</m>개의 꼭짓점 위치를 가지므로 어떤 꼭짓점을 반복한다. 반복되는 두 위치 사이의 길이가 가장 짧은 부분을 골라 순환을 찾아라. 반대로 순환이 있으면 그 변을 반복하여 길이 <m>n</m>인 이동열을 만들 수 있다. 순환의 길이는 <m>n</m> 이하이며 해당 길이의 거듭제곱에 양의 대각 성분을 만든다.</p>
+      </hint>
+    </task>
+  </exercise>
+
+  <exercise xml:id="exer-graphs-one-direction-per-pair">
+    <title>세 꼭짓점의 순환과 전체 꼭짓점의 순서</title>
+    <introduction>
+      <p>꼭짓점이 <m>n\geq3</m>개이고 자기 자신으로 향하는 변이 없는 그래프에서, 서로 다른 두 꼭짓점 사이에는 두 방향 중 정확히 한 방향의 변만 있다고 하자. 인접 행렬을 <m>A</m>, 꼭짓점 <m>v_i</m>에서 나가는 변의 수를 <m>d_i=\sum_j A_{ij}</m>, 길이 <m>3</m>인 순환의 개수를 <m>c_3</m>라고 하자.</p>
+    </introduction>
+    <task>
+      <statement>
+        <p>세 꼭짓점으로 이루어진 부분 그래프는 순환을 이루거나, 그중 한 꼭짓점에서 나머지 두 꼭짓점으로 모두 변이 나가는 경우 중 하나임을 보여라. 이를 이용하여 다음 식을 증명하여라. 여기서 <m>\binom{d}{2}=d(d-1)/2</m>이다.</p>
+        <me>c_3=\binom{n}{3}-\sum_i\binom{d_i}{2},\qquad \operatorname{tr}(A^3)=3\left(\binom{n}{3}-\sum_i\binom{d_i}{2}\right).</me>
+      </statement>
+      <hint>
+        <p>순환이 아닌 세 꼭짓점 집합에서는 두 변을 내보내는 꼭짓점이 유일함을 확인하여라. 꼭짓점 <m>v_i</m>에서 변이 향하는 <m>d_i</m>개의 꼭짓점 중 두 개를 고르면 어떤 세 꼭짓점 집합을 얻는지 생각하여라.</p>
+      </hint>
+    </task>
+    <task>
+      <statement>
+        <p><m>c_3=0</m>일 필요충분조건이, 꼭짓점을 적절히 나열하여 인접 행렬을 대각선 위의 모든 성분이 <m>1</m>이고 나머지 성분이 <m>0</m>인 행렬로 만들 수 있다는 것임을 증명하여라. 그러한 꼭짓점 순서가 유일함도 보여라.</p>
+      </statement>
+      <hint>
+        <p><m>u\to v</m>와 <m>v\to w</m>가 있으면 <m>w\to u</m>는 길이 <m>3</m>인 순환을 만든다. 따라서 순환이 없을 때 <m>u\to w</m>가 강제된다. 나가는 변의 수가 최대인 꼭짓점에 변을 보내는 다른 꼭짓점이 있다고 가정하여 모순을 얻고, 그 꼭짓점을 제거한 뒤 귀납법을 적용하여라. 어떤 두 꼭짓점의 앞뒤 관계도 변의 방향으로 정해진다.</p>
+      </hint>
+    </task>
+  </exercise>
+</exercises>
 </section>
