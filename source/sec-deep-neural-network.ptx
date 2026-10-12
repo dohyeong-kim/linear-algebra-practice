@@ -3,7 +3,7 @@
 <section xml:id="sec-deep-neural-network" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>심층 신경망</title>
   <p>
-    수학적 관점에서, 심층 신경망은 함수 근사 방법입니다. 유클리드 공간의 부분집합 <m>X,Y \subset \mathbb R^n</m>과 함수 <m>f:X \to Y</m>를 생각할 수 있습니다. 심층 신경망은 입력 <m>x \in X</m>에 대해 출력 <m>f(x) \in Y</m>를 근사하는 함수 <m>\hat{f}(x;\theta)</m>를 구성하며, 여기서 <m>\theta</m>는 학습 가능한 매개변수입니다. 가령 <m>X=Y=[0,1]\mathbb R</m>이라면
+    수학적 관점에서, 심층 신경망은 함수 근사 방법입니다. 유클리드 공간의 부분집합 <m>X,Y \subset \mathbb R^n</m>과 함수 <m>f:X \to Y</m>를 생각할 수 있습니다. 심층 신경망은 입력 <m>x \in X</m>에 대해 출력 <m>f(x) \in Y</m>를 근사하는 함수 <m>\hat{f}(x;\theta)</m>를 구성하며, 여기서 <m>\theta</m>는 학습 가능한 매개변수입니다. 가령 <m>X=Y=[0,1] \subset \mathbb R</m>이라면
     <md>
       <mrow> \hat{f}(x;\theta)= \theta_0 + \theta_1 x + \theta_2 x^2 + \cdots + \theta_d x^d </mrow>
     </md>
