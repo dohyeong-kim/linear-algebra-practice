@@ -18,7 +18,7 @@
 <li><div class="para">모든 <span class="process-math">\(v\in V\)</span>에 대해 <span class="process-math">\(\|Uv\|=\|v\|\)</span>이다.</div></li>
 <li><div class="para">벡터의 크기를 유지하면서, 직교하는 방향을 직교하는 방향으로 보낸다.</div></li>
 <li><div class="para">
-<span class="process-math">\(V=W\)</span>이고 그 차원이 유한일 때, 등장변환의 행렬 표현은 직교행렬이다.</div></li>
+<span class="process-math">\(\dim V=\dim W &lt; \infty \)</span>일 때, <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span>의 정규직교기저에 대한 선형변환 <span class="process-math">\(U\)</span>의 행렬은 직교행렬이다.</div></li>
 </ol></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
 <div class="para">실제로 <span class="process-math">\(w=v\)</span>를 등장변환의 정의에 넣으면</div>
 <div class="displaymath process-math">
@@ -26,7 +26,8 @@
 \|Uv\|^2 = \langle Uv, Uv\rangle = \langle v,v\rangle = \|v\|^2,
 \end{gather*}
 </div>
-<div class="para">즉 <span class="process-math">\(\|Uv\|=\|v\|\)</span>를 얻습니다. 나머지는 등장변환의 정의로부터 직접 따라옵니다.</div>
-</div></article></details><span class="incontext"><a class="internal" href="sec-singular-value-decomposition.html#prop-isometry-properties">[incontext]</a></span>
+<div class="para">따라서 <span class="process-math">\(\|Uv\|=\|v\|\)</span>입니다. 다음으로 <span class="process-math">\(v\)</span>와 <span class="process-math">\(w\)</span>가 직교한다고 하면 <span class="process-math">\(\langle v,w\rangle=0\)</span>입니다. 등장변환의 정의에 따라 <span class="process-math">\(\langle Uv,Uw\rangle=\langle v,w\rangle=0\)</span>이므로 <span class="process-math">\(Uv\)</span>와 <span class="process-math">\(Uw\)</span>도 직교합니다.</div>
+</div>
+<div class="para">마지막으로 <span class="process-math">\(\dim V=\dim W=n&lt;\infty\)</span>라 하고, <span class="process-math">\(V\)</span>와 <span class="process-math">\(W\)</span>에서 각각 정규직교기저를 택합니다. <span class="process-math">\(V\)</span>의 기저를 <span class="process-math">\(v_1,\ldots,v_n\)</span>이라 하면, <span class="process-math">\(U\)</span>를 이 기저와 <span class="process-math">\(W\)</span>의 선택한 기저에 대해 나타낸 행렬의 <span class="process-math">\(j\)</span>번째 열은 <span class="process-math">\(Uv_j\)</span>의 좌표벡터입니다. 정의에 의해 모든 <span class="process-math">\(i,j\)</span>에 대해 <span class="process-math">\(\langle Uv_i,Uv_j\rangle=\langle v_i,v_j\rangle=\delta_{ij}\)</span>이므로 이 행렬의 열들은 정규직교합니다. 따라서 그 행렬 <span class="process-math">\(Q\)</span>는 <span class="process-math">\(Q^{\operatorname{T}}Q=I\)</span>를 만족하며, 정사각행렬이므로 직교행렬입니다.</div></article></details><span class="incontext"><a class="internal" href="sec-singular-value-decomposition.html#prop-isometry-properties">[incontext]</a></span>
 </body>
 </html>
