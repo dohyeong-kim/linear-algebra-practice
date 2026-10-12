@@ -29,13 +29,14 @@
       <ol>
         <li>모든 <m>v\in V</m>에 대해 <m>\|Uv\|=\|v\|</m>이다.</li>
         <li>벡터의 크기를 유지하면서, 직교하는 방향을 직교하는 방향으로 보낸다.</li>
-        <li><m>V=W</m>이고 그 차원이 유한일 때, 등장변환의 행렬 표현은 직교행렬이다.</li>
+        <li><m>\dim V=\dim W &lt; \infty </m>일 때, <m>V</m>와 <m>W</m>의 정규직교기저에 대한 선형변환 <m>U</m>의 행렬은 직교행렬이다.</li>
       </ol>
     </statement>
     <proof>
       <p>실제로 <m>w=v</m>를 등장변환의 정의에 넣으면
       <md><mrow>\|Uv\|^2 = \langle Uv, Uv\rangle = \langle v,v\rangle = \|v\|^2,</mrow></md>
-      즉 <m>\|Uv\|=\|v\|</m>를 얻습니다. 나머지는 등장변환의 정의로부터 직접 따라옵니다.</p>
+      따라서 <m>\|Uv\|=\|v\|</m>입니다. 다음으로 <m>v</m>와 <m>w</m>가 직교한다고 하면 <m>\langle v,w\rangle=0</m>입니다. 등장변환의 정의에 따라 <m>\langle Uv,Uw\rangle=\langle v,w\rangle=0</m>이므로 <m>Uv</m>와 <m>Uw</m>도 직교합니다.</p>
+      <p>마지막으로 <m>\dim V=\dim W=n&lt;\infty</m>라 하고, <m>V</m>와 <m>W</m>에서 각각 정규직교기저를 택합니다. <m>V</m>의 기저를 <m>v_1,\ldots,v_n</m>이라 하면, <m>U</m>를 이 기저와 <m>W</m>의 선택한 기저에 대해 나타낸 행렬의 <m>j</m>번째 열은 <m>Uv_j</m>의 좌표벡터입니다. 정의에 의해 모든 <m>i,j</m>에 대해 <m>\langle Uv_i,Uv_j\rangle=\langle v_i,v_j\rangle=\delta_{ij}</m>이므로 이 행렬의 열들은 정규직교합니다. 따라서 그 행렬 <m>Q</m>는 <m>Q^{\operatorname{T}}Q=I</m>를 만족하며, 정사각행렬이므로 직교행렬입니다.</p>
     </proof>
   </proposition>
   <example xml:id="ex-orthogonal-matrix-isometry">
@@ -62,7 +63,6 @@
     </proof>
   </proposition>
 
-  
   <example xml:id="ex-isometry-nonstandard-inner-product">
     <title>비표준 내적 공간에서의 등장변환</title>
     <p>폐구간 상 연속함수로 구성된 함수공간 <m>V=C[0,1]</m>에
