@@ -1328,16 +1328,20 @@ P=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}
 <details id="exer-3d-half-turns-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-3d-half-turns-3-1">(a) <span class="process-math">\(w\)</span> 가 고정됨을 보이고, 대각합으로 각의 크기를, <span class="process-math">\(u\)</span> 의 상으로 회전의 방향을 정하여라. 축 <span class="process-math">\(w\)</span> 에 대한 각 <span class="process-math">\(\beta\)</span> 의 회전은 <span class="process-math">\(w\perp x\)</span> 인 <span class="process-math">\(x\)</span> 를 <span class="process-math">\(\cos\beta\,x+\sin\beta\,(w\times x)\)</span> 로 보냅니다( <a href="sec-3d-rigid-motion.html#thm-rodrigues" class="xref" data-knowl="./knowl/xref/thm-rodrigues.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 2.2.18: 로드리게스 공식; \exp 는 \operatorname{SO}(3) 로 전사">정리 2.2.18</a> 의 증명). (c) <span class="process-math">\(S_v^2=I\)</span> 입니다.</div></div></details><details id="exer-3d-half-turns-4" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
 <div class="para logical" id="exer-3d-half-turns-4-1">
 <div class="para">(a) <span class="process-math">\(S_uw=2u(u\bullet w)-w=-w\)</span> 이고 마찬가지로 <span class="process-math">\(S_v(-w)=w\)</span> 이므로 <span class="process-math">\(S_vS_uw=w\)</span> 입니다. <span class="process-math">\(S_vS_u\in\operatorname{SO}(3)\)</span> 이고</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-3d-trace-angle.html">
-\begin{equation*}
-\operatorname{tr}(S_vS_u)=\operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)=4\cos^2\alpha-1=1+2\cos2\alpha
-\end{equation*}
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-3d-trace-angle.html" id="exer-3d-half-turns-4-1-5">
+\begin{align*}
+\operatorname{tr}(S_vS_u) &amp;= \operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)\\
+&amp;= 4\cos^2\alpha-1\\
+&amp;= 1+2\cos2\alpha
+\end{align*}
 </div>
 <div class="para">이므로 <a href="sec-3d-rigid-motion.html#exer-3d-trace-angle" class="xref" data-knowl="./knowl/xref/exer-3d-trace-angle.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 2.2.2: 대각합과 회전각">연습문제 2.2.2</a> 에 의해 회전각은 <span class="process-math">\(2\alpha\)</span> 또는 <span class="process-math">\(-2\alpha\)</span> (축 <span class="process-math">\(w\)</span> 기준)입니다. 방향을 정하기 위해 <span class="process-math">\(u\perp w\)</span> 의 상을 봅니다. <span class="process-math">\((u\times v)\times u=v-(u\bullet v)u\)</span> 이므로 <span class="process-math">\(w\times u=(v-\cos\alpha\,u)/\sin\alpha\)</span> 이고,</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-3d-trace-angle.html">
-\begin{equation*}
-\cos2\alpha\,u+\sin2\alpha\,(w\times u)=\cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)=2\cos\alpha\,v-u=S_vS_uu
-\end{equation*}
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-3d-trace-angle.html" id="exer-3d-half-turns-4-1-13">
+\begin{align*}
+\cos2\alpha\,u+\sin2\alpha\,(w\times u) &amp;= \cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)\\
+&amp;= 2\cos\alpha\,v-u\\
+&amp;= S_vS_uu
+\end{align*}
 </div>
 <div class="para">입니다. 따라서 <span class="process-math">\(S_vS_u\)</span> 는 축 <span class="process-math">\(w\)</span> 에 대한 각 <span class="process-math">\(+2\alpha\)</span> 의 회전, 즉 <span class="process-math">\(\exp(2\alpha[w]_\times)\)</span> 입니다. ( <span class="process-math">\(2\alpha\)</span> 가 <span class="process-math">\((\pi,2\pi)\)</span> 에 있으면 이는 축 <span class="process-math">\(-w\)</span> 에 대한 각 <span class="process-math">\(2\pi-2\alpha\)</span> 의 회전과 같습니다.)</div>
 </div>
