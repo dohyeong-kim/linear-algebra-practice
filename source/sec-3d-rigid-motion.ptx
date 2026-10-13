@@ -613,14 +613,17 @@
         <p>
           (a) 대각합은 기저변환 <m>A\mapsto QAQ^{-1}</m> 에 대하여 불변입니다.
         </p>
+        
+        <p>
+          (b) (a)를 이용할 수 있습니다. 또 다른 방법으로, (a)를 이용하지 않고 <m>P</m>가 세 축을 재배열한다는 것에 착안하여 회전축과 회전각을 구할 수도 있습니다.
+        </p>
       </hint>
 
       <solution>
         <p>
-          (a) <xref ref="thm-euler-3d-rotation"/> 의 증명에서처럼 직교행렬 <m>Q</m> 로
+          (a) <xref ref="thm-euler-3d-rotation"/> 의 증명에서처럼 직교행렬 <m>Q</m>에 대하여
           <m>A=Q\begin{pmatrix}1&amp;0\\0&amp;R(\theta)\end{pmatrix}Q^{\operatorname{T}}</m>
-          이고,
-          <m>\operatorname{tr}(QBQ^{\operatorname{T}})=\operatorname{tr}(BQ^{\operatorname{T}}Q)=\operatorname{tr}B=1+2\cos\theta</m>
+          이 성립합니다. 우변의 가운데 대각블록행렬을 <m>B</m>라 하면 <m>\operatorname{tr}(QBQ^{\operatorname{T}})=\operatorname{tr}(BQ^{\operatorname{T}}Q)=\operatorname{tr}B=1+2\cos\theta</m>
           입니다.
         </p>
 
@@ -691,11 +694,12 @@
 
         <p>
           (c) 첫 행으로 전개하면
-          <me>
-            \det\begin{pmatrix}t&amp;\omega_3&amp;-\omega_2\\-\omega_3&amp;t&amp;\omega_1\\\omega_2&amp;-\omega_1&amp;t\end{pmatrix}
-          =t(t^2+\omega_1^2)-\omega_3(-\omega_3t-\omega_1\omega_2)-\omega_2(\omega_1\omega_3-\omega_2t)
-          =t^3+\lVert\omega\rVert^2t
-          </me>
+          <md>
+            <mrow> \amp \, \det\begin{pmatrix}t&amp;\omega_3&amp;-\omega_2\\-\omega_3&amp;t&amp;\omega_1\\\omega_2&amp;-\omega_1&amp;t\end{pmatrix}
+            </mrow>
+            <mrow>= \amp \, t(t^2+\omega_1^2)-\omega_3(-\omega_3t-\omega_1\omega_2)-\omega_2(\omega_1\omega_3-\omega_2t)</mrow>
+            <mrow> = \amp \, t^3+\lVert\omega\rVert^2t</mrow>         
+          </md>
           입니다.
           <m>\lVert\omega\rVert^2=14</m> 이므로 고유값은 <m>0,\ \pm i\sqrt{14}</m> 입니다.
         </p>
@@ -810,7 +814,11 @@
 
         <p>
           (b)
-          <m>\det(A-I)=\det\big(A(I-A^{\operatorname{T}})\big)=\det A\cdot\det\big((I-A)^{\operatorname{T}}\big)=\det(I-A)=(-1)^3\det(A-I)</m>
+          <md>
+            <mrow>\det(A-I)&amp;=\det\big(A(I-A^{\operatorname{T}})\big)</mrow>
+            <mrow>&amp;=\det A\cdot\det\big((I-A)^{\operatorname{T}}\big)</mrow>
+            <mrow>&amp;=\det(I-A)=(-1)^3\det(A-I)</mrow>
+          </md>
           이므로 <m>\det(A-I)=0</m> 입니다.
         </p>
 
@@ -923,14 +931,13 @@
                   \theta=\arccos\frac{\operatorname{tr}A-1}{2},\qquad n=\frac{1}{2\sin\theta}\,(A-A^{\operatorname{T}})^\vee
                 </me>
                 임을 보여라.
-                따라서 이 경우 <m>\theta n</m> 은 <m>A</m> 에 의해 유일하게 결정된다.
+                따라서 이 경우 <m>\theta, n</m>은 <m>A</m> 에 의해 유일하게 결정된다.
               </p>
             </li>
 
             <li>
               <p>
-                (b)를 <m>P</m> 에 적용하여 <xref ref="exer-3d-trace-angle"/> 의 결과와
-                비교하여라.
+                (b)를 <m>P</m> 에 적용하여 <m>P</m>의 작용을 축을 기준으로 한 회전으로 기술하여라. 그 결과를 <xref ref="exer-3d-trace-angle"/>에서 얻은 답과 비교하여라.
               </p>
             </li>
 
@@ -1108,9 +1115,11 @@
       <solution>
         <p>
           (a) 모든 <m>c</m> 에 대하여
-          <me>
-            \big(R(a\times b)\big)\bullet(Rc)=(a\times b)\bullet c=\det[a\ b\ c]=\det R\cdot\det[a\ b\ c]=\det[Ra\ Rb\ Rc]=\big((Ra)\times(Rb)\big)\bullet(Rc)
-          </me>
+          <md>
+            <mrow>\big(R(a\times b)\big)\bullet(Rc) &amp;= (a\times b)\bullet c</mrow>
+            <mrow> &amp;= \det[a\ b\ c] = \det R\cdot\det[a\ b\ c]</mrow>
+            <mrow> &amp;= \det[Ra\ Rb\ Rc] = \big((Ra)\times(Rb)\big)\bullet(Rc)</mrow>
+          </md>
           입니다.
           <m>R</m> 은 가역이므로 <m>Rc</m> 는 <m>\mathbb R^3</m> 전체를 지나고, 따라서 두 벡터는
           같습니다.
@@ -1240,9 +1249,11 @@
           (e) <m>X=[a]_\times</m>, <m>Y=[b]_\times</m> 는
           <xref ref="exer-3d-commutator"/> (d)에 의해 교환가능합니다.
           두 급수는 절대수렴하므로 곱을 항별로 전개하여 재배열할 수 있고,
-          <me>
-            \exp X\exp Y=\sum_{m\ge0}\frac1{m!}\sum_{j+k=m}\binom mjX^jY^k=\sum_{m\ge0}\frac{(X+Y)^m}{m!}=\exp(X+Y)
-          </me>
+          <md>
+            <mrow>\exp X\exp Y\amp=\sum_{m\ge0}\frac1{m!}\sum_{j+k=m}\binom mjX^jY^k</mrow>
+            <mrow>\amp=\sum_{m\ge0}\frac{(X+Y)^m}{m!}</mrow>
+            <mrow>\amp=\exp(X+Y)</mrow>
+          </md>
           입니다.
           둘째 등호에서 교환가능성과 이항정리를 썼습니다.
           햇맵의 선형성에 의해 <m>X+Y=[a+b]_\times</m> 입니다.
@@ -1311,17 +1322,21 @@
           (a) <m>S_uw=2u(u\bullet w)-w=-w</m> 이고 마찬가지로 <m>S_v(-w)=w</m> 이므로
           <m>S_vS_uw=w</m> 입니다.
           <m>S_vS_u\in\operatorname{SO}(3)</m> 이고
-          <me>
-            \operatorname{tr}(S_vS_u)=\operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)=4\cos^2\alpha-1=1+2\cos2\alpha
-          </me>
+          <md>
+            <mrow>\operatorname{tr}(S_vS_u) &amp;= \operatorname{tr}\big(4(u\bullet v)vu^{\operatorname{T}}-2vv^{\operatorname{T}}-2uu^{\operatorname{T}}+I\big)</mrow>
+            <mrow> &amp;= 4\cos^2\alpha-1</mrow>
+            <mrow> &amp;= 1+2\cos2\alpha</mrow>
+          </md>
           이므로 <xref ref="exer-3d-trace-angle"/> 에 의해 회전각은 <m>2\alpha</m> 또는
           <m>-2\alpha</m> (축 <m>w</m> 기준)입니다.
           방향을 정하기 위해 <m>u\perp w</m> 의 상을 봅니다.
           <m>(u\times v)\times u=v-(u\bullet v)u</m> 이므로
           <m>w\times u=(v-\cos\alpha\,u)/\sin\alpha</m> 이고,
-          <me>
-            \cos2\alpha\,u+\sin2\alpha\,(w\times u)=\cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)=2\cos\alpha\,v-u=S_vS_uu
-          </me>
+          <md>
+            <mrow>\cos2\alpha\,u+\sin2\alpha\,(w\times u) &amp;= \cos2\alpha\,u+2\cos\alpha\,(v-\cos\alpha\,u)</mrow>
+            <mrow> &amp;= 2\cos\alpha\,v-u</mrow>
+            <mrow> &amp;= S_vS_uu</mrow>
+          </md>
           입니다.
           따라서 <m>S_vS_u</m> 는 축 <m>w</m> 에 대한 각 <m>+2\alpha</m> 의 회전, 즉
           <m>\exp(2\alpha[w]_\times)</m> 입니다.

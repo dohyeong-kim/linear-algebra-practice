@@ -367,7 +367,7 @@
             <m>\widehat M[X]=[MX]</m>가 <m>\mathbb{RP}^2</m>에서
             <m>\mathbb{RP}^2</m>로의 잘 정의된 전단사함수임을 보이고,
             <m>\lambda\neq 0</m>이면 <m>\widehat{\lambda M}=\widehat M</m>임을
-            보여라.
+            보여라. 이 결과로 가역행렬 <m>M</m>으로부터 얻어지는 <m>\widehat{ M}</m>를 <term>사영변환</term>이라 한다. <aside><p>사영변환:projective transformation</p></aside>
           </p>
         </li>
         <li>
