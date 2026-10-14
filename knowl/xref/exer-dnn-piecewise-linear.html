@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">조각 선형 함수의 ReLU 표현.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(a=t_0\lt t_1\lt\cdots\lt t_k=b\)</span>이고 <span class="process-math">\(f:[a,b]\to\mathbb R\)</span>가 연속이며 각 구간 <span class="process-math">\([t_{i-1},t_i]\)</span>에서 기울기가 <span class="process-math">\(s_i\)</span>인 일차함수라 합시다.</div>
+<ol class="lower-alpha" id="exer-dnn-piecewise-linear-2-1-5">
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\([a,b]\)</span>에서</div>
+<div class="displaymath process-math">
+\begin{gather*}
+f(x)=f(a)+s_1\operatorname{ReLU}(x-a)+\sum_{i=1}^{k-1}(s_{i+1}-s_i)\operatorname{ReLU}(x-t_i)
+\end{gather*}
+</div>
+<div class="para">임을 보이십시오. 따라서 <span class="process-math">\(f\)</span>는 은닉 노드가 <span class="process-math">\(k\)</span>개 이하인 얕은 ReLU 신경망으로 표현됩니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\([0,1]\)</span>에서 <span class="process-math">\(x^2\)</span>을 <span class="process-math">\(0,\frac12,1\)</span>에서 보간하는 조각 선형 함수 <span class="process-math">\(L\)</span>을 (a)의 꼴로 쓰고, <span class="process-math">\(\max_{0\le x\le 1}|x^2-L(x)|=\frac1{16}\)</span>임을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-dnn-piecewise-linear-3-1-1">
+<li><div class="para logical">
+<div class="para">우변을 <span class="process-math">\(g\)</span>라 합시다. <span class="process-math">\(g\)</span>는 연속이고 <span class="process-math">\(g(a)=f(a)\)</span>입니다. <span class="process-math">\(x\in(t_{j-1},t_j)\)</span>이면 <span class="process-math">\(\operatorname{ReLU}(x-a)\)</span>와 <span class="process-math">\(i\le j-1\)</span>인 <span class="process-math">\(\operatorname{ReLU}(x-t_i)\)</span>의 기울기는 <span class="process-math">\(1\)</span>이고 나머지는 <span class="process-math">\(0\)</span>이므로, <span class="process-math">\(g\)</span>의 기울기는</div>
+<div class="displaymath process-math">
+\begin{gather*}
+s_1+\sum_{i=1}^{j-1}(s_{i+1}-s_i)=s_j
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(f\)</span>와 <span class="process-math">\(g\)</span>는 연속이고 각 구간에서 같은 기울기의 일차함수이며 <span class="process-math">\(a\)</span>에서 값이 같으므로, <span class="process-math">\(t_0\)</span>부터 차례로 각 구간에서 일치합니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(L\)</span>의 기울기는 <span class="process-math">\([0,\frac12]\)</span>에서 <span class="process-math">\(\frac12\text{,}\)</span> <span class="process-math">\([\frac12,1]\)</span>에서 <span class="process-math">\(\frac32\)</span>이므로 <span class="process-math">\(L(x)=\frac12\operatorname{ReLU}(x)+\operatorname{ReLU}(x-\frac12)\)</span>입니다. <span class="process-math">\([0,\frac12]\)</span>에서 <span class="process-math">\(x^2-\frac x2\)</span>의 절댓값은 <span class="process-math">\(x=\frac14\)</span>에서 최대 <span class="process-math">\(\frac1{16}\)</span>이고, <span class="process-math">\([\frac12,1]\)</span>에서 <span class="process-math">\(x^2-\frac32x+\frac12\)</span>의 절댓값은 <span class="process-math">\(x=\frac34\)</span>에서 최대 <span class="process-math">\(\frac1{16}\)</span>입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-deep-neural-network.html#exer-dnn-piecewise-linear">[incontext]</a></span>
+</body>
+</html>
