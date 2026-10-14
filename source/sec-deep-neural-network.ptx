@@ -57,5 +57,387 @@
   <p>
     깊이가 더 깊은 완전연결 신경망에서도 모든 층의 활성화 함수가 항등 함수라면, 각 층은 가중치 행렬을 곱하는 연산만 수행합니다. 따라서 여러 층의 연산을 합성한 결과는 가중치 행렬들의 곱 <m>W_LW_{L-1}\cdots W_1x</m>이며, 여전히 하나의 선형변환입니다. 즉, 항등 활성화 함수만 사용하는 경우 네트워크의 깊이를 늘려도 표현할 수 있는 함수의 종류는 더 풍부해지지 않습니다. 복잡한 함수를 근사하려면 신경망 층 사이에 비선형 활성화 함수를 적용하는 것이 중요합니다.
   </p>
+
+
+  <p>
+    심층신경망의 크기는 보통 학습 가능한 매개변수의 수로 나타냅니다. 각 매개변수는 컴퓨터에 저장될 때 일정한 공간을 차지하므로, 모델을 저장하는 데 필요한 메모리는 매개변수의 수에 비례합니다. 실수의 집합은 비가산 집합이므로 임의의 실수를 컴퓨터에 정확히 저장할 수는 없습니다. 따라서 컴퓨터에서 실수를 다루려면 어떤 방식으로든 근사해야 합니다. 예를 들어 유효 자릿수가 고정된 부동소수점 수로 매개변수를 저장할 수 있습니다. 각 매개변수를 32비트 부동소수점 수로 저장한다고 가정하면, 매개변수 하나에 4바이트가 필요하므로 백만 개, 10억 개, 1조 개의 매개변수를 가진 모델은 각각 약 4MB, 4GB, 4TB의 메모리를 차지합니다. 이는 매개변수 자체를 저장하는 데 필요한 양이며, 구동이나 학습에 사용하는 추가 메모리는 포함하지 않습니다.
+  </p>
   
+  <exercises xml:id="exercises-deep-neural-network">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        연습문제에서는 각 층에서 가중치 행렬을 곱한 뒤 벡터를 더하는 것을 허용합니다. 즉, 활성화 함수 <m>\rho</m>에 대하여 <m>\ell</m>번째 층은
+        <md><mrow>z^{(\ell)}=W^{(\ell)}h^{(\ell-1)}+b^{(\ell)},\qquad h^{(\ell)}=\rho\left(z^{(\ell)}\right)</mrow></md>
+        를 계산하며, <m>\rho</m>는 벡터의 각 성분에 적용합니다. 이때 더하는 벡터 <m>b^{(\ell)}</m>를 <term>편향</term><aside><p>편향:bias</p></aside>이라 하고, 입력층과 출력층 사이의 층을 <term>은닉층</term><aside><p>은닉층:hidden layer</p></aside>이라 합니다. 마지막 출력층에서는 활성화 함수를 적용하지 않습니다. 특히 은닉층이 하나이고 활성화 함수가 ReLU인 일변수 신경망은
+        <md><mrow>N(x)=c_0+\sum_{i=1}^{m}c_i\operatorname{ReLU}(a_ix-b_i)</mrow></md>
+        꼴의 함수이며, <m>m</m>을 은닉 노드의 수라 합니다. 이를 <q>얕은 ReLU 신경망</q>이라 부르겠습니다. 콜모고로프의 정리는 본문의 형태로 인용합니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-dnn-relu-identities">
+      <title>ReLU에 관한 항등식</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>모든 실수 <m>x</m>에 대하여 <m>x=\operatorname{ReLU}(x)-\operatorname{ReLU}(-x)</m>와 <m>|x|=\operatorname{ReLU}(x)+\operatorname{ReLU}(-x)</m>임을 보이십시오.</p></li>
+            <li><p>모든 실수 <m>a,b</m>에 대하여 <m>\max\{a,b\}=b+\operatorname{ReLU}(a-b)</m>와 <m>\min\{a,b\}=a-\operatorname{ReLU}(a-b)</m>임을 보이십시오.</p></li>
+            <li><p><m>\lambda\ge 0</m>이면 <m>\operatorname{ReLU}(\lambda x)=\lambda\operatorname{ReLU}(x)</m>임을 보이고, 이를 이용하여 <m>a\gt 0</m>일 때 <m>c\operatorname{ReLU}(ax-b)=ca\operatorname{ReLU}(x-b/a)</m>로 쓸 수 있음을 설명하십시오.</p></li>
+            <li><p>함수 <m>(a,b)\mapsto\max\{a,b\}</m>가 은닉 노드 세 개를 갖는 얕은 ReLU 신경망으로 정확히 표현됨을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>x\ge 0</m>이면 <m>\operatorname{ReLU}(x)=x</m>, <m>\operatorname{ReLU}(-x)=0</m>이고, <m>x\lt 0</m>이면 <m>\operatorname{ReLU}(x)=0</m>, <m>\operatorname{ReLU}(-x)=-x</m>입니다. 두 경우 모두 두 등식이 성립합니다.</p></li>
+            <li><p><m>a\ge b</m>이면 <m>b+\operatorname{ReLU}(a-b)=b+(a-b)=a</m>이고, <m>a\lt b</m>이면 <m>b+0=b</m>입니다. 또한 <m>\min\{a,b\}=a+b-\max\{a,b\}=a-\operatorname{ReLU}(a-b)</m>입니다.</p></li>
+            <li><p><m>\lambda x</m>와 <m>x</m>의 부호가 같거나 <m>\lambda x=0</m>이므로 <m>\max\{0,\lambda x\}=\lambda\max\{0,x\}</m>입니다. 따라서 <m>c\operatorname{ReLU}(ax-b)=c\operatorname{ReLU}(a(x-b/a))=ca\operatorname{ReLU}(x-b/a)</m>입니다. 즉, 입력 가중치가 양수인 노드는 입력 가중치를 <m>1</m>로 정규화하고 그 크기를 출력 가중치로 옮길 수 있습니다.</p></li>
+            <li><p>(a)와 (b)에서 <m>\max\{a,b\}=\operatorname{ReLU}(b)-\operatorname{ReLU}(-b)+\operatorname{ReLU}(a-b)</m>입니다. 우변의 각 항은 입력 <m>(a,b)</m>의 선형결합에 ReLU를 적용한 것이므로, 은닉 노드가 세 개인 얕은 ReLU 신경망입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-dnn-sigmoid-tanh">
+      <title>시그모이드 함수와 쌍곡 탄젠트 함수</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\sigma(-x)=1-\sigma(x)</m>이고 <m>\sigma'(x)=\sigma(x)\bigl(1-\sigma(x)\bigr)</m>임을 보이십시오.</p></li>
+            <li><p><m>\tanh(x)=2\sigma(2x)-1</m>임을 보이고, 이로부터 <m>\tanh'(x)=1-\tanh^2(x)</m>를 유도하십시오.</p></li>
+            <li><p>은닉층이 하나이고 활성화 함수가 <m>\tanh</m>인 일변수 신경망 <m>c_0+\sum_{i=1}^{m}c_i\tanh(a_ix+b_i)</m>는 은닉 노드의 수가 같고 활성화 함수가 <m>\sigma</m>인 신경망으로 다시 쓸 수 있으며, 그 역도 성립함을 보이십시오.</p></li>
+            <li><p>각 실수 <m>x</m>에 대하여 극한 <m>\lim_{\lambda\to\infty}\sigma(\lambda x)</m>를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\sigma(-x)=\dfrac{1}{1+e^{x}}=\dfrac{e^{-x}}{e^{-x}+1}=1-\sigma(x)</m>입니다. 또한 <m>\sigma'(x)=\dfrac{e^{-x}}{(1+e^{-x})^2}=\sigma(x)\cdot\dfrac{e^{-x}}{1+e^{-x}}=\sigma(x)\bigl(1-\sigma(x)\bigr)</m>입니다.</p></li>
+            <li><p><m>2\sigma(2x)-1=\dfrac{2-(1+e^{-2x})}{1+e^{-2x}}=\dfrac{1-e^{-2x}}{1+e^{-2x}}=\dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}=\tanh(x)</m>입니다. 미분하면 (a)에 의해
+            <md>
+              <mrow>\tanh'(x)\amp=4\sigma'(2x)=4\sigma(2x)\bigl(1-\sigma(2x)\bigr)</mrow>
+              <mrow>\amp=(1+\tanh x)(1-\tanh x)=1-\tanh^2(x)</mrow>
+            </md>
+            입니다.</p></li>
+            <li><p>(b)에 의해
+            <md><mrow>c_0+\sum_{i=1}^{m}c_i\tanh(a_ix+b_i)=\Bigl(c_0-\sum_{i=1}^{m}c_i\Bigr)+\sum_{i=1}^{m}2c_i\,\sigma(2a_ix+2b_i)</mrow></md>
+            입니다. 역으로 <m>\sigma(t)=\frac12\bigl(1+\tanh(t/2)\bigr)</m>이므로 같은 방법으로 바꿀 수 있습니다. 따라서 두 활성화 함수는 같은 함수족을 표현합니다.</p></li>
+            <li><p><m>x\gt 0</m>이면 <m>e^{-\lambda x}\to 0</m>이므로 극한은 <m>1</m>, <m>x\lt 0</m>이면 <m>e^{-\lambda x}\to\infty</m>이므로 극한은 <m>0</m>, <m>x=0</m>이면 항상 <m>\sigma(0)=\frac12</m>입니다. 즉, <m>\sigma(\lambda x)</m>는 <m>\lambda</m>가 커질수록 계단 함수에 가까워집니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-dnn-linear-network-rank">
+      <title>항등 활성화 함수와 계수</title>
+      <statement>
+        <p>
+          모든 활성화 함수가 항등 함수인 신경망을 생각하십시오.
+          <ol marker="(a)">
+            <li><p>편향을 허용하더라도, 이 신경망이 나타내는 함수는 깊이와 관계없이 <m>x\mapsto Ax+b</m> 꼴임을 보이십시오.</p></li>
+            <li><p>편향이 없고 층의 너비가 차례로 <m>n,k,m</m>인 신경망 <m>x\mapsto W_2W_1x</m> <m>(W_1\in\mathbb R^{k\times n},\ W_2\in\mathbb R^{m\times k})</m>가 나타내는 행렬 전체의 집합이 <m>\{A\in\mathbb R^{m\times n}:\operatorname{rank}A\le k\}</m>임을 보이십시오.</p></li>
+            <li><p><m>1\le k\lt\min\{m,n\}</m>이면 (b)의 집합은 <m>\mathbb R^{m\times n}</m>의 부분공간이 아님을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>층의 수에 대한 귀납법을 씁니다. 처음 <m>\ell-1</m>개 층의 합성이 <m>x\mapsto A'x+b'</m>이면, <m>\ell</m>번째 층까지의 합성은 <m>W^{(\ell)}(A'x+b')+b^{(\ell)}=(W^{(\ell)}A')x+(W^{(\ell)}b'+b^{(\ell)})</m>이므로 다시 같은 꼴입니다.</p></li>
+            <li><p><m>\operatorname{rank}(W_2W_1)\le\operatorname{rank}W_1\le k</m>입니다. 역으로 <m>\operatorname{rank}A=r\le k</m>이면 <m>\operatorname{im}A</m>의 기저를 열로 하는 <m>B\in\mathbb R^{m\times r}</m>와 <m>A=BC</m>를 만족하는 <m>C\in\mathbb R^{r\times n}</m>가 있습니다. <m>W_2=\begin{pmatrix}B\amp 0\end{pmatrix}\in\mathbb R^{m\times k}</m>, <m>W_1=\begin{pmatrix}C\\ 0\end{pmatrix}\in\mathbb R^{k\times n}</m>로 두면 <m>W_2W_1=BC=A</m>입니다.</p></li>
+            <li><p>행렬 단위 <m>E_{ii}</m>에 대하여 <m>E_{11},\ldots,E_{k+1,k+1}</m>은 모두 계수가 <m>1\le k</m>이지만 그 합의 계수는 <m>k+1</m>입니다. <m>k+1\le\min\{m,n\}</m>이므로 이 합은 <m>\mathbb R^{m\times n}</m>에서 정의되고 집합에 속하지 않습니다. 따라서 덧셈에 대해 닫혀 있지 않습니다. 은닉층의 너비가 좁으면 깊이와 관계없이 표현 능력이 제한됨을 알 수 있습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-dnn-hat-function">
+      <title>모자 함수</title>
+      <statement>
+        <p>
+          함수 <m>\Lambda:\mathbb R\to\mathbb R</m>를
+          <md><mrow>\Lambda(x)=2\operatorname{ReLU}(x)-4\operatorname{ReLU}\left(x-\tfrac12\right)+2\operatorname{ReLU}(x-1)</mrow></md>
+          로 정의합시다.
+          <ol marker="(a)">
+            <li><p><m>\Lambda</m>를 구간별로 식으로 나타내고 그래프를 그리십시오. 특히 <m>\Lambda</m>는 <m>[0,1]</m> 밖에서 <m>0</m>이고 <m>\Lambda([0,1])=[0,1]</m>임을 보이십시오.</p></li>
+            <li><p>모든 실수 <m>x</m>에 대하여 <m>\Lambda(x)=\operatorname{ReLU}\bigl(2\operatorname{ReLU}(x)-4\operatorname{ReLU}(x-\tfrac12)\bigr)</m>임을 보이십시오. 이 표현은 은닉층이 몇 개이고 은닉 노드가 모두 몇 개인 신경망입니까?</p></li>
+            <li><p>폭 <m>w\gt 0</m>과 중심 <m>t</m>에 대하여 <m>\Lambda_{t,w}(x)=\Lambda\bigl(\frac{x-t}{2w}+\frac12\bigr)</m>는 <m>[t-w,t+w]</m> 밖에서 <m>0</m>이고 <m>\Lambda_{t,w}(t)=1</m>인 모자 함수임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>x\le 0</m>이면 <m>0</m>, <m>0\le x\le\frac12</m>이면 <m>2x</m>, <m>\frac12\le x\le 1</m>이면 <m>2x-4(x-\frac12)=2-2x</m>, <m>x\ge 1</m>이면 <m>2x-4x+2+2x-2=0</m>입니다. 따라서 그래프는 <m>(0,0)</m>, <m>(\frac12,1)</m>, <m>(1,0)</m>을 잇는 삼각형 모양이고 <m>\Lambda([0,1])=[0,1]</m>입니다.</p></li>
+            <li><p><m>u(x)=2\operatorname{ReLU}(x)-4\operatorname{ReLU}(x-\frac12)</m>는 <m>x\le 0</m>에서 <m>0</m>, <m>0\le x\le\frac12</m>에서 <m>2x\ge 0</m>, <m>x\ge\frac12</m>에서 <m>2-2x</m>입니다. 따라서 <m>\operatorname{ReLU}(u(x))</m>는 <m>x\ge 1</m>에서 <m>0</m>이고 나머지에서 <m>u(x)</m>이므로 (a)의 결과와 같습니다. 이는 은닉층이 두 개이고 은닉 노드가 첫째 층에 두 개, 둘째 층에 한 개, 모두 세 개인 신경망입니다. 얕은 신경망의 정의식은 꺾이는 점이 세 개인 <m>\Lambda</m>를 위해 은닉 노드 세 개를 쓰므로, 이 경우에는 노드 수가 같지만 층의 구조가 다릅니다.</p></li>
+            <li><p><m>s=\frac{x-t}{2w}+\frac12</m>은 <m>x=t-w,\,t,\,t+w</m>에서 각각 <m>0,\,\frac12,\,1</m>인 증가하는 일차함수입니다. 따라서 <m>x\notin[t-w,t+w]</m>이면 <m>s\notin[0,1]</m>이므로 <m>\Lambda_{t,w}(x)=0</m>이고, <m>\Lambda_{t,w}(t)=\Lambda(\frac12)=1</m>입니다. (a)에서 <m>\Lambda_{t,w}</m>도 ReLU 세 개의 선형결합이므로 얕은 ReLU 신경망입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-dnn-piecewise-linear">
+      <title>조각 선형 함수의 ReLU 표현</title>
+      <statement>
+        <p>
+          <m>a=t_0\lt t_1\lt\cdots\lt t_k=b</m>이고 <m>f:[a,b]\to\mathbb R</m>가 연속이며 각 구간 <m>[t_{i-1},t_i]</m>에서 기울기가 <m>s_i</m>인 일차함수라 합시다.
+          <ol marker="(a)">
+            <li><p><m>[a,b]</m>에서
+            <md><mrow>f(x)=f(a)+s_1\operatorname{ReLU}(x-a)+\sum_{i=1}^{k-1}(s_{i+1}-s_i)\operatorname{ReLU}(x-t_i)</mrow></md>
+            임을 보이십시오. 따라서 <m>f</m>는 은닉 노드가 <m>k</m>개 이하인 얕은 ReLU 신경망으로 표현됩니다.</p></li>
+            <li><p><m>[0,1]</m>에서 <m>x^2</m>을 <m>0,\frac12,1</m>에서 보간하는 조각 선형 함수 <m>L</m>을 (a)의 꼴로 쓰고, <m>\max_{0\le x\le 1}|x^2-L(x)|=\frac1{16}</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>우변을 <m>g</m>라 합시다. <m>g</m>는 연속이고 <m>g(a)=f(a)</m>입니다. <m>x\in(t_{j-1},t_j)</m>이면 <m>\operatorname{ReLU}(x-a)</m>와 <m>i\le j-1</m>인 <m>\operatorname{ReLU}(x-t_i)</m>의 기울기는 <m>1</m>이고 나머지는 <m>0</m>이므로, <m>g</m>의 기울기는
+            <md><mrow>s_1+\sum_{i=1}^{j-1}(s_{i+1}-s_i)=s_j</mrow></md>
+            입니다. <m>f</m>와 <m>g</m>는 연속이고 각 구간에서 같은 기울기의 일차함수이며 <m>a</m>에서 값이 같으므로, <m>t_0</m>부터 차례로 각 구간에서 일치합니다.</p></li>
+            <li><p><m>L</m>의 기울기는 <m>[0,\frac12]</m>에서 <m>\frac12</m>, <m>[\frac12,1]</m>에서 <m>\frac32</m>이므로 <m>L(x)=\frac12\operatorname{ReLU}(x)+\operatorname{ReLU}(x-\frac12)</m>입니다. <m>[0,\frac12]</m>에서 <m>x^2-\frac x2</m>의 절댓값은 <m>x=\frac14</m>에서 최대 <m>\frac1{16}</m>이고, <m>[\frac12,1]</m>에서 <m>x^2-\frac32x+\frac12</m>의 절댓값은 <m>x=\frac34</m>에서 최대 <m>\frac1{16}</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-dnn-kolmogorov-product">
+      <title>곱셈의 콜모고로프 표현</title>
+      <statement>
+        <p>
+          <m>n=2</m>일 때 콜모고로프의 정리의 표현은 다섯 개의 항
+          <md><mrow>f(x,y)=\sum_{q=0}^{4}g_q\bigl(\phi_{q,1}(x)+\phi_{q,2}(y)\bigr)</mrow></md>
+          으로 이루어집니다.
+          <ol marker="(a)">
+            <li><p>항등식 <m>xy=\frac14\bigl((x+y)^2-(x-y)^2\bigr)</m>을 이용하여 <m>f(x,y)=xy</m>를 위의 꼴로 나타내십시오. 이때 각 <m>\phi_{q,p}</m>와 <m>g_q</m>를 명시하십시오.</p></li>
+            <li><p><m>(0,1]^2</m>에서 <m>xy</m>를 하나의 항 <m>g\bigl(\phi_1(x)+\phi_2(y)\bigr)</m>로 나타내십시오.</p></li>
+            <li><p>같은 방법으로 <m>(0,1]^3</m>에서 <m>xyz</m>와 <m>(0,1)\times(0,1]</m>에서 <m>x^y</m>를 하나의 항으로 나타내십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>로그 함수는 곱을 합으로 바꿉니다.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\phi_{0,1}(x)=x</m>, <m>\phi_{0,2}(y)=y</m>, <m>g_0(t)=\frac{t^2}{4}</m>와 <m>\phi_{1,1}(x)=x</m>, <m>\phi_{1,2}(y)=-y</m>, <m>g_1(t)=-\frac{t^2}{4}</m>로 두고, <m>q=2,3,4</m>에서는 <m>g_q=0</m>으로 둡니다. 그러면 <m>g_0(x+y)+g_1(x-y)=xy</m>입니다.</p></li>
+            <li><p><m>\phi_1=\phi_2=\ln</m>, <m>g=\exp</m>로 두면 <m>\exp(\ln x+\ln y)=xy</m>입니다.</p></li>
+            <li><p><m>xyz=\exp(\ln x+\ln y+\ln z)</m>입니다. <m>x\in(0,1)</m>, <m>y\in(0,1]</m>이면 <m>-\ln x\gt0</m>, <m>y\gt0</m>이므로 <m>y(-\ln x)=\exp\bigl(\ln y+\ln(-\ln x)\bigr)</m>이고
+            <md><mrow>x^y=\exp\bigl(-y(-\ln x)\bigr)=\exp\Bigl(-\exp\bigl(\ln(-\ln x)+\ln y\bigr)\Bigr)</mrow></md>
+            입니다. 즉, <m>\phi_1(x)=\ln(-\ln x)</m>, <m>\phi_2(y)=\ln y</m>, <m>g(t)=\exp(-e^{t})</m>입니다. 이 예들에서는 내부 함수가 <m>f</m>에 따라 달라지지만, 콜모고로프의 정리에서는 내부 함수를 <m>f</m>와 무관하게 고정할 수 있다는 점이 다릅니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-dnn-fixed-inner-functions">
+      <title>내부 함수를 고정한 표현의 한계</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>어떤 함수 <m>g:\mathbb R\to\mathbb R</m>와 실수 <m>a,b</m>에 대해서도 <m>\mathbb R^2</m> 전체에서 <m>xy=g(ax+by)</m>일 수 없음을 보이십시오. 즉, <xref ref="exer-dnn-kolmogorov-product"/>(a)에서 항이 적어도 두 개 필요합니다.</p></li>
+            <li><p>두 번 미분가능한 함수 <m>g_0,g_1:\mathbb R\to\mathbb R</m>에 대하여 <m>f(x,y)=g_0(x+y)+g_1(x-y)</m>이면 <m>f_{xx}=f_{yy}</m>임을 보이십시오.</p></li>
+            <li><p>내부 함수를 <m>x+y</m>와 <m>x-y</m>로 고정하면 <m>xy</m>와 <m>x^2+y^2</m>은 (b)의 꼴로 나타낼 수 있지만 <m>x^2</m>은 나타낼 수 없음을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(a)에서는 직선 <m>ax+by=c</m> 위에서 <m>g(ax+by)</m>가 상수임을 이용하십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(a,b)=(0,0)</m>이면 우변은 상수이므로 불가능합니다. 그렇지 않으면 점 <m>(x,y)=(-bt,at)</m>에서 <m>ax+by=0</m>이므로 우변은 <m>t</m>에 관계없이 <m>g(0)</m>이지만, 좌변은 <m>-abt^2</m>입니다. <m>ab\ne 0</m>이면 좌변이 상수가 아니므로 모순입니다. <m>a=0</m>이면 <m>b\ne0</m>이고 <m>y=1/b</m>로 고정하면 우변은 <m>g(1)</m>로 일정하지만 좌변 <m>x/b</m>는 상수가 아닙니다. <m>b=0</m>인 경우도 같습니다.</p></li>
+            <li><p>연쇄법칙에 의해 <m>f_{xx}=g_0''(x+y)+g_1''(x-y)</m>이고 <m>f_{yy}=g_0''(x+y)+(-1)^2g_1''(x-y)</m>이므로 두 값이 같습니다.</p></li>
+            <li><p><xref ref="exer-dnn-kolmogorov-product"/>(a)에서 <m>xy=\frac14(x+y)^2-\frac14(x-y)^2</m>이고 <m>x^2+y^2=\frac12(x+y)^2+\frac12(x-y)^2</m>입니다. 그러나 <m>f=x^2</m>이면 <m>f_{xx}=2\ne 0=f_{yy}</m>이므로 (b)에 의해 매끄러운 <m>g_0,g_1</m>으로는 나타낼 수 없습니다. 콜모고로프의 정리는 항의 수를 <m>2n+1</m>로 늘리고 내부 함수를 매우 특별하게 고르면 이러한 제약이 사라진다는 놀라운 결과입니다. 실제로 그 내부 함수들은 연속이지만 매끄러운 함수로 택할 수 없음이 알려져 있습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-dnn-universal-one-variable">
+      <title>일변수 함수의 보편 근사</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>f:[a,b]\to\mathbb R</m>가 연속이고 <m>\varepsilon\gt 0</m>이면
+            <md><mrow>\max_{a\le x\le b}\left|f(x)-N(x)\right|\lt\varepsilon</mrow></md>
+            인 얕은 ReLU 신경망 <m>N</m>이 존재함을 보이십시오.</p></li>
+            <li><p>은닉층의 수와 관계없이 ReLU 신경망이 나타내는 일변수 함수는 유한 개의 구간에서 일차함수인 연속함수임을 보이십시오. 이로부터 <m>x^2</m>은 <m>[0,1]</m>에서 어떤 ReLU 신경망으로도 정확히 표현되지 않음을 결론지으십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(a)에서 <m>f</m>의 균등연속성을 이용하여 분할을 잡고 <xref ref="exer-dnn-piecewise-linear"/>를 적용하십시오. (b)에서는 각 노드가 계산하는 함수에 대한 귀납법을 쓰십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>f</m>는 컴팩트 구간에서 연속이므로 균등연속입니다. <m>|x-x'|\le\delta</m>이면 <m>|f(x)-f(x')|\lt\varepsilon</m>인 <m>\delta\gt0</m>을 잡고, 간격이 <m>\delta</m> 이하인 분할 <m>a=t_0\lt\cdots\lt t_k=b</m>를 택합니다. <m>L</m>을 <m>t_i</m>에서 <m>f</m>를 보간하는 조각 선형 함수라 하면, <m>x\in[t_{i-1},t_i]</m>일 때 <m>L(x)</m>는 <m>f(t_{i-1})</m>과 <m>f(t_i)</m> 사이의 값이므로
+            <md><mrow>|f(x)-L(x)|\le\max\bigl\{|f(x)-f(t_{i-1})|,\ |f(x)-f(t_i)|\bigr\}\lt\varepsilon</mrow></md>
+            입니다. <xref ref="exer-dnn-piecewise-linear"/>에 의해 <m>L</m>은 얕은 ReLU 신경망입니다.</p></li>
+            <li><p>입력 <m>x</m>는 이러한 함수이고, 이러한 함수들의 선형결합과 상수의 합은 꺾이는 점들의 합집합으로 구간을 나누면 다시 이러한 함수입니다. <m>u</m>가 이러한 함수일 때, <m>u</m>가 일차인 각 구간에서 <m>\operatorname{ReLU}\circ u</m>는 <m>u</m>의 부호가 바뀌는 점(많아야 하나)에서 더 나누면 일차함수이므로 <m>\operatorname{ReLU}\circ u</m>도 이러한 함수입니다. 층별 귀납법으로 모든 노드와 출력이 이러한 함수입니다. 한편 <m>x^2</m>은 어떤 구간에서도 일차함수가 아니므로 정확히 표현되지 않습니다. 따라서 <q>표현</q>보다는 <q>근사</q>가 신경망의 기본적인 관점입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-dnn-kolmogorov-universal">
+      <title>콜모고로프의 정리와 다변수 보편 근사</title>
+      <statement>
+        <p>
+          연속함수 <m>f:[0,1]^n\to\mathbb R</m>가 콜모고로프의 정리에 의해
+          <md><mrow>f(x_1,\ldots,x_n)=\sum_{q=0}^{2n}g_q\bigl(s_q(x)\bigr),\qquad s_q(x)=\sum_{p=1}^{n}\phi_{q,p}(x_p)</mrow></md>
+          로 표현되었다고 합시다.
+          <ol marker="(a)">
+            <li><p>이 표현을 입력층, <m>\phi_{q,p}(x_p)</m>를 계산하는 층, 합 <m>s_q</m>를 계산하는 층, <m>g_q(s_q)</m>를 계산하는 층, 출력층으로 이루어진 신경망으로 그리고, 각 층의 노드 수를 구하십시오. <m>n=2</m>이면 각각 몇 개입니까?</p></li>
+            <li><p><m>s_q([0,1]^n)\subset[-M,M]</m>인 <m>M</m>이 존재함을 보이십시오.</p></li>
+            <li><p><m>\varepsilon\gt0</m>이 주어졌을 때, <xref ref="exer-dnn-universal-one-variable"/>을 이용하여 얕은 ReLU 신경망 <m>\Psi_{q,p}</m>와 <m>H_q</m>를 적절히 택하면
+            <md><mrow>\max_{x\in[0,1]^n}\Bigl|f(x)-\sum_{q=0}^{2n}H_q\Bigl(\sum_{p=1}^{n}\Psi_{q,p}(x_p)\Bigr)\Bigr|\lt\varepsilon</mrow></md>
+            가 됨을 보이십시오.</p></li>
+            <li><p>(c)의 근사 함수가 은닉층이 두 개인 ReLU 신경망임을 설명하십시오. 결론적으로, 콜모고로프의 정리를 받아들이면 <m>[0,1]^n</m> 위의 모든 연속함수는 은닉층이 두 개인 ReLU 신경망으로 균등하게 근사됩니다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(c)에서 먼저 <m>g_q</m>의 <m>[-M-1,M+1]</m>에서의 균등연속성으로 <m>\delta\in(0,1)</m>을 정한 다음, 내부 함수의 근사 오차를 <m>\delta/n</m>보다 작게 잡으십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>입력층 <m>n</m>개, <m>\phi_{q,p}</m>를 계산하는 층 <m>n(2n+1)</m>개, 합을 계산하는 층 <m>2n+1</m>개, <m>g_q</m>를 계산하는 층 <m>2n+1</m>개, 출력층 <m>1</m>개입니다. 노드 <m>\phi_{q,p}</m>는 입력 <m>x_p</m> 하나에만 연결되고, 합 노드 <m>s_q</m>는 <m>p=1,\ldots,n</m>인 노드 <m>\phi_{q,p}</m>들에 가중치 <m>1</m>로 연결됩니다. <m>n=2</m>이면 <m>2,\,10,\,5,\,5,\,1</m>개입니다. 일반적인 신경망과 달리 각 노드가 서로 다른 일변수 함수를 활성화 함수로 갖는다고 볼 수 있습니다.</p></li>
+            <li><p>각 <m>\phi_{q,p}</m>는 컴팩트 집합 <m>[0,1]</m>에서 연속이므로 유계입니다. <m>|\phi_{q,p}|\le M_0</m>인 <m>M_0</m>을 모든 <m>q,p</m>에 대해 잡으면 <m>M=nM_0</m>으로 충분합니다.</p></li>
+            <li><p><m>K=[-M-1,M+1]</m>, <m>\eta=\varepsilon/(2(2n+1))</m>라 합시다. 각 <m>g_q</m>는 <m>K</m>에서 균등연속이므로, <m>s,t\in K</m>이고 <m>|s-t|\lt\delta</m>이면 모든 <m>q</m>에 대해 <m>|g_q(s)-g_q(t)|\lt\eta</m>인 <m>\delta\in(0,1)</m>이 있습니다. <xref ref="exer-dnn-universal-one-variable"/>에 의해 <m>[0,1]</m>에서 <m>|\phi_{q,p}-\Psi_{q,p}|\lt\delta/n</m>인 <m>\Psi_{q,p}</m>와 <m>K</m>에서 <m>|g_q-H_q|\lt\eta</m>인 <m>H_q</m>를 택합니다. <m>t_q(x)=\sum_p\Psi_{q,p}(x_p)</m>라 하면 <m>|s_q(x)-t_q(x)|\lt\delta\lt 1</m>이므로 <m>s_q(x),t_q(x)\in K</m>이고
+            <md>
+              <mrow>|g_q(s_q(x))-H_q(t_q(x))|\amp\le|g_q(s_q(x))-g_q(t_q(x))|+|g_q(t_q(x))-H_q(t_q(x))|</mrow>
+              <mrow>\amp\lt 2\eta</mrow>
+            </md>
+            입니다. <m>q=0,\ldots,2n</m>에 대해 더하면 오차는 <m>(2n+1)\cdot2\eta=\varepsilon</m>보다 작습니다.</p></li>
+            <li><p><m>\Psi_{q,p}(x_p)=c_0+\sum_ic_i\operatorname{ReLU}(a_ix_p-b_i)</m>이므로 첫째 은닉층의 노드는 <m>\operatorname{ReLU}(a_ix_p-b_i)</m>이고, <m>t_q</m>는 첫째 은닉층 출력의 선형결합에 상수를 더한 것입니다. <m>H_q(t)=C_0+\sum_jC_j\operatorname{ReLU}(\alpha_jt-\beta_j)</m>이므로 둘째 은닉층의 노드는 <m>\operatorname{ReLU}(\alpha_jt_q-\beta_j)</m>이고, 출력은 둘째 은닉층 출력의 선형결합에 상수를 더한 것입니다. 따라서 은닉층이 두 개인 ReLU 신경망입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 10 -->
+    <exercise xml:id="exer-dnn-depth-sawtooth">
+      <title>깊이의 효과</title>
+      <statement>
+        <p>
+          <xref ref="exer-dnn-hat-function"/>의 모자 함수 <m>\Lambda</m>를 <m>k</m>번 합성한 함수를 <m>\Lambda^{\circ k}=\Lambda\circ\cdots\circ\Lambda</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>[0,1]</m>을 길이가 <m>2^{-k}</m>인 <m>2^k</m>개의 구간으로 나누면 <m>\Lambda^{\circ k}</m>는 각 구간에서 일차함수이고, <m>j=0,1,\ldots,2^k</m>에 대하여 <m>\Lambda^{\circ k}(j/2^k)</m>는 <m>j</m>가 짝수이면 <m>0</m>, 홀수이면 <m>1</m>임을 보이십시오. <m>k=1,2,3</m>일 때 그래프를 그리십시오.</p></li>
+            <li><p><m>[0,1]</m>에서 <m>\Lambda^{\circ k}</m>는 은닉층이 <m>k</m>개이고 각 층의 너비가 <m>2</m>인, 즉 은닉 노드가 모두 <m>2k</m>개인 ReLU 신경망으로 정확히 표현됨을 보이십시오.</p></li>
+            <li><p>은닉 노드가 <m>m</m>개인 얕은 ReLU 신경망 <m>N</m>은 <m>\mathbb R</m>을 많아야 <m>m+1</m>개의 구간으로 나누어 각 구간에서 일차함수임을 보이십시오.</p></li>
+            <li><p>얕은 ReLU 신경망 <m>N</m>이 <m>\max_{0\le x\le1}|N(x)-\Lambda^{\circ k}(x)|\lt\frac12</m>를 만족하면 <m>N</m>의 은닉 노드는 적어도 <m>2^k-1</m>개임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(a)에서 <m>\Lambda^{\circ(k+1)}=\Lambda^{\circ k}\circ\Lambda</m>를 <m>[0,\frac12]</m>과 <m>[\frac12,1]</m>에서 따로 살펴보십시오. (d)에서는 각 구간 <m>(j/2^k,(j+1)/2^k)</m>에 <m>N(x)=\frac12</m>인 점이 있음을 이용하십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>k</m>에 대한 귀납법을 씁니다. <m>k=1</m>은 <xref ref="exer-dnn-hat-function"/>(a)입니다. <m>[0,\frac12]</m>에서 <m>\Lambda(x)=2x</m>는 <m>[0,\frac12]</m>을 <m>[0,1]</m>로 보내는 증가하는 일차함수이므로 <m>\Lambda^{\circ(k+1)}(x)=\Lambda^{\circ k}(2x)</m>는 <m>[0,\frac12]</m>의 길이 <m>2^{-(k+1)}</m>인 <m>2^k</m>개 구간에서 일차함수이고, <m>j\le 2^k</m>일 때 <m>\Lambda^{\circ(k+1)}(j/2^{k+1})=\Lambda^{\circ k}(j/2^k)</m>의 값은 <m>j</m>의 홀짝에 따라 정해집니다. <m>[\frac12,1]</m>에서는 <m>\Lambda(x)=2-2x</m>이므로 <m>\Lambda^{\circ(k+1)}(x)=\Lambda^{\circ k}(2-2x)</m>이고, <m>j\ge2^k</m>일 때 <m>\Lambda^{\circ(k+1)}(j/2^{k+1})=\Lambda^{\circ k}\bigl((2^{k+1}-j)/2^k\bigr)</m>이며 <m>2^{k+1}-j</m>와 <m>j</m>의 홀짝은 같습니다. 그래프는 높이가 <m>1</m>인 톱니 <m>2^{k-1}</m>개로 이루어집니다.</p></li>
+            <li><p><m>[0,1]</m>에서 <m>\Lambda(x)=2\operatorname{ReLU}(x)-4\operatorname{ReLU}(x-\frac12)</m>입니다. 첫째 은닉층은 <m>\bigl(\operatorname{ReLU}(x),\operatorname{ReLU}(x-\frac12)\bigr)</m>를 계산합니다. <m>\ell</m>번째 은닉층의 출력이 <m>(h_1,h_2)</m>이면 <m>u=2h_1-4h_2=\Lambda^{\circ\ell}(x)\in[0,1]</m>이고, <m>\ell+1</m>번째 은닉층은 <m>\bigl(\operatorname{ReLU}(u),\operatorname{ReLU}(u-\frac12)\bigr)</m>를 계산합니다. 이는 이전 층 출력의 선형결합에 편향을 더하고 ReLU를 적용한 것입니다. <m>k</m>번째 은닉층 다음 출력층에서 <m>2h_1-4h_2=\Lambda^{\circ k}(x)</m>를 계산합니다.</p></li>
+            <li><p><m>N(x)=c_0+\sum_{i=1}^mc_i\operatorname{ReLU}(a_ix-b_i)</m>에서 <m>a_i=0</m>인 항은 상수이고, <m>a_i\ne0</m>인 항은 <m>x=b_i/a_i</m>에서만 꺾입니다. 꺾이는 점은 많아야 <m>m</m>개이므로 <m>\mathbb R</m>은 많아야 <m>m+1</m>개의 구간으로 나뉘고 각 구간에서 <m>N</m>은 일차함수입니다.</p></li>
+            <li><p>가정에서 <m>N(j/2^k)</m>은 <m>j</m>가 홀수이면 <m>\frac12</m>보다 크고 짝수이면 <m>\frac12</m>보다 작습니다. 중간값 정리에 의해 각 <m>j=0,\ldots,2^k-1</m>에 대해 <m>z_j\in(j/2^k,(j+1)/2^k)</m>에서 <m>N(z_j)=\frac12</m>입니다. <m>z_j</m>와 <m>z_{j+1}</m>이 <m>N</m>이 일차인 같은 구간에 있다면 <m>N</m>은 <m>[z_j,z_{j+1}]</m>에서 상수 <m>\frac12</m>이어야 하는데, 이 구간은 <m>N(x)\ne\frac12</m>인 점 <m>(j+1)/2^k</m>을 포함하므로 모순입니다. 구간들은 순서대로 놓이므로 <m>z_0,\ldots,z_{2^k-1}</m>은 모두 다른 구간에 있고, (c)에 의해 <m>m+1\ge2^k</m>입니다. 즉, 깊은 신경망은 <m>2k</m>개의 노드로 정확히 표현하는 함수를 얕은 신경망은 <m>2^k-1</m>개 미만의 노드로는 오차 <m>\frac12</m> 미만으로 근사조차 할 수 없습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 11 -->
+    <exercise xml:id="exer-dnn-loss-function">
+      <title>손실 함수</title>
+      <statement>
+        <p>
+          자료 <m>(x_1,y_1),\ldots,(x_N,y_N)\in\mathbb R^2</m>와 매개변수 <m>\theta</m>를 갖는 모형 <m>\hat f(x;\theta)</m>에 대하여
+          <md><mrow>L(\theta)=\frac12\sum_{i=1}^{N}\bigl(\hat f(x_i;\theta)-y_i\bigr)^2</mrow></md>
+          을 제곱 오차 <term>손실 함수</term><aside><p>손실 함수:loss function</p></aside>라 합니다. 학습이란 <m>L</m>을 최소화하는 <m>\theta</m>를 찾는 것입니다.
+          <ol marker="(a)">
+            <li><p><m>y_i=f(x_i)</m>이고 <m>\max_x|f(x)-\hat f(x;\theta)|\le\varepsilon</m>이면 <m>L(\theta)\le N\varepsilon^2/2</m>임을 보이십시오. 또한 <m>x_1\lt\cdots\lt x_N</m>이면 <m>L=0</m>이 되는 얕은 ReLU 신경망이 존재함을 보이십시오.</p></li>
+            <li><p>고정된 함수 <m>\psi_1,\ldots,\psi_d</m>에 대하여 <m>\hat f(x;\theta)=\sum_{j=1}^{d}\theta_j\psi_j(x)</m>라 하고, <m>A=(\psi_j(x_i))\in\mathbb R^{N\times d}</m>, <m>y=(y_1,\ldots,y_N)^{T}</m>라 합시다. <m>L(\theta)=\frac12\|A\theta-y\|^2</m>이고 <m>\nabla L(\theta)=A^{T}(A\theta-y)</m>임을 보이십시오. 또한 <m>\theta</m>가 <m>L</m>의 최솟점일 필요충분조건은 <m>A^{T}A\theta=A^{T}y</m>, 즉 <m>A\theta</m>가 <m>y</m>의 <m>\operatorname{im}A</m> 위로의 정사영인 것임을 보이십시오.</p></li>
+            <li><p>자료 <m>(0,0),(\frac12,1),(1,0)</m>에 대하여 (b)의 모형으로 <m>\psi_1=1,\ \psi_2=x</m>를 쓸 때와 <m>\psi_1=\operatorname{ReLU}(x),\ \psi_2=\operatorname{ReLU}(x-\frac12)</m>를 쓸 때 각각 손실의 최솟값을 구하십시오.</p></li>
+            <li><p>모형 <m>\hat f(x;a,b)=b\,(a x)</m>는 너비가 <m>1</m>인 은닉층 하나와 항등 활성화 함수를 갖는 신경망입니다. 자료 <m>(1,1)</m> 하나에 대한 손실 <m>L(a,b)=\frac12(ab-1)^2</m>의 기울기를 구하고, 최솟점들의 집합이 볼록집합이 아니며 <m>(0,0)</m>은 기울기가 <m>0</m>이지만 최솟점이 아님을 보이십시오. 같은 함수족을 나타내는 모형 <m>\hat f(x;\theta)=\theta x</m>의 손실과 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>각 항이 <m>\frac12\varepsilon^2</m> 이하이므로 <m>L(\theta)\le N\varepsilon^2/2</m>입니다. <m>(x_i,y_i)</m>를 잇는 조각 선형 함수는 <xref ref="exer-dnn-piecewise-linear"/>에 의해 은닉 노드가 <m>N-1</m>개 이하인 얕은 ReLU 신경망이고, 모든 자료를 정확히 지나므로 <m>L=0</m>입니다. 따라서 표현 능력이 충분한 신경망에서는 손실의 최솟값이 <m>0</m>이며, 학습의 어려움은 표현 능력보다 최솟점을 찾는 데 있습니다.</p></li>
+            <li><p><m>(A\theta)_i=\sum_j\psi_j(x_i)\theta_j=\hat f(x_i;\theta)</m>이므로 첫 식이 성립합니다. <m>L(\theta+h)=L(\theta)+\langle A^{T}(A\theta-y),h\rangle+\frac12\|Ah\|^2</m>에서 기울기는 <m>A^{T}(A\theta-y)</m>입니다. <m>A^{T}A\theta=A^{T}y</m>이면 위 식에서 모든 <m>h</m>에 대해 <m>L(\theta+h)\ge L(\theta)</m>이고, 역으로 최솟점에서는 기울기가 <m>0</m>입니다. <m>A^{T}(y-A\theta)=0</m>은 <m>y-A\theta</m>가 <m>A</m>의 모든 열, 즉 <m>\operatorname{im}A</m>에 수직이라는 뜻이므로 <m>A\theta</m>는 정사영입니다.</p></li>
+            <li><p>첫째 경우 <m>A=\begin{pmatrix}1\amp0\\1\amp\frac12\\1\amp1\end{pmatrix}</m>, <m>A^{T}A=\begin{pmatrix}3\amp\frac32\\\frac32\amp\frac54\end{pmatrix}</m>, <m>A^{T}y=\begin{pmatrix}1\\\frac12\end{pmatrix}</m>이므로 <m>\theta=(\frac13,0)</m>이고 최솟값은 <m>\frac12\bigl(\frac19+\frac49+\frac19\bigr)=\frac13</m>입니다. 둘째 경우 <m>\theta=(2,-4)</m>이면 <m>\hat f</m>는 <xref ref="exer-dnn-hat-function"/>의 <m>\Lambda</m>와 <m>[0,1]</m>에서 같으므로 최솟값은 <m>0</m>입니다. 매개변수의 수는 같지만 비선형 활성화 함수 덕분에 더 잘 맞출 수 있습니다.</p></li>
+            <li><p>연쇄법칙에 의해 <m>\nabla L(a,b)=\bigl((ab-1)b,\ (ab-1)a\bigr)</m>입니다. 최솟값은 <m>0</m>이고 최솟점의 집합은 쌍곡선 <m>ab=1</m>입니다. <m>(1,1)</m>과 <m>(-1,-1)</m>은 최솟점이지만 그 중점 <m>(0,0)</m>에서 <m>L=\frac12</m>이므로 볼록집합이 아니고, 따라서 <m>L</m>은 볼록함수도 아닙니다. <m>(0,0)</m>에서 기울기는 <m>0</m>이지만 <m>L(t,t)=\frac12(t^2-1)^2\lt\frac12</m> <m>(0\lt|t|\lt\sqrt2)</m>이므로 최솟점이 아닙니다. 반면 <m>\theta x</m> 모형의 손실 <m>\frac12(\theta-1)^2</m>은 최솟점이 <m>\theta=1</m> 하나뿐인 볼록함수입니다. 두 모형은 같은 함수 <m>x\mapsto\theta x</m>들을 나타내지만, 층을 쌓아 매개변수를 곱하면 손실 함수의 모양이 달라집니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 12 -->
+    <exercise xml:id="exer-dnn-backpropagation">
+      <title>작은 심층 신경망과 역전파</title>
+      <statement>
+        <p>
+          입력 <m>x\in\mathbb R</m>에 대하여 다음 신경망을 생각합시다.
+          <md>
+            <mrow>z^{(1)}\amp=W_1x+b_1\in\mathbb R^2,\amp h^{(1)}\amp=\operatorname{ReLU}\bigl(z^{(1)}\bigr)</mrow>
+            <mrow>z^{(2)}\amp=w_2^{T}h^{(1)}+b_2\in\mathbb R,\amp h^{(2)}\amp=\operatorname{ReLU}\bigl(z^{(2)}\bigr)</mrow>
+            <mrow>\hat y\amp=c\,h^{(2)}+d</mrow>
+          </md>
+          매개변수는 <m>\theta=(W_1,b_1,w_2,b_2,c,d)</m>이고, 처음 값은
+          <md><mrow>W_1=\begin{pmatrix}1\\1\end{pmatrix},\quad b_1=\begin{pmatrix}0\\-\frac12\end{pmatrix},\quad w_2=\begin{pmatrix}2\\-4\end{pmatrix},\quad b_2=0,\quad c=1,\quad d=0</mrow></md>
+          입니다. 자료 하나 <m>(x,y)=(\frac14,1)</m>에 대한 손실은 <m>\ell(\theta)=\frac12(\hat y-y)^2</m>입니다.
+          <ol marker="(a)">
+            <li><p>처음 매개변수에서 이 신경망이 나타내는 함수는 <xref ref="exer-dnn-hat-function"/>의 <m>\Lambda</m>임을 보이십시오.</p></li>
+            <li><p><m>x=\frac14</m>에서 <m>z^{(1)},h^{(1)},z^{(2)},h^{(2)},\hat y,\ell</m>을 차례로 계산하십시오.</p></li>
+            <li><p><m>\delta^{(3)}=\partial\ell/\partial\hat y</m>, <m>\delta^{(2)}=\partial\ell/\partial z^{(2)}</m>, <m>\delta^{(1)}=\partial\ell/\partial z^{(1)}</m>라 할 때, 연쇄법칙으로
+            <md>
+              <mrow>\delta^{(2)}\amp=\operatorname{ReLU}'\bigl(z^{(2)}\bigr)\,c\,\delta^{(3)},\amp \delta^{(1)}\amp=\operatorname{ReLU}'\bigl(z^{(1)}\bigr)\odot w_2\,\delta^{(2)}</mrow>
+              <mrow>\frac{\partial\ell}{\partial w_2}\amp=\delta^{(2)}h^{(1)},\amp \frac{\partial\ell}{\partial W_1}\amp=\delta^{(1)}x</mrow>
+            </md>
+            임을 보이십시오. 여기서 <m>\odot</m>는 성분별 곱입니다. 이처럼 출력층에서 입력층 방향으로 <m>\delta</m>를 차례로 계산하여 기울기를 구하는 방법을 <term>역전파</term><aside><p>역전파:backpropagation</p></aside>라 합니다. 이를 이용하여 <m>\nabla\ell(\theta)</m>의 모든 성분을 구하십시오.</p></li>
+            <li><p>역전파는 출력에서 거꾸로 야코비 행렬을 곱하는 것임을 설명하십시오. 즉, <m>\partial\ell/\partial x</m>가 행벡터와 각 층의 야코비 행렬들의 곱으로 쓰임을 보이고, 이 곱을 왼쪽부터 계산하면 행렬과 행렬의 곱 없이 행벡터와 행렬의 곱만으로 충분함을 설명하십시오.</p></li>
+            <li><p><m>\eta\gt0</m>에 대하여 <m>\theta</m>를 <m>\theta-\eta\nabla\ell(\theta)</m>로 바꾸는 것을 <term>경사 하강법</term><aside><p>경사 하강법:gradient descent</p></aside>이라 합니다. <m>\ell(\theta-\eta\nabla\ell(\theta))=\ell(\theta)-\eta\|\nabla\ell(\theta)\|^2+O(\eta^2)</m>임을 이용하여, <m>\eta</m>가 충분히 작으면 손실이 줄어듦을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>h^{(1)}=\bigl(\operatorname{ReLU}(x),\operatorname{ReLU}(x-\frac12)\bigr)</m>, <m>z^{(2)}=2\operatorname{ReLU}(x)-4\operatorname{ReLU}(x-\frac12)</m>이고 <m>\hat y=\operatorname{ReLU}(z^{(2)})</m>이므로 <xref ref="exer-dnn-hat-function"/>(b)에 의해 <m>\hat y=\Lambda(x)</m>입니다.</p></li>
+            <li><p><m>z^{(1)}=(\frac14,-\frac14)</m>, <m>h^{(1)}=(\frac14,0)</m>, <m>z^{(2)}=\frac12</m>, <m>h^{(2)}=\frac12</m>, <m>\hat y=\frac12</m>, <m>\ell=\frac18</m>입니다.</p></li>
+            <li><p><m>\hat y=ch^{(2)}+d</m>, <m>h^{(2)}=\operatorname{ReLU}(z^{(2)})</m>이므로 <m>\delta^{(2)}=\frac{\partial\ell}{\partial\hat y}\frac{\partial\hat y}{\partial h^{(2)}}\frac{\partial h^{(2)}}{\partial z^{(2)}}=\delta^{(3)}c\operatorname{ReLU}'(z^{(2)})</m>입니다. <m>z^{(2)}=\sum_jw_{2,j}h^{(1)}_j+b_2</m>이고 <m>h^{(1)}_j</m>는 <m>z^{(1)}_j</m>에만 의존하므로 <m>\delta^{(1)}_j=\delta^{(2)}w_{2,j}\operatorname{ReLU}'(z^{(1)}_j)</m>이고, <m>\partial z^{(2)}/\partial w_{2,j}=h^{(1)}_j</m>, <m>\partial z^{(1)}_j/\partial W_{1,j}=x</m>에서 나머지 식이 나옵니다. 같은 방법으로 <m>\partial\ell/\partial c=\delta^{(3)}h^{(2)}</m>, <m>\partial\ell/\partial d=\delta^{(3)}</m>, <m>\partial\ell/\partial b_2=\delta^{(2)}</m>, <m>\partial\ell/\partial b_1=\delta^{(1)}</m>입니다. 이제 계산하면
+            <md>
+              <mrow>\delta^{(3)}\amp=\hat y-y=-\tfrac12,\amp \frac{\partial\ell}{\partial c}\amp=-\tfrac14,\amp \frac{\partial\ell}{\partial d}\amp=-\tfrac12,</mrow>
+              <mrow>\delta^{(2)}\amp=1\cdot1\cdot\left(-\tfrac12\right)=-\tfrac12,\amp \frac{\partial\ell}{\partial w_2}\amp=\left(-\tfrac18,0\right),\amp \frac{\partial\ell}{\partial b_2}\amp=-\tfrac12,</mrow>
+              <mrow>\delta^{(1)}\amp=(1,0)\odot(-1,2)=(-1,0),\amp \frac{\partial\ell}{\partial W_1}\amp=\left(-\tfrac14,0\right),\amp \frac{\partial\ell}{\partial b_1}\amp=(-1,0)</mrow>
+            </md>
+            입니다. <m>z^{(1)}_2=-\frac14\lt0</m>이므로 둘째 노드와 관련된 기울기는 모두 <m>0</m>입니다. 이 입력에서는 둘째 노드가 출력에 영향을 주지 않기 때문입니다.</p></li>
+            <li><p>각 층의 사상의 야코비 행렬은 <m>J_1=\frac{\partial z^{(1)}}{\partial x}=W_1</m>, <m>J_2=\frac{\partial z^{(2)}}{\partial z^{(1)}}=w_2^{T}D_1</m>, <m>J_3=\frac{\partial\hat y}{\partial z^{(2)}}=c\operatorname{ReLU}'(z^{(2)})</m>이고, 여기서 <m>D_1</m>은 <m>\operatorname{ReLU}'(z^{(1)})</m>을 대각성분으로 하는 대각행렬입니다. 합성함수의 미분에 의해
+            <md><mrow>\frac{\partial\ell}{\partial x}=\delta^{(3)}J_3J_2J_1</mrow></md>
+            이며, <m>\delta^{(2)}=\delta^{(3)}J_3</m>, <m>(\delta^{(1)})^{T}=\delta^{(2)}J_2</m>가 바로 이 곱을 왼쪽부터 계산한 중간 결과입니다. 맨 왼쪽의 <m>\delta^{(3)}</m>은 스칼라(<m>1\times1</m> 행벡터)이므로 왼쪽부터 곱하면 매 단계가 행벡터와 행렬의 곱입니다. 반면 오른쪽부터 곱하면 너비가 큰 층에서는 행렬과 행렬의 곱이 필요합니다. 행렬 곱의 결합법칙 덕분에 결과는 같고, 손실이 스칼라라는 점 때문에 역방향 계산이 효율적입니다.</p></li>
+            <li><p><m>\ell</m>은 이 점 근방에서 미분가능하므로(<m>z^{(1)}_j,z^{(2)}\ne0</m>) 테일러 전개에 의해 <m>\ell(\theta-\eta g)=\ell(\theta)-\eta\langle\nabla\ell(\theta),g\rangle+O(\eta^2)</m>이고, <m>g=\nabla\ell(\theta)</m>로 두면 주어진 식을 얻습니다. (c)에서
+            <md><mrow>\|\nabla\ell(\theta)\|^2=\tfrac1{16}+1+\tfrac1{64}+\tfrac14+\tfrac1{16}+\tfrac14=\tfrac{105}{64}\gt0</mrow></md>
+            이므로 충분히 작은 <m>\eta</m>에 대해 손실이 줄어듭니다. 실제로 <m>\eta=\frac18</m>로 한 번 갱신하면 <m>\hat y\approx0.923</m>, <m>\ell\approx0.003</m>이 됩니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
+
 </section>
