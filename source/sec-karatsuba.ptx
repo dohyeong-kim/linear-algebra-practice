@@ -164,4 +164,305 @@
     </proof>
   </proposition>
 
+  <exercises xml:id="exercises-karatsuba">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        따로 언급하지 않으면 <m>\mathbb F</m>는 임의의 체입니다. 차수가 <m>n</m>보다 작은 <m>\mathbb F[x]</m>의 다항식 전체의 공간을 <m>\mathbb F[x]_{\lt n}</m>으로 쓰고, <m>f\in\mathbb F[x]_{\lt n}</m>의 <m>x^i</m>의 계수를 <m>f_i</m>로 씁니다. 쌍선형 사상
+        <md>
+          <mrow>\mu_n:\mathbb F[x]_{\lt n}\times\mathbb F[x]_{\lt n}\to\mathbb F[x]_{\lt 2n-1},\qquad (f,g)\mapsto fg</mrow>
+        </md>
+        에 대응하는 텐서를 <m>\mathcal P_n</m>이라 합니다. 연산 횟수는 체의 덧셈, 뺄셈, 곱셈을 각각 <m>1</m>로 셉니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-karatsuba-numeric">
+      <title>수치 예제로 확인하기</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>카라추바 항등식으로 <m>(3x+5)(2x+7)</m>을 세 번의 곱셈으로 계산하십시오.</p></li>
+            <li><p><m>1234=12\cdot 100+34</m>, <m>5678=56\cdot 100+78</m>로 나누어 카라추바 항등식으로 <m>1234\times 5678</m>을 계산하십시오. 두 자리 수의 곱셈은 몇 번 사용됩니까?</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>AC=3\cdot 2=6</m>, <m>BD=5\cdot 7=35</m>, <m>(A+B)(C+D)=8\cdot 9=72</m>이므로 일차항의 계수는 <m>72-6-35=31</m>이고 <m>(3x+5)(2x+7)=6x^2+31x+35</m>입니다.</p></li>
+            <li><p><m>AC=12\cdot 56=672</m>, <m>BD=34\cdot 78=2652</m>, <m>(A+B)(C+D)=46\cdot 134=6164</m>이므로 가운데 항은 <m>6164-672-2652=2840</m>입니다. 따라서
+              <md>
+                <mrow>1234\times 5678=672\cdot 10^4+2840\cdot 10^2+2652=7006652</mrow>
+              </md>
+            입니다. 곱셈은 세 번 사용되지만, <m>46\cdot 134</m>처럼 합의 곱은 자리올림 때문에 한 자리가 더 길어질 수 있습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-karatsuba-subtractive">
+      <title>뺄셈을 사용하는 카라추바 항등식</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>다음 항등식을 보이십시오.
+            <md>
+              <mrow>AD+BC=AC+BD-(A-B)(C-D)</mrow>
+            </md>
+            </p></li>
+            <li><p><m>0\le A,B,C,D\lt 2^m</m>인 정수에 대하여 <m>|A-B|</m>와 <m>|C-D|</m>는 <m>m</m>비트 이하임을 보이십시오. <xref ref="prop-karatsuba-integer-exponent-bound"/>의 증명에서 <m>A+B</m>가 <m>m+1</m>비트가 될 수 있었던 것과 비교하여, (a)를 사용할 때 부호를 어떻게 처리하면 되는지 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(A-B)(C-D)=AC-AD-BC+BD</m>이므로 <m>AC+BD-(A-B)(C-D)=AD+BC</m>입니다.</p></li>
+            <li><p><m>-2^m\lt A-B\lt 2^m</m>이므로 <m>|A-B|\lt 2^m</m>이고, <m>C-D</m>도 같습니다. 먼저 두 차의 부호를 기록하고 절댓값끼리 곱한 뒤, 부호가 다르면 결과의 부호를 바꾸면 됩니다. 부호의 처리와 비교에는 <m>O(m)</m>번의 비트 연산이면 충분하므로, 재귀식은 <m>T(n)\le 3T(\lceil n/2\rceil)+cn</m>이 되어 합에서 생기는 추가 비트를 고려하지 않아도 됩니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-karatsuba-tensor-rank">
+      <title>일차 다항식 곱셈 텐서의 계수</title>
+      <statement>
+        <p>
+          <m>\mathbb F[x]_{\lt 2}</m>의 기저 <m>1,x</m>의 쌍대기저를 <m>e_0^*,e_1^*</m>라 하고, <m>\mathbb F[x]_{\lt 3}</m>의 기저를 <m>1,x,x^2</m>이라 합니다.
+          <ol marker="(a)">
+            <li><p><m>\mathcal P_2</m>를 표준기저로 나타내십시오. 이 표현은 몇 개의 단순 텐서로 이루어집니까?</p></li>
+            <li><p>카라추바 항등식을 이용하여 <m>\mathcal P_2</m>를 세 개의 단순 텐서의 합으로 나타내십시오.</p></li>
+            <li><p><xref ref="exer-mmt-flattening-bound"/>를 이용하여 모든 체 <m>\mathbb F</m>에 대해 <m>\operatorname{rank}_{\mathbb F}(\mathcal P_2)=3</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(f_0+f_1x)(g_0+g_1x)=f_0g_0+(f_0g_1+f_1g_0)x+f_1g_1x^2</m>이므로
+              <md>
+                <mrow>\mathcal P_2=e_0^*\otimes e_0^*\otimes 1+e_0^*\otimes e_1^*\otimes x+e_1^*\otimes e_0^*\otimes x+e_1^*\otimes e_1^*\otimes x^2</mrow>
+              </md>
+            이고, 네 개의 단순 텐서로 이루어집니다.</p></li>
+            <li><p>일차항의 계수가 <m>(f_0+f_1)(g_0+g_1)-f_0g_0-f_1g_1</m>이므로
+              <md>
+                <mrow>\mathcal P_2=e_0^*\otimes e_0^*\otimes(1-x)+(e_0^*+e_1^*)\otimes(e_0^*+e_1^*)\otimes x+e_1^*\otimes e_1^*\otimes(x^2-x)</mrow>
+              </md>
+            입니다.</p></li>
+            <li><p>셋째 펼침은 <m>\gamma\in\mathbb F[x]_{\lt 3}^*</m>를 쌍선형 형식 <m>(f,g)\mapsto\gamma(fg)</m>로 보냅니다. <m>1\cdot 1</m>, <m>1\cdot x</m>, <m>x\cdot x</m>가 <m>\mathbb F[x]_{\lt 3}</m>를 생성하므로 이 형식이 영이면 <m>\gamma=0</m>입니다. 따라서 셋째 펼침은 단사이고 계수가 <m>3</m>이므로 <m>\operatorname{rank}_{\mathbb F}(\mathcal P_2)\ge 3</m>입니다. (b)와 합하면 등호가 성립합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-karatsuba-operation-count">
+      <title>정확한 연산 횟수</title>
+      <statement>
+        <p>
+          <m>n=2^k</m>일 때 <m>\mathbb F[x]_{\lt n}</m>의 두 다항식의 곱을 카라추바 항등식을 계수가 하나인 다항식에 이를 때까지 재귀적으로 적용하여 계산하는 알고리즘의 연산 횟수를 <m>K_k</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>n=2m</m>일 때 한 단계의 분할과 조합에 덧셈과 뺄셈이 정확히 <m>4n-4</m>번 필요함을 보이십시오.</p></li>
+            <li><p><m>K_k=7\cdot 3^k-8\cdot 2^k+2</m>임을 보이십시오.</p></li>
+            <li><p>표준 곱셈의 연산 횟수가 <m>2n^2-2n+1</m>임을 보이고, <m>K_k</m>가 이보다 작아지는 가장 작은 <m>n=2^k</m>를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>A+B</m>와 <m>C+D</m>를 만드는 데 각각 <m>m</m>번이 듭니다. 세 곱은 각각 <m>2m-1</m>개의 계수를 가지므로 <m>(A+B)(C+D)-AC-BD</m>에 <m>2(2m-1)</m>번이 듭니다. 마지막으로 <m>BD</m>, <m>x^m</m>을 곱한 가운데 항, <m>x^{2m}</m>을 곱한 <m>AC</m>를 더할 때 가운데 항은 <m>BD</m>와 <m>x^m,\ldots,x^{2m-2}</m>의 <m>m-1</m>자리에서, <m>AC</m>와 <m>x^{2m},\ldots,x^{3m-2}</m>의 <m>m-1</m>자리에서 겹칩니다. 합하면 <m>2m+2(2m-1)+2(m-1)=8m-4=4n-4</m>번입니다.</p></li>
+            <li><p>곱셈의 횟수는 <m>3^k</m>입니다. 덧셈과 뺄셈의 횟수를 <m>D_k</m>라 하면 <m>D_0=0</m>이고 <m>D_k=3D_{k-1}+4\cdot 2^k-4</m>이므로
+              <md>
+                <mrow>D_k=\sum_{j=0}^{k-1}3^j\bigl(4\cdot 2^{k-j}-4\bigr)=4\cdot 2^k\cdot 2\Bigl(\bigl(\tfrac32\bigr)^k-1\Bigr)-2(3^k-1)=6\cdot 3^k-8\cdot 2^k+2</mrow>
+              </md>
+            입니다. 따라서 <m>K_k=3^k+D_k=7\cdot 3^k-8\cdot 2^k+2</m>입니다.</p></li>
+            <li><p>표준 곱셈은 <m>n^2</m>개의 곱 <m>f_ig_j</m>를 <m>2n-1</m>개의 계수로 모으므로 덧셈이 <m>n^2-(2n-1)=(n-1)^2</m>번이고, 합하면 <m>2n^2-2n+1</m>번입니다. <m>n=2,4,8,16</m>일 때 <m>K_k</m>는 <m>7,33,127,441</m>이고 표준 곱셈은 <m>5,25,113,481</m>입니다. 따라서 가장 작은 <m>n</m>은 <m>16</m>입니다. 이 값은 행렬곱에서 스트라센 알고리즘이 표준 알고리즘보다 유리해지는 크기(<xref ref="exer-strassen-vs-standard"/>)보다 훨씬 작습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-karatsuba-evaluation">
+      <title>값의 계산과 보간으로 보는 카라추바 항등식</title>
+      <statement>
+        <p>
+          <m>f,g\in\mathbb F[x]_{\lt 2}</m>이고 <m>h=fg</m>라 합시다. <m>h</m>의 최고차 계수 <m>h_2=f_1g_1</m>를 <m>h</m>의 <q>무한대에서의 값</q>이라 부릅니다.
+          <ol marker="(a)">
+            <li><p>카라추바의 세 곱이 각각 <m>h(0)</m>, <m>h(1)</m>, <m>h_2</m>임을 보이고, 다음 등식을 확인하십시오.
+            <md>
+              <mrow>h(x)=h(0)(1-x)+h(1)x+h_2\,x(x-1)</mrow>
+            </md>
+            </p></li>
+            <li><p>점 <m>1</m> 대신 <m>-1</m>을 사용하면 <xref ref="exer-karatsuba-subtractive"/>의 항등식을 얻음을 보이십시오.</p></li>
+            <li><p><m>\mathbb F</m>의 표수가 <m>2</m>가 아니면 <m>h(0)</m>, <m>h(1)</m>, <m>h(-1)</m>로부터 <m>h</m>의 계수를 구하는 공식을 쓰십시오. 표수가 <m>2</m>이면 이 방법이 실패하는 이유를 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>h(0)=f_0g_0=BD</m>, <m>h(1)=(f_0+f_1)(g_0+g_1)=(A+B)(C+D)</m>, <m>h_2=f_1g_1=AC</m>입니다(<m>A=f_1</m>, <m>B=f_0</m>, <m>C=g_1</m>, <m>D=g_0</m>). 우변은 차수가 <m>2</m> 이하이고 <m>x=0</m>, <m>x=1</m>에서 각각 <m>h(0)</m>, <m>h(1)</m>이며 <m>x^2</m>의 계수가 <m>h_2</m>이므로, 우변에서 <m>h</m>를 뺀 다항식은 차수가 <m>1</m> 이하이고 두 근을 가지므로 영입니다. 일차항의 계수를 비교하면 카라추바 항등식 <m>h_1=h(1)-h(0)-h_2</m>를 얻습니다.</p></li>
+            <li><p>같은 논리로 <m>h(x)=h(0)(1+x)-h(-1)x+h_2\,x(x+1)</m>이고, <m>h(-1)=(f_0-f_1)(g_0-g_1)=(B-A)(D-C)=(A-B)(C-D)</m>입니다. 일차항을 비교하면 <m>h_1=h(0)+h_2-h(-1)</m>이 되어 <xref ref="exer-karatsuba-subtractive"/>의 항등식과 같습니다.</p></li>
+            <li><p><m>h(1)=h_0+h_1+h_2</m>, <m>h(-1)=h_0-h_1+h_2</m>이므로
+              <md>
+                <mrow>h_0=h(0),\qquad h_1=\frac{h(1)-h(-1)}{2},\qquad h_2=\frac{h(1)+h(-1)}{2}-h(0)</mrow>
+              </md>
+            입니다. 표수가 <m>2</m>이면 <m>1=-1</m>이므로 세 점이 서로 다르지 않고, <m>2</m>로 나눌 수도 없습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-karatsuba-toom3">
+      <title>세 조각으로 나누는 툼–쿡 알고리즘</title>
+      <statement>
+        <p>
+          <m>\mathbb F</m>의 표수가 <m>2</m>도 <m>3</m>도 아니라 합시다. <m>n=3m</m>일 때 <m>f,g\in\mathbb F[x]_{\lt n}</m>를 <m>y=x^m</m>과 <m>F_i,G_i\in\mathbb F[x]_{\lt m}</m>를 사용하여
+          <md>
+            <mrow>f=F_0+F_1y+F_2y^2,\qquad g=G_0+G_1y+G_2y^2</mrow>
+          </md>
+          로 나누고, <m>F(t)=F_0+F_1t+F_2t^2</m>, <m>G(t)=G_0+G_1t+G_2t^2</m>, <m>H(t)=F(t)G(t)=\sum_{k=0}^{4}H_kt^k</m>로 놓습니다.
+          <ol marker="(a)">
+            <li><p>다섯 곱 <m>P_0=F(0)G(0)</m>, <m>P_1=F(1)G(1)</m>, <m>P_{-1}=F(-1)G(-1)</m>, <m>P_2=F(2)G(2)</m>, <m>P_\infty=F_2G_2</m>로부터 <m>H_0,\ldots,H_4</m>를 구하는 공식을 쓰십시오.</p></li>
+            <li><p>이 분할을 재귀적으로 적용하는 알고리즘의 연산 횟수 <m>T(n)</m>이 어떤 상수 <m>c</m>에 대해 <m>T(n)\le 5T(n/3)+cn</m>을 만족함을 보이십시오.</p></li>
+            <li><p><m>\omega_{\mathrm{poly}}\le\log_35\approx 1.465</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p><m>P_1</m>과 <m>P_{-1}</m>의 합과 차에서 <m>H_2</m>와 <m>H_1+H_3</m>를 얻고, <m>P_2</m>에서 <m>H_3</m>를 분리하십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>H_0=P_0</m>, <m>H_4=P_\infty</m>입니다. <m>P_{\pm1}=H_0\pm H_1+H_2\pm H_3+H_4</m>이므로
+              <md>
+                <mrow>H_2\amp=\frac{P_1+P_{-1}}{2}-P_0-P_\infty,\qquad S:=H_1+H_3=\frac{P_1-P_{-1}}{2}</mrow>
+              </md>
+            입니다. <m>P_2=H_0+2H_1+4H_2+8H_3+16H_4</m>에서 <m>U:=P_2-P_0-4H_2-16P_\infty=2H_1+8H_3=2S+6H_3</m>이므로
+              <md>
+                <mrow>H_3=\frac{U-2S}{6},\qquad H_1=S-H_3</mrow>
+              </md>
+            입니다. <m>2</m>와 <m>6</m>으로 나누므로 표수가 <m>2</m>, <m>3</m>이 아니어야 합니다.</p></li>
+            <li><p><m>F(1),F(-1),F(2)</m>와 <m>G(1),G(-1),G(2)</m>는 길이 <m>m</m>인 다항식의 덧셈과 상수배로 <m>O(m)</m>번에 계산됩니다. 다섯 곱은 각각 <m>T(m)</m>번이 들고, (a)의 공식은 길이 <m>2m-1</m>인 다항식에 대한 상수 개의 덧셈, 뺄셈, 상수배이므로 <m>O(m)</m>번입니다. 마지막으로 <m>f g=\sum_kH_ky^k</m>를 모으는 데 겹치는 자리의 덧셈 <m>O(n)</m>번이 듭니다. 따라서 <m>T(n)\le 5T(n/3)+cn</m>입니다.</p></li>
+            <li><p><m>n=3^k</m>이면 <xref ref="prop-karatsuba-exponent-bound"/>의 증명과 같이
+              <md>
+                <mrow>T(3^k)\le 5^kT(1)+c\,3^k\sum_{j=0}^{k-1}\Bigl(\frac53\Bigr)^j=O(5^k)=O\bigl(n^{\log_35}\bigr)</mrow>
+              </md>
+            입니다. 일반적인 <m>n</m>은 <m>3n</m>보다 작은 <m>3</m>의 거듭제곱까지 계수에 영을 덧붙이면 되므로 <m>\omega_{\mathrm{poly}}\le\log_35</m>이고, 이는 <m>\log_23</m>보다 작습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-karatsuba-kronecker">
+      <title>크로네커 대입</title>
+      <statement>
+        <p>
+          정수 계수 다항식 <m>f,g\in\mathbb Z[x]</m>의 차수가 <m>n</m>보다 작고 모든 계수가 <m>0</m> 이상 <m>2^b</m> 미만이라 합시다. <m>N=2b+\lceil\log_2n\rceil</m>으로 놓습니다.
+          <ol marker="(a)">
+            <li><p><m>h=fg</m>의 모든 계수가 <m>0\le h_k\lt 2^N</m>을 만족함을 보이고, 정수 <m>h(2^N)=f(2^N)g(2^N)</m>의 이진 표현을 <m>N</m>비트씩 끊어 읽으면 <m>h_0,h_1,\ldots</m>를 얻음을 보이십시오.</p></li>
+            <li><p><xref ref="prop-karatsuba-integer-exponent-bound"/>를 이용하여 <m>h</m>를 <m>O\bigl((n(b+\log n))^{\log_23}\bigr)</m>번의 비트 연산으로 계산할 수 있음을 보이십시오.</p></li>
+            <li><p>계수가 <m>|f_i|,|g_j|\lt 2^b</m>인 음의 정수일 수도 있는 경우로 이 방법을 확장하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>h_k=\sum_{i+j=k}f_ig_j</m>는 많아야 <m>n</m>개의 항의 합이고 각 항은 <m>(2^b-1)^2\lt 2^{2b}</m>보다 작으므로 <m>0\le h_k\lt n2^{2b}\le 2^N</m>입니다. <m>h(2^N)=\sum_kh_k2^{kN}</m>에서 각 <m>h_k</m>가 <m>N</m>비트에 들어가므로 자리올림이 없고, 이진 표현의 <m>kN</m>번째부터 <m>(k+1)N-1</m>번째 비트가 정확히 <m>h_k</m>입니다.</p></li>
+            <li><p><m>f(2^N)</m>은 계수 <m>f_i</m>의 이진 표현을 <m>N</m>비트 간격으로 나열한 것이므로 <m>O(nN)</m>번의 비트 연산으로 만들 수 있고, <m>nN</m>비트 이하입니다. 두 정수의 곱은 카라추바 알고리즘으로 <m>O((nN)^{\log_23})</m>번이고, (a)의 읽기는 <m>O(nN)</m>번입니다. <m>N=O(b+\log n)</m>이므로 주장이 성립합니다. 이로써 정수 계수 다항식의 곱셈은 한 번의 큰 정수 곱셈으로 환원됩니다.</p></li>
+            <li><p><m>f=f^+-f^-</m>, <m>g=g^+-g^-</m>로 쓰되 <m>f^\pm,g^\pm</m>의 계수가 <m>0</m> 이상 <m>2^b</m> 미만이 되도록 양의 계수와 음의 계수의 절댓값을 분리합니다. 그러면
+              <md>
+                <mrow>fg=f^+g^+-f^+g^--f^-g^++f^-g^-</mrow>
+              </md>
+            이고, 우변의 네 곱은 (a)와 (b)의 방법으로 각각 <m>O\bigl((n(b+\log n))^{\log_23}\bigr)</m>번에 계산됩니다. 마지막으로 계수별로 <m>2n-1</m>번의 덧셈과 뺄셈을 <m>O(N)</m>비트 정수에 대해 수행하면 되므로 <m>O(nN)</m>번이 추가될 뿐이고, 같은 상계가 성립합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-karatsuba-toom-general">
+      <title>일반적인 툼–쿡 알고리즘과 다항식 곱셈 지수</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>차수가 <m>n</m>보다 작은 두 다항식의 곱을 계산하는 모든 알고리즘은 적어도 <m>2n-1</m>번의 연산을 사용함을 보이고, <m>\omega_{\mathrm{poly}}\ge 1</m>임을 보이십시오.</p></li>
+            <li><p><m>k\ge 2</m>이고 <m>t_1,\ldots,t_{2k-2}\in\mathbb F</m>가 서로 다르다고 합시다. <m>P(x)=\prod_{\ell=1}^{2k-2}(x-t_\ell)</m>이고 <m>L_\ell</m>이 <m>L_\ell(t_{\ell'})=\delta_{\ell\ell'}</m>를 만족하는 차수 <m>2k-3</m> 이하의 라그랑주 보간 다항식일 때, <m>f,g\in\mathbb F[x]_{\lt k}</m>에 대하여 다음 등식을 보이십시오.
+            <md>
+              <mrow>fg=f_{k-1}g_{k-1}P(x)+\sum_{\ell=1}^{2k-2}f(t_\ell)g(t_\ell)L_\ell(x).</mrow>
+            </md>
+            이로부터 <m>|\mathbb F|\ge 2k-2</m>이면 <m>\operatorname{rank}_{\mathbb F}(\mathcal P_k)\le 2k-1</m>임을 보이십시오.</p></li>
+            <li><p><m>\mathbb F</m>가 무한체이면 모든 <m>k\ge 2</m>에 대하여 <m>\omega_{\mathrm{poly}}\le\log_k(2k-1)</m>임을 보이십시오.</p></li>
+            <li><p><m>\mathbb F</m>가 무한체이면 <m>\omega_{\mathrm{poly}}=1</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(c)에서는 <m>f,g\in\mathbb F[x]_{\lt kn}</m>를 <m>y=x^n</m>에 대한 길이 <m>n</m>의 블록 <m>k</m>개로 나누고, (b)의 등식에서 <m>f_i,g_j</m>를 블록으로 바꾸십시오. 블록들은 서로 가환인 다항식이므로 등식이 그대로 성립합니다.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>출력 계수 <m>h_k=\sum_{i+j=k}f_ig_j</m> <m>(0\le k\le 2n-2)</m>는 입력 계수에 대한 서로 다른 이차 다항식이므로 상수도 아니고 입력과도 같지 않습니다. 따라서 각 <m>h_k</m>는 서로 다른 연산의 결과여야 하므로 적어도 <m>2n-1</m>번의 연산이 필요합니다. <m>\tau\lt 1</m>이면 <m>2n-1\le Cn^\tau</m>이 모든 <m>n</m>에서 성립할 수 없으므로 <m>\omega_{\mathrm{poly}}\ge 1</m>입니다.</p></li>
+            <li><p><m>h=fg</m>는 차수가 <m>2k-2</m> 이하이고 <m>x^{2k-2}</m>의 계수가 <m>f_{k-1}g_{k-1}</m>입니다. <m>P</m>는 최고차 계수가 <m>1</m>인 <m>2k-2</m>차 다항식이므로 <m>h-f_{k-1}g_{k-1}P</m>는 차수가 <m>2k-3</m> 이하이고, <m>P(t_\ell)=0</m>이므로 <m>t_\ell</m>에서의 값이 <m>h(t_\ell)=f(t_\ell)g(t_\ell)</m>입니다. 차수가 <m>2k-3</m> 이하인 다항식은 서로 다른 <m>2k-2</m>개의 점에서의 값으로 결정되므로 등식이 성립합니다. <m>f\mapsto f_{k-1}</m>, <m>f\mapsto f(t_\ell)</m>은 선형 형식이므로 우변은 <m>\mathcal P_k</m>의 <m>2k-1</m>항 분해를 줍니다.</p></li>
+            <li><p><m>\mathbb F</m>가 무한체이므로 서로 다른 <m>t_\ell</m>을 고정할 수 있습니다. <m>f,g\in\mathbb F[x]_{\lt kn}</m>를 <m>f=\sum_{i=0}^{k-1}F_iy^i</m>, <m>g=\sum_{j=0}^{k-1}G_jy^j</m> <m>(F_i,G_j\in\mathbb F[x]_{\lt n},\ y=x^n)</m>로 나누면, (b)의 등식은 다항식환에서 성립하는 항등식이므로
+              <md>
+                <mrow>fg=F_{k-1}G_{k-1}P(y)+\sum_{\ell=1}^{2k-2}\Bigl(\sum_iF_it_\ell^i\Bigr)\Bigl(\sum_jG_jt_\ell^j\Bigr)L_\ell(y)</mrow>
+              </md>
+            입니다. 블록의 일차결합 계산과, <m>2k-1</m>개의 곱에 <m>P</m>와 <m>L_\ell</m>의 계수를 곱해 모으는 계산은 <m>k</m>와 점에만 의존하는 상수 <m>c_k</m>에 대해 <m>c_kn</m>번이면 됩니다. 따라서 이 알고리즘의 연산 횟수는 <m>T(kn)\le(2k-1)T(n)+c_kkn</m>을 만족하고, <xref ref="prop-karatsuba-exponent-bound"/>와 같은 계산으로 <m>T(n)=O(n^{\log_k(2k-1)})</m>입니다. 영을 덧붙이면 일반적인 <m>n</m>에도 성립합니다.</p></li>
+            <li><p><m>\log_k(2k-1)=1+\log_k\bigl(2-\tfrac1k\bigr)\lt 1+\log_k2\to 1</m>이므로 임의의 <m>\tau\gt 1</m>에 대해 <m>\log_k(2k-1)\lt\tau</m>인 <m>k</m>가 있습니다. (c)에 의해 <m>\omega_{\mathrm{poly}}\le 1</m>이고 (a)와 합하면 <m>\omega_{\mathrm{poly}}=1</m>입니다. 다만 <m>k</m>가 커질수록 상수 <m>c_k</m>가 커지므로 실제로는 고속 푸리에 변환과 같은 다른 방법이 쓰입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-karatsuba-rank-field-size">
+      <title>최적 다항식 곱셈과 체의 크기</title>
+      <statement>
+        <p>
+          <m>n\ge 2</m>라 합시다. <m>\mathbb F[x]_{\lt 2n-1}</m> 위의 선형 형식 <m>\operatorname{ev}_t(h)=h(t)</m> <m>(t\in\mathbb F)</m>와 <m>\operatorname{ev}_\infty(h)=h_{2n-2}</m>를 생각합니다. 이 문제에서는 <m>\operatorname{rank}_{\mathbb F}(\mathcal P_n)=2n-1</m>이 체의 크기에 따라 결정되며, 이 값을 달성하는 분해가 본질적으로 <xref ref="exer-karatsuba-evaluation"/>와 <xref ref="exer-karatsuba-toom-general"/>의 값의 계산과 보간뿐임을 보입니다.
+          <ol marker="(a)">
+            <li><p><m>\operatorname{rank}_{\mathbb F}(\mathcal P_n)\ge 2n-1</m>이고, <m>|\mathbb F|\ge 2n-2</m>이면 등호가 성립함을 보이십시오.</p></li>
+            <li><p><m>\gamma\in\mathbb F[x]_{\lt 2n-1}^*</m>에 대하여 쌍선형 형식 <m>(f,g)\mapsto\gamma(fg)</m>의 계수가 <m>1</m>이면, 어떤 <m>c\ne 0</m>과 <m>t\in\mathbb F\cup\{\infty\}</m>에 대해 <m>\gamma=c\operatorname{ev}_t</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(\mathcal P_n)=2n-1</m>이고 <m>\mathcal P_n=\sum_{\ell=1}^{2n-1}\alpha_\ell\otimes\beta_\ell\otimes w_\ell</m>이라 합시다. 서로 다른 <m>t_1,\ldots,t_{2n-1}\in\mathbb F\cup\{\infty\}</m>와 영이 아닌 상수 <m>c_\ell</m>이 존재하여 모든 <m>f,g</m>에 대해 <m>\alpha_\ell(f)\beta_\ell(g)=c_\ell(fg)(t_\ell)</m>임을 보이십시오. 여기서 <m>(fg)(\infty)=\operatorname{ev}_\infty(fg)=f_{n-1}g_{n-1}</m>입니다. 이로부터 <m>\operatorname{rank}_{\mathbb F}(\mathcal P_n)=2n-1</m>일 필요충분조건은 <m>|\mathbb F|\ge 2n-2</m>임을 보이십시오.</p></li>
+            <li><p><m>\mathbb F=\mathbb F_{2}</m>일 때, <m>\mathcal P_2</m>의 세 항 분해는 점 <m>0,1,\infty</m>를 사용하는 카라추바 항등식뿐임을 설명하고, <m>\operatorname{rank}_{\mathbb F_{2}}(\mathcal P_3)=6</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(b)에서 쌍선형 형식의 행렬은 <m>c_k=\gamma(x^k)</m>로 이루어진 <m>n\times n</m> 행켈 행렬 <m>(c_{i+j})_{0\le i,j\le n-1}</m>입니다. <m>c_0\ne 0</m>인 경우, <m>c_{2n-2}\ne 0</m>인 경우, 둘 다 영인 경우로 나누고, 계수가 <m>1</m>인 행렬의 모든 <m>2\times 2</m> 소행렬식이 영이라는 사실을 이용하십시오. (c)에서는 <m>w_\ell</m>이 기저임을 보이고 그 쌍대기저에 (b)를 적용하십시오. (d)의 상계에서는 <m>f_0g_0</m>, <m>f_1g_1</m>, <m>f_2g_2</m>와 <m>(f_i+f_j)(g_i+g_j)</m> <m>(i\lt j)</m>를 사용하십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>셋째 펼침은 <m>\gamma</m>를 <m>(f,g)\mapsto\gamma(fg)</m>로 보냅니다. <m>x^k=x^ix^j</m> <m>(0\le k\le 2n-2)</m>로 쓸 수 있으므로 곱 <m>fg</m>들은 <m>\mathbb F[x]_{\lt 2n-1}</m>을 생성하고, 따라서 셋째 펼침은 단사입니다. <xref ref="exer-mmt-flattening-bound"/>에 의해 계수는 <m>2n-1</m> 이상입니다. <m>|\mathbb F|\ge 2n-2</m>이면 <xref ref="exer-karatsuba-toom-general"/>의 (b)를 <m>k=n</m>에 적용하여 등호를 얻습니다.</p></li>
+            <li><p>쌍선형 형식의 행렬은 <m>H=(c_{i+j})_{0\le i,j\le n-1}</m>, <m>c_k=\gamma(x^k)</m>입니다.</p>
+            <p><m>c_0\ne 0</m>이면 계수가 <m>1</m>인 행렬의 성질에 의해 <m>c_{i+j}=c_ic_j/c_0</m>입니다. <m>t=c_1/c_0</m>이라 하면 <m>1\le k\le n-1</m>에 대해 <m>c_k=c_{k-1}c_1/c_0</m>이므로 귀납적으로 <m>c_k=c_0t^k</m>이고, <m>n\le k\le 2n-2</m>이면 <m>c_k=c_{n-1}c_{k-n+1}/c_0=c_0t^k</m>입니다. 따라서 <m>\gamma(h)=c_0\sum_kh_kt^k=c_0\operatorname{ev}_t(h)</m>입니다.</p>
+            <p><m>c_{2n-2}\ne 0</m>이면 행과 열의 순서를 뒤집은 행렬 <m>(d_{i+j})</m>, <m>d_k=c_{2n-2-k}</m>도 계수가 <m>1</m>인 행켈 행렬이고 <m>d_0\ne 0</m>입니다. 앞의 경우에 의해 <m>d_k=d_0s^k</m>이므로 <m>c_k=c_{2n-2}s^{2n-2-k}</m>입니다. <m>s\ne 0</m>이면 <m>c_0\ne 0</m>인 경우로 돌아가고, <m>s=0</m>이면 <m>k\lt 2n-2</m>에서 <m>c_k=0</m>이므로 <m>\gamma=c_{2n-2}\operatorname{ev}_\infty</m>입니다.</p>
+            <p>마지막으로 <m>c_0=c_{2n-2}=0</m>이라 합시다. <m>H\ne 0</m>이므로 <m>c_s\ne 0</m>인 가장 작은 <m>s</m>가 있습니다. 그러면 <m>1\le s\le 2n-3</m>이므로 <m>s=i+j=i'+j'</m>, <m>0\le i\lt i'\le n-1</m>, <m>0\le j'\lt j\le n-1</m>인 두 표현이 있습니다(<m>s\le n-1</m>이면 <m>(0,s),(1,s-1)</m>, <m>s\ge n</m>이면 <m>(s-n+1,n-1),(s-n+2,n-2)</m>). 행 <m>i,i'</m>과 열 <m>j',j</m>로 이루어진 소행렬식이 영이므로 <m>c_s^2=c_{i+j'}c_{i'+j}</m>이고, <m>i+j'\lt s</m>이므로 <m>c_{i+j'}=0</m>입니다. 따라서 <m>c_s=0</m>이 되어 모순이므로 이 경우는 일어나지 않습니다.</p></li>
+            <li><p><m>fg=\sum_\ell\alpha_\ell(f)\beta_\ell(g)w_\ell</m>이고 곱 <m>fg</m>들이 <m>\mathbb F[x]_{\lt 2n-1}</m>을 생성하므로 <m>w_1,\ldots,w_{2n-1}</m>은 기저입니다. 쌍대기저를 <m>\gamma_\ell</m>이라 하면 <m>\gamma_\ell(fg)=\alpha_\ell(f)\beta_\ell(g)</m>이고, 이 쌍선형 형식은 <m>\gamma_\ell\ne 0</m>이므로 영이 아니며 계수가 <m>1</m>입니다. (b)에 의해 <m>\gamma_\ell=c_\ell\operatorname{ev}_{t_\ell}</m>입니다. <m>\gamma_\ell</m>들은 일차독립이므로 서로 평행하지 않고, 따라서 <m>t_\ell</m>은 모두 다릅니다.</p>
+            <p>그러므로 <m>2n-1\le|\mathbb F\cup\{\infty\}|=|\mathbb F|+1</m>, 즉 <m>|\mathbb F|\ge 2n-2</m>입니다. 역은 (a)입니다. 또한 <m>\beta_\ell(g_0)\ne 0</m>인 <m>g_0</m>를 고정하면 <m>\alpha_\ell(f)=\frac{c_\ell g_0(t_\ell)}{\beta_\ell(g_0)}f(t_\ell)</m>이므로(<m>t_\ell=\infty</m>이면 <m>f(\infty)=f_{n-1}</m>로 읽습니다) 각 곱은 <m>f</m>와 <m>g</m>의 한 점에서의 값의 곱이고, <m>w_\ell</m>은 이 값들로부터 <m>fg</m>를 복원하는 보간 기저입니다.</p></li>
+            <li><p><m>\mathbb F_{2}\cup\{\infty\}=\{0,1,\infty\}</m>이므로 <m>n=2</m>일 때 (c)의 세 점은 반드시 <m>0,1,\infty</m>이고, 세 곱은 상수배를 제외하면 <m>f_0g_0</m>, <m>(f_0+f_1)(g_0+g_1)</m>, <m>f_1g_1</m>입니다. 이는 <xref ref="exer-karatsuba-evaluation"/>의 (a)에서 본 카라추바 항등식입니다.</p>
+            <p><m>n=3</m>이면 <m>|\mathbb F_{2}|=2\lt 4</m>이므로 (c)에 의해 계수는 <m>6</m> 이상입니다. 한편 <m>p_{ij}=(f_i+f_j)(g_i+g_j)</m>로 놓으면
+              <md>
+                <mrow>h_0\amp=f_0g_0,\qquad h_1=p_{01}-f_0g_0-f_1g_1,\qquad h_2=p_{02}-f_0g_0-f_2g_2+f_1g_1,</mrow>
+                <mrow>h_3\amp=p_{12}-f_1g_1-f_2g_2,\qquad h_4=f_2g_2</mrow>
+              </md>
+            이므로 여섯 번의 곱셈으로 충분합니다. 따라서 <m>\operatorname{rank}_{\mathbb F_{2}}(\mathcal P_3)=6</m>입니다. 이처럼 작은 체에서는 카라추바 항등식을 단순히 일반화한 값의 계산과 보간만으로 최적 알고리즘을 얻을 수 없습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
+
 </section>

@@ -68,5 +68,359 @@
     입니다. 여기서 <m>\log_27 \approx 2.807</m>입니다. 
   </p>
 
+  <remark xml:id="remark-strassen-theoretical-and-memory-access">
+    <title>스트라센 알고리즘과 저장장치 접근</title>
+    <p>
+      이론과 실제 구현은 다를 수 있습니다. 스트라센 알고리즘은 곱셈 횟수를 줄여 이론적으로 빠른 행렬 곱셈을 가능하게 하지만, 저장장치 접근 패턴이 복잡해 실제 하드웨어에서의 성능은 제한적일 수 있습니다. 표준 <m>n \times n</m>행렬 곱에서 각 성분은 <m>O(n)</m>번의 연산에서 등장합니다. 표준 알고리즘을 유지하면서 동일 성분의 반복 사용을 캐시 사용으로 가속하면, 곱셈 수행 속도도 가속됩니다. 한편, 스트라센 알고리즘에서는 블록 단위로 데이터를 접근하므로 캐시 효율이 떨어질 수 있습니다.
+    </p>
+    
+  </remark>
+
+  <exercises xml:id="exercises-strassen">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        따로 언급하지 않으면 <m>\mathbb F</m>는 임의의 체이고, 블록 <m>A_{ij},B_{ij},C_{ij}</m>와 곱 <m>M_1,\ldots,M_7</m>은 <xref ref="prop-strassen-block-identities"/>의 것을 뜻합니다. 연산 횟수는 <xref ref="def-matrix-multiplication-exponent"/>에서처럼 체의 덧셈, 뺄셈, 곱셈을 각각 <m>1</m>로 셉니다. <xref ref="ex-tensor-rank-standard-matrix-multiplication"/>에 의해 두 <m>n\times n</m> 행렬의 표준 곱셈은 <m>n^3</m>번의 곱셈과 <m>n^2(n-1)</m>번의 덧셈, 즉 모두 <m>n^2(2n-1)</m>번의 연산을 사용합니다.
+      </p>
+      <p>
+        <m>n=2^k</m>일 때 스트라센 항등식을 블록의 크기가 <m>1\times 1</m>이 될 때까지 재귀적으로 적용하는 알고리즘의 연산 횟수를 <m>S_k</m>로 씁니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-strassen-numeric">
+      <title>수치 예제로 확인하기</title>
+      <statement>
+        <p>
+          다음 두 유리수 행렬을 <m>1\times 1</m> 블록으로 나누어 스트라센 항등식을 적용합니다.
+          <md>
+            <mrow>A=\begin{pmatrix}1\amp 2\\3\amp 4\end{pmatrix},\qquad B=\begin{pmatrix}5\amp 6\\7\amp 8\end{pmatrix}</mrow>
+          </md>
+          <ol marker="(a)">
+            <li><p><m>M_1,\ldots,M_7</m>을 계산하십시오.</p></li>
+            <li><p><m>C_{11},C_{12},C_{21},C_{22}</m>를 조합하여 <m>AB</m>를 구하고, 표준 방법으로 계산한 <m>AB</m>와 비교하십시오. 두 방법에 사용된 곱셈 횟수와 덧셈 및 뺄셈 횟수도 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>
+              <md>
+                <mrow>M_1\amp=(1+4)(5+8)=65,\amp M_2\amp=(3+4)\cdot 5=35,\amp M_3\amp=1\cdot(6-8)=-2,</mrow>
+                <mrow>M_4\amp=4\cdot(7-5)=8,\amp M_5\amp=(1+2)\cdot 8=24,\amp M_6\amp=(3-1)(5+6)=22,</mrow>
+                <mrow>M_7\amp=(2-4)(7+8)=-30</mrow>
+              </md>
+            입니다.</p></li>
+            <li><p><m>C_{11}=65+8-24-30=19</m>, <m>C_{12}=-2+24=22</m>, <m>C_{21}=35+8=43</m>, <m>C_{22}=65-35-2+22=50</m>이므로
+              <md>
+                <mrow>AB=\begin{pmatrix}19\amp 22\\43\amp 50\end{pmatrix}</mrow>
+              </md>
+            입니다. 표준 방법으로는 <m>1\cdot 5+2\cdot 7=19</m>, <m>1\cdot 6+2\cdot 8=22</m>, <m>3\cdot 5+4\cdot 7=43</m>, <m>3\cdot 6+4\cdot 8=50</m>이므로 결과가 같습니다. 스트라센 방법은 곱셈 <m>7</m>번과 덧셈 및 뺄셈 <m>18</m>번을, 표준 방법은 곱셈 <m>8</m>번과 덧셈 <m>4</m>번을 사용합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-strassen-expansion">
+      <title>항등식의 전개</title>
+      <statement>
+        <p>
+          <xref ref="prop-strassen-block-identities"/>의 증명에서 생략한 계산을 완성합니다.
+          <ol marker="(a)">
+            <li><p><m>M_3+M_5</m>와 <m>M_2+M_4</m>를 전개하여 각각 <m>C_{12}</m>, <m>C_{21}</m>과 같음을 보이십시오.</p></li>
+            <li><p><m>M_1+M_4-M_5+M_7</m>과 <m>M_1-M_2+M_3+M_6</m>을 전개하고, 어떤 항들이 소거되는지 밝혀 각각 <m>C_{11}</m>, <m>C_{22}</m>와 같음을 보이십시오.</p></li>
+            <li><p>(a)와 (b)의 전개에 나타나는 모든 항이 <m>A_{ij}B_{kl}</m> 꼴임을 확인하고, 이로부터 블록 행렬의 곱셈이 가환이 아니어도 항등식이 성립하는 이유를 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>
+              <md>
+                <mrow>M_3+M_5\amp=(A_{11}B_{12}-A_{11}B_{22})+(A_{11}B_{22}+A_{12}B_{22})=A_{11}B_{12}+A_{12}B_{22},</mrow>
+                <mrow>M_2+M_4\amp=(A_{21}B_{11}+A_{22}B_{11})+(A_{22}B_{21}-A_{22}B_{11})=A_{21}B_{11}+A_{22}B_{21}</mrow>
+              </md>
+            입니다.</p></li>
+            <li><p>각 곱을 전개하면 다음과 같습니다.
+              <md>
+                <mrow>M_1\amp=A_{11}B_{11}+A_{11}B_{22}+A_{22}B_{11}+A_{22}B_{22},</mrow>
+                <mrow>M_4\amp=A_{22}B_{21}-A_{22}B_{11},</mrow>
+                <mrow>-M_5\amp=-A_{11}B_{22}-A_{12}B_{22},</mrow>
+                <mrow>M_7\amp=A_{12}B_{21}+A_{12}B_{22}-A_{22}B_{21}-A_{22}B_{22}.</mrow>
+              </md>
+            더하면 <m>A_{11}B_{22}</m>, <m>A_{22}B_{11}</m>, <m>A_{22}B_{22}</m>, <m>A_{22}B_{21}</m>, <m>A_{12}B_{22}</m>가 각각 한 번씩 양과 음으로 나타나 소거되므로 <m>A_{11}B_{11}+A_{12}B_{21}=C_{11}</m>만 남습니다. 마찬가지로
+              <md>
+                <mrow>-M_2\amp=-A_{21}B_{11}-A_{22}B_{11},</mrow>
+                <mrow>M_3\amp=A_{11}B_{12}-A_{11}B_{22},</mrow>
+                <mrow>M_6\amp=A_{21}B_{11}+A_{21}B_{12}-A_{11}B_{11}-A_{11}B_{12}</mrow>
+              </md>
+            를 <m>M_1</m>과 더하면 <m>A_{11}B_{11}</m>, <m>A_{11}B_{22}</m>, <m>A_{22}B_{11}</m>, <m>A_{21}B_{11}</m>, <m>A_{11}B_{12}</m>가 소거되어 <m>A_{21}B_{12}+A_{22}B_{22}=C_{22}</m>가 남습니다.</p></li>
+            <li><p>각 <m>M_\ell</m>은 <m>A</m>의 블록들의 일차결합을 왼쪽에, <m>B</m>의 블록들의 일차결합을 오른쪽에 둔 곱입니다. 분배법칙은 곱의 순서를 유지한 채 적용되므로 전개된 각 항은 <m>A_{ij}B_{kl}</m> 꼴이고, 위의 소거는 같은 순서의 같은 항끼리만 일어납니다. 따라서 어느 단계에서도 <m>B_{kl}A_{ij}=A_{ij}B_{kl}</m> 같은 교환을 사용하지 않으므로, 블록이 서로 가환이 아닌 행렬이어도 항등식이 성립합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-strassen-tensor">
+      <title>행렬곱 텐서의 일곱 항 분해</title>
+      <statement>
+        <p>
+          <m>r=s=t=2</m>일 때 <xref ref="def-matrix-multiplication-tensor"/>의 기저 <m>E_{ij}^*,F_{jk}^*,G_{ik}</m>를 사용합니다.
+          <ol marker="(a)">
+            <li><p>스트라센 항등식을 <m>1\times 1</m> 블록에 적용하여 <m>T_{2,2,2}</m>를 일곱 개의 단순 텐서 <m>\alpha_\ell\otimes\beta_\ell\otimes W_\ell</m>의 합으로 나타내십시오. 여기서 <m>M_\ell=\alpha_\ell(A)\beta_\ell(B)</m>이고, <m>W_\ell</m>은 <m>M_\ell</m>이 각 출력 성분에 나타나는 계수로 정해집니다.</p></li>
+            <li><p><xref ref="exer-mmt-flattenings-border"/>를 이용하여 <m>4\le\operatorname{rank}_{\mathbb F}(T_{2,2,2})\le 7</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>M_1</m>은 <m>C_{11}</m>과 <m>C_{22}</m>에 계수 <m>1</m>로 나타나므로 <m>W_1=G_{11}+G_{22}</m>입니다. 다른 곱도 같은 방법으로 읽으면 다음을 얻습니다.
+              <md>
+                <mrow>T_{2,2,2}\amp=(E_{11}^*+E_{22}^*)\otimes(F_{11}^*+F_{22}^*)\otimes(G_{11}+G_{22})</mrow>
+                <mrow>\amp\quad+(E_{21}^*+E_{22}^*)\otimes F_{11}^*\otimes(G_{21}-G_{22})</mrow>
+                <mrow>\amp\quad+E_{11}^*\otimes(F_{12}^*-F_{22}^*)\otimes(G_{12}+G_{22})</mrow>
+                <mrow>\amp\quad+E_{22}^*\otimes(F_{21}^*-F_{11}^*)\otimes(G_{11}+G_{21})</mrow>
+                <mrow>\amp\quad+(E_{11}^*+E_{12}^*)\otimes F_{22}^*\otimes(G_{12}-G_{11})</mrow>
+                <mrow>\amp\quad+(E_{21}^*-E_{11}^*)\otimes(F_{11}^*+F_{12}^*)\otimes G_{22}</mrow>
+                <mrow>\amp\quad+(E_{12}^*-E_{22}^*)\otimes(F_{21}^*+F_{22}^*)\otimes G_{11}.</mrow>
+              </md>
+            우변을 <m>(A,B)</m>에서 평가하면 <m>\sum_\ell M_\ell W_\ell=C_{11}G_{11}+C_{12}G_{12}+C_{21}G_{21}+C_{22}G_{22}=AB</m>이므로, 쌍선형 사상과 텐서의 대응에 의해 등식이 성립합니다.</p></li>
+            <li><p>(a)에서 <m>\operatorname{rank}_{\mathbb F}(T_{2,2,2})\le 7</m>이고, <xref ref="exer-mmt-flattenings-border"/>의 (b)에서 <m>\operatorname{rank}_{\mathbb F}(T_{2,2,2})\ge\max\{4,4,4\}=4</m>입니다. 실제 값이 <m>7</m>이라는 것은 <xref ref="exer-strassen-optimality"/>에서 보입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-strassen-operation-count">
+      <title>정확한 연산 횟수</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>스트라센 항등식은 블록의 덧셈과 뺄셈을 정확히 <m>18</m>번 사용함을 보이십시오. 이 중 <m>M_1,\ldots,M_7</m>의 인수를 만드는 데 몇 번, 곱들을 조합하는 데 몇 번이 쓰입니까?</p></li>
+            <li><p><m>S_0=1</m>이고 <m>k\ge 1</m>에 대해 <m>S_k=7S_{k-1}+18\cdot 4^{k-1}</m>임을 보이십시오.</p></li>
+            <li><p><m>S_k=7^{k+1}-6\cdot 4^k</m>임을 보이십시오. 즉 <m>n=2^k</m>에 대하여 <m>S_k=7n^{\log_27}-6n^2</m>입니다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>인수를 만드는 데 <m>M_1</m>에서 <m>2</m>번, <m>M_2,M_3,M_4,M_5</m>에서 각각 <m>1</m>번, <m>M_6,M_7</m>에서 각각 <m>2</m>번, 모두 <m>10</m>번이 쓰입니다. 조합하는 데는 <m>C_{11}</m>과 <m>C_{22}</m>에서 각각 <m>3</m>번, <m>C_{12}</m>와 <m>C_{21}</m>에서 각각 <m>1</m>번, 모두 <m>8</m>번이 쓰입니다. 합하면 <m>18</m>번입니다.</p></li>
+            <li><p><m>1\times 1</m> 행렬의 곱은 곱셈 한 번이므로 <m>S_0=1</m>입니다. <m>2^k\times 2^k</m> 행렬을 <m>2^{k-1}\times 2^{k-1}</m> 블록으로 나누면, 일곱 번의 블록 곱에 각각 <m>S_{k-1}</m>번의 연산이 들고, (a)의 <m>18</m>번의 블록 덧셈 및 뺄셈은 각각 <m>4^{k-1}</m>번의 스칼라 연산입니다.</p></li>
+            <li><p>(b)를 반복하면
+              <md>
+                <mrow>S_k=7^k+18\sum_{i=0}^{k-1}7^i4^{k-1-i}=7^k+18\cdot\frac{7^k-4^k}{7-4}=7^{k+1}-6\cdot 4^k</mrow>
+              </md>
+            입니다. <m>n=2^k</m>이면 <m>7^k=n^{\log_27}</m>, <m>4^k=n^2</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-strassen-vs-standard">
+      <title>표준 알고리즘과의 비교</title>
+      <statement>
+        <p>
+          <m>n=2^k</m>에 대하여 표준 알고리즘의 연산 횟수 <m>n^2(2n-1)=2\cdot 8^k-4^k</m>와 <xref ref="exer-strassen-operation-count"/>의 <m>S_k</m>를 비교합니다.
+          <ol marker="(a)">
+            <li><p><m>n=2,4,8</m>일 때 두 연산 횟수를 계산하십시오.</p></li>
+            <li><p><m>k\to\infty</m>일 때 <m>S_k/(2\cdot 8^k-4^k)\to 0</m>임을 보이십시오.</p></li>
+            <li><p><m>S_k\lt 2\cdot 8^k-4^k</m>가 되는 가장 작은 <m>k</m>를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>n=2,4,8</m>일 때 <m>S_k</m>는 각각 <m>25,247,2017</m>이고 표준 알고리즘은 각각 <m>12,112,960</m>입니다. 작은 행렬에서는 스트라센 알고리즘이 두 배 이상의 연산을 사용합니다.</p></li>
+            <li><p><m>2\cdot 8^k-4^k\ge 8^k</m>이고 <m>S_k\lt 7^{k+1}</m>이므로 비는 <m>7(7/8)^k</m>보다 작고, 이는 <m>0</m>으로 수렴합니다.</p></li>
+            <li><p>직접 계산하면 다음과 같습니다.
+              <md>
+                <mrow>k\amp=7:\amp S_7\amp=5{,}666{,}497,\amp 2\cdot 8^7-4^7\amp=4{,}177{,}920,</mrow>
+                <mrow>k\amp=8:\amp S_8\amp=39{,}960{,}391,\amp 2\cdot 8^8-4^8\amp=33{,}488{,}896,</mrow>
+                <mrow>k\amp=9:\amp S_9\amp=280{,}902{,}385,\amp 2\cdot 8^9-4^9\amp=268{,}173{,}312,</mrow>
+                <mrow>k\amp=10:\amp S_{10}\amp=1{,}971{,}035{,}287,\amp 2\cdot 8^{10}-4^{10}\amp=2{,}146{,}435{,}072.</mrow>
+              </md>
+            <m>k\le 6</m>에서도 같은 계산으로 <m>S_k</m>가 더 큼을 확인할 수 있습니다. 따라서 가장 작은 <m>k</m>는 <m>10</m>, 즉 <m>n=1024</m>입니다. 이 결과는 재귀를 <m>1\times 1</m> 블록까지 진행하는 것이 비효율적임을 보여 줍니다. <xref ref="exer-strassen-cutoff"/>에서 이를 개선합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-strassen-cutoff">
+      <title>재귀를 멈추는 크기</title>
+      <statement>
+        <p>
+          <m>0\le c\le k</m>에 대하여, <m>2^k\times 2^k</m> 행렬에 스트라센 항등식을 재귀적으로 적용하다가 블록의 크기가 <m>2^c\times 2^c</m>가 되면 표준 알고리즘으로 곱하는 알고리즘의 연산 횟수를 <m>H_{k,c}</m>라 합시다. 따라서 <m>H_{k,0}=S_k</m>이고 <m>H_{k,k}=2\cdot 8^k-4^k</m>입니다.
+          <ol marker="(a)">
+            <li><p><m>n=2m</m>일 때 스트라센 항등식을 한 번만 적용하고 블록의 곱은 표준 알고리즘으로 계산하면 연산 횟수가 <m>14m^3+11m^2</m>임을 보이십시오. 이것이 표준 알고리즘보다 적을 필요충분조건은 <m>m\ge 8</m>임을 보이십시오.</p></li>
+            <li><p><m>H_{k,c}=7^{k-c}\bigl(2\cdot 8^c+5\cdot 4^c\bigr)-6\cdot 4^k</m>임을 보이십시오.</p></li>
+            <li><p><m>k\ge 3</m>이면 <m>H_{k,c}</m>는 <m>c=3</m>에서 최소임을 보이고, (a)의 결과와 비교하십시오. 또한 <m>n=1024</m>일 때 <m>H_{10,3}</m>을 <m>S_{10}</m> 및 표준 알고리즘의 연산 횟수와 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>일곱 번의 블록 곱에 각각 <m>m^2(2m-1)</m>번, <m>18</m>번의 블록 덧셈 및 뺄셈에 각각 <m>m^2</m>번의 연산이 들므로 <m>7m^2(2m-1)+18m^2=14m^3+11m^2</m>입니다. 표준 알고리즘은 <m>(2m)^2(4m-1)=16m^3-4m^2</m>번이므로 차는 <m>2m^3-15m^2=m^2(2m-15)</m>이고, 이는 <m>m\ge 8</m>일 때에만 양수입니다.</p></li>
+            <li><p><m>c\lt j\le k</m>에 대하여 <xref ref="exer-strassen-operation-count"/>의 (b)와 같은 이유로 <m>H_{j,c}=7H_{j-1,c}+18\cdot 4^{j-1}</m>입니다. 이를 반복하면
+              <md>
+                <mrow>H_{k,c}\amp=7^{k-c}H_{c,c}+18\sum_{i=0}^{k-c-1}7^i4^{k-1-i}=7^{k-c}\bigl(2\cdot 8^c-4^c\bigr)+6\bigl(7^{k-c}4^c-4^k\bigr)</mrow>
+                <mrow>\amp=7^{k-c}\bigl(2\cdot 8^c+5\cdot 4^c\bigr)-6\cdot 4^k</mrow>
+              </md>
+            입니다.</p></li>
+            <li><p><m>f(c)=(2\cdot 8^c+5\cdot 4^c)/7^c</m>라 하면 <m>H_{k,c}=7^kf(c)-6\cdot 4^k</m>이므로 <m>f</m>를 최소화하면 됩니다. 
+              <md>
+                <mrow>f(c+1)\lt f(c)\iff 16\cdot 8^c+20\cdot 4^c\lt 14\cdot 8^c+35\cdot 4^c\iff 2^c\lt 7.5</mrow>
+              </md>
+            이므로 <m>f</m>는 <m>c\le 3</m>에서 감소하고 <m>c\ge 3</m>에서 증가합니다. 따라서 <m>c=3</m>에서 최소입니다. 이는 (a)에서 블록의 크기가 <m>16</m> 이상일 때에만 한 번 더 나누는 것이 이득이라는 것과 일치합니다. 즉 크기가 <m>8</m>인 블록에서 재귀를 멈춥니다. <m>n=1024</m>이면 <m>H_{10,3}=1{,}100{,}550{,}336</m>이고, 이는 <m>S_{10}=1{,}971{,}035{,}287</m>의 약 <m>56\%</m>, 표준 알고리즘의 <m>2{,}146{,}435{,}072</m>의 약 <m>51\%</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-strassen-commutative-trick">
+      <title>위노그라드의 가환 기법</title>
+      <statement>
+        <p>
+          <m>n=2h</m>가 짝수라 합시다. <m>x=(x_1,\ldots,x_n)</m>, <m>y=(y_1,\ldots,y_n)\in\mathbb F^n</m>에 대하여 <m>\xi(x)=\sum_{j=1}^{h}x_{2j-1}x_{2j}</m>로 놓습니다.
+          <ol marker="(a)">
+            <li><p>다음 등식을 보이십시오.
+            <md>
+              <mrow>\sum_{j=1}^{n}x_jy_j=\sum_{j=1}^{h}(x_{2j-1}+y_{2j})(x_{2j}+y_{2j-1})-\xi(x)-\xi(y).</mrow>
+            </md>
+            </p></li>
+            <li><p>(a)를 이용하여 두 <m>n\times n</m> 행렬의 곱을 <m>\frac{n^3}{2}+n^2</m>번의 곱셈으로 계산할 수 있음을 보이십시오. 이때 필요한 덧셈 및 뺄셈의 횟수를 구하고, 전체 연산 횟수를 표준 알고리즘과 비교하십시오.</p></li>
+            <li><p><m>x_j,y_j</m>가 <m>2\times 2</m> 행렬이면 (a)의 등식이 일반적으로 성립하지 않음을 예를 들어 보이십시오. 이 기법을 블록 행렬에 재귀적으로 적용할 수 없는 이유를 스트라센 항등식과 비교하여 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(x_{2j-1}+y_{2j})(x_{2j}+y_{2j-1})=x_{2j-1}x_{2j}+x_{2j-1}y_{2j-1}+y_{2j}x_{2j}+y_{2j}y_{2j-1}</m>입니다. 곱셈이 가환이므로 <m>y_{2j}x_{2j}=x_{2j}y_{2j}</m>이고 <m>y_{2j}y_{2j-1}=y_{2j-1}y_{2j}</m>입니다. <m>j</m>에 대해 더하고 <m>\xi(x)</m>, <m>\xi(y)</m>를 빼면 등식을 얻습니다.</p></li>
+            <li><p><m>(AB)_{ik}</m>는 <m>A</m>의 <m>i</m>번째 행과 <m>B</m>의 <m>k</m>번째 열의 내적입니다. 먼저 <m>A</m>의 각 행과 <m>B</m>의 각 열에 대한 <m>\xi</m>를 계산하는 데 <m>2n\cdot h=n^2</m>번의 곱셈과 <m>2n(h-1)</m>번의 덧셈이 듭니다. 그다음 각 <m>(i,k)</m>에 대하여 (a)의 우변을 계산하는 데 <m>h</m>번의 곱셈과 <m>2h+(h-1)+2=3h+1</m>번의 덧셈 및 뺄셈이 듭니다. 따라서 곱셈은 <m>n^2h+n^2=\frac{n^3}{2}+n^2</m>번이고, 덧셈 및 뺄셈은
+              <md>
+                <mrow>n^2(3h+1)+2n(h-1)=\tfrac32n^3+2n^2-2n</mrow>
+              </md>
+            번입니다. 전체 연산 횟수 <m>2n^3+3n^2-2n</m>은 표준 알고리즘의 <m>2n^3-n^2</m>보다 오히려 많습니다. 이 기법은 곱셈이 덧셈보다 훨씬 비쌀 때에만 유용합니다.</p></li>
+            <li><p><m>h=1</m>, <m>x_1=y_1=0</m>, <m>x_2=E_{12}</m>, <m>y_2=E_{21}</m>(행렬 단위)로 놓으면 좌변은 <m>x_2y_2=E_{12}E_{21}=E_{11}</m>이고 우변은 <m>y_2x_2=E_{21}E_{12}=E_{22}</m>입니다. (a)의 증명은 <m>y_{2j}x_{2j}=x_{2j}y_{2j}</m>를 사용하는데, 블록 행렬에서는 이것이 성립하지 않습니다. 또한 이 기법은 <m>x_{2j-1}x_{2j}</m>처럼 같은 입력의 성분끼리 곱하고, 두 입력을 더한 값을 곱하므로 <xref ref="prop-tensor-rank-bilinear-complexity"/>의 쌍선형 계산이 아닙니다. 반면 스트라센 항등식은 <xref ref="exer-strassen-expansion"/>에서 보았듯이 항상 <m>A</m>의 블록을 왼쪽에, <m>B</m>의 블록을 오른쪽에 두는 쌍선형 계산이므로 블록에 재귀적으로 적용할 수 있습니다. 따라서 위노그라드의 기법은 곱셈 횟수의 상수배만 줄일 뿐 행렬곱 지수를 개선하지 못합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-strassen-general-size">
+      <title>2의 거듭제곱이 아닌 크기</title>
+      <statement>
+        <p>
+          <m>\omega_0=\log_27</m>로 놓습니다. 본문의 어림은 <m>n</m>이 <m>2</m>의 거듭제곱일 때만 다루었습니다. 이 문제에서는 모든 <m>n\ge 1</m>에 대하여 <m>C_{\mathbb F}(n)=O(n^{\omega_0})</m>임을 두 가지 방법으로 보입니다.
+          <ol marker="(a)">
+            <li><p><xref ref="exer-mmt-exponent-lower-bound"/>와 <xref ref="exer-strassen-operation-count"/>를 이용하여 <m>C_{\mathbb F}(n)\lt 49\,n^{\omega_0}</m>임을 보이십시오.</p></li>
+            <li><p><m>n\ge 2</m>이면 <m>C_{\mathbb F}(n)\le C_{\mathbb F}(n-1)+6n^2</m>임을 보이십시오.</p></li>
+            <li><p><m>m\ge 1</m>에 대해 <m>C_{\mathbb F}(2m)\le 7C_{\mathbb F}(m)+18m^2</m>임을 보이고, 모든 <m>n\ge 2</m>에 대하여 <m>C_{\mathbb F}(n)\le 7C_{\mathbb F}(\lfloor n/2\rfloor)+11n^2</m>임을 보이십시오.</p></li>
+            <li><p>모든 <m>n\ge 1</m>에 대하여 <m>C_{\mathbb F}(n)\lt 16\,n^{\omega_0}</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(b)에서는 <m>A</m>와 <m>B</m>를 왼쪽 위의 <m>(n-1)\times(n-1)</m> 블록, 마지막 열, 마지막 행, 오른쪽 아래 성분으로 나누십시오. (d)에서는 <m>n_j=\lfloor n/2^j\rfloor</m>에 대해 (c)를 반복하고 <m>2^{J}\le n</m>인 <m>J=\lfloor\log_2n\rfloor</m>에서 멈추십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>2^{k-1}\lt n\le 2^k</m>인 <m>k</m>를 잡습니다. <xref ref="exer-mmt-exponent-lower-bound"/>의 (b)를 반복하면 <m>C_{\mathbb F}(n)\le C_{\mathbb F}(2^k)</m>이고, <m>C_{\mathbb F}</m>는 최소 연산 횟수이므로 <m>C_{\mathbb F}(2^k)\le S_k\lt 7^{k+1}=7\,(2^k)^{\omega_0}\lt 7\,(2n)^{\omega_0}=49\,n^{\omega_0}</m>입니다.</p></li>
+            <li><p><m>N=n-1</m>이라 하고 다음과 같이 나눕니다. 여기서 <m>A',B'</m>은 <m>N\times N</m> 행렬, <m>a,b</m>는 열벡터, <m>r,s</m>는 행벡터, <m>\alpha,\beta</m>는 스칼라입니다.
+              <md>
+                <mrow>A=\begin{pmatrix}A'\amp a\\r\amp\alpha\end{pmatrix},\quad B=\begin{pmatrix}B'\amp b\\s\amp\beta\end{pmatrix},\quad AB=\begin{pmatrix}A'B'+as\amp A'b+a\beta\\rB'+\alpha s\amp rb+\alpha\beta\end{pmatrix}.</mrow>
+              </md>
+            <m>A'B'</m>에 <m>C_{\mathbb F}(N)</m>번이 들고, <m>as</m>와 그 덧셈에 <m>2N^2</m>번, <m>A'b+a\beta</m>와 <m>rB'+\alpha s</m>에 각각 <m>N^2+N(N-1)+2N=2N^2+N</m>번, <m>rb+\alpha\beta</m>에 <m>2N+1</m>번이 듭니다. 합하면 추가 연산은 <m>6N^2+4N+1\le 6(N+1)^2=6n^2</m>번입니다.</p></li>
+            <li><p><m>2m\times 2m</m> 행렬을 <m>m\times m</m> 블록으로 나누어 스트라센 항등식을 적용하고, 일곱 번의 블록 곱을 각각 <m>C_{\mathbb F}(m)</m>번의 연산으로 계산하면 첫째 부등식을 얻습니다. <m>n=2m</m>이면 <m>18m^2=4.5n^2</m>입니다. <m>n=2m+1</m>이면 (b)에 의해
+              <md>
+                <mrow>C_{\mathbb F}(n)\le C_{\mathbb F}(2m)+6n^2\le 7C_{\mathbb F}(m)+4.5n^2+6n^2</mrow>
+              </md>
+            입니다. 두 경우 모두 <m>m=\lfloor n/2\rfloor</m>이므로 둘째 부등식이 성립합니다.</p></li>
+            <li><p><m>n=1</m>이면 <m>C_{\mathbb F}(1)=1</m>이므로 성립합니다. <m>n\ge 2</m>이면 <m>J=\lfloor\log_2n\rfloor\ge 1</m>, <m>n_j=\lfloor n/2^j\rfloor</m>로 놓습니다. <m>\lfloor n_j/2\rfloor=n_{j+1}</m>이고 <m>j\lt J</m>이면 <m>n_j\ge 2</m>, <m>n_J=1</m>입니다. (c)를 반복하고 <m>n_j\le n/2^j</m>를 사용하면
+              <md>
+                <mrow>C_{\mathbb F}(n)\amp\le 7^J+11\sum_{j=0}^{J-1}7^jn_j^2\le 7^J+11n^2\sum_{j=0}^{J-1}\Bigl(\frac74\Bigr)^j\lt 7^J+\frac{44}{3}n^2\Bigl(\frac74\Bigr)^J</mrow>
+              </md>
+            입니다. <m>2^J\le n</m>이고 <m>\omega_0\gt 2</m>이므로 <m>7^J=(2^J)^{\omega_0}\le n^{\omega_0}</m>이고 <m>(7/4)^J=(2^J)^{\omega_0-2}\le n^{\omega_0-2}</m>입니다. 따라서 <m>C_{\mathbb F}(n)\lt(1+\frac{44}{3})n^{\omega_0}\lt 16\,n^{\omega_0}</m>입니다. 영행렬을 덧붙이는 (a)의 방법보다 상수가 작습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-strassen-optimality">
+      <title>스트라센 알고리즘의 최적성</title>
+      <statement>
+        <p>
+          이 문제에서는 모든 체 <m>\mathbb F</m>에 대하여 <m>\operatorname{rank}_{\mathbb F}(T_{2,2,2})=7</m>임을 보입니다. 즉 <xref ref="prop-tensor-rank-bilinear-complexity"/>의 의미에서 두 <m>2\times 2</m> 행렬의 곱을 계산하는 쌍선형 계산은 적어도 일곱 번의 곱셈을 사용하며, 스트라센 알고리즘은 이 의미에서 최적입니다.
+        </p>
+        <p>
+          <m>\operatorname{Mat}_2=\operatorname{Mat}_{2\times 2}(\mathbb F)</m>로 쓰고 <m>\mathbb F^2</m>의 원소는 열벡터로 봅니다. <xref ref="exer-mmt-cyclic-symmetry"/>의 (a)에 의해 <m>\operatorname{Mat}_2</m> 위의 모든 선형 형식은 유일한 <m>X\in\operatorname{Mat}_2</m>에 대하여 <m>A\mapsto\operatorname{tr}(XA)</m> 꼴입니다. <m>R=\operatorname{rank}_{\mathbb F}(T_{2,2,2})</m>라 하고 길이 <m>R</m>인 분해 <m>T_{2,2,2}=\sum_{\ell=1}^{R}\alpha_\ell\otimes\beta_\ell\otimes W_\ell</m>를 고정한 뒤, <m>\alpha_\ell(A)=\operatorname{tr}(X_\ell A)</m>, <m>\beta_\ell(B)=\operatorname{tr}(Y_\ell B)</m>, <m>Z_\ell=W_\ell</m>로 놓습니다. 서로 다른 <m>a,b</m>에 대하여
+          <md>
+            <mrow>H_{ab}=\{A\in\operatorname{Mat}_2:\operatorname{tr}(X_aA)=\operatorname{tr}(X_bA)=0\}</mrow>
+          </md>
+          로 놓습니다.
+          <ol marker="(a)">
+            <li><p>모든 <m>A,B,C\in\operatorname{Mat}_2</m>에 대하여 다음 등식을 보이십시오.
+            <md>
+              <mrow>AB\amp=\sum_{\ell=1}^{R}\operatorname{tr}(X_\ell A)\operatorname{tr}(Y_\ell B)Z_\ell,</mrow>
+              <mrow>\operatorname{tr}(ABC)\amp=\sum_{\ell=1}^{R}\operatorname{tr}(X_\ell A)\operatorname{tr}(Y_\ell B)\operatorname{tr}(Z_\ell C)=\sum_{\ell=1}^{R}\operatorname{tr}(Y_\ell A)\operatorname{tr}(Z_\ell B)\operatorname{tr}(X_\ell C).</mrow>
+            </md>
+            또한 모든 <m>X_\ell,Y_\ell,Z_\ell</m>이 영이 아니고 <m>X_1,\ldots,X_R</m>이 <m>\operatorname{Mat}_2</m>를 생성함을 보이십시오.</p></li>
+            <li><p><m>\operatorname{Mat}_2</m>의 부분공간이 가역행렬을 포함하지 않으면 그 차원은 <m>2</m> 이하이고, 차원이 <m>2</m>이면 어떤 영이 아닌 <m>u\in\mathbb F^2</m>에 대해 <m>\{A:Au=0\}</m> 또는 <m>\{A:u^{\mathsf T}A=0\}</m>임을 보이십시오. 이를 이용하여, <m>H_{ab}</m>가 가역행렬을 포함하지 않을 필요충분조건은 <m>X_a,X_b</m>가 서로 평행하지 않은 계수 <m>1</m>인 행렬이고 <m>X_a=pq_a^{\mathsf T}</m>, <m>X_b=pq_b^{\mathsf T}</m> 또는 <m>X_a=p_aq^{\mathsf T}</m>, <m>X_b=p_bq^{\mathsf T}</m> 꼴인 것임을 보이십시오.</p></li>
+            <li><p><m>H_{ab}</m>가 가역행렬 <m>A_0</m>을 포함한다고 하고 <m>\Lambda=\{1,\ldots,R\}\setminus\{a,b\}</m>로 놓습니다. <m>R\ge 6</m>임을 보이십시오. 또한 <m>R=6</m>이면 <m>\dim H_{ab}=2</m>이고 모든 <m>\ell\in\Lambda</m>에 대하여 <m>Y_\ell</m>과 <m>Z_\ell</m>의 계수가 <m>1</m>임을 보이십시오.</p></li>
+            <li><p>가역행렬을 포함하는 <m>H_{ab}</m>가 존재함을 보이십시오. 또한 <m>R=6</m>이면 <m>\{a,b\}\cap\{c,d\}=\varnothing</m>이고 <m>H_{ab}</m>와 <m>H_{cd}</m>가 모두 가역행렬을 포함하는 두 쌍이 존재함을 보이고, 이로부터 모든 <m>X_\ell,Y_\ell,Z_\ell</m>의 계수가 <m>1</m>임을 보이십시오.</p></li>
+            <li><p>모든 <m>X_\ell,Y_\ell,Z_\ell</m>의 계수가 <m>1</m>이면 <m>R\ge 8</m>임을 보이고, <m>\operatorname{rank}_{\mathbb F}(T_{2,2,2})=7</m>을 결론지으십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(b)에서는 계수 <m>1</m>인 두 행렬 <m>a_1b_1^{\mathsf T}</m>, <m>a_2b_2^{\mathsf T}</m>에 대해 <m>a_1\nparallel a_2</m>, <m>b_1\nparallel b_2</m>이면 합이 가역임을 이용하십시오. (c)에서는 <m>Y_\ell</m> <m>(\ell\in\Lambda)</m>의 쌍대기저를 잡아 <m>A\in H_{ab}</m>에 대한 사상 <m>B\mapsto AB</m>를 대각행렬로 나타내고, <m>A_0^{-1}H_{ab}</m>가 가환임을 보이십시오. (d)에서는 공통 원소가 없는 두 변을 갖지 않는 그래프가 한 꼭짓점을 공유하는 변들로만 이루어지거나 삼각형이라는 사실을 이용하십시오. (e)에서는 <m>A=xy'^{\mathsf T}</m>, <m>B=yz'^{\mathsf T}</m>, <m>C=zx'^{\mathsf T}</m>를 대입하고, 등식을 <m>\mathbb F^2\otimes\mathbb F^2\otimes\mathbb F^2</m> 위의 쌍선형 형식으로 보십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>쌍선형 사상과 텐서의 대응에 의해 첫째 등식이 성립합니다. 양변에 오른쪽에서 <m>C</m>를 곱하고 대각합을 취하면 둘째 등식을 얻습니다. 둘째 등식에 <m>(C,A,B)</m>를 대입하면 <m>\operatorname{tr}(CAB)=\operatorname{tr}(ABC)</m>이므로 셋째 등식을 얻습니다. 어떤 항에서 <m>X_\ell,Y_\ell,Z_\ell</m> 중 하나가 영이면 그 항을 지워 더 짧은 분해를 얻으므로 <m>R</m>의 최소성에 모순입니다. 모든 <m>\ell</m>에 대해 <m>\operatorname{tr}(X_\ell A)=0</m>인 <m>A</m>가 있으면 첫째 등식에서 <m>A=AI=0</m>이므로 <m>X_\ell</m>들은 <m>\operatorname{Mat}_2</m>를 생성합니다.</p>
+            <p>셋째 등식은 <m>(Y_\ell,Z_\ell,X_\ell)</m>도 같은 성질을 갖는 분해임을 뜻합니다. 따라서 아래에서 <m>X_\ell</m>에 대해 보이는 성질은 <m>Y_\ell</m>과 <m>Z_\ell</m>에 대해서도 성립합니다.</p></li>
+            <li><p>차원이 <m>3</m> 이상인 부분공간은 어떤 영이 아닌 <m>G</m>에 대한 <m>\{A:\operatorname{tr}(GA)=0\}</m>을 포함합니다. <m>G</m>가 가역이면 <m>A=G^{-1}\begin{pmatrix}0\amp 1\\1\amp 0\end{pmatrix}</m>은 가역이고 <m>\operatorname{tr}(GA)=0</m>입니다. <m>G=uv^{\mathsf T}</m>의 계수가 <m>1</m>이면 <m>\operatorname{tr}(GA)=v^{\mathsf T}Au</m>이므로, <m>v^{\mathsf T}w=0</m>인 영이 아닌 <m>w</m>를 잡고 <m>Au=w</m>인 가역행렬 <m>A</m>를 잡으면 됩니다. 따라서 가역행렬을 포함하지 않는 부분공간의 차원은 <m>2</m> 이하입니다.</p>
+            <p>이제 <m>H</m>가 가역행렬을 포함하지 않는 <m>2</m>차원 부분공간이라 합시다. <m>H</m>의 영이 아닌 원소는 계수가 <m>1</m>이므로 <m>H</m>의 기저를 <m>a_1b_1^{\mathsf T}</m>, <m>a_2b_2^{\mathsf T}</m>로 쓸 수 있습니다. <m>a_1\nparallel a_2</m>이고 <m>b_1\nparallel b_2</m>이면 <m>a_1b_1^{\mathsf T}+a_2b_2^{\mathsf T}=\begin{pmatrix}a_1\amp a_2\end{pmatrix}\begin{pmatrix}b_1\amp b_2\end{pmatrix}^{\mathsf T}</m>은 가역이므로 모순입니다. <m>a_1\parallel a_2</m>이면 <m>H=\{az^{\mathsf T}:z\in\mathbb F^2\}=\{A:u^{\mathsf T}A=0\}</m>입니다. 여기서 <m>u^{\mathsf T}a=0</m>입니다. <m>b_1\parallel b_2</m>이면 같은 방법으로 <m>H=\{A:Au=0\}</m>입니다.</p>
+            <p><m>X_a\parallel X_b</m>이면 <m>\dim H_{ab}=3</m>이므로 <m>H_{ab}</m>는 가역행렬을 포함합니다. 그렇지 않으면 <m>H_{ab}</m>는 <m>P=\operatorname{span}\{X_a,X_b\}</m>의 대각합 쌍에 대한 소멸자이고, 차원을 비교하면 <m>P</m>도 <m>H_{ab}</m>의 소멸자입니다. <m>Au=0</m>인 <m>A</m>는 <m>c^{\mathsf T}u=0</m>인 고정된 <m>c</m>에 대해 <m>A=zc^{\mathsf T}</m> 꼴이고 <m>\operatorname{tr}(Xzc^{\mathsf T})=c^{\mathsf T}Xz</m>이므로, <m>\{A:Au=0\}</m>의 소멸자는 <m>\{X:c^{\mathsf T}X=0\}=\{pw^{\mathsf T}:w\in\mathbb F^2\}</m>입니다. 여기서 <m>c^{\mathsf T}p=0</m>입니다. 마찬가지로 <m>\{A:u^{\mathsf T}A=0\}</m>의 소멸자는 공통의 행벡터 <m>q^{\mathsf T}</m>를 갖는 <m>\{wq^{\mathsf T}\}</m>입니다. 따라서 주장이 성립합니다.</p></li>
+            <li><p><m>A\in H_{ab}</m>이면 (a)의 첫째 등식에서 <m>a,b</m>번째 항이 사라지므로 <m>L_A(B)=AB</m>로 정의한 사상은
+              <md>
+                <mrow>L_A=\sum_{\ell\in\Lambda}\operatorname{tr}(X_\ell A)\,\operatorname{tr}(Y_\ell\,\cdot\,)\,Z_\ell</mrow>
+              </md>
+            입니다. <m>L_{A_0}</m>은 단사이므로 계수가 <m>4</m>이고, 계수가 <m>1</m> 이하인 <m>R-2</m>개 사상의 합이므로 <m>R\ge 6</m>입니다.</p>
+            <p><m>R=6</m>이면 <m>|\Lambda|=4</m>입니다. <m>L_{A_0}</m>의 이미지는 <m>\operatorname{Mat}_2</m>이고 <m>\operatorname{span}\{Z_\ell:\ell\in\Lambda\}</m>에 포함되므로 <m>Z_\ell</m> <m>(\ell\in\Lambda)</m>은 기저입니다. <m>\operatorname{ker}L_{A_0}=0</m>은 <m>\operatorname{tr}(Y_\ell\,\cdot\,)</m> <m>(\ell\in\Lambda)</m>의 공통 커널을 포함하므로 <m>Y_\ell</m> <m>(\ell\in\Lambda)</m>도 기저입니다. <m>\operatorname{tr}(Y_\ell E_m)=\delta_{\ell m}</m>인 기저 <m>E_m</m>을 잡으면 <m>A\in H_{ab}</m>에 대해 <m>L_AE_m=\operatorname{tr}(X_mA)Z_m</m>입니다. 따라서 <m>L_A</m>의 계수는 <m>\operatorname{tr}(X_mA)\ne 0</m>인 <m>m</m>의 개수이고, 특히 모든 <m>m</m>에 대해 <m>\operatorname{tr}(X_mA_0)\ne 0</m>입니다. 또한 <m>L_{A_0}^{-1}L_AE_m=\frac{\operatorname{tr}(X_mA)}{\operatorname{tr}(X_mA_0)}E_m</m>입니다.</p>
+            <p><m>\mathcal K=A_0^{-1}H_{ab}</m>라 하면 <m>I\in\mathcal K</m>이고, <m>K\in\mathcal K</m>에 대해 <m>L_K=L_{A_0}^{-1}L_{A_0K}</m>는 모두 기저 <m>E_m</m>에서 대각행렬입니다. <m>L_{KK'}=L_KL_{K'}</m>이고 <m>K\mapsto L_K</m>는 단사이므로 <m>\mathcal K</m>의 원소들은 서로 가환입니다. 스칼라가 아닌 <m>K\in\mathcal K</m>를 잡으면 <m>v</m>와 <m>Kv</m>가 일차독립인 <m>v</m>가 있고, <m>K</m>와 가환인 <m>Y</m>에 대해 <m>Yv=\lambda v+\mu Kv</m>로 쓰면 <m>Y-\lambda I-\mu K</m>가 <m>v</m>와 <m>Kv</m>를 모두 <m>0</m>으로 보내므로 <m>Y\in\operatorname{span}\{I,K\}</m>입니다. 따라서 <m>\mathcal K=\operatorname{span}\{I,K\}</m>이고 <m>\dim H_{ab}=2</m>입니다.</p>
+            <p>다항식 <m>f</m>에 대해 <m>f(L_K)=L_{f(K)}</m>이므로 <m>L_K</m>와 <m>K</m>의 최소다항식은 같습니다. <m>L_K</m>가 대각화 가능하므로 <m>K</m>도 <m>\mathbb F</m> 위에서 대각화 가능하고, 스칼라가 아니므로 서로 다른 고윳값 <m>\lambda_1,\lambda_2\in\mathbb F</m>를 갖습니다. <m>R_1=A_0(K-\lambda_2I)</m>, <m>R_2=A_0(K-\lambda_1I)</m>는 <m>H_{ab}</m>에 속하는 계수 <m>1</m>인 행렬이고 <m>R_1-R_2=(\lambda_1-\lambda_2)A_0</m>은 가역입니다. <m>L_{R_i}</m>의 계수는 <m>2\operatorname{rank}R_i=2</m>이므로 <m>\Lambda_i=\{m:\operatorname{tr}(X_mR_i)\ne 0\}</m>은 두 원소를 갖습니다. 모든 <m>m</m>에 대해 <m>\operatorname{tr}(X_m(R_1-R_2))\ne 0</m>이므로 <m>\Lambda_1\cup\Lambda_2=\Lambda</m>이고, 따라서 <m>\Lambda</m>는 <m>\Lambda_1</m>과 <m>\Lambda_2</m>로 분할됩니다.</p>
+            <p><m>R_1=uv^{\mathsf T}</m>이라 합시다. <m>m\in\Lambda_1</m>이면 <m>Z_m\in\operatorname{im}L_{R_1}=\{ur^{\mathsf T}:r\in\mathbb F^2\}</m>이므로 <m>Z_m</m>의 계수는 <m>1</m>입니다. 또한 <m>\operatorname{ker}L_{R_1}=\operatorname{span}\{E_{m'}:m'\in\Lambda_2\}=\{B:v^{\mathsf T}B=0\}</m>이고 <m>\operatorname{tr}(Y_m\,\cdot\,)</m>은 이 공간에서 영입니다. 이 <m>2</m>차원 공간의 소멸자는 <m>B\mapsto v^{\mathsf T}By=\operatorname{tr}(yv^{\mathsf T}B)</m> 꼴의 형식들로 이루어지므로 <m>Y_m=yv^{\mathsf T}</m>의 계수는 <m>1</m>입니다. <m>\Lambda_2</m>에 대해서는 <m>R_2</m>로 같은 논리를 적용합니다.</p></li>
+            <li><p><m>S\subseteq\{1,\ldots,R\}</m>의 모든 쌍 <m>\{a,b\}</m>에 대해 <m>H_{ab}</m>가 가역행렬을 포함하지 않으면 <m>\{X_s:s\in S\}</m>는 <m>2</m>차원 부분공간에 놓임을 먼저 보입니다. <m>|S|\le 2</m>이면 자명합니다. <m>|S|\ge 3</m>이면 (b)에 의해 <m>X_s</m>는 서로 평행하지 않은 계수 <m>1</m>인 행렬이고 두 개씩 열벡터 또는 행벡터를 공유합니다. <m>X_1=pq^{\mathsf T}</m>, <m>X_2=pq_2^{\mathsf T}</m>라 하고 <m>X_3=p_3q_3^{\mathsf T}</m>에서 <m>p_3\nparallel p</m>라 하면, <m>X_1</m>과의 관계에서 <m>q_3\parallel q</m>이므로 <m>X_2</m>와 <m>X_3</m>은 아무것도 공유하지 않아 모순입니다. 따라서 모든 <m>X_s</m>가 <m>\{pw^{\mathsf T}\}</m>에 속합니다.</p>
+            <p>모든 쌍이 가역행렬을 포함하지 않으면 <m>X_\ell</m>들은 <m>2</m>차원 부분공간에 놓이므로 (a)에 모순입니다. 따라서 가역행렬을 포함하는 <m>H_{ab}</m>가 있고, (c)에 의해 <m>R\ge 6</m>입니다.</p>
+            <p><m>R=6</m>이라 하고, <m>H_{ab}</m>가 가역행렬을 포함할 때 <m>a</m>와 <m>b</m>를 잇는 그래프 <m>\Gamma</m>를 생각합니다. <m>\Gamma</m>에 공통 원소가 없는 두 변이 없다고 합시다. 두 변은 꼭짓점을 공유하고, 그 꼭짓점을 지나지 않는 셋째 변은 두 변의 나머지 끝점을 이어야 하므로 <m>\Gamma</m>의 변은 모두 한 꼭짓점 <m>v</m>를 지나거나 삼각형을 이룹니다. 전자이면 <m>v</m>를 제외한 다섯 개의 <m>X_\ell</m>이 <m>2</m>차원 부분공간에 놓이므로 모든 <m>X_\ell</m>은 <m>3</m>차원 이하의 공간에 놓입니다. 후자에서 삼각형이 <m>\{a,b,c\}</m>이고 나머지가 <m>\{d,e,f\}</m>이면, <m>\{a,d,e,f\}</m>에는 변이 없으므로 <m>X_a\in\operatorname{span}\{X_d,X_e\}</m>이고 <m>X_b,X_c</m>도 마찬가지입니다. 어느 경우든 (a)에 모순입니다.</p>
+            <p>따라서 공통 원소가 없는 두 쌍 <m>\{a,b\}</m>, <m>\{c,d\}</m>가 존재합니다. 모든 <m>\ell</m>은 둘 중 적어도 하나의 쌍에 속하지 않으므로 (c)에 의해 모든 <m>Y_\ell</m>과 <m>Z_\ell</m>의 계수가 <m>1</m>입니다. 같은 논의를 (a)의 셋째 등식, 즉 <m>(Y_\ell,Z_\ell,X_\ell)</m>에 적용하면 모든 <m>Z_\ell</m>과 <m>X_\ell</m>의 계수도 <m>1</m>입니다.</p></li>
+            <li><p><m>X_\ell=p_\ell q_\ell^{\mathsf T}</m>, <m>Y_\ell=r_\ell s_\ell^{\mathsf T}</m>, <m>Z_\ell=t_\ell w_\ell^{\mathsf T}</m>로 쓰고 <m>x,y,z,x',y',z'\in\mathbb F^2</m>에 대해 <m>A=xy'^{\mathsf T}</m>, <m>B=yz'^{\mathsf T}</m>, <m>C=zx'^{\mathsf T}</m>를 (a)의 둘째 등식에 대입하면 다음을 얻습니다.
+              <md>
+                <mrow>(x^{\mathsf T}x')(y^{\mathsf T}y')(z^{\mathsf T}z')=\sum_{\ell=1}^{R}\bigl(q_\ell^{\mathsf T}x\bigr)\bigl(s_\ell^{\mathsf T}y\bigr)\bigl(w_\ell^{\mathsf T}z\bigr)\cdot\bigl(t_\ell^{\mathsf T}x'\bigr)\bigl(p_\ell^{\mathsf T}y'\bigr)\bigl(r_\ell^{\mathsf T}z'\bigr).</mrow>
+              </md>
+            양변은 여섯 벡터에 대해 다중선형이므로 <m>\mathbb F^8=\mathbb F^2\otimes\mathbb F^2\otimes\mathbb F^2</m> 위의 쌍선형 형식으로 확장되고, 단순 텐서들이 <m>\mathbb F^8</m>을 생성하므로 두 형식은 같습니다. 좌변은 기저 <m>e_i\otimes e_j\otimes e_k</m>에 대해 단위행렬 <m>I_8</m>로 표현되고, 우변은 선형 형식 <m>q_\ell\otimes s_\ell\otimes w_\ell</m>과 <m>t_\ell\otimes p_\ell\otimes r_\ell</m>의 곱 <m>R</m>개의 합이므로 계수가 <m>R</m> 이하인 행렬로 표현됩니다. 따라서 <m>R\ge 8</m>입니다.</p>
+            <p>(d)에 의해 <m>R\ge 6</m>이고, <m>R=6</m>이면 (d)와 위 결과에 의해 <m>R\ge 8</m>이므로 모순입니다. 따라서 <m>R\ge 7</m>이고, <xref ref="exer-strassen-tensor"/>에 의해 <m>R=7</m>입니다. 이 결과는 1971년에 위노그라드와 홉크로프트, 커가 처음 증명하였습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
 
 </section>
