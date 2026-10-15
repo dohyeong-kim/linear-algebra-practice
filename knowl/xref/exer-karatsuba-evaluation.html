@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">값의 계산과 보간으로 보는 카라추바 항등식.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(f,g\in\mathbb F[x]_{\lt 2}\)</span>이고 <span class="process-math">\(h=fg\)</span>라 합시다. <span class="process-math">\(h\)</span>의 최고차 계수 <span class="process-math">\(h_2=f_1g_1\)</span>를 <span class="process-math">\(h\)</span>의 “무한대에서의 값”이라 부릅니다.</div>
+<ol class="lower-alpha" id="exer-karatsuba-evaluation-2-1-7">
+<li><div class="para logical">
+<div class="para">카라추바의 세 곱이 각각 <span class="process-math">\(h(0)\text{,}\)</span> <span class="process-math">\(h(1)\text{,}\)</span> <span class="process-math">\(h_2\)</span>임을 보이고, 다음 등식을 확인하십시오.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+h(x)=h(0)(1-x)+h(1)x+h_2\,x(x-1)
+\end{gather*}
+</div>
+</div></li>
+<li><div class="para">점 <span class="process-math">\(1\)</span> 대신 <span class="process-math">\(-1\)</span>을 사용하면 <a href="sec-karatsuba.html#exer-karatsuba-subtractive" class="xref" data-knowl="./knowl/xref/exer-karatsuba-subtractive.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.3.2: 뺄셈을 사용하는 카라추바 항등식">연습문제 7.3.2</a>의 항등식을 얻음을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\mathbb F\)</span>의 표수가 <span class="process-math">\(2\)</span>가 아니면 <span class="process-math">\(h(0)\text{,}\)</span> <span class="process-math">\(h(1)\text{,}\)</span> <span class="process-math">\(h(-1)\)</span>로부터 <span class="process-math">\(h\)</span>의 계수를 구하는 공식을 쓰십시오. 표수가 <span class="process-math">\(2\)</span>이면 이 방법이 실패하는 이유를 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-karatsuba-evaluation-3-1-1">
+<li><div class="para">
+<span class="process-math">\(h(0)=f_0g_0=BD\text{,}\)</span> <span class="process-math">\(h(1)=(f_0+f_1)(g_0+g_1)=(A+B)(C+D)\text{,}\)</span> <span class="process-math">\(h_2=f_1g_1=AC\)</span>입니다(<span class="process-math">\(A=f_1\text{,}\)</span> <span class="process-math">\(B=f_0\text{,}\)</span> <span class="process-math">\(C=g_1\text{,}\)</span> <span class="process-math">\(D=g_0\)</span>). 우변은 차수가 <span class="process-math">\(2\)</span> 이하이고 <span class="process-math">\(x=0\text{,}\)</span> <span class="process-math">\(x=1\)</span>에서 각각 <span class="process-math">\(h(0)\text{,}\)</span> <span class="process-math">\(h(1)\)</span>이며 <span class="process-math">\(x^2\)</span>의 계수가 <span class="process-math">\(h_2\)</span>이므로, 우변에서 <span class="process-math">\(h\)</span>를 뺀 다항식은 차수가 <span class="process-math">\(1\)</span> 이하이고 두 근을 가지므로 영입니다. 일차항의 계수를 비교하면 카라추바 항등식 <span class="process-math">\(h_1=h(1)-h(0)-h_2\)</span>를 얻습니다.</div></li>
+<li><div class="para">같은 논리로 <span class="process-math">\(h(x)=h(0)(1+x)-h(-1)x+h_2\,x(x+1)\)</span>이고, <span class="process-math">\(h(-1)=(f_0-f_1)(g_0-g_1)=(B-A)(D-C)=(A-B)(C-D)\)</span>입니다. 일차항을 비교하면 <span class="process-math">\(h_1=h(0)+h_2-h(-1)\)</span>이 되어 <a href="sec-karatsuba.html#exer-karatsuba-subtractive" class="xref" data-knowl="./knowl/xref/exer-karatsuba-subtractive.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.3.2: 뺄셈을 사용하는 카라추바 항등식">연습문제 7.3.2</a>의 항등식과 같습니다.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(h(1)=h_0+h_1+h_2\text{,}\)</span> <span class="process-math">\(h(-1)=h_0-h_1+h_2\)</span>이므로</div>
+<div class="displaymath process-math">
+\begin{gather*}
+h_0=h(0),\qquad h_1=\frac{h(1)-h(-1)}{2},\qquad h_2=\frac{h(1)+h(-1)}{2}-h(0)
+\end{gather*}
+</div>
+<div class="para">입니다. 표수가 <span class="process-math">\(2\)</span>이면 <span class="process-math">\(1=-1\)</span>이므로 세 점이 서로 다르지 않고, <span class="process-math">\(2\)</span>로 나눌 수도 없습니다.</div>
+</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-karatsuba.html#exer-karatsuba-evaluation">[incontext]</a></span>
+</body>
+</html>

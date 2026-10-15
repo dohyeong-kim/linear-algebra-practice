@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">일반적인 툼–쿡 알고리즘과 다항식 곱셈 지수.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-karatsuba-toom-general-2-1-1">
+<li><div class="para">차수가 <span class="process-math">\(n\)</span>보다 작은 두 다항식의 곱을 계산하는 모든 알고리즘은 적어도 <span class="process-math">\(2n-1\)</span>번의 연산을 사용함을 보이고, <span class="process-math">\(\omega_{\mathrm{poly}}\ge 1\)</span>임을 보이십시오.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(k\ge 2\)</span>이고 <span class="process-math">\(t_1,\ldots,t_{2k-2}\in\mathbb F\)</span>가 서로 다르다고 합시다. <span class="process-math">\(P(x)=\prod_{\ell=1}^{2k-2}(x-t_\ell)\)</span>이고 <span class="process-math">\(L_\ell\)</span>이 <span class="process-math">\(L_\ell(t_{\ell'})=\delta_{\ell\ell'}\)</span>를 만족하는 차수 <span class="process-math">\(2k-3\)</span> 이하의 라그랑주 보간 다항식일 때, <span class="process-math">\(f,g\in\mathbb F[x]_{\lt k}\)</span>에 대하여 다음 등식을 보이십시오.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+fg=f_{k-1}g_{k-1}P(x)+\sum_{\ell=1}^{2k-2}f(t_\ell)g(t_\ell)L_\ell(x).
+\end{gather*}
+</div>
+<div class="para">이로부터 <span class="process-math">\(|\mathbb F|\ge 2k-2\)</span>이면 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(\mathcal P_k)\le 2k-1\)</span>임을 보이십시오.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(\mathbb F\)</span>가 무한체이면 모든 <span class="process-math">\(k\ge 2\)</span>에 대하여 <span class="process-math">\(\omega_{\mathrm{poly}}\le\log_k(2k-1)\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\mathbb F\)</span>가 무한체이면 <span class="process-math">\(\omega_{\mathrm{poly}}=1\)</span>임을 보이십시오.</div></li>
+</ol></div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(c)에서는 <span class="process-math">\(f,g\in\mathbb F[x]_{\lt kn}\)</span>를 <span class="process-math">\(y=x^n\)</span>에 대한 길이 <span class="process-math">\(n\)</span>의 블록 <span class="process-math">\(k\)</span>개로 나누고, (b)의 등식에서 <span class="process-math">\(f_i,g_j\)</span>를 블록으로 바꾸십시오. 블록들은 서로 가환인 다항식이므로 등식이 그대로 성립합니다.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-karatsuba-toom-general-4-1-1">
+<li><div class="para">출력 계수 <span class="process-math">\(h_k=\sum_{i+j=k}f_ig_j\)</span> <span class="process-math">\((0\le k\le 2n-2)\)</span>는 입력 계수에 대한 서로 다른 이차 다항식이므로 상수도 아니고 입력과도 같지 않습니다. 따라서 각 <span class="process-math">\(h_k\)</span>는 서로 다른 연산의 결과여야 하므로 적어도 <span class="process-math">\(2n-1\)</span>번의 연산이 필요합니다. <span class="process-math">\(\tau\lt 1\)</span>이면 <span class="process-math">\(2n-1\le Cn^\tau\)</span>이 모든 <span class="process-math">\(n\)</span>에서 성립할 수 없으므로 <span class="process-math">\(\omega_{\mathrm{poly}}\ge 1\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(h=fg\)</span>는 차수가 <span class="process-math">\(2k-2\)</span> 이하이고 <span class="process-math">\(x^{2k-2}\)</span>의 계수가 <span class="process-math">\(f_{k-1}g_{k-1}\)</span>입니다. <span class="process-math">\(P\)</span>는 최고차 계수가 <span class="process-math">\(1\)</span>인 <span class="process-math">\(2k-2\)</span>차 다항식이므로 <span class="process-math">\(h-f_{k-1}g_{k-1}P\)</span>는 차수가 <span class="process-math">\(2k-3\)</span> 이하이고, <span class="process-math">\(P(t_\ell)=0\)</span>이므로 <span class="process-math">\(t_\ell\)</span>에서의 값이 <span class="process-math">\(h(t_\ell)=f(t_\ell)g(t_\ell)\)</span>입니다. 차수가 <span class="process-math">\(2k-3\)</span> 이하인 다항식은 서로 다른 <span class="process-math">\(2k-2\)</span>개의 점에서의 값으로 결정되므로 등식이 성립합니다. <span class="process-math">\(f\mapsto f_{k-1}\text{,}\)</span> <span class="process-math">\(f\mapsto f(t_\ell)\)</span>은 선형 형식이므로 우변은 <span class="process-math">\(\mathcal P_k\)</span>의 <span class="process-math">\(2k-1\)</span>항 분해를 줍니다.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(\mathbb F\)</span>가 무한체이므로 서로 다른 <span class="process-math">\(t_\ell\)</span>을 고정할 수 있습니다. <span class="process-math">\(f,g\in\mathbb F[x]_{\lt kn}\)</span>를 <span class="process-math">\(f=\sum_{i=0}^{k-1}F_iy^i\text{,}\)</span> <span class="process-math">\(g=\sum_{j=0}^{k-1}G_jy^j\)</span> <span class="process-math">\((F_i,G_j\in\mathbb F[x]_{\lt n},\ y=x^n)\)</span>로 나누면, (b)의 등식은 다항식환에서 성립하는 항등식이므로</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-karatsuba-exponent-bound.html">
+\begin{gather*}
+fg=F_{k-1}G_{k-1}P(y)+\sum_{\ell=1}^{2k-2}\Bigl(\sum_iF_it_\ell^i\Bigr)\Bigl(\sum_jG_jt_\ell^j\Bigr)L_\ell(y)
+\end{gather*}
+</div>
+<div class="para">입니다. 블록의 일차결합 계산과, <span class="process-math">\(2k-1\)</span>개의 곱에 <span class="process-math">\(P\)</span>와 <span class="process-math">\(L_\ell\)</span>의 계수를 곱해 모으는 계산은 <span class="process-math">\(k\)</span>와 점에만 의존하는 상수 <span class="process-math">\(c_k\)</span>에 대해 <span class="process-math">\(c_kn\)</span>번이면 됩니다. 따라서 이 알고리즘의 연산 횟수는 <span class="process-math">\(T(kn)\le(2k-1)T(n)+c_kkn\)</span>을 만족하고, <a href="sec-karatsuba.html#prop-karatsuba-exponent-bound" class="xref" data-knowl="./knowl/xref/prop-karatsuba-exponent-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 7.3.3: 카라추바 알고리즘에 의한 다항식 곱셈 지수의 상계">명제 7.3.3</a>와 같은 계산으로 <span class="process-math">\(T(n)=O(n^{\log_k(2k-1)})\)</span>입니다. 영을 덧붙이면 일반적인 <span class="process-math">\(n\)</span>에도 성립합니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(\log_k(2k-1)=1+\log_k\bigl(2-\tfrac1k\bigr)\lt 1+\log_k2\to 1\)</span>이므로 임의의 <span class="process-math">\(\tau\gt 1\)</span>에 대해 <span class="process-math">\(\log_k(2k-1)\lt\tau\)</span>인 <span class="process-math">\(k\)</span>가 있습니다. (c)에 의해 <span class="process-math">\(\omega_{\mathrm{poly}}\le 1\)</span>이고 (a)와 합하면 <span class="process-math">\(\omega_{\mathrm{poly}}=1\)</span>입니다. 다만 <span class="process-math">\(k\)</span>가 커질수록 상수 <span class="process-math">\(c_k\)</span>가 커지므로 실제로는 고속 푸리에 변환과 같은 다른 방법이 쓰입니다.</div></li>
+</ol></div></div></details>
+</div></article><span class="incontext"><a class="internal" href="sec-karatsuba.html#exer-karatsuba-toom-general">[incontext]</a></span>
+</body>
+</html>

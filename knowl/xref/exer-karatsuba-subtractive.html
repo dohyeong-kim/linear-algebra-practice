@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">뺄셈을 사용하는 카라추바 항등식.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-karatsuba-subtractive-2-1-1">
+<li><div class="para logical">
+<div class="para">다음 항등식을 보이십시오.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+AD+BC=AC+BD-(A-B)(C-D)
+\end{gather*}
+</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(0\le A,B,C,D\lt 2^m\)</span>인 정수에 대하여 <span class="process-math">\(|A-B|\)</span>와 <span class="process-math">\(|C-D|\)</span>는 <span class="process-math">\(m\)</span>비트 이하임을 보이십시오. <a href="sec-karatsuba.html#prop-karatsuba-integer-exponent-bound" class="xref" data-knowl="./knowl/xref/prop-karatsuba-integer-exponent-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 7.3.5: 카라추바 알고리즘에 의한 정수 곱셈 지수의 상계">명제 7.3.5</a>의 증명에서 <span class="process-math">\(A+B\)</span>가 <span class="process-math">\(m+1\)</span>비트가 될 수 있었던 것과 비교하여, (a)를 사용할 때 부호를 어떻게 처리하면 되는지 설명하십시오.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-karatsuba-subtractive-3-1-1">
+<li><div class="para">
+<span class="process-math">\((A-B)(C-D)=AC-AD-BC+BD\)</span>이므로 <span class="process-math">\(AC+BD-(A-B)(C-D)=AD+BC\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(-2^m\lt A-B\lt 2^m\)</span>이므로 <span class="process-math">\(|A-B|\lt 2^m\)</span>이고, <span class="process-math">\(C-D\)</span>도 같습니다. 먼저 두 차의 부호를 기록하고 절댓값끼리 곱한 뒤, 부호가 다르면 결과의 부호를 바꾸면 됩니다. 부호의 처리와 비교에는 <span class="process-math">\(O(m)\)</span>번의 비트 연산이면 충분하므로, 재귀식은 <span class="process-math">\(T(n)\le 3T(\lceil n/2\rceil)+cn\)</span>이 되어 합에서 생기는 추가 비트를 고려하지 않아도 됩니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-karatsuba.html#exer-karatsuba-subtractive">[incontext]</a></span>
+</body>
+</html>

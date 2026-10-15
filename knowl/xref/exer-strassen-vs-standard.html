@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">표준 알고리즘과의 비교.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(n=2^k\)</span>에 대하여 표준 알고리즘의 연산 횟수 <span class="process-math">\(n^2(2n-1)=2\cdot 8^k-4^k\)</span>와 <a href="sec-strassen.html#exer-strassen-operation-count" class="xref" data-knowl="./knowl/xref/exer-strassen-operation-count.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.2.4: 정확한 연산 횟수">연습문제 7.2.4</a>의 <span class="process-math">\(S_k\)</span>를 비교합니다.</div>
+<ol class="lower-alpha" id="exer-strassen-vs-standard-2-1-5">
+<li><div class="para">
+<span class="process-math">\(n=2,4,8\)</span>일 때 두 연산 횟수를 계산하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(k\to\infty\)</span>일 때 <span class="process-math">\(S_k/(2\cdot 8^k-4^k)\to 0\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(S_k\lt 2\cdot 8^k-4^k\)</span>가 되는 가장 작은 <span class="process-math">\(k\)</span>를 구하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-strassen-vs-standard-3-1-1">
+<li><div class="para">
+<span class="process-math">\(n=2,4,8\)</span>일 때 <span class="process-math">\(S_k\)</span>는 각각 <span class="process-math">\(25,247,2017\)</span>이고 표준 알고리즘은 각각 <span class="process-math">\(12,112,960\)</span>입니다. 작은 행렬에서는 스트라센 알고리즘이 두 배 이상의 연산을 사용합니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(2\cdot 8^k-4^k\ge 8^k\)</span>이고 <span class="process-math">\(S_k\lt 7^{k+1}\)</span>이므로 비는 <span class="process-math">\(7(7/8)^k\)</span>보다 작고, 이는 <span class="process-math">\(0\)</span>으로 수렴합니다.</div></li>
+<li><div class="para logical">
+<div class="para">직접 계산하면 다음과 같습니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-strassen-cutoff.html">
+\begin{align*}
+k\amp=7:\amp S_7\amp=5{,}666{,}497,\amp 2\cdot 8^7-4^7\amp=4{,}177{,}920,\\
+k\amp=8:\amp S_8\amp=39{,}960{,}391,\amp 2\cdot 8^8-4^8\amp=33{,}488{,}896,\\
+k\amp=9:\amp S_9\amp=280{,}902{,}385,\amp 2\cdot 8^9-4^9\amp=268{,}173{,}312,\\
+k\amp=10:\amp S_{10}\amp=1{,}971{,}035{,}287,\amp 2\cdot 8^{10}-4^{10}\amp=2{,}146{,}435{,}072.
+\end{align*}
+</div>
+<div class="para">
+<span class="process-math">\(k\le 6\)</span>에서도 같은 계산으로 <span class="process-math">\(S_k\)</span>가 더 큼을 확인할 수 있습니다. 따라서 가장 작은 <span class="process-math">\(k\)</span>는 <span class="process-math">\(10\text{,}\)</span> 즉 <span class="process-math">\(n=1024\)</span>입니다. 이 결과는 재귀를 <span class="process-math">\(1\times 1\)</span> 블록까지 진행하는 것이 비효율적임을 보여 줍니다. <a href="sec-strassen.html#exer-strassen-cutoff" class="xref" data-knowl="./knowl/xref/exer-strassen-cutoff.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.2.6: 재귀를 멈추는 크기">연습문제 7.2.6</a>에서 이를 개선합니다.</div>
+</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-strassen.html#exer-strassen-vs-standard">[incontext]</a></span>
+</body>
+</html>

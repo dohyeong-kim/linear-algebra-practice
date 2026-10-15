@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">7.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">스트라센의 일곱 곱셈 항등식.</span>
+</h3>
+<div class="para">블록 <span class="process-math">\(A_{ij},B_{ij}\)</span>가 모두 <span class="process-math">\(\mathbb F\)</span> 위의 같은 크기의 정사각행렬일 때, 다음 일곱 곱을 정의하자.</div>
+<div class="displaymath process-math">
+\begin{align*}
+M_1&amp;=(A_{11}+A_{22})(B_{11}+B_{22}),\\
+M_2&amp;=(A_{21}+A_{22})B_{11},\\
+M_3&amp;=A_{11}(B_{12}-B_{22}),\\
+M_4&amp;=A_{22}(B_{21}-B_{11}),\\
+M_5&amp;=(A_{11}+A_{12})B_{22},\\
+M_6&amp;=(A_{21}-A_{11})(B_{11}+B_{12}),\\
+M_7&amp;=(A_{12}-A_{22})(B_{21}+B_{22}).
+\end{align*}
+</div>
+<div class="para">그러면 곱행렬 <span class="process-math">\(AB\)</span>의 네 블록은 다음과 같다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+C_{11}&amp;=M_1+M_4-M_5+M_7,\\
+C_{12}&amp;=M_3+M_5,\\
+C_{21}&amp;=M_2+M_4,\\
+C_{22}&amp;=M_1-M_2+M_3+M_6.
+\end{align*}
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">분배법칙으로 각 곱을 전개하고 같은 항을 소거하면 다음 등식을 얻습니다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+M_1+M_4-M_5+M_7&amp;=A_{11}B_{11}+A_{12}B_{21},\\
+M_3+M_5&amp;=A_{11}B_{12}+A_{12}B_{22},\\
+M_2+M_4&amp;=A_{21}B_{11}+A_{22}B_{21},\\
+M_1-M_2+M_3+M_6&amp;=A_{21}B_{12}+A_{22}B_{22}.
+\end{align*}
+</div>
+<div class="para">각 우변은 일반적인 블록 곱셈 공식의 해당 블록과 일치합니다. 이 계산에서는 인수의 순서를 바꾸지 않으므로 블록 행렬의 곱셈이 가환일 필요는 없습니다.</div></article></details><span class="incontext"><a class="internal" href="sec-strassen.html#prop-strassen-block-identities">[incontext]</a></span>
+</body>
+</html>

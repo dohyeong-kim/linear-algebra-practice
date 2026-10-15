@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">정확한 연산 횟수.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-strassen-operation-count-2-1-1">
+<li><div class="para">스트라센 항등식은 블록의 덧셈과 뺄셈을 정확히 <span class="process-math">\(18\)</span>번 사용함을 보이십시오. 이 중 <span class="process-math">\(M_1,\ldots,M_7\)</span>의 인수를 만드는 데 몇 번, 곱들을 조합하는 데 몇 번이 쓰입니까?</div></li>
+<li><div class="para">
+<span class="process-math">\(S_0=1\)</span>이고 <span class="process-math">\(k\ge 1\)</span>에 대해 <span class="process-math">\(S_k=7S_{k-1}+18\cdot 4^{k-1}\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(S_k=7^{k+1}-6\cdot 4^k\)</span>임을 보이십시오. 즉 <span class="process-math">\(n=2^k\)</span>에 대하여 <span class="process-math">\(S_k=7n^{\log_27}-6n^2\)</span>입니다.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-strassen-operation-count-3-1-1">
+<li><div class="para">인수를 만드는 데 <span class="process-math">\(M_1\)</span>에서 <span class="process-math">\(2\)</span>번, <span class="process-math">\(M_2,M_3,M_4,M_5\)</span>에서 각각 <span class="process-math">\(1\)</span>번, <span class="process-math">\(M_6,M_7\)</span>에서 각각 <span class="process-math">\(2\)</span>번, 모두 <span class="process-math">\(10\)</span>번이 쓰입니다. 조합하는 데는 <span class="process-math">\(C_{11}\)</span>과 <span class="process-math">\(C_{22}\)</span>에서 각각 <span class="process-math">\(3\)</span>번, <span class="process-math">\(C_{12}\)</span>와 <span class="process-math">\(C_{21}\)</span>에서 각각 <span class="process-math">\(1\)</span>번, 모두 <span class="process-math">\(8\)</span>번이 쓰입니다. 합하면 <span class="process-math">\(18\)</span>번입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(1\times 1\)</span> 행렬의 곱은 곱셈 한 번이므로 <span class="process-math">\(S_0=1\)</span>입니다. <span class="process-math">\(2^k\times 2^k\)</span> 행렬을 <span class="process-math">\(2^{k-1}\times 2^{k-1}\)</span> 블록으로 나누면, 일곱 번의 블록 곱에 각각 <span class="process-math">\(S_{k-1}\)</span>번의 연산이 들고, (a)의 <span class="process-math">\(18\)</span>번의 블록 덧셈 및 뺄셈은 각각 <span class="process-math">\(4^{k-1}\)</span>번의 스칼라 연산입니다.</div></li>
+<li><div class="para logical">
+<div class="para">(b)를 반복하면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+S_k=7^k+18\sum_{i=0}^{k-1}7^i4^{k-1-i}=7^k+18\cdot\frac{7^k-4^k}{7-4}=7^{k+1}-6\cdot 4^k
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(n=2^k\)</span>이면 <span class="process-math">\(7^k=n^{\log_27}\text{,}\)</span> <span class="process-math">\(4^k=n^2\)</span>입니다.</div>
+</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-strassen.html#exer-strassen-operation-count">[incontext]</a></span>
+</body>
+</html>

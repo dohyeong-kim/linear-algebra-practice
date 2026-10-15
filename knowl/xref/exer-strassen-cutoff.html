@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">재귀를 멈추는 크기.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(0\le c\le k\)</span>에 대하여, <span class="process-math">\(2^k\times 2^k\)</span> 행렬에 스트라센 항등식을 재귀적으로 적용하다가 블록의 크기가 <span class="process-math">\(2^c\times 2^c\)</span>가 되면 표준 알고리즘으로 곱하는 알고리즘의 연산 횟수를 <span class="process-math">\(H_{k,c}\)</span>라 합시다. 따라서 <span class="process-math">\(H_{k,0}=S_k\)</span>이고 <span class="process-math">\(H_{k,k}=2\cdot 8^k-4^k\)</span>입니다.</div>
+<ol class="lower-alpha" id="exer-strassen-cutoff-2-1-7">
+<li><div class="para">
+<span class="process-math">\(n=2m\)</span>일 때 스트라센 항등식을 한 번만 적용하고 블록의 곱은 표준 알고리즘으로 계산하면 연산 횟수가 <span class="process-math">\(14m^3+11m^2\)</span>임을 보이십시오. 이것이 표준 알고리즘보다 적을 필요충분조건은 <span class="process-math">\(m\ge 8\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(H_{k,c}=7^{k-c}\bigl(2\cdot 8^c+5\cdot 4^c\bigr)-6\cdot 4^k\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(k\ge 3\)</span>이면 <span class="process-math">\(H_{k,c}\)</span>는 <span class="process-math">\(c=3\)</span>에서 최소임을 보이고, (a)의 결과와 비교하십시오. 또한 <span class="process-math">\(n=1024\)</span>일 때 <span class="process-math">\(H_{10,3}\)</span>을 <span class="process-math">\(S_{10}\)</span> 및 표준 알고리즘의 연산 횟수와 비교하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-strassen-cutoff-3-1-1">
+<li><div class="para">일곱 번의 블록 곱에 각각 <span class="process-math">\(m^2(2m-1)\)</span>번, <span class="process-math">\(18\)</span>번의 블록 덧셈 및 뺄셈에 각각 <span class="process-math">\(m^2\)</span>번의 연산이 들므로 <span class="process-math">\(7m^2(2m-1)+18m^2=14m^3+11m^2\)</span>입니다. 표준 알고리즘은 <span class="process-math">\((2m)^2(4m-1)=16m^3-4m^2\)</span>번이므로 차는 <span class="process-math">\(2m^3-15m^2=m^2(2m-15)\)</span>이고, 이는 <span class="process-math">\(m\ge 8\)</span>일 때에만 양수입니다.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(c\lt j\le k\)</span>에 대하여 <a href="sec-strassen.html#exer-strassen-operation-count" class="xref" data-knowl="./knowl/xref/exer-strassen-operation-count.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.2.4: 정확한 연산 횟수">연습문제 7.2.4</a>의 (b)와 같은 이유로 <span class="process-math">\(H_{j,c}=7H_{j-1,c}+18\cdot 4^{j-1}\)</span>입니다. 이를 반복하면</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-strassen-operation-count.html">
+\begin{align*}
+H_{k,c}\amp=7^{k-c}H_{c,c}+18\sum_{i=0}^{k-c-1}7^i4^{k-1-i}=7^{k-c}\bigl(2\cdot 8^c-4^c\bigr)+6\bigl(7^{k-c}4^c-4^k\bigr)\\
+\amp=7^{k-c}\bigl(2\cdot 8^c+5\cdot 4^c\bigr)-6\cdot 4^k
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(f(c)=(2\cdot 8^c+5\cdot 4^c)/7^c\)</span>라 하면 <span class="process-math">\(H_{k,c}=7^kf(c)-6\cdot 4^k\)</span>이므로 <span class="process-math">\(f\)</span>를 최소화하면 됩니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+f(c+1)\lt f(c)\iff 16\cdot 8^c+20\cdot 4^c\lt 14\cdot 8^c+35\cdot 4^c\iff 2^c\lt 7.5
+\end{gather*}
+</div>
+<div class="para">이므로 <span class="process-math">\(f\)</span>는 <span class="process-math">\(c\le 3\)</span>에서 감소하고 <span class="process-math">\(c\ge 3\)</span>에서 증가합니다. 따라서 <span class="process-math">\(c=3\)</span>에서 최소입니다. 이는 (a)에서 블록의 크기가 <span class="process-math">\(16\)</span> 이상일 때에만 한 번 더 나누는 것이 이득이라는 것과 일치합니다. 즉 크기가 <span class="process-math">\(8\)</span>인 블록에서 재귀를 멈춥니다. <span class="process-math">\(n=1024\)</span>이면 <span class="process-math">\(H_{10,3}=1{,}100{,}550{,}336\)</span>이고, 이는 <span class="process-math">\(S_{10}=1{,}971{,}035{,}287\)</span>의 약 <span class="process-math">\(56\%\text{,}\)</span> 표준 알고리즘의 <span class="process-math">\(2{,}146{,}435{,}072\)</span>의 약 <span class="process-math">\(51\%\)</span>입니다.</div>
+</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-strassen.html#exer-strassen-cutoff">[incontext]</a></span>
+</body>
+</html>

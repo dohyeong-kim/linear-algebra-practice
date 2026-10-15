@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">7.3.5</span><span class="period">.</span><span class="space"> </span><span class="title">카라추바 알고리즘에 의한 정수 곱셈 지수의 상계.</span>
+</h3>
+<div class="para logical">
+<div class="para">정수 곱셈 지수에 대하여</div>
+<div class="displaymath process-math">
+\begin{align*}
+\omega_{\mathrm{int}} &amp;\leq \log_2 3 \approx 1.585
+\end{align*}
+</div>
+<div class="para">가 성립한다.</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">
+<span class="process-math">\(0\leq F,G&lt;2^n\)</span>이고 <span class="process-math">\(m=\lceil n/2\rceil\)</span>이라고 하겠습니다. 이진 표현의 아래쪽 <span class="process-math">\(m\)</span>비트를 분리하여</div>
+<div class="displaymath process-math">
+\begin{align*}
+F &amp;= A2^m+B,\\
+G &amp;= C2^m+D
+\end{align*}
+</div>
+<div class="para">로 쓰면 <span class="process-math">\(A,B,C,D\)</span>는 모두 <span class="process-math">\(m\)</span>비트 이하의 음이 아닌 정수입니다. 카라추바의 항등식으로</div>
+<div class="displaymath process-math">
+\begin{align*}
+FG &amp;= AC2^{2m}+\bigl((A+B)(C+D)-AC-BD\bigr)2^m+BD
+\end{align*}
+</div>
+<div class="para">를 얻습니다. 따라서 <span class="process-math">\(AC\text{,}\)</span> <span class="process-math">\(BD\text{,}\)</span> <span class="process-math">\((A+B)(C+D)\)</span>의 세 곱만 재귀적으로 계산하면 됩니다. <span class="process-math">\(A+B\)</span>와 <span class="process-math">\(C+D\)</span>는 자리올림 때문에 최대 <span class="process-math">\(m+1\)</span>비트가 될 수 있습니다. 나머지 덧셈, 뺄셈과 이진 자릿수 이동은 모두 길이가 <span class="process-math">\(O(n)\)</span>인 정수에 대한 연산이므로 총 <span class="process-math">\(O(n)\)</span>번의 비트 연산이 필요합니다.</div>
+</div>
+<div class="para logical">
+<div class="para">입력 길이가 <span class="process-math">\(n\)</span>비트 이하일 때 이 알고리즘의 최악의 비트 연산 횟수를 <span class="process-math">\(T(n)\)</span>이라 하겠습니다. 길이가 <span class="process-math">\(4\)</span>비트 이하이면 직접 곱하고, 그보다 크면 위 분할을 사용합니다. 그러면 어떤 상수 <span class="process-math">\(c\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{align*}
+T(n) &amp;\leq 3T(\lceil n/2\rceil+1)+cn \qquad (n&gt;4)
+\end{align*}
+</div>
+<div class="para">이고, <span class="process-math">\(n\leq 4\)</span>일 때는 <span class="process-math">\(T(n)=O(1)\)</span>입니다. 다항식 곱셈과 달리 합에서 생기는 추가 비트를 고려해야 하지만, 이 차이는 점근적 상계를 바꾸지 않습니다.</div>
+</div>
+<div class="para logical">
+<div class="para">실제로 재귀 깊이 <span class="process-math">\(j\)</span>에서 각 입력의 길이는</div>
+<div class="displaymath process-math">
+\begin{align*}
+n_j &amp;\leq \frac{n}{2^j}+3
+\end{align*}
+</div>
+<div class="para">입니다. 이는 각 분할에서 길이가 <span class="process-math">\(\lceil n_j/2\rceil+1\leq n_j/2+3/2\)</span>로 줄어드는 것으로부터 귀납적으로 얻습니다. 따라서 <span class="process-math">\(L=\lceil\log_2 n\rceil\)</span>단계 이내에 모든 입력의 길이가 <span class="process-math">\(4\)</span>비트 이하가 됩니다. 깊이 <span class="process-math">\(j\)</span>의 부분 문제 수는 최대 <span class="process-math">\(3^j\)</span>이므로, 잎에서의 계산까지 합하면</div>
+<div class="displaymath process-math">
+\begin{align*}
+T(n) &amp;= O\left(3^L+\sum_{j=0}^{L-1}3^j\left(\frac{n}{2^j}+3\right)\right)\\
+&amp;= O\left(3^L+n(3/2)^L\right)\\
+&amp;= O\left(n^{\log_2 3}\right)
+\end{align*}
+</div>
+<div class="para">입니다. 따라서 정의에 의하여 <span class="process-math">\(\omega_{\mathrm{int}}\leq\log_2 3\)</span>입니다.</div>
+</div></article></details><span class="incontext"><a class="internal" href="sec-karatsuba.html#prop-karatsuba-integer-exponent-bound">[incontext]</a></span>
+</body>
+</html>

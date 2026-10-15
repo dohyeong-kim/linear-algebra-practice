@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">항등식의 전개.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<a href="sec-strassen.html#prop-strassen-block-identities" class="xref" data-knowl="./knowl/xref/prop-strassen-block-identities.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 7.2.1: 스트라센의 일곱 곱셈 항등식">명제 7.2.1</a>의 증명에서 생략한 계산을 완성합니다.</div>
+<ol class="lower-alpha" id="exer-strassen-expansion-2-1-2">
+<li><div class="para">
+<span class="process-math">\(M_3+M_5\)</span>와 <span class="process-math">\(M_2+M_4\)</span>를 전개하여 각각 <span class="process-math">\(C_{12}\text{,}\)</span> <span class="process-math">\(C_{21}\)</span>과 같음을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(M_1+M_4-M_5+M_7\)</span>과 <span class="process-math">\(M_1-M_2+M_3+M_6\)</span>을 전개하고, 어떤 항들이 소거되는지 밝혀 각각 <span class="process-math">\(C_{11}\text{,}\)</span> <span class="process-math">\(C_{22}\)</span>와 같음을 보이십시오.</div></li>
+<li><div class="para">(a)와 (b)의 전개에 나타나는 모든 항이 <span class="process-math">\(A_{ij}B_{kl}\)</span> 꼴임을 확인하고, 이로부터 블록 행렬의 곱셈이 가환이 아니어도 항등식이 성립하는 이유를 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-strassen-expansion-3-1-1">
+<li><div class="para logical">
+<div class="displaymath process-math">
+\begin{align*}
+M_3+M_5\amp=(A_{11}B_{12}-A_{11}B_{22})+(A_{11}B_{22}+A_{12}B_{22})=A_{11}B_{12}+A_{12}B_{22},\\
+M_2+M_4\amp=(A_{21}B_{11}+A_{22}B_{11})+(A_{22}B_{21}-A_{22}B_{11})=A_{21}B_{11}+A_{22}B_{21}
+\end{align*}
+</div>
+<div class="para">입니다.</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">각 곱을 전개하면 다음과 같습니다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+M_1\amp=A_{11}B_{11}+A_{11}B_{22}+A_{22}B_{11}+A_{22}B_{22},\\
+M_4\amp=A_{22}B_{21}-A_{22}B_{11},\\
+-M_5\amp=-A_{11}B_{22}-A_{12}B_{22},\\
+M_7\amp=A_{12}B_{21}+A_{12}B_{22}-A_{22}B_{21}-A_{22}B_{22}.
+\end{align*}
+</div>
+<div class="para">더하면 <span class="process-math">\(A_{11}B_{22}\text{,}\)</span> <span class="process-math">\(A_{22}B_{11}\text{,}\)</span> <span class="process-math">\(A_{22}B_{22}\text{,}\)</span> <span class="process-math">\(A_{22}B_{21}\text{,}\)</span> <span class="process-math">\(A_{12}B_{22}\)</span>가 각각 한 번씩 양과 음으로 나타나 소거되므로 <span class="process-math">\(A_{11}B_{11}+A_{12}B_{21}=C_{11}\)</span>만 남습니다. 마찬가지로</div>
+<div class="displaymath process-math">
+\begin{align*}
+-M_2\amp=-A_{21}B_{11}-A_{22}B_{11},\\
+M_3\amp=A_{11}B_{12}-A_{11}B_{22},\\
+M_6\amp=A_{21}B_{11}+A_{21}B_{12}-A_{11}B_{11}-A_{11}B_{12}
+\end{align*}
+</div>
+<div class="para">를 <span class="process-math">\(M_1\)</span>과 더하면 <span class="process-math">\(A_{11}B_{11}\text{,}\)</span> <span class="process-math">\(A_{11}B_{22}\text{,}\)</span> <span class="process-math">\(A_{22}B_{11}\text{,}\)</span> <span class="process-math">\(A_{21}B_{11}\text{,}\)</span> <span class="process-math">\(A_{11}B_{12}\)</span>가 소거되어 <span class="process-math">\(A_{21}B_{12}+A_{22}B_{22}=C_{22}\)</span>가 남습니다.</div>
+</div></li>
+<li><div class="para">각 <span class="process-math">\(M_\ell\)</span>은 <span class="process-math">\(A\)</span>의 블록들의 일차결합을 왼쪽에, <span class="process-math">\(B\)</span>의 블록들의 일차결합을 오른쪽에 둔 곱입니다. 분배법칙은 곱의 순서를 유지한 채 적용되므로 전개된 각 항은 <span class="process-math">\(A_{ij}B_{kl}\)</span> 꼴이고, 위의 소거는 같은 순서의 같은 항끼리만 일어납니다. 따라서 어느 단계에서도 <span class="process-math">\(B_{kl}A_{ij}=A_{ij}B_{kl}\)</span> 같은 교환을 사용하지 않으므로, 블록이 서로 가환이 아닌 행렬이어도 항등식이 성립합니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-strassen.html#exer-strassen-expansion">[incontext]</a></span>
+</body>
+</html>
