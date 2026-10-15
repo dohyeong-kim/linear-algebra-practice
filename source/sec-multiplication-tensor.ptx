@@ -296,4 +296,410 @@
     행렬곱 지수의 정확한 값은 알려지지 않았습니다. 행렬곱 지수가 3 미만이라는 것은 스트라센이 처음 보였습니다. 다음 절에서 자세히 알아봅니다. 스트라센의 결과는 이후 지속적으로 개선되었습니다.
     <fn>2025년에 Alman등에 의하여 <m>2.371339</m>이하임이 확인되었으며, 2026년 10월 11일 기준, Dupont등은 <m>2.371177</m>이하임을 주장하였고, OpenAI는 <m>\mathbb F=\mathbb C</m>에 대하여 <m>\frac{9}{4}=2.25</m>임을 주장하였습니다.</fn>
   </p>
+
+  <exercises xml:id="exercises-multiplication-tensor">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        따로 언급하지 않으면 <m>\mathbb F</m>는 임의의 체이고, <m>U,V,W</m>와 기저 <m>E_{ij},F_{jk},G_{ik}</m>는 <xref ref="def-matrix-multiplication-tensor"/>의 것을 뜻합니다. <xref ref="prop-tensor-rank-bilinear-complexity"/>의 증명에서처럼, 쌍선형 사상 <m>\mu:U\times V\to W</m>에 대응하는 텐서 <m>T</m>에 대하여 다음 두 조건은 동치입니다.
+        <md>
+          <mrow>T=\sum_{\ell=1}^{R}\alpha_\ell\otimes\beta_\ell\otimes w_\ell
+            \iff \mu(u,v)=\sum_{\ell=1}^{R}\alpha_\ell(u)\beta_\ell(v)w_\ell\quad(\text{모든 }u\in U,\ v\in V).</mrow>
+        </md>
+      </p>
+      <p>
+        유한차원 벡터공간 <m>V_1,V_2,V_3</m>와 <m>T\in V_1\otimes V_2\otimes V_3</m>에 대하여, 단순 텐서에서
+        <md>
+          <mrow>T_{(1)}:V_1^*\to V_2\otimes V_3,\qquad \varphi\longmapsto\varphi(v_1)\,v_2\otimes v_3\quad(T=v_1\otimes v_2\otimes v_3)</mrow>
+        </md>
+        로 정하고 <m>T</m>에 대해 선형으로 확장한 사상을 <m>T</m>의 첫째 <term>펼침</term><aside><p>펼침:flattening</p></aside>이라 합니다. 둘째 펼침 <m>T_{(2)}:V_2^*\to V_1\otimes V_3</m>와 셋째 펼침 <m>T_{(3)}:V_3^*\to V_1\otimes V_2</m>도 같은 방법으로 정의합니다. <xref ref="ex-tensor-border-rank-two-rank-three"/>에서 사용한 사상이 첫째 펼침입니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-mmt-matrix-units">
+      <title>행렬 단위와 행렬곱 텐서</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>모든 <m>i,j,j',k</m>에 대하여 <m>E_{ij}F_{j'k}=\delta_{jj'}G_{ik}</m>임을 보이십시오.</p></li>
+            <li><p>텐서 <m>\sum_{i,j,j',k}E_{ij}^*\otimes F_{j'k}^*\otimes\mu(E_{ij},F_{j'k})</m>가 행렬곱 <m>\mu(A,B)=AB</m>에 대응함을 보이고, (a)를 이용하여 <xref ref="def-matrix-multiplication-tensor"/>의 <m>T_{r,s,t}</m> 공식을 유도하십시오.</p></li>
+            <li><p><m>T_{2,1,2}</m>를 단순 텐서의 합으로 쓰고, 이것이 열벡터와 행벡터의 곱 <m>(AB)_{ik}=a_{i1}b_{1k}</m>에 대응함을 확인하십시오. 또한 <m>U^*\otimes V^*\otimes W</m>의 차원과 표준 기저에 대한 <m>T_{r,s,t}</m>의 영이 아닌 계수의 개수를 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(E_{ij}F_{j'k})_{pq}=\sum_{l}(E_{ij})_{pl}(F_{j'k})_{lq}=\delta_{pi}\delta_{jj'}\delta_{kq}</m>이므로 <m>E_{ij}F_{j'k}=\delta_{jj'}G_{ik}</m>입니다.</p></li>
+            <li><p>주어진 텐서에 대응하는 쌍선형 사상을 <m>\nu</m>라 하면 <m>E_{ij}^*(E_{pq})=\delta_{ip}\delta_{jq}</m>, <m>F_{j'k}^*(F_{p'q'})=\delta_{j'p'}\delta_{kq'}</m>이므로 <m>\nu(E_{pq},F_{p'q'})=\mu(E_{pq},F_{p'q'})</m>입니다. 두 쌍선형 사상이 기저의 쌍에서 같으므로 <m>\nu=\mu</m>입니다. (a)에 의해 <m>j\ne j'</m>인 항은 영이고 <m>j=j'</m>인 항은 <m>E_{ij}^*\otimes F_{jk}^*\otimes G_{ik}</m>이므로 정의의 공식을 얻습니다.</p></li>
+            <li><p><m>T_{2,1,2}=\sum_{i=1}^{2}\sum_{k=1}^{2}E_{i1}^*\otimes F_{1k}^*\otimes G_{ik}</m>이며 네 개의 항으로 이루어집니다. 이를 평가하면 <m>(AB)_{ik}=a_{i1}b_{1k}</m>이므로 열벡터 <m>A</m>와 행벡터 <m>B</m>의 곱입니다. 일반적으로 <m>\dim(U^*\otimes V^*\otimes W)=(rs)(st)(rt)=(rst)^2</m>이지만 영이 아닌 계수는 <m>rst</m>개뿐입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-mmt-rank-basic">
+      <title>텐서의 계수의 기본 성질</title>
+      <statement>
+        <p>
+          <m>V_1,\ldots,V_d</m>를 <m>\mathbb F</m> 위의 유한차원 벡터공간이라 합시다.
+          <ol marker="(a)">
+            <li><p><m>S,T\in V_1\otimes\cdots\otimes V_d</m>와 영이 아닌 <m>c\in\mathbb F</m>에 대하여 <m>\operatorname{rank}_{\mathbb F}(S+T)\le\operatorname{rank}_{\mathbb F}(S)+\operatorname{rank}_{\mathbb F}(T)</m>와 <m>\operatorname{rank}_{\mathbb F}(cT)=\operatorname{rank}_{\mathbb F}(T)</m>를 보이십시오.</p></li>
+            <li><p>선형 동형사상 <m>g_i:V_i\to V_i'</m>에 대하여 <m>\operatorname{rank}_{\mathbb F}\bigl((g_1\otimes\cdots\otimes g_d)(T)\bigr)=\operatorname{rank}_{\mathbb F}(T)</m>임을 보이십시오.</p></li>
+            <li><p><m>d=2</m>일 때 <m>T\in V_1\otimes V_2</m>에 대해 <m>\varphi\otimes v_2\mapsto\varphi(v_1)v_2</m>로 정해지는 선형사상 <m>T_{(1)}:V_1^*\to V_2</m>를 생각합니다. <m>\operatorname{rank}_{\mathbb F}(T)=\operatorname{rank}T_{(1)}</m>임을 보이십시오. 따라서 <m>T=\sum_{p,q}c_{pq}e_p\otimes f_q</m>의 계수는 행렬 <m>(c_{pq})</m>의 계수와 같습니다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>S</m>와 <m>T</m>의 최소 분해를 이어 붙이면 <m>S+T</m>의 분해를 얻으므로 첫 부등식이 성립합니다. <m>T=\sum_\ell v_{1,\ell}\otimes\cdots\otimes v_{d,\ell}</m>이면 <m>cT=\sum_\ell(cv_{1,\ell})\otimes v_{2,\ell}\otimes\cdots\otimes v_{d,\ell}</m>이므로 <m>\operatorname{rank}(cT)\le\operatorname{rank}T</m>이고, <m>c^{-1}</m>에 같은 논리를 적용하면 등호를 얻습니다.</p></li>
+            <li><p><m>(g_1\otimes\cdots\otimes g_d)(v_1\otimes\cdots\otimes v_d)=g_1v_1\otimes\cdots\otimes g_dv_d</m>이므로 단순 텐서는 단순 텐서로 갑니다. 따라서 계수는 증가하지 않고, 역사상 <m>g_1^{-1}\otimes\cdots\otimes g_d^{-1}</m>에 같은 논리를 적용하면 등호를 얻습니다.</p></li>
+            <li><p><m>T=\sum_{\ell=1}^{R}x_\ell\otimes y_\ell</m>이면 <m>T_{(1)}(\varphi)=\sum_\ell\varphi(x_\ell)y_\ell\in\operatorname{span}\{y_1,\ldots,y_R\}</m>이므로 <m>\operatorname{rank}T_{(1)}\le R</m>입니다. 역으로 <m>V_1</m>의 기저 <m>e_1,\ldots,e_m</m>을 잡으면 <m>T=\sum_pe_p\otimes y_p</m>로 쓸 수 있고 <m>T_{(1)}(e_p^*)=y_p</m>입니다. <m>w_1,\ldots,w_k</m>를 <m>\operatorname{im}T_{(1)}=\operatorname{span}\{y_p\}</m>의 기저라 하고 <m>y_p=\sum_qc_{pq}w_q</m>로 쓰면 <m>T=\sum_{q=1}^{k}\bigl(\sum_pc_{pq}e_p\bigr)\otimes w_q</m>이므로 <m>\operatorname{rank}T\le k</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-mmt-flattening-bound">
+      <title>펼침에 의한 계수의 하계</title>
+      <statement>
+        <p>
+          <m>T\in V_1\otimes V_2\otimes V_3</m>이고 <m>n_i=\dim V_i</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>i=1,2,3</m>에 대하여 <m>\operatorname{rank}T_{(i)}\le\operatorname{rank}_{\mathbb F}(T)</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T)\le\min\{n_1n_2,\,n_1n_3,\,n_2n_3\}</m>임을 보이십시오.</p></li>
+            <li><p><xref ref="ex-tensor-border-rank-two-rank-three"/>의 텐서 <m>T</m>에 대해 세 펼침의 계수를 구하고, (a)의 하계가 계수를 정확히 결정하지 못함을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>T=\sum_{\ell=1}^{R}v_{1,\ell}\otimes v_{2,\ell}\otimes v_{3,\ell}</m>이면 <m>T_{(1)}(\varphi)=\sum_\ell\varphi(v_{1,\ell})v_{2,\ell}\otimes v_{3,\ell}</m>이므로 <m>\operatorname{im}T_{(1)}</m>은 <m>R</m>개의 벡터로 생성됩니다. 나머지 펼침도 같습니다.</p></li>
+            <li><p><m>V_1,V_2</m>의 기저 <m>e_p,f_q</m>를 잡으면 <m>T=\sum_{p,q}e_p\otimes f_q\otimes z_{pq}</m>인 <m>z_{pq}\in V_3</m>가 존재하므로 <m>\operatorname{rank}T\le n_1n_2</m>입니다. 나머지도 같습니다.</p></li>
+            <li><p><m>T</m>는 세 인자의 순서를 바꾸어도 변하지 않으므로 세 펼침의 계수는 같고, 예제에서 계산한 대로 <m>T_{(1)}(e_1^*)=e_2\otimes e_1+e_1\otimes e_2</m>, <m>T_{(1)}(e_2^*)=e_1\otimes e_1</m>은 선형독립이므로 모두 <m>2</m>입니다. 따라서 (a)는 <m>\operatorname{rank}T\ge 2</m>만 주지만, 실제 계수는 <m>3</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-mmt-transpose">
+      <title>전치에 의한 대칭</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>모든 <m>A\in\operatorname{Mat}_{r\times s}(\mathbb F)</m>, <m>B\in\operatorname{Mat}_{s\times t}(\mathbb F)</m>에 대해 <m>AB=\sum_{\ell=1}^{R}\alpha_\ell(A)\beta_\ell(B)W_\ell</m>라 합시다. 전치를 이용하여 <m>A'\in\operatorname{Mat}_{t\times s}(\mathbb F)</m>, <m>B'\in\operatorname{Mat}_{s\times r}(\mathbb F)</m>의 곱 <m>A'B'</m>을 <m>R</m>개의 곱으로 나타내는 공식을 구하십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})=\operatorname{rank}_{\mathbb F}(T_{t,s,r})</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>A'B'=\bigl(B'^{\mathsf T}A'^{\mathsf T}\bigr)^{\mathsf T}</m>이고 <m>B'^{\mathsf T}\in\operatorname{Mat}_{r\times s}(\mathbb F)</m>, <m>A'^{\mathsf T}\in\operatorname{Mat}_{s\times t}(\mathbb F)</m>이므로
+            <md>
+              <mrow>A'B'=\sum_{\ell=1}^{R}\beta_\ell\bigl(A'^{\mathsf T}\bigr)\,\alpha_\ell\bigl(B'^{\mathsf T}\bigr)\,W_\ell^{\mathsf T}</mrow>
+            </md>
+            입니다. 여기서 <m>A'\mapsto\beta_\ell(A'^{\mathsf T})</m>와 <m>B'\mapsto\alpha_\ell(B'^{\mathsf T})</m>는 선형 형식입니다.</p></li>
+            <li><p>(a)는 <m>T_{r,s,t}</m>의 <m>R</m>항 분해에서 <m>T_{t,s,r}</m>의 <m>R</m>항 분해를 만들므로 <m>\operatorname{rank}T_{t,s,r}\le\operatorname{rank}T_{r,s,t}</m>입니다. <m>r</m>과 <m>t</m>의 역할을 바꾸면 반대 부등식을 얻습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-mmt-splitting">
+      <title>블록 분할과 단조성</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>다음 부등식을 보이십시오.
+            <md>
+              <mrow>\operatorname{rank}_{\mathbb F}(T_{r_1+r_2,s,t})\amp\le\operatorname{rank}_{\mathbb F}(T_{r_1,s,t})+\operatorname{rank}_{\mathbb F}(T_{r_2,s,t}),</mrow>
+              <mrow>\operatorname{rank}_{\mathbb F}(T_{r,s_1+s_2,t})\amp\le\operatorname{rank}_{\mathbb F}(T_{r,s_1,t})+\operatorname{rank}_{\mathbb F}(T_{r,s_2,t}),</mrow>
+              <mrow>\operatorname{rank}_{\mathbb F}(T_{r,s,t_1+t_2})\amp\le\operatorname{rank}_{\mathbb F}(T_{r,s,t_1})+\operatorname{rank}_{\mathbb F}(T_{r,s,t_2}).</mrow>
+            </md>
+            </p></li>
+            <li><p><m>r\le r'</m>, <m>s\le s'</m>, <m>t\le t'</m>이면 <m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})\le\operatorname{rank}_{\mathbb F}(T_{r',s',t'})</m>임을 보이십시오.</p></li>
+            <li><p>(a)를 이용하여 <m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})\le rst</m>와 <m>\operatorname{rank}_{\mathbb F}(T_{2n,2n,2n})\le 8\operatorname{rank}_{\mathbb F}(T_{n,n,n})</m>를 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>첫째 부등식에서 <m>A=\begin{pmatrix}A_1\\A_2\end{pmatrix}</m>, <m>A_p\in\operatorname{Mat}_{r_p\times s}(\mathbb F)</m>로 나누면 <m>AB=\begin{pmatrix}A_1B\\A_2B\end{pmatrix}</m>입니다. <m>A_1B=\sum_\ell\alpha_\ell(A_1)\beta_\ell(B)W_\ell</m>, <m>A_2B=\sum_\ell\alpha'_\ell(A_2)\beta'_\ell(B)W'_\ell</m>이면
+            <md>
+              <mrow>AB=\sum_\ell\alpha_\ell(A_1)\beta_\ell(B)\begin{pmatrix}W_\ell\\0\end{pmatrix}+\sum_\ell\alpha'_\ell(A_2)\beta'_\ell(B)\begin{pmatrix}0\\W'_\ell\end{pmatrix}</mrow>
+            </md>
+            이고 <m>A\mapsto\alpha_\ell(A_1)</m>, <m>A\mapsto\alpha'_\ell(A_2)</m>는 선형 형식입니다. 둘째는 <m>A=\begin{pmatrix}A_1\amp A_2\end{pmatrix}</m>, <m>B=\begin{pmatrix}B_1\\B_2\end{pmatrix}</m>에 대한 <m>AB=A_1B_1+A_2B_2</m>에서, 셋째는 <m>AB=\begin{pmatrix}AB_1\amp AB_2\end{pmatrix}</m>에서 같은 방법으로 얻습니다.</p></li>
+            <li><p><m>\iota(A)=\begin{pmatrix}A\amp 0\\0\amp 0\end{pmatrix}\in\operatorname{Mat}_{r'\times s'}(\mathbb F)</m>, <m>\iota(B)\in\operatorname{Mat}_{s'\times t'}(\mathbb F)</m>도 같은 방법으로 정하고, <m>\pi:\operatorname{Mat}_{r'\times t'}(\mathbb F)\to\operatorname{Mat}_{r\times t}(\mathbb F)</m>를 왼쪽 위 블록을 취하는 사상이라 합시다. <m>AB=\pi\bigl(\iota(A)\iota(B)\bigr)</m>이므로 <m>T_{r',s',t'}</m>의 분해 <m>\sum_\ell\alpha_\ell\otimes\beta_\ell\otimes W_\ell</m>에서
+            <m>AB=\sum_\ell\alpha_\ell(\iota(A))\beta_\ell(\iota(B))\pi(W_\ell)</m>를 얻습니다.</p></li>
+            <li><p><m>T_{1,1,1}=E_{11}^*\otimes F_{11}^*\otimes G_{11}</m>의 계수는 <m>1</m>입니다. (a)를 반복하여 <m>r,s,t</m>를 각각 <m>1</m>들의 합으로 나누면 <m>\operatorname{rank}T_{r,s,t}\le rst\cdot\operatorname{rank}T_{1,1,1}=rst</m>입니다. 같은 방법으로 <m>2n=n+n</m>을 세 번 사용하면 <m>2^3=8</m>개의 <m>T_{n,n,n}</m>으로 나뉩니다. 이는 블록 행렬의 표준 곱셈 공식에 해당합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-mmt-exponent-lower-bound">
+      <title>행렬곱 지수의 하계</title>
+      <statement>
+        <p>
+          <xref ref="def-matrix-multiplication-exponent"/>의 <m>C_{\mathbb F}(n)</m>에 대해 다음을 보이십시오.
+          <ol marker="(a)">
+            <li><p><m>C_{\mathbb F}(1)=1</m>이고, 모든 <m>n\ge 1</m>에 대하여 <m>C_{\mathbb F}(n)\ge n^2</m>이다.</p></li>
+            <li><p>모든 <m>n\ge 1</m>에 대하여 <m>C_{\mathbb F}(n)\le C_{\mathbb F}(n+1)</m>이다.</p></li>
+            <li><p><m>2\le\omega_{\mathbb F}\le 3</m>이다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>각 출력 성분 <m>c_{ik}=\sum_ja_{ij}b_{jk}</m>는 상수가 아닙니다(<m>A=0</m>이면 <m>0</m>이고 <m>A=E_{i1}</m>, <m>B=F_{1k}</m>이면 <m>1</m>). 또한 어느 입력 성분과도 같지 않습니다. 예를 들어 <m>a_{pq}=1</m>이고 <m>B=0</m>이면 <m>c_{ik}=0</m>입니다. 따라서 각 <m>c_{ik}</m>는 어떤 연산의 결과여야 합니다. <m>A=E_{i1}</m>, <m>B=F_{1k}</m>이면 <m>AB=G_{ik}</m>이므로 서로 다른 출력 성분은 서로 다른 함수이고, 한 연산은 하나의 값만 만드므로 연산이 적어도 <m>n^2</m>번 필요합니다. <m>n=1</m>이면 곱셈 한 번으로 충분하므로 <m>C_{\mathbb F}(1)=1</m>입니다.</p></li>
+            <li><p><m>(n+1)\times(n+1)</m> 행렬곱을 계산하는 알고리즘에서 마지막 행과 열의 입력 성분을 상수 <m>0</m>으로 바꾸면, 연산 횟수는 그대로이고 출력의 왼쪽 위 <m>n\times n</m> 블록이 <m>n\times n</m> 행렬의 곱이 됩니다.</p></li>
+            <li><p>상계는 본문에서 보였습니다. <m>\tau\lt 2</m>이고 모든 <m>n</m>에 대해 <m>C_{\mathbb F}(n)\le cn^\tau</m>라면 (a)에 의해 <m>n^{2-\tau}\le c</m>이므로 모순입니다. 따라서 <m>\omega_{\mathbb F}\ge 2</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 7 -->
+    <exercise xml:id="exer-mmt-flattenings-border">
+      <title>행렬곱 텐서의 펼침과 경계 계수의 하계</title>
+      <statement>
+        <p>
+          <m>T_{r,s,t}\in U^*\otimes V^*\otimes W</m>의 펼침을 생각합니다. 여기서 <m>(U^*)^*=U</m>, <m>(V^*)^*=V</m>로 보고, <m>\beta\otimes w\mapsto(v\mapsto\beta(v)w)</m>로 <m>V^*\otimes W\cong\operatorname{Hom}(V,W)</m>, <m>U^*\otimes W\cong\operatorname{Hom}(U,W)</m>를 동일시하며, <m>U^*\otimes V^*</m>는 <m>U\times V</m> 위의 쌍선형 형식의 공간으로 봅니다.
+          <ol marker="(a)">
+            <li><p>세 펼침이 각각 <m>A\mapsto(B\mapsto AB)</m>, <m>B\mapsto(A\mapsto AB)</m>, <m>\gamma\mapsto\bigl((A,B)\mapsto\gamma(AB)\bigr)</m>임을 보이고, 모두 단사임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})\ge\max\{rs,st,rt\}</m>임을 보이고, <m>r,s,t</m> 중 하나가 <m>1</m>이면 <m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})=rst</m>임을 보이십시오.</p></li>
+            <li><p><m>\mathbb F=\mathbb C</m>일 때 <m>\underline{\operatorname{rank}}_{\mathbb C}(T_{r,s,t})\ge\max\{rs,st,rt\}</m>임을 보이십시오. 특히 <m>\underline{\operatorname{rank}}_{\mathbb C}(T_{n,n,n})\ge n^2</m>입니다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>첫째 펼침은 <m>A\mapsto\sum_{i,j,k}E_{ij}^*(A)\,F_{jk}^*\otimes G_{ik}</m>이고, 이는 <m>B\mapsto\sum_{i,j,k}a_{ij}b_{jk}G_{ik}=AB</m>에 해당합니다. 둘째와 셋째도 같은 계산으로 얻습니다. 모든 <m>B</m>에 대해 <m>AB=0</m>이면 <m>AF_{jk}</m>의 <m>k</m>번째 열이 <m>A</m>의 <m>j</m>번째 열이므로 <m>A=0</m>입니다. 모든 <m>A</m>에 대해 <m>AB=0</m>이면 <m>E_{ij}B</m>의 <m>i</m>번째 행이 <m>B</m>의 <m>j</m>번째 행이므로 <m>B=0</m>입니다. 모든 <m>A,B</m>에 대해 <m>\gamma(AB)=0</m>이면 <m>\gamma(G_{ik})=\gamma(E_{ij}F_{jk})=0</m>이므로 <m>\gamma=0</m>입니다.</p></li>
+            <li><p>(a)에 의해 세 펼침의 계수는 정의역의 차원 <m>rs</m>, <m>st</m>, <m>rt</m>이므로 <xref ref="exer-mmt-flattening-bound"/>에서 하계를 얻습니다. 예를 들어 <m>t=1</m>이면 <m>\max\{rs,s,r\}=rs=rst</m>이고, <xref ref="ex-tensor-rank-standard-matrix-multiplication"/>의 상계와 일치합니다. <m>r=1</m>이나 <m>s=1</m>인 경우도 같습니다.</p></li>
+            <li><p>펼침을 취하는 사상 <m>T\mapsto T_{(i)}</m>는 선형이므로 연속입니다. 또한 선형사상의 계수가 <m>R</m> 이하라는 조건은 행렬의 모든 <m>(R+1)</m>차 소행렬식이 영이라는 조건이므로 닫힌 조건입니다. 따라서 <m>T_\nu\to T</m>이고 <m>\operatorname{rank}T_\nu\le R</m>이면, <xref ref="exer-mmt-flattening-bound"/>에 의해 <m>\operatorname{rank}(T_\nu)_{(i)}\le R</m>이고 극한에서 <m>\operatorname{rank}T_{(i)}\le R</m>입니다. 그러므로 펼침의 계수는 경계 계수의 하계이기도 합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 8 -->
+    <exercise xml:id="exer-mmt-complex-multiplication">
+      <title>복소수 곱셈의 계수</title>
+      <statement>
+        <p>
+          <m>a+bi\in\mathbb C</m>를 <m>(a,b)\in\mathbb R^2</m>와 동일시하면 복소수의 곱셈은 <m>\mathbb R</m>-쌍선형 사상
+          <md>
+            <mrow>\mu\bigl((a,b),(c,d)\bigr)=(ac-bd,\ ad+bc)</mrow>
+          </md>
+          입니다. <m>e_1,e_2</m>를 <m>\mathbb R^2</m>의 표준기저라 하고, <m>\mu</m>에 대응하는 텐서를 <m>T\in(\mathbb R^2)^*\otimes(\mathbb R^2)^*\otimes\mathbb R^2</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>T</m>를 표준기저로 나타내고, 세 곱 <m>ac</m>, <m>bd</m>, <m>(a+b)(c+d)</m>를 이용하여 <m>\operatorname{rank}_{\mathbb R}(T)\le 3</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb R}(T)=3</m>임을 보이십시오.</p></li>
+            <li><p>같은 계수를 갖는 텐서를 <m>(\mathbb C^2)^*\otimes(\mathbb C^2)^*\otimes\mathbb C^2</m>의 원소로 보면 <m>\operatorname{rank}_{\mathbb C}(T)=2</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>T=e_1^*\otimes e_1^*\otimes e_1-e_2^*\otimes e_2^*\otimes e_1+e_1^*\otimes e_2^*\otimes e_2+e_2^*\otimes e_1^*\otimes e_2</m>입니다. <m>p_1=ac</m>, <m>p_2=bd</m>, <m>p_3=(a+b)(c+d)</m>라 하면 <m>ac-bd=p_1-p_2</m>, <m>ad+bc=p_3-p_1-p_2</m>이므로
+            <md>
+              <mrow>T=e_1^*\otimes e_1^*\otimes(e_1-e_2)-e_2^*\otimes e_2^*\otimes(e_1+e_2)+(e_1^*+e_2^*)\otimes(e_1^*+e_2^*)\otimes e_2</mrow>
+            </md>
+            입니다.</p></li>
+            <li><p>셋째 펼침은 <m>e_1^*</m>와 <m>e_2^*</m>를 각각 쌍선형 형식 <m>ac-bd</m>와 <m>ad+bc</m>로 보내며, 그 행렬은
+            <md>
+              <mrow>M_1=\begin{pmatrix}1\amp 0\\0\amp -1\end{pmatrix},\qquad M_2=\begin{pmatrix}0\amp 1\\1\amp 0\end{pmatrix}</mrow>
+            </md>
+            입니다. <m>T=\sum_{\ell=1}^{2}\alpha_\ell\otimes\beta_\ell\otimes w_\ell</m>라 하면 <m>M_1,M_2\in\operatorname{span}\{\alpha_1\beta_1^{\mathsf T},\alpha_2\beta_2^{\mathsf T}\}</m>이고, <m>M_1,M_2</m>가 선형독립이므로 두 공간은 같습니다. 그러면 <m>\operatorname{span}\{M_1,M_2\}</m>는 계수가 <m>1</m>인 행렬 <m>\alpha_1\beta_1^{\mathsf T}</m>를 포함해야 합니다. 그러나 실수 <m>(x,y)\ne(0,0)</m>에 대해
+            <md>
+              <mrow>\det(xM_1+yM_2)=\det\begin{pmatrix}x\amp y\\y\amp -x\end{pmatrix}=-(x^2+y^2)\ne 0</mrow>
+            </md>
+            이므로 모순입니다. 따라서 <m>\operatorname{rank}_{\mathbb R}(T)\ge 3</m>이고 (a)와 합하면 등호가 성립합니다.</p></li>
+            <li><p><m>p=(a+ib)(c+id)</m>, <m>q=(a-ib)(c-id)</m>라 하면 <m>ac-bd=\frac{p+q}{2}</m>, <m>ad+bc=\frac{p-q}{2i}</m>이므로
+            <md>
+              <mrow>T=\tfrac12(e_1^*+ie_2^*)\otimes(e_1^*+ie_2^*)\otimes(e_1-ie_2)+\tfrac12(e_1^*-ie_2^*)\otimes(e_1^*-ie_2^*)\otimes(e_1+ie_2)</mrow>
+            </md>
+            입니다. 셋째 펼침의 계수가 <m>2</m>이므로 <m>\operatorname{rank}_{\mathbb C}(T)=2</m>입니다. 실제로 <m>\det(M_1+iM_2)=0</m>이므로 복소수 범위에서는 (b)의 논증이 성립하지 않습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 9 -->
+    <exercise xml:id="exer-mmt-cyclic-symmetry">
+      <title>대각합 형식과 순환 대칭</title>
+      <statement>
+        <p>
+          <m>Z=\operatorname{Mat}_{t\times r}(\mathbb F)</m>의 표준 행렬 단위를 <m>H_{ki}</m>라 합시다.
+          <ol marker="(a)">
+            <li><p><m>\operatorname{tr}(G_{ik}H_{k'i'})=\delta_{kk'}\delta_{ii'}</m>임을 보이고, <m>\phi(X)=\bigl(C\mapsto\operatorname{tr}(XC)\bigr)</m>로 정의한 <m>\phi:W\to Z^*</m>가 <m>\phi(G_{ik})=H_{ki}^*</m>를 만족하는 동형사상임을 보이십시오.</p></li>
+            <li><p><m>\tau_{r,s,t}=(\mathrm{id}\otimes\mathrm{id}\otimes\phi)(T_{r,s,t})\in U^*\otimes V^*\otimes Z^*</m>가 <m>\sum_{i,j,k}E_{ij}^*\otimes F_{jk}^*\otimes H_{ki}^*</m>이고, 삼중선형 형식으로서 <m>(A,B,C)\mapsto\operatorname{tr}(ABC)</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})=\operatorname{rank}_{\mathbb F}(T_{s,t,r})=\operatorname{rank}_{\mathbb F}(T_{t,r,s})</m>임을 보이고, <xref ref="exer-mmt-transpose"/>와 함께 <m>\operatorname{rank}_{\mathbb F}(T_{r,s,t})</m>가 <m>(r,s,t)</m>의 모든 순열에 대해 불변임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>G_{ik}H_{k'i'}=\delta_{kk'}E^{(r)}_{ii'}</m>입니다. 여기서 <m>E^{(r)}_{ii'}</m>는 <m>r\times r</m> 행렬 단위입니다. 그 대각합은 <m>\delta_{ii'}</m>이므로 등식이 성립합니다. 따라서 <m>\phi(G_{ik})(H_{k'i'})=\delta_{kk'}\delta_{ii'}</m>, 즉 <m>\phi(G_{ik})=H_{ki}^*</m>입니다. <m>\phi</m>는 기저를 기저로 보내므로 동형사상입니다.</p></li>
+            <li><p>(a)에서 첫째 식을 얻습니다. 이를 <m>A=(a_{ij})</m>, <m>B=(b_{jk})</m>, <m>C=(c_{ki})</m>에 평가하면 <m>\sum_{i,j,k}a_{ij}b_{jk}c_{ki}=\operatorname{tr}(ABC)</m>입니다.</p></li>
+            <li><p><xref ref="exer-mmt-rank-basic"/>의 (b)에 의해 <m>\operatorname{rank}T_{r,s,t}=\operatorname{rank}\tau_{r,s,t}</m>입니다. 인자의 순서를 순환시키는 동형사상 <m>U^*\otimes V^*\otimes Z^*\to V^*\otimes Z^*\otimes U^*</m>, <m>x\otimes y\otimes z\mapsto y\otimes z\otimes x</m>는 단순 텐서를 단순 텐서로 보내므로 계수를 보존합니다. 이 사상에 의한 <m>\tau_{r,s,t}</m>의 상은 <m>\sum_{j,k,i}F_{jk}^*\otimes H_{ki}^*\otimes E_{ij}^*</m>입니다. 그런데 <m>(s,t,r)</m>에 대해 세 공간은 <m>\operatorname{Mat}_{s\times t}=V</m>, <m>\operatorname{Mat}_{t\times r}=Z</m>, 그리고 셋째 인자를 위한 <m>\operatorname{Mat}_{r\times s}=U</m>이므로, 이 상은 정확히 <m>\tau_{s,t,r}</m>입니다. 이는 <m>\operatorname{tr}(ABC)=\operatorname{tr}(BCA)</m>를 반영합니다. 따라서 <m>\operatorname{rank}T_{r,s,t}=\operatorname{rank}T_{s,t,r}</m>이고, 한 번 더 적용하면 <m>T_{t,r,s}</m>도 같습니다. 순환 순열과 <m>r,t</m>의 교환으로 모든 순열을 만들 수 있으므로 계수는 모든 순열에 대해 불변입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 10 -->
+    <exercise xml:id="exer-mmt-kronecker">
+      <title>크로네커 곱과 계수의 곱셈성</title>
+      <statement>
+        <p>
+          <m>T\in V_1\otimes V_2\otimes V_3</m>, <m>T'\in V_1'\otimes V_2'\otimes V_3'</m>에 대하여 단순 텐서에서
+          <md>
+            <mrow>(v_1\otimes v_2\otimes v_3)\boxtimes(v_1'\otimes v_2'\otimes v_3')=(v_1\otimes v_1')\otimes(v_2\otimes v_2')\otimes(v_3\otimes v_3')</mrow>
+          </md>
+          로 정하고 쌍선형으로 확장한 <m>T\boxtimes T'\in(V_1\otimes V_1')\otimes(V_2\otimes V_2')\otimes(V_3\otimes V_3')</m>를 <term>크로네커 곱</term><aside><p>크로네커 곱:Kronecker product</p></aside>이라 합니다. 이는 <m>T\otimes T'</m>을 인자의 순서를 바꾸는 표준 동형사상으로 옮긴 것이므로 잘 정의됩니다.
+          <ol marker="(a)">
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T\boxtimes T')\le\operatorname{rank}_{\mathbb F}(T)\operatorname{rank}_{\mathbb F}(T')</m>임을 보이십시오.</p></li>
+            <li><p><m>E_{ij}\otimes E'_{i'j'}\mapsto E_{(i,i'),(j,j')}</m>(순서쌍은 사전식 순서)로 <m>\operatorname{Mat}_{r\times s}\otimes\operatorname{Mat}_{r'\times s'}\cong\operatorname{Mat}_{rr'\times ss'}</m>를 동일시하면 <m>A\otimes A'</m>은 행렬의 크로네커 곱이 됩니다. 이 동일시와 그 쌍대 아래에서 <m>T_{r,s,t}\boxtimes T_{r',s',t'}</m>가 <m>T_{rr',ss',tt'}</m>에 대응함을 보이십시오. 이로부터 <m>(A\otimes A')(B\otimes B')=AB\otimes A'B'</m>를 유도하십시오.</p></li>
+            <li><p><m>\operatorname{rank}_{\mathbb F}(T_{rr',ss',tt'})\le\operatorname{rank}_{\mathbb F}(T_{r,s,t})\operatorname{rank}_{\mathbb F}(T_{r',s',t'})</m>임을 보이고, 다음을 유도하십시오.
+            <md>
+              <mrow>\operatorname{rank}_{\mathbb F}(T_{m^N,m^N,m^N})\le\operatorname{rank}_{\mathbb F}(T_{m,m,m})^N,\qquad \operatorname{rank}_{\mathbb F}(T_{rst,rst,rst})\le\operatorname{rank}_{\mathbb F}(T_{r,s,t})^3.</mrow>
+            </md>
+            </p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>T=\sum_{\ell=1}^{R}x_\ell\otimes y_\ell\otimes z_\ell</m>, <m>T'=\sum_{\ell'=1}^{R'}x'_{\ell'}\otimes y'_{\ell'}\otimes z'_{\ell'}</m>이면 쌍선형성에 의해 <m>T\boxtimes T'=\sum_{\ell,\ell'}(x_\ell\otimes x'_{\ell'})\otimes(y_\ell\otimes y'_{\ell'})\otimes(z_\ell\otimes z'_{\ell'})</m>이고, 이는 <m>RR'</m>개의 단순 텐서의 합입니다.</p></li>
+            <li><p>정의에 의해
+            <md>
+              <mrow>T_{r,s,t}\boxtimes T_{r',s',t'}=\sum_{i,j,k}\sum_{i',j',k'}(E_{ij}^*\otimes E_{i'j'}'^*)\otimes(F_{jk}^*\otimes F_{j'k'}'^*)\otimes(G_{ik}\otimes G'_{i'k'})</mrow>
+            </md>
+            입니다. 텐서곱 기저의 쌍대기저는 쌍대기저의 텐서곱이므로, <m>I=(i,i')</m>, <m>J=(j,j')</m>, <m>K=(k,k')</m>로 놓으면 우변은 <m>\sum_{I,J,K}E_{IJ}^*\otimes F_{JK}^*\otimes G_{IK}=T_{rr',ss',tt'}</m>입니다. 한편 <m>T\boxtimes T'</m>에 대응하는 쌍선형 사상은 단순 텐서에서 확인하면 <m>(u\otimes u',v\otimes v')\mapsto\mu(u,v)\otimes\mu'(u',v')</m>를 만족합니다. 따라서 <m>(A\otimes A')(B\otimes B')=AB\otimes A'B'</m>입니다.</p></li>
+            <li><p>(a), (b)와 <xref ref="exer-mmt-rank-basic"/>의 (b)에서 첫 부등식을 얻습니다. 이를 반복하면 첫째 결과를 얻습니다. 또한 <m>T_{r,s,t}\boxtimes T_{s,t,r}\boxtimes T_{t,r,s}</m>는 <m>T_{rst,str,trs}</m>, 즉 <m>T_{rst,rst,rst}</m>에 대응하고, <xref ref="exer-mmt-cyclic-symmetry"/>에 의해 세 인수의 계수가 같으므로 둘째 결과를 얻습니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 11 -->
+    <exercise xml:id="exer-mmt-rank-to-exponent">
+      <title>계수의 상계에서 행렬곱 지수의 상계로</title>
+      <statement>
+        <p>
+          정수 <m>m\ge 2</m>와 <m>R</m>에 대하여 <m>\operatorname{rank}_{\mathbb F}(T_{m,m,m})\le R</m>라 하고, 분해
+          <md>
+            <mrow>T_{m,m,m}=\sum_{\ell=1}^{R}\alpha_\ell\otimes\beta_\ell\otimes W_\ell,\qquad \alpha_\ell=\sum_{p,q}x^{\ell}_{pq}E_{pq}^*,\quad\beta_\ell=\sum_{p,q}y^{\ell}_{pq}F_{pq}^*,\quad W_\ell=\sum_{p,q}z^{\ell}_{pq}G_{pq}</mrow>
+          </md>
+          를 고정합니다. 다음 단계를 따라 <m>\omega_{\mathbb F}\le\log_mR</m>임을 보이십시오.
+          <ol marker="(a)">
+            <li><p>양의 정수 <m>N</m>에 대하여 <m>\mathcal A=\operatorname{Mat}_{N\times N}(\mathbb F)</m>를 <m>N\times N</m> 행렬 전체의 집합이라 하고, <m>A=(A_{pq})</m>, <m>B=(B_{pq})</m>를 성분 <m>A_{pq},B_{pq}</m>가 <m>\mathcal A</m>에 속하는 <m>m\times m</m> 블록 행렬이라 합시다. 모든 <m>i,k</m>에 대하여 다음 등식을 보이십시오.
+            <md>
+              <mrow>\sum_{j=1}^{m}A_{ij}B_{jk}=\sum_{\ell=1}^{R}z^{\ell}_{ik}\Bigl(\sum_{p,q}x^{\ell}_{pq}A_{pq}\Bigr)\Bigl(\sum_{p,q}y^{\ell}_{pq}B_{pq}\Bigr).</mrow>
+            </md>
+            </p></li>
+            <li><p>분해에만 의존하는 상수 <m>L</m>이 존재하여 모든 <m>k\ge 1</m>에 대해 <m>C_{\mathbb F}(m^k)\le R\,C_{\mathbb F}(m^{k-1})+L\,m^{2(k-1)}</m>임을 보이십시오.</p></li>
+            <li><p><m>C_{\mathbb F}(m^k)\le(1+kL)R^k</m>임을 보이십시오.</p></li>
+            <li><p><m>C_{\mathbb F}(n)=O\bigl(n^{\log_mR}\log n\bigr)</m>이고, 따라서 <m>\omega_{\mathbb F}\le\log_mR</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(a)에서는 텐서 등식을 기저에 대한 스칼라 등식으로 바꾸고 곱의 순서에 주의하십시오. (c)에서는 <xref ref="exer-mmt-flattenings-border"/>로부터 <m>R\ge m^2</m>임을 사용하고, (d)에서는 <xref ref="exer-mmt-exponent-lower-bound"/>를 이용하여 <m>n</m>을 <m>m</m>의 거듭제곱까지 키우십시오.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>텐서 등식의 양변을 기저 <m>E_{ij}^*\otimes F_{j'k}^*\otimes G_{i'k'}</m>에 대한 계수로 비교하면 다음 스칼라 등식을 얻습니다.
+            <md>
+              <mrow>\sum_{\ell=1}^{R}x^{\ell}_{ij}\,y^{\ell}_{j'k}\,z^{\ell}_{i'k'}=\delta_{jj'}\,\delta_{ii'}\,\delta_{kk'}.</mrow>
+            </md>
+            주어진 등식의 우변을 전개하면 스칼라 <m>c</m>와 행렬 <m>X,Y</m>에 대하여 <m>(cX)Y=X(cY)=c(XY)</m>이므로
+            <md>
+              <mrow>\sum_{\ell}z^{\ell}_{ik}\Bigl(\sum_{p,q}x^{\ell}_{pq}A_{pq}\Bigr)\Bigl(\sum_{p',q'}y^{\ell}_{p'q'}B_{p'q'}\Bigr)\amp=\sum_{p,q,p',q'}\Bigl(\sum_\ell x^{\ell}_{pq}y^{\ell}_{p'q'}z^{\ell}_{ik}\Bigr)A_{pq}B_{p'q'}</mrow>
+              <mrow>\amp=\sum_{q}A_{iq}B_{qk}</mrow>
+            </md>
+            입니다. 이 계산에서 각 항은 항상 <m>A</m>의 성분 다음에 <m>B</m>의 성분이 오는 형태 <m>A_{pq}B_{p'q'}</m>를 유지하므로, <m>N\ge 2</m>일 때 행렬의 곱셈이 가환이 아니어도 등식이 성립합니다.</p></li>
+            <li><p><m>N=m^{k-1}</m>이라 하고 <m>m^k\times m^k</m> 행렬을 <m>N\times N</m> 블록들로 이루어진 <m>m\times m</m> 행렬로 봅니다. 그러면 이 <m>N</m>에 대하여 (a)를 적용할 수 있습니다. 스칼라 성분에서 <m>\alpha_\ell(A)</m>, <m>\beta_\ell(B)</m>를 모두 계산하고, 곱 <m>p_\ell</m>로부터 출력 <m>\sum_\ell z^{\ell}_{ik}p_\ell</m>를 모두 계산하는 데 필요한 덧셈, 뺄셈, 상수배의 총 횟수를 <m>L</m>이라 합시다. 블록에서는 이러한 연산 하나가 <m>N^2</m>번의 스칼라 연산이 됩니다. 또한 <m>R</m>개의 블록 곱 각각은 <m>C_{\mathbb F}(N)</m>번의 연산으로 계산할 수 있습니다. 따라서 <m>C_{\mathbb F}(m^k)\le R\,C_{\mathbb F}(N)+LN^2</m>입니다.</p></li>
+            <li><p>(b)를 반복하고 <m>C_{\mathbb F}(1)=1</m>을 사용하면 다음을 얻습니다.
+            <md>
+              <mrow>C_{\mathbb F}(m^k)\le R^k+L\sum_{i=0}^{k-1}R^{i}m^{2(k-1-i)}.</mrow>
+            </md>
+            <xref ref="exer-mmt-flattenings-border"/>에 의해 <m>R\ge\operatorname{rank}T_{m,m,m}\ge m^2</m>이므로 각 항은 <m>R^{i}m^{2(k-1-i)}\le R^{k-1}\le R^k</m>입니다. 따라서 <m>C_{\mathbb F}(m^k)\le(1+kL)R^k</m>입니다.</p></li>
+            <li><p><m>\rho=\log_mR</m>라 하고, <m>n\ge 2</m>에 대해 <m>m^{k-1}\lt n\le m^k</m>인 <m>k\ge 1</m>을 잡습니다. <xref ref="exer-mmt-exponent-lower-bound"/>의 (b)를 반복하면 <m>C_{\mathbb F}(n)\le C_{\mathbb F}(m^k)</m>입니다. 또한 <m>R^k=(m^k)^{\rho}\lt(mn)^{\rho}=Rn^{\rho}</m>이고 <m>k\lt\log_mn+1</m>이므로
+            <md>
+              <mrow>C_{\mathbb F}(n)\le(1+kL)R^k\le R\,(1+L+L\log_mn)\,n^{\rho}</mrow>
+            </md>
+            입니다. 임의의 <m>\tau\gt\rho</m>에 대해 <m>n^{\rho}\log n=O(n^\tau)</m>이므로 <m>C_{\mathbb F}(n)=O(n^\tau)</m>이고, 하한의 정의에 의해 <m>\omega_{\mathbb F}\le\rho</m>입니다. 예를 들어 다음 절의 스트라센 항등식을 <m>1\times 1</m> 블록에 적용하면 <m>\operatorname{rank}_{\mathbb F}(T_{2,2,2})\le 7</m>이므로 <m>\omega_{\mathbb F}\le\log_27</m>입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 12 -->
+    <exercise xml:id="exer-mmt-approximate-decomposition">
+      <title>근사 분해와 행렬곱 지수</title>
+      <statement>
+        <p>
+          <m>\varepsilon</m>을 변수로 하는 다항식을 생각합니다. <m>T\in V_1\otimes V_2\otimes V_3</m>에 대하여 계수가 <m>V_i</m>에 속하는 <m>\varepsilon</m>의 다항식 <m>a_\ell(\varepsilon)\in V_1[\varepsilon]</m>, <m>b_\ell(\varepsilon)\in V_2[\varepsilon]</m>, <m>c_\ell(\varepsilon)\in V_3[\varepsilon]</m>과 <m>S(\varepsilon)\in(V_1\otimes V_2\otimes V_3)[\varepsilon]</m>가 존재하여
+          <md>
+            <mrow>\sum_{\ell=1}^{R}a_\ell(\varepsilon)\otimes b_\ell(\varepsilon)\otimes c_\ell(\varepsilon)=\varepsilon^hT+\varepsilon^{h+1}S(\varepsilon)</mrow>
+          </md>
+          가 다항식의 등식으로 성립할 때, 이를 <m>T</m>의 길이 <m>R</m>, 차수 <m>h</m>인 <term>근사 분해</term><aside><p>근사 분해:approximate decomposition</p></aside>라 합니다.
+          <ol marker="(a)">
+            <li><p><m>T</m>가 길이 <m>R</m>, 차수 <m>h</m>인 근사 분해를 가지면 <m>\operatorname{rank}_{\mathbb F}(T)\le\binom{h+2}{2}R</m>임을 보이십시오. 또한 <m>\mathbb F=\mathbb C</m>이면 <m>\underline{\operatorname{rank}}_{\mathbb C}(T)\le R</m>임을 보이십시오.</p></li>
+            <li><p><xref ref="ex-tensor-border-rank-two-rank-three"/>의 텐서 <m>T</m>가 길이 <m>2</m>, 차수 <m>1</m>인 근사 분해를 가짐을 보이십시오. 이때 (a)의 증명에서 실제로 얻는 분해의 항은 몇 개입니까?</p></li>
+            <li><p><m>T</m>와 <m>T'</m>이 각각 길이 <m>R,R'</m>, 차수 <m>h,h'</m>인 근사 분해를 가지면, <m>T\boxtimes T'</m>은 길이 <m>RR'</m>, 차수 <m>h+h'</m>인 근사 분해를 가짐을 보이십시오.</p></li>
+            <li><p><m>m\ge 2</m>이고 <m>T_{m,m,m}</m>가 길이 <m>R</m>인 근사 분해를 가지면 <m>\omega_{\mathbb F}\le\log_mR</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>(a)에서는 양변의 <m>\varepsilon^h</m>의 계수를 비교하십시오. (d)에서는 <m>T_{m,m,m}^{\boxtimes N}</m>에 (c)와 (a)를 적용하여 <m>T_{m^N,m^N,m^N}</m>의 계수를 어림한 뒤, <xref ref="exer-mmt-rank-to-exponent"/>를 <m>m^N</m>에 적용하고 <m>N\to\infty</m>로 보내십시오. (a)의 손실 <m>\binom{h+2}{2}</m>가 <m>N</m>에 대해 다항식 크기로만 증가한다는 점이 핵심입니다.</p>
+      </hint>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>a_\ell(\varepsilon)=\sum_i\varepsilon^ia_\ell^{(i)}</m>, <m>b_\ell(\varepsilon)=\sum_j\varepsilon^jb_\ell^{(j)}</m>, <m>c_\ell(\varepsilon)=\sum_k\varepsilon^kc_\ell^{(k)}</m>로 쓰고 양변의 <m>\varepsilon^h</m>의 계수를 비교하면
+            <md>
+              <mrow>T=\sum_{\ell=1}^{R}\sum_{i+j+k=h}a_\ell^{(i)}\otimes b_\ell^{(j)}\otimes c_\ell^{(k)}</mrow>
+            </md>
+            입니다. 합 <m>i+j+k=h</m>를 만족하는 음이 아닌 정수의 순서쌍은 <m>\binom{h+2}{2}</m>개이므로 원하는 부등식을 얻습니다. <m>\mathbb F=\mathbb C</m>이고 <m>\varepsilon\ne 0</m>이면 <m>T+\varepsilon S(\varepsilon)=\sum_\ell\varepsilon^{-h}a_\ell(\varepsilon)\otimes b_\ell(\varepsilon)\otimes c_\ell(\varepsilon)</m>의 계수는 <m>R</m> 이하입니다. <m>\varepsilon=1/\nu</m>로 두면 <m>S(1/\nu)</m>의 좌표는 <m>\nu\ge 1</m>에서 유계이므로 <m>T+S(1/\nu)/\nu\to T</m>이고, 따라서 <m>\underline{\operatorname{rank}}_{\mathbb C}(T)\le R</m>입니다.</p></li>
+            <li><p>예제의 전개식에 <m>\varepsilon</m>을 곱하면
+            <md>
+              <mrow>(e_1+\varepsilon e_2)^{\otimes 3}+(-e_1)\otimes e_1\otimes e_1=\varepsilon T+\varepsilon^2\bigl(e_2\otimes e_2\otimes e_1+e_2\otimes e_1\otimes e_2+e_1\otimes e_2\otimes e_2+\varepsilon\,e_2\otimes e_2\otimes e_2\bigr)</mrow>
+            </md>
+            이므로 길이 <m>2</m>, 차수 <m>1</m>인 근사 분해입니다. (a)의 상계는 <m>6</m>이지만 둘째 항은 상수이므로 <m>\varepsilon^1</m>의 계수에 기여하지 않고, 첫째 항에서 <m>e_2\otimes e_1\otimes e_1</m>, <m>e_1\otimes e_2\otimes e_1</m>, <m>e_1\otimes e_1\otimes e_2</m>의 세 항만 남습니다. 이는 처음의 분해이며 계수 <m>3</m>과 일치합니다.</p></li>
+            <li><p><m>\boxtimes</m>는 쌍선형이므로 <m>\varepsilon</m>에 대한 다항식에도 그대로 확장됩니다. 두 근사 분해의 좌변을 크로네커 곱하면 <xref ref="exer-mmt-kronecker"/>의 (a)와 같이 <m>RR'</m>개의 항 <m>(a_\ell\otimes a'_{\ell'})\otimes(b_\ell\otimes b'_{\ell'})\otimes(c_\ell\otimes c'_{\ell'})</m>의 합이 되고, 각 성분은 <m>\varepsilon</m>의 다항식입니다. 우변은
+            <md>
+              <mrow>(\varepsilon^hT+\varepsilon^{h+1}S)\boxtimes(\varepsilon^{h'}T'+\varepsilon^{h'+1}S')=\varepsilon^{h+h'}T\boxtimes T'+\varepsilon^{h+h'+1}\bigl(S\boxtimes T'+T\boxtimes S'+\varepsilon S\boxtimes S'\bigr)</mrow>
+            </md>
+            이므로 원하는 근사 분해를 얻습니다.</p></li>
+            <li><p><m>T_{m,m,m}</m>의 근사 분해의 차수를 <m>h</m>라 합시다. (c)를 반복하면 <m>T_{m,m,m}^{\boxtimes N}</m>은 길이 <m>R^N</m>, 차수 <m>Nh</m>인 근사 분해를 가지므로, (a)에 의해 계수가 <m>\binom{Nh+2}{2}R^N</m> 이하입니다. <xref ref="exer-mmt-kronecker"/>의 (b)와 <xref ref="exer-mmt-rank-basic"/>의 (b)에 의해 <m>T_{m^N,m^N,m^N}</m>의 계수도 같은 상계를 가집니다. 이제 <xref ref="exer-mmt-rank-to-exponent"/>를 <m>m^N</m>에 적용하면
+            <md>
+              <mrow>\omega_{\mathbb F}\le\log_{m^N}\Bigl(\tbinom{Nh+2}{2}R^N\Bigr)=\log_mR+\frac{1}{N}\log_m\tbinom{Nh+2}{2}</mrow>
+            </md>
+            입니다. <m>\binom{Nh+2}{2}\le(Nh+2)^2</m>이므로 마지막 항은 <m>N\to\infty</m>일 때 <m>0</m>으로 수렴하고, <m>\omega_{\mathbb F}\le\log_mR</m>입니다. 즉, 한 번의 근사 분해에서는 계수의 상계가 나빠지지만, 텐서의 거듭제곱을 취하면 그 손실이 점근적으로 사라집니다.</p>
+            <p>복소수체에서는 경계 계수가 <m>R</m> 이하인 텐서가 길이 <m>R</m>인 근사 분해를 가진다는 사실이 알려져 있습니다. 여기서는 증명하지 않습니다. 이 사실과 (d)를 합하면 <m>\omega_{\mathbb C}\le\log_m\underline{\operatorname{rank}}_{\mathbb C}(T_{m,m,m})</m>를 얻습니다. 이를 비니의 정리라 합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
 </section>

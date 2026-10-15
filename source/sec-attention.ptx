@@ -128,4 +128,237 @@
     종합하면, 멀티-헤드-어텐션은 <m>3h+1</m>개의 행렬 <m>W_Q^{(a)}, W_K^{(a)}, W_V^{(a)}, W_O</m>에 의해 정의됩니다.
   </p>
 
+  <exercises xml:id="exercises-attention">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        연습문제에서 <m>\mathbf 1=(1,\ldots,1)\in\mathbb R^n</m>은 모든 성분이 <m>1</m>인 벡터이고, <m>\sigma(t)=1/(1+e^{-t})</m>는 시그모이드 함수입니다. 또한 다음 두 집합을 사용합니다.
+        <md>
+          <mrow>\Delta^{n-1}\amp=\{p\in\mathbb R^n : p_i\ge 0,\ p_1+\cdots+p_n=1\},</mrow>
+          <mrow>\Delta^{n-1}_{\circ}\amp=\{p\in\mathbb R^n : p_i\gt 0,\ p_1+\cdots+p_n=1\}.</mrow>
+        </md>
+        <m>\Delta^{n-1}</m>을 <term>확률 단체</term><aside><p>확률 단체:probability simplex</p></aside>라 하고, <m>\Delta^{n-1}_{\circ}</m>를 열린 확률 단체라 합니다. 어텐션의 <term>매개변수</term><aside><p>매개변수:parameter</p></aside>는 행렬 <m>W_Q,W_K,W_V,W_O</m> 등의 성분이며, 매개변수의 개수는 이 성분들의 총 개수입니다.
+      </p>
+    </introduction>
+
+    <!-- 1 -->
+    <exercise xml:id="exer-attention-softmax-basic">
+      <title>소프트맥스의 기본 성질</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>모든 <m>x\in\mathbb R^n</m>과 <m>c\in\mathbb R</m>에 대하여 <m>\operatorname{softmax}(x+c\mathbf 1)=\operatorname{softmax}(x)</m>임을 보이십시오. 반면 <m>\operatorname{softmax}(2x)\ne\operatorname{softmax}(x)</m>인 예를 <xref ref="ex-softmax-numerical"/>의 벡터로 제시하십시오.</p></li>
+            <li><p><m>n=2</m>일 때 <m>\operatorname{softmax}(x_1,x_2)=\bigl(\sigma(x_1-x_2),\,\sigma(x_2-x_1)\bigr)</m>임을 보이십시오.</p></li>
+            <li><p>소프트맥스 함수 <m>\mathbb R^n\to\mathbb R^n</m>의 이미지가 <m>\Delta^{n-1}_{\circ}</m>임을 보이고, <m>\operatorname{softmax}(x)=\operatorname{softmax}(x')</m>일 필요충분조건이 <m>x-x'\in\operatorname{span}\{\mathbf 1\}</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{LSE}(x)=\log\sum_{j=1}^{n}\exp(x_j)</m>라 할 때, <term>로그 소프트맥스</term><aside><p>로그 소프트맥스:log-softmax</p></aside> <m>\log\operatorname{softmax}(x)</m>(성분별 로그)가 <m>x-\operatorname{LSE}(x)\mathbf 1</m>과 같음을 보이십시오. 이를 이용하여 소프트맥스를 초평면 <m>H=\{x\in\mathbb R^n : x_1+\cdots+x_n=0\}</m>로 제한한 함수 <m>H\to\Delta^{n-1}_{\circ}</m>가 전단사임을 보이고, 그 역함수를 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\exp(x_i+c)=e^{c}\exp(x_i)</m>이므로 분자와 분모에 공통으로 <m>e^{c}</m>가 곱해지고 약분됩니다. <m>x=(0,\ln 2,\ln 3)</m>이면 <m>\exp(2x)=(1,4,9)</m>이므로 <m>\operatorname{softmax}(2x)=\left(\frac{1}{14},\frac{4}{14},\frac{9}{14}\right)</m>이고, 이는 <m>\left(\frac16,\frac26,\frac36\right)</m>과 다릅니다. 즉, 소프트맥스는 평행이동에 대해서는 불변이지만 스칼라배에 대해서는 불변이 아닙니다.</p></li>
+            <li><p>분자와 분모를 <m>e^{x_1}</m>로 나누면 <m>\dfrac{e^{x_1}}{e^{x_1}+e^{x_2}}=\dfrac{1}{1+e^{-(x_1-x_2)}}=\sigma(x_1-x_2)</m>입니다. 둘째 성분도 같은 방법으로 얻습니다.</p></li>
+            <li><p>각 성분은 양수이고 성분의 합은 <m>1</m>이므로 이미지는 <m>\Delta^{n-1}_{\circ}</m>에 포함됩니다. 역으로 <m>p\in\Delta^{n-1}_{\circ}</m>이면 <m>x=(\log p_1,\ldots,\log p_n)</m>에 대해 <m>\sum_j\exp(x_j)=1</m>이므로 <m>\operatorname{softmax}(x)=p</m>입니다. 다음으로 <m>\operatorname{softmax}(x)=\operatorname{softmax}(x')</m>이면 각 <m>i</m>에 대해 <m>x_i-\operatorname{LSE}(x)=x'_i-\operatorname{LSE}(x')</m>이므로 <m>x-x'=(\operatorname{LSE}(x)-\operatorname{LSE}(x'))\mathbf 1</m>입니다. 역은 (a)에서 얻습니다.</p></li>
+            <li><p><m>\log\operatorname{softmax}(x)_i=x_i-\log\sum_j\exp(x_j)=x_i-\operatorname{LSE}(x)</m>입니다. (c)에 의해 같은 소프트맥스 값을 갖는 점들의 집합은 <m>x+\operatorname{span}\{\mathbf 1\}</m> 꼴의 직선이고, 이 직선은 <m>H</m>와 정확히 한 점에서 만납니다. 따라서 <m>H</m>로 제한한 함수는 전단사입니다. <m>p=\operatorname{softmax}(x)</m>, <m>x\in H</m>이면 <m>\log p=x-\operatorname{LSE}(x)\mathbf 1</m>이고, 성분의 합을 취하면 <m>\sum_j\log p_j=-n\operatorname{LSE}(x)</m>입니다. 그러므로 역함수는 다음과 같습니다.
+            <md>
+              <mrow>p\longmapsto \log p-\frac{1}{n}\Bigl(\sum_{j=1}^{n}\log p_j\Bigr)\mathbf 1.</mrow>
+            </md>
+            </p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 2 -->
+    <exercise xml:id="exer-attention-temperature-mask">
+      <title>온도가 있는 소프트맥스와 마스크 소프트맥스</title>
+      <statement>
+        <p>
+          <m>\tau\gt 0</m>에 대해 <term>온도</term><aside><p>온도:temperature</p></aside>가 <m>\tau</m>인 소프트맥스를 <m>\operatorname{softmax}_\tau(x)=\operatorname{softmax}(x/\tau)</m>로 정의하고, <term>로그-합-지수 함수</term><aside><p>로그-합-지수 함수:log-sum-exp function</p></aside>를 <m>\operatorname{LSE}_\tau(x)=\tau\log\sum_{j=1}^{n}\exp(x_j/\tau)</m>로 정의합니다. <m>x^{*}=\max_j x_j</m>, <m>M=\{i : x_i=x^{*}\}</m>이라 합시다.
+          <ol marker="(a)">
+            <li><p><m>\displaystyle\lim_{\tau\to 0^{+}}\operatorname{softmax}_\tau(x)_i</m>가 <m>i\in M</m>이면 <m>1/|M|</m>, <m>i\notin M</m>이면 <m>0</m>임을 보이십시오. 또한 <m>\displaystyle\lim_{\tau\to\infty}\operatorname{softmax}_\tau(x)=\frac1n\mathbf 1</m>임을 보이십시오.</p></li>
+            <li><p><m>x^{*}\le\operatorname{LSE}_\tau(x)\le x^{*}+\tau\log n</m>임을 보이고, <m>\displaystyle\lim_{\tau\to 0^{+}}\operatorname{LSE}_\tau(x)=\max_j x_j</m>임을 결론지으십시오.</p></li>
+            <li><p><m>\nabla\operatorname{LSE}_\tau(x)=\operatorname{softmax}_\tau(x)</m>임을 보이십시오.</p></li>
+            <li><p>공집합이 아닌 부분집합 <m>A\subseteq\{1,\ldots,n\}</m>에 대하여 <term>마스크 소프트맥스</term><aside><p>마스크 소프트맥스:masked softmax</p></aside>를
+            <md>
+              <mrow>\operatorname{softmax}_A(x)_i=\begin{cases}\dfrac{\exp(x_i)}{\sum_{j\in A}\exp(x_j)}, \amp i\in A,\\ 0, \amp i\notin A\end{cases}</mrow>
+            </md>
+            로 정의합니다. <m>m_A\in\mathbb R^n</m>을 <m>i\in A</m>이면 <m>0</m>, <m>i\notin A</m>이면 <m>1</m>을 성분으로 갖는 벡터라 할 때, <m>\displaystyle\lim_{c\to\infty}\operatorname{softmax}(x-c\,m_A)=\operatorname{softmax}_A(x)</m>임을 보이십시오. 또한 자기 어텐션에서 <m>i</m>번째 질의의 점수에 <m>A=\{1,\ldots,i\}</m>인 마스크 소프트맥스를 사용하면, <m>i</m>번째 출력이 <m>x_{i+1},\ldots,x_n</m>에 의존하지 않음을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p>분자와 분모를 <m>\exp(x^{*}/\tau)</m>로 나누면
+            <md>
+              <mrow>\operatorname{softmax}_\tau(x)_i=\frac{\exp\bigl((x_i-x^{*})/\tau\bigr)}{\sum_{j=1}^{n}\exp\bigl((x_j-x^{*})/\tau\bigr)}</mrow>
+            </md>
+            입니다. <m>\tau\to 0^{+}</m>일 때 <m>j\in M</m>이면 <m>\exp((x_j-x^{*})/\tau)=1</m>이고, <m>j\notin M</m>이면 <m>x_j-x^{*}\lt 0</m>이므로 <m>0</m>으로 수렴합니다. 따라서 분모는 <m>|M|</m>으로 수렴하고 원하는 극한을 얻습니다. <m>\tau\to\infty</m>이면 각 <m>\exp(x_j/\tau)</m>가 <m>1</m>로 수렴하므로 극한은 <m>\frac1n\mathbf 1</m>입니다. 즉, 온도가 낮으면 소프트맥스는 argmax에, 온도가 높으면 균등분포에 가까워집니다.</p></li>
+            <li><p><m>\exp(x^{*}/\tau)\le\sum_j\exp(x_j/\tau)\le n\exp(x^{*}/\tau)</m>입니다. 로그는 증가함수이므로 각 변에 로그를 취하고 <m>\tau</m>를 곱하면 원하는 부등식을 얻습니다. <m>\tau\log n\to 0</m>이므로 조임 정리에 의해 극한은 <m>x^{*}</m>입니다.</p></li>
+            <li><p><m>\dfrac{\partial}{\partial x_i}\operatorname{LSE}_\tau(x)=\tau\cdot\dfrac{\exp(x_i/\tau)/\tau}{\sum_j\exp(x_j/\tau)}=\operatorname{softmax}_\tau(x)_i</m>입니다. (b)와 함께 보면 <m>\operatorname{LSE}_\tau</m>는 <m>\max</m>의 매끄러운 근사이고, 그 기울기인 소프트맥스는 argmax의 매끄러운 근사입니다.</p></li>
+            <li><p><m>i\in A</m>이면 <m>\exp(x_i-c\,(m_A)_i)=\exp(x_i)</m>이고, <m>i\notin A</m>이면 <m>\exp(x_i-c)\to 0</m>입니다. 따라서 분모는 <m>\sum_{j\in A}\exp(x_j)\gt 0</m>으로 수렴하고, 각 성분은 <m>\operatorname{softmax}_A(x)_i</m>로 수렴합니다. 자기 어텐션의 <m>i</m>번째 출력은 <m>\sum_{j}\operatorname{softmax}_A(s)_j\,W_Vx_j=\sum_{j\le i}\operatorname{softmax}_A(s)_j\,W_Vx_j</m>이고, <m>j\le i</m>인 점수 <m>s_j</m>는 <m>x_i</m>와 <m>x_j</m>만으로 계산됩니다. 따라서 <m>i</m>번째 출력은 <m>x_1,\ldots,x_i</m>에만 의존합니다. 이러한 마스크를 인과 마스크라 합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 3 -->
+    <exercise xml:id="exer-attention-softmax-jacobian">
+      <title>소프트맥스의 야코비 행렬</title>
+      <statement>
+        <p>
+          <m>x\in\mathbb R^n</m>, <m>p=\operatorname{softmax}(x)</m>라 하고, <m>J(x)</m>를 소프트맥스 함수의 <m>x</m>에서의 야코비 행렬이라 합시다.
+          <ol marker="(a)">
+            <li><p><m>\dfrac{\partial p_i}{\partial x_j}=p_i(\delta_{ij}-p_j)</m>임을 보이고, 따라서 <m>J(x)=\operatorname{diag}(p)-pp^{\mathsf T}</m>임을 보이십시오.</p></li>
+            <li><p>모든 <m>v\in\mathbb R^n</m>에 대하여 <m>\bar v=\sum_i p_iv_i</m>라 하면 <m>v^{\mathsf T}J(x)v=\sum_{i=1}^{n}p_i(v_i-\bar v)^2</m>임을 보이십시오. 이로부터 <m>J(x)</m>가 양의 준정부호 대칭행렬이고 <m>\operatorname{ker}J(x)=\operatorname{span}\{\mathbf 1\}</m>, <m>\operatorname{rank}J(x)=n-1</m>임을 보이십시오.</p></li>
+            <li><p><m>J(x)</m>의 모든 고윳값이 <m>\frac12</m> 이하임을 보이고, 이 상계에 등호가 성립하는 예를 제시하십시오.</p></li>
+            <li><p>모든 <m>x,y\in\mathbb R^n</m>에 대하여 <m>\|\operatorname{softmax}(x)-\operatorname{softmax}(y)\|\le\frac12\|x-y\|</m>임을 보이십시오. 온도가 <m>\tau</m>인 소프트맥스 <m>\operatorname{softmax}_\tau</m>에 대해서는 어떤 부등식이 성립합니까?</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>Z=\sum_k\exp(x_k)</m>라 하면 <m>\partial Z/\partial x_j=\exp(x_j)</m>입니다. 몫의 미분법에 의해
+            <md>
+              <mrow>\frac{\partial p_i}{\partial x_j}=\frac{\delta_{ij}\exp(x_i)Z-\exp(x_i)\exp(x_j)}{Z^2}=p_i\delta_{ij}-p_ip_j</mrow>
+            </md>
+            입니다. 이를 행렬로 쓰면 <m>J(x)=\operatorname{diag}(p)-pp^{\mathsf T}</m>입니다.</p></li>
+            <li><p><m>\sum_ip_i=1</m>이므로
+            <md>
+              <mrow>v^{\mathsf T}J(x)v\amp=\sum_ip_iv_i^2-\Bigl(\sum_ip_iv_i\Bigr)^2=\sum_ip_iv_i^2-\bar v^2</mrow>
+              <mrow>\amp=\sum_ip_iv_i^2-2\bar v\sum_ip_iv_i+\bar v^2\sum_ip_i=\sum_ip_i(v_i-\bar v)^2</mrow>
+            </md>
+            입니다. 이는 확률분포 <m>p</m>에 대한 <m>v</m>의 분산이며 음이 아니므로 대칭행렬 <m>J(x)</m>는 양의 준정부호입니다. 양의 준정부호 대칭행렬에서는 <m>J(x)v=0</m>과 <m>v^{\mathsf T}J(x)v=0</m>이 동치입니다. 모든 <m>p_i\gt 0</m>이므로 <m>v^{\mathsf T}J(x)v=0</m>은 모든 <m>i</m>에 대해 <m>v_i=\bar v</m>, 즉 <m>v\in\operatorname{span}\{\mathbf 1\}</m>과 동치입니다. 따라서 <m>\operatorname{ker}J(x)=\operatorname{span}\{\mathbf 1\}</m>이고, 차원 정리에 의해 <m>\operatorname{rank}J(x)=n-1</m>입니다. 이는 <xref ref="exer-attention-softmax-basic"/>의 (c)와 부합합니다. 또한 <xref ref="exer-attention-temperature-mask"/>의 (c)에 의해 <m>J(x)</m>는 <m>\operatorname{LSE}</m>의 헤세 행렬이므로, <m>\operatorname{LSE}</m>는 볼록함수입니다.</p></li>
+            <li><p>단위벡터 <m>v</m>에 대해 <m>v^{\mathsf T}J(x)v\le\frac12</m>임을 보이면 충분합니다. 분산은 임의의 상수 <m>c</m>에 대해 <m>\sum_ip_i(v_i-\bar v)^2\le\sum_ip_i(v_i-c)^2</m>를 만족합니다. <m>c=(\max_iv_i+\min_iv_i)/2</m>로 택하면 각 <m>|v_i-c|\le(\max_iv_i-\min_iv_i)/2</m>이므로
+            <md>
+              <mrow>v^{\mathsf T}J(x)v\le\frac{(\max_iv_i-\min_iv_i)^2}{4}\le\frac{2\bigl((\max_iv_i)^2+(\min_iv_i)^2\bigr)}{4}\le\frac{\|v\|^2}{2}=\frac12</mrow>
+            </md>
+            입니다. 여기서 <m>(a-b)^2\le 2(a^2+b^2)</m>를 사용했습니다. <m>n=2</m>, <m>x=0</m>이면 <m>J(x)=\frac14\begin{pmatrix}1\amp -1\\ -1\amp 1\end{pmatrix}</m>이고, 이 행렬은 <m>(1,-1)</m>을 고유벡터로 하는 고윳값 <m>\frac12</m>을 가집니다.</p></li>
+            <li><p><m>g(t)=\operatorname{softmax}(y+t(x-y))</m>라 하면 미적분학의 기본정리에 의해
+            <md>
+              <mrow>\operatorname{softmax}(x)-\operatorname{softmax}(y)=\int_0^1J\bigl(y+t(x-y)\bigr)(x-y)\,dt</mrow>
+            </md>
+            입니다. (c)에 의해 양의 준정부호 대칭행렬 <m>J</m>의 작용소 노름은 <m>\frac12</m> 이하이므로, 적분의 노름은 <m>\frac12\|x-y\|</m> 이하입니다. <m>\operatorname{softmax}_\tau(x)=\operatorname{softmax}(x/\tau)</m>이므로 <m>\|\operatorname{softmax}_\tau(x)-\operatorname{softmax}_\tau(y)\|\le\frac{1}{2\tau}\|x-y\|</m>입니다. 온도가 낮을수록 소프트맥스는 입력의 작은 변화에 민감해집니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 4 -->
+    <exercise xml:id="exer-attention-sparsemax">
+      <title>소프트맥스의 변분적 특성과 스파스맥스</title>
+      <statement>
+        <p>
+          <m>p\in\Delta^{n-1}</m>의 <term>엔트로피</term><aside><p>엔트로피:entropy</p></aside>를 <m>\mathcal H(p)=-\sum_{i=1}^{n}p_i\log p_i</m>로 정의합니다. 단, <m>0\log 0=0</m>으로 약속합니다.
+          <ol marker="(a)">
+            <li><p>모든 <m>x\in\mathbb R^n</m>과 <m>p\in\Delta^{n-1}</m>에 대하여 <m>\langle p,x\rangle+\mathcal H(p)\le\operatorname{LSE}(x)</m>이고, 등호는 <m>p=\operatorname{softmax}(x)</m>일 때만 성립함을 보이십시오. 즉, 소프트맥스는 <m>\Delta^{n-1}</m> 위에서 <m>\langle p,x\rangle+\mathcal H(p)</m>를 최대화하는 유일한 점입니다.</p></li>
+            <li><p><term>스파스맥스</term><aside><p>스파스맥스:sparsemax</p></aside>는 <m>x</m>에 가장 가까운 <m>\Delta^{n-1}</m>의 점, 즉
+            <md>
+              <mrow>\operatorname{sparsemax}(x)=\operatorname*{arg\,min}_{p\in\Delta^{n-1}}\|p-x\|^2</mrow>
+            </md>
+            로 정의합니다. <m>f(t)=\sum_{i=1}^{n}\max\{x_i-t,0\}</m>에 대하여 <m>f(t)=1</m>인 <m>t=\theta</m>가 유일하게 존재함을 보이십시오. 또한 <m>p^{*}_i=\max\{x_i-\theta,0\}</m>로 정의한 <m>p^{*}\in\Delta^{n-1}</m>가 모든 <m>p\in\Delta^{n-1}</m>에 대해 <m>\langle x-p^{*},p-p^{*}\rangle\le 0</m>을 만족함을 보이고, 이로부터 <m>\operatorname{sparsemax}(x)=p^{*}</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{sparsemax}\left(1,\tfrac12,-1\right)</m>을 계산하고, 소프트맥스와 달리 스파스맥스는 성분이 <m>0</m>일 수 있음을 확인하십시오. 또한 <m>n=2</m>일 때 <m>\operatorname{sparsemax}(x_1,x_2)_1=\min\Bigl\{\max\Bigl\{\frac{1+x_1-x_2}{2},0\Bigr\},1\Bigr\}</m>임을 보이고, <xref ref="exer-attention-softmax-basic"/>의 (b)와 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>q=\operatorname{softmax}(x)</m>라 하면 <xref ref="exer-attention-softmax-basic"/>의 (d)에 의해 <m>x_i=\log q_i+\operatorname{LSE}(x)</m>입니다. <m>S=\{i : p_i\gt 0\}</m>이라 하면
+            <md>
+              <mrow>\operatorname{LSE}(x)-\langle p,x\rangle-\mathcal H(p)=\sum_{i\in S}p_i\log\frac{p_i}{q_i}=-\sum_{i\in S}p_i\log\frac{q_i}{p_i}</mrow>
+            </md>
+            입니다. <m>-\log</m>는 순볼록함수이므로 옌센 부등식에 의해 우변은 <m>-\log\sum_{i\in S}q_i\ge-\log 1=0</m> 이상입니다. 등호가 성립하려면 <m>q_i/p_i</m>가 <m>S</m> 위에서 상수이고 <m>\sum_{i\in S}q_i=1</m>이어야 합니다. 모든 <m>q_i\gt 0</m>이므로 <m>S=\{1,\ldots,n\}</m>이고, 상수는 <m>1</m>이 되어 <m>p=q</m>입니다. 역으로 <m>p=q</m>이면 등호가 성립합니다.</p></li>
+            <li><p><m>f</m>는 연속이고 증가하지 않으며, <m>t\le\min_ix_i-1</m>이면 <m>f(t)\ge n\ge 1</m>, <m>t\ge\max_ix_i</m>이면 <m>f(t)=0</m>입니다. 또한 <m>f(t)\gt 0</m>인 구간에서는 적어도 한 항이 <m>x_i-t</m>이므로 <m>f</m>는 순감소합니다. 따라서 중간값 정리에 의해 <m>f(\theta)=1</m>인 <m>\theta</m>가 유일하게 존재하고, <m>p^{*}\in\Delta^{n-1}</m>입니다. <m>S=\{i : p^{*}_i\gt 0\}</m>라 하면 <m>i\in S</m>일 때 <m>x_i-p^{*}_i=\theta</m>이고, <m>i\notin S</m>일 때 <m>x_i-p^{*}_i=x_i\le\theta</m>입니다. 따라서 <m>p\in\Delta^{n-1}</m>에 대해
+            <md>
+              <mrow>\langle x-p^{*},p-p^{*}\rangle\amp=\theta\sum_{i\in S}(p_i-p^{*}_i)+\sum_{i\notin S}x_ip_i</mrow>
+              <mrow>\amp\le\theta\sum_{i\in S}(p_i-p^{*}_i)+\theta\sum_{i\notin S}p_i=\theta\Bigl(\sum_ip_i-\sum_ip^{*}_i\Bigr)=0</mrow>
+            </md>
+            입니다. 그러면
+            <md>
+              <mrow>\|x-p\|^2=\|x-p^{*}\|^2-2\langle x-p^{*},p-p^{*}\rangle+\|p-p^{*}\|^2\ge\|x-p^{*}\|^2+\|p-p^{*}\|^2</mrow>
+            </md>
+            이므로 <m>p\ne p^{*}</m>이면 <m>\|x-p\|\gt\|x-p^{*}\|</m>입니다. 따라서 <m>p^{*}</m>는 유일한 최소점이고 <m>\operatorname{sparsemax}(x)=p^{*}</m>입니다.</p></li>
+            <li><p><m>x=(1,\frac12,-1)</m>에 대해 처음 두 성분만 양수라고 가정하면 <m>(1-\theta)+(\frac12-\theta)=1</m>에서 <m>\theta=\frac14</m>이고, 실제로 <m>-1-\theta\lt 0</m>이므로 가정이 맞습니다. 따라서 <m>\operatorname{sparsemax}(x)=\left(\frac34,\frac14,0\right)</m>입니다. 반면 <m>\operatorname{softmax}(x)</m>의 성분은 모두 양수입니다. <m>n=2</m>일 때 두 성분이 모두 양수이면 <m>(x_1-\theta)+(x_2-\theta)=1</m>에서 <m>\theta=\frac{x_1+x_2-1}{2}</m>, <m>p^{*}_1=\frac{1+x_1-x_2}{2}</m>이며, 이는 <m>|x_1-x_2|\lt 1</m>일 때 해당합니다. <m>x_1-x_2\ge 1</m>이면 <m>\theta=x_1-1\ge x_2</m>이므로 <m>p^{*}=(1,0)</m>이고, <m>x_1-x_2\le -1</m>이면 <m>p^{*}=(0,1)</m>입니다. 이를 합치면 주어진 식을 얻습니다. 즉, <m>n=2</m>일 때 소프트맥스는 시그모이드 함수 <m>\sigma(x_1-x_2)</m>를, 스파스맥스는 이를 구간 <m>[-1,1]</m>에서 직선으로 근사한 함수를 줍니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 5 -->
+    <exercise xml:id="exer-attention-parameter-count">
+      <title>어텐션의 매개변수 개수</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><xref ref="def-scaled-dot-product-attention"/>의 어텐션의 매개변수 개수를 <m>d_x,d_y,d_k,d_v</m>로 나타내십시오. 이 개수가 참조 입력의 개수 <m>n</m>에 의존하는지 설명하십시오.</p></li>
+            <li><p><xref ref="def-multi-head-attention"/>의 멀티-헤드-어텐션의 매개변수 개수를 <m>h,d_x,d_y,d_k,d_v,d_o</m>로 나타내십시오.</p></li>
+            <li><p>자기 어텐션에서 흔히 쓰는 설정 <m>d_x=d_y=d_o=d</m>, <m>d_k=d_v=d/h</m>(<m>h</m>는 <m>d</m>의 약수)에서 멀티-헤드-어텐션의 매개변수 개수가 <m>4d^2</m>이며 헤드의 수 <m>h</m>에 의존하지 않음을 보이십시오. <m>d=512</m>, <m>h=8</m>일 때 그 값을 구하십시오.</p></li>
+            <li><p>각 변환에 편향을 허용하여 <m>W_Q^{(a)}x+b_Q^{(a)}</m>, <m>W_K^{(a)}y_j+b_K^{(a)}</m>, <m>W_V^{(a)}y_j+b_V^{(a)}</m>, <m>W_O z+b_O</m>를 사용하면 (c)의 설정에서 매개변수가 몇 개 늘어납니까? 또한 <m>b_K^{(a)}</m>를 바꾸어도 함수가 변하지 않음을 보이십시오.</p></li>
+            <li><p>(c)의 설정에서 입력 <m>x_1,\ldots,x_n</m>에 자기 어텐션을 적용할 때, 모든 헤드에서 계산되는 어텐션 가중치 <m>\alpha^{(a)}_{ij}=\operatorname{softmax}(s^{(a)}_{i})_j</m>는 모두 몇 개입니까? 각 <m>i</m>와 <m>a</m>에 대해 이 가중치들이 만족하는 일차방정식을 고려할 때, 자유롭게 정해질 수 있는 가중치는 최대 몇 개입니까? 여기서 <m>s^{(a)}_i\in\mathbb R^n</m>은 질의 <m>x_i</m>에 대한 <m>a</m>번째 헤드의 점수 벡터입니다.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>W_Q\in\mathbb R^{d_k\times d_x}</m>, <m>W_K\in\mathbb R^{d_k\times d_y}</m>, <m>W_V\in\mathbb R^{d_v\times d_y}</m>이므로 매개변수의 개수는 <m>d_kd_x+d_kd_y+d_vd_y=d_k(d_x+d_y)+d_vd_y</m>입니다. 같은 행렬이 모든 <m>y_j</m>에 공통으로 적용되므로 이 개수는 <m>n</m>에 의존하지 않습니다.</p></li>
+            <li><p>각 헤드마다 (a)의 개수만큼 있고, <m>W_O\in\mathbb R^{d_o\times hd_v}</m>가 추가되므로
+            <md>
+              <mrow>h\bigl(d_k(d_x+d_y)+d_vd_y\bigr)+hd_vd_o=h\bigl(d_k(d_x+d_y)+d_v(d_y+d_o)\bigr)</mrow>
+            </md>
+            입니다.</p></li>
+            <li><p>(b)에 대입하면 <m>h\left(\frac dh\cdot 2d+\frac dh\cdot 2d\right)=4d^2</m>입니다. 즉, <m>W_Q,W_K,W_V,W_O</m>에 해당하는 <m>d\times d</m> 행렬 네 개를 헤드별로 나누어 놓은 것과 같은 개수입니다. <m>d=512</m>이면 <m>4\cdot 512^2=1\,048\,576</m>이며, 이 값은 <m>h=8</m>을 포함한 모든 약수 <m>h</m>에 대해 같습니다.</p></li>
+            <li><p>편향의 개수는 <m>h(d_k+d_k+d_v)+d_o=h\cdot\frac{3d}{h}+d=4d</m>이므로 매개변수는 <m>4d^2+4d</m>개가 됩니다. <m>d=512</m>이면 <m>1\,050\,624</m>개입니다. 한편 <m>b_K^{(a)}</m>를 사용하면 점수는
+            <md>
+              <mrow>s_j^{(a)}=\frac{(W_Q^{(a)}x+b_Q^{(a)})^{\mathsf T}W_K^{(a)}y_j}{\sqrt{d_k}}+\frac{(W_Q^{(a)}x+b_Q^{(a)})^{\mathsf T}b_K^{(a)}}{\sqrt{d_k}}</mrow>
+            </md>
+            이고, 둘째 항은 <m>j</m>에 의존하지 않습니다. <xref ref="exer-attention-softmax-basic"/>의 (a)에 의해 소프트맥스 값은 변하지 않으므로 <m>b_K^{(a)}</m>는 함수에 영향을 주지 않습니다.</p></li>
+            <li><p>각 헤드 <m>a</m>와 각 질의 <m>i</m>에 대해 <m>n</m>개의 가중치가 있으므로 모두 <m>hn^2</m>개입니다. 각 <m>(i,a)</m>마다 <m>\sum_j\alpha^{(a)}_{ij}=1</m>이라는 일차방정식이 하나씩 있으므로 자유롭게 정해질 수 있는 가중치는 최대 <m>hn(n-1)</m>개입니다. 매개변수의 개수는 <m>n</m>과 무관하지만, 어텐션 가중치의 개수는 <m>n</m>의 제곱에 비례하여 증가합니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+
+    <!-- 6 -->
+    <exercise xml:id="exer-attention-effective-parameters">
+      <title>매개변수의 중복과 유효 매개변수 개수</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>M=W_Q^{\mathsf T}W_K\in\mathbb R^{d_x\times d_y}</m>라 하면 어텐션의 점수가 <m>s_j=x^{\mathsf T}My_j/\sqrt{d_k}</m>이고 <m>\operatorname{rank}M\le d_k</m>임을 보이십시오. 또한 임의의 가역행렬 <m>G\in\mathbb R^{d_k\times d_k}</m>에 대해 <m>(W_Q,W_K)</m>를 <m>(GW_Q,\,(G^{\mathsf T})^{-1}W_K)</m>로 바꾸어도 어텐션 함수가 변하지 않음을 보이십시오.</p></li>
+            <li><p><m>A,A'\in\mathbb R^{m\times r}</m>와 <m>B,B'\in\mathbb R^{r\times k}</m>의 계수가 모두 <m>r</m>일 때, <m>AB=A'B'</m>일 필요충분조건은 <m>A'=AG</m>, <m>B'=G^{-1}B</m>인 가역행렬 <m>G\in\mathbb R^{r\times r}</m>가 존재하는 것임을 보이십시오.</p></li>
+            <li><p><m>r\le\min\{m,k\}</m>이고 <m>P\in\mathbb R^{r\times r}</m>가 가역일 때, 블록행렬 <m>\begin{pmatrix}P\amp Q\\ R\amp S\end{pmatrix}\in\mathbb R^{m\times k}</m>의 계수가 <m>r</m>일 필요충분조건은 <m>S=RP^{-1}Q</m>임을 보이십시오. 따라서 계수가 <m>r</m>인 <m>m\times k</m> 행렬은 (왼쪽 위 블록이 가역인 곳에서) <m>P,Q,R</m>의 <m>r(m+k-r)</m>개 성분으로 매개화됩니다. 이 수를 (b)와 비교하여 설명하십시오.</p></li>
+            <li><p><m>W_O=\begin{pmatrix}W_O^{(1)}\amp\cdots\amp W_O^{(h)}\end{pmatrix}</m>, <m>W_O^{(a)}\in\mathbb R^{d_o\times d_v}</m>로 나누면
+            <md>
+              <mrow>\operatorname{MultiHeadAttention}(x;y_1,\ldots,y_n)=\sum_{a=1}^{h}\sum_{j=1}^{n}\operatorname{softmax}(s^{(a)})_j\,W_O^{(a)}W_V^{(a)}y_j</mrow>
+            </md>
+            임을 보이십시오. 이로부터 멀티-헤드-어텐션은 행렬 <m>W_Q^{(a)\mathsf T}W_K^{(a)}</m>와 <m>W_O^{(a)}W_V^{(a)}</m>(<m>a=1,\ldots,h</m>)에 의해 결정됨을 설명하십시오. <xref ref="exer-attention-parameter-count"/>의 (c)의 설정에서 이 행렬들을 (c)와 같이 매개화하는 데 필요한 매개변수의 개수가 <m>4d^2-2d^2/h</m>임을 보이고, <m>d=512</m>, <m>h=8</m>일 때 그 값을 구하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>(W_Qx)^{\mathsf T}(W_Ky_j)=x^{\mathsf T}W_Q^{\mathsf T}W_Ky_j=x^{\mathsf T}My_j</m>입니다. <m>M</m>은 <m>\mathbb R^{d_k}</m>를 거쳐 가는 선형사상의 행렬이므로 <m>\operatorname{rank}M\le\operatorname{rank}W_K\le d_k</m>입니다. 또한 <m>(GW_Q)^{\mathsf T}(G^{\mathsf T})^{-1}W_K=W_Q^{\mathsf T}G^{\mathsf T}(G^{\mathsf T})^{-1}W_K=M</m>이므로 모든 점수가 변하지 않고, <m>W_V</m>는 그대로이므로 어텐션 함수도 변하지 않습니다. 즉, <m>W_Q,W_K</m>의 성분 <m>d_k(d_x+d_y)</m>개는 서로 독립적으로 함수를 결정하지 않습니다.</p></li>
+            <li><p>충분조건은 <m>A'B'=AGG^{-1}B=AB</m>이므로 분명합니다. 역으로 <m>AB=A'B'</m>라 합시다. <m>B,B'</m>은 계수가 <m>r</m>이므로 전사이고, 따라서 <m>\operatorname{im}A=\operatorname{im}AB=\operatorname{im}A'B'=\operatorname{im}A'</m>입니다. <m>A</m>의 열들은 이 공간의 기저이므로 <m>A'=AG</m>인 <m>G\in\mathbb R^{r\times r}</m>가 존재하고, <m>\operatorname{rank}A'=r</m>이므로 <m>G</m>는 가역입니다. 그러면 <m>A(B-GB')=0</m>이고, <m>A</m>는 단사이므로 <m>B=GB'</m>, 즉 <m>B'=G^{-1}B</m>입니다.</p></li>
+            <li><p>가역행렬을 곱해도 계수는 변하지 않으므로
+            <md>
+              <mrow>\begin{pmatrix}I\amp 0\\ -RP^{-1}\amp I\end{pmatrix}\begin{pmatrix}P\amp Q\\ R\amp S\end{pmatrix}\begin{pmatrix}I\amp -P^{-1}Q\\ 0\amp I\end{pmatrix}=\begin{pmatrix}P\amp 0\\ 0\amp S-RP^{-1}Q\end{pmatrix}</mrow>
+            </md>
+            에서 계수는 <m>r+\operatorname{rank}(S-RP^{-1}Q)</m>입니다. 따라서 계수가 <m>r</m>일 필요충분조건은 <m>S=RP^{-1}Q</m>입니다. 이때 <m>P</m>는 <m>r^2</m>개, <m>Q</m>는 <m>r(k-r)</m>개, <m>R</m>는 <m>(m-r)r</m>개의 성분을 자유롭게 가지므로 모두 <m>r(m+k-r)</m>개입니다. 한편 곱 <m>AB</m>로 나타내면 <m>mr+rk</m>개의 성분을 사용하지만, (b)에 의해 같은 곱을 주는 <m>(A,B)</m>들은 <m>r\times r</m> 가역행렬 <m>G</m>의 <m>r^2</m>개의 성분만큼 자유도를 가집니다. 실제로 <m>mr+rk-r^2=r(m+k-r)</m>이므로 두 계산은 일치합니다.</p></li>
+            <li><p><m>W_O</m>를 열 블록으로 나누면 <m>W_O\begin{pmatrix}z^{(1)}\\ \vdots\\ z^{(h)}\end{pmatrix}=\sum_aW_O^{(a)}z^{(a)}</m>이고, <m>z^{(a)}</m>의 정의를 대입하면 주어진 식을 얻습니다. 점수 <m>s^{(a)}</m>는 (a)에 의해 <m>W_Q^{(a)\mathsf T}W_K^{(a)}</m>로 결정되므로, 함수 전체는 <m>2h</m>개의 행렬 <m>W_Q^{(a)\mathsf T}W_K^{(a)}\in\mathbb R^{d\times d}</m>와 <m>W_O^{(a)}W_V^{(a)}\in\mathbb R^{d\times d}</m>로 결정됩니다. 이들의 계수는 각각 <m>d/h</m> 이하입니다. (c)에 의해 계수가 <m>r=d/h</m>인 <m>d\times d</m> 행렬은 <m>r(2d-r)</m>개의 매개변수로 나타나므로, 필요한 매개변수의 개수는
+            <md>
+              <mrow>2h\cdot\frac dh\Bigl(2d-\frac dh\Bigr)=4d^2-\frac{2d^2}{h}</mrow>
+            </md>
+            입니다. <m>d=512</m>, <m>h=8</m>이면 <m>1\,048\,576-65\,536=983\,040</m>입니다. 즉, <xref ref="exer-attention-parameter-count"/>에서 센 <m>4d^2</m>개의 매개변수 중 <m>2d^2/h</m>개만큼은 함수를 바꾸지 않는 중복입니다.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
+
 </section> 
