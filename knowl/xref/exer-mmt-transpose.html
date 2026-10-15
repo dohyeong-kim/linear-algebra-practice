@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">전치에 의한 대칭.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-mmt-transpose-2-1-1">
+<li><div class="para">모든 <span class="process-math">\(A\in\operatorname{Mat}_{r\times s}(\mathbb F)\text{,}\)</span> <span class="process-math">\(B\in\operatorname{Mat}_{s\times t}(\mathbb F)\)</span>에 대해 <span class="process-math">\(AB=\sum_{\ell=1}^{R}\alpha_\ell(A)\beta_\ell(B)W_\ell\)</span>라 합시다. 전치를 이용하여 <span class="process-math">\(A'\in\operatorname{Mat}_{t\times s}(\mathbb F)\text{,}\)</span> <span class="process-math">\(B'\in\operatorname{Mat}_{s\times r}(\mathbb F)\)</span>의 곱 <span class="process-math">\(A'B'\)</span>을 <span class="process-math">\(R\)</span>개의 곱으로 나타내는 공식을 구하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{r,s,t})=\operatorname{rank}_{\mathbb F}(T_{t,s,r})\)</span>임을 보이십시오.</div></li>
+</ol></div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-transpose-3-1-1">
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(A'B'=\bigl(B'^{\mathsf T}A'^{\mathsf T}\bigr)^{\mathsf T}\)</span>이고 <span class="process-math">\(B'^{\mathsf T}\in\operatorname{Mat}_{r\times s}(\mathbb F)\text{,}\)</span> <span class="process-math">\(A'^{\mathsf T}\in\operatorname{Mat}_{s\times t}(\mathbb F)\)</span>이므로</div>
+<div class="displaymath process-math">
+\begin{gather*}
+A'B'=\sum_{\ell=1}^{R}\beta_\ell\bigl(A'^{\mathsf T}\bigr)\,\alpha_\ell\bigl(B'^{\mathsf T}\bigr)\,W_\ell^{\mathsf T}
+\end{gather*}
+</div>
+<div class="para">입니다. 여기서 <span class="process-math">\(A'\mapsto\beta_\ell(A'^{\mathsf T})\)</span>와 <span class="process-math">\(B'\mapsto\alpha_\ell(B'^{\mathsf T})\)</span>는 선형 형식입니다.</div>
+</div></li>
+<li><div class="para">(a)는 <span class="process-math">\(T_{r,s,t}\)</span>의 <span class="process-math">\(R\)</span>항 분해에서 <span class="process-math">\(T_{t,s,r}\)</span>의 <span class="process-math">\(R\)</span>항 분해를 만들므로 <span class="process-math">\(\operatorname{rank}T_{t,s,r}\le\operatorname{rank}T_{r,s,t}\)</span>입니다. <span class="process-math">\(r\)</span>과 <span class="process-math">\(t\)</span>의 역할을 바꾸면 반대 부등식을 얻습니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-transpose">[incontext]</a></span>
+</body>
+</html>

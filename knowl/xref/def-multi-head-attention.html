@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="definition definition-like"><h3 class="heading">
+<span class="type">정의</span><span class="space"> </span><span class="codenumber">6.2.7</span><span class="period">.</span><span class="space"> </span><span class="title">멀티-헤드-어텐션.</span>
+</h3>
+<div class="para">양의 정수 <span class="process-math">\(h,n,d_x,d_y,d_k,d_v,d_o\)</span>를 고정합니다. 각 <span class="process-math">\(a=1,\ldots,h\)</span>에 대해 행렬 <span class="process-math">\(W_Q^{(a)}\in\mathbb R^{d_k\times d_x}\text{,}\)</span> <span class="process-math">\(W_K^{(a)}\in\mathbb R^{d_k\times d_y}\text{,}\)</span> <span class="process-math">\(W_V^{(a)}\in\mathbb R^{d_v\times d_y}\)</span>를 고정하고, 행렬 <span class="process-math">\(W_O\in\mathbb R^{d_o\times hd_v}\)</span>를 고정합니다. 이 행렬들에 대한 <dfn class="terminology">멀티-헤드-어텐션</dfn><aside class="aside aside-like"><div class="para">멀티-헤드-어텐션:multi-head attention</div></aside>은 다음 함수입니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{MultiHeadAttention}:\mathbb R^{d_x}\times(\mathbb R^{d_y})^n\longrightarrow\mathbb R^{d_o}.
+\end{gather*}
+</div>
+<div class="para">입력 <span class="process-math">\(x\in\mathbb R^{d_x}\)</span>와 <span class="process-math">\(y_1,\ldots,y_n\in\mathbb R^{d_y}\)</span>에 대해, 각 <span class="process-math">\(a=1,\ldots,h\)</span>의 벡터 <span class="process-math">\(s^{(a)}\in\mathbb R^n\)</span>와 <span class="process-math">\(z^{(a)}\in\mathbb R^{d_v}\)</span>를 다음과 같이 정의합니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+s_j^{(a)}=\frac{(W_Q^{(a)}x)^{\mathsf T}(W_K^{(a)}y_j)}{\sqrt{d_k}},\qquad j=1,\ldots,n,\\
+z^{(a)}=\sum_{j=1}^{n}\operatorname{softmax}(s^{(a)})_j\,W_V^{(a)}y_j.
+\end{gather*}
+</div>
+<div class="para">이때 함수의 값은 다음과 같이 정의합니다. 괄호 안의 벡터는 <span class="process-math">\(z^{(1)},\ldots,z^{(h)}\)</span>를 순서대로 이어 붙인 <span class="process-math">\(\mathbb R^{hd_v}\)</span>의 열벡터입니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{MultiHeadAttention}(x;y_1,\ldots,y_n)=W_O\begin{pmatrix}z^{(1)}\\ \vdots\\ z^{(h)}\end{pmatrix}.
+\end{gather*}
+</div></article><span class="incontext"><a class="internal" href="sec-attention.html#def-multi-head-attention">[incontext]</a></span>
+</body>
+</html>

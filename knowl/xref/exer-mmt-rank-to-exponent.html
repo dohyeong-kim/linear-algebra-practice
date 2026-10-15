@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">계수의 상계에서 행렬곱 지수의 상계로.</span>
+</h4>
+<div class="para logical">
+<div class="para">정수 <span class="process-math">\(m\ge 2\)</span>와 <span class="process-math">\(R\)</span>에 대하여 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{m,m,m})\le R\)</span>라 하고, 분해</div>
+<div class="displaymath process-math">
+\begin{gather*}
+T_{m,m,m}=\sum_{\ell=1}^{R}\alpha_\ell\otimes\beta_\ell\otimes W_\ell,\qquad \alpha_\ell=\sum_{p,q}x^{\ell}_{pq}E_{pq}^*,\quad\beta_\ell=\sum_{p,q}y^{\ell}_{pq}F_{pq}^*,\quad W_\ell=\sum_{p,q}z^{\ell}_{pq}G_{pq}
+\end{gather*}
+</div>
+<div class="para">를 고정합니다. 다음 단계를 따라 <span class="process-math">\(\omega_{\mathbb F}\le\log_mR\)</span>임을 보이십시오.</div>
+<ol class="lower-alpha" id="exer-mmt-rank-to-exponent-2-1-6">
+<li><div class="para logical">
+<div class="para">양의 정수 <span class="process-math">\(N\)</span>에 대하여 <span class="process-math">\(\mathcal A=\operatorname{Mat}_{N\times N}(\mathbb F)\)</span>를 <span class="process-math">\(N\times N\)</span> 행렬 전체의 집합이라 하고, <span class="process-math">\(A=(A_{pq})\text{,}\)</span> <span class="process-math">\(B=(B_{pq})\)</span>를 성분 <span class="process-math">\(A_{pq},B_{pq}\)</span>가 <span class="process-math">\(\mathcal A\)</span>에 속하는 <span class="process-math">\(m\times m\)</span> 블록 행렬이라 합시다. 모든 <span class="process-math">\(i,k\)</span>에 대하여 다음 등식을 보이십시오.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\sum_{j=1}^{m}A_{ij}B_{jk}=\sum_{\ell=1}^{R}z^{\ell}_{ik}\Bigl(\sum_{p,q}x^{\ell}_{pq}A_{pq}\Bigr)\Bigl(\sum_{p,q}y^{\ell}_{pq}B_{pq}\Bigr).
+\end{gather*}
+</div>
+</div></li>
+<li><div class="para">분해에만 의존하는 상수 <span class="process-math">\(L\)</span>이 존재하여 모든 <span class="process-math">\(k\ge 1\)</span>에 대해 <span class="process-math">\(C_{\mathbb F}(m^k)\le R\,C_{\mathbb F}(m^{k-1})+L\,m^{2(k-1)}\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(C_{\mathbb F}(m^k)\le(1+kL)R^k\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(C_{\mathbb F}(n)=O\bigl(n^{\log_mR}\log n\bigr)\)</span>이고, 따라서 <span class="process-math">\(\omega_{\mathbb F}\le\log_mR\)</span>임을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions">
+<details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a)에서는 텐서 등식을 기저에 대한 스칼라 등식으로 바꾸고 곱의 순서에 주의하십시오. (c)에서는 <a href="sec-multiplication-tensor.html#exer-mmt-flattenings-border" class="xref" data-knowl="./knowl/xref/exer-mmt-flattenings-border.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.7: 행렬곱 텐서의 펼침과 경계 계수의 하계">연습문제 7.1.7</a>로부터 <span class="process-math">\(R\ge m^2\)</span>임을 사용하고, (d)에서는 <a href="sec-multiplication-tensor.html#exer-mmt-exponent-lower-bound" class="xref" data-knowl="./knowl/xref/exer-mmt-exponent-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.6: 행렬곱 지수의 하계">연습문제 7.1.6</a>를 이용하여 <span class="process-math">\(n\)</span>을 <span class="process-math">\(m\)</span>의 거듭제곱까지 키우십시오.</div></div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-rank-to-exponent-4-1-1">
+<li><div class="para logical">
+<div class="para">텐서 등식의 양변을 기저 <span class="process-math">\(E_{ij}^*\otimes F_{j'k}^*\otimes G_{i'k'}\)</span>에 대한 계수로 비교하면 다음 스칼라 등식을 얻습니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\sum_{\ell=1}^{R}x^{\ell}_{ij}\,y^{\ell}_{j'k}\,z^{\ell}_{i'k'}=\delta_{jj'}\,\delta_{ii'}\,\delta_{kk'}.
+\end{gather*}
+</div>
+<div class="para">주어진 등식의 우변을 전개하면 스칼라 <span class="process-math">\(c\)</span>와 행렬 <span class="process-math">\(X,Y\)</span>에 대하여 <span class="process-math">\((cX)Y=X(cY)=c(XY)\)</span>이므로</div>
+<div class="displaymath process-math">
+\begin{align*}
+\sum_{\ell}z^{\ell}_{ik}\Bigl(\sum_{p,q}x^{\ell}_{pq}A_{pq}\Bigr)\Bigl(\sum_{p',q'}y^{\ell}_{p'q'}B_{p'q'}\Bigr)\amp=\sum_{p,q,p',q'}\Bigl(\sum_\ell x^{\ell}_{pq}y^{\ell}_{p'q'}z^{\ell}_{ik}\Bigr)A_{pq}B_{p'q'}\\
+\amp=\sum_{q}A_{iq}B_{qk}
+\end{align*}
+</div>
+<div class="para">입니다. 이 계산에서 각 항은 항상 <span class="process-math">\(A\)</span>의 성분 다음에 <span class="process-math">\(B\)</span>의 성분이 오는 형태 <span class="process-math">\(A_{pq}B_{p'q'}\)</span>를 유지하므로, <span class="process-math">\(N\ge 2\)</span>일 때 행렬의 곱셈이 가환이 아니어도 등식이 성립합니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(N=m^{k-1}\)</span>이라 하고 <span class="process-math">\(m^k\times m^k\)</span> 행렬을 <span class="process-math">\(N\times N\)</span> 블록들로 이루어진 <span class="process-math">\(m\times m\)</span> 행렬로 봅니다. 그러면 이 <span class="process-math">\(N\)</span>에 대하여 (a)를 적용할 수 있습니다. 스칼라 성분에서 <span class="process-math">\(\alpha_\ell(A)\text{,}\)</span> <span class="process-math">\(\beta_\ell(B)\)</span>를 모두 계산하고, 곱 <span class="process-math">\(p_\ell\)</span>로부터 출력 <span class="process-math">\(\sum_\ell z^{\ell}_{ik}p_\ell\)</span>를 모두 계산하는 데 필요한 덧셈, 뺄셈, 상수배의 총 횟수를 <span class="process-math">\(L\)</span>이라 합시다. 블록에서는 이러한 연산 하나가 <span class="process-math">\(N^2\)</span>번의 스칼라 연산이 됩니다. 또한 <span class="process-math">\(R\)</span>개의 블록 곱 각각은 <span class="process-math">\(C_{\mathbb F}(N)\)</span>번의 연산으로 계산할 수 있습니다. 따라서 <span class="process-math">\(C_{\mathbb F}(m^k)\le R\,C_{\mathbb F}(N)+LN^2\)</span>입니다.</div></li>
+<li><div class="para logical">
+<div class="para">(b)를 반복하고 <span class="process-math">\(C_{\mathbb F}(1)=1\)</span>을 사용하면 다음을 얻습니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-mmt-flattenings-border.html">
+\begin{gather*}
+C_{\mathbb F}(m^k)\le R^k+L\sum_{i=0}^{k-1}R^{i}m^{2(k-1-i)}.
+\end{gather*}
+</div>
+<div class="para">
+<a href="sec-multiplication-tensor.html#exer-mmt-flattenings-border" class="xref" data-knowl="./knowl/xref/exer-mmt-flattenings-border.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.7: 행렬곱 텐서의 펼침과 경계 계수의 하계">연습문제 7.1.7</a>에 의해 <span class="process-math">\(R\ge\operatorname{rank}T_{m,m,m}\ge m^2\)</span>이므로 각 항은 <span class="process-math">\(R^{i}m^{2(k-1-i)}\le R^{k-1}\le R^k\)</span>입니다. 따라서 <span class="process-math">\(C_{\mathbb F}(m^k)\le(1+kL)R^k\)</span>입니다.</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(\rho=\log_mR\)</span>라 하고, <span class="process-math">\(n\ge 2\)</span>에 대해 <span class="process-math">\(m^{k-1}\lt n\le m^k\)</span>인 <span class="process-math">\(k\ge 1\)</span>을 잡습니다. <a href="sec-multiplication-tensor.html#exer-mmt-exponent-lower-bound" class="xref" data-knowl="./knowl/xref/exer-mmt-exponent-lower-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.6: 행렬곱 지수의 하계">연습문제 7.1.6</a>의 (b)를 반복하면 <span class="process-math">\(C_{\mathbb F}(n)\le C_{\mathbb F}(m^k)\)</span>입니다. 또한 <span class="process-math">\(R^k=(m^k)^{\rho}\lt(mn)^{\rho}=Rn^{\rho}\)</span>이고 <span class="process-math">\(k\lt\log_mn+1\)</span>이므로</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/exer-mmt-exponent-lower-bound.html">
+\begin{gather*}
+C_{\mathbb F}(n)\le(1+kL)R^k\le R\,(1+L+L\log_mn)\,n^{\rho}
+\end{gather*}
+</div>
+<div class="para">입니다. 임의의 <span class="process-math">\(\tau\gt\rho\)</span>에 대해 <span class="process-math">\(n^{\rho}\log n=O(n^\tau)\)</span>이므로 <span class="process-math">\(C_{\mathbb F}(n)=O(n^\tau)\)</span>이고, 하한의 정의에 의해 <span class="process-math">\(\omega_{\mathbb F}\le\rho\)</span>입니다. 예를 들어 다음 절의 스트라센 항등식을 <span class="process-math">\(1\times 1\)</span> 블록에 적용하면 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{2,2,2})\le 7\)</span>이므로 <span class="process-math">\(\omega_{\mathbb F}\le\log_27\)</span>입니다.</div>
+</div></li>
+</ol></div></div></details>
+</div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-rank-to-exponent">[incontext]</a></span>
+</body>
+</html>

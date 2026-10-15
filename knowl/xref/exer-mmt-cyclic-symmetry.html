@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">대각합 형식과 순환 대칭.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(Z=\operatorname{Mat}_{t\times r}(\mathbb F)\)</span>의 표준 행렬 단위를 <span class="process-math">\(H_{ki}\)</span>라 합시다.</div>
+<ol class="lower-alpha" id="exer-mmt-cyclic-symmetry-2-1-3">
+<li><div class="para">
+<span class="process-math">\(\operatorname{tr}(G_{ik}H_{k'i'})=\delta_{kk'}\delta_{ii'}\)</span>임을 보이고, <span class="process-math">\(\phi(X)=\bigl(C\mapsto\operatorname{tr}(XC)\bigr)\)</span>로 정의한 <span class="process-math">\(\phi:W\to Z^*\)</span>가 <span class="process-math">\(\phi(G_{ik})=H_{ki}^*\)</span>를 만족하는 동형사상임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\tau_{r,s,t}=(\mathrm{id}\otimes\mathrm{id}\otimes\phi)(T_{r,s,t})\in U^*\otimes V^*\otimes Z^*\)</span>가 <span class="process-math">\(\sum_{i,j,k}E_{ij}^*\otimes F_{jk}^*\otimes H_{ki}^*\)</span>이고, 삼중선형 형식으로서 <span class="process-math">\((A,B,C)\mapsto\operatorname{tr}(ABC)\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{r,s,t})=\operatorname{rank}_{\mathbb F}(T_{s,t,r})=\operatorname{rank}_{\mathbb F}(T_{t,r,s})\)</span>임을 보이고, <a href="sec-multiplication-tensor.html#exer-mmt-transpose" class="xref" data-knowl="./knowl/xref/exer-mmt-transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.4: 전치에 의한 대칭">연습문제 7.1.4</a>와 함께 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{r,s,t})\)</span>가 <span class="process-math">\((r,s,t)\)</span>의 모든 순열에 대해 불변임을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-cyclic-symmetry-3-1-1">
+<li><div class="para">
+<span class="process-math">\(G_{ik}H_{k'i'}=\delta_{kk'}E^{(r)}_{ii'}\)</span>입니다. 여기서 <span class="process-math">\(E^{(r)}_{ii'}\)</span>는 <span class="process-math">\(r\times r\)</span> 행렬 단위입니다. 그 대각합은 <span class="process-math">\(\delta_{ii'}\)</span>이므로 등식이 성립합니다. 따라서 <span class="process-math">\(\phi(G_{ik})(H_{k'i'})=\delta_{kk'}\delta_{ii'}\text{,}\)</span> 즉 <span class="process-math">\(\phi(G_{ik})=H_{ki}^*\)</span>입니다. <span class="process-math">\(\phi\)</span>는 기저를 기저로 보내므로 동형사상입니다.</div></li>
+<li><div class="para">(a)에서 첫째 식을 얻습니다. 이를 <span class="process-math">\(A=(a_{ij})\text{,}\)</span> <span class="process-math">\(B=(b_{jk})\text{,}\)</span> <span class="process-math">\(C=(c_{ki})\)</span>에 평가하면 <span class="process-math">\(\sum_{i,j,k}a_{ij}b_{jk}c_{ki}=\operatorname{tr}(ABC)\)</span>입니다.</div></li>
+<li><div class="para">
+<a href="sec-multiplication-tensor.html#exer-mmt-rank-basic" class="xref" data-knowl="./knowl/xref/exer-mmt-rank-basic.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.2: 텐서의 계수의 기본 성질">연습문제 7.1.2</a>의 (b)에 의해 <span class="process-math">\(\operatorname{rank}T_{r,s,t}=\operatorname{rank}\tau_{r,s,t}\)</span>입니다. 인자의 순서를 순환시키는 동형사상 <span class="process-math">\(U^*\otimes V^*\otimes Z^*\to V^*\otimes Z^*\otimes U^*\text{,}\)</span> <span class="process-math">\(x\otimes y\otimes z\mapsto y\otimes z\otimes x\)</span>는 단순 텐서를 단순 텐서로 보내므로 계수를 보존합니다. 이 사상에 의한 <span class="process-math">\(\tau_{r,s,t}\)</span>의 상은 <span class="process-math">\(\sum_{j,k,i}F_{jk}^*\otimes H_{ki}^*\otimes E_{ij}^*\)</span>입니다. 그런데 <span class="process-math">\((s,t,r)\)</span>에 대해 세 공간은 <span class="process-math">\(\operatorname{Mat}_{s\times t}=V\text{,}\)</span> <span class="process-math">\(\operatorname{Mat}_{t\times r}=Z\text{,}\)</span> 그리고 셋째 인자를 위한 <span class="process-math">\(\operatorname{Mat}_{r\times s}=U\)</span>이므로, 이 상은 정확히 <span class="process-math">\(\tau_{s,t,r}\)</span>입니다. 이는 <span class="process-math">\(\operatorname{tr}(ABC)=\operatorname{tr}(BCA)\)</span>를 반영합니다. 따라서 <span class="process-math">\(\operatorname{rank}T_{r,s,t}=\operatorname{rank}T_{s,t,r}\)</span>이고, 한 번 더 적용하면 <span class="process-math">\(T_{t,r,s}\)</span>도 같습니다. 순환 순열과 <span class="process-math">\(r,t\)</span>의 교환으로 모든 순열을 만들 수 있으므로 계수는 모든 순열에 대해 불변입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-cyclic-symmetry">[incontext]</a></span>
+</body>
+</html>

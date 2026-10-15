@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">7.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">텐서의 계수와 쌍선형 계산의 곱셈 횟수.</span>
+</h3>
+<div class="para">유한차원 벡터공간 사이의 쌍선형 사상 <span class="process-math">\(\mu:U\times V\to W\)</span>에 대응하는 텐서를 <span class="process-math">\(T\in U^*\otimes V^*\otimes W\)</span>라 하자. <span class="process-math">\(u\)</span>의 선형 형식과 <span class="process-math">\(v\)</span>의 선형 형식을 곱한 결과들을 고정된 출력 벡터로 선형 결합하여 <span class="process-math">\(\mu(u,v)\)</span>를 계산하는 방식에서, 필요한 최소 곱셈 횟수는 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T)\)</span>이다. 여기서는 선형 계산의 비용을 세지 않는다.</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">
+<span class="process-math">\(R=\operatorname{rank}_{\mathbb F}(T)\)</span>라 하면, <span class="process-math">\(R\)</span>개의 단순 텐서로 이루어진 분해에 위 계산 절차를 적용하여 <span class="process-math">\(R\)</span>번의 곱셈으로 <span class="process-math">\(\mu\)</span>를 계산할 수 있습니다.</div>
+<div class="para">반대로 이 방식의 알고리즘이 <span class="process-math">\(M\)</span>번의 곱셈을 사용한다면, 어떤 <span class="process-math">\(\alpha_\ell\in U^*\text{,}\)</span> <span class="process-math">\(\beta_\ell\in V^*\text{,}\)</span> <span class="process-math">\(w_\ell\in W\)</span>에 대해 모든 입력에서 다음 등식이 성립합니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\mu(u,v)=\sum_{\ell=1}^{M}\alpha_\ell(u)\beta_\ell(v)w_\ell.
+\end{gather*}
+</div>
+<div class="para">쌍선형 사상과 텐서의 대응에 의해 다음 등식을 얻습니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+T=\sum_{\ell=1}^{M}\alpha_\ell\otimes\beta_\ell\otimes w_\ell.
+\end{gather*}
+</div>
+<div class="para">따라서 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T)\leq M\)</span>입니다. 두 방향을 합하면 최소 곱셈 횟수가 텐서의 계수와 같음을 알 수 있습니다.</div></article></details><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#prop-tensor-rank-bilinear-complexity">[incontext]</a></span>
+</body>
+</html>

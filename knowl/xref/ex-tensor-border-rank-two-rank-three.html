@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">7.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">계수는 3이지만 경계 계수는 2인 텐서.</span>
+</h3>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(e_1,e_2\)</span>를 <span class="process-math">\(\mathbb C^2\)</span>의 표준기저라 하고, 다음 텐서를 생각합니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+T=e_2\otimes e_1\otimes e_1
++e_1\otimes e_2\otimes e_1
++e_1\otimes e_1\otimes e_2.
+\end{gather*}
+</div>
+<div class="para">영이 아닌 복소수 <span class="process-math">\(\varepsilon\)</span>에 대해 다음 텐서는 두 단순 텐서의 합이므로 계수가 <span class="process-math">\(2\)</span> 이하입니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+T_\varepsilon=\frac{1}{\varepsilon}
+(e_1+\varepsilon e_2)\otimes(e_1+\varepsilon e_2)
+\otimes(e_1+\varepsilon e_2)
+-\frac{1}{\varepsilon}e_1\otimes e_1\otimes e_1.
+\end{gather*}
+</div>
+<div class="para">이를 전개하면 다음과 같습니다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+T_\varepsilon &amp;=T+\varepsilon
+(e_2\otimes e_2\otimes e_1
++e_2\otimes e_1\otimes e_2
++e_1\otimes e_2\otimes e_2)\\
+&amp;\quad+\varepsilon^2 e_2\otimes e_2\otimes e_2.
+\end{align*}
+</div>
+<div class="para">따라서 <span class="process-math">\(\varepsilon=1/\nu\)</span>로 두고 극한을 취하면 <span class="process-math">\(T_\varepsilon\to T\)</span>이므로 경계 계수는 <span class="process-math">\(2\)</span> 이하입니다.</div>
+</div>
+<div class="para">첫 번째 인자의 쌍대벡터를 평가하여 얻는 선형 사상 <span class="process-math">\((\mathbb C^2)^*\to\mathbb C^2\otimes\mathbb C^2\)</span>는 <span class="process-math">\(e_1^*\)</span>와 <span class="process-math">\(e_2^*\)</span>를 각각 <span class="process-math">\(e_2\otimes e_1+e_1\otimes e_2\)</span>와 <span class="process-math">\(e_1\otimes e_1\)</span>로 보냅니다. 두 출력이 선형독립이므로 이 사상의 계수는 <span class="process-math">\(2\)</span>입니다. 단순 텐서에서는 이 사상의 계수가 <span class="process-math">\(1\)</span> 이하이고, 이 조건은 행렬의 모든 이차 소행렬식이 영이라는 조건이므로 극한에서도 유지됩니다. 따라서 <span class="process-math">\(T\)</span>는 계수 <span class="process-math">\(1\)</span> 이하인 텐서들의 극한일 수 없으며, 경계 계수는 정확히 <span class="process-math">\(2\)</span>입니다.</div>
+<div class="para logical">
+<div class="para">한편 <span class="process-math">\(T\)</span>의 계수는 정확히 <span class="process-math">\(3\)</span>입니다. 이를 보이기 위해 위 두 출력을 행렬로 표현합니다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+M_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},
+\qquad M_2=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.
+\end{align*}
+</div>
+<div class="para">만약 <span class="process-math">\(T\)</span>가 두 단순 텐서의 합이라면, <span class="process-math">\(\operatorname{span}\{M_1,M_2\}\)</span>는 두 선형독립인 계수 <span class="process-math">\(1\)</span> 행렬로 생성되어야 합니다. 그러나</div>
+<div class="displaymath process-math">
+\begin{align*}
+\det(aM_1+bM_2)
+=\det\begin{pmatrix}b&amp;a\\a&amp;0\end{pmatrix}=-a^2
+\end{align*}
+</div>
+<div class="para">이므로 이 공간에서 계수가 <span class="process-math">\(1\)</span>인 행렬은 모두 <span class="process-math">\(M_2\)</span>의 스칼라배입니다. 따라서 두 항으로 분해할 수 없습니다. 처음에 제시한 세 항의 분해와 합하면 다음 결론을 얻습니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\underline{\operatorname{rank}}_{\mathbb C}(T)=2
+&lt;3=\operatorname{rank}_{\mathbb C}(T).
+\end{gather*}
+</div>
+</div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#ex-tensor-border-rank-two-rank-three">[incontext]</a></span>
+</body>
+</html>

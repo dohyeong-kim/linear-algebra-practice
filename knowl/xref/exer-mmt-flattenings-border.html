@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">행렬곱 텐서의 펼침과 경계 계수의 하계.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(T_{r,s,t}\in U^*\otimes V^*\otimes W\)</span>의 펼침을 생각합니다. 여기서 <span class="process-math">\((U^*)^*=U\text{,}\)</span> <span class="process-math">\((V^*)^*=V\)</span>로 보고, <span class="process-math">\(\beta\otimes w\mapsto(v\mapsto\beta(v)w)\)</span>로 <span class="process-math">\(V^*\otimes W\cong\operatorname{Hom}(V,W)\text{,}\)</span> <span class="process-math">\(U^*\otimes W\cong\operatorname{Hom}(U,W)\)</span>를 동일시하며, <span class="process-math">\(U^*\otimes V^*\)</span>는 <span class="process-math">\(U\times V\)</span> 위의 쌍선형 형식의 공간으로 봅니다.</div>
+<ol class="lower-alpha" id="exer-mmt-flattenings-border-2-1-9">
+<li><div class="para">세 펼침이 각각 <span class="process-math">\(A\mapsto(B\mapsto AB)\text{,}\)</span> <span class="process-math">\(B\mapsto(A\mapsto AB)\text{,}\)</span> <span class="process-math">\(\gamma\mapsto\bigl((A,B)\mapsto\gamma(AB)\bigr)\)</span>임을 보이고, 모두 단사임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{r,s,t})\ge\max\{rs,st,rt\}\)</span>임을 보이고, <span class="process-math">\(r,s,t\)</span> 중 하나가 <span class="process-math">\(1\)</span>이면 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{r,s,t})=rst\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\mathbb F=\mathbb C\)</span>일 때 <span class="process-math">\(\underline{\operatorname{rank}}_{\mathbb C}(T_{r,s,t})\ge\max\{rs,st,rt\}\)</span>임을 보이십시오. 특히 <span class="process-math">\(\underline{\operatorname{rank}}_{\mathbb C}(T_{n,n,n})\ge n^2\)</span>입니다.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-flattenings-border-3-1-1">
+<li><div class="para">첫째 펼침은 <span class="process-math">\(A\mapsto\sum_{i,j,k}E_{ij}^*(A)\,F_{jk}^*\otimes G_{ik}\)</span>이고, 이는 <span class="process-math">\(B\mapsto\sum_{i,j,k}a_{ij}b_{jk}G_{ik}=AB\)</span>에 해당합니다. 둘째와 셋째도 같은 계산으로 얻습니다. 모든 <span class="process-math">\(B\)</span>에 대해 <span class="process-math">\(AB=0\)</span>이면 <span class="process-math">\(AF_{jk}\)</span>의 <span class="process-math">\(k\)</span>번째 열이 <span class="process-math">\(A\)</span>의 <span class="process-math">\(j\)</span>번째 열이므로 <span class="process-math">\(A=0\)</span>입니다. 모든 <span class="process-math">\(A\)</span>에 대해 <span class="process-math">\(AB=0\)</span>이면 <span class="process-math">\(E_{ij}B\)</span>의 <span class="process-math">\(i\)</span>번째 행이 <span class="process-math">\(B\)</span>의 <span class="process-math">\(j\)</span>번째 행이므로 <span class="process-math">\(B=0\)</span>입니다. 모든 <span class="process-math">\(A,B\)</span>에 대해 <span class="process-math">\(\gamma(AB)=0\)</span>이면 <span class="process-math">\(\gamma(G_{ik})=\gamma(E_{ij}F_{jk})=0\)</span>이므로 <span class="process-math">\(\gamma=0\)</span>입니다.</div></li>
+<li><div class="para">(a)에 의해 세 펼침의 계수는 정의역의 차원 <span class="process-math">\(rs\text{,}\)</span> <span class="process-math">\(st\text{,}\)</span> <span class="process-math">\(rt\)</span>이므로 <a href="sec-multiplication-tensor.html#exer-mmt-flattening-bound" class="xref" data-knowl="./knowl/xref/exer-mmt-flattening-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.3: 펼침에 의한 계수의 하계">연습문제 7.1.3</a>에서 하계를 얻습니다. 예를 들어 <span class="process-math">\(t=1\)</span>이면 <span class="process-math">\(\max\{rs,s,r\}=rs=rst\)</span>이고, <a href="sec-multiplication-tensor.html#ex-tensor-rank-standard-matrix-multiplication" class="xref" data-knowl="./knowl/xref/ex-tensor-rank-standard-matrix-multiplication.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 7.1.8: 표준 행렬곱의 곱셈 횟수">예시 7.1.8</a>의 상계와 일치합니다. <span class="process-math">\(r=1\)</span>이나 <span class="process-math">\(s=1\)</span>인 경우도 같습니다.</div></li>
+<li><div class="para">펼침을 취하는 사상 <span class="process-math">\(T\mapsto T_{(i)}\)</span>는 선형이므로 연속입니다. 또한 선형사상의 계수가 <span class="process-math">\(R\)</span> 이하라는 조건은 행렬의 모든 <span class="process-math">\((R+1)\)</span>차 소행렬식이 영이라는 조건이므로 닫힌 조건입니다. 따라서 <span class="process-math">\(T_\nu\to T\)</span>이고 <span class="process-math">\(\operatorname{rank}T_\nu\le R\)</span>이면, <a href="sec-multiplication-tensor.html#exer-mmt-flattening-bound" class="xref" data-knowl="./knowl/xref/exer-mmt-flattening-bound.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.3: 펼침에 의한 계수의 하계">연습문제 7.1.3</a>에 의해 <span class="process-math">\(\operatorname{rank}(T_\nu)_{(i)}\le R\)</span>이고 극한에서 <span class="process-math">\(\operatorname{rank}T_{(i)}\le R\)</span>입니다. 그러므로 펼침의 계수는 경계 계수의 하계이기도 합니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-flattenings-border">[incontext]</a></span>
+</body>
+</html>

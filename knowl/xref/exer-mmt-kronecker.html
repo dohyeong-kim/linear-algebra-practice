@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">크로네커 곱과 계수의 곱셈성.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(T\in V_1\otimes V_2\otimes V_3\text{,}\)</span> <span class="process-math">\(T'\in V_1'\otimes V_2'\otimes V_3'\)</span>에 대하여 단순 텐서에서</div>
+<div class="displaymath process-math">
+\begin{gather*}
+(v_1\otimes v_2\otimes v_3)\boxtimes(v_1'\otimes v_2'\otimes v_3')=(v_1\otimes v_1')\otimes(v_2\otimes v_2')\otimes(v_3\otimes v_3')
+\end{gather*}
+</div>
+<div class="para">로 정하고 쌍선형으로 확장한 <span class="process-math">\(T\boxtimes T'\in(V_1\otimes V_1')\otimes(V_2\otimes V_2')\otimes(V_3\otimes V_3')\)</span>를 <dfn class="terminology">크로네커 곱</dfn><aside class="aside aside-like"><div class="para">크로네커 곱:Kronecker product</div></aside>이라 합니다. 이는 <span class="process-math">\(T\otimes T'\)</span>을 인자의 순서를 바꾸는 표준 동형사상으로 옮긴 것이므로 잘 정의됩니다.</div>
+<ol class="lower-alpha" id="exer-mmt-kronecker-2-1-8">
+<li><div class="para">
+<span class="process-math">\(\operatorname{rank}_{\mathbb F}(T\boxtimes T')\le\operatorname{rank}_{\mathbb F}(T)\operatorname{rank}_{\mathbb F}(T')\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(E_{ij}\otimes E'_{i'j'}\mapsto E_{(i,i'),(j,j')}\)</span>(순서쌍은 사전식 순서)로 <span class="process-math">\(\operatorname{Mat}_{r\times s}\otimes\operatorname{Mat}_{r'\times s'}\cong\operatorname{Mat}_{rr'\times ss'}\)</span>를 동일시하면 <span class="process-math">\(A\otimes A'\)</span>은 행렬의 크로네커 곱이 됩니다. 이 동일시와 그 쌍대 아래에서 <span class="process-math">\(T_{r,s,t}\boxtimes T_{r',s',t'}\)</span>가 <span class="process-math">\(T_{rr',ss',tt'}\)</span>에 대응함을 보이십시오. 이로부터 <span class="process-math">\((A\otimes A')(B\otimes B')=AB\otimes A'B'\)</span>를 유도하십시오.</div></li>
+<li><div class="para logical">
+<div class="para">
+<span class="process-math">\(\operatorname{rank}_{\mathbb F}(T_{rr',ss',tt'})\le\operatorname{rank}_{\mathbb F}(T_{r,s,t})\operatorname{rank}_{\mathbb F}(T_{r',s',t'})\)</span>임을 보이고, 다음을 유도하십시오.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{rank}_{\mathbb F}(T_{m^N,m^N,m^N})\le\operatorname{rank}_{\mathbb F}(T_{m,m,m})^N,\qquad \operatorname{rank}_{\mathbb F}(T_{rst,rst,rst})\le\operatorname{rank}_{\mathbb F}(T_{r,s,t})^3.
+\end{gather*}
+</div>
+</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-kronecker-3-1-1">
+<li><div class="para">
+<span class="process-math">\(T=\sum_{\ell=1}^{R}x_\ell\otimes y_\ell\otimes z_\ell\text{,}\)</span> <span class="process-math">\(T'=\sum_{\ell'=1}^{R'}x'_{\ell'}\otimes y'_{\ell'}\otimes z'_{\ell'}\)</span>이면 쌍선형성에 의해 <span class="process-math">\(T\boxtimes T'=\sum_{\ell,\ell'}(x_\ell\otimes x'_{\ell'})\otimes(y_\ell\otimes y'_{\ell'})\otimes(z_\ell\otimes z'_{\ell'})\)</span>이고, 이는 <span class="process-math">\(RR'\)</span>개의 단순 텐서의 합입니다.</div></li>
+<li><div class="para logical">
+<div class="para">정의에 의해</div>
+<div class="displaymath process-math">
+\begin{gather*}
+T_{r,s,t}\boxtimes T_{r',s',t'}=\sum_{i,j,k}\sum_{i',j',k'}(E_{ij}^*\otimes E_{i'j'}'^*)\otimes(F_{jk}^*\otimes F_{j'k'}'^*)\otimes(G_{ik}\otimes G'_{i'k'})
+\end{gather*}
+</div>
+<div class="para">입니다. 텐서곱 기저의 쌍대기저는 쌍대기저의 텐서곱이므로, <span class="process-math">\(I=(i,i')\text{,}\)</span> <span class="process-math">\(J=(j,j')\text{,}\)</span> <span class="process-math">\(K=(k,k')\)</span>로 놓으면 우변은 <span class="process-math">\(\sum_{I,J,K}E_{IJ}^*\otimes F_{JK}^*\otimes G_{IK}=T_{rr',ss',tt'}\)</span>입니다. 한편 <span class="process-math">\(T\boxtimes T'\)</span>에 대응하는 쌍선형 사상은 단순 텐서에서 확인하면 <span class="process-math">\((u\otimes u',v\otimes v')\mapsto\mu(u,v)\otimes\mu'(u',v')\)</span>를 만족합니다. 따라서 <span class="process-math">\((A\otimes A')(B\otimes B')=AB\otimes A'B'\)</span>입니다.</div>
+</div></li>
+<li><div class="para">(a), (b)와 <a href="sec-multiplication-tensor.html#exer-mmt-rank-basic" class="xref" data-knowl="./knowl/xref/exer-mmt-rank-basic.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.2: 텐서의 계수의 기본 성질">연습문제 7.1.2</a>의 (b)에서 첫 부등식을 얻습니다. 이를 반복하면 첫째 결과를 얻습니다. 또한 <span class="process-math">\(T_{r,s,t}\boxtimes T_{s,t,r}\boxtimes T_{t,r,s}\)</span>는 <span class="process-math">\(T_{rst,str,trs}\text{,}\)</span> 즉 <span class="process-math">\(T_{rst,rst,rst}\)</span>에 대응하고, <a href="sec-multiplication-tensor.html#exer-mmt-cyclic-symmetry" class="xref" data-knowl="./knowl/xref/exer-mmt-cyclic-symmetry.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 7.1.9: 대각합 형식과 순환 대칭">연습문제 7.1.9</a>에 의해 세 인수의 계수가 같으므로 둘째 결과를 얻습니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-kronecker">[incontext]</a></span>
+</body>
+</html>

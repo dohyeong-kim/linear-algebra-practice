@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">온도가 있는 소프트맥스와 마스크 소프트맥스.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(\tau\gt 0\)</span>에 대해 <dfn class="terminology">온도</dfn><aside class="aside aside-like"><div class="para">온도:temperature</div></aside>가 <span class="process-math">\(\tau\)</span>인 소프트맥스를 <span class="process-math">\(\operatorname{softmax}_\tau(x)=\operatorname{softmax}(x/\tau)\)</span>로 정의하고, <dfn class="terminology">로그-합-지수 함수</dfn><aside class="aside aside-like"><div class="para">로그-합-지수 함수:log-sum-exp function</div></aside>를 <span class="process-math">\(\operatorname{LSE}_\tau(x)=\tau\log\sum_{j=1}^{n}\exp(x_j/\tau)\)</span>로 정의합니다. <span class="process-math">\(x^{*}=\max_j x_j\text{,}\)</span> <span class="process-math">\(M=\{i : x_i=x^{*}\}\)</span>이라 합시다.</div>
+<ol class="lower-alpha" id="exer-attention-temperature-mask-2-1-11">
+<li><div class="para">
+<span class="process-math">\(\displaystyle\lim_{\tau\to 0^{+}}\operatorname{softmax}_\tau(x)_i\)</span>가 <span class="process-math">\(i\in M\)</span>이면 <span class="process-math">\(1/|M|\text{,}\)</span> <span class="process-math">\(i\notin M\)</span>이면 <span class="process-math">\(0\)</span>임을 보이십시오. 또한 <span class="process-math">\(\displaystyle\lim_{\tau\to\infty}\operatorname{softmax}_\tau(x)=\frac1n\mathbf 1\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(x^{*}\le\operatorname{LSE}_\tau(x)\le x^{*}+\tau\log n\)</span>임을 보이고, <span class="process-math">\(\displaystyle\lim_{\tau\to 0^{+}}\operatorname{LSE}_\tau(x)=\max_j x_j\)</span>임을 결론지으십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\nabla\operatorname{LSE}_\tau(x)=\operatorname{softmax}_\tau(x)\)</span>임을 보이십시오.</div></li>
+<li><div class="para logical">
+<div class="para">공집합이 아닌 부분집합 <span class="process-math">\(A\subseteq\{1,\ldots,n\}\)</span>에 대하여 <dfn class="terminology">마스크 소프트맥스</dfn><aside class="aside aside-like"><div class="para">마스크 소프트맥스:masked softmax</div></aside>를</div>
+<div class="displaymath process-math">
+\begin{align*}
+\operatorname{softmax}_A(x)_i=\begin{cases}\dfrac{\exp(x_i)}{\sum_{j\in A}\exp(x_j)}, \amp i\in A,\\ 0, \amp i\notin A\end{cases}
+\end{align*}
+</div>
+<div class="para">로 정의합니다. <span class="process-math">\(m_A\in\mathbb R^n\)</span>을 <span class="process-math">\(i\in A\)</span>이면 <span class="process-math">\(0\text{,}\)</span> <span class="process-math">\(i\notin A\)</span>이면 <span class="process-math">\(1\)</span>을 성분으로 갖는 벡터라 할 때, <span class="process-math">\(\displaystyle\lim_{c\to\infty}\operatorname{softmax}(x-c\,m_A)=\operatorname{softmax}_A(x)\)</span>임을 보이십시오. 또한 자기 어텐션에서 <span class="process-math">\(i\)</span>번째 질의의 점수에 <span class="process-math">\(A=\{1,\ldots,i\}\)</span>인 마스크 소프트맥스를 사용하면, <span class="process-math">\(i\)</span>번째 출력이 <span class="process-math">\(x_{i+1},\ldots,x_n\)</span>에 의존하지 않음을 설명하십시오.</div>
+</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-attention-temperature-mask-3-1-1">
+<li><div class="para logical">
+<div class="para">분자와 분모를 <span class="process-math">\(\exp(x^{*}/\tau)\)</span>로 나누면</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{softmax}_\tau(x)_i=\frac{\exp\bigl((x_i-x^{*})/\tau\bigr)}{\sum_{j=1}^{n}\exp\bigl((x_j-x^{*})/\tau\bigr)}
+\end{gather*}
+</div>
+<div class="para">입니다. <span class="process-math">\(\tau\to 0^{+}\)</span>일 때 <span class="process-math">\(j\in M\)</span>이면 <span class="process-math">\(\exp((x_j-x^{*})/\tau)=1\)</span>이고, <span class="process-math">\(j\notin M\)</span>이면 <span class="process-math">\(x_j-x^{*}\lt 0\)</span>이므로 <span class="process-math">\(0\)</span>으로 수렴합니다. 따라서 분모는 <span class="process-math">\(|M|\)</span>으로 수렴하고 원하는 극한을 얻습니다. <span class="process-math">\(\tau\to\infty\)</span>이면 각 <span class="process-math">\(\exp(x_j/\tau)\)</span>가 <span class="process-math">\(1\)</span>로 수렴하므로 극한은 <span class="process-math">\(\frac1n\mathbf 1\)</span>입니다. 즉, 온도가 낮으면 소프트맥스는 argmax에, 온도가 높으면 균등분포에 가까워집니다.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(\exp(x^{*}/\tau)\le\sum_j\exp(x_j/\tau)\le n\exp(x^{*}/\tau)\)</span>입니다. 로그는 증가함수이므로 각 변에 로그를 취하고 <span class="process-math">\(\tau\)</span>를 곱하면 원하는 부등식을 얻습니다. <span class="process-math">\(\tau\log n\to 0\)</span>이므로 조임 정리에 의해 극한은 <span class="process-math">\(x^{*}\)</span>입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(\dfrac{\partial}{\partial x_i}\operatorname{LSE}_\tau(x)=\tau\cdot\dfrac{\exp(x_i/\tau)/\tau}{\sum_j\exp(x_j/\tau)}=\operatorname{softmax}_\tau(x)_i\)</span>입니다. (b)와 함께 보면 <span class="process-math">\(\operatorname{LSE}_\tau\)</span>는 <span class="process-math">\(\max\)</span>의 매끄러운 근사이고, 그 기울기인 소프트맥스는 argmax의 매끄러운 근사입니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(i\in A\)</span>이면 <span class="process-math">\(\exp(x_i-c\,(m_A)_i)=\exp(x_i)\)</span>이고, <span class="process-math">\(i\notin A\)</span>이면 <span class="process-math">\(\exp(x_i-c)\to 0\)</span>입니다. 따라서 분모는 <span class="process-math">\(\sum_{j\in A}\exp(x_j)\gt 0\)</span>으로 수렴하고, 각 성분은 <span class="process-math">\(\operatorname{softmax}_A(x)_i\)</span>로 수렴합니다. 자기 어텐션의 <span class="process-math">\(i\)</span>번째 출력은 <span class="process-math">\(\sum_{j}\operatorname{softmax}_A(s)_j\,W_Vx_j=\sum_{j\le i}\operatorname{softmax}_A(s)_j\,W_Vx_j\)</span>이고, <span class="process-math">\(j\le i\)</span>인 점수 <span class="process-math">\(s_j\)</span>는 <span class="process-math">\(x_i\)</span>와 <span class="process-math">\(x_j\)</span>만으로 계산됩니다. 따라서 <span class="process-math">\(i\)</span>번째 출력은 <span class="process-math">\(x_1,\ldots,x_i\)</span>에만 의존합니다. 이러한 마스크를 인과 마스크라 합니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-attention.html#exer-attention-temperature-mask">[incontext]</a></span>
+</body>
+</html>

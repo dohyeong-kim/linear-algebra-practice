@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">텐서의 계수의 기본 성질.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(V_1,\ldots,V_d\)</span>를 <span class="process-math">\(\mathbb F\)</span> 위의 유한차원 벡터공간이라 합시다.</div>
+<ol class="lower-alpha" id="exer-mmt-rank-basic-2-1-3">
+<li><div class="para">
+<span class="process-math">\(S,T\in V_1\otimes\cdots\otimes V_d\)</span>와 영이 아닌 <span class="process-math">\(c\in\mathbb F\)</span>에 대하여 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(S+T)\le\operatorname{rank}_{\mathbb F}(S)+\operatorname{rank}_{\mathbb F}(T)\)</span>와 <span class="process-math">\(\operatorname{rank}_{\mathbb F}(cT)=\operatorname{rank}_{\mathbb F}(T)\)</span>를 보이십시오.</div></li>
+<li><div class="para">선형 동형사상 <span class="process-math">\(g_i:V_i\to V_i'\)</span>에 대하여 <span class="process-math">\(\operatorname{rank}_{\mathbb F}\bigl((g_1\otimes\cdots\otimes g_d)(T)\bigr)=\operatorname{rank}_{\mathbb F}(T)\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(d=2\)</span>일 때 <span class="process-math">\(T\in V_1\otimes V_2\)</span>에 대해 <span class="process-math">\(\varphi\otimes v_2\mapsto\varphi(v_1)v_2\)</span>로 정해지는 선형사상 <span class="process-math">\(T_{(1)}:V_1^*\to V_2\)</span>를 생각합니다. <span class="process-math">\(\operatorname{rank}_{\mathbb F}(T)=\operatorname{rank}T_{(1)}\)</span>임을 보이십시오. 따라서 <span class="process-math">\(T=\sum_{p,q}c_{pq}e_p\otimes f_q\)</span>의 계수는 행렬 <span class="process-math">\((c_{pq})\)</span>의 계수와 같습니다.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">예시답안</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical"><ol class="lower-alpha" id="exer-mmt-rank-basic-3-1-1">
+<li><div class="para">
+<span class="process-math">\(S\)</span>와 <span class="process-math">\(T\)</span>의 최소 분해를 이어 붙이면 <span class="process-math">\(S+T\)</span>의 분해를 얻으므로 첫 부등식이 성립합니다. <span class="process-math">\(T=\sum_\ell v_{1,\ell}\otimes\cdots\otimes v_{d,\ell}\)</span>이면 <span class="process-math">\(cT=\sum_\ell(cv_{1,\ell})\otimes v_{2,\ell}\otimes\cdots\otimes v_{d,\ell}\)</span>이므로 <span class="process-math">\(\operatorname{rank}(cT)\le\operatorname{rank}T\)</span>이고, <span class="process-math">\(c^{-1}\)</span>에 같은 논리를 적용하면 등호를 얻습니다.</div></li>
+<li><div class="para">
+<span class="process-math">\((g_1\otimes\cdots\otimes g_d)(v_1\otimes\cdots\otimes v_d)=g_1v_1\otimes\cdots\otimes g_dv_d\)</span>이므로 단순 텐서는 단순 텐서로 갑니다. 따라서 계수는 증가하지 않고, 역사상 <span class="process-math">\(g_1^{-1}\otimes\cdots\otimes g_d^{-1}\)</span>에 같은 논리를 적용하면 등호를 얻습니다.</div></li>
+<li><div class="para">
+<span class="process-math">\(T=\sum_{\ell=1}^{R}x_\ell\otimes y_\ell\)</span>이면 <span class="process-math">\(T_{(1)}(\varphi)=\sum_\ell\varphi(x_\ell)y_\ell\in\operatorname{span}\{y_1,\ldots,y_R\}\)</span>이므로 <span class="process-math">\(\operatorname{rank}T_{(1)}\le R\)</span>입니다. 역으로 <span class="process-math">\(V_1\)</span>의 기저 <span class="process-math">\(e_1,\ldots,e_m\)</span>을 잡으면 <span class="process-math">\(T=\sum_pe_p\otimes y_p\)</span>로 쓸 수 있고 <span class="process-math">\(T_{(1)}(e_p^*)=y_p\)</span>입니다. <span class="process-math">\(w_1,\ldots,w_k\)</span>를 <span class="process-math">\(\operatorname{im}T_{(1)}=\operatorname{span}\{y_p\}\)</span>의 기저라 하고 <span class="process-math">\(y_p=\sum_qc_{pq}w_q\)</span>로 쓰면 <span class="process-math">\(T=\sum_{q=1}^{k}\bigl(\sum_pc_{pq}e_p\bigr)\otimes w_q\)</span>이므로 <span class="process-math">\(\operatorname{rank}T\le k\)</span>입니다.</div></li>
+</ol></div></div></details></div></article><span class="incontext"><a class="internal" href="sec-multiplication-tensor.html#exer-mmt-rank-basic">[incontext]</a></span>
+</body>
+</html>
