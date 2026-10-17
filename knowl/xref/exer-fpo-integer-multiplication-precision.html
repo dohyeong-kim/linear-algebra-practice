@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">11<span class="period">.</span></span><span class="space"> </span><span class="title">정수 계수 곱셈에 필요한 정밀도.</span>
+</h4>
+<div class="para logical">
+<div class="para">정수 계수벡터 <span class="process-math">\(a,b\in\mathbb Z^N\)</span>에 대하여 <span class="process-math">\(A=W_Na\text{,}\)</span> <span class="process-math">\(B=W_Nb\text{,}\)</span> <span class="process-math">\(C=A\circ B\text{,}\)</span> <span class="process-math">\(c=W_N^{-1}C\)</span>라 하십시오. 본문의 방법에 따라 <span class="process-math">\(c\)</span>는 곱다항식의 계수벡터입니다. 다음 사실은 가정으로 받아들입니다. 배정밀도 FFT로 계산한 <span class="process-math">\(\widehat A\)</span>는 <span class="process-math">\(\|\widehat A-A\|_2\le\eta\|A\|_2\)</span>를 만족하며, <span class="process-math">\(\eta\)</span>는 대략 <span class="process-math">\(u\log_2N\)</span>의 작은 상수배입니다. <span class="process-math">\(\widehat B\)</span>도 마찬가지입니다. 문제를 단순화하기 위하여 성분별 곱과 역변환은 정확히 계산한다고 가정하여 <span class="process-math">\(\widehat C=\widehat A\circ\widehat B\text{,}\)</span> <span class="process-math">\(\widehat c=W_N^{-1}\widehat C\)</span>로 둡니다.</div>
+<ol class="lower-alpha" id="exer-fpo-integer-multiplication-precision-2-1-14">
+<li><div class="para">
+<span class="process-math">\(\|\widehat C-C\|_2\le\eta(2+\eta)\|A\|_2\|B\|_2\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\|\widehat c-c\|_\infty\le\eta(2+\eta)\sqrt N\,\|a\|_2\|b\|_2\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(N=2^{20}\text{,}\)</span> <span class="process-math">\(\eta=2^{-45}\)</span>이고 모든 계수가 <span class="process-math">\(0\le a_j,b_j&lt;2^\beta\)</span>를 만족한다고 하십시오. (b)의 상한이 <span class="process-math">\(1/2\)</span>보다 작아서 반올림으로 <span class="process-math">\(c\)</span>를 정확히 복원할 수 있음을 보장하는 가장 큰 정수 <span class="process-math">\(\beta\)</span>를 구하십시오.</div></li>
+<li><div class="para">계수가 <span class="process-math">\(0\le a_j,b_j&lt;2^{12}\)</span>이면 <span class="process-math">\(a=a^{(0)}+2^6a^{(1)}\text{,}\)</span> <span class="process-math">\(b=b^{(0)}+2^6b^{(1)}\)</span>로 나눌 수 있습니다. 여기서 각 조각의 계수는 <span class="process-math">\(0\)</span> 이상 <span class="process-math">\(2^6\)</span> 미만인 정수입니다. 이를 이용하여 정확한 곱을 얻는 알고리즘을 설계하고, 필요한 FFT의 횟수를 세어 전체 연산량이 여전히 <span class="process-math">\(O(N\log N)\)</span>임을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\(\widehat C-C=(\widehat A-A)\circ\widehat B+A\circ(\widehat B-B)\)</span>로 나누고 <a href="sec-fast-polynomial-operations.html#exer-fpo-dft-norms" class="xref" data-knowl="./knowl/xref/exer-fpo-dft-norms.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.8: 이산푸리에변환 행렬과 노름">연습문제 8.2.8</a>의 (b)를 적용하십시오. 삼각부등식에 의해 <span class="process-math">\(\|\widehat B\|_2\le(1+\eta)\|B\|_2\)</span>입니다. (b) <a href="sec-fast-polynomial-operations.html#exer-fpo-dft-norms" class="xref" data-knowl="./knowl/xref/exer-fpo-dft-norms.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.8: 이산푸리에변환 행렬과 노름">연습문제 8.2.8</a>의 (a)와 (c)에 의해 <span class="process-math">\(\|\widehat c-c\|_\infty\le\|\widehat C-C\|_2/\sqrt N\)</span>이고 <span class="process-math">\(\|A\|_2=\sqrt N\|a\|_2\)</span>입니다. (c) <span class="process-math">\(\|a\|_2,\|b\|_2&lt;\sqrt N\,2^\beta=2^{10+\beta}\)</span>이고 <span class="process-math">\(\eta(2+\eta)&lt;2.0001\cdot2^{-45}\)</span>입니다. 조건은 <span class="process-math">\(2^{2\beta}&lt;2^{14}/2.0001\)</span>로 정리됩니다. (d) <span class="process-math">\(ab=a^{(0)}b^{(0)}+2^6\bigl(a^{(0)}b^{(1)}+a^{(1)}b^{(0)}\bigr)+2^{12}a^{(1)}b^{(1)}\)</span>입니다. 각 곱은 (c)의 조건을 만족하므로 <a href="sec-fast-polynomial-operations.html#exer-fpo-complex-rounding" class="xref" data-knowl="./knowl/xref/exer-fpo-complex-rounding.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.6: 복소수의 반올림과 정수 복원">연습문제 8.2.6</a>의 (c)처럼 반올림하여 정확히 얻을 수 있습니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-integer-multiplication-precision">[incontext]</a></span>
+</body>
+</html>

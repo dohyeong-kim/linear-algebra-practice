@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">나비 연산 한 단계의 반올림 오차.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(|w|=1\)</span>인 복소수 <span class="process-math">\(w\)</span>는 정확하게 주어진다고 하십시오. 나비 연산 <span class="process-math">\((u,v)\mapsto(p,q)=(u+wv,u-wv)\)</span>을 부동소수점으로 <span class="process-math">\(\widehat t=\operatorname{fl}(wv)\text{,}\)</span> <span class="process-math">\(\widehat p=\operatorname{fl}(u+\widehat t)\text{,}\)</span> <span class="process-math">\(\widehat q=\operatorname{fl}(u-\widehat t)\)</span>와 같이 계산합니다.</div>
+<ol class="lower-alpha" id="exer-fpo-butterfly-error-2-1-7">
+<li><div class="para">
+<span class="process-math">\(|p|^2+|q|^2=2(|u|^2+|v|^2)\)</span>임을 보이십시오.</div></li>
+<li><div class="para">도입부의 모형에서 <span class="process-math">\(\|(\widehat p,\widehat q)-(p,q)\|_2\le\varepsilon(2+\varepsilon)\|(p,q)\|_2\)</span>임을 증명하십시오.</div></li>
+<li><div class="para">FFT의 한 단계는 서로 겹치지 않는 좌표 쌍들에 나비 연산을 동시에 적용하는 것입니다. 한 단계의 정확한 출력을 <span class="process-math">\(y\text{,}\)</span> 계산된 출력을 <span class="process-math">\(\widehat y\)</span>라 할 때 <span class="process-math">\(\|\widehat y-y\|_2\le\varepsilon(2+\varepsilon)\|y\|_2\)</span>임을 보이십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) 평행사변형 법칙 <span class="process-math">\(|u+a|^2+|u-a|^2=2|u|^2+2|a|^2\)</span>과 <span class="process-math">\(|wv|=|v|\)</span>를 사용하십시오. (b) <span class="process-math">\(\widehat p-p=(\widehat t-wv)(1+\delta_2)+p\delta_2\)</span>로 분해하면 <span class="process-math">\(|\widehat p-p|\le\varepsilon|p|+\varepsilon(1+\varepsilon)|v|\)</span>입니다. 삼각부등식을 적용한 뒤 <span class="process-math">\(\sqrt2|v|\le\sqrt2\|(u,v)\|_2=\|(p,q)\|_2\)</span>를 이용하십시오. (c) 쌍마다 얻은 부등식을 제곱하여 더하십시오.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-butterfly-error">[incontext]</a></span>
+</body>
+</html>

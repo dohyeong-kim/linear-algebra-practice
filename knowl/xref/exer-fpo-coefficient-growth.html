@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">7<span class="period">.</span></span><span class="space"> </span><span class="title">계수의 크기와 배정밀도.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(f=\sum_{j=0}^ma_jx^j\text{,}\)</span> <span class="process-math">\(g=\sum_{j=0}^nb_jx^j\)</span>의 계수가 <span class="process-math">\(|a_j|\le A\text{,}\)</span> <span class="process-math">\(|b_j|\le B\)</span>를 만족하고 <span class="process-math">\(c\)</span>를 곱 <span class="process-math">\(fg\)</span>의 계수벡터라 하십시오.</div>
+<ol class="lower-alpha" id="exer-fpo-coefficient-growth-2-1-7">
+<li><div class="para">
+<span class="process-math">\(\|c\|_\infty\le(\min(m,n)+1)AB\)</span>임을 보이고, 등호가 성립하는 예를 드십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\|c\|_\infty\le\|a\|_2\|b\|_2\)</span>임을 보이십시오.</div></li>
+<li><div class="para">IEEE 배정밀도에서는 절댓값이 <span class="process-math">\(2^{53}\)</span> 이하인 모든 정수를 정확히 나타낼 수 있지만 <span class="process-math">\(2^{53}+1\)</span>은 그렇지 않습니다. <span class="process-math">\(m=n=2^{20}-1\)</span>이고 <span class="process-math">\(A=B=2^{16}\)</span>일 때 곱의 모든 계수가 배정밀도로 정확히 표현됨을 보이십시오. 그러나 이것만으로 FFT가 정확한 계수를 준다고 결론지을 수는 없습니다. 그 이유를 <a href="sec-fast-polynomial-operations.html#exer-fpo-complex-rounding" class="xref" data-knowl="./knowl/xref/exer-fpo-complex-rounding.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.6: 복소수의 반올림과 정수 복원">연습문제 8.2.6</a>의 (b)와 관련지어 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\(c_k\)</span>의 합에 나타나는 항은 최대 <span class="process-math">\(\min(m,n)+1\)</span>개입니다. 모든 계수가 최댓값인 경우를 생각하십시오. (b) <span class="process-math">\(c_k=\sum_ja_jb_{k-j}\)</span>는 <span class="process-math">\(a\)</span>와, <span class="process-math">\(b\)</span>의 성분 일부를 뒤집어 늘어놓은 벡터의 내적입니다. 코시–슈바르츠 부등식을 사용하십시오. (c) 계수의 크기는 <span class="process-math">\(2^{20}\cdot2^{32}=2^{52}\)</span> 이하입니다. 그러나 FFT의 중간값에는 정확히 저장할 수 없는 회전인자 <span class="process-math">\(\omega^j\)</span>가 곱해지므로, 최종 결과는 정수에 가까운 근삿값일 뿐입니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-coefficient-growth">[incontext]</a></span>
+</body>
+</html>

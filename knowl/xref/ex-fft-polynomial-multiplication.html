@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">8.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">FFT를 이용한 일차 다항식의 곱셈.</span>
+</h3>
+<div class="para">
+<span class="process-math">\(f(x)=1+2x\)</span>와 <span class="process-math">\(g(x)=3+4x\)</span>의 곱을 FFT를 이용하여 계산합니다.</div> <div class="para logical">
+<div class="para">곱의 차수는 2이므로 <span class="process-math">\(N=4\)</span>로 잡습니다. 0을 덧붙인 계수 배열은 각각 <span class="process-math">\((1,2,0,0)\)</span>과 <span class="process-math">\((3,4,0,0)\)</span>입니다. 이때 <span class="process-math">\(\omega=i\)</span>이며, 평가점은 순서대로 <span class="process-math">\(1,i,-1,-i\)</span>입니다. FFT로 얻는 값들은</div>
+<div class="displaymath process-math">
+\begin{align*}
+A=(f(1),f(i),f(-1),f(-i)) &amp;=(3,1+2i,-1,1-2i),\\
+B=(g(1),g(i),g(-1),g(-i)) &amp;=(7,3+4i,-1,3-4i)
+\end{align*}
+</div>
+<div class="para">입니다. 같은 위치의 값들을 곱하면</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C=(21,-5+10i,1,-5-10i)
+\end{equation*}
+</div>
+<div class="para">를 얻습니다.</div>
+</div> <div class="para logical">
+<div class="para">이 배열에 역 FFT를 적용하면 <span class="process-math">\((c_0,c_1,c_2,c_3)=(3,10,8,0)\)</span>이 됩니다. 예를 들어 처음 두 계수는</div>
+<div class="displaymath process-math">
+\begin{align*}
+c_0 &amp;=\frac{21+(-5+10i)+1+(-5-10i)}{4}=3,\\
+c_1 &amp;=\frac{21+(-5+10i)(-i)-1+(-5-10i)i}{4}=10
+\end{align*}
+</div>
+<div class="para">입니다. 따라서 <span class="process-math">\(f(x)g(x)=3+10x+8x^2\)</span>입니다. 직접 전개한 결과와 일치합니다.</div>
+</div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#ex-fft-polynomial-multiplication">[incontext]</a></span>
+</body>
+</html>

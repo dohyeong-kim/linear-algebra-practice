@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">9<span class="period">.</span></span><span class="space"> </span><span class="title">뉴턴 반복과 고속 나눗셈.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(f(x)=x^5+1\text{,}\)</span> <span class="process-math">\(g(x)=x^2+x+1\)</span>이라 하십시오.</div>
+<ol class="lower-alpha" id="exer-fpo-newton-division-2-1-3">
+<li><div class="para">
+<span class="process-math">\(m,n,k\)</span>와 <span class="process-math">\(F=\operatorname{rev}_m(f)\text{,}\)</span> <span class="process-math">\(G=\operatorname{rev}_n(g)\)</span>를 구하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(H=1\)</span>에서 시작하여 본문의 뉴턴 반복으로 <span class="process-math">\(GH\equiv1\pmod{x^k}\)</span>인 <span class="process-math">\(H\)</span>를 구하십시오. 각 단계에서 <span class="process-math">\(1-GH\)</span>를 계산하여 <span class="process-math">\(1-GH_{\mathrm{new}}=(1-GH)^2\)</span>임을 확인하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(Q\equiv FH\pmod{x^k}\)</span>로부터 몫 <span class="process-math">\(q\)</span>를 복원하고 <span class="process-math">\(r=f-gq\)</span>를 구하십시오. 결과를 긴 나눗셈과 비교하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">
+<span class="process-math">\(m=5\text{,}\)</span> <span class="process-math">\(n=2\text{,}\)</span> <span class="process-math">\(k=4\)</span>이고 <span class="process-math">\(G=1+x+x^2\)</span>입니다. 뉴턴 반복은 <span class="process-math">\(s=1\to2\to4\)</span>의 두 단계입니다. 첫 단계 뒤에는 <span class="process-math">\(H=1-x\)</span>이며, <span class="process-math">\(G(1-x)=1-x^3\)</span>입니다. 검산에는 <span class="process-math">\(x^3\equiv1\pmod{x^2+x+1}\)</span>을 이용할 수 있습니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-newton-division">[incontext]</a></span>
+</body>
+</html>

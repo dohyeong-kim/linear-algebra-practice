@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">12<span class="period">.</span></span><span class="space"> </span><span class="title">나눗셈의 민감도.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<a href="sec-fast-polynomial-operations.html#exer-fpo-toeplitz-basics" class="xref" data-knowl="./knowl/xref/exer-fpo-toeplitz-basics.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.10: 하삼각 퇴플리츠 행렬">연습문제 8.2.10</a>의 기호를 사용합니다. 행렬 <span class="process-math">\(M\)</span>에 대하여 <span class="process-math">\(\|M\|_\infty\)</span>는 각 행의 성분의 절댓값의 합 가운데 최댓값이며, 모든 벡터 <span class="process-math">\(x\)</span>에 대하여 <span class="process-math">\(\|Mx\|_\infty\le\|M\|_\infty\|x\|_\infty\)</span>가 성립합니다.</div>
+<ol class="lower-alpha" id="exer-fpo-division-sensitivity-2-1-6">
+<li><div class="para">
+<span class="process-math">\(G=1-2x\)</span>일 때 <span class="process-math">\(GH\equiv1\pmod{x^k}\)</span>인 <span class="process-math">\(H\)</span>를 구하십시오. 이를 이용하여 <span class="process-math">\(T_k(G)^{-1}\)</span>을 적고, <span class="process-math">\(\|T_k(G)\|_\infty=3\)</span>이고 <span class="process-math">\(\|T_k(G)^{-1}\|_\infty=2^k-1\)</span>임을 보이십시오.</div></li>
+<li><div class="para">본문의 고속 나눗셈에서는 <span class="process-math">\(Q\equiv FH\pmod{x^k}\)</span>입니다. <a href="sec-fast-polynomial-operations.html#exer-fpo-toeplitz-basics" class="xref" data-knowl="./knowl/xref/exer-fpo-toeplitz-basics.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.10: 하삼각 퇴플리츠 행렬">연습문제 8.2.10</a>의 (b)를 이용하여 계수벡터로 <span class="process-math">\(Q=T_k(H)F\)</span>임을 설명하십시오. <span class="process-math">\(F\)</span>가 <span class="process-math">\(F+\Delta F\)</span>로 바뀌면 <span class="process-math">\(Q\)</span>는 <span class="process-math">\(T_k(H)\Delta F\)</span>만큼 바뀜을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(g=x-2\text{,}\)</span> <span class="process-math">\(f=x^m-2x^{m-1}\)</span>이라 하면 몫은 <span class="process-math">\(q=x^{m-1}\)</span>이고 나머지는 <span class="process-math">\(0\)</span>입니다. 최고차 계수만 바꾼 <span class="process-math">\(\widetilde f=(1+\epsilon)x^m-2x^{m-1}\)</span>을 <span class="process-math">\(g\)</span>로 나눈 몫 <span class="process-math">\(\widetilde q\)</span>와 나머지를 구하고, <span class="process-math">\(\|\widetilde q-q\|_\infty=2^{m-1}\epsilon\)</span>임을 보이십시오. 이 결과를 (a), (b)와 비교하십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(f\)</span>의 계수가 앞선 계산에서 얻은 값이어서 상대오차 <span class="process-math">\(2^{-53}\)</span> 정도를 포함한다고 하십시오. <span class="process-math">\(m=60\text{,}\)</span> <span class="process-math">\(\epsilon=2^{-53}\)</span>일 때 (c)의 값을 계산하십시오. 이 결과가 <a href="sec-fast-polynomial-operations.html#rem-fast-polynomial-division-error" class="xref" data-knowl="./knowl/xref/rem-fast-polynomial-division-error.html" data-reveal-label="Reveal" data-close-label="Close" title="보조설명 8.2.6: 고속 나눗셈의 수치 오차">보조설명 8.2.6</a>에 대하여 무엇을 말해 주는지 설명하십시오. 또한 이 오차가 FFT나 뉴턴 반복을 쓰는지와 관계없이 생기는 이유를 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\((1-2x)^{-1}\equiv\sum_{j=0}^{k-1}2^jx^j\pmod{x^k}\)</span>입니다. <span class="process-math">\(T_k(G)\)</span>의 각 행에는 <span class="process-math">\(-2\)</span>와 <span class="process-math">\(1\)</span>이 있고, <span class="process-math">\(T_k(G)^{-1}\)</span>은 마지막 행의 절댓값 합이 가장 큽니다. (b) 행렬곱은 선형입니다. (c) <span class="process-math">\(x^m=(x-2)(x^{m-1}+2x^{m-2}+\cdots+2^{m-1})+2^m\)</span>입니다. (b)의 관점에서는 <span class="process-math">\(k=m\)</span>이고 <span class="process-math">\(\Delta F=\epsilon e_0\)</span>이므로 <span class="process-math">\(\Delta Q=\epsilon(1,2,\ldots,2^{m-1})\)</span>입니다. 이것을 뒤집으면 몫의 변화를 얻습니다. (d) <span class="process-math">\(2^{59}\cdot2^{-53}=2^6\)</span>입니다. 어떤 알고리즘이든 입력을 정확히 나눈다면 <span class="process-math">\(\widetilde f\)</span>의 정확한 몫을 내놓아야 합니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-division-sensitivity">[incontext]</a></span>
+</body>
+</html>

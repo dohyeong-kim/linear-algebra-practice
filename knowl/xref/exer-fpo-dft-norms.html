@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">8<span class="period">.</span></span><span class="space"> </span><span class="title">이산푸리에변환 행렬과 노름.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(M^*\)</span>는 행렬 <span class="process-math">\(M\)</span>의 켤레전치행렬이고, <span class="process-math">\(x\circ y\)</span>는 벡터의 성분별 곱입니다.</div>
+<ol class="lower-alpha" id="exer-fpo-dft-norms-2-1-4">
+<li><div class="para">
+<span class="process-math">\(W_N^*W_N=NI_N\)</span>임을 보이십시오. 이로부터 <span class="process-math">\(W_N/\sqrt N\)</span>이 유니터리행렬이고, 모든 <span class="process-math">\(x,y\in\mathbb C^N\)</span>에 대하여 <span class="process-math">\(\|W_Nx\|_2=\sqrt N\|x\|_2\text{,}\)</span> <span class="process-math">\(\|W_N^{-1}y\|_2=\|y\|_2/\sqrt N\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\|x\|_\infty\le\|x\|_2\)</span>와 <span class="process-math">\(\|x\circ y\|_2\le\|x\|_\infty\|y\|_2\le\|x\|_2\|y\|_2\)</span>를 보이십시오.</div></li>
+<li><div class="para">역변환에 넣을 벡터 <span class="process-math">\(y\)</span>에 오차 <span class="process-math">\(e\)</span>가 더해져 <span class="process-math">\(y+e\)</span>가 되었다고 하십시오. 역변환을 정확히 계산하면 출력의 오차는 <span class="process-math">\(W_N^{-1}e\)</span>입니다. <span class="process-math">\(\|W_N^{-1}e\|_\infty\le\|e\|_2/\sqrt N\)</span>이고, <span class="process-math">\(y\ne0\)</span>이면 <span class="process-math">\(\|W_N^{-1}e\|_2/\|W_N^{-1}y\|_2=\|e\|_2/\|y\|_2\)</span>임을 보이십시오. 즉, 역변환은 상대오차를 키우지 않습니다.</div></li>
+<li><div class="para">
+<a href="sec-fast-fourier-transform.html#prop-fft-matrix-factorization" class="xref" data-knowl="./knowl/xref/prop-fft-matrix-factorization.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 8.1.11: 고속푸리에변환의 행렬 분해">명제 8.1.11</a>의 행렬 <span class="process-math">\(B_n\)</span>에 대하여 <span class="process-math">\(B_n^*B_n=2I_n\)</span>임을 보이십시오. 이를 이용하여 FFT의 각 단계는 벡터의 노름을 정확히 <span class="process-math">\(\sqrt2\)</span>배 하므로, 앞 단계에서 생긴 오차도 신호와 같은 비율로만 커진다는 것을 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\(W_N^*W_N\)</span>의 <span class="process-math">\((j,k)\)</span> 성분은 <span class="process-math">\(\sum_{t=0}^{N-1}\omega^{-tj}\omega^{tk}=\sum_{t=0}^{N-1}\omega^{t(k-j)}\)</span>입니다. 직교관계 <a href="sec-fast-fourier-transform.html#eq-fourier-basis-orthogonality" class="xref" data-knowl="./knowl/xref/eq-fourier-basis-orthogonality.html" data-reveal-label="Reveal" data-close-label="Close" title="[men] 8.1.1">(8.1.1)</a>를 적용하십시오. (b) 각 성분에서 <span class="process-math">\(|x_jy_j|\le\|x\|_\infty|y_j|\)</span>입니다. (c) 선형성에 의해 <span class="process-math">\(W_N^{-1}(y+e)-W_N^{-1}y=W_N^{-1}e\)</span>입니다. (a)와 (b)를 적용하십시오. (d) <span class="process-math">\(D_n\)</span>은 절댓값이 <span class="process-math">\(1\)</span>인 성분을 갖는 대각행렬이므로 <span class="process-math">\(D_n^*D_n=I\)</span>입니다. 블록행렬의 곱으로 계산하십시오.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-dft-norms">[incontext]</a></span>
+</body>
+</html>

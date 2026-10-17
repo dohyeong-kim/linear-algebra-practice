@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">6<span class="period">.</span></span><span class="space"> </span><span class="title">복소수의 반올림과 정수 복원.</span>
+</h4>
+<div class="para logical"><ol class="lower-alpha" id="exer-fpo-complex-rounding-2-1-1">
+<li><div class="para">복소수 <span class="process-math">\(z=x+iy\)</span>를 저장할 때 실수부와 허수부를 각각 반올림하여 <span class="process-math">\(\operatorname{fl}(z)=x(1+\delta_1)+iy(1+\delta_2)\text{,}\)</span> <span class="process-math">\(|\delta_1|,|\delta_2|\le u\)</span>를 얻는다고 하십시오. <span class="process-math">\(|\operatorname{fl}(z)-z|\le u|z|\)</span>임을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(\omega=e^{2\pi i/8}\)</span>은 이진 부동소수점 수로 정확히 나타낼 수 없음을 설명하십시오. 따라서 FFT에서 사용하는 회전인자 <span class="process-math">\(\omega^j\)</span>도 일반적으로 오차를 포함합니다.</div></li>
+<li><div class="para logical">
+<div class="para">정수 계수 다항식의 곱을 부동소수점 FFT로 계산하여 다음 근삿값을 얻었다고 하십시오.</div>
+<div class="displaymath process-math">
+\begin{align*}
+(\widehat c_0,\widehat c_1,\widehat c_2,\widehat c_3) &amp;= (2.9999999998+10^{-11}i,\ 10.0000000003,\ 7.9999999996-3\cdot10^{-12}i,\ 2\cdot10^{-10})
+\end{align*}
+</div>
+<div class="para">곱다항식을 구하십시오. 또한 참값이 정수이고 <span class="process-math">\(|\widehat c_j-c_j|&lt;1/2\)</span>이면 <span class="process-math">\(\widehat c_j\)</span>의 실수부를 가장 가까운 정수로 반올림하여 <span class="process-math">\(c_j\)</span>를 얻는 이유를 설명하고, <span class="process-math">\(1/2\)</span>을 더 큰 수로 바꿀 수 없음을 보이십시오.</div>
+</div></li>
+</ol></div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\(|\operatorname{fl}(z)-z|^2=x^2\delta_1^2+y^2\delta_2^2\)</span>입니다. (b) <span class="process-math">\(\omega=\frac{\sqrt2}2(1+i)\)</span>이고 <span class="process-math">\(\frac{\sqrt2}2\)</span>는 무리수입니다. (c) 오차의 상한이 <span class="process-math">\(1/2\)</span>이면 서로 다른 두 정수 <span class="process-math">\(c\)</span>와 <span class="process-math">\(c+1\)</span>이 같은 근삿값 <span class="process-math">\(c+\frac12\)</span>을 줄 수 있습니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-complex-rounding">[incontext]</a></span>
+</body>
+</html>

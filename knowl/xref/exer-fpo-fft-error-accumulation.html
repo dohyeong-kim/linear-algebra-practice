@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">FFT 반올림 오차의 누적.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(N=2^k\)</span>이라 하십시오. <a href="sec-fast-fourier-transform.html" class="internal" title="절 8.1: 푸리에변환과 그 가속">절 8.1</a>의 분해를 켤레를 취한 형태로 쓰면, 비트 반전 순열 뒤에 블록 크기 <span class="process-math">\(q=2,4,\ldots,N\)</span>의 단계를 차례로 적용하여 <span class="process-math">\(W_Nx\)</span>를 계산합니다. 각 단계의 행렬은 블록대각행렬 <span class="process-math">\(\operatorname{diag}(\overline{B_q},\ldots,\overline{B_q})\)</span>입니다. 회전인자는 미리 계산하여 저장하며, 저장된 값은 <span class="process-math">\(\widehat w=w(1+\theta)\text{,}\)</span> <span class="process-math">\(|\theta|\le\mu\)</span>를 만족한다고 하십시오.</div>
+<ol class="lower-alpha" id="exer-fpo-fft-error-accumulation-2-1-8">
+<li><div class="para">
+<span class="process-math">\(\tau=(1+\mu)(1+\varepsilon)-1\text{,}\)</span> <span class="process-math">\(\eta=\varepsilon+(1+\varepsilon)\tau\)</span>로 놓으십시오. 회전인자의 오차까지 고려하면 <a href="sec-fast-polynomial-operations.html#exer-fpo-butterfly-error" class="xref" data-knowl="./knowl/xref/exer-fpo-butterfly-error.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.8: 나비 연산 한 단계의 반올림 오차">연습문제 8.2.8</a>의 (c)가 <span class="process-math">\(\varepsilon(2+\varepsilon)\)</span> 대신 <span class="process-math">\(\eta\)</span>로 성립함을 보이십시오.</div></li>
+<li><div class="para">각 단계 행렬에 <span class="process-math">\(1/\sqrt2\)</span>을 곱하면 유니터리행렬이 됨을 보이십시오.</div></li>
+<li><div class="para logical">
+<div class="para">비트 반전 순열은 정확하게 수행된다고 하십시오. 계산된 출력 <span class="process-math">\(\widehat y\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{align*}
+\|\widehat y-W_Nx\|_2 &amp;\le\bigl((1+\eta)^k-1\bigr)\|W_Nx\|_2
+\end{align*}
+</div>
+<div class="para">임을 <span class="process-math">\(k\)</span>에 대한 귀납법으로 증명하십시오. 또한 <span class="process-math">\(k\eta\le1\)</span>이면 오른쪽의 계수가 <span class="process-math">\(2k\eta=2\eta\log_2N\)</span> 이하임을 보이십시오.</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(W_Nx\)</span>의 각 성분을 정의대로 <span class="process-math">\(N\)</span>개 항의 합으로 순서대로 더하여 계산하면, 같은 모형에서 얻는 오차 상한이 <span class="process-math">\(N\)</span>에 비례하여 커지는 이유를 설명하십시오. 이를 (c)와 비교하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) <span class="process-math">\(|\widehat t-wv|\le\tau|v|\)</span>이므로 <span class="process-math">\(|\widehat p-p|\le\varepsilon|p|+(1+\varepsilon)\tau|v|\)</span>입니다. 이후 계산은 <a href="sec-fast-polynomial-operations.html#exer-fpo-butterfly-error" class="xref" data-knowl="./knowl/xref/exer-fpo-butterfly-error.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.8: 나비 연산 한 단계의 반올림 오차">연습문제 8.2.8</a>와 같습니다. (b) <span class="process-math">\(D\)</span>가 유니터리 대각행렬이면 <span class="process-math">\(\overline{B_q}^{*}\,\overline{B_q}=2I\)</span>입니다. (c) 정확한 단계별 벡터를 <span class="process-math">\(x_s\text{,}\)</span> 계산된 벡터를 <span class="process-math">\(\widehat x_s\)</span>라 하고 <span class="process-math">\(d_s=\|\widehat x_s-x_s\|_2/(2^{s/2}\|x\|_2)\)</span>로 놓으십시오. (a)와 (b)로부터 <span class="process-math">\(d_s\le d_{s-1}+\eta(1+d_{s-1})\text{,}\)</span> 즉 <span class="process-math">\(1+d_s\le(1+\eta)(1+d_{s-1})\)</span>을 얻습니다. 마지막 부분에는 <span class="process-math">\((1+\eta)^k\le e^{k\eta}\)</span>와, <span class="process-math">\(0\le t\le1\)</span>에서 <span class="process-math">\(e^t-1\le(e-1)t\)</span>임을 이용하십시오. (d) <span class="process-math">\(N\)</span>개의 항을 순서대로 더하면 첫 항은 <span class="process-math">\(N-1\)</span>번의 덧셈을 거칩니다. 반면 FFT에서는 각 입력이 <span class="process-math">\(k=\log_2N\)</span>번의 나비 연산만 거칩니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-fft-error-accumulation">[incontext]</a></span>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">10<span class="period">.</span></span><span class="space"> </span><span class="title">하삼각 퇴플리츠 행렬.</span>
+</h4>
+<div class="para logical">
+<div class="para">다항식 <span class="process-math">\(h=\sum_jh_jx^j\)</span>와 양의 정수 <span class="process-math">\(k\)</span>에 대하여, <span class="process-math">\((s,t)\)</span> 성분이 <span class="process-math">\(s\ge t\)</span>일 때 <span class="process-math">\(h_{s-t}\)</span>이고 <span class="process-math">\(s&lt;t\)</span>일 때 <span class="process-math">\(0\)</span>인 <span class="process-math">\(k\times k\)</span> 행렬을 <span class="process-math">\(T_k(h)\)</span>로 씁니다. 이러한 행렬을 <dfn class="terminology">하삼각 퇴플리츠 행렬</dfn><aside class="aside aside-like"><div class="para">하삼각 퇴플리츠 행렬:lower triangular Toeplitz matrix</div></aside>이라고 합니다. 행과 열의 첨자는 <span class="process-math">\(0\)</span>부터 셉니다.</div>
+<ol class="lower-alpha" id="exer-fpo-toeplitz-basics-2-1-13">
+<li><div class="para">
+<span class="process-math">\(T_4(1+x+x^2)\)</span>를 적으십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(T_k(g)T_k(h)=T_k(gh)\)</span>임을 보이십시오. 또한 <span class="process-math">\(T_k(g)\)</span>를 열벡터 <span class="process-math">\((h_0,\ldots,h_{k-1})\)</span>에 곱하면 <span class="process-math">\(gh\bmod x^k\)</span>의 계수벡터가 됨을 보이십시오.</div></li>
+<li><div class="para">
+<span class="process-math">\(T_k(G)\)</span>가 가역일 필요충분조건이 <span class="process-math">\(G(0)\ne0\)</span>임을 보이십시오. 이 경우 <span class="process-math">\(GH\equiv1\pmod{x^k}\)</span>이면 <span class="process-math">\(T_k(G)^{-1}=T_k(H)\)</span>임을 증명하십시오. <a href="sec-fast-polynomial-operations.html#exer-fpo-newton-division" class="xref" data-knowl="./knowl/xref/exer-fpo-newton-division.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.9: 뉴턴 반복과 고속 나눗셈">연습문제 8.2.9</a>의 결과를 이용하여 <span class="process-math">\(T_4(1+x+x^2)^{-1}\)</span>을 구하고, 두 행렬의 곱이 단위행렬임을 확인하십시오.</div></li>
+<li><div class="para">가역인 <span class="process-math">\(k\times k\)</span> 하삼각 퇴플리츠 행렬의 역행렬도 하삼각 퇴플리츠 행렬이며, 본문의 방법으로 <span class="process-math">\(O(k\log(k+1))\)</span>의 연산량으로 구할 수 있음을 설명하십시오.</div></li>
+</ol>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">(a) 첫 번째 열은 <span class="process-math">\((1,1,1,0)\)</span>이고, 다음 열은 앞 열을 한 칸씩 아래로 내린 것입니다. (b) <span class="process-math">\((T_k(g)T_k(h))_{s,t}=\sum_rg_{s-r}h_{r-t}\)</span>에서 <span class="process-math">\(t\le r\le s\)</span>인 항만 남습니다. <span class="process-math">\(j=r-t\)</span>로 치환하면 <span class="process-math">\((gh)_{s-t}\)</span>를 얻습니다. (c) <span class="process-math">\(T_k(G)\)</span>는 대각성분이 모두 <span class="process-math">\(G(0)\)</span>인 하삼각행렬이므로 행렬식은 <span class="process-math">\(G(0)^k\)</span>입니다. (b)에 의해 <span class="process-math">\(T_k(G)T_k(H)=T_k(GH)=T_k(1)=I\)</span>입니다. <a href="sec-fast-polynomial-operations.html#exer-fpo-newton-division" class="xref" data-knowl="./knowl/xref/exer-fpo-newton-division.html" data-reveal-label="Reveal" data-close-label="Close" title="연습문제 8.2.9: 뉴턴 반복과 고속 나눗셈">연습문제 8.2.9</a>에서 <span class="process-math">\((1+x+x^2)^{-1}\equiv1-x+x^3\pmod{x^4}\)</span>을 얻었습니다. (d) 하삼각 퇴플리츠 행렬은 첫 번째 열로 결정되며, <span class="process-math">\(T_k(H)\)</span>의 첫 번째 열은 <span class="process-math">\(H\)</span>의 계수입니다.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-fast-polynomial-operations.html#exer-fpo-toeplitz-basics">[incontext]</a></span>
+</body>
+</html>
