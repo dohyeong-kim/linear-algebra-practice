@@ -21,7 +21,7 @@
     <xi:include href="./ch-attention.ptx" />
     <xi:include href="./ch-fast-matrix-multiplication.ptx" />
     <xi:include href="./ch-fast-fourier-transform.ptx" />
-    <xi:include href="./ch-sparse-matrices.ptx"/>
+    <xi:include href="./ch-modeling-linear-transformations.ptx"/>
 
     <!-- Include backmatter -->
     <xi:include href="./backmatter.ptx" />

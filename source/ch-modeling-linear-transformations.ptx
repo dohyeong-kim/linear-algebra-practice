@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-models-of-linear-transformations" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>선형변환의 모형</title>
+  <introduction>
+    <p>
+      이 강의록의 마지막 장입니다. 강의록 전반에 걸쳐 벡터공간과 선형변환 개념에 대한 대수적 이해를 기반으로 다양한 문제 해결 방법을 살펴보았습니다. 대부분의 경우 문제 해결의 실마리는 행렬에 대한 분석에서 찾을 수 있었습니다. 즉, 선형변환을 행렬로 표현한 것이 출발점이었습니다. 하지만 행렬이 만능은 아닙니다. 선형변환을 표현하고 다루는 데 있어 행렬 외에도 다양한 모형이 존재합니다. 이 장에서는 이러한 모형들을 둘러보겠습니다. 또한, 벡터공간과 선형변환 개념이 어떻게 확장되는지도 알아보겠습니다. <fn></fn>
+    </p>
+  </introduction>
+  <xi:include href="sec-modeling-linear-transformations.ptx"/>
+  <xi:include href="sec-after-linear-algebra.ptx"/>
+</chapter>
