@@ -975,7 +975,7 @@ eBookConfig.enable_chatcodes =  false;
 <ol id="searchresults" class="searchresults"></ol>
 </div>
 </div>
-<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-fast-polynomial-operations.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-fast-fourier-transform.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-sparse-matrices.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-fast-polynomial-operations.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="up-button button" href="ch-fast-fourier-transform.html" title="[up]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">상위항목</span></a><a class="next-button button" href="ch-models-of-linear-transformations.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N} \newcommand{\Z}{\mathbb Z} \newcommand{\Q}{\mathbb Q} \newcommand{\R}{\mathbb R}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
@@ -1140,7 +1140,13 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 </ul>
 </li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-models-of-linear-transformations.html" class="internal"><span class="codenumber">9</span> <span class="title">선형변환의 모형</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-modeling-linear-transformations.html" class="internal"><span class="codenumber">9.1</span> <span class="title">회고: 선형변환의 모형</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-after-linear-algebra.html" class="internal"><span class="codenumber">9.2</span> <span class="title">전망: 선형대수 너머</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-backmatter">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
 <ul class="structural toc-item-list">
@@ -1473,7 +1479,7 @@ f(z^j)=z^{-\binom j2}\sum_{k=0}^{n-1}u_k\,z^{\binom{j+k}2},\qquad u_k=c_kz^{-\bi
 </div>
 <div class="solutions"><details id="exer-fme-geometric-points-3" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="exer-fme-geometric-points-3-1">(a) 양변에 <span class="process-math">\(2\)</span>를 곱하여 전개하십시오. 정수 등식이므로 <span class="process-math">\(\mathbb F\)</span>의 표수와 관계없이 지수에 사용할 수 있으며, <span class="process-math">\(z^{jk}=z^{\binom{j+k}2}z^{-\binom j2}z^{-\binom k2}\)</span>입니다. (b) <span class="process-math">\(UW\)</span>의 <span class="process-math">\(x^{n-1+j}\)</span>의 계수는 <span class="process-math">\(\sum_iu_{n-1-i}z^{\binom{n-1+j-i}2}\)</span>이며, <span class="process-math">\(k=n-1-i\)</span>로 치환하십시오. (c) <span class="process-math">\(\binom{t+1}2=\binom t2+t\)</span>이므로 <span class="process-math">\(z^{\binom{t+1}2}=z^{\binom t2}\cdot z^t\)</span>입니다. <span class="process-math">\(z^t\)</span>와 <span class="process-math">\(z^{-t}\)</span>도 점화식으로 구합니다. 곱 <span class="process-math">\(UW\)</span>는 차수가 <span class="process-math">\(O(n)\)</span>인 두 다항식의 곱이므로 길이가 <span class="process-math">\(4n\)</span> 이상인 <span class="process-math">\(2\)</span>의 거듭제곱을 택하여 FFT로 계산할 수 있습니다. (d) <a href="sec-fast-fourier-transform.html#def-discrete-fourier-transform" class="xref" data-knowl="./knowl/xref/def-discrete-fourier-transform.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 8.1.4: 이산 푸리에변환">정의 8.1.4</a>의 정의에서 사용하는 지수의 부호를 확인하고, 각 좌표가 <span class="process-math">\(f(\omega_n^{-j})\)</span>의 꼴임을 이용하십시오.</div></div></details></div></article></section></section></div>
 <div class="ptx-content-footer">
-<a class="previous-button button" href="sec-fast-polynomial-operations.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-sparse-matrices.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="sec-fast-polynomial-operations.html" title="[previous]"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">이전</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-models-of-linear-transformations.html" title="[next]"><span class="name">다음</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">

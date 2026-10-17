@@ -1140,7 +1140,13 @@ eBookConfig.enable_chatcodes =  false;
 </li>
 </ul>
 </li>
-<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="ch-sparse-matrices.html" class="internal"><span class="codenumber">9</span> <span class="title">희소행렬</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-models-of-linear-transformations.html" class="internal"><span class="codenumber">9</span> <span class="title">선형변환의 모형</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-modeling-linear-transformations.html" class="internal"><span class="codenumber">9.1</span> <span class="title">회고: 선형변환의 모형</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-after-linear-algebra.html" class="internal"><span class="codenumber">9.2</span> <span class="title">전망: 선형대수 너머</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-backmatter">
 <div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">맺음말</span></a></div>
 <ul class="structural toc-item-list">
@@ -1179,7 +1185,7 @@ P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
 \end{align*}
 </div>
 <div class="para" id="ex-pagerank-markov-chain-two-state-4">입니다. 열은 오늘의 상태를 나타내므로 각 열의 합은 <span class="process-math">\(1\)</span>입니다. 오늘 맑고 어제도 맑았을 때 내일 흐릴 조건부 확률은 오늘 맑다는 사실만으로 정해지므로 <span class="process-math">\(\Pr(X_{k+1}=2\mid X_k=1,X_{k-1}=1)=\Pr(X_{k+1}=2\mid X_k=1)=0.2\)</span>입니다. 이것이 마르코프 조건의 한 예입니다.</div></article></details><div class="para" id="sec-pagerank-5">마르코프 조건은 다음 이동의 확률을 결정할 때 현재 상태만 필요하다는 뜻입니다. <span class="process-math">\(p_i^{(k)}=\Pr(X_k=i)\)</span>로 두면 전체확률법칙에 따라 분포의 변화는 행렬 곱으로 표현됩니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html">
 \begin{equation*}
 p^{(k+1)}=Pp^{(k)},\qquad p^{(k)}=P^k p^{(0)}.
 \end{equation*}
@@ -1208,7 +1214,7 @@ P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
 \end{gather*}
 </div>
 <div class="para" id="ex-pagerank-two-state-stationary-distribution-6">를 얻습니다. 실제로 <span class="process-math">\(P\pi=(3/5,2/5)^{\mathsf T}=\pi\)</span>이므로, 이 분포에서는 하루가 지나도 맑음과 흐림의 확률이 변하지 않습니다.</div></article></details><div class="para" id="sec-pagerank-9">이제 웹페이지를 상태로 생각합니다. 페이지 <span class="process-math">\(j\)</span>에서 나가는 링크가 <span class="process-math">\(d_j&gt;0\)</span>개이면 사용자는 그중 하나를 같은 확률로 선택한다고 가정합니다. 중복 링크를 제외할 때 링크에 따른 전이 확률은 다음과 같습니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html">
 \begin{equation*}
 P_{ij}=\begin{cases}
 1/d_j, &amp; \text{페이지 }j\text{에서 }i\text{로 가는 링크가 있을 때},\\
@@ -1257,7 +1263,7 @@ G(p-\pi)&amp;=(1-\alpha)P(p-\pi),\\
 \end{align*}
 </div>
 <div class="para" id="prop-pagerank-unique-limit-3-5">여기서 <span class="process-math">\(\|x\|_1=\sum_i|x_i|\)</span>이며 <span class="process-math">\(\|P\|_1=1\)</span>을 사용했습니다. <span class="process-math">\(1-\alpha&lt;1\)</span>이므로 오른쪽은 <span class="process-math">\(0\)</span>으로 수렴합니다.</div></article></details><div class="para" id="sec-pagerank-19">순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <span class="process-math">\(\alpha\)</span>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 위의 수렴 상한은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <span class="process-math">\(\alpha\)</span>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <span class="process-math">\(v\)</span>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html ./knowl/xref/ch-sparse-matrices.html">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-pagerank-unique-limit.html">
 \begin{equation*}
 \pi=(1-\alpha)P\pi+\alpha v.
 \end{equation*}
@@ -1265,7 +1271,7 @@ G(p-\pi)&amp;=(1-\alpha)P(p-\pi),\\
 <div class="para" id="sec-pagerank-21">
 <span class="process-math">\(\alpha\)</span>가 <span class="process-math">\(1\)</span>에 가까워지면 <span class="process-math">\(\pi\)</span>는 <span class="process-math">\(v\)</span>에 가까워집니다. 반대로 <span class="process-math">\(\alpha=0\)</span>에서는 링크 행렬의 비유일성이나 주기성 문제가 다시 나타날 수 있습니다. 흔히 사용하는 선택은 순간이동률 <span class="process-math">\(\alpha=0.15\text{,}\)</span> 즉 링크를 따를 확률 <span class="process-math">\(0.85\)</span>입니다.</div>
 <div class="para" id="sec-pagerank-22">균등분포 <span class="process-math">\(v\)</span>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <span class="process-math">\(v\)</span>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. 일부 성분이 <span class="process-math">\(0\)</span>이면 양의 행렬이라는 가정이 깨지므로 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.</div>
-<div class="para" id="sec-pagerank-23">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <span class="process-math">\(0\)</span>인 희소 행렬입니다. 따라서 <span class="process-math">\(G\)</span>를 만들지 않고 정상 분포 <span class="process-math">\(\pi\)</span>를 구하는 방법이 필요합니다. <a href="sec-pagerank.html#prop-pagerank-unique-limit" class="xref" data-knowl="./knowl/xref/prop-pagerank-unique-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.4.8: 페이지랭크의 유일성과 수렴">명제 4.4.8</a>은 <span class="process-math">\(G\)</span>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다. 희소행렬에 대해서는 <a href="ch-sparse-matrices.html" class="internal" title="Ch. 9: 희소행렬">Ch. 9</a>에서 다룹니다.</div>
+<div class="para" id="sec-pagerank-23">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <span class="process-math">\(0\)</span>인 희소 행렬입니다. 따라서 <span class="process-math">\(G\)</span>를 만들지 않고 정상 분포 <span class="process-math">\(\pi\)</span>를 구하는 방법이 필요합니다. <a href="sec-pagerank.html#prop-pagerank-unique-limit" class="xref" data-knowl="./knowl/xref/prop-pagerank-unique-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.4.8: 페이지랭크의 유일성과 수렴">명제 4.4.8</a>은 <span class="process-math">\(G\)</span>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다.</div>
 <section class="exercises" id="exercises-pagerank"><h3 class="heading hide-type">
 <span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
 </h3>
