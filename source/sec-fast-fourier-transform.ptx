@@ -322,4 +322,195 @@
       를 얻어 원래 벡터를 복원합니다.
     </p>
   </example>
+
+  <exercises xml:id="exercises-fast-fourier-transform">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        문제는 난이도 순서로 배열되어 있습니다.  별도의 언급이 없으면 <m>n=2^k</m>이고 <m>\omega_n=e^{2\pi\mathrm i/n}</m>으로 둡니다.
+      </p>
+    </introduction>
+    <exercise xml:id="exer-fft-roots-of-unity">
+      <title>여덟째 단위근</title>
+      <statement>
+        <p>
+          <m>\omega_8^0,\omega_8^2,\omega_8^4,\omega_8^6</m>을 각각 계산하십시오. 이 네 수가 모두 사차 단위근임을 확인하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\omega_8^2=e^{\pi\mathrm i/2}=\omega_4</m>임을 이용하면 <m>\omega_8^{2j}=\omega_4^j</m>입니다. 각 수를 네제곱하면 <m>\omega_8^{8j}=1</m>이 됩니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-transform-two">
+      <title>두 좌표의 이산 푸리에변환</title>
+      <statement>
+        <p>
+          정의를 이용하여 <m>\mathcal F_2(3,-2)</m>를 계산하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\omega_2=-1</m>이므로 <xref ref="ex-dft-k1"/>의 공식 <m>\mathcal F_2(a,b)=(a+b,a-b)</m>를 사용하십시오.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-transform-basis-vector">
+      <title>네 좌표의 표준기저벡터 변환</title>
+      <statement>
+        <p>
+          <m>\mathcal F_4(0,1,0,0)</m>을 계산하십시오. 각 좌표를 <m>\omega_4</m>의 거듭제곱으로 나타내고 그 값을 간단히 하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          정의의 합에서 <m>t=1</m>인 항만 남으므로 <m>\widehat z_j=\omega_4^{-j}</m>입니다. 결과는 <m>F_4</m>의 둘째 열이며, <xref ref="ex-dft-k2"/>의 행렬과 비교할 수 있습니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-transform-constant">
+      <title>상수벡터의 변환</title>
+      <statement>
+        <p>
+          임의의 <m>c\in\mathbb C</m>에 대하여 <m>z=(c,\ldots,c)\in\mathbb C^n</m>이면 <m>\mathcal F_n(z)=(nc,0,\ldots,0)</m>임을 보이십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\widehat z_j=c\sum_{t=0}^{n-1}\omega_n^{-jt}</m>로 쓰십시오. <m>j=0</m>이면 모든 항이 <m>1</m>이고, <m>j\ne0</m>이면 <m>\omega_n^{-j}\ne1</m>이므로 기하급수의 합 공식을 적용할 수 있습니다. 직교관계 <xref ref="eq-fourier-basis-orthogonality"/>에서 <m>\ell=0</m>으로 놓아도 됩니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-inverse-constant-output">
+      <title>푸리에 역변환 계산</title>
+      <statement>
+        <p>
+          <m>n=4</m>일 때 <m>y=(4,0,0,0)</m>의 푸리에 역변환 <m>\mathcal F_4^{-1}(y)</m>를 계산하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          역변환 공식 <m>z_t=\frac1n\sum_{j=0}^{n-1}y_j\omega_n^{jt}</m>에서 <m>j=0</m>인 항만 남습니다. 앞 문제의 결과와 비교하여 답을 확인하십시오.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-bit-reversal-eight">
+      <title>여덟 좌표의 비트 반전</title>
+      <statement>
+        <p>
+          <m>k=3</m>일 때 <m>\rho_3(0),\ldots,\rho_3(7)</m>을 구하고, 임의의 <m>z\in\mathbb C^8</m>에 대해 <m>R_8z</m>를 좌표로 쓰십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          각 <m>t</m>를 세 자리 이진수로 쓰고 자리 순서를 뒤집으십시오. <xref ref="def-reverse-lexicographic-order"/>의 예와 비교하면 <m>(R_8z)_j=z_{\rho_3(j)}</m>를 바로 쓸 수 있습니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-even-odd-splitting">
+      <title>짝수·홀수 첨자 분리</title>
+      <statement>
+        <p>
+          <m>n=8</m>이고 <m>e=(z_0,z_2,z_4,z_6)</m>, <m>o=(z_1,z_3,z_5,z_7)</m>라 하십시오. <m>E=\mathcal F_4(e)</m>, <m>O=\mathcal F_4(o)</m>로 놓을 때, <m>j=0,1,2,3</m>에 대하여
+          <md>
+            <mrow>\widehat z_j &amp;= E_j+\omega_8^{-j}O_j,</mrow>
+            <mrow>\widehat z_{j+4} &amp;= E_j-\omega_8^{-j}O_j</mrow>
+          </md>
+          임을 이산 푸리에변환의 정의로부터 유도하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\widehat z_j=\sum_{t=0}^{7}z_t\omega_8^{-jt}</m>의 합을 <m>t=2r</m>인 항과 <m>t=2r+1</m>인 항으로 나누고 <m>\omega_8^2=\omega_4</m>를 이용하십시오. <m>j+4</m>의 경우에는 <m>\omega_4^{-4r}=1</m>과 <m>\omega_8^{-4}=-1</m>을 사용합니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-factorization-four">
+      <title>네 좌표의 행렬 분해</title>
+      <statement>
+        <p>
+          <m>n=4</m>에 대하여 <m>D_4=\operatorname{diag}(1,-\mathrm i)</m>,
+          <m>B_4=\begin{pmatrix}I_2&amp;D_4\\I_2&amp;-D_4\end{pmatrix}</m>라 하십시오. 순열 <m>S_4z=(z_0,z_2,z_1,z_3)</m>을 사용하여
+          <md>
+            <mrow>F_4 &amp;= B_4\begin{pmatrix}F_2&amp;0\\0&amp;F_2\end{pmatrix}S_4</mrow>
+          </md>
+          임을 확인하고, 오른쪽 행렬곱을 계산하여 <m>F_4</m>를 구하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>F_2=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}</m>입니다. 먼저 <m>\operatorname{diag}(F_2,F_2)S_4</m>를 계산하십시오. <m>S_4</m>를 오른쪽에 곱하면 열의 순서가 바뀝니다. 그다음 <m>B_4</m>를 왼쪽에 곱하고, 결과를 <xref ref="ex-dft-k2"/>의 행렬과 비교하십시오.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-inverse-from-orthogonality">
+      <title>직교관계와 역변환</title>
+      <statement>
+        <p>
+          <m>F_n=(\omega_n^{-jt})_{0\le j,t&lt;n}</m>에 대하여 <m>F_n\overline{F_n}=nI_n</m>임을 보이십시오. 이를 이용하여 <m>F_n^{-1}=\frac1n\overline{F_n}</m>임을 증명하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>F_n\overline{F_n}</m>의 <m>(j,t)</m> 성분은 <m>\sum_{s=0}^{n-1}\omega_n^{-js}\omega_n^{st}=\sum_{s=0}^{n-1}\omega_n^{(t-j)s}</m>입니다. 직교관계 <xref ref="eq-fourier-basis-orthogonality"/>를 적용하고, 정사각행렬에서는 한쪽 역행렬이 곧 역행렬임을 이용하십시오.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-iterative-algorithm">
+      <title>반복적 고속 푸리에변환의 정확성과 연산량</title>
+      <statement>
+        <p>
+          <m>n=2^k</m>이고 입력을 <m>R_nz</m>로 시작하여 블록 크기 <m>q=2,4,\ldots,n</m> 순서로 나비 연산을 적용한다고 하십시오. 각 블록의 시작 첨자를 <m>a</m>라 할 때, <m>0\le j&lt;q/2</m>에 대해 좌표 <m>x_{a+j}</m>와 <m>x_{a+j+q/2}</m>를
+          <md>
+            <mrow>(u,v)\longmapsto(u+\omega_q^{-j}v,\ u-\omega_q^{-j}v)</mrow>
+          </md>
+          로 바꿉니다. 이 절의 행렬 분해를 이용하여 이 절차의 출력이 <m>\mathcal F_n(z)</m>임을 귀납적으로 증명하고, 나비 연산의 총 횟수가 <m>\frac n2\log_2n</m>임을 보이십시오. 따라서 이 절차의 계산량이 <m>O(n\log n)</m>임을 설명하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>A_q=F_qR_q</m>로 놓고 본문의 점화식 <m>A_q=B_q\operatorname{diag}(A_{q/2},A_{q/2})</m>를 사용하십시오. 블록 크기 <m>q</m>까지 처리한 뒤의 벡터가, 각 블록에서 처음 입력 <m>R_nz</m>의 해당 부분에 <m>A_q</m>를 적용한 것임을 <m>q</m>에 대한 귀납법으로 보이십시오. 블록 크기 <m>q</m>의 단계에서 수행하는 일은 각 블록에 <m>B_q</m>를 곱하는 것입니다. 연산량은 각 단계의 블록 수 <m>n/q</m>와 블록당 나비 연산 수 <m>q/2</m>를 곱하여 셉니다.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-circulant-diagonalization">
+      <title>순환행렬의 대각화</title>
+      <statement>
+        <p>
+          <m>c=(c_0,\ldots,c_{n-1})\in\mathbb C^n</m>에 대하여 <m>(s,t)</m> 성분이 <m>c_{(s-t)\bmod n}</m>인 <m>n\times n</m> 행렬 <m>C</m>를 <m>c</m>가 정하는 <term>순환행렬</term><aside><p>순환행렬:circulant matrix</p></aside>이라고 합니다. 또한 <m>c,z\in\mathbb C^n</m>의 <term>순환 합성곱</term><aside><p>순환 합성곱:cyclic convolution</p></aside>을 <m>(c*z)_s=\sum_{t=0}^{n-1}c_{(s-t)\bmod n}z_t</m>로 정의합니다. 즉, <m>Cz=c*z</m>입니다.
+          <ol marker="(a)">
+            <li><p>모든 <m>c,z\in\mathbb C^n</m>에 대하여 <m>\mathcal F_n(c*z)_j=\widehat c_j\,\widehat z_j</m>임을 보이십시오. 이를 이용하여 <m>F_nCF_n^{-1}=\operatorname{diag}(\widehat c_0,\ldots,\widehat c_{n-1})</m>임을 증명하십시오.</p></li>
+            <li><p>(a)로부터 <m>C</m>의 고윳값이 <m>\widehat c_0,\ldots,\widehat c_{n-1}</m>이고, 각 <m>f_j(t)=\omega_n^{jt}</m>가 고유벡터임을 설명하십시오. 또한 모든 순환행렬은 서로 교환가능함을 보이십시오.</p></li>
+            <li><p><m>C</m>가 가역일 필요충분조건이 모든 <m>j</m>에 대해 <m>\widehat c_j\ne0</m>인 것임을 보이고, 이 경우 <m>b\in\mathbb C^n</m>에 대한 방정식 <m>Cz=b</m>를 <m>O(n\log n)</m>의 계산량으로 푸는 알고리즘을 제시하십시오.</p></li>
+            <li><p><m>n\ge3</m>이고 <m>c=(2,-1,0,\ldots,0,-1)</m>일 때 <m>C</m>의 모든 고윳값이 <m>2-2\cos(2\pi j/n)</m>, <m>j=0,\ldots,n-1</m>임을 보이십시오. 이를 이용하여 <m>\operatorname{ker}C</m>와 <m>\operatorname{im}C</m>를 구하고, <m>\operatorname{im}C</m>가 <m>\operatorname{ker}C</m>의 직교여공간임을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 정의에 대입한 뒤 <m>u=(s-t)\bmod n</m>으로 치환하고 <m>\omega_n^{-js}=\omega_n^{-ju}\omega_n^{-jt}</m>를 이용하십시오. 첨자를 법 <m>n</m>으로 다룰 수 있는 것은 <m>\omega_n^n=1</m> 때문입니다. 그러면 모든 <m>z</m>에 대해 <m>F_nCz=\operatorname{diag}(\widehat c)F_nz</m>가 성립합니다. (b) <m>F_n^{-1}=\frac1n\overline{F_n}</m>의 <m>j</m>번째 열은 <m>\frac1nf_j</m>입니다. 또한 대각행렬끼리는 교환가능합니다. (c) <m>Cz=b</m>는 <m>\widehat c_j\widehat z_j=\widehat b_j</m>와 동치입니다. 고속푸리에변환과 그 역변환을 각각 몇 번 사용하는지 세십시오. (d) <m>\widehat c_j=2-\omega_n^{-j}-\omega_n^{j}</m>입니다. <m>C</m>가 실대칭행렬이고 <m>f_0,\ldots,f_{n-1}</m>이 직교하는 고유벡터임을 이용하십시오.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-fft-eigenvalues-of-dft">
+      <title>이산 푸리에변환의 고윳값</title>
+      <statement>
+        <p>
+          <m>P_n</m>을 <m>(P_nz)_t=z_{(-t)\bmod n}</m>으로 정의되는 순열행렬이라 하십시오.
+          <ol marker="(a)">
+            <li><p><m>F_n^2=nP_n</m>임을 보이고, 이로부터 <m>F_n^4=n^2I_n</m>임을 증명하십시오. 따라서 <m>F_n</m>의 고윳값은 모두 <m>\{\sqrt n,-\sqrt n,\mathrm i\sqrt n,-\mathrm i\sqrt n\}</m>에 속하며 <m>F_n</m>은 대각화가능함을 설명하십시오.</p></li>
+            <li><p><m>n\ge2</m>일 때 <m>P_n</m>의 고윳값 <m>1</m>과 <m>-1</m>의 중복도가 각각 <m>\frac n2+1</m>과 <m>\frac n2-1</m>임을 보이십시오.</p></li>
+            <li><p><m>F_4</m>의 대각합을 계산하고, (a), (b)와 결합하여 <m>F_4</m>의 네 고윳값을 중복도와 함께 결정하십시오.</p></li>
+            <li><p><m>k\ge2</m>일 때 가우스 합의 공식 <m>\sum_{j=0}^{n-1}\omega_n^{-j^2}=(1-\mathrm i)\sqrt n</m>을 사실로 받아들이십시오. 이를 이용하여 <m>F_n</m>의 네 고윳값 <m>\sqrt n,-\sqrt n,\mathrm i\sqrt n,-\mathrm i\sqrt n</m>의 중복도가 각각 <m>\frac n4+1,\frac n4,\frac n4-1,\frac n4</m>임을 증명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>(F_n^2)_{j,s}=\sum_{t=0}^{n-1}\omega_n^{-(j+s)t}</m>를 계산하고 <m>P_n^2=I_n</m>을 이용하십시오. 다항식 <m>x^4-n^2</m>은 서로 다른 네 근을 가지며 <m>F_n</m>의 최소다항식은 이를 나눕니다. (b) <m>t\equiv-t\pmod n</m>을 만족하는 <m>t</m>는 <m>0</m>과 <m>n/2</m>뿐이고, 나머지 첨자는 서로 교환되는 쌍을 이룹니다. 각 교환은 고윳값 <m>1</m>과 <m>-1</m>을 하나씩 줍니다. (c) 고윳값 <m>2,-2,2\mathrm i,-2\mathrm i</m>의 중복도를 <m>a,b,c,d</m>로 놓으십시오. <m>F_4^2=4P_4</m>의 고윳값으로부터 <m>a+b</m>와 <m>c+d</m>를 얻고, 대각합 <m>\sum_j\omega_4^{-j^2}</m>의 실수부와 허수부로부터 <m>a-b</m>와 <m>c-d</m>를 얻습니다. (d) (c)와 같은 연립방정식을 일반적인 <m>n</m>에 대해 세우고, <m>F_n</m>의 대각합이 <m>\sum_{j=0}^{n-1}\omega_n^{-j^2}</m>임을 이용하십시오.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>

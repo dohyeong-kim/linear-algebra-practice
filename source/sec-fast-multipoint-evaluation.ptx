@@ -233,4 +233,206 @@
     실제 부동소수점 복소수 계산에서는 반올림 오차가 생기므로,
     위의 정확성 증명 및 연산 횟수 분석과 수치적 안정성은 별도로 고려해야 합니다.
   </p>
+
+  <exercises xml:id="exercises-fast-multipoint-evaluation">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        문제는 난이도 순서로 배열되어 있습니다.
+      </p>
+      <p>
+        별도의 언급이 없으면 계수와 평가점은 체 <m>\mathbb F</m>에 속합니다.
+        차수가 <m>n</m>보다 작은 다항식과 영다항식 전체로 이루어진 <m>\mathbb F</m> 위의 벡터공간을 <m>\mathbb F[x]_{&lt;n}</m>으로 씁니다.
+        부분곱 트리는 본문과 같이 지표 집합을 반복하여 이등분하여 만들며, <m>G=G_\rho</m>는 뿌리의 다항식입니다.
+      </p>
+    </introduction>
+
+    <exercise xml:id="exer-fme-horner">
+      <title>호너 방법과 일차식으로 나눈 나머지</title>
+      <statement>
+        <p>
+          <m>\mathbb F=\mathbb Q</m>에서 <m>f(x)=2x^3-x^2+3x-5</m>라 하십시오.
+          <ol marker="(a)">
+            <li><p>호너 방법으로 <m>f(-2)</m>를 계산하고, 사용한 곱셈과 덧셈의 횟수를 세십시오.</p></li>
+            <li><p>(a)의 계산에서 마지막 값을 제외한 중간 누적값들을 차례로 <m>b_2,b_1,b_0</m>이라 하십시오. <m>f=(x+2)(b_2x^2+b_1x+b_0)+f(-2)</m>임을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          누적값은 <m>2\to2(-2)-1=-5\to(-5)(-2)+3=13\to13\cdot(-2)-5=-31</m>입니다. 곱셈과 덧셈이 각각 <m>3</m>번 필요합니다. (b)에서는 <m>(x+2)(2x^2-5x+13)</m>을 전개하십시오. 이 결과는 <m>f\bmod(x+2)=f(-2)</m>와 일치합니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-quadratic-remainder">
+      <title>이차식으로 나눈 나머지</title>
+      <statement>
+        <p>
+          <m>\mathbb F=\mathbb Q</m>에서 <m>f(x)=x^4+x+1</m>, <m>g(x)=x^2-1</m>이라 하십시오. <m>f\bmod g</m>를 구하고, <xref ref="prop-evaluation-by-remainders"/>를 이용하여 <m>f(1)</m>과 <m>f(-1)</m>을 구하십시오. 결과를 직접 대입한 값과 비교하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>x^2\equiv1\pmod g</m>이므로 <m>x^4\equiv1\pmod g</m>입니다. 따라서 <m>f\bmod g=x+2</m>이고 <m>f(1)=3</m>, <m>f(-1)=1</m>입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-subproduct-tree">
+      <title>부분곱 트리의 구성</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\mathbb F=\mathbb Q</m>에서 평가점 <m>a_0=1</m>, <m>a_1=-1</m>, <m>a_2=2</m>, <m>a_3=-2</m>에 대한 부분곱 트리의 모든 다항식을 구하십시오.</p></li>
+            <li><p><m>n=2^k</m>일 때 부분곱 트리의 노드는 모두 <m>2n-1</m>개임을 보이십시오. 또한 각 층에 있는 다항식들의 차수의 합이 <m>n</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 중간층은 <m>G_L=x^2-1</m>, <m>G_R=x^2-4</m>이고 뿌리는 <m>G=x^4-5x^2+4</m>입니다. (b) 뿌리에서부터 <m>i</m>번째 층에는 <m>2^i</m>개의 노드가 있으며 각 노드의 지표 집합의 크기는 <m>2^{k-i}</m>입니다. 한 층의 지표 집합들은 <m>\{0,\ldots,n-1\}</m>의 분할입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-remainder-tree">
+      <title>나머지 트리의 계산</title>
+      <statement>
+        <p>
+          <xref ref="exer-fme-subproduct-tree"/>의 부분곱 트리와 <m>f(x)=x^5+x^2+1</m>에 대하여 나머지 트리의 모든 나머지를 구하십시오. 이를 이용하여 <m>(f(1),f(-1),f(2),f(-2))</m>를 구하고, 직접 대입한 값과 비교하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\deg f\ge\deg G</m>이므로 뿌리에서 실제로 나눗셈이 필요합니다. <m>x^4\equiv5x^2-4\pmod G</m>이므로 <m>R_\rho=5x^3+x^2-4x+1</m>입니다. 중간층에서는 각각 <m>x^2\equiv1</m>, <m>x^2\equiv4</m>를 대입하여 <m>R_L=x+2</m>, <m>R_R=16x+5</m>를 얻습니다. 답은 <m>(3,1,37,-27)</m>입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-repeated-points">
+      <title>중복된 평가점과 도함수</title>
+      <statement>
+        <p>
+          다항식 <m>f=\sum_kc_kx^k\in\mathbb F[x]</m>의 형식적 도함수를 <m>f'=\sum_kkc_kx^{k-1}</m>으로 정의합니다.
+          <ol marker="(a)">
+            <li><p>모든 <m>a\in\mathbb F</m>에 대하여 <m>f\bmod(x-a)^2=f(a)+f'(a)(x-a)</m>임을 보이십시오. 이 등식은 <m>\mathbb F</m>의 표수와 관계없이 성립해야 합니다.</p></li>
+            <li><p><m>\mathbb F=\mathbb Q</m>, <m>f=x^3-2x+1</m>이고 평가점이 <m>a_0=a_1=1</m>, <m>a_2=2</m>라 하십시오. 지표 집합을 <m>\{0,1\}</m>과 <m>\{2\}</m>로 나누어 부분곱 트리와 나머지 트리를 구성하십시오. 지표 집합 <m>\{0,1\}</m>에 해당하는 노드의 나머지가 (a)의 형태임을 확인하고, 잎에서 <m>(f(1),f(1),f(2))</m>를 얻음을 확인하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>x^k=((x-a)+a)^k</m>를 이항정리로 전개하면, <m>(x-a)^2</m>의 배수가 아닌 항은 <m>a^k+ka^{k-1}(x-a)</m>입니다. 여기서 정수 <m>k</m>는 <m>\mathbb F</m>의 원소 <m>k\cdot1</m>로 봅니다. (b) <m>G=(x-1)^2(x-2)</m>입니다. <m>f(1)=0</m>, <m>f'(1)=1</m>이므로 해당 노드의 나머지는 <m>x-1</m>입니다. 이 나머지를 <m>x-1</m>로 나누면 두 잎에서 모두 <m>0</m>을 얻습니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-finite-field">
+      <title>유한체에서의 다중점 평가</title>
+      <statement>
+        <p>
+          <m>\mathbb F_{q}</m>를 원소가 <m>q</m>개인 유한체라 하십시오.
+          <ol marker="(a)">
+            <li><p><m>\mathbb F_{q}</m>의 영이 아닌 원소 전체를 평가점으로 택하면 뿌리의 다항식이 <m>G=x^{q-1}-1</m>임을 보이십시오. 또한 <m>q</m>가 홀수일 때 평가점을 <m>b</m>와 <m>-b</m>가 이웃하도록 나열하면 잎 바로 위층의 다항식이 모두 <m>x^2-b^2</m> 꼴임을 보이십시오.</p></li>
+            <li><p><m>q=5</m>, 평가점을 <m>a_0=1</m>, <m>a_1=4</m>, <m>a_2=2</m>, <m>a_3=3</m>으로 두고 <m>f=x^7+2x^3+1\in\mathbb F_{5}[x]</m>를 고속 다중점 평가로 계산하십시오. 결과를 직접 대입한 값과 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 곱셈군 <m>\mathbb F_{q}^\times</m>의 위수는 <m>q-1</m>이므로 영이 아닌 원소는 모두 <m>x^{q-1}-1</m>의 근입니다. 두 다항식은 모두 최고차 계수가 <m>1</m>이고 차수가 <m>q-1</m>이며 근이 같습니다. (b) <m>\mathbb F_{5}</m>에서 <m>4=-1</m>, <m>3=-2</m>이므로 중간층은 <m>x^2-1</m>, <m>x^2+1</m>이고 뿌리는 <m>x^4-1</m>입니다. <m>R_\rho=3x^3+1</m>, <m>R_L=3x+1</m>, <m>R_R=2x+1</m>이며, 답은 <m>(4,3,0,2)</m>입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-cost-comparison">
+      <title>곱셈 알고리즘에 따른 비용</title>
+      <statement>
+        <p>
+          <m>n=2^k</m>이고 <m>\deg f&lt;n</m>이라 하십시오. 어떤 상수 <m>C</m>가 있어서, 차수가 <m>m</m> 이하인 두 다항식의 곱과, 차수가 <m>2m</m>보다 작은 다항식을 최고차 계수가 <m>1</m>이고 차수가 <m>m</m>인 다항식으로 나눈 몫과 나머지를 각각 <m>CM(m)</m>번 이하의 체 연산으로 구할 수 있다고 가정하십시오. 다음 각 경우에 부분곱 트리와 나머지 트리를 구성하는 전체 비용의 상한을 구하십시오.
+          <ol marker="(a)">
+            <li><p>표준적인 곱셈과 긴 나눗셈을 사용하여 <m>M(m)=m^2</m>인 경우. 이 경우 전체 비용은 <m>O(n^2)</m>임을 보이십시오.</p></li>
+            <li><p><xref ref="sec-karatsuba"/>의 방법을 사용하여 <m>M(m)=m^{\log_23}</m>인 경우. 이 경우 전체 비용은 <m>O(n^{\log_23})</m>임을 보이십시오.</p></li>
+            <li><p>FFT를 사용하여 <m>M(m)=m\log_2(2m)</m>인 경우. 이 경우 전체 비용은 <m>O(n\log^2n)</m>임을 보이십시오.</p></li>
+          </ol>
+          (a), (b)에서는 상한에 <m>\log n</m> 인수가 나타나지 않지만 (c)에서는 나타나는 이유를 층별 비용의 크기로 설명하십시오. (a)의 결과가 호너 방법과 비교하여 무엇을 뜻하는지도 설명하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          잎에서 <m>i</m>번째 위층에는 차수가 <m>2^i</m>인 다항식이 <m>n/2^i</m>개 있습니다. 따라서 두 트리에서 이 층의 비용은 모두 <m>O\bigl((n/2^i)M(2^{i})\bigr)</m>입니다. (a)에서는 이 값이 <m>O(n2^i)</m>, (b)에서는 <m>O(n\,2^{i(\log_23-1)})</m>이므로 등비급수의 합이 가장 위층의 비용과 같은 정도입니다. (c)에서는 각 층의 비용이 <m>O(n(i+1))</m>이므로, <m>i=1,\ldots,k</m>에 대하여 더하면 <m>O(nk^2)</m>을 얻습니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-evaluation-map">
+      <title>평가 사상의 커널과 이미지</title>
+      <statement>
+        <p>
+          평가점 <m>a_0,\ldots,a_{n-1}\in\mathbb F</m>에 대하여 선형사상 <m>\operatorname{ev}\colon\mathbb F[x]\to\mathbb F^n</m>을 <m>\operatorname{ev}(f)=(f(a_0),\ldots,f(a_{n-1}))</m>로 정의하십시오. 또한 서로 다른 평가점들의 집합을 <m>S=\{a_0,\ldots,a_{n-1}\}</m>, <m>s=|S|</m>라 하고 <m>P=\prod_{b\in S}(x-b)</m>로 두십시오.
+          <ol marker="(a)">
+            <li><p>모든 <m>f</m>에 대하여 <m>\operatorname{ev}(f)=\operatorname{ev}(f\bmod G)</m>임을 보이십시오.</p></li>
+            <li><p><m>\operatorname{ker}\operatorname{ev}=\{Ph:h\in\mathbb F[x]\}</m>임을 보이십시오. 특히 평가점이 서로 다르면 <m>\operatorname{ker}\operatorname{ev}</m>는 <m>G</m>의 배수 전체입니다.</p></li>
+            <li><p><m>\operatorname{ev}</m>를 <m>\mathbb F[x]_{&lt;n}</m>으로 제한한 사상을 <m>E</m>라 하십시오. 차원 정리를 이용하여 <m>\dim\operatorname{im}E=s</m>임을 보이고, <m>\operatorname{im}E</m>가 <m>a_i=a_j</m>일 때마다 <m>y_i=y_j</m>를 만족하는 <m>y\in\mathbb F^n</m> 전체와 같음을 보이십시오.</p></li>
+            <li><p>평가점이 서로 다르면 <m>E</m>가 동형사상임을 보이십시오. 기저 <m>1,x,\ldots,x^{n-1}</m>과 표준기저에 대한 <m>E</m>의 행렬을 적고, 이 결과로부터 그 행렬이 가역임을 결론지으십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <xref ref="prop-evaluation-by-remainders"/>를 각 평가점에 적용하십시오. (b) <m>f\in\operatorname{ker}\operatorname{ev}</m>이면 <m>S</m>의 각 원소가 <m>f</m>의 근이고, 서로 다른 일차식 <m>x-b</m>들은 서로소입니다. (c) <m>\operatorname{ker}E</m>는 <m>\deg h&lt;n-s</m>인 <m>Ph</m>들로 이루어지므로 차원이 <m>n-s</m>입니다. 주어진 조건을 만족하는 <m>y</m> 전체는 차원이 <m>s</m>인 부분공간이며 <m>\operatorname{im}E</m>를 포함합니다. (d) 행렬의 <m>(j,t)</m> 성분은 <m>a_j^t</m>입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-fast-interpolation">
+      <title>고속 보간</title>
+      <statement>
+        <p>
+          서로 다른 평가점 <m>a_0,\ldots,a_{n-1}\in\mathbb F</m>와 값 <m>y_0,\ldots,y_{n-1}\in\mathbb F</m>가 주어졌다고 하십시오. <xref ref="exer-fme-evaluation-map"/>에 의해 <m>f(a_j)=y_j</m>를 만족하는 <m>f\in\mathbb F[x]_{&lt;n}</m>가 유일하게 존재합니다. 이 문제에서는 다중점 평가의 역문제인 이 <m>f</m>를 빠르게 구합니다.
+          <ol marker="(a)">
+            <li><p><m>G'(a_j)=\prod_{k\ne j}(a_j-a_k)</m>임을 보이고, 이를 이용하여
+              <md><mrow>f=\sum_{j=0}^{n-1}\frac{y_j}{G'(a_j)}\cdot\frac{G}{x-a_j}</mrow></md>
+              임을 증명하십시오.</p></li>
+            <li><p>모든 <m>G'(a_j)</m>를 부분곱 트리와 나머지 트리를 이용하여 계산하는 방법을 설명하십시오.</p></li>
+            <li><p><m>c_0,\ldots,c_{n-1}\in\mathbb F</m>에 대하여 부분곱 트리의 각 노드 <m>v</m>에
+              <md><mrow>N_v=\sum_{j\in I_v}c_j\frac{G_v}{x-a_j}</mrow></md>
+              를 대응시키십시오. 잎에서는 <m>N_v=c_j</m>이고, 두 자식 <m>u,w</m>를 갖는 노드에서는
+              <md><mrow>N_v=N_uG_w+N_wG_u</mrow></md>
+              임을 보이십시오. 또한 <m>\deg N_v&lt;|I_v|</m>임을 보이십시오.</p></li>
+            <li><p><m>\mathbb F=\mathbb C</m>이고 <m>n=2^k</m>일 때 (a)–(c)를 결합하여 <m>f</m>의 계수를 <m>O(n\log^2n)</m>번의 연산으로 구할 수 있음을 보이십시오. 이 결과를 <xref ref="exer-fme-evaluation-map"/>의 (d)에 나오는 행렬의 역행렬과 관련지어 설명하십시오.</p></li>
+            <li><p><m>\mathbb F=\mathbb Q</m>, 평가점 <m>0,1,2,3</m>, 값 <m>(1,0,5,22)</m>에 대하여 (c)의 트리를 아래에서 위로 계산하여 <m>f</m>를 구하고, <xref ref="ex-multipoint-evaluation"/>과 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 곱의 미분법에 의해 <m>G'=\sum_j\prod_{k\ne j}(x-a_k)</m>이고, <m>x=a_j</m>를 대입하면 <m>j</m>번째 항만 남습니다. 우변을 <m>a_i</m>에서 평가하면 <m>y_i</m>이며, 차수가 <m>n</m>보다 작으므로 유일성에서 결론을 얻습니다. (b) <m>G'</m>의 계수는 <m>O(n)</m>번의 연산으로 얻고, 이를 고속 다중점 평가로 계산합니다. (c) <m>j\in I_u</m>이면 <m>G_v/(x-a_j)=G_w\cdot G_u/(x-a_j)</m>입니다. (d) <m>c_j=y_j/G'(a_j)</m>로 두면 <m>N_\rho=f</m>입니다. 각 층에서 필요한 곱셈은 부분곱 트리의 같은 층의 곱셈과 같은 정도의 비용을 갖습니다. (e) <m>G'(a_j)</m>는 차례로 <m>-6,2,-2,6</m>이고, 결과는 <m>f=x^3-2x+1</m>입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fme-geometric-points">
+      <title>등비수열인 평가점</title>
+      <statement>
+        <p>
+          <m>z\in\mathbb F</m>가 영이 아니고, 평가점이 <m>a_j=z^j</m> <m>(0\le j&lt;n)</m>이며, <m>f=\sum_{k=0}^{n-1}c_kx^k</m>라 하십시오. 정수 <m>t\ge0</m>에 대하여 <m>\binom t2=t(t-1)/2</m>로 씁니다. 이 문제에서는 평가점이 등비수열이면 트리를 사용하지 않고 다항식 곱셈 한 번으로 다중점 평가를 할 수 있음을 보입니다.
+          <ol marker="(a)">
+            <li><p>모든 정수 <m>j,k\ge0</m>에 대하여 <m>jk=\binom{j+k}2-\binom j2-\binom k2</m>임을 보이십시오. 이를 이용하여
+              <md><mrow>f(z^j)=z^{-\binom j2}\sum_{k=0}^{n-1}u_k\,z^{\binom{j+k}2},\qquad u_k=c_kz^{-\binom k2}</mrow></md>
+              임을 보이십시오.</p></li>
+            <li><p><m>U(x)=\sum_{i=0}^{n-1}u_{n-1-i}x^i</m>, <m>W(x)=\sum_{t=0}^{2n-2}z^{\binom t2}x^t</m>로 두십시오. <m>0\le j&lt;n</m>일 때 <m>UW</m>의 <m>x^{n-1+j}</m>의 계수가 (a)의 합 <m>\sum_ku_kz^{\binom{j+k}2}</m>와 같음을 보이십시오.</p></li>
+            <li><p><m>z^{\binom t2}</m> <m>(0\le t\le2n-2)</m>와 <m>z^{-\binom k2}</m> <m>(0\le k&lt;n)</m>를 모두 <m>O(n)</m>번의 체 연산으로 구하는 방법을 제시하십시오. 이로부터 <m>\mathbb F=\mathbb C</m>일 때 전체 계산이 <m>O(n\log n)</m>번의 연산으로 끝남을 보이십시오. 이를 본문의 <m>O(n\log^2n)</m>과 비교하십시오.</p></li>
+            <li><p><m>\mathbb F=\mathbb C</m>, <m>z=\omega_n^{-1}=e^{-2\pi\mathrm i/n}</m>이면 이 계산이 <xref ref="def-discrete-fourier-transform"/>의 이산 푸리에변환과 어떤 관계에 있는지 설명하십시오. <m>n</m>이 <m>2</m>의 거듭제곱이 아닐 때에도 같은 공식 <m>\widehat z_j=\sum_tz_t\omega_n^{-jt}</m>으로 정의되는 길이 <m>n</m>의 변환을 <m>O(n\log n)</m>번의 연산으로 계산할 수 있음을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 양변에 <m>2</m>를 곱하여 전개하십시오. 정수 등식이므로 <m>\mathbb F</m>의 표수와 관계없이 지수에 사용할 수 있으며, <m>z^{jk}=z^{\binom{j+k}2}z^{-\binom j2}z^{-\binom k2}</m>입니다. (b) <m>UW</m>의 <m>x^{n-1+j}</m>의 계수는 <m>\sum_iu_{n-1-i}z^{\binom{n-1+j-i}2}</m>이며, <m>k=n-1-i</m>로 치환하십시오. (c) <m>\binom{t+1}2=\binom t2+t</m>이므로 <m>z^{\binom{t+1}2}=z^{\binom t2}\cdot z^t</m>입니다. <m>z^t</m>와 <m>z^{-t}</m>도 점화식으로 구합니다. 곱 <m>UW</m>는 차수가 <m>O(n)</m>인 두 다항식의 곱이므로 길이가 <m>4n</m> 이상인 <m>2</m>의 거듭제곱을 택하여 FFT로 계산할 수 있습니다. (d) <xref ref="def-discrete-fourier-transform"/>의 정의에서 사용하는 지수의 부호를 확인하고, 각 좌표가 <m>f(\omega_n^{-j})</m>의 꼴임을 이용하십시오.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>

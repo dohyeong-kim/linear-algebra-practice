@@ -188,4 +188,236 @@
       이 분석은 정확한 복소수 연산을 가정합니다. 실제 부동소수점 구현에서는 FFT의 반올림 오차뿐 아니라 역원 계산 과정에서의 오차도 고려해야 합니다.
     </p>
   </remark>
+
+  <exercises xml:id="exercises-fast-polynomial-operations">
+    <title>연습문제</title>
+    <introduction>
+      <p>
+        문제는 난이도 순서로 배열되어 있습니다.  심화 문제는 앞의 문제를 디딤돌로 삼도록 구성되어 있습니다.
+      </p>
+      <p>
+        본문과 같이 <m>N</m>은 2의 거듭제곱이고 <m>\omega=e^{2\pi i/N}</m>이며, 이산푸리에변환에는 양의 지수를 사용합니다. 본문의 <m>F,G,Q,H</m>와 구별하기 위하여 이산푸리에변환의 행렬을 <m>W_N=(\omega^{jk})_{0\le j,k&lt;N}</m>으로 씁니다. 차수가 <m>N</m>보다 작은 다항식은 길이 <m>N</m>의 계수벡터와 동일시하며, <m>\|x\|_1=\sum_j|x_j|</m>, <m>\|x\|_2=(\sum_j|x_j|^2)^{1/2}</m>, <m>\|x\|_\infty=\max_j|x_j|</m>로 씁니다.
+      </p>
+      <p>
+        부동소수점 연산으로 계산한 값을 <m>\operatorname{fl}(\cdot)</m>로 표기합니다. 실수 하나를 부동소수점 수로 반올림할 때 생기는 상대오차의 상한을 <term>단위 반올림</term><aside><p>단위 반올림:unit roundoff</p></aside>이라 하고 <m>u</m>로 씁니다. IEEE 배정밀도에서는 <m>u=2^{-53}</m>입니다. 이 연습문제들은 수치해석의 배경지식을 가정하지 않습니다. 부동소수점 오차에 관하여 필요한 사실은 문제 안에서 가정으로 제시합니다.
+      </p>
+    </introduction>
+
+    <exercise xml:id="exer-fpo-schoolbook-product">
+      <title>표준적 곱셈</title>
+      <statement>
+        <p>
+          <m>f(x)=1+2x+3x^2</m>, <m>g(x)=4+5x</m>에 대하여 본문의 공식 <m>c_k=\sum_ja_jb_{k-j}</m>으로 <m>f(x)g(x)</m>의 계수 <m>c_0,\ldots,c_3</m>을 구하십시오. 이 계산에 쓰인 곱셈과 덧셈의 횟수를 세고, 곱셈의 횟수가 <m>(m+1)(n+1)</m>과 같음을 확인하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>m=2</m>, <m>n=1</m>입니다. 각 <m>c_k</m>에 대하여 <m>j+(k-j)=k</m>가 되는 계수의 쌍 <m>(a_j,b_{k-j})</m>을 모두 나열하십시오. 쌍이 <m>r</m>개이면 곱셈은 <m>r</m>번, 덧셈은 <m>r-1</m>번 필요합니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-wraparound">
+      <title>변환 길이와 겹침</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>\deg f=5</m>, <m>\deg g=7</m>일 때 본문의 방법에서 사용할 <m>N</m>을 구하십시오.</p></li>
+            <li><p><m>f=g=1+x</m>에 대하여 조건 <m>N\ge m+n+1</m>을 무시하고 <m>N=2</m>로 본문의 세 단계를 수행하십시오. 얻은 다항식을 실제 곱 <m>(1+x)^2</m>과 비교하고, 그 차이를 계수 <m>c_j</m>와 <m>c_{j+N}</m>을 이용하여 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>m+n+1=13</m>입니다. (b) <m>N=2</m>이면 <m>\omega=-1</m>이고 평가점은 <m>1,-1</m>뿐입니다. <m>\omega^N=1</m>이므로 <m>x^2</m>과 <m>x^0</m>은 두 평가점에서 같은 값을 가집니다. 따라서 이 방법이 실제로 계산하는 것은 <m>fg</m>를 <m>x^N-1</m>로 나눈 나머지입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-fft-by-hand">
+      <title>손으로 하는 FFT 곱셈</title>
+      <statement>
+        <p>
+          <m>f(x)=1+x</m>, <m>g(x)=1-x</m>의 곱을 <m>N=4</m>로 하여 본문의 세 단계에 따라 계산하십시오. 각 단계에서 얻는 벡터 <m>A,B,C</m>와 계수 <m>c_0,\ldots,c_3</m>을 모두 적으십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\omega=i</m>이고 평가점은 순서대로 <m>1,i,-1,-i</m>입니다. <xref ref="ex-fft-polynomial-multiplication"/>과 같은 방법으로 계산하십시오. <m>C</m>에서 <m>0</m>이 아닌 성분은 두 개뿐이므로 역변환이 간단합니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-long-division">
+      <title>긴 나눗셈</title>
+      <statement>
+        <p>
+          본문의 긴 나눗셈 알고리즘으로 <m>f(x)=x^3+2x^2-x+3</m>을 <m>g(x)=x^2+1</m>로 나눈 몫과 나머지를 구하십시오. 반복 횟수가 <m>m-n+1</m>과 같음을 확인하고, 각 단계 뒤에 <m>f=gq+r</m>이 성립하는지 확인하십시오.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>m=3</m>, <m>n=2</m>, <m>b_n=1</m>이므로 <m>k=1,0</m>의 두 단계만 수행합니다. 첫 단계에서는 <m>x^3</m>항을, 둘째 단계에서는 <m>x^2</m>항을 제거합니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-reversal-properties">
+      <title>역순 다항식의 성질</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p><m>h(x)=1+2x</m>에 대하여 <m>\operatorname{rev}_1(h)</m>와 <m>\operatorname{rev}_3(h)</m>를 구하십시오.</p></li>
+            <li><p><m>\deg h\le d</m>이면 <m>\operatorname{rev}_d(\operatorname{rev}_d(h))=h</m>임을 보이십시오. <m>\deg h&gt;d</m>이면 <m>\operatorname{rev}_d(h)</m>가 다항식이 아닐 수 있음을 예로 보이십시오.</p></li>
+            <li><p><m>\deg g\le a</m>, <m>\deg h\le b</m>이면 <m>\operatorname{rev}_{a+b}(gh)=\operatorname{rev}_a(g)\operatorname{rev}_b(h)</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          정의 <m>\operatorname{rev}_d(h)(x)=x^dh(x^{-1})</m>를 사용하십시오. (b)에서는 <m>x^d\cdot(x^{-1})^dh(x)=h(x)</m>를, (c)에서는 <m>x^{a+b}=x^ax^b</m>를 이용합니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-complex-rounding">
+      <title>복소수의 반올림과 정수 복원</title>
+      <statement>
+        <p>
+          <ol marker="(a)">
+            <li><p>복소수 <m>z=x+iy</m>를 저장할 때 실수부와 허수부를 각각 반올림하여 <m>\operatorname{fl}(z)=x(1+\delta_1)+iy(1+\delta_2)</m>, <m>|\delta_1|,|\delta_2|\le u</m>를 얻는다고 하십시오. <m>|\operatorname{fl}(z)-z|\le u|z|</m>임을 보이십시오.</p></li>
+            <li><p><m>\omega=e^{2\pi i/8}</m>은 이진 부동소수점 수로 정확히 나타낼 수 없음을 설명하십시오. 따라서 FFT에서 사용하는 회전인자 <m>\omega^j</m>도 일반적으로 오차를 포함합니다.</p></li>
+            <li><p>정수 계수 다항식의 곱을 부동소수점 FFT로 계산하여 다음 근삿값을 얻었다고 하십시오.
+              <md>
+                <mrow>(\widehat c_0,\widehat c_1,\widehat c_2,\widehat c_3) &amp;= (2.9999999998+10^{-11}i,\ 10.0000000003,\ 7.9999999996-3\cdot10^{-12}i,\ 2\cdot10^{-10})</mrow>
+              </md>
+              곱다항식을 구하십시오. 또한 참값이 정수이고 <m>|\widehat c_j-c_j|&lt;1/2</m>이면 <m>\widehat c_j</m>의 실수부를 가장 가까운 정수로 반올림하여 <m>c_j</m>를 얻는 이유를 설명하고, <m>1/2</m>을 더 큰 수로 바꿀 수 없음을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>|\operatorname{fl}(z)-z|^2=x^2\delta_1^2+y^2\delta_2^2</m>입니다. (b) <m>\omega=\frac{\sqrt2}2(1+i)</m>이고 <m>\frac{\sqrt2}2</m>는 무리수입니다. (c) 오차의 상한이 <m>1/2</m>이면 서로 다른 두 정수 <m>c</m>와 <m>c+1</m>이 같은 근삿값 <m>c+\frac12</m>을 줄 수 있습니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-coefficient-growth">
+      <title>계수의 크기와 배정밀도</title>
+      <statement>
+        <p>
+          <m>f=\sum_{j=0}^ma_jx^j</m>, <m>g=\sum_{j=0}^nb_jx^j</m>의 계수가 <m>|a_j|\le A</m>, <m>|b_j|\le B</m>를 만족하고 <m>c</m>를 곱 <m>fg</m>의 계수벡터라 하십시오.
+          <ol marker="(a)">
+            <li><p><m>\|c\|_\infty\le(\min(m,n)+1)AB</m>임을 보이고, 등호가 성립하는 예를 드십시오.</p></li>
+            <li><p><m>\|c\|_\infty\le\|a\|_2\|b\|_2</m>임을 보이십시오.</p></li>
+            <li><p>IEEE 배정밀도에서는 절댓값이 <m>2^{53}</m> 이하인 모든 정수를 정확히 나타낼 수 있지만 <m>2^{53}+1</m>은 그렇지 않습니다. <m>m=n=2^{20}-1</m>이고 <m>A=B=2^{16}</m>일 때 곱의 모든 계수가 배정밀도로 정확히 표현됨을 보이십시오. 그러나 이것만으로 FFT가 정확한 계수를 준다고 결론지을 수는 없습니다. 그 이유를 <xref ref="exer-fpo-complex-rounding"/>의 (b)와 관련지어 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>c_k</m>의 합에 나타나는 항은 최대 <m>\min(m,n)+1</m>개입니다. 모든 계수가 최댓값인 경우를 생각하십시오. (b) <m>c_k=\sum_ja_jb_{k-j}</m>는 <m>a</m>와, <m>b</m>의 성분 일부를 뒤집어 늘어놓은 벡터의 내적입니다. 코시–슈바르츠 부등식을 사용하십시오. (c) 계수의 크기는 <m>2^{20}\cdot2^{32}=2^{52}</m> 이하입니다. 그러나 FFT의 중간값에는 정확히 저장할 수 없는 회전인자 <m>\omega^j</m>가 곱해지므로, 최종 결과는 정수에 가까운 근삿값일 뿐입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-dft-norms">
+      <title>이산푸리에변환 행렬과 노름</title>
+      <statement>
+        <p>
+          <m>M^*</m>는 행렬 <m>M</m>의 켤레전치행렬이고, <m>x\circ y</m>는 벡터의 성분별 곱입니다.
+          <ol marker="(a)">
+            <li><p><m>W_N^*W_N=NI_N</m>임을 보이십시오. 이로부터 <m>W_N/\sqrt N</m>이 유니터리행렬이고, 모든 <m>x,y\in\mathbb C^N</m>에 대하여 <m>\|W_Nx\|_2=\sqrt N\|x\|_2</m>, <m>\|W_N^{-1}y\|_2=\|y\|_2/\sqrt N</m>임을 보이십시오.</p></li>
+            <li><p><m>\|x\|_\infty\le\|x\|_2</m>와 <m>\|x\circ y\|_2\le\|x\|_\infty\|y\|_2\le\|x\|_2\|y\|_2</m>를 보이십시오.</p></li>
+            <li><p>역변환에 넣을 벡터 <m>y</m>에 오차 <m>e</m>가 더해져 <m>y+e</m>가 되었다고 하십시오. 역변환을 정확히 계산하면 출력의 오차는 <m>W_N^{-1}e</m>입니다. <m>\|W_N^{-1}e\|_\infty\le\|e\|_2/\sqrt N</m>이고, <m>y\ne0</m>이면 <m>\|W_N^{-1}e\|_2/\|W_N^{-1}y\|_2=\|e\|_2/\|y\|_2</m>임을 보이십시오. 즉, 역변환은 상대오차를 키우지 않습니다.</p></li>
+            <li><p><xref ref="prop-fft-matrix-factorization"/>의 행렬 <m>B_n</m>에 대하여 <m>B_n^*B_n=2I_n</m>임을 보이십시오. 이를 이용하여 FFT의 각 단계는 벡터의 노름을 정확히 <m>\sqrt2</m>배 하므로, 앞 단계에서 생긴 오차도 신호와 같은 비율로만 커진다는 것을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>W_N^*W_N</m>의 <m>(j,k)</m> 성분은 <m>\sum_{t=0}^{N-1}\omega^{-tj}\omega^{tk}=\sum_{t=0}^{N-1}\omega^{t(k-j)}</m>입니다. 직교관계 <xref ref="eq-fourier-basis-orthogonality"/>를 적용하십시오. (b) 각 성분에서 <m>|x_jy_j|\le\|x\|_\infty|y_j|</m>입니다. (c) 선형성에 의해 <m>W_N^{-1}(y+e)-W_N^{-1}y=W_N^{-1}e</m>입니다. (a)와 (b)를 적용하십시오. (d) <m>D_n</m>은 절댓값이 <m>1</m>인 성분을 갖는 대각행렬이므로 <m>D_n^*D_n=I</m>입니다. 블록행렬의 곱으로 계산하십시오.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-newton-division">
+      <title>뉴턴 반복과 고속 나눗셈</title>
+      <statement>
+        <p>
+          <m>f(x)=x^5+1</m>, <m>g(x)=x^2+x+1</m>이라 하십시오.
+          <ol marker="(a)">
+            <li><p><m>m,n,k</m>와 <m>F=\operatorname{rev}_m(f)</m>, <m>G=\operatorname{rev}_n(g)</m>를 구하십시오.</p></li>
+            <li><p><m>H=1</m>에서 시작하여 본문의 뉴턴 반복으로 <m>GH\equiv1\pmod{x^k}</m>인 <m>H</m>를 구하십시오. 각 단계에서 <m>1-GH</m>를 계산하여 <m>1-GH_{\mathrm{new}}=(1-GH)^2</m>임을 확인하십시오.</p></li>
+            <li><p><m>Q\equiv FH\pmod{x^k}</m>로부터 몫 <m>q</m>를 복원하고 <m>r=f-gq</m>를 구하십시오. 결과를 긴 나눗셈과 비교하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>m=5</m>, <m>n=2</m>, <m>k=4</m>이고 <m>G=1+x+x^2</m>입니다. 뉴턴 반복은 <m>s=1\to2\to4</m>의 두 단계입니다. 첫 단계 뒤에는 <m>H=1-x</m>이며, <m>G(1-x)=1-x^3</m>입니다. 검산에는 <m>x^3\equiv1\pmod{x^2+x+1}</m>을 이용할 수 있습니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-toeplitz-basics">
+      <title>하삼각 퇴플리츠 행렬</title>
+      <statement>
+        <p>
+          다항식 <m>h=\sum_jh_jx^j</m>와 양의 정수 <m>k</m>에 대하여, <m>(s,t)</m> 성분이 <m>s\ge t</m>일 때 <m>h_{s-t}</m>이고 <m>s&lt;t</m>일 때 <m>0</m>인 <m>k\times k</m> 행렬을 <m>T_k(h)</m>로 씁니다. 이러한 행렬을 <term>하삼각 퇴플리츠 행렬</term><aside><p>하삼각 퇴플리츠 행렬:lower triangular Toeplitz matrix</p></aside>이라고 합니다. 행과 열의 첨자는 <m>0</m>부터 셉니다.
+          <ol marker="(a)">
+            <li><p><m>T_4(1+x+x^2)</m>를 적으십시오.</p></li>
+            <li><p><m>T_k(g)T_k(h)=T_k(gh)</m>임을 보이십시오. 또한 <m>T_k(g)</m>를 열벡터 <m>(h_0,\ldots,h_{k-1})</m>에 곱하면 <m>gh\bmod x^k</m>의 계수벡터가 됨을 보이십시오.</p></li>
+            <li><p><m>T_k(G)</m>가 가역일 필요충분조건이 <m>G(0)\ne0</m>임을 보이십시오. 이 경우 <m>GH\equiv1\pmod{x^k}</m>이면 <m>T_k(G)^{-1}=T_k(H)</m>임을 증명하십시오. <xref ref="exer-fpo-newton-division"/>의 결과를 이용하여 <m>T_4(1+x+x^2)^{-1}</m>을 구하고, 두 행렬의 곱이 단위행렬임을 확인하십시오.</p></li>
+            <li><p>가역인 <m>k\times k</m> 하삼각 퇴플리츠 행렬의 역행렬도 하삼각 퇴플리츠 행렬이며, 본문의 방법으로 <m>O(k\log(k+1))</m>의 연산량으로 구할 수 있음을 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) 첫 번째 열은 <m>(1,1,1,0)</m>이고, 다음 열은 앞 열을 한 칸씩 아래로 내린 것입니다. (b) <m>(T_k(g)T_k(h))_{s,t}=\sum_rg_{s-r}h_{r-t}</m>에서 <m>t\le r\le s</m>인 항만 남습니다. <m>j=r-t</m>로 치환하면 <m>(gh)_{s-t}</m>를 얻습니다. (c) <m>T_k(G)</m>는 대각성분이 모두 <m>G(0)</m>인 하삼각행렬이므로 행렬식은 <m>G(0)^k</m>입니다. (b)에 의해 <m>T_k(G)T_k(H)=T_k(GH)=T_k(1)=I</m>입니다. <xref ref="exer-fpo-newton-division"/>에서 <m>(1+x+x^2)^{-1}\equiv1-x+x^3\pmod{x^4}</m>을 얻었습니다. (d) 하삼각 퇴플리츠 행렬은 첫 번째 열로 결정되며, <m>T_k(H)</m>의 첫 번째 열은 <m>H</m>의 계수입니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-integer-multiplication-precision">
+      <title>정수 계수 곱셈에 필요한 정밀도</title>
+      <statement>
+        <p>
+          정수 계수벡터 <m>a,b\in\mathbb Z^N</m>에 대하여 <m>A=W_Na</m>, <m>B=W_Nb</m>, <m>C=A\circ B</m>, <m>c=W_N^{-1}C</m>라 하십시오. 본문의 방법에 따라 <m>c</m>는 곱다항식의 계수벡터입니다. 다음 사실은 가정으로 받아들입니다. 배정밀도 FFT로 계산한 <m>\widehat A</m>는 <m>\|\widehat A-A\|_2\le\eta\|A\|_2</m>를 만족하며, <m>\eta</m>는 대략 <m>u\log_2N</m>의 작은 상수배입니다. <m>\widehat B</m>도 마찬가지입니다. 문제를 단순화하기 위하여 성분별 곱과 역변환은 정확히 계산한다고 가정하여 <m>\widehat C=\widehat A\circ\widehat B</m>, <m>\widehat c=W_N^{-1}\widehat C</m>로 둡니다.
+          <ol marker="(a)">
+            <li><p><m>\|\widehat C-C\|_2\le\eta(2+\eta)\|A\|_2\|B\|_2</m>임을 보이십시오.</p></li>
+            <li><p><m>\|\widehat c-c\|_\infty\le\eta(2+\eta)\sqrt N\,\|a\|_2\|b\|_2</m>임을 보이십시오.</p></li>
+            <li><p><m>N=2^{20}</m>, <m>\eta=2^{-45}</m>이고 모든 계수가 <m>0\le a_j,b_j&lt;2^\beta</m>를 만족한다고 하십시오. (b)의 상한이 <m>1/2</m>보다 작아서 반올림으로 <m>c</m>를 정확히 복원할 수 있음을 보장하는 가장 큰 정수 <m>\beta</m>를 구하십시오.</p></li>
+            <li><p>계수가 <m>0\le a_j,b_j&lt;2^{12}</m>이면 <m>a=a^{(0)}+2^6a^{(1)}</m>, <m>b=b^{(0)}+2^6b^{(1)}</m>로 나눌 수 있습니다. 여기서 각 조각의 계수는 <m>0</m> 이상 <m>2^6</m> 미만인 정수입니다. 이를 이용하여 정확한 곱을 얻는 알고리즘을 설계하고, 필요한 FFT의 횟수를 세어 전체 연산량이 여전히 <m>O(N\log N)</m>임을 보이십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>\widehat C-C=(\widehat A-A)\circ\widehat B+A\circ(\widehat B-B)</m>로 나누고 <xref ref="exer-fpo-dft-norms"/>의 (b)를 적용하십시오. 삼각부등식에 의해 <m>\|\widehat B\|_2\le(1+\eta)\|B\|_2</m>입니다. (b) <xref ref="exer-fpo-dft-norms"/>의 (a)와 (c)에 의해 <m>\|\widehat c-c\|_\infty\le\|\widehat C-C\|_2/\sqrt N</m>이고 <m>\|A\|_2=\sqrt N\|a\|_2</m>입니다. (c) <m>\|a\|_2,\|b\|_2&lt;\sqrt N\,2^\beta=2^{10+\beta}</m>이고 <m>\eta(2+\eta)&lt;2.0001\cdot2^{-45}</m>입니다. 조건은 <m>2^{2\beta}&lt;2^{14}/2.0001</m>로 정리됩니다. (d) <m>ab=a^{(0)}b^{(0)}+2^6\bigl(a^{(0)}b^{(1)}+a^{(1)}b^{(0)}\bigr)+2^{12}a^{(1)}b^{(1)}</m>입니다. 각 곱은 (c)의 조건을 만족하므로 <xref ref="exer-fpo-complex-rounding"/>의 (c)처럼 반올림하여 정확히 얻을 수 있습니다.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise xml:id="exer-fpo-division-sensitivity">
+      <title>나눗셈의 민감도</title>
+      <statement>
+        <p>
+          <xref ref="exer-fpo-toeplitz-basics"/>의 기호를 사용합니다. 행렬 <m>M</m>에 대하여 <m>\|M\|_\infty</m>는 각 행의 성분의 절댓값의 합 가운데 최댓값이며, 모든 벡터 <m>x</m>에 대하여 <m>\|Mx\|_\infty\le\|M\|_\infty\|x\|_\infty</m>가 성립합니다.
+          <ol marker="(a)">
+            <li><p><m>G=1-2x</m>일 때 <m>GH\equiv1\pmod{x^k}</m>인 <m>H</m>를 구하십시오. 이를 이용하여 <m>T_k(G)^{-1}</m>을 적고, <m>\|T_k(G)\|_\infty=3</m>이고 <m>\|T_k(G)^{-1}\|_\infty=2^k-1</m>임을 보이십시오.</p></li>
+            <li><p>본문의 고속 나눗셈에서는 <m>Q\equiv FH\pmod{x^k}</m>입니다. <xref ref="exer-fpo-toeplitz-basics"/>의 (b)를 이용하여 계수벡터로 <m>Q=T_k(H)F</m>임을 설명하십시오. <m>F</m>가 <m>F+\Delta F</m>로 바뀌면 <m>Q</m>는 <m>T_k(H)\Delta F</m>만큼 바뀜을 보이십시오.</p></li>
+            <li><p><m>g=x-2</m>, <m>f=x^m-2x^{m-1}</m>이라 하면 몫은 <m>q=x^{m-1}</m>이고 나머지는 <m>0</m>입니다. 최고차 계수만 바꾼 <m>\widetilde f=(1+\epsilon)x^m-2x^{m-1}</m>을 <m>g</m>로 나눈 몫 <m>\widetilde q</m>와 나머지를 구하고, <m>\|\widetilde q-q\|_\infty=2^{m-1}\epsilon</m>임을 보이십시오. 이 결과를 (a), (b)와 비교하십시오.</p></li>
+            <li><p><m>f</m>의 계수가 앞선 계산에서 얻은 값이어서 상대오차 <m>2^{-53}</m> 정도를 포함한다고 하십시오. <m>m=60</m>, <m>\epsilon=2^{-53}</m>일 때 (c)의 값을 계산하십시오. 이 결과가 <xref ref="rem-fast-polynomial-division-error"/>에 대하여 무엇을 말해 주는지 설명하십시오. 또한 이 오차가 FFT나 뉴턴 반복을 쓰는지와 관계없이 생기는 이유를 설명하십시오.</p></li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>(1-2x)^{-1}\equiv\sum_{j=0}^{k-1}2^jx^j\pmod{x^k}</m>입니다. <m>T_k(G)</m>의 각 행에는 <m>-2</m>와 <m>1</m>이 있고, <m>T_k(G)^{-1}</m>은 마지막 행의 절댓값 합이 가장 큽니다. (b) 행렬곱은 선형입니다. (c) <m>x^m=(x-2)(x^{m-1}+2x^{m-2}+\cdots+2^{m-1})+2^m</m>입니다. (b)의 관점에서는 <m>k=m</m>이고 <m>\Delta F=\epsilon e_0</m>이므로 <m>\Delta Q=\epsilon(1,2,\ldots,2^{m-1})</m>입니다. 이것을 뒤집으면 몫의 변화를 얻습니다. (d) <m>2^{59}\cdot2^{-53}=2^6</m>입니다. 어떤 알고리즘이든 입력을 정확히 나눈다면 <m>\widetilde f</m>의 정확한 몫을 내놓아야 합니다.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>
