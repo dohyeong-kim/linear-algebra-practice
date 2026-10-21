@@ -104,7 +104,7 @@
     <title>부호어의 무게</title>
     <p>
       부호어 <m>x=(x_1,\ldots,x_n)\in\mathbb F_2^n</m>의 <term>무게</term><aside><p>무게:weight</p></aside>는 1인 좌표의 개수입니다. 즉,
-      <md>\operatorname{wt}(x)=\left|\{i\in\{1,\ldots,n\}:x_i=1\}\right|</md>
+      <md><mrow>\operatorname{wt}(x)=\left|\{i\in\{1,\ldots,n\}:x_i=1\}\right|</mrow></md>
       로 정의합니다. 이는 영벡터와의 해밍 거리 <m>d_H(x,0)</m>와 같습니다.
     </p>
   </definition>
