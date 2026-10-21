@@ -1212,7 +1212,7 @@ k=\dim C, \quad d=\min\{d_H(x,y):x,y
 \in C, \text{ }x \ne y\}
 \end{gather*}
 </div>
-<div class="para">입니다.</div>
+<div class="para">그리고, 비율 <span class="process-math">\(k/n\)</span>을 <dfn class="terminology">부호율</dfn><aside class="aside aside-like" id="def-linear-code-parameters-3-17"><div class="para" id="def-linear-code-parameters-3-17-1">부호율:code rate</div></aside> 또는 간단히 <dfn class="terminology">비율</dfn>이라고 합니다.</div>
 </div>
 <aside class="aside aside-like" id="def-linear-code-parameters-4"><div class="para" id="def-linear-code-parameters-4-1">최소 거리:minimum distance</div></aside></article><div class="para" id="sec-hamming-distance-8">부호어는 <span class="process-math">\((0,1,0,1)\)</span> 대신 간략히 <span class="process-math">\(0101\)</span>으로 나타냅시다.</div>
 <article class="definition definition-like" id="def-codeword-weight"><h3 class="heading">
@@ -1282,7 +1282,13 @@ B_H(x,r)=\{y\in\mathbb F_2^n:d_H(x,y)\le r\}
 \end{gather*}
 </div>
 <div class="para">입니다.</div>
-</div></article></details><section class="exercises" id="exercises-hamming-distance"><h3 class="heading hide-type">
+</div></article></details><article class="remark remark-like" id="remark-hamming-distance-inner-product-contrast"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">3.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">해밍 거리와 내적 대조.</span>
+</h3>
+<div class="para" id="remark-hamming-distance-inner-product-contrast-2">실수 상 벡터공간의 경우 대칭쌍선형형식의 특수한 경우인 내적으로부터 거리를 얻었습니다.  해밍거리를 쌍선형형식과 관련지을 수 있을까요?  어떠한 쌍선형형식 <span class="process-math">\(\mathbb F^n \times \mathbb F^n \to \mathbb F\)</span>을 가져오더라도 그 함수값이 실수가 아니므로 해밍거리를 쌍선형형식으로부터 직접적으로 정의할 수는 없습니다.</div></article><article class="remark remark-like" id="remark-code-parameters-not-unique"><h3 class="heading">
+<span class="type">보조설명</span><span class="space"> </span><span class="codenumber">3.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">매개변수와 부호.</span>
+</h3>
+<div class="para" id="remark-code-parameters-not-unique-2">동일한 매개변수를 갖는 부호가 유일할 필요는 없습니다. 즉, 길이 <span class="process-math">\(n\text{,}\)</span> 차원 <span class="process-math">\(k\text{,}\)</span> 최소 거리 <span class="process-math">\(d\)</span>가 같은 서로 다른 부호들이 존재할 수 있습니다.</div></article><section class="exercises" id="exercises-hamming-distance"><h3 class="heading hide-type">
 <span class="type">연습문제</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">연습문제</span>
 </h3>
 <section class="introduction" id="exercises-hamming-distance-2"><div class="para" id="exercises-hamming-distance-2-1">본문과 같이 벡터 <span class="process-math">\((0,1,0,1)\)</span>을 <span class="process-math">\(0101\)</span>로 쓰고, <span class="process-math">\(e_j\)</span>는 <span class="process-math">\(j\)</span>번째 성분만 <span class="process-math">\(1\)</span>인 벡터, <span class="process-math">\(\operatorname{supp}(x)=\{i:x_i=1\}\)</span>은 <span class="process-math">\(x\)</span>의 지지집합을 나타냅니다. 예를 들어 <span class="process-math">\(\operatorname{supp}(0101)=\{2,4\}\)</span>입니다. 매개변수 <span class="process-math">\([n,k,d]\)</span>를 쓸 때는 최소 거리가 정의되도록 <span class="process-math">\(k\ge 1\text{,}\)</span> 즉 부호어가 둘 이상이라고 가정합니다.</div>
