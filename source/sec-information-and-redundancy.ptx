@@ -182,10 +182,12 @@
   <definition xml:id="def-syndrome-decoding">
     <title>신드롬 복호</title>
     <p>
-      수신 벡터 <m>r</m>의 신드롬을 <m>s=Hr</m>라 하고, 신드롬이 <m>s</m>인 코셋 대표원소를 <m>e_s</m>라 합시다. 이때 <m>r-e_s</m>를 출력하는 복호 방법을 <term>신드롬 복호</term><aside><p>신드롬 복호:syndrome decoding</p></aside>라고 합니다. 이 방법은 수신 벡터에 발생했을 가능성이 가장 큰, 즉 무게가 가장 작은 오류 패턴을 제거합니다.
+      수신 벡터 <m>r</m>의 신드롬을 <m>s=Hr</m>라 하고, 신드롬이 <m>s</m>인 코셋 대표원소를 <m>e_s</m>라 합시다. 이때 <m>r-e_s</m>를 출력하는 복호 방법을 <term>신드롬 복호</term><aside><p>신드롬 복호:syndrome decoding</p></aside>라고 합니다. 이
     </p>
   </definition>
-
+<p>
+   신드롬 복호 방법의 취지는 수신 벡터에 발생했을 가능성이 가장 큰, 즉 무게가 가장 작은 오류 패턴을 제거하는 것입니다. 이 선택은 벡터의 각 성분별로 오류가 발생할 확률이 동일하고 독립적이라는 가정에 기반합니다.
+</p>
   <example xml:id="ex-syndrome-decoding-choice">
     <title>코셋 대표원소의 선택과 신드롬 복호</title>
     <statement>
