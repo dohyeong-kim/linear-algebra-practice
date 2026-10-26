@@ -80,10 +80,13 @@
     <title>완전 부호</title>
     <statement>
       <p>
-        길이 <m>n</m>인 <m>q</m>진 부호 <m>C</m>의 최소 거리가 <m>d</m>라고 하자. <m>t=\lfloor (d-1)/2 \rfloor</m>로 놓을 때, <m>C</m>의 각 부호어를 중심으로 하는 반지름 <m>t</m>의 해밍 구들이 <m>\mathbb F_q^n</m>을 분할하면 <term>완전 부호</term><aside><p>완전 부호:perfect code</p></aside>라고 합니다.
+        길이 <m>n</m>인 이진 부호 <m>C\subseteq\mathbb F_2^n</m>의 최소 거리가 <m>d</m>라고 하자. <m>t=\lfloor (d-1)/2 \rfloor</m>로 놓을 때, <m>C</m>의 각 부호어를 중심으로 하는 반지름 <m>t</m>의 해밍 구들이 <m>\mathbb F_2^n</m>을 분할하면 <term>완전 부호</term>라고 합니다. <aside><p>완전 부호:perfect code</p></aside>
       </p>
     </statement>
   </definition>
+  <p>
+    최소 거리가 <m>d</m>인 이진 부호의 반지름 <m>t=\lfloor(d-1)/2\rfloor</m>인 해밍 구들은 서로소라는 사설로부터 <xref ref="thm-hamming-bound"/>를 얻었습니다. 부호가 완전하다는 것은 이 구들이 전체 공간을 빈틈없이 덮는다는 뜻이므로, 위 부등식에서 등호가 성립하는 것과 같습니다.
+  </p>
 
   <example xml:id="ex-perfect-code-hamming-r2">
     <title>완전 부호의 예</title>
