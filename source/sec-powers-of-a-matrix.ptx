@@ -90,9 +90,33 @@
       </p>
     </proof>
   </theorem>
-  <p>
-    조르당 분해는 <m>T_s</m>이 가역인 경우 곱셉으로 표현할 수도 있습니다. <m>T=T_s+T_n</m> 대신 <m>T=T_s(I+T_s^{-1}T_n)</m>로 쓸 수 있습니다. <m>T_s^{-1}T_n</m>도 멱영작용소이므로 <m>T=T_s(I+T_n')</m>인 셈입니다. (단, <m>T_n'</m>은 멱영작용소이고 <m>T_sT_n'=T_n'T_s</m>.)
-  </p>
+
+  <example xml:id="ex-additive-jordan-decomposition">
+    <title>가법 조르당 분해의 예</title>
+    <p>
+      표준기저에 대한 행렬이 다음과 같은 <m>T\colon\mathbb R^3\to\mathbb R^3</m>를 생각합시다.
+      <md>
+        <mrow>T=\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;3\end{pmatrix}
+        =\begin{pmatrix}2&amp;0&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;3\end{pmatrix}
+        +\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}</mrow>
+      </md>
+      오른쪽의 첫 번째 행렬을 <m>T_s</m>, 두 번째 행렬을 <m>T_n</m>이라 하면, <m>T_s</m>는 대각화 가능하고 <m>T_n^2=0</m>이므로 멱영입니다. 또한 <m>T_sT_n=T_nT_s</m>이므로 이는 가법 조르당 분해입니다. 정리에 따라 이 조건을 만족하는 분해는 유일합니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-additive-jordan-noncommuting-1">
+    <title>가환 조건이 없을 때</title>
+    <p>
+      <m>V=\mathbb R^2</m>에서 다음 두 분해를 생각합시다.
+      <md>
+        <mrow>T=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}
+        =\begin{pmatrix}0&amp;0\\0&amp;0\end{pmatrix}+\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}
+        =\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}+\begin{pmatrix}0&amp;0\\-1&amp;0\end{pmatrix}</mrow>
+      </md>
+      두 번째 분해에서 첫 번째 행렬은 고유값 <m>1,-1</m>을 가지므로 대각화 가능하고, 두 번째 행렬은 멱영입니다. 하지만 두 행렬은 가환하지 않습니다. 따라서 가환 조건을 제외하면 분해가 유일하지 않을 수 있습니다.
+    </p>
+  </example>
+
   <proposition xml:id="prop-powers-additive-jordan-decomposition">
     <title>가법 조르당 분해에서의 거듭제곱</title>
     <statement>
@@ -110,6 +134,9 @@
       </p>
     </proof>
   </proposition>
+    <p>
+    조르당 분해는 <m>T_s</m>이 가역인 경우 곱셉으로 표현할 수도 있습니다. <m>T=T_s+T_n</m> 대신 <m>T=T_s(I+T_s^{-1}T_n)</m>로 쓸 수 있습니다. <m>T_s^{-1}T_n</m>도 멱영작용소이므로 <m>T=T_s(I+T_n')</m>인 셈입니다. (단, <m>T_n'</m>은 멱영작용소이고 <m>T_sT_n'=T_n'T_s</m>.)
+  </p>
   <proposition xml:id="prop-powers-multiplicative-jordan-decomposition">
     <title>승법 조르당 분해에서의 거듭제곱</title>
     <statement>
