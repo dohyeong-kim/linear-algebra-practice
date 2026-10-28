@@ -85,7 +85,7 @@
     </statement>
   </definition>
   <p>
-    최소 거리가 <m>d</m>인 이진 부호의 반지름 <m>t=\lfloor(d-1)/2\rfloor</m>인 해밍 구들은 서로소라는 사설로부터 <xref ref="thm-hamming-bound"/>를 얻었습니다. 부호가 완전하다는 것은 이 구들이 전체 공간을 빈틈없이 덮는다는 뜻이므로, 위 부등식에서 등호가 성립하는 것과 같습니다.
+    최소 거리가 <m>d</m>인 이진 부호의 반지름 <m>t=\lfloor(d-1)/2\rfloor</m>인 해밍 구들은 서로소라는 사실로부터 <xref ref="thm-hamming-bound"/>를 얻었습니다. 부호가 완전하다는 것은 이 구들이 전체 공간을 빈틈없이 덮는다는 뜻이므로, 위 부등식에서 등호가 성립하는 것과 같습니다.
   </p>
 
   <example xml:id="ex-perfect-code-hamming-r2">
