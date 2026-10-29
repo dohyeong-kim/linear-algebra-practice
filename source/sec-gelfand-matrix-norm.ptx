@@ -93,16 +93,22 @@
   </definition>
 
   <example xml:id="ex-submultiplicative-operator-norm">
-    <title>스펙트럴 노름의 곱셈성</title>
+    <title>스펙트럴 노름과 그 곱셈성</title>
     <statement>
       <p>
         <xref ref="def-spectral-norm"/>에서 정의한 스펙트럴 노름
         은 곱셈적 행렬 노름입니다.
       </p>
       <p>
-        이유를 살펴봅시다. 임의의 <m>x\in\mathbb C^n</m>에 대해
+        먼저 곱셈적인 이유를 살펴봅시다. 임의의 <m>x\in\mathbb C^n</m>에 대해
         <m>\|ABx\|_2\leq\|A\|_2\|Bx\|_2\leq\|A\|_2\|B\|_2\|x\|_2</m>입니다.
         따라서 연산자 노름의 정의에 따라 <m>\|AB\|_2\leq\|A\|_2\|B\|_2</m>입니다.
+      </p>
+      <p>
+        노름이 되는지도 확인해 봅시다. 연산자 노름의 정의에 따라 <m>\|A\|_2=\sup_{\|x\|_2=1}\|Ax\|_2</m>입니다. 따라서 <m>\|A\|_2\geq 0</m>이고, <m>\|A\|_2=0</m>이면 모든 단위벡터 <m>x</m>에 대해 <m>Ax=0</m>입니다. 그러므로 <m>A=0</m>이며, 반대로 <m>A=0</m>이면 <m>\|A\|_2=0</m>입니다.
+      </p>
+      <p>
+        임의의 <m>\alpha\in\mathbb C</m>에 대해 <m>\|\alpha A\|_2=|\alpha|\,\|A\|_2</m>입니다. 또한 모든 단위벡터 <m>x</m>에 대해 <m>\|(A+B)x\|_2\leq\|Ax\|_2+\|Bx\|_2\leq\|A\|_2+\|B\|_2</m>이므로, 상한을 취하면 <m>\|A+B\|_2\leq\|A\|_2+\|B\|_2</m>입니다. 따라서 스펙트럴 노름은 행렬 노름입니다.
       </p>
     </statement>
   </example>
@@ -198,10 +204,38 @@
         <m>\|AB\|_1\leq\|A\|_1\|B\|_1</m>을 얻습니다.
       </p>
     </proof>
+</proposition>
 
-
+  <proposition xml:id="prop-one-norm-two-norm-equivalence">
+    <title>1-노름과 2-노름의 동치성</title>
+    <statement>
+      <p>
+        모든 <m>x\in\mathbb C^n</m>에 대하여
+        <me>\|x\|_2\leq\|x\|_1\leq\sqrt{n}\,\|x\|_2</me>
+        이다. 따라서 모든 <m>A\in\mathbb C^{n\times n}</m>에 대하여
+        <me>\frac{1}{\sqrt{n}}\|A\|_2\leq\|A\|_1\leq\sqrt{n}\,\|A\|_2</me>
+        이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        <m>x=(x_1,\ldots,x_n)</m>이라 하면
+        <m>\|x\|_1^2=\bigl(\sum_i\lvert x_i\rvert\bigr)^2\geq\sum_i\lvert x_i\rvert^2=\|x\|_2^2</m>이므로 <m>\|x\|_2\leq\|x\|_1</m>입니다.
+        또한 코시–슈바르츠 부등식에 의해
+        <m>\|x\|_1=\sum_i\lvert x_i\rvert\cdot 1\leq\bigl(\sum_i\lvert x_i\rvert^2\bigr)^{1/2}\sqrt{n}=\sqrt{n}\,\|x\|_2</m>입니다.
+      </p>
+      <p>
+        이제 영이 아닌 <m>x</m>에 대하여
+        <m>\|Ax\|_1\leq\sqrt{n}\,\|Ax\|_2\leq\sqrt{n}\,\|A\|_2\|x\|_2\leq\sqrt{n}\,\|A\|_2\|x\|_1</m>이므로
+        최댓값을 취하면 <m>\|A\|_1\leq\sqrt{n}\,\|A\|_2</m>입니다.
+        마찬가지로 <m>\|Ax\|_2\leq\|Ax\|_1\leq\|A\|_1\|x\|_1\leq\sqrt{n}\,\|A\|_1\|x\|_2</m>이므로
+        <m>\|A\|_2\leq\sqrt{n}\,\|A\|_1</m>입니다.
+      </p>
+    </proof>
   </proposition>
-  
+
+
+ 
   <theorem xml:id="thm-gelfand-formula">
     <title>겔판트 공식</title>
     <statement>
@@ -213,21 +247,32 @@
     </statement>
     <proof>
       <p>
-        <m>\|\cdot\|_2</m>를 유클리드 노름이 유도하는 연산자 노름이라 하고, 유한 차원 노름의 동치성에 따라 어떤 상수 <m>c,C&gt;0</m>에 대하여 모든 행렬 <m>B</m>에 대해
-        <m>c\|B\|\leq\|B\|_2\leq C\|B\|</m>임을 이용합니다.
-        먼저 <m>\|A^k\|_2\geq\rho(A^k)=\rho(A)^k</m>이므로
-        <m>\|A^k\|^{1/k}\geq C^{-1/k}\rho(A)</m>입니다.
+        먼저 <m>\|\cdot\|</m>가 스펙트럼 노름, 즉 유클리드 노름이 유도하는 연산자 노름 <m>\|\cdot\|_2</m>인 경우를 증명합니다.
+        <m>\lambda</m>가 <m>A</m>의 고윳값이고 <m>v\neq 0</m>가 대응하는 고유벡터이면 <m>A^kv=\lambda^kv</m>이므로
+        <m>\lvert\lambda\rvert^k\|v\|_2=\|A^kv\|_2\leq\|A^k\|_2\|v\|_2</m>입니다.
+        따라서 모든 <m>k\geq 1</m>에 대하여 <m>\rho(A)\leq\|A^k\|_2^{1/k}</m>이고, 다음을 얻습니다.
       </p>
+      <md><mrow>\rho(A)\leq\liminf_{k\to\infty}\|A^k\|_2^{1/k}</mrow></md>
       <p>
-        이제 <m>\rho(A)&gt;0</m>이라고 하고, <m>A</m>의 조르당 표준형을 사용합니다.
-        각 조르당 블록의 <m>k</m>제곱은 고윳값의 거듭제곱과 그보다 낮은 차수의 <m>k</m>에 대한 다항식 항들의 합이므로, 어떤 상수 <m>K&gt;0</m>가 존재하여 모든 충분히 큰 <m>k</m>에 대해
-        <m>\|A^k\|_2\leq K k^{n-1}\rho(A)^k</m>입니다.
-        따라서 <m>\|A^k\|^{1/k}\leq c^{-1/k}K^{1/k}k^{(n-1)/k}\rho(A)</m>입니다.
-        양쪽 부등식에서 <m>k\to\infty</m>로 보내면 원하는 극한을 얻습니다.
+        이제 <m>\varepsilon&gt;0</m>을 임의로 잡고 <m>B=A/(\rho(A)+\varepsilon)</m>라 두면 <m>\rho(B)&lt;1</m>입니다.
+        <m>B=PJP^{-1}</m>를 조르당 표준형이라 하면 <m>B^k=PJ^kP^{-1}</m>이고, 고윳값 <m>\mu</m>에 대한 크기 <m>m</m>의 조르당 블록의 <m>k</m>제곱의 각 성분은
+        <m>0\leq j\leq m-1</m>에 대하여 <m>\binom{k}{j}\mu^{k-j}</m> 꼴이거나 <m>0</m>입니다.
+        <m>\lvert\mu\rvert&lt;1</m>이므로 <m>\binom{k}{j}\lvert\mu\rvert^{k-j}\leq k^j\lvert\mu\rvert^{k-j}\to 0</m>이고, 따라서 <m>B^k\to 0</m>입니다.
+        그러므로 충분히 큰 모든 <m>k</m>에 대하여 <m>\|B^k\|_2\leq 1</m>, 즉 <m>\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>입니다.
+        이로부터 <m>\limsup_{k\to\infty}\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>이고, <m>\varepsilon</m>은 임의이므로 다음이 성립합니다.
       </p>
+      <md><mrow>\lim_{k\to\infty}\|A^k\|_2^{1/k}=\rho(A)</mrow></md>
       <p>
-        마지막으로 <m>\rho(A)=0</m>이면 모든 고윳값이 0이므로 케일리–해밀턴 정리에 따라 <m>A^n=0</m>입니다.
-        따라서 충분히 큰 <m>k</m>에 대해 <m>\|A^k\|^{1/k}=0</m>이고, 공식은 이 경우에도 성립합니다.
+        다음으로 <m>\|\cdot\|</m>를 임의의 곱셈적 행렬 노름이라 합니다.
+        <m>\mathbb C^{n\times n}</m>은 유한차원 벡터공간이므로 <xref ref="thm-equivalence-of-norms"/>에 따라 모든 노름은 동치입니다.
+        즉 어떤 상수 <m>c,C&gt;0</m>가 존재하여 모든 <m>M\in\mathbb C^{n\times n}</m>에 대하여 <m>c\|M\|\leq\|M\|_2\leq C\|M\|</m>입니다.
+        <m>M=A^k</m>를 대입하고 <m>1/k</m>제곱을 취하면 다음을 얻습니다.
+      </p>
+      <md><mrow>C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}</mrow></md>
+      <p>
+        <m>k\to\infty</m>일 때 <m>c^{-1/k}\to 1</m>, <m>C^{-1/k}\to 1</m>이고 <m>\|A^k\|_2^{1/k}\to\rho(A)</m>이므로,
+        조임 정리에 따라 <m>\lim_{k\to\infty}\|A^k\|^{1/k}=\rho(A)</m>입니다.
+        따라서 겔판트 공식의 우변은 노름의 선택에 의존하지 않습니다.
       </p>
     </proof>
   </theorem>
@@ -623,7 +668,7 @@
             <md>
               <mrow>C^{-1/k}\|A^k\|_1^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_1^{1/k}</mrow>
             </md>
-            입니다. <m>\|\cdot\|_1</m>은 곱셈적이므로 <xref ref="thm-gelfand-formula"/>에 의해 <m>\|A^k\|_1^{1/k}\to\rho(A)</m>이고, <m>c^{-1/k},C^{-1/k}\to1</m>이므로 조임 정리에 의해 <m>\|A^k\|^{1/k}\to\rho(A)</m>입니다.
+            입니다. <m>\|\cdot\|_1</m>은 곱셈적이므로 <xref ref="thm-gelfand-formula"/>에 의해 <m>\|A^k\|_1^{1/k}\to\rho(A)</m>이고, <m>c^{-1/k},C^{-1/k}\to1</m>이므로 샌드위치 정리에 의해 <m>\|A^k\|^{1/k}\to\rho(A)</m>입니다.
             즉 겔판트 공식의 극한 자체는 노름의 선택에 의존하지 않으며, 곱셈성은 모든 <m>k</m>에서의 부등식 <m>\rho(A)\leq\|A^k\|^{1/k}</m>을 보장하는 데에만 쓰입니다.
           </p>
         </solution>

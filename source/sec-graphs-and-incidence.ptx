@@ -41,7 +41,7 @@
   <title>유향 수목</title>
   <statement>
     <p>
-      <term>유향 수목</term><aside><p>유향 수목:arborescence</p></aside>란 하나의 꼭짓점을 뿌리로 지정한 그래프로, 뿌리에서 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재하는 그래프입니다.
+      <term>유향 수목</term><aside><p>유향 수목:arborescence</p></aside>이란 하나의 꼭짓점을 뿌리로 지정한 그래프로, 뿌리에서 모든 꼭짓점으로 가는 방향 경로가 정확히 하나씩 존재하는 그래프입니다.
     </p>
   </statement>
 </definition>
