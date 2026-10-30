@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko-KO" dir="">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="exercise exercise-like"><h4 class="heading">
+<span class="type">연습문제</span><span class="space"> </span><span class="codenumber">14<span class="period">.</span></span><span class="space"> </span><span class="title">최적 저계수 근사.</span>
+</h4>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(T:V\to W\)</span>의 양의 특이값을 <span class="process-math">\(\sigma_1\geq\cdots\geq\sigma_r&gt;0\)</span>이라 하고 <span class="process-math">\(0\leq k&lt;r\)</span>라 하자. 선형사상 <span class="process-math">\(A:V\to W\)</span>의 작용소 노름을</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\|A\|_{\mathrm{op}}=\max_{\|v\|=1}\|Av\|
+\end{equation*}
+</div>
+<div class="para">로 정의한다. 절단된 SVD를</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T_k(v)=\sum_{i=1}^{k}\sigma_i\langle v,v_i\rangle w_i
+\end{equation*}
+</div>
+<div class="para">로 정의하자. <span class="process-math">\(\operatorname{rank}T_k=k\)</span>이고 <span class="process-math">\(\|T-T_k\|_{\mathrm{op}}=\sigma_{k+1}\)</span>임을 보여라. 또한 계수가 <span class="process-math">\(k\)</span> 이하인 모든 <span class="process-math">\(S:V\to W\)</span>에 대하여</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\|T-S\|_{\mathrm{op}}\geq\sigma_{k+1}
+\end{equation*}
+</div>
+<div class="para">임을 증명하여라. 마지막으로 <span class="process-math">\(1\leq k&lt;r\)</span>이고 <span class="process-math">\(\sigma_k&gt;\sigma_{k+1}\)</span>이어도 최적 근사 <span class="process-math">\(S\)</span>가 유일하지 않을 수 있음을 <span class="process-math">\(\mathbb R^2\)</span>의 예로 보여라.</div>
+</div>
+<div class="solutions"><details class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">단서</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para">
+<span class="process-math">\(E=\operatorname{span}\{v_1,\ldots,v_{k+1}\}\)</span>로 두면 차원 정리에 의해 <span class="process-math">\(\operatorname{ker} S\cap E\)</span>에는 영이 아닌 벡터가 있다. 마지막 질문에는 <span class="process-math">\(T=\operatorname{diag}(2,1)\text{,}\)</span> <span class="process-math">\(k=1\)</span>을 살펴보라.</div></div></details></div></article><span class="incontext"><a class="internal" href="sec-singular-value-decomposition.html#exer-svd-challenge-3">[incontext]</a></span>
+</body>
+</html>
