@@ -504,7 +504,7 @@
           <ol marker="(a)">
             <li><p><m>H'</m>도 <m>C</m>의 검사 행렬임을 보이십시오.</p></li>
             <li><p><m>H</m>에 대한 신드롬이 <m>s</m>이면 <m>H'</m>에 대한 신드롬은 <m>Ps</m>이고, 두 신드롬이 결정하는 코셋이 같음을 보이십시오.</p></li>
-            <li><p><m>H</m>에 대한 대표원소 <m>e_s</m>로부터 <m>e'_{Ps}=e_s</m>로 정하면 두 신드롬 복호의 출력이 모든 수신 벡터에 대해 일치함을 보이십시오. 본문 <xref ref="ex-syndrome-check-matrix-choice"/>의 <m>H_1,H_2</m>에 대해 <m>P</m>를 구하십시오.</p></li>
+            <li><p><m>H</m>에 대한 대표원소 <m>e_s</m>로부터 <m>e'_{Ps}=e_s</m>로 정하면 두 신드롬 복호의 출력이 모든 수신 벡터에 대해 일치함을 보이십시오. 본문 <xref ref="ex-syndrome-check-matrix-choice"/>의 <m>H_1</m>과 <m>H_2</m>에 대해 <m>H_2=PH_1</m>을 만족하는 <m>P</m>를 구하십시오.</p></li>
             <li><p>역으로, <m>C</m>의 임의의 두 검사 행렬 <m>H,H'</m>에 대해 <m>H'=PH</m>인 가역행렬 <m>P</m>가 존재함을 보이십시오.</p></li>
           </ol>
         </p>
@@ -520,7 +520,7 @@
             <li><p><m>P</m>가 가역이므로 <m>PHv=0\iff Hv=0</m>입니다.</p></li>
             <li><p><m>H'r=P(Hr)=Ps</m>입니다. (a)와 <xref ref="exer-syndrome-cosets"/>에 의해 두 신드롬 모두 <m>r+C</m>를 결정합니다.</p></li>
             <li><p>(b)에 의해 <m>e_s</m>는 <m>H'</m>에 대해서도 신드롬 <m>Ps</m>인 코셋의 최소 무게 원소이므로 올바른 선택이고, 두 출력은 모두 <m>r-e_s</m>입니다. <m>s\mapsto Ps</m>가 전단사이므로 이 방법으로 <m>H'</m>의 대표원소가 모두 정해집니다. 본문 예제에서는 <m>H_2=PH_1</m>, <m>P=\begin{pmatrix}0 &amp; 1\\ 1 &amp; 0\end{pmatrix}</m>입니다.</p></li>
-            <li><p><m>C</m>의 생성행렬 <m>G</m>는 계수가 <m>k</m>이고 <m>C^\perp=\{u:Gu^{\mathsf T}=0\}</m>이므로 <m>\dim C^\perp=n-k</m>입니다. <m>Hv=0</m>은 <m>H</m>의 각 행과 <m>v</m>의 내적이 <m>0</m>이라는 뜻이므로 <m>H</m>의 행들은 <m>C^\perp</m>에 속하고, <m>\ker H=C</m>이므로 <m>H</m>의 계수는 <m>n-k</m>입니다. 따라서 <m>H</m>의 행들은 <m>C^\perp</m>의 기저이며, <m>H'</m>도 마찬가지입니다. 그러므로 <m>H'=PH</m>, <m>H=QH'</m>인 정사각행렬 <m>P,Q</m>가 있고, <m>(QP-I)H=0</m>입니다. <m>H</m>의 행들이 선형독립이므로 <m>QP=I</m>이고 <m>P</m>는 가역입니다.</p></li>
+            <li><p><m>C</m>의 생성행렬 <m>G</m>는 계수가 <m>k</m>이고 <m>C^\perp=\{u:Gu^{\mathsf T}=0\}</m>이므로 <m>\dim C^\perp=n-k</m>입니다. <m>Hv=0</m>은 <m>H</m>의 각 행과 <m>v</m>의 내적이 <m>0</m>이라는 뜻이므로 <m>H</m>의 행들은 <m>C^\perp</m>에 속하고, <m>\operatorname{ker} H=C</m>이므로 <m>H</m>의 계수는 <m>n-k</m>입니다. 따라서 <m>H</m>의 행들은 <m>C^\perp</m>의 기저이며, <m>H'</m>도 마찬가지입니다. 그러므로 <m>H'=PH</m>, <m>H=QH'</m>인 정사각행렬 <m>P,Q</m>가 있고, <m>(QP-I)H=0</m>입니다. <m>H</m>의 행들이 선형독립이므로 <m>QP=I</m>이고 <m>P</m>는 가역입니다.</p></li>
           </ol>
         </p>
       </solution>

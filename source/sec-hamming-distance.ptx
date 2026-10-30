@@ -68,32 +68,25 @@
   <definition xml:id="def-code">
     <title>부호</title>
     <p>
-      <aside><p>부호:code</p></aside>
-      <term>부호</term>
-      란,
-      <m>\mathbb F_2^n</m>의 부분집합입니다. 부호의 원소는 <term>부호어</term>이라 합니다.
-      만약 부호 <m>C \subset \mathbb F_2^n</m>이 부분공간이면, <m>C</m>를 <term>선형부호</term>
-      라 합니다.
-      <aside><p>부호어:codeword</p></aside>
+      <term>부호</term><aside><p>부호:code</p></aside>란,
+      <m>\mathbb F_2^n</m>의 부분집합입니다. 부호의 원소는 <term>부호어</term><aside><p>부호어:codeword</p></aside>라 합니다.
+      만약 부호 <m>C \subset \mathbb F_2^n</m>이 부분공간이면, <m>C</m>를 <term>선형부호</term><aside><p>선형부호:linear code</p></aside>라 합니다.
     </p>
-    <aside><p>선형부호:linear code</p></aside>
   </definition>
 
   <definition xml:id="def-linear-code-parameters">
     <title>선형부호의 매개변수</title>
-    <aside><p>부호의 길이:code length</p></aside>
     <p>
       길이가 <m>n</m>인 선형부호 <m>C
       \subset \mathbb F_2^n</m>의 차원이 <m>k</m>이고
       최소 해밍 거리가 <m>d</m>일 때, <m>C</m>의 매개변수를
-      <m>[n,k,d]</m>로 나타냅니다. 이때 <m>n</m>을 <term>부호의 길이</term>,
+      <m>[n,k,d]</m>로 나타냅니다. 이때 <m>n</m>을 <term>부호의 길이</term><aside><p>부호의 길이:code length</p></aside>,
       <m>k</m>를 <term>부호의 차원</term><aside><p>부호의 차원:code dimension</p></aside>,
-      <m>d</m>를 <term>최소 거리</term>라고 합니다. 즉,
+      <m>d</m>를 <term>최소 거리</term><aside><p>최소 거리:minimum distance</p></aside>라고 합니다. 즉,
       <md><mrow>k=\dim C, \quad d=\min\{d_H(x,y):x,y
       \in C, \text{ }x \ne y\}</mrow></md>
-      그리고, 비율 <m>k/n</m>을 <term>부호율</term><aside><p>부호율:code rate</p></aside> 또는 간단히 <term>비율</term>이라고 합니다.
+      그리고, 비율 <m>k/n</m>을 <term>부호율</term><aside><p>부호율:code rate</p></aside> 또는 간단히 <term>비율</term><aside><p>비율:rate</p></aside>이라고 합니다.
     </p>
-    <aside><p>최소 거리:minimum distance</p></aside>
   </definition>
 
   <p>
@@ -113,14 +106,14 @@
   <example xml:id="ex-repetition-code">
     <title>반복 부호</title>
     <p>
-      반복 부호 <m>R_n=\{00\cdots0,11\cdots1\} \subset \mathbb F_2^n</m>는 차원이 <m>1</m>인 부분공간입니다. 영벡터가 아닌 유일한 단어의 무게는 <m>n</m>이므로, <m>R_n</m>은 비율이 <m>1/n</m>인 <m>[n,1,n]_2</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>R_3=\{000,111\}</m>이고, 이는 <m>[3,1,3]_2</m> 부호입니다.
+      반복 부호 <m>R_n=\{00\cdots0,11\cdots1\} \subset \mathbb F_2^n</m>는 차원이 <m>1</m>인 부분공간입니다. 영벡터가 아닌 유일한 단어의 무게는 <m>n</m>이므로, <m>R_n</m>은 비율이 <m>1/n</m>인 <m>[n,1,n]</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>R_3=\{000,111\}</m>이고, 이는 <m>[3,1,3]</m> 부호입니다.
     </p>
   </example>
 
   <example xml:id="ex-single-parity-check-code">
     <title>단일 패리티 검사 부호</title>
     <p>
-      단일 패리티 검사 부호 <m>P_n=\{x\in\mathbb F_2^n:x_1+\cdots+x_n=0\}</m> (<m>n\ge 2</m>)은 영이 아닌 선형사상 <m>x\mapsto\sum_{i=1}^n x_i</m>의 커널이므로 차원이 <m>n-1</m>입니다. 무게가 <m>1</m>인 단어는 좌표의 합이 홀수이므로 <m>P_n</m>에 속하지 않지만, 무게가 <m>2</m>인 <m>110\cdots0</m>은 <m>P_n</m>에 속합니다. 따라서 <m>P_n</m>은 비율이 <m>(n-1)/n</m>인 <m>[n,n-1,2]_2</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>P_3=\{000,011,101,110\}</m>이고, 이는 <m>[3,2,2]_2</m> 부호입니다.
+      단일 패리티 검사 부호 <m>P_n=\{x\in\mathbb F_2^n:x_1+\cdots+x_n=0\}</m> (<m>n\ge 2</m>)은 영이 아닌 선형사상 <m>x\mapsto\sum_{i=1}^n x_i</m>의 커널이므로 차원이 <m>n-1</m>입니다. 무게가 <m>1</m>인 단어는 좌표의 합이 홀수이므로 <m>P_n</m>에 속하지 않지만, 무게가 <m>2</m>인 <m>110\cdots0</m>은 <m>P_n</m>에 속합니다. 따라서 <m>P_n</m>은 비율이 <m>(n-1)/n</m>인 <m>[n,n-1,2]</m> 부호입니다. 예를 들어 <m>n=3</m>이면 <m>P_3=\{000,011,101,110\}</m>이고, 이는 <m>[3,2,2]</m> 부호입니다.
     </p>
   </example>
 
@@ -135,8 +128,7 @@
     <title>검사 행렬</title>
     <p>
       선형부호 <m>C \subset \mathbb F_2^n</m>에 대해, <m>H\in\mathbb F_2^{(n-k)\times n}</m>가
-      <m>C=\{x\in\mathbb F_2^n:Hx=0\}</m>을 만족하면, <m>H</m>를 <term>검사 행렬</term>이라 합니다.
-      <aside><p>검사 행렬:parity-check matrix</p></aside>
+      <m>C=\{x\in\mathbb F_2^n:Hx=0\}</m>을 만족하면, <m>H</m>를 <term>검사 행렬</term><aside><p>검사 행렬:parity-check matrix</p></aside>이라 합니다.
     </p>
   </definition>
 
@@ -356,7 +348,7 @@
           <li><p><m>\dim P_n=n-1</m>이므로 <m>1\times n</m> 행렬이 필요하고, <m>(1\,\cdots\,1)x=x_1+\cdots+x_n</m>입니다.</p></li>
           <li><p><m>i</m>번째 행의 조건은 <m>x_i+x_{i+1}=0</m>, 즉 <m>x_i=x_{i+1}</m>입니다. 커널이 <m>R_n</m>으로 <m>1</m>차원이므로 계수-차원 정리에 의해 계수는 <m>n-1</m>입니다.</p></li>
           <li><p><m>H'x=0</m>은 <m>x_1=x_3</m>, <m>x_2=x_3</m>이므로 커널은 <m>R_3</m>이고, <m>H'</m>의 크기는 <m>(3-1)\times 3</m>입니다.</p></li>
-          <li><p><m>\ker H=C</m>의 차원이 <m>k</m>이므로 <m>\operatorname{rank}(H)=n-k</m>이고, 이는 행의 개수와 같습니다.</p></li>
+          <li><p><m>\operatorname{ker} H=C</m>의 차원이 <m>k</m>이므로 <m>\operatorname{rank}(H)=n-k</m>이고, 이는 행의 개수와 같습니다.</p></li>
         </ol>
       </p>
     </solution>
@@ -428,7 +420,7 @@
     <solution>
       <p>
         <ol marker="(a)">
-          <li><p><m>z</m>가 공통 원소이면 삼각부등식에 의해 <m>d_H(x,y)\le r+s</m>입니다. 반대로 <m>x,y</m>가 다른 좌표의 집합을 <m>D</m>라 하고 <m>m=|D|\le r+s</m>라 합시다. <m>D</m>의 부분집합 <m>T</m>로 <m>|T|=\min(r,m)</m>인 것을 택하고, <m>x</m>의 <m>T</m> 위의 성분을 바꾼 벡터를 <m>z</m>라 하면 <m>d_H(x,z)=|T|\le r</m>이고 <m>d_H(z,y)=m-|T|\le s</m>입니다.</p></li>
+          <li><p><m>z</m>가 공통 원소이면 삼각부등식에 의해 <m>d_H(x,y)\le r+s</m>입니다. 반대로 <m>x</m>와 <m>y</m>의 성분이 서로 다른 좌표의 집합을 <m>D=\{i\in\{1,\ldots,n\}:x_i\ne y_i\}</m>라 하고 <m>m=|D|\le r+s</m>라 합시다. <m>D</m>의 부분집합 <m>T</m>로 <m>|T|=\min(r,m)</m>인 것을 택하고, <m>T</m>에 속하는 좌표에서만 <m>x</m>의 성분을 바꾼 벡터를 <m>z</m>라 하면 <m>d_H(x,z)=|T|\le r</m>이고 <m>d_H(z,y)=m-|T|\le s</m>입니다.</p></li>
           <li><p>(a)에 의해 공들이 서로소일 필요충분조건은 서로 다른 모든 부호어 쌍에 대해 <m>d_H(c,c')&gt;2r</m>, 즉 <m>d&gt;2r</m>이며, 이는 <m>r\le\lfloor(d-1)/2\rfloor</m>와 동치입니다.</p></li>
         </ol>
       </p>
@@ -531,7 +523,7 @@
     <solution>
       <p>
         <ol marker="(a)">
-          <li><p><m>C</m>의 기저 <m>c_1,\dots,c_k</m>를 <m>\mathbb F_2^n</m>의 기저 <m>c_1,\dots,c_n</m>으로 확장합니다. <m>i\le k</m>이면 <m>\varphi(c_i)=0</m>, <m>\varphi(c_{k+j})=e_j\in\mathbb F_2^{n-k}</m>인 선형사상 <m>\varphi</m>를 정의하면 <m>\varphi(\sum_ia_ic_i)=\sum_ja_{k+j}e_j</m>이므로 <m>\ker\varphi=C</m>입니다. <m>\varphi</m>의 표현행렬이 원하는 <m>H</m>입니다.</p></li>
+          <li><p><m>C</m>의 기저 <m>c_1,\dots,c_k</m>를 <m>\mathbb F_2^n</m>의 기저 <m>c_1,\dots,c_n</m>으로 확장합니다. <m>i\le k</m>이면 <m>\varphi(c_i)=0</m>, <m>\varphi(c_{k+j})=e_j\in\mathbb F_2^{n-k}</m>인 선형사상 <m>\varphi</m>를 정의하면 <m>\varphi(\sum_ia_ic_i)=\sum_ja_{k+j}e_j</m>이므로 <m>\operatorname{ker}\varphi=C</m>입니다. <m>\varphi</m>의 표현행렬이 원하는 <m>H</m>입니다.</p></li>
           <li><p><m>E=\{x:x_1=x_2,\ x_3=x_4\}</m>이므로 <m>H=\begin{pmatrix}1&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;1\end{pmatrix}</m>입니다.</p></li>
         </ol>
       </p>
@@ -591,10 +583,10 @@
     <solution>
       <p>
         <ol marker="(a)">
-          <li><p><xref ref="exer-hd-weight-identities"/>(b)에 의해 <m>g</m>는 거리를 보존하고, <m>\operatorname{wt}(g(x))=d_H(g(x),g(0))=d_H(x,0)=\operatorname{wt}(x)</m>입니다.</p></li>
+          <li><p><xref ref="exer-hd-weight-identities"/>(b)에 의해 <m>g</m>는 거리를 보존하고, <m>g(0)=f(0)+f(0)=0</m>입니다. 또한 <xref ref="exer-hd-weight-identities"/>(a)에 의해 <m>\operatorname{wt}(g(x))=\operatorname{wt}(f(x)+f(0))=d_H(f(x),f(0))=d_H(x,0)=\operatorname{wt}(x)</m>입니다.</p></li>
           <li><p>거리를 보존하는 사상은 단사입니다. <m>g</m>는 무게 <m>1</m>인 <m>n</m>개의 벡터를 무게 <m>1</m>인 벡터로 단사적으로 보내므로 그 위에서 전단사이고, 이것이 <m>\sigma</m>를 정의합니다.</p></li>
           <li><p><m>w=\operatorname{wt}(x)</m>라 하면 <m>\operatorname{wt}(g(x))=w</m>이고 <m>d_H(g(x),e_{\sigma(i)})=d_H(x,e_i)</m>입니다. <xref ref="exer-hd-weight-identities"/>(d)에 의해 이 값이 <m>w-1</m>인 것은 <m>\sigma(i)\in\operatorname{supp}(g(x))</m>와 <m>i\in\operatorname{supp}(x)</m> 각각과 동치입니다. 따라서 <m>\operatorname{supp}(g(x))=\sigma(\operatorname{supp}(x))=\operatorname{supp}(x^\sigma)</m>이고 <m>g(x)=x^\sigma</m>입니다.</p></li>
-          <li><p>(c)에서 <m>f(0)=0</m>이면 <m>f(x)=x^\sigma</m>이고, 이는 좌표를 재배열하는 선형 전단사입니다. 선형부호의 상은 같은 차원의 부분공간이며, 거리를 보존하므로 최소 거리도 같습니다.</p></li>
+          <li><p>(c)에서 <m>f(0)=0</m>이면 <m>f(x)=x^\sigma</m>이고, 이는 좌표를 재배열하는 선형 전단사입니다. 선형부호의 이미지는 같은 차원의 부분공간이며, 거리를 보존하므로 최소 거리도 같습니다.</p></li>
         </ol>
       </p>
     </solution>
