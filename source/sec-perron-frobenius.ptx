@@ -103,7 +103,7 @@
   </lemma>
 
   <theorem xml:id="thm-perron-positive-matrix">
-    <title>페론 정리</title>
+    <title>페론-프로베니우스 정리</title>
     <statement>
       <p>
         <m>A\in\mathbb R^{d\times d}</m>가 양의 행렬이고 <m>\rho=\rho(A)</m>라 하자. 그러면 <m>\rho</m>는 양의 고유벡터를 갖는 대수적 중복도 <m>1</m>의 고윳값이다. 또한 <m>\rho</m>가 아닌 모든 고윳값 <m>\lambda</m>에 대하여 <m>|\lambda|&lt;\rho</m>이다.
@@ -127,7 +127,7 @@
   </theorem>
 
   <p>
-    페론 정리는 행렬 자체가 양수인 경우뿐 아니라, 어떤 양의 정수 거듭제곱이 양수인 비음수 행렬에도 그대로 적용됩니다. 이 조건은 반복 작용을 충분히 많이 한 뒤 모든 좌표가 서로 영향을 준다는 뜻입니다.
+    페론-프로베니우스 정리는 행렬 자체가 양수인 경우뿐 아니라, 어떤 양의 정수 거듭제곱이 양수인 비음수 행렬에도 그대로 적용됩니다. 이 조건은 반복 작용을 충분히 많이 한 뒤 모든 좌표가 서로 영향을 준다는 뜻입니다.
   </p>
 
   <theorem xml:id="thm-perron-frobenius-eventually-positive">
@@ -146,6 +146,24 @@
       </p>
     </proof>
   </theorem>
+
+  <p>
+    페론-프로베니우스 정리의 적용 예를 살펴봅시다.
+  </p>
+
+  <example xml:id="example-perron-positive-two-by-two">
+    <title>양의 <m>2\times2</m> 행렬</title>
+    <p>
+      양의 행렬 <m>A=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}</m>를 생각합시다. <m>\det(\lambda I-A)=(\lambda-2)^2-1=(\lambda-3)(\lambda-1)</m>이므로 고윳값은 <m>3,1</m>이고 <m>\rho(A)=3</m>입니다. <m>A(1,1)^{\mathsf T}=3(1,1)^{\mathsf T}</m>이므로 <m>(1,1)^{\mathsf T}</m>는 <m>\rho(A)</m>에 대응하는 양의 고유벡터입니다. 또한 <m>3</m>은 단순 고윳값이고 다른 고윳값은 <m>|1|&lt;3</m>을 만족하므로 <xref ref="thm-perron-positive-matrix"/>의 결론이 성립합니다.
+    </p>
+  </example>
+
+  <example xml:id="example-perron-eventually-positive">
+    <title>양의 거듭제곱을 갖는 비음수 행렬</title>
+    <p>
+      비음수 행렬 <m>A=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}</m>는 영인 성분을 가지므로 양의 행렬이 아니지만, <m>A^2=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}</m>는 양의 행렬입니다. <m>\det(\lambda I-A)=\lambda^2-\lambda-1</m>이므로 고윳값은 <m>\varphi=\frac{1+\sqrt5}{2}</m>와 <m>\psi=\frac{1-\sqrt5}{2}</m>이고 <m>\rho(A)=\varphi</m>입니다. <m>A(1,\varphi)^{\mathsf T}=(\varphi,1+\varphi)^{\mathsf T}=\varphi(1,\varphi)^{\mathsf T}</m>이므로 <m>(1,\varphi)^{\mathsf T}</m>는 양의 고유벡터이며, <m>|\psi|\approx0.618&lt;\varphi</m>입니다. 이는 <xref ref="thm-perron-frobenius-eventually-positive"/>와 일치합니다.
+    </p>
+  </example>
 
   <exercises xml:id="exercises-perron-frobenius">
     <title>연습문제</title>
