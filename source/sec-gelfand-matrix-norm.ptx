@@ -81,7 +81,9 @@
       </ul>
     </statement>
   </definition>
-  
+  <p>
+    행렬 노름은 행렬 공간을 벡터 공간으로 보고 그 위에 정의된 노름이라고 생각할 수 있습니다. 벡터공간의 노름에 대해서는 <xref ref="app-equivalence-of-norms"/>을 참고하십시오.
+  </p>
   <definition xml:id="def-submultiplicative-matrix-norm">
     <title>곱셈적 행렬 노름</title>
     <statement>
