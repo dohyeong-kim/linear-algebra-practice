@@ -62,7 +62,7 @@
     <title>스펙트럼 반지름의 양의 고유벡터</title>
     <statement>
       <p>
-        양의 행렬 <m>A</m>에 대하여 <m>\rho(A)&gt;0</m>이고, <m>\rho(A)</m>에는 양의 고유벡터가 존재한다.
+        양의 행렬 <m>A</m>에 대하여 <m>\rho(A)&gt;0</m>이고, <m>\rho(A)</m>에는 양의 고유벡터가 존재한다. 더 나아가 <m>\lvert\lambda\rvert=\rho(A)</m>인 고윳값 <m>\lambda</m>의 모든 고유벡터 <m>z</m>에 대하여 <m>|z|</m>는 양의 벡터이다.
       </p>
     </statement>
     <proof>
@@ -81,7 +81,7 @@
     </statement>
     <proof>
       <p>
-        <xref ref="lem-perron-boundary-eigenvector-absolute-value"/>에 의해 <m>A|z|=|Az|</m>입니다. 따라서 각 행에서 삼각부등식의 등호가 성립합니다. <m>A</m>의 모든 성분이 양수이고 <m>|z|</m>의 모든 성분도 양수이므로, 삼각부등식의 등호 조건에 따라 모든 <m>z_j</m>는 같은 복소수 위상을 가집니다. 즉, 어떤 실수 <m>\theta</m>에 대하여 <m>z=e^{i\theta}|z|</m>입니다. 이제
+        <xref ref="lem-perron-boundary-eigenvector-absolute-value"/>에 의해 <m>A|z|=|Az|</m>입니다. 따라서 각 행에서 삼각부등식의 등호가 성립합니다. <m>A</m>의 모든 성분이 양수이고 <xref ref="cor-perron-positive-eigenvector"/>에 의해 <m>|z|</m>의 모든 성분도 양수이므로, 삼각부등식의 등호 조건에 따라 모든 <m>z_j</m>는 같은 복소수 위상을 가집니다. 즉, 어떤 실수 <m>\theta</m>에 대하여 <m>z=e^{i\theta}|z|</m>입니다. 이제
         <me>Az=\lambda z,\qquad A|z|=\rho(A)|z|</me>
         이고 <m>z=e^{i\theta}|z|</m>이므로 <m>\lambda=\rho(A)</m>입니다.
       </p>
@@ -97,7 +97,7 @@
     </statement>
     <proof>
       <p>
-        <m>\rho(A)</m>에 선형독립인 두 고유벡터 <m>z,w</m>가 있다고 가정합시다. <xref ref="lem-perron-phase-rigidity"/>에 의해 두 벡터의 모든 성분은 영이 아닙니다. 따라서 적절한 스칼라 <m>c</m>를 택하면 <m>u=z-cw</m>가 영벡터가 아니면서 첫 번째 성분은 <m>0</m>인 <m>\rho(A)</m>의 고유벡터가 됩니다. 그러나 <xref ref="cor-perron-positive-eigenvector"/>를 <m>u</m>에 적용하면 <m>|u|</m>의 모든 성분이 양수여야 하므로 모순입니다.
+        <m>\rho(A)</m>에 선형독립인 두 고유벡터 <m>z,w</m>가 있다고 가정합시다. <xref ref="cor-perron-positive-eigenvector"/>에 의해 두 벡터의 모든 성분은 영이 아닙니다. 따라서 적절한 스칼라 <m>c</m>를 택하면 <m>u=z-cw</m>는 영벡터가 아니면서 첫 번째 성분이 <m>0</m>인 <m>\rho(A)</m>의 고유벡터가 됩니다. 이는 <m>|u|</m>가 양의 벡터라는 같은 따름정리의 결론에 모순입니다.
       </p>
     </proof>
   </lemma>
@@ -273,7 +273,7 @@
         <solution>
           <p>
             <m>N^k=\begin{pmatrix}1&amp;k\\0&amp;1\end{pmatrix}</m>는 <m>(2,1)</m> 성분이 <m>0</m>입니다.
-            <m>\rho(N)=1</m>의 대수적 중복도는 <m>2</m>이고 고유공간은 <m>e_1</m>으로 생성되므로 양의 고유벡터도 없습니다. 스펙트럼 원 위에 다른 고윳값이 없다는 것만 성립합니다.
+            <m>\rho(N)=1</m>의 대수적 중복도는 <m>2</m>이고 고유공간은 <m>e_1</m>으로 생성되므로 양의 고유벡터도 없습니다. <m>N</m>의 고윳값은 <m>1</m>뿐이므로 '다른 고윳값의 절댓값이 <m>\rho</m>보다 작다'는 조건은 자명하게만 성립합니다. 한편 <m>e_1</m>은 양은 아니지만 비음수인 고유벡터입니다(<xref ref="exer-perron-weak-nonnegative"/> 참조).
           </p>
         </solution>
       </task>
@@ -445,7 +445,7 @@
           <p>
             <m>A^{\mathsf T}w=\rho(A)w</m>인 양의 벡터 <m>w</m>를 택합니다. <m>x\geq0</m>, <m>x\neq0</m>이므로 <m>w^{\mathsf T}x&gt;0</m>이고,
             <m>\mu w^{\mathsf T}x=w^{\mathsf T}Ax=(A^{\mathsf T}w)^{\mathsf T}x=\rho(A)w^{\mathsf T}x</m>에서 <m>\mu=\rho(A)</m>입니다.
-            <xref ref="lem-perron-geometric-multiplicity-one"/>에 의해 <m>x=cv</m>이고, <m>x</m>가 비음수이며 영이 아니고 <m>v&gt;0</m>이므로 <m>c&gt;0</m>입니다.
+            <m>\rho(A)</m>의 양의 고유벡터 <m>v</m>를 택하면 <xref ref="lem-perron-geometric-multiplicity-one"/>에 의해 <m>x=cv</m>이고, <m>x</m>가 비음수이며 영이 아니고 <m>v&gt;0</m>이므로 <m>c&gt;0</m>입니다.
           </p>
         </solution>
       </task>
@@ -457,7 +457,7 @@
         </statement>
         <solution>
           <p>
-            <m>A^k&gt;0</m>이면 <m>(A^{\mathsf T})^k=(A^k)^{\mathsf T}&gt;0</m>이므로 <xref ref="thm-perron-frobenius-eventually-positive"/>를 <m>A</m>와 <m>A^{\mathsf T}</m>에 적용하여 양의 벡터 <m>v,w</m>를 얻고, 위 논증이 그대로 적용됩니다.
+            <m>A^k&gt;0</m>이면 <m>(A^{\mathsf T})^k=(A^k)^{\mathsf T}&gt;0</m>이므로 <xref ref="thm-perron-frobenius-eventually-positive"/>를 <m>A</m>와 <m>A^{\mathsf T}</m>에 적용하여 <m>Av=\rho(A)v</m>, <m>A^{\mathsf T}w=\rho(A)w</m>인 양의 벡터 <m>v,w</m>를 얻습니다. 앞 문항과 같은 계산으로 <m>\mu=\rho(A)</m>입니다. 또한 <m>\rho(A)</m>의 대수적 중복도가 <m>1</m>이므로 기하적 중복도도 <m>1</m>이고, 따라서 <m>x=cv</m>이며 <m>c&gt;0</m>입니다.
             반면 <m>\operatorname{diag}(1,2)</m>의 비음수 고유벡터 <m>e_1</m>은 고윳값 <m>1&lt;2=\rho</m>에 대응합니다.
           </p>
         </solution>
@@ -597,7 +597,8 @@
         </statement>
         <solution>
           <p>
-            <m>Ax=(6,11,11)^{\mathsf T}</m>이므로 비율은 <m>6,5.5,5.5</m>이고 <m>5.5\leq\rho(A)\leq6</m>입니다. 이는 행합에서 얻은 <m>4&lt;\rho(A)&lt;6</m>보다 훨씬 좋으며, 실제 값 <m>\frac{7+\sqrt{17}}2\approx5.56</m>과도 부합합니다.
+            <m>Ax=(6,11,11)^{\mathsf T}</m>이므로 비율은 <m>6,5.5,5.5</m>이고 <m>5.5\leq\rho(A)\leq6</m>입니다. 행합에서 얻은 <m>4&lt;\rho(A)&lt;6</m>과 비교하면 하한은 크게 개선되지만 상한은 개선되지 않습니다.
+            <m>x=(5,9,9)^{\mathsf T}</m>로 두면 <m>Ax=(28,50,50)^{\mathsf T}</m>이므로 <m>\frac{50}{9}\leq\rho(A)\leq\frac{28}{5}</m>, 즉 <m>5.556\leq\rho(A)\leq5.6</m>으로 양쪽이 모두 개선되며, 실제 값 <m>\frac{7+\sqrt{17}}2\approx5.5616</m>을 포함합니다. 이는 <m>x</m>가 페론 벡터 <m>\bigl(1,\tfrac{\rho-2}{2},\tfrac{\rho-2}{2}\bigr)^{\mathsf T}\approx(1,1.78,1.78)^{\mathsf T}</m>에 가깝기 때문입니다.
             <m>x=\mathbf 1</m>로 두면 <m>m(\mathbf 1),M(\mathbf 1)</m>이 최소, 최대 행합이 되므로, 이 공식은 행합 평가의 일반화입니다.
           </p>
         </solution>
@@ -675,7 +676,7 @@
           <p>
             <m>C</m>에서는 <m>j\to j+1</m>이 경로이므로 연결 조건은 성립하지만, 어떤 거듭제곱도 양이 아님을 이미 보였습니다.
             <m>I+C</m>는 대각성분이 <m>1</m>이고 같은 연결 조건을 만족하므로 <m>(I+C)^{d-1}&gt;0</m>입니다.
-            고윳값은 <m>1+\omega</m>(<m>\omega^d=1</m>)이고 <m>\rho(I+C)=2</m>는 <m>\omega=1</m>에서만 달성됩니다. <m>\omega\neq1</m>이면 <m>\lvert1+\omega\rvert&lt;2</m>이므로 정리의 결론과 일치합니다.
+            고윳값은 <m>1+\omega</m>(<m>\omega^d=1</m>)입니다. <m>d</m>개의 <m>\omega</m>가 서로 다르므로 <m>1+\omega</m>도 서로 다르고, 따라서 <m>\rho(I+C)=2</m>는 단순 고윳값이며 <m>(I+C)\mathbf 1=2\cdot\mathbf 1</m>이므로 <m>\mathbf 1</m>이 양의 고유벡터입니다. 또 <m>\omega\neq1</m>이면 <m>\lvert1+\omega\rvert&lt;2</m>이므로 정리의 결론과 일치합니다.
           </p>
         </solution>
       </task>

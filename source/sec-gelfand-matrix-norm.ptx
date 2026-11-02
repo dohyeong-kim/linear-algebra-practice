@@ -286,11 +286,14 @@
       <md><mrow>\rho(A)\leq\liminf_{k\to\infty}\|A^k\|_2^{1/k}</mrow></md>
       <p>
         이제 <m>\varepsilon&gt;0</m>을 임의로 잡고 <m>B=A/(\rho(A)+\varepsilon)</m>라 두면 <m>\rho(B)&lt;1</m>입니다.
-        앞 절의 <xref ref="prop-powers-additive-jordan-decomposition"/>에 따라 <m>B=B_s+B_n</m>으로 분해합니다. 여기서 <m>B_s</m>는 대각화 가능하고 <m>B_n</m>은 멱영이며 두 행렬은 서로 가환합니다. <m>B_s</m>의 고윳값은 <m>B</m>의 고윳값과 같으므로 모두 절댓값이 <m>1</m>보다 작습니다. <m>B_n^m=0</m>인 자연수 <m>m</m>을 택하면 이항 정리에 따라
+        앞 절의 <xref ref="prop-powers-additive-jordan-decomposition"/>에 따라 <m>B=B_s+B_n</m>으로 분해합니다. 여기서 <m>B_s</m>는 대각화 가능하고 <m>B_n</m>은 멱영이며 두 행렬은 서로 가환합니다. <m>B_s</m>의 고윳값은 <m>B</m>의 고윳값과 같으므로 모두 절댓값이 <m>1</m>보다 작습니다. <m>B_n^m=0</m>인 자연수 <m>m</m>을 택하면 <m>k\geq m-1</m>일 때 이항 정리에 따라
       </p>
       <md><mrow>B^k=\sum_{j=0}^{m-1}\binom{k}{j}B_s^{k-j}B_n^j</mrow></md>
       <p>
-        으로 쓸 수 있습니다. <m>B_s</m>가 대각화 가능하고 모든 고윳값의 절댓값이 <m>1</m>보다 작으므로, 각 고정된 <m>j</m>에 대하여 <m>B_s^{k-j}</m>의 성분은 지수적으로 감소합니다. 따라서 <m>\binom{k}{j}B_s^{k-j}B_n^j\to 0</m>이고, 유한 개의 항을 더하면 <m>B^k\to 0</m>입니다.
+        으로 쓸 수 있습니다.
+      </p>
+      <p>
+        <m>B_s</m>가 대각화 가능하고 모든 고윳값의 절댓값이 <m>1</m>보다 작으므로, 각 고정된 <m>j</m>에 대하여 <m>B_s^{k-j}</m>의 성분은 지수적으로 감소합니다. 따라서 <m>\binom{k}{j}B_s^{k-j}B_n^j\to 0</m>이고, 유한 개의 항을 더하면 <m>B^k\to 0</m>입니다.
         그러므로 충분히 큰 모든 <m>k</m>에 대하여 <m>\|B^k\|_2\leq 1</m>, 즉 <m>\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>입니다.
         이로부터 <m>\limsup_{k\to\infty}\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>이고, <m>\varepsilon</m>은 임의이므로 다음이 성립합니다.
       </p>
@@ -722,14 +725,17 @@
       <task>
         <statement>
           <p>
-            어떤 상수 <m>C</m>에 대해서도 모든 <m>k</m>에서 <m>\|J^k\|_1\leq C\rho(J)^k</m>가 성립할 수는 없음을 보이고, 겔판트 공식의 증명에서 다항식 인자 <m>k^{n-1}</m>이 필요한 이유를 설명하여라.
+            어떤 상수 <m>C</m>에 대해서도 모든 <m>k</m>에서 <m>\|J^k\|_1\leq C\rho(J)^k</m>가 성립할 수는 없음을 보이고, 겔판트 공식의 증명에서 <m>\rho(A)</m> 대신 <m>r=\rho(A)+\varepsilon&gt;\rho(A)</m>로 나누는 이유를 설명하여라.
           </p>
         </statement>
         <solution>
           <p>
-            <m>\|J^k\|_1/\rho(J)^k=1+k/\lvert\lambda\rvert\to\infty</m>이므로 그러한 상수 <m>C</m>는 존재하지 않습니다.
-            즉 대각화 가능하지 않은 행렬에서는 <m>\|A^k\|</m>이 <m>\rho(A)^k</m>보다 다항식 배만큼 빠르게 자랄 수 있으며, 이 때문에 증명에서 <m>Kk^{n-1}\rho(A)^k</m> 형태의 상계를 사용합니다.
-            이 다항식 인자는 <m>k</m>제곱근을 취하면 <m>1</m>로 수렴하므로 극한에는 영향을 주지 않습니다.
+            이 조르당 블록에 대하여
+          </p>
+          <md><mrow>\|J^k\|_1=\left(1+\frac{k}{\lvert\lambda\rvert}\right)\rho(J)^k</mrow></md>
+          <p>
+            이므로 <m>\rho(J)^k</m>의 상수배만으로는 거듭제곱의 크기를 유계로 잡을 수 없습니다.
+            겔판트 공식의 증명에서는 그 대신 임의의 <m>r&gt;\rho(A)</m>를 택하여 <m>B=A/r</m>를 생각하며, 이때 나타나는 지수적 감소가 다항식 인자를 흡수합니다.
           </p>
         </solution>
       </task>
