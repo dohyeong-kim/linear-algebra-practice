@@ -21,8 +21,6 @@
   </definition>
 
   
-
-  
   <proposition xml:id="prop-spectral-radius-largest-eigenvalue">
     <title>스펙트럼 반지름과 고윳값</title>
     <statement>
@@ -286,9 +284,11 @@
       <md><mrow>\rho(A)\leq\liminf_{k\to\infty}\|A^k\|_2^{1/k}</mrow></md>
       <p>
         이제 <m>\varepsilon&gt;0</m>을 임의로 잡고 <m>B=A/(\rho(A)+\varepsilon)</m>라 두면 <m>\rho(B)&lt;1</m>입니다.
-        <m>B=PJP^{-1}</m>를 조르당 표준형이라 하면 <m>B^k=PJ^kP^{-1}</m>이고, 고윳값 <m>\mu</m>에 대한 크기 <m>m</m>의 조르당 블록의 <m>k</m>제곱의 각 성분은
-        <m>0\leq j\leq m-1</m>에 대하여 <m>\binom{k}{j}\mu^{k-j}</m> 꼴이거나 <m>0</m>입니다.
-        <m>\lvert\mu\rvert&lt;1</m>이므로 <m>\binom{k}{j}\lvert\mu\rvert^{k-j}\leq k^j\lvert\mu\rvert^{k-j}\to 0</m>이고, 따라서 <m>B^k\to 0</m>입니다.
+        앞 절의 <xref ref="prop-powers-additive-jordan-decomposition"/>에 따라 <m>B=B_s+B_n</m>으로 분해합니다. 여기서 <m>B_s</m>는 대각화 가능하고 <m>B_n</m>은 멱영이며 두 행렬은 서로 가환합니다. <m>B_s</m>의 고윳값은 <m>B</m>의 고윳값과 같으므로 모두 절댓값이 <m>1</m>보다 작습니다. <m>B_n^m=0</m>인 자연수 <m>m</m>을 택하면 이항 정리에 따라
+      </p>
+      <md><mrow>B^k=\sum_{j=0}^{m-1}\binom{k}{j}B_s^{k-j}B_n^j</mrow></md>
+      <p>
+        으로 쓸 수 있습니다. <m>B_s</m>가 대각화 가능하고 모든 고윳값의 절댓값이 <m>1</m>보다 작으므로, 각 고정된 <m>j</m>에 대하여 <m>B_s^{k-j}</m>의 성분은 지수적으로 감소합니다. 따라서 <m>\binom{k}{j}B_s^{k-j}B_n^j\to 0</m>이고, 유한 개의 항을 더하면 <m>B^k\to 0</m>입니다.
         그러므로 충분히 큰 모든 <m>k</m>에 대하여 <m>\|B^k\|_2\leq 1</m>, 즉 <m>\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>입니다.
         이로부터 <m>\limsup_{k\to\infty}\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon</m>이고, <m>\varepsilon</m>은 임의이므로 다음이 성립합니다.
       </p>
@@ -336,6 +336,33 @@
       입니다. 두 부분수열 모두 <m>2</m>로 수렴하므로 <m>\lim_{k\to\infty}\|A^k\|_1^{1/k}=2=\rho(A)</m>입니다.
     </p>
   </example>
+
+  <p>
+    곱셈적 행렬 노름과 겔판트 공식에 대해 살펴보았습니다. 대표적 행렬 노름인 <m>\|\cdot \|_1</m>과 <m>\|\cdot \|_2</m>는 벡터의 노름에서 유래하였습니다. 하지만 곱셈적 행렬 노름 중에서는 벡터의 노름에서 유래하지 않은 것도 존재합니다. 예를 들어 <xref ref="def-frobenius-norm"/>의 프로베니우스 노름 <m>\|\cdot\|_F</m>가 있습니다.
+  </p>
+
+  <proposition xml:id="prop-frobenius-submultiplicative">
+    <title>프로베니우스 노름의 부분곱셈성</title>
+    <statement>
+      <p>
+        같은 크기의 정사각행렬 <m>A</m>와 <m>B</m>에 대하여 <m>\|AB\|_F\leq\|A\|_F\|B\|_F</m>이다.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        <m>A</m>의 <m>i</m>번째 행을 <m>a_i</m>, <m>B</m>의 <m>j</m>번째 열을 <m>b_j</m>라 하면 <m>(AB)_{ij}=a_i\cdot b_j</m>입니다.
+        코시-슈바르츠 부등식에 의하여 <m>|a_i\cdot b_j|^2\leq\|a_i\|^2\|b_j\|^2</m>입니다. 따라서
+        <md>
+          <mrow>\|AB\|_F^2&amp;=\sum_{i,j}|a_i\cdot b_j|^2\leq\sum_{i,j}\|a_i\|^2\|b_j\|^2</mrow>
+          <mrow>&amp;=\left(\sum_i\|a_i\|^2\right)\left(\sum_j\|b_j\|^2\right)=\|A\|_F^2\|B\|_F^2</mrow>
+        </md>
+        입니다. 양변에 제곱근을 취하면 <m>\|AB\|_F\leq\|A\|_F\|B\|_F</m>입니다.
+      </p>
+    </proof>
+  </proposition>
+  <p>
+    프로베니우스 노름은 벡터의 노름에서 유래하지 않습니다. 벡터의 노름에서 유래했다면 <m>\|I\|_F=1</m>이어야 하지만 실제로는 <m>\|I\|_F=\sqrt{n}</m>입니다.
+  </p>
 
   <example xml:id="ex-gelfand-frobenius-nilpotent">
     <title>멱영행렬과 프로베니우스 노름</title>
