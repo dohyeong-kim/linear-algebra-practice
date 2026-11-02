@@ -1346,24 +1346,30 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 \rho(A)=\lim_{k\to\infty}\|A^k\|^{1/k}
 \end{gather*}
 </div></article><details id="thm-gelfand-formula-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-gelfand-formula-3-1">먼저 <span class="process-math">\(\|\cdot\|\)</span>가 스펙트럼 노름, 즉 유클리드 노름이 유도하는 연산자 노름 <span class="process-math">\(\|\cdot\|_2\)</span>인 경우를 증명합니다. <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(A\)</span>의 고윳값이고 <span class="process-math">\(v\neq 0\)</span>가 대응하는 고유벡터이면 <span class="process-math">\(A^kv=\lambda^kv\)</span>이므로 <span class="process-math">\(\lvert\lambda\rvert^k\|v\|_2=\|A^kv\|_2\leq\|A^k\|_2\|v\|_2\)</span>입니다. 따라서 모든 <span class="process-math">\(k\geq 1\)</span>에 대하여 <span class="process-math">\(\rho(A)\leq\|A^k\|_2^{1/k}\)</span>이고, 다음을 얻습니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-2">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html ./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-2">
 \begin{gather*}
 \rho(A)\leq\liminf_{k\to\infty}\|A^k\|_2^{1/k}
 \end{gather*}
 </div>
-<div class="para" id="thm-gelfand-formula-3-3">이제 <span class="process-math">\(\varepsilon&gt;0\)</span>을 임의로 잡고 <span class="process-math">\(B=A/(\rho(A)+\varepsilon)\)</span>라 두면 <span class="process-math">\(\rho(B)&lt;1\)</span>입니다. <span class="process-math">\(B=PJP^{-1}\)</span>를 조르당 표준형이라 하면 <span class="process-math">\(B^k=PJ^kP^{-1}\)</span>이고, 고윳값 <span class="process-math">\(\mu\)</span>에 대한 크기 <span class="process-math">\(m\)</span>의 조르당 블록의 <span class="process-math">\(k\)</span>제곱의 각 성분은 <span class="process-math">\(0\leq j\leq m-1\)</span>에 대하여 <span class="process-math">\(\binom{k}{j}\mu^{k-j}\)</span> 꼴이거나 <span class="process-math">\(0\)</span>입니다. <span class="process-math">\(\lvert\mu\rvert&lt;1\)</span>이므로 <span class="process-math">\(\binom{k}{j}\lvert\mu\rvert^{k-j}\leq k^j\lvert\mu\rvert^{k-j}\to 0\)</span>이고, 따라서 <span class="process-math">\(B^k\to 0\)</span>입니다. 그러므로 충분히 큰 모든 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(\|B^k\|_2\leq 1\text{,}\)</span> 즉 <span class="process-math">\(\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon\)</span>입니다. 이로부터 <span class="process-math">\(\limsup_{k\to\infty}\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon\)</span>이고, <span class="process-math">\(\varepsilon\)</span>은 임의이므로 다음이 성립합니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-4">
+<div class="para" id="thm-gelfand-formula-3-3">이제 <span class="process-math">\(\varepsilon&gt;0\)</span>을 임의로 잡고 <span class="process-math">\(B=A/(\rho(A)+\varepsilon)\)</span>라 두면 <span class="process-math">\(\rho(B)&lt;1\)</span>입니다. 앞 절의 <a href="sec-powers-of-a-matrix.html#prop-powers-additive-jordan-decomposition" class="xref" data-knowl="./knowl/xref/prop-powers-additive-jordan-decomposition.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.1.7: 가법 조르당 분해에서의 거듭제곱">명제 4.1.7</a>에 따라 <span class="process-math">\(B=B_s+B_n\)</span>으로 분해합니다. 여기서 <span class="process-math">\(B_s\)</span>는 대각화 가능하고 <span class="process-math">\(B_n\)</span>은 멱영이며 두 행렬은 서로 가환합니다. <span class="process-math">\(B_s\)</span>의 고윳값은 <span class="process-math">\(B\)</span>의 고윳값과 같으므로 모두 절댓값이 <span class="process-math">\(1\)</span>보다 작습니다. <span class="process-math">\(B_n^m=0\)</span>인 자연수 <span class="process-math">\(m\)</span>을 택하면 이항 정리에 따라</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html ./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-4">
+\begin{gather*}
+B^k=\sum_{j=0}^{m-1}\binom{k}{j}B_s^{k-j}B_n^j
+\end{gather*}
+</div>
+<div class="para" id="thm-gelfand-formula-3-5">으로 쓸 수 있습니다. <span class="process-math">\(B_s\)</span>가 대각화 가능하고 모든 고윳값의 절댓값이 <span class="process-math">\(1\)</span>보다 작으므로, 각 고정된 <span class="process-math">\(j\)</span>에 대하여 <span class="process-math">\(B_s^{k-j}\)</span>의 성분은 지수적으로 감소합니다. 따라서 <span class="process-math">\(\binom{k}{j}B_s^{k-j}B_n^j\to 0\)</span>이고, 유한 개의 항을 더하면 <span class="process-math">\(B^k\to 0\)</span>입니다. 그러므로 충분히 큰 모든 <span class="process-math">\(k\)</span>에 대하여 <span class="process-math">\(\|B^k\|_2\leq 1\text{,}\)</span> 즉 <span class="process-math">\(\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon\)</span>입니다. 이로부터 <span class="process-math">\(\limsup_{k\to\infty}\|A^k\|_2^{1/k}\leq\rho(A)+\varepsilon\)</span>이고, <span class="process-math">\(\varepsilon\)</span>은 임의이므로 다음이 성립합니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html ./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-6">
 \begin{gather*}
 \lim_{k\to\infty}\|A^k\|_2^{1/k}=\rho(A)
 \end{gather*}
 </div>
-<div class="para" id="thm-gelfand-formula-3-5">다음으로 <span class="process-math">\(\|\cdot\|\)</span>를 임의의 곱셈적 행렬 노름이라 합니다. <span class="process-math">\(\mathbb C^{n\times n}\)</span>은 유한차원 벡터공간이므로 <a href="app-equivalence-of-norms.html#thm-equivalence-of-norms" class="xref" data-knowl="./knowl/xref/thm-equivalence-of-norms.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 2.0.8: 유한 차원 공간에서 노름의 동치성">정리 2.0.8</a>에 따라 모든 노름은 동치입니다. 즉 어떤 상수 <span class="process-math">\(c,C&gt;0\)</span>가 존재하여 모든 <span class="process-math">\(M\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(c\|M\|\leq\|M\|_2\leq C\|M\|\)</span>입니다. <span class="process-math">\(M=A^k\)</span>를 대입하고 <span class="process-math">\(1/k\)</span>제곱을 취하면 다음을 얻습니다.</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-6">
+<div class="para" id="thm-gelfand-formula-3-7">다음으로 <span class="process-math">\(\|\cdot\|\)</span>를 임의의 곱셈적 행렬 노름이라 합니다. <span class="process-math">\(\mathbb C^{n\times n}\)</span>은 유한차원 벡터공간이므로 <a href="app-equivalence-of-norms.html#thm-equivalence-of-norms" class="xref" data-knowl="./knowl/xref/thm-equivalence-of-norms.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 2.0.8: 유한 차원 공간에서 노름의 동치성">정리 2.0.8</a>에 따라 모든 노름은 동치입니다. 즉 어떤 상수 <span class="process-math">\(c,C&gt;0\)</span>가 존재하여 모든 <span class="process-math">\(M\in\mathbb C^{n\times n}\)</span>에 대하여 <span class="process-math">\(c\|M\|\leq\|M\|_2\leq C\|M\|\)</span>입니다. <span class="process-math">\(M=A^k\)</span>를 대입하고 <span class="process-math">\(1/k\)</span>제곱을 취하면 다음을 얻습니다.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html ./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-8">
 \begin{gather*}
 C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 \end{gather*}
 </div>
-<div class="para" id="thm-gelfand-formula-3-7">
+<div class="para" id="thm-gelfand-formula-3-9">
 <span class="process-math">\(k\to\infty\)</span>일 때 <span class="process-math">\(c^{-1/k}\to 1\text{,}\)</span> <span class="process-math">\(C^{-1/k}\to 1\)</span>이고 <span class="process-math">\(\|A^k\|_2^{1/k}\to\rho(A)\)</span>이므로, 조임 정리에 따라 <span class="process-math">\(\lim_{k\to\infty}\|A^k\|^{1/k}=\rho(A)\)</span>입니다. 따라서 겔판트 공식의 우변은 노름의 선택에 의존하지 않습니다.</div></article></details><details id="ex-gelfand-spectral-norm" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
 <span class="type">예시</span><span class="space"> </span><span class="codenumber">4.2.16</span><span class="period">.</span><span class="space"> </span><span class="title">스펙트럼 노름을 이용한 겔판트 공식.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-gelfand-spectral-norm-2">
@@ -1393,8 +1399,23 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 \end{align*}
 </div>
 <div class="para">입니다. 두 부분수열 모두 <span class="process-math">\(2\)</span>로 수렴하므로 <span class="process-math">\(\lim_{k\to\infty}\|A^k\|_1^{1/k}=2=\rho(A)\)</span>입니다.</div>
-</div></article></details><details id="ex-gelfand-frobenius-nilpotent" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
-<span class="type">예시</span><span class="space"> </span><span class="codenumber">4.2.18</span><span class="period">.</span><span class="space"> </span><span class="title">멱영행렬과 프로베니우스 노름.</span>
+</div></article></details><div class="para" id="sec-gelfand-matrix-norm-23">곱셈적 행렬 노름과 겔판트 공식에 대해 살펴보았습니다. 대표적 행렬 노름인 <span class="process-math">\(\|\cdot \|_1\)</span>과 <span class="process-math">\(\|\cdot \|_2\)</span>는 벡터의 노름에서 유래하였습니다. 하지만 곱셈적 행렬 노름 중에서는 벡터의 노름에서 유래하지 않은 것도 존재합니다. 예를 들어 <a href="sec-image-compression.html#def-frobenius-norm" class="xref" data-knowl="./knowl/xref/def-frobenius-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.7.11: 프로베니우스 노름">정의 1.7.11</a>의 프로베니우스 노름 <span class="process-math">\(\|\cdot\|_F\)</span>가 있습니다.</div>
+<article class="proposition theorem-like" id="prop-frobenius-submultiplicative"><h3 class="heading">
+<span class="type">명제</span><span class="space"> </span><span class="codenumber">4.2.18</span><span class="period">.</span><span class="space"> </span><span class="title">프로베니우스 노름의 부분곱셈성.</span>
+</h3>
+<div class="para" id="prop-frobenius-submultiplicative-2-1">같은 크기의 정사각행렬 <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>에 대하여 <span class="process-math">\(\|AB\|_F\leq\|A\|_F\|B\|_F\)</span>이다.</div></article><details id="prop-frobenius-submultiplicative-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">증명<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-frobenius-submultiplicative-3-1">
+<div class="para">
+<span class="process-math">\(A\)</span>의 <span class="process-math">\(i\)</span>번째 행을 <span class="process-math">\(a_i\text{,}\)</span> <span class="process-math">\(B\)</span>의 <span class="process-math">\(j\)</span>번째 열을 <span class="process-math">\(b_j\)</span>라 하면 <span class="process-math">\((AB)_{ij}=a_i\cdot b_j\)</span>입니다. 코시-슈바르츠 부등식에 의하여 <span class="process-math">\(|a_i\cdot b_j|^2\leq\|a_i\|^2\|b_j\|^2\)</span>입니다. 따라서</div>
+<div class="displaymath process-math" id="prop-frobenius-submultiplicative-3-1-9">
+\begin{align*}
+\|AB\|_F^2&amp;=\sum_{i,j}|a_i\cdot b_j|^2\leq\sum_{i,j}\|a_i\|^2\|b_j\|^2\\
+&amp;=\left(\sum_i\|a_i\|^2\right)\left(\sum_j\|b_j\|^2\right)=\|A\|_F^2\|B\|_F^2
+\end{align*}
+</div>
+<div class="para">입니다. 양변에 제곱근을 취하면 <span class="process-math">\(\|AB\|_F\leq\|A\|_F\|B\|_F\)</span>입니다.</div>
+</div></article></details><div class="para" id="sec-gelfand-matrix-norm-25">프로베니우스 노름은 벡터의 노름에서 유래하지 않습니다. 벡터의 노름에서 유래했다면 <span class="process-math">\(\|I\|_F=1\)</span>이어야 하지만 실제로는 <span class="process-math">\(\|I\|_F=\sqrt{n}\)</span>입니다.</div>
+<details id="ex-gelfand-frobenius-nilpotent" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">예시</span><span class="space"> </span><span class="codenumber">4.2.19</span><span class="period">.</span><span class="space"> </span><span class="title">멱영행렬과 프로베니우스 노름.</span>
 </h3></summary><article class="example example-like knowl__content"><div class="para logical" id="ex-gelfand-frobenius-nilpotent-2">
 <div class="para">
 <span class="process-math">\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>를 생각하고, 곱셈적 행렬 노름인 프로베니우스 노름 <span class="process-math">\(\|\cdot\|_F\)</span>를 사용합니다. <span class="process-math">\(N\)</span>의 고윳값은 <span class="process-math">\(0\)</span>뿐이므로 <span class="process-math">\(\rho(N)=0\)</span>입니다. <span class="process-math">\(\|N\|_F=1\)</span>이지만 <span class="process-math">\(k\geq 2\)</span>이면 <span class="process-math">\(N^k=0\)</span>이므로 <span class="process-math">\(\|N^k\|_F^{1/k}=0\)</span>이고,</div>
