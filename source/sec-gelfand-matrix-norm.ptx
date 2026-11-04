@@ -347,7 +347,7 @@
   </p>
 
   <proposition xml:id="prop-frobenius-submultiplicative">
-    <title>프로베니우스 노름의 부분곱셈성</title>
+    <title>프로베니우스 노름의 곱셈성</title>
     <statement>
       <p>
         같은 크기의 정사각행렬 <m>A</m>와 <m>B</m>에 대하여 <m>\|AB\|_F\leq\|A\|_F\|B\|_F</m>이다.
