@@ -323,7 +323,7 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">절</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">행렬-트리 정리</span>
 </h1>
 <div class="para" id="sec-matrix-tree-theorem-2">
-<a href="sec-graphs-and-incidence.html" class="internal" title="절 5.1: 그래프와 인접 행렬">절 5.1</a>에서는 그래프의 성질을 그 인접 행렬을 이용해 표현해 보았습니다. 그렇다면 신장 트리의 개수도 인접 행렬로부터 구할 수 있을까요? 신장 트리는 <a href="sec-graphs-and-incidence.html#def-spanning-tree" class="xref" data-knowl="./knowl/xref/def-spanning-tree.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 5.1.7: 신장 트리">정의 5.1.7</a>에서 보듯이 뿌리의 선택과 모든 꼭짓점에 대한 경로의 유일성이라는 전역적인 조건으로 정의됩니다. 순환이나 양방향 변과 달리 몇 개의 꼭짓점만 보고 판단할 수 없습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<a href="sec-graphs-and-incidence.html" class="internal" title="절 5.1: 그래프와 인접 행렬">절 5.1</a>에서는 그래프의 성질을 그 인접 행렬을 이용해 표현해 보았습니다. 그렇다면 신장 트리의 개수도 인접 행렬로부터 구할 수 있을까요? 신장 트리는 <a href="sec-graphs-and-incidence.html#def-spanning-tree" class="xref" data-knowl="./knowl/xref/def-spanning-tree.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 5.1.10: 신장 트리">정의 5.1.10</a>에서 보듯이 뿌리의 선택과 모든 꼭짓점에 대한 경로의 유일성이라는 전역적인 조건으로 정의됩니다. 순환이나 양방향 변과 달리 몇 개의 꼭짓점만 보고 판단할 수 없습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="para" id="sec-matrix-tree-theorem-3">신장 트리를 직접 세는 일이 조합적으로 어려운 이유는 다음과 같습니다. 첫째, 후보의 수가 매우 많습니다. 꼭짓점이 <span class="process-math">\(n\)</span>개인 그래프에서 뿌리를 제외한 각 꼭짓점은 자신으로 들어오는 변을 하나씩 고르므로, 변이 많은 그래프에서는 후보가 <span class="process-math">\(n\)</span>에 대해 지수적으로 늘어납니다.  둘째, 각 꼭짓점에서 들어오는 변을 독립적으로 고르면 순환이 생길 수 있어 선택들이 서로 의존합니다. 따라서 단순한 곱셈 원리를 쓸 수 없고, 순환을 만드는 선택을 제외해야 합니다. 셋째, 순환을 제외하는 포함-배제 방식은 그래프의 모든 순환 구조를 추적해야 하므로 빠르게 복잡해집니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
@@ -331,7 +331,7 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">정의</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">프뤼퍼 부호.</span>
 </h2>
 <div class="para" id="def-prufer-code-2-1">꼭짓점에 번호가 붙은 트리에서 번호가 가장 작은 잎을 반복해서 제거하고, 제거할 때마다 그 잎의 이웃을 기록합니다. 꼭짓점이 두 개 남을 때까지 이 과정을 계속해 얻는 길이 <span class="process-math">\(n-2\)</span>인 수열을 그 트리의 <dfn class="terminology">프뤼퍼 부호</dfn>
-<details id="def-prufer-code-2-1-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-prufer-code-2-1-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-prufer-code-2-1-3-1">프뤼퍼 부호:Prüfer code<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-prufer-code-2-1-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
@@ -401,12 +401,12 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">정의</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">라플라시안 행렬.</span>
 </h2>
 <div class="para" id="def-directed-laplacian-2-1">꼭짓점 <span class="process-math">\(v\)</span>의 <dfn class="terminology">내차수</dfn>
-<details id="def-directed-laplacian-2-1-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-directed-laplacian-2-1-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-directed-laplacian-2-1-3-1">내차수:in-degree<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-directed-laplacian-2-1-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 </aside></details>를 <span class="process-math">\(d^-(v)=\sum_{u}A_{uv}\)</span>로 정의하고, <span class="process-math">\(D=\operatorname{diag}(d^-(1),\dots,d^-(n))\)</span>이라 할 때 행렬 <span class="process-math">\(L=D-A\)</span>를 <span class="process-math">\(G\)</span>의 <dfn class="terminology">라플라시안 행렬</dfn>
-<details id="def-directed-laplacian-2-1-9" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-directed-laplacian-2-1-9" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-directed-laplacian-2-1-9-1">라플라시안 행렬:Laplacian matrix<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-directed-laplacian-2-1-9-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>

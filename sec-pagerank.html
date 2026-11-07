@@ -444,7 +444,7 @@ P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
 </h2>
 <div class="para" id="def-pagerank-google-matrix-2-1">
 <span class="process-math">\(0&lt;\alpha&lt;1\)</span>일 때, 매 단계에서 확률 <span class="process-math">\(\alpha\)</span>로 분포 <span class="process-math">\(v\)</span>에 따라 페이지를 새로 선택하고 확률 <span class="process-math">\(1-\alpha\)</span>로 링크 행렬 <span class="process-math">\(P\)</span>를 따른다고 하자. 이때 <span class="process-math">\(\alpha\)</span>를 <dfn class="terminology">순간이동률</dfn>
-<details id="def-pagerank-google-matrix-2-1-8" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-pagerank-google-matrix-2-1-8" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-pagerank-google-matrix-2-1-8-1">순간이동률:teleportation rate<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-pagerank-google-matrix-2-1-8-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
@@ -456,12 +456,12 @@ G=(1-\alpha)P+\alpha v\mathbf{1}^{\mathsf T}
 \end{equation*}
 </div>
 <div class="para" id="def-pagerank-google-matrix-2-3">를 <dfn class="terminology">구글 행렬</dfn>
-<details id="def-pagerank-google-matrix-2-3-2" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-pagerank-google-matrix-2-3-2" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-pagerank-google-matrix-2-3-2-1">구글 행렬:Google matrix<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-pagerank-google-matrix-2-3-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 </aside></details>이라고 한다. 여기서 <span class="process-math">\(\mathbf{1}\)</span>은 모든 성분이 <span class="process-math">\(1\)</span>인 열벡터이다. <span class="process-math">\(G\)</span>의 정상분포 <span class="process-math">\(\pi\)</span>의 각 성분을 해당 페이지의 <dfn class="terminology">페이지랭크</dfn>
-<details id="def-pagerank-google-matrix-2-3-8" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Aside</span></h3></summary>
+<details id="def-pagerank-google-matrix-2-3-8" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="def-pagerank-google-matrix-2-3-8-1">페이지랭크:PageRank<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-pagerank-google-matrix-2-3-8-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
@@ -519,7 +519,7 @@ G(p-\pi)&amp;=(1-\alpha)P(p-\pi),\\
 <div class="para" id="sec-pagerank-24">균등분포 <span class="process-math">\(v\)</span>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <span class="process-math">\(v\)</span>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. <span class="process-math">\(v_i=0\)</span>인 성분을 허용하면 <span class="process-math">\(G\)</span>가 양의 행렬임을 더 이상 보장할 수 없으므로, 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-24" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="para" id="sec-pagerank-25">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀
-<details id="sec-pagerank-25-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">Aside</span></h2></summary>
+<details id="sec-pagerank-25-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">참고</span></h2></summary>
 <aside class="aside aside-like knowl__content">
 <div class="para" id="sec-pagerank-25-3-1">조밀 행렬: 대부분의 성분이 0이 아닌 행렬<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-25-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
