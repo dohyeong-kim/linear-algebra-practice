@@ -76,24 +76,38 @@
 
     <p>행렬 <m>v\mathbf{1}^{\mathsf T}</m>의 모든 열은 <m>v</m>입니다. 따라서 <m>G</m>의 각 열의 합은 <m>1</m>이고, <m>G_{ij}\geq\alpha v_i&gt;0</m>입니다. 순간이동은 원래 링크가 없는 페이지 사이에도 양의 이동 확률을 부여합니다.</p>
 
+      <p>
+        양의 행렬로 나타나는 마르코프 연쇄의 경우 초기 조건과 무관하게 시간이 흐르면 정상 분포로 수렴합니다. 이를 뒷받침하는 다음 내용은 <xref ref="thm-perron-positive-matrix"/>의 따름정리입니다.
+      </p>
+
+    <corollary xml:id="cor-positive-matrix-power-limit">
+      <title>양의 행렬의 거듭제곱의 수렴</title>
+      <statement>
+        <p><m>A\in\mathbb R^{d\times d}</m>가 양의 행렬이고 <m>\rho=\rho(A)</m>라 하자. <m>Au=\rho u</m>, <m>A^{\mathsf T}w=\rho w</m>인 양의 벡터 <m>u,w</m>를 <m>w^{\mathsf T}u=1</m>이 되도록 택하면, 임의의 벡터 <m>x\in\mathbb R^d</m>에 대해</p>
+        <me>\lim_{k\to\infty}\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u</me>
+        <p>이다.</p>
+      </statement>
+      <proof>
+        <p>초평면 <m>H=\{y\in\mathbb C^d:w^{\mathsf T}y=0\}</m>를 생각합시다. <xref ref="thm-perron-positive-matrix"/>의 증명에서 보았듯이 <m>H</m>는 <m>A</m>-불변이고 <m>\mathbb C^d=\operatorname{span}\{u\}\oplus H</m>이며, <m>A|_H</m>의 고유값들은 <m>\rho</m>가 아닌 <m>A</m>의 고유값들입니다. 따라서 <xref ref="thm-perron-positive-matrix"/>에 의해 <m>\rho(A|_H)&lt;\rho</m>이므로 <m>\rho((A/\rho)|_H)&lt;1</m>이고, 모든 <m>y\in H</m>에 대해 <m>(A/\rho)^k y\to 0</m>입니다.</p>
+        <p>임의의 <m>x\in\mathbb R^d</m>에 대해 <m>y=x-(w^{\mathsf T}x)u</m>로 두면 <m>w^{\mathsf T}y=w^{\mathsf T}x-(w^{\mathsf T}x)(w^{\mathsf T}u)=0</m>이므로 <m>y\in H</m>입니다. 따라서</p>
+        <me>\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u+\left(\frac{1}{\rho}A\right)^k y\to (w^{\mathsf T}x)u</me>
+        <p>입니다.</p>
+      </proof>
+    </corollary>
+
     <proposition xml:id="prop-pagerank-unique-limit">
       <title>페이지랭크의 유일성과 수렴</title>
       <statement>
         <p><m>0&lt;\alpha&lt;1</m>이고 <m>v_i&gt;0</m>이면 구글 행렬 <m>G</m>는 유일한 정상분포 <m>\pi</m>를 갖는다. 모든 <m>\pi_i</m>는 양수이며, 임의의 초기 확률벡터 <m>p^{(0)}</m>에 대해 <m>G^k p^{(0)}\to\pi</m>이다.</p>
       </statement>
       <proof>
-        <p><m>G</m>의 열의 합이 <m>1</m>이므로 <m>\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}</m>이며 <m>1</m>은 <m>G</m>의 고유값입니다. 또한 유도된 <m>1</m>-노름이 <m>\|G\|_1=1</m>이므로 모든 고유값의 절댓값은 <m>1</m> 이하입니다. 따라서 스펙트럼 반지름은 <m>1</m>입니다.</p>
-        <p><m>G</m>의 모든 성분이 양수이므로 페론–프로베니우스 정리(<xref ref="thm-perron-positive-matrix"/>)를 적용할 수 있습니다. 고유값 <m>1</m>에 대응하는 양의 고유벡터를 성분의 합이 <m>1</m>이 되도록 정규화하면 유일한 정상분포 <m>\pi</m>를 얻습니다.</p>
-        <p>수렴을 직접 확인하려면 <m>\mathbf{1}^{\mathsf T}(p-\pi)=0</m>을 이용합니다. 순간이동 항은 두 확률분포의 차이에 작용할 때 사라지므로</p>
-        <md>
-          <mrow>G(p-\pi)&amp;=(1-\alpha)P(p-\pi),</mrow>
-          <mrow>\|G^k p^{(0)}-\pi\|_1&amp;\leq(1-\alpha)^k\|p^{(0)}-\pi\|_1.</mrow>
-        </md>
-        <p>여기서 <m>\|x\|_1=\sum_i|x_i|</m>이며 <m>\|P\|_1=1</m>을 사용했습니다. <m>1-\alpha&lt;1</m>이므로 오른쪽은 <m>0</m>으로 수렴합니다.</p>
+        <p><m>G</m>의 열의 합이 <m>1</m>이므로 <m>\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}</m>이며 <m>1</m>은 <m>G</m>의 고유값입니다. 또한 유도된 <m>1</m>-노름이 <m>\|G\|_1=1</m>이므로 모든 고유값의 절댓값은 <m>1</m> 이하입니다. 따라서 스펙트럼 반지름은 <m>\rho(G)=1</m>입니다.</p>
+        <p><m>G</m>의 모든 성분이 양수이므로 페론–프로베니우스 정리(<xref ref="thm-perron-positive-matrix"/>)를 적용할 수 있습니다. 고유값 <m>1</m>의 고유공간은 일차원이고 양의 고유벡터를 가지므로, 이를 성분의 합이 <m>1</m>이 되도록 정규화하면 유일한 정상분포 <m>\pi</m>를 얻습니다.</p>
+        <p>이제 <m>u=\pi</m>, <m>w=\mathbf{1}</m>로 두면 <m>Gu=u</m>, <m>G^{\mathsf T}w=w</m>이고 <m>w^{\mathsf T}u=\mathbf{1}^{\mathsf T}\pi=1</m>입니다. 임의의 초기 확률벡터 <m>p^{(0)}</m>에 대해 <m>w^{\mathsf T}p^{(0)}=\mathbf{1}^{\mathsf T}p^{(0)}=1</m>이므로, <xref ref="cor-positive-matrix-power-limit"/>에 의해 <m>G^k p^{(0)}\to(w^{\mathsf T}p^{(0)})\pi=\pi</m>입니다.</p>
       </proof>
     </proposition>
 
-    <p>순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <m>\alpha</m>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 위의 수렴 상한은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <m>\alpha</m>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <m>v</m>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.</p>
+    <p>순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <m>\alpha</m>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 수렴은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <m>\alpha</m>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <m>v</m>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.</p>
     <me>\pi=(1-\alpha)P\pi+\alpha v.</me>
     <p><m>\alpha</m>가 <m>1</m>에 가까워지면 <m>\pi</m>는 <m>v</m>에 가까워집니다. 반대로 <m>\alpha=0</m>에서는 링크 행렬이 양이라는 보장을 할 수 없어, 정상 분포의 유일성이 성립하지 않을 수 있습니다. 흔히 사용하는 선택은 순간이동률 <m>\alpha=0.15</m>, 즉 링크를 따를 확률 <m>0.85</m>입니다.</p>
 
