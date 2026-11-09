@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="corollary theorem-like"><h2 class="heading">
+<span class="type">따름정리</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.4.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">양의 행렬의 거듭제곱의 수렴.</span>
+</h2>
+<div class="para">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. <span class="process-math">\(Au=\rho u\text{,}\)</span> <span class="process-math">\(A^{\mathsf T}w=\rho w\)</span>인 양의 벡터 <span class="process-math">\(u,w\)</span>를 <span class="process-math">\(w^{\mathsf T}u=1\)</span>이 되도록 택하면, 임의의 벡터 <span class="process-math">\(x\in\mathbb R^d\)</span>에 대해<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lim_{k\to\infty}\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u
+\end{equation*}
+</div>
+<div class="para">이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-2-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴"><a tabindex="-1" href="#cor-positive-matrix-power-limit" title="Copy heading and permalink for 따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴" aria-label="Copy heading and permalink for 따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴">🔗</a></div>
+</article>
+<details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
+<article class="hiddenproof knowl__content">
+<div class="para">초평면 <span class="process-math">\(H=\{y\in\mathbb C^d:w^{\mathsf T}y=0\}\)</span>를 생각합시다. <a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>의 증명에서 보았듯이 <span class="process-math">\(H\)</span>는 <span class="process-math">\(A\)</span>-불변이고 <span class="process-math">\(\mathbb C^d=\operatorname{span}\{u\}\oplus H\)</span>이며, <span class="process-math">\(A|_H\)</span>의 고유값들은 <span class="process-math">\(\rho\)</span>가 아닌 <span class="process-math">\(A\)</span>의 고유값들입니다. 따라서 <a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>에 의해 <span class="process-math">\(\rho(A|_H)&lt;\rho\)</span>이므로 <span class="process-math">\(\rho((A/\rho)|_H)&lt;1\)</span>이고, 모든 <span class="process-math">\(y\in H\)</span>에 대해 <span class="process-math">\((A/\rho)^k y\to 0\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para">임의의 <span class="process-math">\(x\in\mathbb R^d\)</span>에 대해 <span class="process-math">\(y=x-(w^{\mathsf T}x)u\)</span>로 두면 <span class="process-math">\(w^{\mathsf T}y=w^{\mathsf T}x-(w^{\mathsf T}x)(w^{\mathsf T}u)=0\)</span>이므로 <span class="process-math">\(y\in H\)</span>입니다. 따라서<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html">
+\begin{equation*}
+\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u+\left(\frac{1}{\rho}A\right)^k y\to (w^{\mathsf T}x)u
+\end{equation*}
+</div>
+<div class="para">입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-4" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 4.4.7.1"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3" title="Copy heading and permalink for 증명 4.4.7.1" aria-label="Copy heading and permalink for 증명 4.4.7.1">🔗</a></div>
+</article></details><span class="incontext"><a class="internal" href="sec-pagerank.html#cor-positive-matrix-power-limit">In Context</a></span>
+</body>
+</html>

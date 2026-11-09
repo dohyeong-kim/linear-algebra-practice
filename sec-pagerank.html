@@ -360,7 +360,7 @@ P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
 </article></details>
 <div class="para" id="sec-pagerank-5">마르코프 조건은 다음 이동의 확률을 결정할 때 현재 상태만 필요하다는 뜻입니다. <span class="process-math">\(p_i^{(k)}=\Pr(X_k=i)\)</span>로 두면 전체확률법칙에 따라 분포의 변화는 행렬 곱으로 표현됩니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-5" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-6">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/cor-positive-matrix-power-limit.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-6">
 \begin{equation*}
 p^{(k+1)}=Pp^{(k)},\qquad p^{(k)}=P^k p^{(0)}.
 \end{equation*}
@@ -403,7 +403,7 @@ P=\begin{pmatrix}0.8&amp;0.3\\0.2&amp;0.7\end{pmatrix}
 </article></details>
 <div class="para" id="sec-pagerank-9">이제 웹페이지를 상태로 생각합니다. 페이지 <span class="process-math">\(j\)</span>에서 나가는 링크가 <span class="process-math">\(d_j&gt;0\)</span>개이면 사용자는 그중 하나를 같은 확률로 선택한다고 가정합니다. 중복 링크를 제외할 때 링크에 따른 전이 확률은 다음과 같습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-9" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-10">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/cor-positive-matrix-power-limit.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-10">
 \begin{equation*}
 P_{ij}=\begin{cases}
 1/d_j, &amp; \text{페이지 }j\text{에서 }i\text{로 가는 링크가 있을 때},\\
@@ -415,7 +415,7 @@ P_{ij}=\begin{cases}
 </div>
 <div class="para" id="sec-pagerank-12">정상분포를 중요도 점수로 사용하면 <span class="process-math">\(\pi_i=\sum_j P_{ij}\pi_j\)</span>가 됩니다. 나가는 링크가 없는 페이지들의 집합을 <span class="process-math">\(D\)</span>라 하면 이 식은<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-12" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-13">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/cor-positive-matrix-power-limit.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-13">
 \begin{gather*}
 \pi_i=\sum_{\substack{j\notin D\\ j\to i}}\frac{\pi_j}{d_j}+v_i\sum_{j\in D}\pi_j
 \end{gather*}
@@ -471,52 +471,74 @@ G=(1-\alpha)P+\alpha v\mathbf{1}^{\mathsf T}
 </article>
 <div class="para" id="sec-pagerank-18">행렬 <span class="process-math">\(v\mathbf{1}^{\mathsf T}\)</span>의 모든 열은 <span class="process-math">\(v\)</span>입니다. 따라서 <span class="process-math">\(G\)</span>의 각 열의 합은 <span class="process-math">\(1\)</span>이고, <span class="process-math">\(G_{ij}\geq\alpha v_i&gt;0\)</span>입니다. 순간이동은 원래 링크가 없는 페이지 사이에도 양의 이동 확률을 부여합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-18" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
+<article class="corollary theorem-like" id="cor-positive-matrix-power-limit"><h2 class="heading">
+<span class="type">따름정리</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.4.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">양의 행렬의 거듭제곱의 수렴.</span>
+</h2>
+<div class="para" id="cor-positive-matrix-power-limit-2-1">
+<span class="process-math">\(A\in\mathbb R^{d\times d}\)</span>가 양의 행렬이고 <span class="process-math">\(\rho=\rho(A)\)</span>라 하자. <span class="process-math">\(Au=\rho u\text{,}\)</span> <span class="process-math">\(A^{\mathsf T}w=\rho w\)</span>인 양의 벡터 <span class="process-math">\(u,w\)</span>를 <span class="process-math">\(w^{\mathsf T}u=1\)</span>이 되도록 택하면, 임의의 벡터 <span class="process-math">\(x\in\mathbb R^d\)</span>에 대해<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="cor-positive-matrix-power-limit-2-2">
+\begin{equation*}
+\lim_{k\to\infty}\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u
+\end{equation*}
+</div>
+<div class="para" id="cor-positive-matrix-power-limit-2-3">이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-2-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴"><a tabindex="-1" href="#cor-positive-matrix-power-limit" title="Copy heading and permalink for 따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴" aria-label="Copy heading and permalink for 따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴">🔗</a></div>
+</article>
+<details id="cor-positive-matrix-power-limit-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
+<article class="hiddenproof knowl__content">
+<div class="para" id="cor-positive-matrix-power-limit-3-1">초평면 <span class="process-math">\(H=\{y\in\mathbb C^d:w^{\mathsf T}y=0\}\)</span>를 생각합시다. <a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>의 증명에서 보았듯이 <span class="process-math">\(H\)</span>는 <span class="process-math">\(A\)</span>-불변이고 <span class="process-math">\(\mathbb C^d=\operatorname{span}\{u\}\oplus H\)</span>이며, <span class="process-math">\(A|_H\)</span>의 고유값들은 <span class="process-math">\(\rho\)</span>가 아닌 <span class="process-math">\(A\)</span>의 고유값들입니다. 따라서 <a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>에 의해 <span class="process-math">\(\rho(A|_H)&lt;\rho\)</span>이므로 <span class="process-math">\(\rho((A/\rho)|_H)&lt;1\)</span>이고, 모든 <span class="process-math">\(y\in H\)</span>에 대해 <span class="process-math">\((A/\rho)^k y\to 0\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para" id="cor-positive-matrix-power-limit-3-2">임의의 <span class="process-math">\(x\in\mathbb R^d\)</span>에 대해 <span class="process-math">\(y=x-(w^{\mathsf T}x)u\)</span>로 두면 <span class="process-math">\(w^{\mathsf T}y=w^{\mathsf T}x-(w^{\mathsf T}x)(w^{\mathsf T}u)=0\)</span>이므로 <span class="process-math">\(y\in H\)</span>입니다. 따라서<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html" id="cor-positive-matrix-power-limit-3-3">
+\begin{equation*}
+\frac{1}{\rho^k}A^k x=(w^{\mathsf T}x)u+\left(\frac{1}{\rho}A\right)^k y\to (w^{\mathsf T}x)u
+\end{equation*}
+</div>
+<div class="para" id="cor-positive-matrix-power-limit-3-4">입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3-4" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 4.4.7.1"><a tabindex="-1" href="#cor-positive-matrix-power-limit-3" title="Copy heading and permalink for 증명 4.4.7.1" aria-label="Copy heading and permalink for 증명 4.4.7.1">🔗</a></div>
+</article></details>
 <article class="proposition theorem-like" id="prop-pagerank-unique-limit"><h2 class="heading">
-<span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.4.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">페이지랭크의 유일성과 수렴.</span>
+<span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.4.8</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">페이지랭크의 유일성과 수렴.</span>
 </h2>
 <div class="para" id="prop-pagerank-unique-limit-2-1">
 <span class="process-math">\(0&lt;\alpha&lt;1\)</span>이고 <span class="process-math">\(v_i&gt;0\)</span>이면 구글 행렬 <span class="process-math">\(G\)</span>는 유일한 정상분포 <span class="process-math">\(\pi\)</span>를 갖는다. 모든 <span class="process-math">\(\pi_i\)</span>는 양수이며, 임의의 초기 확률벡터 <span class="process-math">\(p^{(0)}\)</span>에 대해 <span class="process-math">\(G^k p^{(0)}\to\pi\)</span>이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="명제 4.4.7: 페이지랭크의 유일성과 수렴"><a tabindex="-1" href="#prop-pagerank-unique-limit" title="Copy heading and permalink for 명제 4.4.7: 페이지랭크의 유일성과 수렴" aria-label="Copy heading and permalink for 명제 4.4.7: 페이지랭크의 유일성과 수렴">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="명제 4.4.8: 페이지랭크의 유일성과 수렴"><a tabindex="-1" href="#prop-pagerank-unique-limit" title="Copy heading and permalink for 명제 4.4.8: 페이지랭크의 유일성과 수렴" aria-label="Copy heading and permalink for 명제 4.4.8: 페이지랭크의 유일성과 수렴">🔗</a></div>
 </article>
 <details id="prop-pagerank-unique-limit-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
 <div class="para" id="prop-pagerank-unique-limit-3-1">
-<span class="process-math">\(G\)</span>의 열의 합이 <span class="process-math">\(1\)</span>이므로 <span class="process-math">\(\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}\)</span>이며 <span class="process-math">\(1\)</span>은 <span class="process-math">\(G\)</span>의 고유값입니다. 또한 유도된 <span class="process-math">\(1\)</span>-노름이 <span class="process-math">\(\|G\|_1=1\)</span>이므로 모든 고유값의 절댓값은 <span class="process-math">\(1\)</span> 이하입니다. 따라서 스펙트럼 반지름은 <span class="process-math">\(1\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<span class="process-math">\(G\)</span>의 열의 합이 <span class="process-math">\(1\)</span>이므로 <span class="process-math">\(\mathbf{1}^{\mathsf T}G=\mathbf{1}^{\mathsf T}\)</span>이며 <span class="process-math">\(1\)</span>은 <span class="process-math">\(G\)</span>의 고유값입니다. 또한 유도된 <span class="process-math">\(1\)</span>-노름이 <span class="process-math">\(\|G\|_1=1\)</span>이므로 모든 고유값의 절댓값은 <span class="process-math">\(1\)</span> 이하입니다. 따라서 스펙트럼 반지름은 <span class="process-math">\(\rho(G)=1\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="para" id="prop-pagerank-unique-limit-3-2">
-<span class="process-math">\(G\)</span>의 모든 성분이 양수이므로 페론–프로베니우스 정리(<a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>)를 적용할 수 있습니다. 고유값 <span class="process-math">\(1\)</span>에 대응하는 양의 고유벡터를 성분의 합이 <span class="process-math">\(1\)</span>이 되도록 정규화하면 유일한 정상분포 <span class="process-math">\(\pi\)</span>를 얻습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<span class="process-math">\(G\)</span>의 모든 성분이 양수이므로 페론–프로베니우스 정리(<a href="sec-perron-frobenius.html#thm-perron-positive-matrix" class="xref" data-knowl="./knowl/xref/thm-perron-positive-matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.3.7: 페론-프로베니우스 정리">정리 4.3.7</a>)를 적용할 수 있습니다. 고유값 <span class="process-math">\(1\)</span>의 고유공간은 일차원이고 양의 고유벡터를 가지므로, 이를 성분의 합이 <span class="process-math">\(1\)</span>이 되도록 정규화하면 유일한 정상분포 <span class="process-math">\(\pi\)</span>를 얻습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="para" id="prop-pagerank-unique-limit-3-3">수렴을 직접 확인하려면 <span class="process-math">\(\mathbf{1}^{\mathsf T}(p-\pi)=0\)</span>을 이용합니다. 순간이동 항은 두 확률분포의 차이에 작용할 때 사라지므로<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="prop-pagerank-unique-limit-3-3">이제 <span class="process-math">\(u=\pi\text{,}\)</span> <span class="process-math">\(w=\mathbf{1}\)</span>로 두면 <span class="process-math">\(Gu=u\text{,}\)</span> <span class="process-math">\(G^{\mathsf T}w=w\)</span>이고 <span class="process-math">\(w^{\mathsf T}u=\mathbf{1}^{\mathsf T}\pi=1\)</span>입니다. 임의의 초기 확률벡터 <span class="process-math">\(p^{(0)}\)</span>에 대해 <span class="process-math">\(w^{\mathsf T}p^{(0)}=\mathbf{1}^{\mathsf T}p^{(0)}=1\)</span>이므로, <a href="sec-pagerank.html#cor-positive-matrix-power-limit" class="xref" data-knowl="./knowl/xref/cor-positive-matrix-power-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="따름정리 4.4.7: 양의 행렬의 거듭제곱의 수렴">따름정리 4.4.7</a>에 의해 <span class="process-math">\(G^k p^{(0)}\to(w^{\mathsf T}p^{(0)})\pi=\pi\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html" id="prop-pagerank-unique-limit-3-4">
-\begin{align*}
-G(p-\pi)&amp;=(1-\alpha)P(p-\pi),\\
-\|G^k p^{(0)}-\pi\|_1&amp;\leq(1-\alpha)^k\|p^{(0)}-\pi\|_1.
-\end{align*}
-</div>
-<div class="para" id="prop-pagerank-unique-limit-3-5">여기서 <span class="process-math">\(\|x\|_1=\sum_i|x_i|\)</span>이며 <span class="process-math">\(\|P\|_1=1\)</span>을 사용했습니다. <span class="process-math">\(1-\alpha&lt;1\)</span>이므로 오른쪽은 <span class="process-math">\(0\)</span>으로 수렴합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-pagerank-unique-limit-3-5" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
-</div>
-<div class="autopermalink" aria-hidden="true" data-description="증명 4.4.7.1"><a tabindex="-1" href="#prop-pagerank-unique-limit-3" title="Copy heading and permalink for 증명 4.4.7.1" aria-label="Copy heading and permalink for 증명 4.4.7.1">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 4.4.8.1"><a tabindex="-1" href="#prop-pagerank-unique-limit-3" title="Copy heading and permalink for 증명 4.4.8.1" aria-label="Copy heading and permalink for 증명 4.4.8.1">🔗</a></div>
 </article></details>
-<div class="para" id="sec-pagerank-20">순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <span class="process-math">\(\alpha\)</span>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 위의 수렴 상한은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <span class="process-math">\(\alpha\)</span>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <span class="process-math">\(v\)</span>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-20" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-pagerank-21">순간이동률은 링크 구조를 얼마나 신뢰할지 결정합니다. <span class="process-math">\(\alpha\)</span>가 작으면 링크를 오래 따라가므로 링크 구조의 영향이 커지지만, 수렴은 느려지고 서로 약하게 연결된 집단의 영향이 커질 수 있습니다. <span class="process-math">\(\alpha\)</span>가 크면 계산은 더 빨리 수렴하지만 점수는 링크 구조보다 <span class="process-math">\(v\)</span>에 더 크게 의존합니다. 실제로 정상분포는 다음 식을 만족합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-21" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-21">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/thm-perron-positive-matrix.html ./knowl/xref/cor-positive-matrix-power-limit.html ./knowl/xref/prop-pagerank-unique-limit.html" id="sec-pagerank-22">
 \begin{equation*}
 \pi=(1-\alpha)P\pi+\alpha v.
 \end{equation*}
 </div>
-<div class="para" id="sec-pagerank-22">
-<span class="process-math">\(\alpha\)</span>가 <span class="process-math">\(1\)</span>에 가까워지면 <span class="process-math">\(\pi\)</span>는 <span class="process-math">\(v\)</span>에 가까워집니다. 반대로 <span class="process-math">\(\alpha=0\)</span>에서는 링크 행렬이 양이라는 보장을 할 수 없어, 정상 분포의 유일성이 성립하지 않을 수 있습니다. 흔히 사용하는 선택은 순간이동률 <span class="process-math">\(\alpha=0.15\text{,}\)</span> 즉 링크를 따를 확률 <span class="process-math">\(0.85\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-22" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-pagerank-23">
+<span class="process-math">\(\alpha\)</span>가 <span class="process-math">\(1\)</span>에 가까워지면 <span class="process-math">\(\pi\)</span>는 <span class="process-math">\(v\)</span>에 가까워집니다. 반대로 <span class="process-math">\(\alpha=0\)</span>에서는 링크 행렬이 양이라는 보장을 할 수 없어, 정상 분포의 유일성이 성립하지 않을 수 있습니다. 흔히 사용하는 선택은 순간이동률 <span class="process-math">\(\alpha=0.15\text{,}\)</span> 즉 링크를 따를 확률 <span class="process-math">\(0.85\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-23" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="para" id="sec-pagerank-23">균등분포 <span class="process-math">\(v\)</span>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <span class="process-math">\(v\)</span>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. <span class="process-math">\(v_i=0\)</span>인 성분을 허용하면 <span class="process-math">\(G\)</span>가 양의 행렬임을 더 이상 보장할 수 없으므로, 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-23" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-pagerank-24">균등분포 <span class="process-math">\(v\)</span>는 모든 페이지에 같은 순간이동 기회를 줍니다. 주제나 사용자의 선호에 맞추어 <span class="process-math">\(v\)</span>를 선택하면 개인화된 순위를 계산할 수 있습니다. 다만 위의 양의 행렬에 대한 정리를 그대로 적용하려면 모든 성분을 양수로 유지해야 합니다. <span class="process-math">\(v_i=0\)</span>인 성분을 허용하면 <span class="process-math">\(G\)</span>가 양의 행렬임을 더 이상 보장할 수 없으므로, 그 정리만으로 모든 점수의 양수성을 결론 내릴 수 없습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-24" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="para" id="sec-pagerank-24">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀
-<details id="sec-pagerank-24-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">참고</span></h2></summary>
+<div class="para" id="sec-pagerank-25">대규모 웹에서는 <span class="process-math">\(G\)</span>를 직접 저장하지 않습니다. 순간이동 항 때문에 <span class="process-math">\(G\)</span>는 모든 성분이 양수인 조밀
+<details id="sec-pagerank-25-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">참고</span></h2></summary>
 <aside class="aside aside-like knowl__content">
-<div class="para" id="sec-pagerank-24-3-1">조밀 행렬: 대부분의 성분이 0이 아닌 행렬<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-24-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-pagerank-25-3-1">조밀 행렬: 대부분의 성분이 0이 아닌 행렬<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-25-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-</aside></details> 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <span class="process-math">\(0\)</span>인 희소 행렬입니다. 따라서 <span class="process-math">\(G\)</span>를 만들지 않고 정상 분포 <span class="process-math">\(\pi\)</span>를 구하는 방법이 필요합니다. <a href="sec-pagerank.html#prop-pagerank-unique-limit" class="xref" data-knowl="./knowl/xref/prop-pagerank-unique-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.4.7: 페이지랭크의 유일성과 수렴">명제 4.4.7</a>은 <span class="process-math">\(G\)</span>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-24" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</aside></details> 행렬이지만, 실제 링크 행렬은 대부분의 성분이 <span class="process-math">\(0\)</span>인 희소 행렬입니다. 따라서 <span class="process-math">\(G\)</span>를 만들지 않고 정상 분포 <span class="process-math">\(\pi\)</span>를 구하는 방법이 필요합니다. <a href="sec-pagerank.html#prop-pagerank-unique-limit" class="xref" data-knowl="./knowl/xref/prop-pagerank-unique-limit.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 4.4.8: 페이지랭크의 유일성과 수렴">명제 4.4.8</a>은 <span class="process-math">\(G\)</span>의 고유벡터를 반복적으로 근사해가는 방식을 알려줍니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-pagerank-25" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <section class="exercises" id="exercises-pagerank">
 <h2 class="heading hide-type">
