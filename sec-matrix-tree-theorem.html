@@ -373,7 +373,9 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">완전 그래프의 신장 트리의 개수.</span>
 </h2>
 <div class="para" id="prop-complete-graph-spanning-tree-count-2-1">
-<span class="process-math">\(n\ge 2\)</span>개의 꼭짓점 사이에 가능한 모든 변이 있는 경우, 뿌리를 고정한 신장 트리는 <span class="process-math">\(n^{n-2}\)</span>개이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-complete-graph-spanning-tree-count-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<span class="process-math">\(n\ge 2\)</span>개의 꼭짓점 사이에 가능한 모든 변이 있는 경우, 고정된 꼭짓점을 뿌리로 갖는 신장 트리는 <span class="process-math">\(n^{n-2}\)</span>개이다. ,<details class="ptx-footnote" aria-live="polite" id="prop-complete-graph-spanning-tree-count-2-1-3"><summary class="ptx-footnote__number" title="Footnote 5.2.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents" id="prop-complete-graph-spanning-tree-count-2-1-3">꼭짓점을 무엇으로 선택하는지에 상관없이.
+</div></details><div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-complete-graph-spanning-tree-count-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="명제 5.2.6: 완전 그래프의 신장 트리의 개수"><a tabindex="-1" href="#prop-complete-graph-spanning-tree-count" title="Copy heading and permalink for 명제 5.2.6: 완전 그래프의 신장 트리의 개수" aria-label="Copy heading and permalink for 명제 5.2.6: 완전 그래프의 신장 트리의 개수">🔗</a></div>
 </article>
@@ -393,12 +395,32 @@ eBookConfig.enable_chatcodes =  false;
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="증명 5.2.6.1"><a tabindex="-1" href="#prop-complete-graph-spanning-tree-count-3" title="Copy heading and permalink for 증명 5.2.6.1" aria-label="Copy heading and permalink for 증명 5.2.6.1">🔗</a></div>
 </article></details>
-<div class="para" id="sec-matrix-tree-theorem-8">신장 트리를 하나하나 나열하지 않고 개수를 구하는 방법이 있을까요? 라플라시안 행렬의 행렬식을 이용하면 이 개수를 다항 시간에 계산할 수 있음을 살펴보겠습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-8" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<details id="ex-prufer-decode-star" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">프뤼퍼 부호 <span class="process-math">\((1,1)\)</span>에서 별 트리 복원하기.</span>
+</h2></summary>
+<article class="example example-like knowl__content">
+<div class="para" id="ex-prufer-decode-star-2-1">꼭짓점 집합 <span class="process-math">\(V=\{1,2,3,4\}\)</span>와 프뤼퍼 부호 <span class="process-math">\((a_1,a_2)=(1,1)\)</span>이 주어졌을 때, <a href="sec-matrix-tree-theorem.html#prop-complete-graph-spanning-tree-count" class="xref" data-knowl="./knowl/xref/prop-complete-graph-spanning-tree-count.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 5.2.6: 완전 그래프의 신장 트리의 개수">명제 5.2.6</a>의 증명에서 제시한 복원 과정을 따라 트리를 구해 보겠습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-prufer-decode-star-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div> 
+<div class="para" id="ex-prufer-decode-star-2-2">첫 번째 단계(<span class="process-math">\(i=1\)</span>)에서 남은 수열은 <span class="process-math">\((1,1)\)</span>이고, 여기에 나타나지 않는 가장 작은 꼭짓점은 <span class="process-math">\(\ell_1=2\)</span>입니다. 따라서 변 <span class="process-math">\(21\)</span>을 추가하고 <span class="process-math">\(2\)</span>를 제거합니다. 두 번째 단계(<span class="process-math">\(i=2\)</span>)에서 아직 제거되지 않은 꼭짓점은 <span class="process-math">\(\{1,3,4\}\)</span>이고 남은 수열은 <span class="process-math">\((1)\)</span>이므로, 여기에 나타나지 않는 가장 작은 꼭짓점은 <span class="process-math">\(\ell_2=3\)</span>입니다. 따라서 변 <span class="process-math">\(31\)</span>을 추가하고 <span class="process-math">\(3\)</span>을 제거합니다. 마지막으로 남은 두 꼭짓점 <span class="process-math">\(1\)</span>과 <span class="process-math">\(4\)</span>를 연결하여 변 <span class="process-math">\(14\)</span>를 추가하면, 변 집합이 <span class="process-math">\(\{12,13,14\}\)</span>인 <a href="sec-matrix-tree-theorem.html#ex-prufer-code-star" class="xref" data-knowl="./knowl/xref/ex-prufer-code-star.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.2.2: 별 트리의 프뤼퍼 부호">예시 5.2.2</a>의 별 트리가 복원됩니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-prufer-decode-star-2-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="para" id="sec-matrix-tree-theorem-9">이 절에서 그래프 <span class="process-math">\(G\)</span>는 꼭짓점 집합 <span class="process-math">\(V=\{1,\dots,n\}\)</span> 위의 단순 유향 그래프입니다. 즉 고리(자기 자신으로 가는 변)가 없고, 같은 방향의 중복된 변도 없습니다. 인접 행렬 <span class="process-math">\(A\)</span>는 <span class="process-math">\(u\to v\)</span>가 변이면 <span class="process-math">\(A_{uv}=1\text{,}\)</span> 아니면 <span class="process-math">\(A_{uv}=0\)</span>이며, 특히 <span class="process-math">\(A_{vv}=0\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-9" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.7: 프뤼퍼 부호 (1,1)에서 별 트리 복원하기"><a tabindex="-1" href="#ex-prufer-decode-star" title="Copy heading and permalink for 예시 5.2.7: 프뤼퍼 부호 (1,1)에서 별 트리 복원하기" aria-label="Copy heading and permalink for 예시 5.2.7: 프뤼퍼 부호 (1,1)에서 별 트리 복원하기">🔗</a></div>
+</article></details>
+<details id="ex-prufer-decode-path" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.8</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">프뤼퍼 부호 <span class="process-math">\((2,3)\)</span>에서 경로 트리 복원하기.</span>
+</h2></summary>
+<article class="example example-like knowl__content">
+<div class="para" id="ex-prufer-decode-path-2-1">꼭짓점 집합 <span class="process-math">\(V=\{1,2,3,4\}\)</span>와 프뤼퍼 부호 <span class="process-math">\((a_1,a_2)=(2,3)\)</span>에 복원 과정을 적용해 보겠습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-prufer-decode-path-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div> 
+<div class="para" id="ex-prufer-decode-path-2-2">첫 번째 단계(<span class="process-math">\(i=1\)</span>)에서 남은 수열 <span class="process-math">\((2,3)\)</span>에 나타나지 않는 가장 작은 꼭짓점은 <span class="process-math">\(\ell_1=1\)</span>이므로, 변 <span class="process-math">\(12\)</span>를 추가하고 <span class="process-math">\(1\)</span>을 제거합니다. 두 번째 단계(<span class="process-math">\(i=2\)</span>)에서 남은 꼭짓점 <span class="process-math">\(\{2,3,4\}\)</span> 중 남은 수열 <span class="process-math">\((3)\)</span>에 나타나지 않는 가장 작은 꼭짓점은 <span class="process-math">\(\ell_2=2\)</span>이므로, 변 <span class="process-math">\(23\)</span>을 추가하고 <span class="process-math">\(2\)</span>를 제거합니다. 마지막으로 남은 두 꼭짓점 <span class="process-math">\(3\)</span>과 <span class="process-math">\(4\)</span>를 연결하여 변 <span class="process-math">\(34\)</span>를 추가하면, 변 집합이 <span class="process-math">\(\{12,23,34\}\)</span>인 <a href="sec-matrix-tree-theorem.html#ex-prufer-code-path" class="xref" data-knowl="./knowl/xref/ex-prufer-code-path.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.2.4: 경로 트리의 프뤼퍼 부호">예시 5.2.4</a>의 경로 트리가 복원됩니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-prufer-decode-path-2-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.8: 프뤼퍼 부호 (2,3)에서 경로 트리 복원하기"><a tabindex="-1" href="#ex-prufer-decode-path" title="Copy heading and permalink for 예시 5.2.8: 프뤼퍼 부호 (2,3)에서 경로 트리 복원하기" aria-label="Copy heading and permalink for 예시 5.2.8: 프뤼퍼 부호 (2,3)에서 경로 트리 복원하기">🔗</a></div>
+</article></details>
+<div class="para" id="sec-matrix-tree-theorem-10">신장 트리를 하나하나 나열하지 않고 개수를 구하는 방법이 있을까요? 라플라시안 행렬의 행렬식을 이용하면 이 개수를 다항 시간에 계산할 수 있음을 살펴보겠습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-10" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para" id="sec-matrix-tree-theorem-11">이 절에서 그래프 <span class="process-math">\(G\)</span>는 꼭짓점 집합 <span class="process-math">\(V=\{1,\dots,n\}\)</span> 위의 단순 유향 그래프입니다. 즉 고리(자기 자신으로 가는 변)가 없고, 같은 방향의 중복된 변도 없습니다. 인접 행렬 <span class="process-math">\(A\)</span>는 <span class="process-math">\(u\to v\)</span>가 변이면 <span class="process-math">\(A_{uv}=1\text{,}\)</span> 아니면 <span class="process-math">\(A_{uv}=0\)</span>이며, 특히 <span class="process-math">\(A_{vv}=0\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-11" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <article class="definition definition-like" id="def-directed-laplacian"><h2 class="heading">
-<span class="type">정의</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">라플라시안 행렬.</span>
+<span class="type">정의</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.9</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">라플라시안 행렬.</span>
 </h2>
 <div class="para" id="def-directed-laplacian-2-1">꼭짓점 <span class="process-math">\(v\)</span>의 <dfn class="terminology">내차수</dfn>
 <details id="def-directed-laplacian-2-1-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
@@ -412,13 +434,13 @@ eBookConfig.enable_chatcodes =  false;
 </div>
 </aside></details>이라 합니다. 또한 <span class="process-math">\(L\)</span>에서 <span class="process-math">\(r\)</span>번째 행과 <span class="process-math">\(r\)</span>번째 열을 지운 <span class="process-math">\((n-1)\times(n-1)\)</span> 행렬을 <span class="process-math">\(L_r\)</span>로 씁니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-directed-laplacian-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="정의 5.2.7: 라플라시안 행렬"><a tabindex="-1" href="#def-directed-laplacian" title="Copy heading and permalink for 정의 5.2.7: 라플라시안 행렬" aria-label="Copy heading and permalink for 정의 5.2.7: 라플라시안 행렬">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="정의 5.2.9: 라플라시안 행렬"><a tabindex="-1" href="#def-directed-laplacian" title="Copy heading and permalink for 정의 5.2.9: 라플라시안 행렬" aria-label="Copy heading and permalink for 정의 5.2.9: 라플라시안 행렬">🔗</a></div>
 </article>
-<div class="para" id="sec-matrix-tree-theorem-11">
-<span class="process-math">\(L\)</span>의 각 열의 합은 <span class="process-math">\(0\)</span>입니다. 실제로 <span class="process-math">\(v\)</span>번째 열의 합은 <span class="process-math">\(d^-(v)-\sum_u A_{uv}=0\)</span>입니다. 따라서 <span class="process-math">\(\det L=0\)</span>이고, 의미 있는 정보는 한 행과 열을 지운 소행렬식에 담겨 있습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-11" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-matrix-tree-theorem-13">
+<span class="process-math">\(L\)</span>의 각 열의 합은 <span class="process-math">\(0\)</span>입니다. 실제로 <span class="process-math">\(v\)</span>번째 열의 합은 <span class="process-math">\(d^-(v)-\sum_u A_{uv}=0\)</span>입니다. 따라서 <span class="process-math">\(\det L=0\)</span>이고, 의미 있는 정보는 한 행과 열을 지운 소행렬식에 담겨 있습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-matrix-tree-theorem-13" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <details id="ex-laplacian-small" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.8</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">꼭짓점이 세 개인 그래프의 라플라시안.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.10</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">꼭짓점이 세 개인 그래프의 라플라시안.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-laplacian-small-2">
@@ -438,15 +460,15 @@ L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
 </div>
 </div></details>
 </div>
-<figcaption><span class="type">보기</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>꼭짓점이 세 개인 그래프의 라플라시안 행렬<div class="autopermalink" aria-hidden="true" data-description="보기 5.2.9"><a tabindex="-1" href="#fig-laplacian-small" title="Copy heading and permalink for 보기 5.2.9" aria-label="Copy heading and permalink for 보기 5.2.9">🔗</a></div></figcaption>
-</figure><div class="autopermalink" aria-hidden="true" data-description="예시 5.2.8: 꼭짓점이 세 개인 그래프의 라플라시안"><a tabindex="-1" href="#ex-laplacian-small" title="Copy heading and permalink for 예시 5.2.8: 꼭짓점이 세 개인 그래프의 라플라시안" aria-label="Copy heading and permalink for 예시 5.2.8: 꼭짓점이 세 개인 그래프의 라플라시안">🔗</a></div>
+<figcaption><span class="type">보기</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>꼭짓점이 세 개인 그래프의 라플라시안 행렬<div class="autopermalink" aria-hidden="true" data-description="보기 5.2.11"><a tabindex="-1" href="#fig-laplacian-small" title="Copy heading and permalink for 보기 5.2.11" aria-label="Copy heading and permalink for 보기 5.2.11">🔗</a></div></figcaption>
+</figure><div class="autopermalink" aria-hidden="true" data-description="예시 5.2.10: 꼭짓점이 세 개인 그래프의 라플라시안"><a tabindex="-1" href="#ex-laplacian-small" title="Copy heading and permalink for 예시 5.2.10: 꼭짓점이 세 개인 그래프의 라플라시안" aria-label="Copy heading and permalink for 예시 5.2.10: 꼭짓점이 세 개인 그래프의 라플라시안">🔗</a></div>
 </article></details>
 <article class="theorem theorem-like" id="thm-matrix-tree"><h2 class="heading">
-<span class="type">정리</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.10</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">행렬-트리 정리.</span>
+<span class="type">정리</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.12</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">행렬-트리 정리.</span>
 </h2>
 <div class="para" id="thm-matrix-tree-2-1">유향 그래프 <span class="process-math">\(G\)</span>와 꼭짓점 <span class="process-math">\(r\)</span>에 대하여, 뿌리가 <span class="process-math">\(r\)</span>인 <span class="process-math">\(G\)</span>의 신장 트리의 개수는 <span class="process-math">\(\det L_r\)</span>이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-matrix-tree-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="정리 5.2.10: 행렬-트리 정리"><a tabindex="-1" href="#thm-matrix-tree" title="Copy heading and permalink for 정리 5.2.10: 행렬-트리 정리" aria-label="Copy heading and permalink for 정리 5.2.10: 행렬-트리 정리">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="정리 5.2.12: 행렬-트리 정리"><a tabindex="-1" href="#thm-matrix-tree" title="Copy heading and permalink for 정리 5.2.12: 행렬-트리 정리" aria-label="Copy heading and permalink for 정리 5.2.12: 행렬-트리 정리">🔗</a></div>
 </article>
 <details id="thm-matrix-tree-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
@@ -455,14 +477,14 @@ L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
 <section class="paragraphs" id="thm-matrix-tree-3-2"><h3 class="heading"><span class="title">1단계: 열을 변들의 합으로 분해하기.</span></h3>
 <div class="para logical" id="thm-matrix-tree-3-2-2">
 <div class="para">
-<span class="process-math">\(v\ne r\)</span>에 대하여 <span class="process-math">\(L_r\)</span>의 <span class="process-math">\(v\)</span>번째 열은 대각성분 <span class="process-math">\(d^-(v)\)</span>와 비대각성분 <span class="process-math">\(-A_{uv}\)</span>로 이루어지므로</div>
-<div class="displaymath process-math" id="thm-matrix-tree-3-2-2-6">
+<span class="process-math">\(v\ne r\)</span>에 대하여 <span class="process-math">\(L_r\)</span>의 <span class="process-math">\(v\)</span>번째 열은 대각성분 <span class="process-math">\(d^-(v)\)</span>와 비대각성분 <span class="process-math">\(-A_{uv}\)</span>로 이루어지므로 <span class="process-math">\(v\)</span>에 대응되는 열벡터는</div>
+<div class="displaymath process-math" id="thm-matrix-tree-3-2-2-7">
 \begin{equation*}
 (L_r)_{\ast v}=\sum_{e=(u\to v)}(e_v-e_u)
 \end{equation*}
 </div>
-<div class="para">입니다. 여기서 합은 <span class="process-math">\(v\)</span>로 들어오는 모든 변에 대한 것이며, <span class="process-math">\(u=r\)</span>인 항은 <span class="process-math">\(e_v\)</span>가 됩니다. 행렬식은 각 열에 대해 다중선형이므로, 각 <span class="process-math">\(v\ne r\)</span>마다 들어오는 변 하나를 고르는 모든 선택에 대해 전개하면</div>
-<div class="displaymath process-math" id="thm-matrix-tree-3-2-2-11">
+<div class="para">입니다. 여기서 합은 <span class="process-math">\(v\)</span>로 들어오는 모든 변에 대한 것이며, <span class="process-math">\(u=r\)</span>인 항은 <span class="process-math">\(e_v\)</span>가 됩니다. (몫공간에서 <span class="process-math">\(e_r=0\)</span>입니다.)행렬식은 각 열에 대해 다중선형이므로, 각 <span class="process-math">\(v\ne r\)</span>마다 들어오는 변 하나를 고르는 모든 선택에 대해 전개하면</div>
+<div class="displaymath process-math" id="thm-matrix-tree-3-2-2-13">
 \begin{equation*}
 \det L_r=\sum_{p}\det M_p,\qquad M_p\text{의 } v\text{번째 열}=e_v-e_{p(v)}
 \end{equation*}
@@ -494,15 +516,15 @@ L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
 </section>
 <div class="para" id="thm-matrix-tree-3-5">세 단계를 종합하면 <span class="process-math">\(\det L_r\)</span>은 뿌리가 <span class="process-math">\(r\)</span>인 신장 트리마다 <span class="process-math">\(1\)</span>씩 더한 값, 곧 그 개수와 같습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-matrix-tree-3-5" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="증명 5.2.10.1"><a tabindex="-1" href="#thm-matrix-tree-3" title="Copy heading and permalink for 증명 5.2.10.1" aria-label="Copy heading and permalink for 증명 5.2.10.1">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 5.2.12.1"><a tabindex="-1" href="#thm-matrix-tree-3" title="Copy heading and permalink for 증명 5.2.12.1" aria-label="Copy heading and permalink for 증명 5.2.12.1">🔗</a></div>
 </article></details>
 <details id="ex-matrix-tree-expansion" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.11</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">전개 과정의 예.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.13</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">전개 과정의 예.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-matrix-tree-expansion-2">
 <div class="para">
-<a href="sec-matrix-tree-theorem.html#ex-laplacian-small" class="xref" data-knowl="./knowl/xref/ex-laplacian-small.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.2.8: 꼭짓점이 세 개인 그래프의 라플라시안">예시 5.2.8</a>의 그래프에서 <span class="process-math">\(L_1\)</span>의 두 열은</div>
+<a href="sec-matrix-tree-theorem.html#ex-laplacian-small" class="xref" data-knowl="./knowl/xref/ex-laplacian-small.html" data-reveal-label="Reveal" data-close-label="Close" title="예시 5.2.10: 꼭짓점이 세 개인 그래프의 라플라시안">예시 5.2.10</a>의 그래프에서 <span class="process-math">\(L_1\)</span>의 두 열은</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex-laplacian-small.html" id="ex-matrix-tree-expansion-2-3">
 \begin{equation*}
 \begin{pmatrix}2\\-1\end{pmatrix}=\underbrace{\begin{pmatrix}1\\0\end{pmatrix}}_{1\to2}+\underbrace{\begin{pmatrix}1\\-1\end{pmatrix}}_{3\to2},\qquad
@@ -518,10 +540,10 @@ L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
 <div class="para">이 나오며, 각각 부모 함수 <span class="process-math">\((1,1)\text{,}\)</span> <span class="process-math">\((1,2)\text{,}\)</span> <span class="process-math">\((3,1)\text{,}\)</span> <span class="process-math">\((3,2)\)</span>에 대응합니다. 마지막 항은 순환 <span class="process-math">\(2\to3\to2\)</span>에 해당하여 두 열의 합이 <span class="process-math">\(0\)</span>이 되므로 사라집니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-matrix-tree-expansion-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.11: 전개 과정의 예"><a tabindex="-1" href="#ex-matrix-tree-expansion" title="Copy heading and permalink for 예시 5.2.11: 전개 과정의 예" aria-label="Copy heading and permalink for 예시 5.2.11: 전개 과정의 예">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.13: 전개 과정의 예"><a tabindex="-1" href="#ex-matrix-tree-expansion" title="Copy heading and permalink for 예시 5.2.13: 전개 과정의 예" aria-label="Copy heading and permalink for 예시 5.2.13: 전개 과정의 예">🔗</a></div>
 </article></details>
 <details id="ex-matrix-tree-complete" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.12</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">완전 그래프의 경우.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.14</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">완전 그래프의 경우.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-matrix-tree-complete-2">
@@ -534,17 +556,17 @@ L_1=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}
 <div class="para">입니다. 이는 <a href="sec-matrix-tree-theorem.html#prop-complete-graph-spanning-tree-count" class="xref" data-knowl="./knowl/xref/prop-complete-graph-spanning-tree-count.html" data-reveal-label="Reveal" data-close-label="Close" title="명제 5.2.6: 완전 그래프의 신장 트리의 개수">명제 5.2.6</a>를 프뤼퍼 부호 없이 다시 얻은 것입니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-matrix-tree-complete-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.12: 완전 그래프의 경우"><a tabindex="-1" href="#ex-matrix-tree-complete" title="Copy heading and permalink for 예시 5.2.12: 완전 그래프의 경우" aria-label="Copy heading and permalink for 예시 5.2.12: 완전 그래프의 경우">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 5.2.14: 완전 그래프의 경우"><a tabindex="-1" href="#ex-matrix-tree-complete" title="Copy heading and permalink for 예시 5.2.14: 완전 그래프의 경우" aria-label="Copy heading and permalink for 예시 5.2.14: 완전 그래프의 경우">🔗</a></div>
 </article></details>
 <article class="remark remark-like" id="rem-matrix-tree-complexity"><h2 class="heading">
-<span class="type">보조설명</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.13</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">계산 복잡도.</span>
+<span class="type">보조설명</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.15</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">계산 복잡도.</span>
 </h2>
 <div class="para" id="rem-matrix-tree-complexity-2">
 <span class="process-math">\(\det L_r\)</span>은 가우스 소거법으로 <span class="process-math">\(O(n^3)\)</span>번의 산술 연산으로 계산할 수 있습니다. 따라서 지수적으로 많은 신장 트리를 나열하지 않고도 그 개수를 다항 시간에 구할 수 있습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#rem-matrix-tree-complexity-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="para" id="rem-matrix-tree-complexity-3">반면 신장 트리를 직접 나열하는 방법은 비용이 지수적으로 커집니다. 뿌리가 아닌 각 꼭짓점 <span class="process-math">\(v\)</span>마다 들어오는 변 하나를 고르는 부모 함수는 모두 <span class="process-math">\(\prod_{v\neq r}d^-(v)\)</span>개이고, 각각이 순환을 포함하는지 확인해야 합니다. 예를 들어 모든 꼭짓점의 내차수가 <span class="process-math">\(k\geq 2\)</span>인 정칙 그래프에서는 후보가 <span class="process-math">\(k^{n-1}\)</span>개로, <span class="process-math">\(n\)</span>에 대해 지수적으로 늘어납니다. 내차수가 <span class="process-math">\(3\)</span>에 불과하더라도 <span class="process-math">\(n=40\)</span>이면 후보가 <span class="process-math">\(3^{39}\approx 4.1 \times 10^{18}\)</span>개이므로 하나씩 확인하는 것은 사실상 불가능하지만, <span class="process-math">\(39\times39\)</span> 행렬의 행렬식은 수만 번의 연산으로 계산됩니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#rem-matrix-tree-complexity-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="보조설명 5.2.13: 계산 복잡도"><a tabindex="-1" href="#rem-matrix-tree-complexity" title="Copy heading and permalink for 보조설명 5.2.13: 계산 복잡도" aria-label="Copy heading and permalink for 보조설명 5.2.13: 계산 복잡도">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="보조설명 5.2.15: 계산 복잡도"><a tabindex="-1" href="#rem-matrix-tree-complexity" title="Copy heading and permalink for 보조설명 5.2.15: 계산 복잡도" aria-label="Copy heading and permalink for 보조설명 5.2.15: 계산 복잡도">🔗</a></div>
 </article>
 <section class="exercises" id="exercises-matrix-tree-theorem">
 <h2 class="heading hide-type">
