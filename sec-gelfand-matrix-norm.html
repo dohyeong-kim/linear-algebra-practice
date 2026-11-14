@@ -659,7 +659,7 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 <span class="type">정리</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.15</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">겔판트 공식.</span>
 </h2>
 <div class="para" id="thm-gelfand-formula-2-1">
-<span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 곱셈적 행렬 노름 <span class="process-math">\(\|\cdot\|\)</span>과 행렬 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>에 대하여 다음이 성립한다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-gelfand-formula-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 행렬 노름 <span class="process-math">\(\|\cdot\|\)</span>과 행렬 <span class="process-math">\(A\in\mathbb C^{n\times n}\)</span>에 대하여 다음이 성립한다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-gelfand-formula-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="displaymath process-math" id="thm-gelfand-formula-2-2">
 \begin{gather*}
@@ -670,7 +670,7 @@ N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}.
 </article>
 <details id="thm-gelfand-formula-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
-<div class="para" id="thm-gelfand-formula-3-1">먼저 <span class="process-math">\(\|\cdot\|\)</span>가 스펙트럼 노름, 즉 유클리드 노름이 유도하는 연산자 노름 <span class="process-math">\(\|\cdot\|_2\)</span>인 경우를 증명합니다. <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(A\)</span>의 고윳값이고 <span class="process-math">\(v\neq 0\)</span>가 대응하는 고유벡터이면 <span class="process-math">\(A^kv=\lambda^kv\)</span>이므로 <span class="process-math">\(\lvert\lambda\rvert^k\|v\|_2=\|A^kv\|_2\leq\|A^k\|_2\|v\|_2\)</span>입니다. 따라서 모든 <span class="process-math">\(k\geq 1\)</span>에 대하여 <span class="process-math">\(\rho(A)\leq\|A^k\|_2^{1/k}\)</span>이고, 다음을 얻습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-gelfand-formula-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="thm-gelfand-formula-3-1">먼저 <span class="process-math">\(\|\cdot\|\)</span>가 스펙트럼 노름, 즉 유클리드 노름이 유도하는 연산자 노름 <span class="process-math">\(\|\cdot\|_2\)</span>인 경우를 증명합니다. 이 경우는 행렬 노름이 곱셈적 성질을 가지므로 다루기 쉽습니다. <span class="process-math">\(\lambda\)</span>가 <span class="process-math">\(A\)</span>의 고윳값이고 <span class="process-math">\(v\neq 0\)</span>가 대응하는 고유벡터이면 <span class="process-math">\(A^kv=\lambda^kv\)</span>이므로 <span class="process-math">\(\lvert\lambda\rvert^k\|v\|_2=\|A^kv\|_2\leq\|A^k\|_2\|v\|_2\)</span>입니다. 따라서 모든 <span class="process-math">\(k\geq 1\)</span>에 대하여 <span class="process-math">\(\rho(A)\leq\|A^k\|_2^{1/k}\)</span>이고, 다음을 얻습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#thm-gelfand-formula-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-powers-additive-jordan-decomposition.html ./knowl/xref/thm-equivalence-of-norms.html" id="thm-gelfand-formula-3-2">
 \begin{gather*}
@@ -706,8 +706,16 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="증명 4.2.15.1"><a tabindex="-1" href="#thm-gelfand-formula-3" title="Copy heading and permalink for 증명 4.2.15.1" aria-label="Copy heading and permalink for 증명 4.2.15.1">🔗</a></div>
 </article></details>
+<article class="remark remark-like" id="rem-gelfand-submultiplicativity"><h2 class="heading">
+<span class="type">보조설명</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.16</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">겔판트 공식과 노름의 곱셈성.</span>
+</h2>
+<div class="para" id="rem-gelfand-submultiplicativity-2">
+<a href="sec-gelfand-matrix-norm.html#thm-gelfand-formula" class="xref" data-knowl="./knowl/xref/thm-gelfand-formula.html" data-reveal-label="Reveal" data-close-label="Close" title="정리 4.2.15: 겔판트 공식">정리 4.2.15</a>의 증명에서 볼 수 있듯이, 유한차원에서는 <span class="process-math">\(\mathbb C^{n\times n}\)</span> 위의 모든 노름이 서로 동치이므로 노름이 곱셈적이지 않더라도 겔판트 공식이 성립합니다(다만 증명의 마지막 단계에서 <span class="process-math">\(\|\cdot\|\)</span>를 임의의 행렬 노름으로 택해도 무방합니다). 그러나 무한차원 벡터공간 위의 선형연산자에 대하여 겔판트 공식을 일반화할 때에는 서로 다른 노름이 동치라는 보장이 없으므로, 노름의 곱셈성(<span class="process-math">\(\|ST\|\leq\|S\|\,\|T\|\)</span>)이 꼭 필요합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#rem-gelfand-submultiplicativity-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="보조설명 4.2.16: 겔판트 공식과 노름의 곱셈성"><a tabindex="-1" href="#rem-gelfand-submultiplicativity" title="Copy heading and permalink for 보조설명 4.2.16: 겔판트 공식과 노름의 곱셈성" aria-label="Copy heading and permalink for 보조설명 4.2.16: 겔판트 공식과 노름의 곱셈성">🔗</a></div>
+</article>
 <details id="ex-gelfand-spectral-norm" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.16</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">스펙트럼 노름을 이용한 겔판트 공식.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.17</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">스펙트럼 노름을 이용한 겔판트 공식.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-gelfand-spectral-norm-2">
@@ -727,10 +735,10 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 <div class="para">입니다. 모든 <span class="process-math">\(k\geq 1\)</span>에 대하여 <span class="process-math">\(\|A^k\|_2&gt;1\)</span>이지만 <span class="process-math">\(k\)</span>제곱근을 취하면 <span class="process-math">\(\rho(A)\)</span>로 수렴함에 주목합니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-gelfand-spectral-norm-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.16: 스펙트럼 노름을 이용한 겔판트 공식"><a tabindex="-1" href="#ex-gelfand-spectral-norm" title="Copy heading and permalink for 예시 4.2.16: 스펙트럼 노름을 이용한 겔판트 공식" aria-label="Copy heading and permalink for 예시 4.2.16: 스펙트럼 노름을 이용한 겔판트 공식">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.17: 스펙트럼 노름을 이용한 겔판트 공식"><a tabindex="-1" href="#ex-gelfand-spectral-norm" title="Copy heading and permalink for 예시 4.2.17: 스펙트럼 노름을 이용한 겔판트 공식" aria-label="Copy heading and permalink for 예시 4.2.17: 스펙트럼 노름을 이용한 겔판트 공식">🔗</a></div>
 </article></details>
 <details id="ex-gelfand-one-norm" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.17</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">1-노름을 이용한 겔판트 공식.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.18</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">1-노름을 이용한 겔판트 공식.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-gelfand-one-norm-2">
@@ -745,16 +753,16 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 <div class="para">입니다. 두 부분수열 모두 <span class="process-math">\(2\)</span>로 수렴하므로 <span class="process-math">\(\lim_{k\to\infty}\|A^k\|_1^{1/k}=2=\rho(A)\)</span>입니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-gelfand-one-norm-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.17: 1-노름을 이용한 겔판트 공식"><a tabindex="-1" href="#ex-gelfand-one-norm" title="Copy heading and permalink for 예시 4.2.17: 1-노름을 이용한 겔판트 공식" aria-label="Copy heading and permalink for 예시 4.2.17: 1-노름을 이용한 겔판트 공식">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.18: 1-노름을 이용한 겔판트 공식"><a tabindex="-1" href="#ex-gelfand-one-norm" title="Copy heading and permalink for 예시 4.2.18: 1-노름을 이용한 겔판트 공식" aria-label="Copy heading and permalink for 예시 4.2.18: 1-노름을 이용한 겔판트 공식">🔗</a></div>
 </article></details>
-<div class="para" id="sec-gelfand-matrix-norm-24">곱셈적 행렬 노름과 겔판트 공식에 대해 살펴보았습니다. 대표적 행렬 노름인 <span class="process-math">\(\|\cdot \|_1\)</span>과 <span class="process-math">\(\|\cdot \|_2\)</span>는 벡터의 노름에서 유래하였습니다. 하지만 곱셈적 행렬 노름 중에서는 벡터의 노름에서 유래하지 않은 것도 존재합니다. 예를 들어 <a href="sec-image-compression.html#def-frobenius-norm" class="xref" data-knowl="./knowl/xref/def-frobenius-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.7.11: 프로베니우스 노름">정의 1.7.11</a>의 프로베니우스 노름 <span class="process-math">\(\|\cdot\|_F\)</span>가 있습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-gelfand-matrix-norm-24" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-gelfand-matrix-norm-25">곱셈적 행렬 노름과 겔판트 공식에 대해 살펴보았습니다. 대표적 행렬 노름인 <span class="process-math">\(\|\cdot \|_1\)</span>과 <span class="process-math">\(\|\cdot \|_2\)</span>는 벡터의 노름에서 유래하였습니다. 하지만 곱셈적 행렬 노름 중에서는 벡터의 노름에서 유래하지 않은 것도 존재합니다. 예를 들어 <a href="sec-image-compression.html#def-frobenius-norm" class="xref" data-knowl="./knowl/xref/def-frobenius-norm.html" data-reveal-label="Reveal" data-close-label="Close" title="정의 1.7.11: 프로베니우스 노름">정의 1.7.11</a>의 프로베니우스 노름 <span class="process-math">\(\|\cdot\|_F\)</span>가 있습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-gelfand-matrix-norm-25" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <article class="proposition theorem-like" id="prop-frobenius-submultiplicative"><h2 class="heading">
-<span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.18</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">프로베니우스 노름의 곱셈성.</span>
+<span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.19</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">프로베니우스 노름의 곱셈성.</span>
 </h2>
 <div class="para" id="prop-frobenius-submultiplicative-2-1">같은 크기의 정사각행렬 <span class="process-math">\(A\)</span>와 <span class="process-math">\(B\)</span>에 대하여 <span class="process-math">\(\|AB\|_F\leq\|A\|_F\|B\|_F\)</span>이다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-frobenius-submultiplicative-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="명제 4.2.18: 프로베니우스 노름의 곱셈성"><a tabindex="-1" href="#prop-frobenius-submultiplicative" title="Copy heading and permalink for 명제 4.2.18: 프로베니우스 노름의 곱셈성" aria-label="Copy heading and permalink for 명제 4.2.18: 프로베니우스 노름의 곱셈성">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="명제 4.2.19: 프로베니우스 노름의 곱셈성"><a tabindex="-1" href="#prop-frobenius-submultiplicative" title="Copy heading and permalink for 명제 4.2.19: 프로베니우스 노름의 곱셈성" aria-label="Copy heading and permalink for 명제 4.2.19: 프로베니우스 노름의 곱셈성">🔗</a></div>
 </article>
 <details id="prop-frobenius-submultiplicative-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
@@ -770,12 +778,12 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 <div class="para">입니다. 양변에 제곱근을 취하면 <span class="process-math">\(\|AB\|_F\leq\|A\|_F\|B\|_F\)</span>입니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-frobenius-submultiplicative-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="증명 4.2.18.1"><a tabindex="-1" href="#prop-frobenius-submultiplicative-3" title="Copy heading and permalink for 증명 4.2.18.1" aria-label="Copy heading and permalink for 증명 4.2.18.1">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 4.2.19.1"><a tabindex="-1" href="#prop-frobenius-submultiplicative-3" title="Copy heading and permalink for 증명 4.2.19.1" aria-label="Copy heading and permalink for 증명 4.2.19.1">🔗</a></div>
 </article></details>
-<div class="para" id="sec-gelfand-matrix-norm-26">프로베니우스 노름은 벡터의 노름에서 유래하지 않습니다. 벡터의 노름에서 유래했다면 <span class="process-math">\(\|I\|_F=1\)</span>이어야 하지만 실제로는 <span class="process-math">\(\|I\|_F=\sqrt{n}\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-gelfand-matrix-norm-26" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="para" id="sec-gelfand-matrix-norm-27">프로베니우스 노름은 벡터의 노름에서 유래하지 않습니다. 벡터의 노름에서 유래했다면 <span class="process-math">\(\|I\|_F=1\)</span>이어야 하지만 실제로는 <span class="process-math">\(\|I\|_F=\sqrt{n}\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#sec-gelfand-matrix-norm-27" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <details id="ex-gelfand-frobenius-nilpotent" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h2 class="heading">
-<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.19</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">멱영행렬과 프로베니우스 노름.</span>
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.2.20</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">멱영행렬과 프로베니우스 노름.</span>
 </h2></summary>
 <article class="example example-like knowl__content">
 <div class="para logical" id="ex-gelfand-frobenius-nilpotent-2">
@@ -789,7 +797,7 @@ C^{-1/k}\|A^k\|_2^{1/k}\leq\|A^k\|^{1/k}\leq c^{-1/k}\|A^k\|_2^{1/k}
 <div class="para">입니다. 노름 자체는 스펙트럼 반지름보다 훨씬 클 수 있지만 겔판트 공식의 극한은 정확히 <span class="process-math">\(\rho(N)\)</span>과 같습니다.</div>
 <div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-gelfand-frobenius-nilpotent-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.19: 멱영행렬과 프로베니우스 노름"><a tabindex="-1" href="#ex-gelfand-frobenius-nilpotent" title="Copy heading and permalink for 예시 4.2.19: 멱영행렬과 프로베니우스 노름" aria-label="Copy heading and permalink for 예시 4.2.19: 멱영행렬과 프로베니우스 노름">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 4.2.20: 멱영행렬과 프로베니우스 노름"><a tabindex="-1" href="#ex-gelfand-frobenius-nilpotent" title="Copy heading and permalink for 예시 4.2.20: 멱영행렬과 프로베니우스 노름" aria-label="Copy heading and permalink for 예시 4.2.20: 멱영행렬과 프로베니우스 노름">🔗</a></div>
 </article></details>
 <section class="exercises" id="exercises-gelfand-matrix-norm">
 <h2 class="heading hide-type">
