@@ -28,6 +28,28 @@
     내부 함수 <m>\phi_{q,p}</m>들은 <m>f</m>와 무관하게 정할 수 있으며, 외부 함수 <m>g_q</m>들은 <m>f</m>에 따라 달라집니다.
     <fn>A. N. Kolmogorov, “On the representation of continuous functions of many variables by superposition of continuous functions of one variable and addition,” Doklady Akademii Nauk SSSR 114 no. 5 (1957), 953–956.</fn>
   </p>
+  <example xml:id="example-kolmogorov-product">
+    <title>곱 함수의 콜모고로프 꼴 표현</title>
+    <p>
+      이변수 함수 <m>f:[0,1]^2\to\mathbb R</m>, <m>f(x,y)=xy</m>를 생각합니다. <m>n=2</m>이므로 콜모고로프의 정리에 나타나는 합은 <m>q=0,\ldots,4</m>의 다섯 항으로 이루어집니다. 항등식
+      <md>
+        <mrow>xy=\frac{(x+y)^2}{4}-\frac{(x-y)^2}{4}</mrow>
+      </md>
+      에 착안하여 내부 함수와 외부 함수를
+      <md>
+        <mrow>\phi_{0,1}(x) \amp = x, \amp \phi_{0,2}(y) \amp = y, \amp g_0(t) \amp = \frac{t^2}{4}</mrow>
+        <mrow>\phi_{1,1}(x) \amp = x, \amp \phi_{1,2}(y) \amp = -y, \amp g_1(t) \amp = -\frac{t^2}{4}</mrow>
+      </md>
+      로 놓고, <m>q=2,3,4</m>에 대해서는 <m>g_q=0</m>으로 놓습니다. 그러면
+      <md>
+        <mrow>\sum_{q=0}^{4}g_q\left(\phi_{q,1}(x)+\phi_{q,2}(y)\right)=g_0(x+y)+g_1(x-y)=xy</mrow>
+      </md>
+      입니다. 즉, 이변수 함수의 곱셈이 일변수 연속함수의 합성과 덧셈만으로 표현됩니다.
+    </p>
+    <p>
+      다만 여기서 사용한 내부 함수는 <m>f(x,y)=xy</m>에 맞추어 고른 것입니다. 콜모고로프의 정리는 더 강한 주장으로, 모든 연속함수 <m>f</m>에 공통으로 쓸 수 있는 내부 함수 <m>\phi_{q,p}</m>가 존재함을 보장합니다. 그러한 보편적인 내부 함수는 이 예시의 함수처럼 간단한 식으로 주어지지 않습니다.
+    </p>
+  </example>
   <p>
     콜모고로프의 정리를 받아들인다면, <m>f</m>에 따라 바뀌는 <m>g_q</m>를 근사하면 됩니다. <m>g_q</m>는 일변수함수이므로, 남는 문제는 주어진 일변수 연속함수를 <q>간단한</q> 함수로 근사하는 것입니다. 신경망에서 사용하는 간단한 함수를 <term>활성화 함수</term><aside><p>활성화 함수:activation function</p></aside>라고 합니다. <term>렐루</term><aside><p>ReLU:rectified linear unit</p></aside>, <term>시그모이드 함수</term><aside><p>시그모이드 함수:sigmoid function</p></aside>, <term>쌍곡 탄젠트 함수</term><aside><p>쌍곡 탄젠트 함수:hyperbolic tangent</p></aside>는 각각 다음과 같이 정의됩니다.
     <md>
@@ -46,7 +68,19 @@
 
 
   <p>
-    신경망의 연결 구조와 활성화 함수가 고정되어 있으면, 각 선분의 가중치는 이전 층의 출력들을 어떤 비율로 결합할지를 결정합니다. 예를 들어 <m>\ell</m>층의 <m>j</m>번째 노드의 출력은 <m>h_j^{(\ell)}=\sigma\left(\sum_i w_{ji}^{(\ell)}h_i^{(\ell-1)}\right)</m>로 주어집니다. 입력층에서 시작해 이 규칙을 차례로 적용하면 각 노드의 출력이 모두 결정되고, 마지막 층의 출력도 결정됩니다. 따라서 층별 함수의 합성, 즉 신경망이 나타내는 함수는 고정된 활성화 함수와 구조에 대하여 가중치들로 결정됩니다.
+    신경망의 연결 구조와 활성화 함수가 고정되어 있으면, 각 선분의 가중치는 이전 층의 출력들을 어떤 비율로 결합할지를 결정합니다. 예를 들어 <m>\ell</m>층의 <m>j</m>번째 노드의 출력은
+    <me>
+      h_j^{(\ell)}=\sigma\left(\sum_i w_{ji}^{(\ell)}h_i^{(\ell-1)}\right)
+    </me>
+    로 주어집니다. 입력층에서 시작해 이 규칙을 차례로 적용하면 각 노드의 출력이 모두 결정되고, 마지막 층의 출력도 결정됩니다. 따라서 층별 함수의 합성, 즉 신경망이 나타내는 함수는 고정된 활성화 함수와 구조에 대하여 가중치들로 결정됩니다.
+  </p>
+
+  <p>
+    각 노드에서 활성화 함수를 적용하기 전에 상수를 더하는 것을 허용하기도 합니다. 이 상수를 <term>편향</term><aside><p>편향:bias</p></aside>이라고 합니다. <m>\ell</m>층의 <m>j</m>번째 노드의 편향을 <m>b_j^{(\ell)}</m>라 하면, 이 노드의 출력은
+    <md>
+      <mrow>h_j^{(\ell)}=\sigma\left(\sum_i w_{ji}^{(\ell)}h_i^{(\ell-1)}+b_j^{(\ell)}\right)</mrow>
+    </md>
+    로 주어집니다. 행렬로 나타내면 <m>h^{(\ell)}=\sigma\left(W^{(\ell)}h^{(\ell-1)}+b^{(\ell)}\right)</m>이며, 여기서 <m>\sigma</m>는 성분별로 적용합니다. 즉, 각 층은 활성화 함수를 적용하기 전에 선형변환 대신 아핀변환을 수행합니다. 이 경우 신경망이 나타내는 함수는 고정된 활성화 함수와 구조에 대하여 가중치들과 편향들로 결정됩니다. 
   </p>
 
   <figure xml:id="fig-dnn-composition">
@@ -55,9 +89,16 @@
     <caption>신경망과 함수 합성 구조</caption>
   </figure>
 
+  <remark xml:id="rem-dnn-general-structure">
+    <title>일반적인 연결 구조</title>
+    <p>
+      신경망의 인접한 두 층 사이에 모든 선분이 있어야 하는 것은 아닙니다. 일부 선분이 빠진 신경망도 생각할 수 있으며, 이는 해당 가중치를 0으로 고정한 것과 같습니다. 또한 뒤쪽 층에서 앞쪽 층으로 거슬러 가는 역방향 선분을 허용하는 신경망도 있습니다.
+    </p>
+  </remark>
+
 
   <p>
-    깊이가 1인 완전연결 신경망에서는 입력의 모든 성분이 출력의 모든 성분에 연결됩니다. 입력을 <m>x\in\mathbb R^n</m>, 가중치 행렬을 <m>W=(w_{ji})\in\mathbb R^{m\times n}</m>라 하면, <m>j</m>번째 출력 성분은 <m>y_j=\sum_{i=1}^{n}w_{ji}x_i</m>입니다. 항등 활성화 함수는 이 값을 바꾸지 않으므로 출력은 <m>y=Wx</m>가 됩니다. 따라서 이 신경망은 행렬 곱으로 주어지는 선형변환입니다. 
+    깊이가 1인 완전연결 신경망에서는 입력의 모든 성분이 출력의 모든 성분에 연결됩니다. 입력을 <m>x\in\mathbb R^n</m>, 가중치 행렬을 <m>W=(w_{ji})\in\mathbb R^{m\times n}</m>라 하면, 편향이 없을 때 <m>j</m>번째 출력 성분은 <m>y_j=\sum_{i=1}^{n}w_{ji}x_i</m>입니다. 항등 활성화 함수는 이 값을 바꾸지 않으므로 출력은 <m>y=Wx</m>가 됩니다. 따라서 이 신경망은 행렬 곱으로 주어지는 선형변환입니다. 
   </p>
 
   <p>
@@ -68,6 +109,17 @@
   <p>
     심층신경망의 크기는 보통 학습 가능한 매개변수의 수로 나타냅니다. 각 매개변수는 컴퓨터에 저장될 때 일정한 공간을 차지하므로, 모델을 저장하는 데 필요한 메모리는 매개변수의 수에 비례합니다. 실수의 집합은 비가산 집합이므로 임의의 실수를 컴퓨터에 정확히 저장할 수는 없습니다. 따라서 컴퓨터에서 실수를 다루려면 어떤 방식으로든 근사해야 합니다. 예를 들어 유효 자릿수가 고정된 부동소수점 수로 매개변수를 저장할 수 있습니다. 각 매개변수를 32비트 부동소수점 수로 저장한다고 가정하면, 매개변수 하나에 4바이트가 필요하므로 백만 개, 10억 개, 1조 개의 매개변수를 가진 모델은 각각 약 4MB, 4GB, 4TB의 메모리를 차지합니다. 이는 매개변수 자체를 저장하는 데 필요한 양이며, 구동이나 학습에 사용하는 추가 메모리는 포함하지 않습니다.
   </p>
+
+  <example xml:id="ex-dnn-qwen-model-size">
+    <title>Qwen 모델의 크기 어림</title>
+    <p>
+      공개된 언어 모델 <url href="https://huggingface.co/Qwen/Qwen3.8-27B">Qwen3.8-27B</url>의 이름에서 <q>27B</q>는 학습 가능한 매개변수의 수가 약 270억 개(<m>2.7\times 10^{10}</m>)임을 뜻합니다. 이 모델의 매개변수는 BF16이라 부르는 16비트 부동소수점 형식으로 공개되어 있습니다. 이 형식에서는 매개변수 하나에 2바이트가 필요하므로, 매개변수를 저장하는 데 필요한 메모리는 약
+      <md><mrow>2.7\times 10^{10}\times 2\text{ 바이트}=5.4\times 10^{10}\text{ 바이트}\approx 54\text{GB}</mrow></md>
+      입니다. 이 값들은 매개변수 자체를 저장하는 데 필요한 양이며, 구동이나 학습에 사용하는 추가 메모리는 포함하지 않습니다.
+    </p>
+  </example>
+
+  
   
   <exercises xml:id="exercises-deep-neural-network">
     <title>연습문제</title>

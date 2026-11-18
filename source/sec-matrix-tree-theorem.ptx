@@ -202,7 +202,7 @@
   </p>
   <figure xml:id="fig-laplacian-small">
     <caption>꼭짓점이 세 개인 그래프의 라플라시안 행렬</caption>
-    <image source="laplacian-of-a-graph-with-three-vertices.jpg" width="90%">
+    <image source="laplacian-of-a-graph-with-three-vertices.jpeg" width="90%">
       <description><p>세 꼭짓점과 네 변으로 이루어진 그래프의 라플라시안 행렬과 그 소행렬식의 예시.</p></description>
     </image>
   </figure>
