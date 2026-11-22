@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h2 class="heading">
+<span class="type">예시</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.2.10</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">헤드가 두 개인 멀티-헤드-어텐션.</span>
+</h2>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(h=2\text{,}\)</span> <span class="process-math">\(n=2\text{,}\)</span> <span class="process-math">\(d_x=d_y=2\text{,}\)</span> <span class="process-math">\(d_k=d_v=1\text{,}\)</span> <span class="process-math">\(d_o=2\)</span>로 두고 다음 행렬들을 고정합니다.</div>
+<div class="displaymath process-math">
+\begin{align*}
+W_Q^{(1)}=W_K^{(1)}=W_V^{(1)}=\begin{pmatrix}1 \amp 0\end{pmatrix},\qquad W_Q^{(2)}=W_K^{(2)}=W_V^{(2)}=\begin{pmatrix}0 \amp 1\end{pmatrix},\qquad W_O=\begin{pmatrix}1 \amp 0\\ 0 \amp 1\end{pmatrix}.
+\end{align*}
+</div>
+<div class="para">입력은 <span class="process-math">\(x=(1,1)^{\mathsf T}\text{,}\)</span> <span class="process-math">\(y_1=(1,0)^{\mathsf T}\text{,}\)</span> <span class="process-math">\(y_2=(0,1)^{\mathsf T}\)</span>입니다. 이 경우 <span class="process-math">\(\operatorname{MultiHeadAttention}(x;y_1,y_2)\)</span>의 값은 다음과 같이 계산됩니다.</div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-two-head-attention-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">첫 번째 헤드의 행렬 <span class="process-math">\(\begin{pmatrix}1 \amp 0\end{pmatrix}\)</span>은 벡터의 첫 번째 좌표만 뽑아내므로, 첫 번째 헤드는 첫 번째 좌표만 봅니다. 쿼리는 <span class="process-math">\(W_Q^{(1)}x=1\)</span>이고, 키는 <span class="process-math">\(W_K^{(1)}y_1=1\text{,}\)</span> <span class="process-math">\(W_K^{(1)}y_2=0\)</span>입니다. <span class="process-math">\(d_k=1\)</span>이므로 <span class="process-math">\(\sqrt{d_k}=1\)</span>이고, 점수 벡터는 <span class="process-math">\(s^{(1)}=(1\cdot 1,\,1\cdot 0)=(1,0)\)</span>입니다. 소프트맥스를 적용하면 가중치는 <span class="process-math">\(\operatorname{softmax}(s^{(1)})=\left(\frac{e}{e+1},\frac{1}{e+1}\right)\)</span>이 되어, 첫 번째 좌표가 큰 <span class="process-math">\(y_1\)</span>에 더 큰 가중치가 주어집니다. 값은 <span class="process-math">\(W_V^{(1)}y_1=1\text{,}\)</span> <span class="process-math">\(W_V^{(1)}y_2=0\)</span>이므로 첫 번째 헤드의 출력은 다음과 같습니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+z^{(1)}=\frac{e}{e+1}\cdot 1+\frac{1}{e+1}\cdot 0=\frac{e}{e+1}.
+\end{gather*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-two-head-attention-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">두 번째 헤드의 행렬 <span class="process-math">\(\begin{pmatrix}0 \amp 1\end{pmatrix}\)</span>은 두 번째 좌표만 뽑아내므로, 두 번째 헤드는 두 번째 좌표만 봅니다. 쿼리는 <span class="process-math">\(W_Q^{(2)}x=1\)</span>이고, 키는 <span class="process-math">\(W_K^{(2)}y_1=0\text{,}\)</span> <span class="process-math">\(W_K^{(2)}y_2=1\)</span>이므로 점수 벡터는 <span class="process-math">\(s^{(2)}=(0,1)\)</span>이고 가중치는 <span class="process-math">\(\left(\frac{1}{e+1},\frac{e}{e+1}\right)\)</span>입니다. 이번에는 두 번째 좌표가 큰 <span class="process-math">\(y_2\)</span>에 더 큰 가중치가 주어집니다. 값은 <span class="process-math">\(W_V^{(2)}y_1=0\text{,}\)</span> <span class="process-math">\(W_V^{(2)}y_2=1\)</span>이므로 두 번째 헤드의 출력은 다음과 같습니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+z^{(2)}=\frac{1}{e+1}\cdot 0+\frac{e}{e+1}\cdot 1=\frac{e}{e+1}.
+\end{gather*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-two-head-attention-4" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">두 헤드의 출력 <span class="process-math">\(z^{(1)},z^{(2)}\in\mathbb R\)</span>을 이어 붙이면 <span class="process-math">\(\mathbb R^{2}\)</span>의 열벡터가 되고, 여기에 <span class="process-math">\(W_O\)</span>를 적용합니다. <span class="process-math">\(W_O\)</span>는 단위행렬이므로 이어 붙인 벡터가 그대로 출력됩니다.</div>
+<div class="displaymath process-math">
+\begin{gather*}
+\operatorname{MultiHeadAttention}(x;y_1,y_2)=W_O\begin{pmatrix}z^{(1)}\\ z^{(2)}\end{pmatrix}=\frac{e}{e+1}\begin{pmatrix}1\\ 1\end{pmatrix}.
+\end{gather*}
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-two-head-attention-5" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="para">이 예에서 각 헤드는 입력의 서로 다른 부분공간, 즉 서로 다른 좌표축에 주목합니다. 그 결과 같은 쿼리 <span class="process-math">\(x\)</span>에 대해서도 헤드마다 서로 다른 입력 벡터에 큰 가중치를 줍니다. <span class="process-math">\(W_O\)</span>는 이렇게 얻은 두 헤드의 결과를 하나의 출력으로 종합합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#ex-two-head-attention-6" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="예시 6.2.10: 헤드가 두 개인 멀티-헤드-어텐션"><a tabindex="-1" href="#ex-two-head-attention" title="Copy heading and permalink for 예시 6.2.10: 헤드가 두 개인 멀티-헤드-어텐션" aria-label="Copy heading and permalink for 예시 6.2.10: 헤드가 두 개인 멀티-헤드-어텐션">🔗</a></div>
+</article><span class="incontext"><a class="internal" href="sec-attention.html#ex-two-head-attention">In Context</a></span>
+</body>
+</html>
