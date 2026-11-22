@@ -6,7 +6,7 @@
     이 절에서는 어텐션 개념에 대해 알아봅니다. 어텐션이란 언어자료에서 인접한 단어(토큰) 사이의 국소적인 관계에만 머무르지 않고, 물리적 거리에 상관없이 임의의 두 토큰 사이의 문맥적 연관성을 직접 계산하여 정보의 반영 비중을 동적으로 결정하는 메커니즘입니다. 여기서 <q>동적</q>이라 함은 학습이 끝난 뒤 고정된 결합 규칙을 일괄 적용하는 것이 아니라, 입력으로 주어지는 문장 전체의 토큰 구성에 의존하여 결합 가중치가 매번 새롭게 결정된다는 뜻입니다. 즉, 특정 토큰 쌍의 연결 비중을 근접한 몇몇 단어만이 아니라 문장 내 모든 토큰과의 상대적 유사도를 함께 고려해 산출되므로, 문장 어딘가의 단어가 달라지면 전체적인 주목의 분포도 그에 맞춰 변화합니다. 이처럼 각 토큰을 정적 대상으로 다루는 대신, 문장 전체에 걸친 모든 토큰과의 상호작용을 바탕으로 분석함으로써 전체 문맥을 이해하는 것이 어텐션의 목적입니다.
   </p>
   <p>
-    수학적으로 말하자면, 어텐션은 <xref ref="sec-deep-neural-network"/>에서 알아본 심층신경망의 특수한 경우입니다. 즉, 간단한 비선형함수로부터 가중치를 고려한 선형결합과 합성을 통하여 함수를 구성하여 앞서 설명한 어텐션이라는 기능을 수행하려 합니다. 이때 필요한 소프트맥스 함수를 먼저 알아봅시다.
+    수학적으로 어텐션은 행렬 곱셈과 소프트맥스 함수로 만들어집니다. 소프트맥스 함수는 여러 토큰 사이의 관련성 점수를 양수이고 합이 1인 가중치로 바꾸어, 어떤 토큰에 얼마나 주목할지를 정하는 역할을 합니다. 이제 어텐션에 필요한 소프트맥스 함수를 먼저 알아봅시다.
   </p>
 
   <definition xml:id="def-softmax">
@@ -64,11 +64,57 @@
       </md>
     </p>
   </definition>
+
+  <example xml:id="ex-attention-toy">
+    <title>간단한 어텐션 계산</title>
+    <p>
+      <m>n=2</m>, <m>d_x=d_y=d_k=d_v=1</m>이고 <m>W_Q=W_K=(1)</m>, <m>W_V=(2)</m>라고 합시다. 질의 입력 <m>x=1</m>과 참조 입력 <m>y_1=0</m>, <m>y_2=\ln 3</m>에 대해 <m>\sqrt{d_k}=1</m>이므로 점수는
+      <md>
+        <mrow>s_1=1\cdot 0=0,\qquad s_2=1\cdot\ln 3=\ln 3</mrow>
+      </md>
+      입니다. 따라서 어텐션 가중치는
+      <md>
+        <mrow>\operatorname{softmax}(s)=\left(\frac{1}{1+3},\frac{3}{1+3}\right)=\left(\frac{1}{4},\frac{3}{4}\right)</mrow>
+      </md>
+      이고, 값은 <m>v_1=0</m>, <m>v_2=2\ln 3</m>이므로
+      <md>
+        <mrow>\operatorname{Attention}(x;y_1,y_2)=\frac{1}{4}\cdot 0+\frac{3}{4}\cdot 2\ln 3=\frac{3}{2}\ln 3\approx 1.648</mrow>
+      </md>
+      입니다. 점수가 더 큰 <m>y_2</m>의 값이 출력에 더 큰 비중으로 반영됩니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-attention-two-dim">
+    <title>2차원 벡터에서의 어텐션 계산</title>
+    <p>
+      <m>n=3</m>, <m>d_x=d_y=d_k=d_v=2</m>이고
+      <md>
+        <mrow>W_Q=W_K=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix},\qquad W_V=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}</mrow>
+      </md>
+      라고 합시다. 질의 입력 <m>x=(\sqrt2,0)^{\mathsf T}</m>와 참조 입력 <m>y_1=(0,1)^{\mathsf T}</m>, <m>y_2=(\ln 3,0)^{\mathsf T}</m>, <m>y_3=(0,0)^{\mathsf T}</m>에 대해 <m>q=x</m>, <m>k_j=y_j</m>이고 <m>\sqrt{d_k}=\sqrt2</m>이므로 점수는
+      <md>
+        <mrow>s_1=\frac{0}{\sqrt2}=0,\qquad s_2=\frac{\sqrt2\ln 3}{\sqrt2}=\ln 3,\qquad s_3=0</mrow>
+      </md>
+      입니다. 따라서 어텐션 가중치는
+      <md>
+        <mrow>\operatorname{softmax}(s)=\left(\frac{1}{1+3+1},\frac{3}{1+3+1},\frac{1}{1+3+1}\right)=\left(\frac{1}{5},\frac{3}{5},\frac{1}{5}\right)</mrow>
+      </md>
+      입니다. 값은 <m>v_1=(0,2)^{\mathsf T}</m>, <m>v_2=(\ln 3,0)^{\mathsf T}</m>, <m>v_3=(0,0)^{\mathsf T}</m>이므로
+      <md>
+        <mrow>\operatorname{Attention}(x;y_1,y_2,y_3)=\frac{1}{5}\begin{pmatrix}0\\2\end{pmatrix}+\frac{3}{5}\begin{pmatrix}\ln 3\\0\end{pmatrix}+\frac{1}{5}\begin{pmatrix}0\\0\end{pmatrix}=\begin{pmatrix}\frac{3}{5}\ln 3\\[2pt]\frac{2}{5}\end{pmatrix}\approx\begin{pmatrix}0.659\\0.400\end{pmatrix}</mrow>
+      </md>
+      입니다. 질의와 같은 방향의 성분을 가진 <m>y_2</m>가 가장 큰 비중을 받지만, 질의와 직교하는 <m>y_1</m>, <m>y_3</m>의 값도 0이 아닌 가중치로 출력에 반영됩니다.
+    </p>
+  </example>
   <p>
     <xref ref="def-scaled-dot-product-attention"/>에서 <m>q=W_Qx</m>는 <term>질의</term><aside><p>질의:query</p><p>키:key</p><p>값:value</p></aside>, <m>k_j=W_Ky_j</m>는 <term>키</term>, <m>v_j=W_Vy_j</m>는 <term>값</term>입니다. 질의는 입력 <m>x</m>가 찾으려는 정보를 나타내고, 키는 각 참조 입력 <m>y_j</m>가 질의와 얼마나 관련되는지 비교하는 데 사용됩니다. 값은 해당 참조 입력에서 실제로 가져올 정보를 나타냅니다. 행렬 <m>W_Q,W_K,W_V</m>는 각각 입력을 질의, 키, 값으로 변환합니다.
   </p>
   <p>
     점수 <m>s_j=q^{\mathsf T}k_j/\sqrt{d_k}</m>는 질의와 키의 내적으로 관련성을 측정하고, 키 공간의 차원에 따른 크기를 조정합니다. 소프트맥스로 얻은 <m>\alpha_j=\operatorname{softmax}(s)_j</m>를 <term>어텐션 가중치</term><aside><p>어텐션 가중치:attention weight</p></aside>라고 합니다. 각 가중치는 양수이고 전체 합은 1이므로, 출력 <m>\sum_{j=1}^{n}\alpha_jv_j</m>는 값 벡터들의 가중평균입니다. 점수가 큰 참조 입력일수록 그 값이 출력에 더 큰 비중으로 반영됩니다.
+  </p>
+
+  <p>
+    어텐션은 <xref ref="sec-deep-neural-network"/>의 심층신경망의 관점에서 이해할 수 있습니다. 행렬 곱셈 <m>W_Qx</m>, <m>W_Ky_j</m>, <m>W_Vy_j</m>는 선형사상이고, 선형사상은 활성화 함수가 항등함수인 신경망 함수입니다. 여기에 질의와 키의 내적, 어텐션 가중치와 값 벡터의 곱처럼 입력에 의존하는 두 양을 곱하는 연산과, 성분별로 적용되지 않는 소프트맥스 함수가 더해집니다. 따라서 어텐션은 항등함수, 곱셈, 소프트맥스 등 여러 종류의 활성화 함수를 섞어 쓰는 혼합형 신경망의 특수한 경우로 볼 수 있습니다. 다만 이런 혼합 덕분에 어텐션은 단일한 성분별 활성화 함수를 쓰는 신경망과 다른 함수를 표현합니다.
   </p>
 
   <definition xml:id="def-cross-attention">
@@ -96,12 +142,7 @@
   </p>
 
   <p>
-    실제 트랜스포머 기반 거대언어모형에서는 어텐션 함수를 디코더라고 부르는 영역에 각각 병렬 배치하여 사용합니다. 이를 멀티-헤드-어텐션이라 합니다. <fn>초기 모형에는 인코더와 디코더가 둘 다 있었으나 디코더만 사용하는 모형이 주류가 되었습니다. 마스킹 여부에 따라 어텐션의 계산 방식이 달라질 수 있습니다.</fn>디코더 내부에 배열한 어텐션 함수 사이에는 비선형 피드포워드 함수나 정규화 같은 다른 요소도 있습니다. 이러한 거대언어모형이 효과적이기 위한 필요조건은 어텐션을 효율적으로 계산할 수 있는 것입니다.
-    <aside><p>참고: <url href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</url></p></aside>
-  </p>
-
-  <p>
-    멀티-헤드-어텐션의 구조를 간략히 살펴보겠습니다. 멀티-헤드-어텐션이란 어텐션 구조가 여러 개 중복된 것을 말합니다. 중복 수를 <m>H</m>라고 하면 헤드가 <m>h</m>개라고 말합니다. 헤드가 여럿이지만 출력 값은 하나이며, 각 헤드에서 나온 값을 종합하여 단일 출력으로 변환하는 과정이 필요합니다. 그 과정 수행에 개입하는 것은 <m>W_O</m>라 부르는 새로운 행렬입니다.
+    자연언어의 복잡한 구조를 표현하기 위해서는 복수의 어텐션 구조를 사용하는 것이 필요합니다. 멀티-헤드-어텐션이란 어텐션 구조가 여러 개 중복된 것을 말합니다. 중복 수를 <m>h</m>라고 하면 헤드가 <m>h</m>개라고 말합니다. 헤드가 여럿이지만 출력 값은 하나이며, 각 헤드에서 나온 값을 종합하여 단일 출력으로 변환하는 과정이 필요합니다. 그 과정 수행에 개입하는 것은 <m>W_O</m>라 부르는 새로운 행렬입니다.
   </p>
 
   <definition xml:id="def-multi-head-attention">
@@ -129,6 +170,160 @@
   <p>
     종합하면, 멀티-헤드-어텐션은 <m>3h+1</m>개의 행렬 <m>W_Q^{(a)}, W_K^{(a)}, W_V^{(a)}, W_O</m>에 의해 정의됩니다.
   </p>
+
+  <example xml:id="ex-two-head-attention">
+    <title>헤드가 두 개인 멀티-헤드-어텐션</title>
+    <p>
+      <m>h=2</m>, <m>n=2</m>, <m>d_x=d_y=2</m>, <m>d_k=d_v=1</m>, <m>d_o=2</m>로 두고 다음 행렬들을 고정합니다.
+      <md>
+        <mrow>W_Q^{(1)}=W_K^{(1)}=W_V^{(1)}=\begin{pmatrix}1 \amp 0\end{pmatrix},\qquad W_Q^{(2)}=W_K^{(2)}=W_V^{(2)}=\begin{pmatrix}0 \amp 1\end{pmatrix},\qquad W_O=\begin{pmatrix}1 \amp 0\\ 0 \amp 1\end{pmatrix}.</mrow>
+      </md>
+      입력은 <m>x=(1,1)^{\mathsf T}</m>, <m>y_1=(1,0)^{\mathsf T}</m>, <m>y_2=(0,1)^{\mathsf T}</m>입니다. 이 경우 <m>\operatorname{MultiHeadAttention}(x;y_1,y_2)</m>의 값은 다음과 같이 계산됩니다.
+    </p>
+    <p>
+      첫 번째 헤드의 행렬 <m>\begin{pmatrix}1 \amp 0\end{pmatrix}</m>은 벡터의 첫 번째 좌표만 뽑아내므로, 첫 번째 헤드는 첫 번째 좌표만 봅니다. 쿼리는 <m>W_Q^{(1)}x=1</m>이고, 키는 <m>W_K^{(1)}y_1=1</m>, <m>W_K^{(1)}y_2=0</m>입니다. <m>d_k=1</m>이므로 <m>\sqrt{d_k}=1</m>이고, 점수 벡터는 <m>s^{(1)}=(1\cdot 1,\,1\cdot 0)=(1,0)</m>입니다. 소프트맥스를 적용하면 가중치는 <m>\operatorname{softmax}(s^{(1)})=\left(\frac{e}{e+1},\frac{1}{e+1}\right)</m>이 되어, 첫 번째 좌표가 큰 <m>y_1</m>에 더 큰 가중치가 주어집니다. 값은 <m>W_V^{(1)}y_1=1</m>, <m>W_V^{(1)}y_2=0</m>이므로 첫 번째 헤드의 출력은 다음과 같습니다.
+      <md>
+        <mrow>z^{(1)}=\frac{e}{e+1}\cdot 1+\frac{1}{e+1}\cdot 0=\frac{e}{e+1}.</mrow>
+      </md>
+    </p>
+    <p>
+      두 번째 헤드의 행렬 <m>\begin{pmatrix}0 \amp 1\end{pmatrix}</m>은 두 번째 좌표만 뽑아내므로, 두 번째 헤드는 두 번째 좌표만 봅니다. 쿼리는 <m>W_Q^{(2)}x=1</m>이고, 키는 <m>W_K^{(2)}y_1=0</m>, <m>W_K^{(2)}y_2=1</m>이므로 점수 벡터는 <m>s^{(2)}=(0,1)</m>이고 가중치는 <m>\left(\frac{1}{e+1},\frac{e}{e+1}\right)</m>입니다. 이번에는 두 번째 좌표가 큰 <m>y_2</m>에 더 큰 가중치가 주어집니다. 값은 <m>W_V^{(2)}y_1=0</m>, <m>W_V^{(2)}y_2=1</m>이므로 두 번째 헤드의 출력은 다음과 같습니다.
+      <md>
+        <mrow>z^{(2)}=\frac{1}{e+1}\cdot 0+\frac{e}{e+1}\cdot 1=\frac{e}{e+1}.</mrow>
+      </md>
+    </p>
+    <p>
+      두 헤드의 출력 <m>z^{(1)},z^{(2)}\in\mathbb R</m>을 이어 붙이면 <m>\mathbb R^{2}</m>의 열벡터가 되고, 여기에 <m>W_O</m>를 적용합니다. <m>W_O</m>는 단위행렬이므로 이어 붙인 벡터가 그대로 출력됩니다.
+      <md>
+        <mrow>\operatorname{MultiHeadAttention}(x;y_1,y_2)=W_O\begin{pmatrix}z^{(1)}\\ z^{(2)}\end{pmatrix}=\frac{e}{e+1}\begin{pmatrix}1\\ 1\end{pmatrix}.</mrow>
+      </md>
+    </p>
+    <p>
+      이 예에서 각 헤드는 입력의 서로 다른 부분공간, 즉 서로 다른 좌표축에 주목합니다. 그 결과 같은 쿼리 <m>x</m>에 대해서도 헤드마다 서로 다른 입력 벡터에 큰 가중치를 줍니다. <m>W_O</m>는 이렇게 얻은 두 헤드의 결과를 하나의 출력으로 종합합니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-two-head-attention-mixing">
+    <title>출력 행렬이 헤드를 섞는 멀티-헤드-어텐션</title>
+    <p>
+      <xref ref="ex-two-head-attention"/>과 같은 <m>W_Q^{(a)},W_K^{(a)},W_V^{(a)}</m>와 입력 <m>y_1=(1,0)^{\mathsf T}</m>, <m>y_2=(0,1)^{\mathsf T}</m>를 사용하되, <m>d_o=1</m>, <m>W_O=\begin{pmatrix}1 \amp 1\end{pmatrix}</m>로 두고 쿼리를 <m>x=(2,0)^{\mathsf T}</m>로 바꿉니다.
+    </p>
+    <p>
+      첫 번째 헤드에서 쿼리는 <m>W_Q^{(1)}x=2</m>이므로 점수 벡터는 <m>s^{(1)}=(2,0)</m>이고 가중치는 <m>\left(\frac{e^2}{e^2+1},\frac{1}{e^2+1}\right)</m>입니다. 따라서 다음과 같습니다.
+      <md>
+        <mrow>z^{(1)}=\frac{e^2}{e^2+1}\cdot 1+\frac{1}{e^2+1}\cdot 0=\frac{e^2}{e^2+1}.</mrow>
+      </md>
+    </p>
+    <p>
+      두 번째 헤드에서 쿼리는 <m>W_Q^{(2)}x=0</m>이므로 점수 벡터는 <m>s^{(2)}=(0,0)</m>이고 가중치는 <m>\left(\frac12,\frac12\right)</m>입니다. 쿼리가 두 번째 좌표에 아무 정보도 없으므로 두 입력에 같은 가중치를 줍니다. 따라서 다음과 같습니다.
+      <md>
+        <mrow>z^{(2)}=\frac12\cdot 0+\frac12\cdot 1=\frac12.</mrow>
+      </md>
+    </p>
+    <p>
+      <m>W_O=\begin{pmatrix}1 \amp 1\end{pmatrix}</m>는 두 헤드의 출력을 더하므로 최종 출력은 다음과 같습니다.
+      <md>
+        <mrow>\operatorname{MultiHeadAttention}(x;y_1,y_2)=\begin{pmatrix}1 \amp 1\end{pmatrix}\begin{pmatrix}z^{(1)}\\ z^{(2)}\end{pmatrix}=\frac{e^2}{e^2+1}+\frac12.</mrow>
+      </md>
+      이 예에서 <m>W_O</m>는 단위행렬이 아니므로 두 헤드의 결과가 하나의 값으로 섞입니다.
+    </p>
+  </example>
+
+  <example xml:id="ex-two-head-attention-split">
+    <title>차원을 <m>4=2+2</m>로 나누는 멀티-헤드-어텐션</title>
+    <p>
+      <m>h=2</m>, <m>n=2</m>, <m>d_x=d_y=d_o=4</m>, <m>d_k=d_v=2</m>로 두고 다음 행렬들을 고정합니다.
+      <md>
+        <mrow>W_Q^{(1)}=W_K^{(1)}=W_V^{(1)}\amp =\begin{pmatrix}1 \amp 0 \amp 0 \amp 0\\ 0 \amp 1 \amp 0 \amp 0\end{pmatrix},</mrow>
+        <mrow>W_Q^{(2)}=W_K^{(2)}=W_V^{(2)}\amp =\begin{pmatrix}0 \amp 0 \amp 1 \amp 0\\ 0 \amp 0 \amp 0 \amp 1\end{pmatrix},</mrow>
+        <mrow>W_O\amp =I_4.</mrow>
+      </md>
+      즉 <m>\mathbb R^4</m>를 앞의 두 좌표와 뒤의 두 좌표로 나누어, 첫 번째 헤드는 앞의 <m>2</m>차원 부분공간을, 두 번째 헤드는 뒤의 <m>2</m>차원 부분공간을 봅니다. 입력은 <m>x=(1,0,1,0)^{\mathsf T}</m>, <m>y_1=(1,0,0,1)^{\mathsf T}</m>, <m>y_2=(0,1,1,0)^{\mathsf T}</m>입니다.
+    </p>
+    <p>
+      편의상 <m>p=\frac{e^{1/\sqrt2}}{e^{1/\sqrt2}+1}</m>로 둡니다. 첫 번째 헤드에서 쿼리는 <m>W_Q^{(1)}x=(1,0)^{\mathsf T}</m>이고, 키는 <m>W_K^{(1)}y_1=(1,0)^{\mathsf T}</m>, <m>W_K^{(1)}y_2=(0,1)^{\mathsf T}</m>입니다. <m>\sqrt{d_k}=\sqrt2</m>이므로 점수 벡터는 <m>s^{(1)}=\left(\frac{1}{\sqrt2},0\right)</m>이고 가중치는 <m>(p,1-p)</m>입니다. 값은 키와 같으므로 다음과 같습니다.
+      <md>
+        <mrow>z^{(1)}=p\begin{pmatrix}1\\ 0\end{pmatrix}+(1-p)\begin{pmatrix}0\\ 1\end{pmatrix}=\begin{pmatrix}p\\ 1-p\end{pmatrix}.</mrow>
+      </md>
+    </p>
+    <p>
+      두 번째 헤드에서 쿼리는 <m>W_Q^{(2)}x=(1,0)^{\mathsf T}</m>이고, 키는 <m>W_K^{(2)}y_1=(0,1)^{\mathsf T}</m>, <m>W_K^{(2)}y_2=(1,0)^{\mathsf T}</m>입니다. 따라서 점수 벡터는 <m>s^{(2)}=\left(0,\frac{1}{\sqrt2}\right)</m>이고 가중치는 <m>(1-p,p)</m>이므로, 이번에는 <m>y_2</m>에 더 큰 가중치가 주어집니다.
+      <md>
+        <mrow>z^{(2)}=(1-p)\begin{pmatrix}0\\ 1\end{pmatrix}+p\begin{pmatrix}1\\ 0\end{pmatrix}=\begin{pmatrix}p\\ 1-p\end{pmatrix}.</mrow>
+      </md>
+    </p>
+    <p>
+      두 헤드의 출력을 이어 붙이면 <m>\mathbb R^4</m>의 벡터가 되고, <m>W_O=I_4</m>이므로 최종 출력은 다음과 같습니다.
+      <md>
+        <mrow>\operatorname{MultiHeadAttention}(x;y_1,y_2)=\begin{pmatrix}z^{(1)}\\ z^{(2)}\end{pmatrix}=\begin{pmatrix}p\\ 1-p\\ p\\ 1-p\end{pmatrix}.</mrow>
+      </md>
+      이 예에서 <m>4</m>차원 공간이 <m>2</m>차원 부분공간 두 개로 나뉘고, 각 헤드는 자기 부분공간에서 독립적으로 어텐션을 계산합니다. 같은 쿼리에 대해 첫 번째 헤드는 <m>y_1</m>에, 두 번째 헤드는 <m>y_2</m>에 더 주목합니다.
+    </p>
+  </example>
+
+
+  <p>
+    실제 트랜스포머 기반 거대언어모형에서는 여러 어텐션 헤드를 병렬로 배치한 멀티-헤드-어텐션을 디코더라고 부르는 구조 안에서 사용합니다.<fn>초기 모형에는 인코더와 디코더가 모두 있었으나, 현재는 디코더만 사용하는 모형이 주류입니다. 디코더에서는 마스킹을 사용하므로 어텐션의 계산 방식이 조금 달라집니다.</fn> 디코더 안에서 어텐션 사이사이에는 비선형 피드포워드 함수나 정규화 같은 다른 요소도 놓입니다. 피드포워드 함수는 각 토큰의 벡터에 각각 적용되는 비선형함수로 미지의 함수로 <xref ref="sec-deep-neural-network"/>로 표현되는 미지의 함수입니다. 즉, 피드포워드 함수는 토큰 간 상호작용을 고려하지 않습니다. 반면 어텐션은 서로 다른 토큰에서 온 벡터끼리 곱하여 토큰 사이에 정보를 섞습니다.
+  </p>
+
+  <remark xml:id="remark-decoder-process">
+    <title>디코더의 작동 과정</title>
+    <p>
+      멀티-헤드-어텐션이 거대언어모형 안에서 어떻게 쓰이는지 간략히 살펴보겠습니다. 이를 위해 피드포워드 함수는 내부 구조를 묻지 않고, 각 토큰에 따로 적용되는 함수 <m>f:\mathbb{R}^d\to\mathbb{R}^d</m>로만 다룹니다. 자기 어텐션이므로 <m>d_x=d_y=d_o=d</m>입니다. 전체 과정은 다음 다섯 단계로 요약됩니다.
+    </p>
+    <ol>
+      <li>
+        <title>기록</title>
+        <p>
+          어휘 <m>\{1,\dots,N\}</m>의 각 토큰 <m>t</m>에는 벡터 <m>Ee_t\in\mathbb{R}^d</m>가 대응합니다. 여기서 <m>E\in\mathbb{R}^{d\times N}</m>는 임베딩 행렬이고 <m>e_t</m>는 <m>\mathbb{R}^N</m>의 <m>t</m>번째 표준기저입니다. 문장 <m>t_1,\dots,t_n</m>은 벡터 <m>x_i=Ee_{t_i}</m>들로 바뀌고, 이 벡터들은 각 토큰의 상태를 적어 두는 공책 역할을 합니다. 이후의 모든 단계는 이 공책에 무엇인가를 더하기만 하고 지우지는 않습니다. 이렇게 계속 갱신되는 벡터들을 <term>잔차 스트림</term><aside><p>잔차 스트림:residual stream</p></aside>이라 부릅니다.
+        </p>
+      </li>
+      <li>
+        <title>혼합(멀티-헤드-어텐션)</title>
+        <p>
+          각 토큰은 자신과 그 앞의 토큰들을 살펴보고, 찾은 정보의 가중평균을 자기 상태에 더합니다.
+          <md>
+            <mrow>x_i\ \leftarrow\ x_i+\sum_{a=1}^{h}\sum_{j\le i}\alpha^{(a)}_{ij}\,W^{(a)}_O W^{(a)}_V x_j</mrow>
+          </md>
+          여기서 <m>\alpha^{(a)}_{ij}</m>는 쿼리 <m>x_i</m>와 키 <m>x_1,\dots,x_i</m>로 계산한 <m>a</m>번째 헤드의 어텐션 가중치입니다. 이 가중치는 양수이고 <m>j</m>에 대한 합이 <m>1</m>입니다. 뒤의 토큰을 보지 않도록 연습문제 6.2.2(d)의 마스크 소프트맥스를 씁니다. 연습문제 6.2.6(d)에 의해 이 덧셈항은 바로 <m>\operatorname{MultiHeadAttention}(x_i;x_1,\dots,x_i)</m>입니다. 토큰 사이에서 정보가 이동하는 단계는 이것뿐이며, 정보는 항상 앞에서 뒤로만 흐릅니다.
+        </p>
+      </li>
+      <li>
+        <title>변환(피드포워드 함수)</title>
+        <p>
+          각 토큰은 다른 토큰을 보지 않고 자신의 상태만 가공합니다.
+          <md>
+            <mrow>x_i\ \leftarrow\ x_i+f(x_i)</mrow>
+          </md>
+        </p>
+      </li>
+      <li>
+        <title>반복</title>
+        <p>
+          2단계와 3단계를 묶은 것을 블록이라 하며, 이를 <m>L</m>번 반복합니다. 블록마다 행렬 <m>W^{(a)}_Q,W^{(a)}_K,W^{(a)}_V,W^{(a)}_O</m>와 함수 <m>f</m>는 서로 다를 수 있습니다. 모든 단계가 덧셈이므로 최종 상태는 다음과 같은 합입니다.
+          <md>
+            <mrow>x_i^{(L)}=x_i+(\text{모든 어텐션의 기여})+(\text{모든 피드포워드 함수의 기여})</mrow>
+          </md>
+        </p>
+      </li>
+      <li>
+        <title>판독</title>
+        <p>
+          역임베딩 행렬 <m>U</m>는 임베딩 행렬 <m>E</m>와 반대로 <m>\mathbb{R}^d</m>의 상태 벡터를 어휘의 각 토큰에 대한 점수로 바꾸는 행렬이며, 각 행 <m>u_t^{\mathsf{T}}</m>는 토큰 <m>t</m>를 나타내는 방향입니다. 마지막 토큰의 최종 상태 <m>x_n^{(L)}</m>을 정규화 함수 <m>\nu</m>로 크기를 맞춘 뒤, 역임베딩 행렬 <m>U\in\mathbb{R}^{N\times d}</m>를 곱하고 소프트맥스를 적용합니다.
+          <md>
+            <mrow>P_n=\operatorname{softmax}\bigl(U\,\nu(x_n^{(L)})\bigr)\in\mathbb{R}^N</mrow>
+          </md>
+          <m>P_n</m>의 <m>t</m>번째 성분은 다음 토큰이 <m>t</m>일 확률로 해석됩니다. <m>U</m>의 <m>t</m>번째 행을 <m>u_t^{\mathsf{T}}</m>라 하면 이 성분은 <m>\langle u_t,\nu(x_n^{(L)})\rangle</m>에 따라 정해지므로, 최종 상태의 방향과 가장 잘 맞는 방향 <m>u_t</m>를 가진 토큰이 가장 높은 확률을 받습니다. 이 분포에서 다음 토큰 <m>t_{n+1}</m>을 골라 문장 뒤에 붙이고 1단계로 돌아갑니다. 2단계의 어텐션에서 각 토큰 <m>i</m>는 자신과 그 앞의 토큰 <m>j\le i</m>만 참조하므로, 토큰 <m>t_{n+1}</m>을 새로 붙여도 앞선 <m>n</m>개 토큰의 모든 블록에서의 상태는 바뀌지 않습니다. 따라서 앞선 토큰들의 키와 값을 저장해 두었다가 재사용하면, 새로 붙인 토큰의 상태만 각 블록에서 한 번씩 계산하면 됩니다.
+        </p>
+      </li>
+    </ol>
+    <p>
+      요약하면, 토큰은 벡터가 되어 앞선 토큰들로부터 정보를 모으고(어텐션), 그것을 각자 가공하며(피드포워드 함수), 이 모든 기여를 누적한 마지막 토큰의 상태가 다음 토큰을 가리킵니다.
+    </p>
+    <p>
+      예를 들어 <q>the cat sat</q>이라는 문장을 생각해 봅시다. <q>sat</q>의 상태는 <em>sat</em>의 임베딩에서 출발합니다. 어떤 헤드가 <em>cat</em>에서 앉은 주체에 관한 정보를 가져와 더하고, 피드포워드 함수가 <q>sat 다음에는 on</q>과 같은 연상을 더한다고 합시다. 그러면 <q>sat</q>의 최종 상태는 <em>on</em>의 방향 <m>u_{\text{on}}</m>에 가장 가까워지고, <m>P_3</m>은 <q>on</q>에 가장 큰 확률을 줍니다. 이 예는 실제 모형의 계산 결과가 아니라 작동 방식을 설명하기 위한 것입니다.
+    </p>
+  </remark>
 
   <exercises xml:id="exercises-attention">
     <title>연습문제</title>
@@ -215,7 +410,7 @@
           <ol marker="(a)">
             <li><p><m>\dfrac{\partial p_i}{\partial x_j}=p_i(\delta_{ij}-p_j)</m>임을 보이고, 따라서 <m>J(x)=\operatorname{diag}(p)-pp^{\mathsf T}</m>임을 보이십시오.</p></li>
             <li><p>모든 <m>v\in\mathbb R^n</m>에 대하여 <m>\bar v=\sum_i p_iv_i</m>라 하면 <m>v^{\mathsf T}J(x)v=\sum_{i=1}^{n}p_i(v_i-\bar v)^2</m>임을 보이십시오. 이로부터 <m>J(x)</m>가 양의 준정부호 대칭행렬이고 <m>\operatorname{ker}J(x)=\operatorname{span}\{\mathbf 1\}</m>, <m>\operatorname{rank}J(x)=n-1</m>임을 보이십시오.</p></li>
-            <li><p><m>J(x)</m>의 모든 고윳값이 <m>\frac12</m> 이하임을 보이고, 이 상계에 등호가 성립하는 예를 제시하십시오.</p></li>
+            <li><p><m>J(x)</m>의 모든 고윳값이 <m>\frac12</m> 이하임을 보이십시오. 또한 <m>J(x)</m>의 최대 고윳값을 <m>\lambda_{\max}(x)</m>라 할 때, <m>n=2</m>이면 <m>\lambda_{\max}(x)=\frac12</m>인 <m>x</m>가 존재하지만, <m>n\ge 3</m>이면 <m>\sup_{x\in\mathbb R^n}\lambda_{\max}(x)=\frac12</m>이고 이 상한은 어떤 <m>x</m>에서도 달성되지 않음을 보이십시오.</p></li>
             <li><p>모든 <m>x,y\in\mathbb R^n</m>에 대하여 <m>\|\operatorname{softmax}(x)-\operatorname{softmax}(y)\|\le\frac12\|x-y\|</m>임을 보이십시오. 온도가 <m>\tau</m>인 소프트맥스 <m>\operatorname{softmax}_\tau</m>에 대해서는 어떤 부등식이 성립합니까?</p></li>
           </ol>
         </p>
@@ -238,7 +433,8 @@
             <md>
               <mrow>v^{\mathsf T}J(x)v\le\frac{(\max_iv_i-\min_iv_i)^2}{4}\le\frac{2\bigl((\max_iv_i)^2+(\min_iv_i)^2\bigr)}{4}\le\frac{\|v\|^2}{2}=\frac12</mrow>
             </md>
-            입니다. 여기서 <m>(a-b)^2\le 2(a^2+b^2)</m>를 사용했습니다. <m>n=2</m>, <m>x=0</m>이면 <m>J(x)=\frac14\begin{pmatrix}1\amp -1\\ -1\amp 1\end{pmatrix}</m>이고, 이 행렬은 <m>(1,-1)</m>을 고유벡터로 하는 고윳값 <m>\frac12</m>을 가집니다.</p></li>
+            입니다. 여기서 <m>(a-b)^2\le 2(a^2+b^2)</m>를 사용했습니다. <m>n=2</m>, <m>x=0</m>이면 <m>J(x)=\frac14\begin{pmatrix}1\amp -1\\ -1\amp 1\end{pmatrix}</m>이고, 이 행렬은 <m>(1,-1)</m>을 고유벡터로 하는 고윳값 <m>\frac12</m>을 가집니다.</p>
+            <p>이제 <m>n\ge 3</m>이라 합시다. <m>c\gt 0</m>에 대해 <m>x=(0,0,-c,\ldots,-c)</m>로 두면 <m>p_1=p_2=\frac{1}{2+(n-2)e^{-c}}</m>입니다. 단위벡터 <m>v=(e_1-e_2)/\sqrt2</m>에 대해 <m>\bar v=0</m>이므로 <m>v^{\mathsf T}J(x)v=\frac{p_1+p_2}{2}=\frac{1}{2+(n-2)e^{-c}}</m>이고, 이 값은 <m>c\to\infty</m>일 때 <m>\frac12</m>로 수렴합니다. 따라서 <m>\sup_x\lambda_{\max}(x)=\frac12</m>입니다. 한편 어떤 <m>x</m>와 단위벡터 <m>v</m>에 대해 <m>v^{\mathsf T}J(x)v=\frac12</m>이면 위 부등식들이 모두 등식이어야 합니다. 마지막 부등식의 등호는 <m>v</m>의 최대 성분과 최소 성분이 서로 다른 두 위치 <m>a\ne b</m>에 있고 나머지 성분이 모두 <m>0</m>일 때 성립하며, 둘째 부등식의 등호에서 <m>v_a=-v_b</m>이므로 <m>v=\pm(e_a-e_b)/\sqrt2</m>입니다. 그런데 첫째 부등식의 등호는 <m>p_i\gt 0</m>인 모든 <m>i</m>에 대해 <m>|v_i-c|=(\max_iv_i-\min_iv_i)/2</m>, 즉 <m>v_i\in\{v_a,v_b\}</m>를 요구하므로 <m>p</m>의 질량이 모두 <m>\{a,b\}</m>에 있어야 합니다. 이는 <m>n\ge 3</m>일 때 모든 <m>i</m>에 대해 <m>p_i\gt 0</m>이라는 사실에 모순입니다. 따라서 <m>n\ge 3</m>이면 상한 <m>\frac12</m>은 달성되지 않습니다.</p></li>
             <li><p><m>g(t)=\operatorname{softmax}(y+t(x-y))</m>라 하면 미적분학의 기본정리에 의해
             <md>
               <mrow>\operatorname{softmax}(x)-\operatorname{softmax}(y)=\int_0^1J\bigl(y+t(x-y)\bigr)(x-y)\,dt</mrow>
