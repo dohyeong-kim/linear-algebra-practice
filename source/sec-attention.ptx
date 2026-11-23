@@ -123,7 +123,7 @@
       <term>교차 어텐션</term><aside><p>용어:cross-attention</p></aside>은 질의 벡터들과 키 및 값 벡터들이 서로 다른 입력에서 오는 어텐션입니다. 질의 입력 <m>x_1,\ldots,x_r</m>과 참조 입력 <m>y_1,\ldots,y_n</m>에 대해 각 결과를 다음과 같이 정의합니다.
     </p>
     <md>
-      <mrow>\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldots,y_n),\qquad i=1,\ldots,r.</mrow>
+      <mrow>\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldo ts,y_n),\qquad i=1,\ldots,r.</mrow>
     </md>
     <p>이때 질의에는 <m>x_i</m>를, 키와 값에는 <m>y_1,\ldots,y_n</m>을 사용합니다.</p>
   </definition>
@@ -310,6 +310,7 @@
         <title>판독</title>
         <p>
           역임베딩 행렬 <m>U</m>는 임베딩 행렬 <m>E</m>와 반대로 <m>\mathbb{R}^d</m>의 상태 벡터를 어휘의 각 토큰에 대한 점수로 바꾸는 행렬이며, 각 행 <m>u_t^{\mathsf{T}}</m>는 토큰 <m>t</m>를 나타내는 방향입니다. 마지막 토큰의 최종 상태 <m>x_n^{(L)}</m>을 정규화 함수 <m>\nu</m>로 크기를 맞춘 뒤, 역임베딩 행렬 <m>U\in\mathbb{R}^{N\times d}</m>를 곱하고 소프트맥스를 적용합니다.
+        <fn>역임베딩은 LM head라고도 합니다. LM head는 언어 모델에서 다음 토큰의 확률 분포를 계산하는 마지막 층입니다. </fn>
           <md>
             <mrow>P_n=\operatorname{softmax}\bigl(U\,\nu(x_n^{(L)})\bigr)\in\mathbb{R}^N</mrow>
           </md>
