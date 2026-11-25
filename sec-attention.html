@@ -61,14 +61,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.4.2';
+eBookConfig.runestone_version = '8.4.3';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.124380009849b47e.bundle.js"></script><script src="_static/prefix-23.7d27cb317c36911a.bundle.js"></script><script src="_static/prefix-runestone.1f0ec0deacd7bb16.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-runestone.52ceae47a9e6e8ed.css">
+<script src="_static/prefix-runtime.90336ab72cbb648f.bundle.js"></script><script src="_static/prefix-23.7d27cb317c36911a.bundle.js"></script><script src="_static/prefix-runestone.1f0ec0deacd7bb16.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-runestone.52ceae47a9e6e8ed.css">
 <script src="_static/pretext/js/dist/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
 </head>
@@ -507,7 +507,7 @@ s_1=\frac{0}{\sqrt2}=0,\qquad s_2=\frac{\sqrt2\ln 3}{\sqrt2}=\ln 3,\qquad s_3=0
 </div>
 <div class="displaymath process-math" id="def-cross-attention-3">
 \begin{gather*}
-\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldots,y_n),\qquad i=1,\ldots,r.
+\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldo ts,y_n),\qquad i=1,\ldots,r.
 \end{gather*}
 </div>
 <div class="para" id="def-cross-attention-4">이때 질의에는 <span class="process-math">\(x_i\)</span>를, 키와 값에는 <span class="process-math">\(y_1,\ldots,y_n\)</span>을 사용합니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#def-cross-attention-4" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
@@ -765,8 +765,11 @@ x_i^{(L)}=x_i+(\text{모든 어텐션의 기여})+(\text{모든 피드포워드 
 <li id="remark-decoder-process-3-5">
 <span class="heading li--heading"><span class="title li--heading-title">판독.</span></span>
 <div class="para logical" id="remark-decoder-process-3-5-2">
-<div class="para">역임베딩 행렬 <span class="process-math">\(U\)</span>는 임베딩 행렬 <span class="process-math">\(E\)</span>와 반대로 <span class="process-math">\(\mathbb{R}^d\)</span>의 상태 벡터를 어휘의 각 토큰에 대한 점수로 바꾸는 행렬이며, 각 행 <span class="process-math">\(u_t^{\mathsf{T}}\)</span>는 토큰 <span class="process-math">\(t\)</span>를 나타내는 방향입니다. 마지막 토큰의 최종 상태 <span class="process-math">\(x_n^{(L)}\)</span>을 정규화 함수 <span class="process-math">\(\nu\)</span>로 크기를 맞춘 뒤, 역임베딩 행렬 <span class="process-math">\(U\in\mathbb{R}^{N\times d}\)</span>를 곱하고 소프트맥스를 적용합니다.</div>
-<div class="displaymath process-math" id="remark-decoder-process-3-5-2-9">
+<div class="para">역임베딩 행렬 <span class="process-math">\(U\)</span>는 임베딩 행렬 <span class="process-math">\(E\)</span>와 반대로 <span class="process-math">\(\mathbb{R}^d\)</span>의 상태 벡터를 어휘의 각 토큰에 대한 점수로 바꾸는 행렬이며, 각 행 <span class="process-math">\(u_t^{\mathsf{T}}\)</span>는 토큰 <span class="process-math">\(t\)</span>를 나타내는 방향입니다. 마지막 토큰의 최종 상태 <span class="process-math">\(x_n^{(L)}\)</span>을 정규화 함수 <span class="process-math">\(\nu\)</span>로 크기를 맞춘 뒤, 역임베딩 행렬 <span class="process-math">\(U\in\mathbb{R}^{N\times d}\)</span>를 곱하고 소프트맥스를 적용합니다. <details class="ptx-footnote" aria-live="polite" id="remark-decoder-process-3-5-2-9"><summary class="ptx-footnote__number" title="Footnote 6.2.2"><sup> 2 </sup></summary>
+<div class="ptx-footnote__contents" id="remark-decoder-process-3-5-2-9">역임베딩은 LM head라고도 합니다. LM head는 언어 모델에서 다음 토큰의 확률 분포를 계산하는 마지막 층입니다.
+</div></details>
+</div>
+<div class="displaymath process-math" id="remark-decoder-process-3-5-2-10">
 \begin{gather*}
 P_n=\operatorname{softmax}\bigl(U\,\nu(x_n^{(L)})\bigr)\in\mathbb{R}^N
 \end{gather*}
