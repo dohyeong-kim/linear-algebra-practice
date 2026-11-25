@@ -289,7 +289,7 @@ eBookConfig.enable_chatcodes =  false;
 </ul>
 </li>
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="ch-models-of-linear-transformations.html" class="internal"><span class="codenumber">9</span> <span class="title">선형변환의 모형</span></a></div>
+<div class="toc-title-box"><a href="ch-models-of-linear-transformations.html" class="internal"><span class="codenumber">9</span> <span class="title">문제해결과 일반화</span></a></div>
 <ul id="ptx-toc-group-ch-models-of-linear-transformations" class="structural toc-item-list">
 <li class="toc-item toc-introduction"><div class="toc-title-box"><a href="ch-models-of-linear-transformations-2.html" class="internal"><span class="title">도입</span></a></div></li>
 <li class="toc-item toc-section">
@@ -348,31 +348,36 @@ FG \amp = (Ax+B)(Cx+D)\tag{7.3.3}\\
 <article class="proposition theorem-like" id="prop-karatsuba-identity"><h2 class="heading">
 <span class="type">명제</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">7.3.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">카라추바의 세 곱셈 항등식.</span>
 </h2>
-<div class="para logical" id="prop-karatsuba-identity-2-1">
+<details id="prop-karatsuba-identity-2" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
+<aside class="aside aside-like knowl__content">
+<div class="para" id="prop-karatsuba-identity-2-1">카라추바:Karatsuba<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-karatsuba-identity-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+</aside></details>
+<div class="para logical" id="prop-karatsuba-identity-3-1">
 <div class="para">다항식 <span class="process-math">\(A\text{,}\)</span> <span class="process-math">\(B\text{,}\)</span> <span class="process-math">\(C\text{,}\)</span> <span class="process-math">\(D\)</span>에 대하여 다음 항등식이 성립한다.</div>
-<div class="displaymath process-math" id="prop-karatsuba-identity-2-1-5">
+<div class="displaymath process-math" id="prop-karatsuba-identity-3-1-5">
 \begin{align}
 AD+BC &amp;= (A+B)(C+D)-AC-BD\tag{7.3.5}
 \end{align}
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-karatsuba-identity-2-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-karatsuba-identity-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="명제 7.3.1: 카라추바의 세 곱셈 항등식"><a tabindex="-1" href="#prop-karatsuba-identity" title="Copy heading and permalink for 명제 7.3.1: 카라추바의 세 곱셈 항등식" aria-label="Copy heading and permalink for 명제 7.3.1: 카라추바의 세 곱셈 항등식">🔗</a></div>
 </article>
-<details id="prop-karatsuba-identity-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
+<details id="prop-karatsuba-identity-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">증명<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
-<div class="para logical" id="prop-karatsuba-identity-3-1">
+<div class="para logical" id="prop-karatsuba-identity-4-1">
 <div class="para">분배법칙으로 우변을 전개하면</div>
-<div class="displaymath process-math" id="prop-karatsuba-identity-3-1-1">
+<div class="displaymath process-math" id="prop-karatsuba-identity-4-1-1">
 \begin{align}
 (A+B)(C+D)-AC-BD &amp;= AC+AD+BC+BD-AC-BD\tag{7.3.6}\\
 &amp;= AD+BC\tag{7.3.7}
 \end{align}
 </div>
 <div class="para">입니다. 따라서 주어진 항등식이 성립합니다.</div>
-<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-karatsuba-identity-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#prop-karatsuba-identity-4-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="autopermalink" aria-hidden="true" data-description="증명 7.3.1.1"><a tabindex="-1" href="#prop-karatsuba-identity-3" title="Copy heading and permalink for 증명 7.3.1.1" aria-label="Copy heading and permalink for 증명 7.3.1.1">🔗</a></div>
+<div class="autopermalink" aria-hidden="true" data-description="증명 7.3.1.1"><a tabindex="-1" href="#prop-karatsuba-identity-4" title="Copy heading and permalink for 증명 7.3.1.1" aria-label="Copy heading and permalink for 증명 7.3.1.1">🔗</a></div>
 </article></details>
 <div class="para logical" id="sec-karatsuba-6">
 <div class="para">따라서 <span class="process-math">\(AC\text{,}\)</span> <span class="process-math">\(BD\text{,}\)</span> <span class="process-math">\((A+B)(C+D)\)</span>만 계산하면</div>
@@ -539,7 +544,22 @@ T(n) &amp;= O\left(3^L+\sum_{j=0}^{L-1}3^j\left(\frac{n}{2^j}+3\right)\right)\ta
 </h2>
 <div class="para" id="remark-integer-multiplication-exponent-2">카라추바 알고리즘이 주는 상계 <span class="process-math">\(\omega_{\mathrm{int}}\leq\log_2 3\)</span>은 최적이 아닙니다. 실제로 쇤하게와 슈트라센은 고속 푸리에 변환을 이용하여 두 <span class="process-math">\(n\)</span>비트 정수를 <span class="process-math">\(O(n\log n\log\log n)\)</span>번의 비트 연산으로 곱하는 알고리즘을 제시하였습니다. 모든 <span class="process-math">\(\varepsilon&gt;0\)</span>에 대하여 <span class="process-math">\(n\log n\log\log n=O(n^{1+\varepsilon})\)</span>이므로 <span class="process-math">\(\omega_{\mathrm{int}}=1\)</span>입니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-2" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
-<div class="para" id="remark-integer-multiplication-exponent-3">지수가 <span class="process-math">\(1\)</span>로 결정되었으므로 관심은 더 정밀한 상계로 옮겨갑니다. 하비와 판 데르 회번은 <span class="process-math">\(O(n\log n)\)</span>번의 비트 연산으로 정수를 곱하는 알고리즘을 제시하였습니다. 한편 <span class="process-math">\(O\left(n(\log n)^{1-\varepsilon}\right)\)</span> 상계의 증명이 기계로부터 주장된 바 있으나, 이는 아직 검증된 결과로 받아들여지지 않았습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-3" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+<details id="remark-integer-multiplication-exponent-3" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
+<aside class="aside aside-like knowl__content">
+<div class="para" id="remark-integer-multiplication-exponent-3-1">하비:Harvey<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-3-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+</aside></details>
+<details id="remark-integer-multiplication-exponent-4" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
+<aside class="aside aside-like knowl__content">
+<div class="para" id="remark-integer-multiplication-exponent-4-1">판 되르 회번:van der Hoeven<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-4-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+</aside></details>
+<details id="remark-integer-multiplication-exponent-5" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">참고</span></h3></summary>
+<aside class="aside aside-like knowl__content">
+<div class="para" id="remark-integer-multiplication-exponent-5-1">쇤하게: Schönhage<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-5-1" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
+</div>
+</aside></details>
+<div class="para" id="remark-integer-multiplication-exponent-6">지수가 <span class="process-math">\(1\)</span>로 결정되었으므로 관심은 더 정밀한 상계로 옮겨갑니다. 하비와 판 데르 회번은 <span class="process-math">\(O(n\log n)\)</span>번의 비트 연산으로 정수를 곱하는 알고리즘을 제시하였습니다. 한편 <span class="process-math">\(O\left(n(\log n)^{1-\varepsilon}\right)\)</span> 상계의 증명이 기계로부터 주장된 바 있으나, 이는 아직 검증된 결과로 받아들여지지 않았습니다.<div class="autopermalink" aria-hidden="true" data-description="문단"><a tabindex="-1" href="#remark-integer-multiplication-exponent-6" title="Copy heading and permalink for 문단" aria-label="Copy heading and permalink for 문단">🔗</a></div>
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="보조설명 7.3.6: 정수 곱셈의 지수"><a tabindex="-1" href="#remark-integer-multiplication-exponent" title="Copy heading and permalink for 보조설명 7.3.6: 정수 곱셈의 지수" aria-label="Copy heading and permalink for 보조설명 7.3.6: 정수 곱셈의 지수">🔗</a></div>
 </article>
