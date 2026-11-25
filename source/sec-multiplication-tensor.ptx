@@ -152,20 +152,20 @@
       따라서 <m>T</m>는 계수 <m>1</m> 이하인 텐서들의 극한일 수 없으며,
       경계 계수는 정확히 <m>2</m>입니다.</p>
     <p>한편 <m>T</m>의 계수는 정확히 <m>3</m>입니다.
-      이를 보이기 위해 위 두 출력을 행렬로 표현합니다.
+      이를 보이기 위해 앞서 본 쌍대벡터 평가를 통해 얻은 두 출력을 행렬로 표현합니다.
       <md>
         <mrow>M_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},
           \qquad M_2=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.</mrow>
       </md>
       만약 <m>T</m>가 두 단순 텐서의 합이라면,
       <m>\operatorname{span}\{M_1,M_2\}</m>는 두 선형독립인 계수
-      <m>1</m> 행렬로 생성되어야 합니다. 그러나
+      <m>1</m> 행렬로 생성되어야 합니다. 왜냐하면 <m>T=x_1 \otimes x_2 \otimes x_3 + y_1 \otimes y_2 \otimes y_3</m>이라면 두 출력은 각각 <m>x_1\otimes x_2</m>와 <m>y_1\otimes y_2</m>의 선형결합이 되어야 하기 때문입니다.  그러나
       <md>
         <mrow>\det(aM_1+bM_2)
           =\det\begin{pmatrix}b&amp;a\\a&amp;0\end{pmatrix}=-a^2</mrow>
       </md>
       이므로 이 공간에서 계수가 <m>1</m>인 행렬은 모두
-      <m>M_2</m>의 스칼라배입니다. 따라서 두 항으로 분해할 수 없습니다.
+      <m>M_2</m>의 스칼라배입니다. 따라서 <m>\operatorname{span}\{M_1,M_2\}</m>는 계수 1 행렬 두 개의로 생성될 수 없습니다.
       처음에 제시한 세 항의 분해와 합하면 다음 결론을 얻습니다.
       <md>
         <mrow>\underline{\operatorname{rank}}_{\mathbb C}(T)=2
