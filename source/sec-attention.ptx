@@ -11,7 +11,7 @@
 
   <definition xml:id="def-softmax">
     <title>소프트맥스 함수</title>
-    <p><term>소프트맥스 함수</term><aside><p>용어:softmax function</p></aside>는 실수 벡터를 양의 성분들의 합이 1인 벡터로 보내는 함수입니다. <m>x=(x_1,\ldots,x_n)\in\mathbb R^n</m>에 대해 그 <m>i</m>번째 성분을 다음과 같이 정의합니다.</p>
+    <p><term>소프트맥스 함수</term><aside><p>소프트맥스 함수:softmax function</p></aside>는 실수 벡터를 양의 성분들의 합이 1인 벡터로 보내는 함수입니다. <m>x=(x_1,\ldots,x_n)\in\mathbb R^n</m>에 대해 그 <m>i</m>번째 성분을 다음과 같이 정의합니다.</p>
     <md>
       <mrow>\operatorname{softmax}(x)_i=\frac{\exp(x_i)}{\sum_{j=1}^{n}\exp(x_j)},\qquad i=1,\ldots,n.</mrow>
     </md>
@@ -120,7 +120,7 @@
   <definition xml:id="def-cross-attention">
     <title>교차 어텐션</title>
     <p>
-      <term>교차 어텐션</term><aside><p>용어:cross-attention</p></aside>은 질의 벡터들과 키 및 값 벡터들이 서로 다른 입력에서 오는 어텐션입니다. 질의 입력 <m>x_1,\ldots,x_r</m>과 참조 입력 <m>y_1,\ldots,y_n</m>에 대해 각 결과를 다음과 같이 정의합니다.
+      <term>교차 어텐션</term><aside><p>교차 어텐션:cross-attention</p></aside>은 질의 벡터들과 키 및 값 벡터들이 서로 다른 입력에서 오는 어텐션입니다. 질의 입력 <m>x_1,\ldots,x_r</m>과 참조 입력 <m>y_1,\ldots,y_n</m>에 대해 각 결과를 다음과 같이 정의합니다.
     </p>
     <md>
       <mrow>\operatorname{CrossAttention}(x_i;y_1,\ldots,y_n)=\operatorname{Attention}(x_i;y_1,\ldo ts,y_n),\qquad i=1,\ldots,r.</mrow>
@@ -131,7 +131,7 @@
   <definition xml:id="def-self-attention">
     <title>자기 어텐션</title>
     <p>
-      <term>자기 어텐션</term><aside><p>용어:self-attention</p></aside>은 질의, 키, 값이 모두 같은 입력 벡터들에서 만들어지는 어텐션입니다. 즉, <m>d_x=d_y</m>입니다. 입력 <m>x_1,\ldots,x_n</m>에 대해 각 벡터를 차례로 질의로 사용하여 다음을 정의합니다.
+      <term>자기 어텐션</term><aside><p>자기 어텐션:self-attention</p></aside>은 질의, 키, 값이 모두 같은 입력 벡터들에서 만들어지는 어텐션입니다. 즉, <m>d_x=d_y</m>입니다. 입력 <m>x_1,\ldots,x_n</m>에 대해 각 벡터를 차례로 질의로 사용하여 다음을 정의합니다.
     </p>
     <md>
       <mrow>\operatorname{SelfAttention}(x_i;x_1,\ldots,x_n)=\operatorname{Attention}(x_i;x_1,\ldots,x_n),\qquad i=1,\ldots,n.</mrow>

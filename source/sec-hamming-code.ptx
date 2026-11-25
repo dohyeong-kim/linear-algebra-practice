@@ -9,7 +9,7 @@
     <title>해밍 부호</title>
     <statement>
       <p>
-        <term>해밍 부호</term><aside><p>용어:Hamming code</p></aside>는 양의 정수 <m>r</m>에 대하여, <m>\mathbb F_2^r</m>의 영벡터가 아닌 모든 벡터를 열로 갖는 <m>r\times(2^r-1)</m> 행렬 <m>H</m>의 커널로 정의되는 이진 선형 부호입니다.
+        <term>해밍 부호</term><aside><p>해밍 부호:Hamming code</p></aside>는 양의 정수 <m>r</m>에 대하여, <m>\mathbb F_2^r</m>의 영벡터가 아닌 모든 벡터를 열로 갖는 <m>r\times(2^r-1)</m> 행렬 <m>H</m>의 커널로 정의되는 이진 선형 부호입니다.
       </p>
       <md><mrow>C=\operatorname{ker}(H)=\{x\in\mathbb F_2^{2^r-1}:Hx=0\}.</mrow></md>
     </statement>
